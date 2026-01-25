@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎮 Fawkesware Games 🎮</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="matrix-bg"></div>
+    <div class="stars"></div>
+    
+    <!-- Header -->
+    <header class="y2k-header">
+        <div class="header-content">
+            <h1 class="glitch-text" data-text="Fawkesware Games">Fawkesware Games</h1>
+            <div class="under-construction">
+                <marquee behavior="scroll" direction="left">🚧 UNDER CONSTRUCTION 🚧 STAY TUNED FOR MORE UPDATES AND INFORMATION 🚧</marquee>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="y2k-nav">
+        <div class="nav-buttons">
+            <button class="nav-btn" onclick="showSection('home')">🏠 HOME</button>
+            <button class="nav-btn" onclick="showSection('games')">🎮 GAMES</button>
+            <button class="nav-btn" onclick="showSection('progress')">📊 PROGRESS</button>
+            <button class="nav-btn" onclick="showSection('storage')">💾 STORAGE</button>
+            <button class="nav-btn" onclick="showSection('about')">👨‍💻 ABOUT</button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Section -->
+        <section id="home" class="content-section active">
+            <div class="welcome-box">
+                <h2 class="section-title">LOW-POLY GAMES AND GOOFS</h2>
+                <div class="hit-counter">
+                    <span>YOU ARE VISITOR #</span>
+                    <span id="counter" data-count="0">...</span>
+                </div>
+                <div class="intro-text">
+                    <p>Fawkesware Games focuses on mechanical depth and ludo-narrative coherence through intentionally retro aesthetics.</p>
+                    <p><strong>Current focus:</strong> <em>Esoteric Order of Delivery</em>, a PSX-era inspired courier thriller blending Crazy Taxi urgency, Hit &amp; Run traversal, and the uncanny dread of late-90s horror.</p>
+                </div>
+                <div class="featured-content">
+                    <div class="blink-box">
+                        <p>Project hub for organized builds, discussions, and milestone tracking.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Games Section -->
+        <section id="games" class="content-section">
+            <h2 class="section-title">🎮 MY GAMES 🎮</h2>
+            <div class="games-grid">
+                <div class="game-card">
+                    <div class="game-preview">
+                        <img src="https://i.ibb.co/rR6S9Czd/nightskybg.png" alt="Esoteric Order of Delivery" width="450" height="300" loading="lazy" decoding="async">
+                    </div>
+                    <h3>Esoteric Order of Delivery</h3>
+                    <p>PSX-era courier thriller about keeping Kayla, her busted van, and her anxiety together long enough to deliver pizzas.</p>
+                    <div class="game-stats">
+                        <span>STATUS: IN DEVELOPMENT</span>
+                        <span>PROGRESS: 35%</span>
+                    </div>
+                    <button class="y2k-button" onclick="viewGame('alpha')">VIEW DETAILS</button>
+                </div>
+                <div class="game-card">
+                    <div class="game-preview">
+                        <img src="https://i.ibb.co/rR6S9Czd/nightskybg.png" alt="The Silent Road" width="450" height="300" loading="lazy" decoding="async">
+                    </div>
+                    <h3>The Silent Road</h3>
+                    <p>Dark fantasy tabletop RPG about Gloomstalkers navigating a world of whispers, omens, and Penumbral Arts.</p>
+                    <div class="game-stats">
+                        <span>STATUS: ALPHA RELEASE</span>
+                        <span>PROGRESS: COMPLETE</span>
+                    </div>
+                    <button class="y2k-button" onclick="viewGame('silentroad')">VIEW DETAILS</button>
+                    <button class="y2k-button" onclick="window.open('Silent Road/index.html', '_blank')">PLAY NOW</button>
+                </div>
+            </div>
+        </section>
+                
+        <!-- Progress Section -->
+        <section id="progress" class="content-section">
+            <h2 class="section-title">📊 DEVELOPMENT PROGRESS 📊</h2>
+            <div class="progress-container">
+                <div class="progress-item">
+                    <h3>Esoteric Order of Delivery</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 35%"></div>
+                    </div>
+                    <span class="progress-text">35% COMPLETE</span>
+                </div>
+                
+            
+            <div class="dev-log">
+                <h3>📝 DEVELOPMENT LOG</h3>
+                <div class="log-entries">
+                    <div class="log-entry">
+                        <div class="log-date-block">
+                            <span class="log-date">10-21-2025</span>
+                        </div>
+                        <div class="log-content">
+                            <p class="log-text">Began working on Esoteric Order of Delivery, intially codenamed "Driver."</p>
+                            <p class="log-text">Added intial test vehicle and vehicle scripts, and began work on 3D player controller.</p>
+                        </div>
+                    </div>
+                    <div class="log-entry">
+                        <div class="log-date-block">
+                            <span class="log-date">October 2025 - End</span>
+                        </div>
+                        <div class="log-content">
+                            <p class="log-text">Created basic UI for game.</p>
+                            <p class="log-text">Added simple character select screen and intiliazaion logic.</p>
+                            <p class="log-text">Created and imported first basic UI elements. (Fuel Gauge, Radiator Tempature Gauge, Etc.)</p>
+                            <p class="log-text">Created and imported intial version of Kayla model, and subsequently added some basic movement animations.</p>
+                        </div>
+                    </div>
+                    <div class="log-entry">
+                        <div class="log-date-block">
+                            <span class="log-date">November 2025 - End</span>
+                        </div>
+                        <div class="log-content">
+                            <p class="log-text">Created and imported new vehicle model.</p>
+                            <p class="log-text">Created intial player inventory and menu systems.</p>
+                            <p class="log-text">Began work on shader effects. (Dithering, Vignetting, etc.)</p>
+                            <p class="log-text">Introduced intial tracking for pizza delivery system and deeper inventory mechanics.</p>
+                            <p class="log-text">Started creating and adding new item models. (Headlight Bulbs, Water Bottles, Duct Tape, Pizza Boxes)</p>
+                            <p class="log-text">Created 3D item and character model viewer for inventory screen.</p>
+                        </div>
+                    </div>
+                    <div class="log-entry">
+                        <div class="log-date-block">
+                            <span class="log-date">December 2025 - End</span>
+                        </div>
+                        <div class="log-content">
+                            <p class="log-text">Enhanced Shaders and lighting. Adding an additional screen effect of a CRT monitor curve.</p>
+                            <p class="log-text">Continued work on inventory system, and decided to alter course from having inventory be a simple 2D menu to become a 3D interactive journal which serves the purpose of all game menus in one.</p>
+                            <p class="log-text">Created and imported the journal model.</p>
+                            <p class="log-text">Created journal art shader for immersively drawing journal UI onto pages in real-time.</p>
+                            <p class="log-text">Added in placeholder journal art.</p>
+                            <p class="log-text">Refined journal inventory system and tab logic and added new form of 3D item inspector system.</p>
+                        </div>
+                    </div>
+                    <div class="log-entry">
+                        <div class="log-date-block">
+                            <span class="log-date">January 2026 - Current</span>
+                        </div>
+                        <div class="log-content">
+                            <p class="log-text">Began work on making first set of buildings for Zone 1, City.</p>
+                            <p class="log-text">Started work on couch co-op mode.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Storage Section -->
+        <section id="storage" class="content-section">
+            <h2 class="section-title">💾 CLOUD STORAGE 💾</h2>
+            <div class="storage-container">
+                <div class="drive-connector">
+                    <h3>CONNECT GOOGLE DRIVE</h3>
+                    <button class="y2k-button" onclick="connectGoogleDrive()">🔗 CONNECT DRIVE</button>
+                    <div id="drive-status" class="status-message">
+                        <span>No drives connected</span>
+                    </div>
+                </div>
+                
+                <div class="connected-drives" id="connected-drives">
+                    <!-- Connected drives will appear here -->
+                </div>
+                
+                <div class="storage-stats">
+                    <h3>📈 STORAGE STATISTICS</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-label">TOTAL FILES</span>
+                            <span class="stat-value" id="total-files">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">TOTAL SIZE</span>
+                            <span class="stat-value" id="total-size">0 MB</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">DRIVES CONNECTED</span>
+                            <span class="stat-value" id="drives-count">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="content-section">
+            <h2 class="section-title">🦊 ABOUT FAWKES 🦊</h2>
+            <div class="about-content">
+                <div class="profile-card">
+                    <div class="avatar-container">
+                        <img src="https://via.placeholder.com/150x150/FF00FF/FFFFFF?text=DEV" alt="Developer Avatar" class="avatar">
+                    </div>
+                    <h3>GAME DEVELOPER</h3>
+                    <p class="bio">
+                        Passionate game developer creating immersive digital experiences. 
+                        Specializing in innovative gameplay mechanics and cutting-edge graphics.
+                    </p>
+                    <div class="skills">
+                        <h3>🛠️ SKILLS</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">GDScript</span>
+                            <span class="skill-tag">Godot</span>
+                            <span class="skill-tag">Blender</span>
+                            <span class="skill-tag">3D Art</span>
+                            <span class="skill-tag">Game Design</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-info">
+                    <h4>📧 GET IN TOUCH</h4>
+                    <div class="contact-links">
+                        <a href="#" class="contact-link">📧 EMAIL</a>
+                        <a href="#" class="contact-link">🐦 TWITTER</a>
+                        <a href="#" class="contact-link">💼 LINKEDIN</a>
+                        <a href="#" class="contact-link">🎮 DISCORD</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="y2k-footer">
+        <div class="footer-content">
+            <p>© 2026 GAME DEV PORTFOLIO - ALL RIGHTS RESERVED</p>
+            <div class="footer-badges">
+                <span class="badge">BEST VIEWED IN 1024x768</span>
+                <span class="badge">MADE WITH ❤️ BY FAWKES</span>
+                <span class="badge">INTERNET EXPLORER 6+ RECOMMENDED</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal for game details -->
+    <div id="game-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title">GAME DETAILS</h2>
+            <div id="modal-body">
+                <!-- Game details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js?v=3"></script>
+    <script>
+        // Debug: Test if showSection function is available
+        console.log('showSection function exists:', typeof showSection);
+        
+        // Test navigation manually
+        if (typeof showSection === 'function') {
+            console.log('showSection is loaded and ready');
+        } else {
+            console.error('showSection function not found!');
+        }
+    </script>
+</body>
+</html>
