@@ -321,9 +321,9 @@ marquee {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0);
-    width: 600px;
+    width: 720px;
     max-width: 90vw;
-    height: 400px;
+    height: 480px;
     max-height: 80vh;
     z-index: 1000;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
