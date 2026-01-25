@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Silent Road Character Creator</title>
-    <!-- Character Creator for The Silent Road RPG - Updated with original art -->
+    <title>The Silent Road - Advanced Character Creator</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
@@ -42,11 +41,11 @@
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 2rem auto;
             padding: 1rem;
             background: rgba(20, 20, 25, 0.95);
-            border: 1px solid #3a3a3a;
+            border: 2px solid #4a1751;
             border-radius: 5px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
         }
@@ -70,18 +69,62 @@
             padding-bottom: 0.5rem;
         }
 
-        .character-sheet {
-            background: url('images/char.png') no-repeat center center;
-            background-size: contain;
-            min-height: 600px;
+        h3 {
+            font-family: 'Cinzel', serif;
+            color: #a67c00;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.4rem;
+        }
+
+        .creation-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: rgba(74, 23, 81, 0.2);
+            border-radius: 5px;
+        }
+
+        .step {
+            text-align: center;
+            flex: 1;
+            padding: 0.5rem;
             position: relative;
-            margin: 2rem 0;
-            padding: 2rem;
+        }
+
+        .step.active {
+            background: rgba(166, 124, 0, 0.2);
+            border-radius: 5px;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            background: #4a1751;
+            color: #a67c00;
+            border-radius: 50%;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .step.active .step-number {
+            background: #a67c00;
+            color: #1a1a1a;
+        }
+
+        .form-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(10, 10, 15, 0.8);
+            border: 1px solid #4a1751;
+            border-radius: 5px;
         }
 
         .form-group {
             margin-bottom: 1.5rem;
-            position: relative;
         }
 
         label {
@@ -123,8 +166,8 @@
 
         .path-selection {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
             margin: 2rem 0;
         }
 
@@ -132,12 +175,11 @@
             background: rgba(74, 23, 81, 0.3);
             border: 2px solid #4a1751;
             border-radius: 5px;
-            padding: 1rem;
+            padding: 1.5rem;
             cursor: pointer;
             transition: all 0.3s ease;
             text-align: center;
             position: relative;
-            overflow: hidden;
         }
 
         .path-card:hover {
@@ -146,23 +188,17 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
-        .path-card.selected {
-            background: rgba(166, 124, 0, 0.2);
-            border-color: #a67c00;
-            box-shadow: 0 0 15px rgba(166, 124, 0, 0.4);
-        }
-
         .path-card h3 {
             font-family: 'Cinzel', serif;
             color: #a67c00;
             margin-bottom: 0.5rem;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
         }
 
-        .path-card p {
-            font-size: 0.9rem;
-            color: #c0c0c0;
-            margin: 0;
+        .path-card .major-skill {
+            color: #8b6914;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
         }
 
         .path-images {
@@ -172,15 +208,38 @@
             margin: 1rem 0;
         }
 
-        .path-image {
-            text-align: center;
-        }
-
         .path-image img {
             max-width: 100%;
             height: auto;
             border: 2px solid #4a1751;
             border-radius: 3px;
+        }
+
+        .arts-ranks {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .art-item {
+            background: rgba(74, 23, 81, 0.2);
+            border: 1px solid #4a1751;
+            border-radius: 3px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .art-item .art-name {
+            font-weight: 600;
+            color: #a67c00;
+            margin-bottom: 0.5rem;
+        }
+
+        .art-item .rank {
+            font-size: 1.2rem;
+            color: #8b6914;
+            font-weight: bold;
         }
 
         .stats-grid {
@@ -198,15 +257,47 @@
             text-align: center;
         }
 
-        .stat-item label {
-            color: #a67c00;
-            font-size: 0.9rem;
-            margin-bottom: 0.25rem;
-        }
-
         .stat-item input {
             text-align: center;
             font-weight: 600;
+        }
+
+        .abilities-section {
+            margin: 2rem 0;
+        }
+
+        .ability-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .ability-item {
+            background: rgba(74, 23, 81, 0.2);
+            border: 1px solid #4a1751;
+            border-radius: 3px;
+            padding: 1rem;
+        }
+
+        .ability-item h4 {
+            color: #a67c00;
+            margin-bottom: 0.5rem;
+        }
+
+        .character-sheet {
+            background: url('images/char.png') no-repeat center center;
+            background-size: contain;
+            min-height: 800px;
+            position: relative;
+            margin: 2rem 0;
+            padding: 2rem;
+        }
+
+        .sheet-content {
+            background: rgba(26, 26, 26, 0.9);
+            padding: 2rem;
+            border-radius: 5px;
+            border: 1px solid #4a1751;
         }
 
         .button-container {
@@ -218,46 +309,45 @@
         }
 
         .btn {
-            background: linear-gradient(135deg, #4a1751, #8b6914);
-            color: #fff;
-            border: 2px solid #a67c00;
+            background: linear-gradient(45deg, #4a1751, #8b6914);
+            color: #c0c0c0;
+            border: none;
             padding: 1rem 2rem;
+            border-radius: 5px;
             font-family: 'Cinzel', serif;
             font-weight: 600;
             cursor: pointer;
+            transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
-            transition: all 0.3s ease;
-            border-radius: 3px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
         .btn:hover {
-            background: linear-gradient(135deg, #8b6914, #4a1751);
+            background: linear-gradient(45deg, #8b6914, #a67c00);
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
-        .back-link {
-            position: fixed;
-            top: 20px;
-            left: 20px;
+        .btn-secondary {
             background: rgba(74, 23, 81, 0.8);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(166, 124, 0, 0.8);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
             color: #a67c00;
-            padding: 0.75rem 1.5rem;
             text-decoration: none;
-            border-radius: 3px;
             font-family: 'Cinzel', serif;
             font-weight: 600;
-            transition: all 0.3s ease;
-            z-index: 1000;
-            border: 1px solid #a67c00;
+            transition: color 0.3s ease;
         }
 
         .back-link:hover {
-            background: rgba(166, 124, 0, 0.2);
-            transform: translateY(-2px);
+            color: #8b6914;
         }
 
         .character-output {
@@ -460,6 +550,598 @@
                 </div>
                 <div class="stat-item">
                     <label for="secondaryArt">Secondary Art:</label>
+                    <select id="secondaryArt" name="secondaryArt">
+                        <option value="">Select Secondary...</option>
+                        <option value="Warfare">Warfare</option>
+                        <option value="Observation">Observation</option>
+                        <option value="Social">Social</option>
+                        <option value="Adaptability">Adaptability</option>
+                        <option value="Reverence">Reverence</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="button-container">
+                <button type="button" class="btn" onclick="generateCharacter()">Generate Character</button>
+                <button type="button" class="btn btn-secondary" onclick="resetForm()">Reset</button>
+            </div>
+        </form>
+
+        <div id="characterOutput" class="character-output">
+            <h3>Your Gloomstalker</h3>
+            <div class="output-grid">
+                <div class="output-section">
+                    <h4>Basic Information</h4>
+                    <p><strong>Name:</strong> <span id="outputName"></span></p>
+                    <p><strong>Concept:</strong> <span id="outputConcept"></span></p>
+                    <p><strong>Path:</strong> <span id="outputPath"></span></p>
+                </div>
+                <div class="output-section">
+                    <h4>Stats</h4>
+                    <p><strong>Rank:</strong> <span id="outputRank"></span></p>
+                    <p><strong>Wounds:</strong> <span id="outputWounds"></span></p>
+                    <p><strong>Conviction:</strong> <span id="outputConviction"></span></p>
+                    <p><strong>Gloomtide Surge Points:</strong> <span id="outputSurgePoints"></span></p>
+                </div>
+                <div class="output-section">
+                    <h4>Penumbral Arts</h4>
+                    <p><strong>Primary:</strong> <span id="outputPrimaryArt"></span> (Rank <span id="outputPrimaryRank"></span>)</p>
+                    <p><strong>Secondary:</strong> <span id="outputSecondaryArt"></span> (Rank <span id="outputSecondaryRank"></span>)</p>
+                </div>
+                <div class="output-section">
+                    <h4>Path Abilities</h4>
+                    <div id="outputAbilities"></div>
+                </div>
+            </div>
+            <div class="button-container">
+                <button type="button" class="btn btn-secondary" onclick="downloadCharacterSheet()">Download Character Sheet</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Penumbral Path data from the rulebook
+        const pathData = {
+            'soiled-hands': {
+                name: 'Path of the Soiled Hands',
+                majorSkill: 'Warfare',
+                woundThreshold: 14,
+                primaryRank: 3,
+                secondaryRank: 4,
+                otherRank: 5,
+                abilities: [
+                    'Iron-Skinned', 'Ranger', 'Blood Frenzy', 'Devastator', 'Bloodlust', 'Fearsome Aspect', 'War Cry'
+                ],
+                surgeBonus: [
+                    'Striker', 'Relentless Assault', 'Siege Master', 'Phoenix'
+                ]
+            },
+            'muted-sibilance': {
+                name: 'Path of the Muted Sibilance',
+                majorSkill: 'Reverence',
+                woundThreshold: 10,
+                primaryRank: 3,
+                secondaryRank: 4,
+                otherRank: 5,
+                abilities: [
+                    'Surreptitious Speaker', 'Combat Attuned', 'Scholar', 'Blood Echo', 'Wayfinder', 'Greater Bargainer'
+                ],
+                surgeBonus: [
+                    'Focused Mind', 'Truth-Seeker', 'Axiomatic', 'Surge Protector'
+                ],
+                axioms: true
+            },
+            'sanguine-boot': {
+                name: 'Path of the Sanguine Boot',
+                majorSkill: 'Adaptability',
+                woundThreshold: 12,
+                primaryRank: 3,
+                secondaryRank: 4,
+                otherRank: 5,
+                abilities: [
+                    'Distracting Presence', 'Gloomstride', 'Sticky Fingers', 'Feint', 'Spaghetti Step', 'Expert Trapper', 'Mimicry'
+                ],
+                surgeBonus: [
+                    'Nimble Escape', 'Opportunist', 'Fleet-Footed', 'Reckless Runner', 'Reflex Save'
+                ]
+            },
+            'tranquil-countenance': {
+                name: 'Path of the Tranquil Countenance',
+                majorSkill: 'Social',
+                woundThreshold: 8,
+                primaryRank: 3,
+                secondaryRank: 4,
+                otherRank: 5,
+                abilities: [
+                    'Fast-Talker', 'Commanding Tone', 'High Stakes Negotiator'
+                ],
+                surgeBonus: [
+                    'Fast-Talker', 'Commanding Tone', 'High Stakes Negotiator'
+                ]
+            },
+            'penetrating-iris': {
+                name: 'Path of the Penetrating Iris',
+                majorSkill: 'Observation',
+                woundThreshold: 8,
+                primaryRank: 3,
+                secondaryRank: 4,
+                otherRank: 5,
+                abilities: [
+                    'Keen Observer', 'Tracker', 'Investigator', 'Scout'
+                ],
+                surgeBonus: [
+                    'Keen Observer', 'Tracker', 'Investigator', 'Scout'
+                ]
+            }
+    <script>
+        // Penumbral Path data from the rulebook
+        const pathData = {
+            'soiled-hands': {
+                name: 'Path of the Soiled Hands',
+                majorSkill: 'Warfare',
+                woundThreshold: 14,
+                primaryRank: 3,
+                secondaryRank: 4,
+                otherRank: 5,
+                abilities: [
+                    'Iron-Skinned', 'Ranger', 'Blood Frenzy', 'Devastator', 'Bloodlust', 'Fearsome Aspect', 'War Cry'
+                ],
+                surgeBonus: [
+                    'Striker', 'Relentless Assault', 'Siege Master', 'Phoenix'
+                ]
+            },
+            'muted-sibilance': {
+                name: 'Path of the Muted Sibilance',
+                majorSkill: 'Reverence',
+                woundThreshold: 10,
+                primaryRank: 3,
+                secondaryRank: 4,
+                otherRank: 5,
+                abilities: [
+                    'Surreptitious Speaker', 'Combat Attuned', 'Scholar', 'Blood Echo', 'Wayfinder', 'Greater Bargainer'
+                ],
+                surgeBonus: [
+                    'Focused Mind', 'Truth-Seeker', 'Axiomatic', 'Surge Protector'
+                ],
+                axioms: true
+            },
+            'sanguine-boot': {
+                name: 'Path of the Sanguine Boot',
+                majorSkill: 'Adaptability',
+                woundThreshold: 12,
+                primaryRank: 3,
+                secondaryRank: 4,
+                otherRank: 5,
+                abilities: [
+                    'Distracting Presence', 'Gloomstride', 'Sticky Fingers', 'Feint', 'Spaghetti Step', 'Expert Trapper', 'Mimicry'
+                ],
+                surgeBonus: [
+                    'Nimble Escape', 'Opportunist', 'Fleet-Footed', 'Reckless Runner', 'Reflex Save'
+                ]
+            },
+            'tranquil-countenance': {
+                name: 'Path of the Tranquil Countenance',
+                majorSkill: 'Social',
+                woundThreshold: 8,
+                primaryRank: 3,
+                secondaryRank: 4,
+                otherRank: 5,
+                abilities: [
+                    'Fast-Talker', 'Commanding Tone', 'High Stakes Negotiator'
+                ],
+                surgeBonus: [
+                    'Fast-Talker', 'Commanding Tone', 'High Stakes Negotiator'
+                ]
+            },
+            'penetrating-iris': {
+                name: 'Path of the Penetrating Iris',
+                majorSkill: 'Observation',
+                woundThreshold: 8,
+                primaryRank: 3,
+                secondaryRank: 4,
+                otherRank: 5,
+                abilities: [
+                    'Keen Observer', 'Tracker', 'Investigator', 'Scout'
+                ],
+                surgeBonus: [
+                    'Keen Observer', 'Tracker', 'Investigator', 'Scout'
+                ]
+            }
+        };
+
+        let selectedPath = null;
+
+        // Handle path selection
+        document.querySelectorAll('.path-card').forEach(card => {
+            card.addEventListener('click', function() {
+                document.querySelectorAll('.path-card').forEach(c => c.classList.remove('selected'));
+                this.classList.add('selected');
+                selectedPath = this.dataset.path;
+                updatePathInfo();
+            });
+        });
+
+        function updatePathInfo() {
+            if (!selectedPath) return;
+            
+            const path = pathData[selectedPath];
+            const primaryArt = document.getElementById('primaryArt');
+            const secondaryArt = document.getElementById('secondaryArt');
+            const woundThreshold = document.getElementById('woundThreshold');
+            const surgePoints = document.getElementById('surgePoints');
+            
+            // Set primary art to the path's major skill
+            primaryArt.value = path.majorSkill;
+            
+            // Clear secondary options first
+            secondaryArt.innerHTML = '<option value="">Select Secondary...</option>';
+            
+            // Add secondary options (all arts except primary)
+            const arts = ['Warfare', 'Observation', 'Social', 'Adaptability', 'Reverence'];
+            arts.filter(art => art !== path.majorSkill).forEach(art => {
+                secondaryArt.innerHTML += `<option value="${art}">${art}</option>`;
+            });
+            
+            // Set wound threshold
+            woundThreshold.value = path.woundThreshold;
+            
+            // Set surge points (starting value)
+            surgePoints.value = 1;
+            
+            // Update art ranks display
+            updateArtRanks();
+        }
+
+        function updateArtRanks() {
+            if (!selectedPath) return;
+            
+            const path = pathData[selectedPath];
+            const primaryArt = document.getElementById('primaryArt').value;
+            const secondaryArt = document.getElementById('secondaryArt').value;
+            
+            // Update primary art rank
+            const primaryRank = primaryArt === path.majorSkill ? path.primaryRank : 
+                             (primaryArt === secondaryArt ? path.secondaryRank : path.otherRank);
+            
+            // Update secondary art rank
+            const secondaryRank = secondaryArt === path.majorSkill ? path.primaryRank : 
+                               (secondaryArt === primaryArt ? path.secondaryRank : path.otherRank);
+            
+            // Update display
+            document.getElementById('primaryRank').textContent = primaryRank;
+            document.getElementById('secondaryRank').textContent = secondaryRank;
+        }
+
+        // Update art ranks when arts are changed
+        document.getElementById('primaryArt').addEventListener('change', updateArtRanks);
+        document.getElementById('secondaryArt').addEventListener('change', updateArtRanks);
+
+        function generateCharacter() {
+            const characterData = {
+                name: document.getElementById('characterName').value,
+                concept: document.getElementById('characterConcept').value,
+                path: selectedPath,
+                rank: parseInt(document.getElementById('rank').value),
+                wounds: parseInt(document.getElementById('wounds').value),
+                conviction: parseInt(document.getElementById('conviction').value),
+                surgePoints: parseInt(document.getElementById('surgePoints').value),
+                primaryArt: document.getElementById('primaryArt').value,
+                secondaryArt: document.getElementById('secondaryArt').value
+            };
+            
+            if (!characterData.name) {
+                alert('Please enter a character name');
+                return;
+            }
+            
+            if (!selectedPath) {
+                alert('Please select a Penumbral Path');
+                return;
+            }
+            
+            // Display character output
+            displayCharacter(characterData);
+        }
+
+        function displayCharacter(data) {
+            const output = document.getElementById('characterOutput');
+            const path = pathData[data.path];
+            
+            document.getElementById('outputName').textContent = data.name;
+            document.getElementById('outputConcept').textContent = data.concept;
+            document.getElementById('outputPath').textContent = path.name;
+            document.getElementById('outputRank').textContent = data.rank;
+            document.getElementById('outputWounds').textContent = data.wounds;
+            document.getElementById('outputConviction').textContent = data.conviction;
+            document.getElementById('outputSurgePoints').textContent = data.surgePoints;
+            document.getElementById('outputPrimaryArt').textContent = data.primaryArt;
+            document.getElementById('outputSecondaryArt').textContent = data.secondaryArt;
+            
+            const primaryRank = data.primaryArt === path.majorSkill ? path.primaryRank : 
+                             (data.primaryArt === data.secondaryArt ? path.secondaryRank : path.otherRank);
+            const secondaryRank = data.secondaryArt === path.majorSkill ? path.primaryRank : 
+                               (data.secondaryArt === data.primaryArt ? path.secondaryRank : path.otherRank);
+            
+            document.getElementById('outputPrimaryRank').textContent = primaryRank;
+            document.getElementById('secondaryRank').textContent = secondaryRank;
+            
+            // Display path abilities
+            const abilitiesDiv = document.getElementById('outputAbilities');
+            abilitiesDiv.innerHTML = '<h5>Path Abilities:</h5><ul>';
+            path.abilities.slice(0, 2).forEach(ability => {
+                abilitiesDiv.innerHTML += `<li>${ability}</li>`;
+            });
+            abilitiesDiv.innerHTML += '</ul>';
+            
+            output.classList.add('show');
+            output.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function resetForm() {
+            document.getElementById('characterForm').reset();
+            document.querySelectorAll('.path-card').forEach(c => c.classList.remove('selected'));
+            selectedPath = null;
+            document.getElementById('characterOutput').classList.remove('show');
+        }
+
+        function downloadCharacterSheet() {
+            const characterData = {
+                name: document.getElementById('outputName').textContent,
+                concept: document.getElementById('outputConcept').textContent,
+                path: document.getElementById('outputPath').textContent,
+                rank: document.getElementById('outputRank').textContent,
+                wounds: document.getElementById('outputWounds').textContent,
+                conviction: document.getElementById('outputConviction').textContent,
+                surgePoints: document.getElementById('outputSurgePoints').textContent,
+                primaryArt: document.getElementById('outputPrimaryArt').textContent,
+                secondaryArt: document.getElementById('outputSecondaryArt').textContent,
+                primaryRank: document.getElementById('outputPrimaryRank').textContent,
+                secondaryRank: document.getElementById('outputSecondaryRank').textContent
+            };
+            
+            const characterSheet = `
+THE SILENT ROAD - CHARACTER SHEET
+
+========================================
+BASIC INFORMATION
+========================================
+Name: ${characterData.name}
+Concept: ${characterData.concept}
+Path: ${characterData.path}
+
+========================================
+CHARACTER STATS
+========================================
+Rank: ${characterData.rank}
+Wounds: ${characterData.wounds} / ${pathData[characterData.path.replace('-', '')]?.woundThreshold || 'N/A'}
+Conviction: ${characterData.conviction}
+Gloomtide Surge Points: ${characterData.surgePoints}
+
+========================================
+PENUMBRAL ARTS
+========================================
+Primary Art: ${characterData.primaryArt} (Rank ${characterData.primaryRank})
+Secondary Art: ${characterData.secondaryArt} (Rank ${characterData.secondaryRank})
+
+========================================
+PATH ABILITIES
+========================================
+${document.getElementById('outputAbilities').textContent}
+
+========================================
+NOTES
+========================================
+This character was created using The Silent Road Advanced Character Creator.
+For more information about the game, visit the rulebook.
+            `;
+            
+            const blob = new Blob([characterSheet], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${characterData.name.replace(/\s+/g, '_')}_character_sheet.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }
+    </script>
+        document.querySelectorAll('.path-card').forEach(card => {
+            card.addEventListener('click', function() {
+                document.querySelectorAll('.path-card').forEach(c => c.classList.remove('selected'));
+                this.classList.add('selected');
+                selectedPath = this.dataset.path;
+                updatePathInfo();
+            });
+        });
+
+        function updatePathInfo() {
+            if (!selectedPath) return;
+            
+            const path = pathData[selectedPath];
+            const primaryArt = document.getElementById('primaryArt');
+            const secondaryArt = document.getElementById('secondaryArt');
+            const woundThreshold = document.getElementById('woundThreshold');
+            const surgePoints = document.getElementById('surgePoints');
+            
+            // Set primary art to the path's major skill
+            primaryArt.value = path.majorSkill;
+            
+            // Clear secondary options first
+            secondaryArt.innerHTML = '<option value="">Select Secondary...</option>';
+            
+            // Add secondary options (all arts except primary)
+            const arts = ['Warfare', 'Observation', 'Social', 'Adaptability', 'Reverence'];
+            arts.filter(art => art !== path.majorSkill).forEach(art => {
+                secondaryArt.innerHTML += `<option value="${art}">${art}</option>`;
+            });
+            
+            // Set wound threshold
+            woundThreshold.value = path.woundThreshold;
+            
+            // Set surge points (starting value)
+            surgePoints.value = 1;
+            
+            // Update art ranks display
+            updateArtRanks();
+        }
+
+        function updateArtRanks() {
+            if (!selectedPath) return;
+            
+            const path = pathData[selectedPath];
+            const primaryArt = document.getElementById('primaryArt').value;
+            const secondaryArt = document.getElementById('secondaryArt').value;
+            
+            // Update primary art rank
+            const primaryRank = primaryArt === path.majorSkill ? path.primaryRank : 
+                             (primaryArt === secondaryArt ? path.secondaryRank : path.otherRank);
+            
+            // Update secondary art rank
+            const secondaryRank = secondaryArt === path.majorSkill ? path.primaryRank : 
+                               (secondaryArt === primaryArt ? path.secondaryRank : path.otherRank);
+            
+            // Update display
+            document.getElementById('primaryRank').textContent = primaryRank;
+            document.getElementById('secondaryRank').textContent = secondaryRank;
+        }
+
+        // Update art ranks when arts are changed
+        document.getElementById('primaryArt').addEventListener('change', updateArtRanks);
+        document.getElementById('secondaryArt').addEventListener('change', updateArtRanks);
+
+        function generateCharacter() {
+            const characterData = {
+                name: document.getElementById('characterName').value,
+                concept: document.getElementById('characterConcept').value,
+                path: selectedPath,
+                rank: parseInt(document.getElementById('rank').value),
+                wounds: parseInt(document.getElementById('wounds').value),
+                conviction: parseInt(document.getElementById('conviction').value),
+                surgePoints: parseInt(document.getElementById('surgePoints').value),
+                primaryArt: document.getElementById('primaryArt').value,
+                secondaryArt: document.getElementById('secondaryArt').value
+            };
+            
+            if (!characterData.name) {
+                alert('Please enter a character name');
+                return;
+            }
+            
+            if (!selectedPath) {
+                alert('Please select a Penumbral Path');
+                return;
+            }
+            
+            // Display character output
+            displayCharacter(characterData);
+        }
+
+        function displayCharacter(data) {
+            const output = document.getElementById('characterOutput');
+            const path = pathData[data.path];
+            
+            document.getElementById('outputName').textContent = data.name;
+            document.getElementById('outputConcept').textContent = data.concept;
+            document.getElementById('outputPath').textContent = path.name;
+            document.getElementById('outputRank').textContent = data.rank;
+            document.getElementById('outputWounds').textContent = data.wounds;
+            document.getElementById('outputConviction').textContent = data.conviction;
+            document.getElementById('outputSurgePoints').textContent = data.surgePoints;
+            document.getElementById('outputPrimaryArt').textContent = data.primaryArt;
+            document.getElementById('outputSecondaryArt').textContent = data.secondaryArt;
+            
+            const primaryRank = data.primaryArt === path.majorSkill ? path.primaryRank : 
+                             (data.primaryArt === data.secondaryArt ? path.secondaryRank : path.otherRank);
+            const secondaryRank = data.secondaryArt === path.majorSkill ? path.primaryRank : 
+                               (data.secondaryArt === data.primaryArt ? path.secondaryRank : path.otherRank);
+            
+            document.getElementById('outputPrimaryRank').textContent = primaryRank;
+            document.getElementById('outputSecondaryRank').textContent = secondaryRank;
+            
+            // Display path abilities
+            const abilitiesDiv = document.getElementById('outputAbilities');
+            abilitiesDiv.innerHTML = '<h5>Path Abilities:</h5><ul>';
+            path.abilities.slice(0, 2).forEach(ability => {
+                abilitiesDiv.innerHTML += `<li>${ability}</li>`;
+            });
+            abilitiesDiv.innerHTML += '</ul>';
+            
+            output.classList.add('show');
+            output.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function resetForm() {
+            document.getElementById('characterForm').reset();
+            document.querySelectorAll('.path-card').forEach(c => c.classList.remove('selected'));
+            selectedPath = null;
+            document.getElementById('characterOutput').classList.remove('show');
+        }
+
+        function downloadCharacterSheet() {
+            const characterData = {
+                name: document.getElementById('outputName').textContent,
+                concept: document.getElementById('outputConcept').textContent,
+                path: document.getElementById('outputPath').textContent,
+                rank: document.getElementById('outputRank').textContent,
+                wounds: document.getElementById('outputWounds').textContent,
+                conviction: document.getElementById('outputConviction').textContent,
+                surgePoints: document.getElementById('outputSurgePoints').textContent,
+                primaryArt: document.getElementById('outputPrimaryArt').textContent,
+                secondaryArt: document.getElementById('outputSecondaryArt').textContent,
+                primaryRank: document.getElementById('outputPrimaryRank').textContent,
+                secondaryRank: document.getElementById('outputSecondaryRank').textContent
+            };
+            
+            const characterSheet = `
+THE SILENT ROAD - CHARACTER SHEET
+
+========================================
+BASIC INFORMATION
+========================================
+Name: ${characterData.name}
+Concept: ${characterData.concept}
+Path: ${characterData.path}
+
+========================================
+CHARACTER STATS
+========================================
+Rank: ${characterData.rank}
+Wounds: ${characterData.wounds} / ${pathData[characterData.path.replace('-', '')]?.woundThreshold || 'N/A'}
+Conviction: ${characterData.conviction}
+Gloomtide Surge Points: ${characterData.surgePoints}
+
+========================================
+PENUMBRAL ARTS
+========================================
+Primary Art: ${characterData.primaryArt} (Rank ${characterData.primaryRank})
+Secondary Art: ${characterData.secondaryArt} (Rank ${characterData.secondaryRank})
+
+========================================
+PATH ABILITIES
+========================================
+${document.getElementById('outputAbilities').textContent}
+
+========================================
+NOTES
+========================================
+This character was created using The Silent Road Advanced Character Creator.
+For more information about the game, visit the rulebook.
+            `;
+            
+            const blob = new Blob([characterSheet], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${characterData.name.replace(/\s+/g, '_')}_character_sheet.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
                     <select id="secondaryArt" name="secondaryArt">
                         <option value="">Select Secondary...</option>
                         <option value="Warfare">Warfare</option>
