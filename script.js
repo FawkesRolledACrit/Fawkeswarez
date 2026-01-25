@@ -10,31 +10,75 @@ let hitCounter = 0;
 let connectedDrives = [];
 let gameData = {
     alpha: {
-        title: 'PROJECT ALPHA',
-        description: 'A revolutionary gaming experience that pushes the boundaries of interactive entertainment. This game features cutting-edge graphics, innovative gameplay mechanics, and an immersive storyline that will keep players engaged for hours.',
-        features: ['Advanced Physics Engine', 'Dynamic Weather System', 'Multiplayer Support', 'AI-Driven NPCs', 'Customizable Characters'],
-        progress: 75,
-        status: 'In Development',
-        releaseDate: 'Q2 2024',
-        platforms: ['PC', 'PlayStation 5', 'Xbox Series X', 'Nintendo Switch']
-    },
-    beta: {
-        title: 'PROJECT BETA',
-        description: 'The next level of interactive entertainment combining retro aesthetics with modern technology. Experience a unique blend of nostalgia and innovation in this groundbreaking title.',
-        features: ['Retro-Modern Graphics', 'Procedural Generation', 'Co-op Campaign', 'Dynamic Soundtrack', 'Mod Support'],
-        progress: 25,
-        status: 'Planning Phase',
-        releaseDate: 'Q4 2024',
-        platforms: ['PC', 'Mac', 'Linux']
-    },
-    gamma: {
-        title: 'PROJECT GAMMA',
-        description: 'Where imagination meets technology in this ambitious experimental project. We\'re exploring new frontiers in game design and player interaction.',
-        features: ['Experimental Gameplay', 'VR Support', 'Machine Learning AI', 'Blockchain Integration', 'Cross-Platform Play'],
-        progress: 10,
-        status: 'Concept Phase',
-        releaseDate: '2025',
-        platforms: ['All Major Platforms']
+        title: 'Esoteric Order of Delivery',
+        subtitle: 'Atmospheric, anxiety-based horror delivery sim',
+        overview: 'Kayla runs midnight pizza routes in a failing van while wrestling with an overactive imagination and crushing anxiety.',
+        hook: 'Keep the busted vehicle alive, deliver every pie in under 30 minutes, and stop Kayla from spiraling long enough to finish the shift.',
+        pillars: [
+            {
+                title: 'Ambient dread over jump scares',
+                description: 'Lovecraftian tension through weather, lighting, and audio — the horror feels psychological, never literal.'
+            },
+            {
+                title: 'Dual-management gameplay',
+                description: 'Repair, refuel, and bandage the van while micromanaging Kayla’s anxiety before it overwhelms her.'
+            },
+            {
+                title: 'Arcade-era progression',
+                description: 'No true fail state. Chase high scores, achievements, and side stories like a PS2 oddity you rented in 2003.'
+            }
+        ],
+        highlights: [
+            'Night routes stitch together neon storefronts, back alleys, and roadside shops where you buy repair gear and coping tools.',
+            'Vehicle wear, weather, and darkness dynamically influence handling, repair frequency, and Kayla’s anxiety curve.',
+            'Side quests, worldbuilding vignettes, and mini activities stretch each shift far beyond A-to-B deliveries.'
+        ],
+        loops: [
+            {
+                title: 'Van upkeep loop',
+                bullets: [
+                    'Monitor fuel, radiator temp, lighting, and overall mechanical health mid-route.',
+                    'Stop at garages and roadside vendors for duct tape, bulbs, coolant, and improvised fixes.',
+                    'Step out to repair critical systems before they strand you in hostile darkness.'
+                ]
+            },
+            {
+                title: 'Kayla anxiety loop',
+                bullets: [
+                    'Every second away from the van, distance from safety, and lack of light stacks anxiety.',
+                    'Unexplained roadside events and environmental oddities spike stress — maybe the monsters are in her head.',
+                    'Stabilize her with disposable vapes, hot tea, and calming lofi stations on the radio.'
+                ]
+            },
+            {
+                title: 'Delivery cadence',
+                bullets: [
+                    'Each order demands arrival in under 30 minutes to keep streaks alive.',
+                    'Route choices juggle shortcuts, vehicle strain, and Kayla’s mental state.',
+                    'Score multipliers and combo chains feed achievements and long-term progression.'
+                ]
+            }
+        ],
+        calmTools: ['Disposable vapes', 'Thermos of calming tea', 'Lofi / ambient radio playlists'],
+        anxietyFactors: [
+            'Time spent outside the van',
+            'Distance from perceived safety',
+            'Total darkness or rolling blackouts',
+            'Odd roadside occurrences that may or may not be real',
+            'Weather spikes and mechanical breakdowns'
+        ],
+        inspirations: {
+            driving: ['Easy Delivery Co.', 'Jalopy', 'Crazy Taxi', 'The Simpsons: Hit & Run', 'Early 3D GTA'],
+            horror: ['Lovecraftian fiction about self-made monsters', 'Psychological horror focused on anxiety and obsession']
+        },
+        development: {
+            progress: '35%',
+            status: 'Solo dev · 4 months in',
+            release: 'TBA',
+            platforms: ['PC (target)']
+        },
+        deliveryWindow: '30 minutes or less per order',
+        noFailNote: 'There is no traditional fail state — the “end game” lives in perfect runs, achievements, and unraveling side stories.'
     }
 };
 
@@ -171,51 +215,111 @@ function handleKeyPress(event) {
 function viewGame(gameId) {
     const game = gameData[gameId];
     if (!game) return;
-    
+
     const modal = document.getElementById('game-modal');
     const modalTitle = document.getElementById('modal-title');
     const modalBody = document.getElementById('modal-body');
-    
+
+    const pillarsMarkup = (game.pillars || []).map(pillar => `
+        <div class="pillar-card">
+            <h4>${pillar.title}</h4>
+            <p>${pillar.description}</p>
+        </div>
+    `).join('');
+
+    const loopsMarkup = (game.loops || []).map(loop => `
+        <div class="system-card">
+            <h5>${loop.title}</h5>
+            <ul>
+                ${loop.bullets.map(point => `<li>${point}</li>`).join('')}
+            </ul>
+        </div>
+    `).join('');
+
+    const calmToolsMarkup = (game.calmTools || []).map(tool => `<span class="chip">${tool}</span>`).join('');
+    const anxietyMarkup = (game.anxietyFactors || []).map(factor => `<li>${factor}</li>`).join('');
+    const highlightMarkup = (game.highlights || []).map(item => `<li>${item}</li>`).join('');
+
+    const drivingChips = (game.inspirations?.driving || []).map(item => `<span class="chip">${item}</span>`).join('');
+    const horrorChips = (game.inspirations?.horror || []).map(item => `<span class="chip">${item}</span>`).join('');
+    const platformChips = (game.development?.platforms || game.platforms || []).map(item => `<span class="chip">${item}</span>`).join('');
+
     modalTitle.textContent = game.title;
-    
+
     modalBody.innerHTML = `
         <div class="game-details">
-            <p><strong>📝 DESCRIPTION:</strong></p>
-            <p>${game.description}</p>
-            
-            <p><strong>⭐ FEATURES:</strong></p>
-            <ul>
-                ${game.features.map(feature => `<li>${feature}</li>`).join('')}
-            </ul>
-            
-            <div class="game-info-grid">
-                <div class="info-item">
-                    <span class="info-label">📊 PROGRESS:</span>
-                    <span class="info-value">${game.progress}%</span>
+            ${game.subtitle ? `<p class="game-subtitle">${game.subtitle}</p>` : ''}
+            ${game.overview ? `<p class="game-overview">${game.overview}</p>` : ''}
+            ${game.hook ? `<div class="highlight-callout">${game.hook}</div>` : ''}
+
+            ${pillarsMarkup ? `<div class="pillars-grid">${pillarsMarkup}</div>` : ''}
+
+            ${highlightMarkup ? `
+                <div class="system-block">
+                    <h4>Why it hits different</h4>
+                    <ul class="dot-list">${highlightMarkup}</ul>
                 </div>
-                <div class="info-item">
-                    <span class="info-label">📅 STATUS:</span>
-                    <span class="info-value">${game.status}</span>
+            ` : ''}
+
+            ${loopsMarkup ? `
+                <div class="system-block">
+                    <h4>Core loops</h4>
+                    <div class="system-grid">${loopsMarkup}</div>
                 </div>
-                <div class="info-item">
-                    <span class="info-label">🎮 RELEASE:</span>
-                    <span class="info-value">${game.releaseDate}</span>
+            ` : ''}
+
+            <div class="system-block split">
+                <div class="split-card">
+                    <h5>Keep Kayla grounded</h5>
+                    <div class="chip-row">${calmToolsMarkup || '<span class="chip muted">TBD</span>'}</div>
+                </div>
+                <div class="split-card">
+                    <h5>Stress inputs</h5>
+                    <ul class="dot-list">${anxietyMarkup || '<li>To be revealed</li>'}</ul>
                 </div>
             </div>
-            
-            <p><strong>🖥️ PLATFORMS:</strong></p>
-            <div class="platform-tags">
-                ${game.platforms.map(platform => `<span class="platform-tag">${platform}</span>`).join('')}
+
+            <div class="system-block">
+                <h4>Influences</h4>
+                <div class="inspiration-list">
+                    <div>
+                        <span class="info-label">Driving DNA</span>
+                        <div class="chip-row">${drivingChips || '<span class="chip muted">TBA</span>'}</div>
+                    </div>
+                    <div>
+                        <span class="info-label">Psych horror lens</span>
+                        <div class="chip-row">${horrorChips || '<span class="chip muted">TBA</span>'}</div>
+                    </div>
+                </div>
             </div>
-            
-            <div class="modal-actions">
-                <button class="y2k-button" onclick="playSound('click')">🎮 PLAY DEMO</button>
-                <button class="y2k-button" onclick="playSound('click')">📺 WATCH TRAILER</button>
-                <button class="y2k-button" onclick="playSound('click')">💾 DOWNLOAD</button>
+
+            <div class="detail-grid compact">
+                <div class="info-item">
+                    <span class="info-label">Progress</span>
+                    <span class="info-value">${game.development?.progress || game.progress || '—'}</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Status</span>
+                    <span class="info-value">${game.development?.status || game.status || '—'}</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Release</span>
+                    <span class="info-value">${game.development?.release || game.release || '—'}</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Platforms</span>
+                    <div class="chip-row">${platformChips || '<span class="chip muted">TBA</span>'}</div>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Delivery promise</span>
+                    <span class="info-value">${game.deliveryWindow || '30 min or less'}</span>
+                </div>
             </div>
+
+            ${game.noFailNote ? `<p class="note">${game.noFailNote}</p>` : ''}
         </div>
     `;
-    
+
     modal.style.display = 'block';
     playSound('open');
 }

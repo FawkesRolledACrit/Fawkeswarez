@@ -8,7 +8,7 @@
 }
 
 body {
-    font-family: 'VT323', monospace;
+    font-family: 'Chakra Petch', 'Segoe UI', sans-serif;
     background: #000;
     color: #0F0;
     overflow-x: hidden;
@@ -73,7 +73,7 @@ body {
 }
 
 .glitch-text {
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Chakra Petch', 'Segoe UI', sans-serif;
     font-size: 2rem;
     color: #000;
     text-shadow: 
@@ -160,7 +160,7 @@ marquee {
 }
 
 .nav-btn {
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Chakra Petch', 'Segoe UI', sans-serif;
     font-size: 0.8rem;
     background: linear-gradient(45deg, #FF00FF, #00FFFF);
     color: #000;
@@ -204,7 +204,7 @@ marquee {
 }
 
 .section-title {
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Chakra Petch', 'Segoe UI', sans-serif;
     font-size: 1.5rem;
     color: #00FFFF;
     text-align: center;
@@ -309,7 +309,7 @@ marquee {
 }
 
 .game-card h3 {
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Chakra Petch', 'Segoe UI', sans-serif;
     color: #00FFFF;
     margin: 10px 0;
     font-size: 1rem;
@@ -385,38 +385,94 @@ marquee {
 }
 
 .dev-log {
-    background: rgba(0, 0, 0, 0.8);
-    border: 2px solid #0F0;
-    padding: 20px;
-    margin-top: 30px;
+    background: rgba(2, 8, 2, 0.85);
+    border: 2px solid #1BFF8F;
+    padding: 28px;
+    margin-top: 40px;
+    border-radius: 18px;
+    box-shadow: 0 0 35px rgba(0, 255, 128, 0.15);
 }
 
 .dev-log h3 {
-    color: #00FFFF;
-    margin-bottom: 20px;
-    font-size: 1.3rem;
+    color: #9CFFFA;
+    margin-bottom: 24px;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    text-align: center;
 }
 
 .log-entries {
     display: grid;
-    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
 }
 
 .log-entry {
+    position: relative;
     display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    background: #111;
-    border-left: 3px solid #FF00FF;
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(8, 8, 8, 0.95), rgba(17, 34, 17, 0.9));
+    border: 1px solid rgba(0, 255, 255, 0.25);
+    border-radius: 16px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.45);
+    overflow: hidden;
+}
+
+.log-entry::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 0, 255, 0.35);
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.log-date-block {
+    align-self: flex-start;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(255, 255, 0, 0.12);
+    border: 1px solid rgba(255, 255, 0, 0.35);
+    box-shadow: 0 0 15px rgba(255, 255, 0, 0.25);
 }
 
 .log-date {
-    color: #FFFF00;
-    font-weight: bold;
+    color: #FFF79C;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.log-content {
+    display: grid;
+    gap: 8px;
+    padding-left: 14px;
+    border-left: 2px solid rgba(255, 0, 255, 0.35);
 }
 
 .log-text {
-    color: #0F0;
+    color: #C8FFD8;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.log-text:not(:last-child) {
+    position: relative;
+    padding-bottom: 6px;
+}
+
+.log-text:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 40px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
 }
 
 /* STORAGE SECTION */
@@ -606,7 +662,7 @@ marquee {
 
 /* BUTTONS */
 .y2k-button {
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Chakra Petch', 'Segoe UI', sans-serif;
     background: linear-gradient(45deg, #FF00FF, #00FFFF);
     color: #000;
     border: 3px solid #0F0;
@@ -673,13 +729,15 @@ marquee {
 
 .modal-content {
     background: linear-gradient(45deg, #000, #111);
-    margin: 10% auto;
+    margin: 5% auto;
     padding: 30px;
     border: 3px solid #0F0;
     width: 80%;
     max-width: 600px;
     box-shadow: 0 0 30px rgba(0, 255, 0, 0.8);
     position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
 .close {
@@ -700,13 +758,189 @@ marquee {
 #modal-title {
     color: #00FFFF;
     margin-bottom: 20px;
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Chakra Petch', 'Segoe UI', sans-serif;
     font-size: 1.2rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 #modal-body {
     color: #0F0;
     line-height: 1.6;
+}
+
+.game-details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.game-subtitle {
+    color: #9CFFFA;
+    font-size: 0.95rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.game-overview {
+    font-size: 1rem;
+    color: #C8FFD8;
+}
+
+.highlight-callout {
+    padding: 14px 18px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 0, 255, 0.5);
+    background: rgba(255, 0, 255, 0.08);
+    color: #FFF79C;
+    font-weight: 600;
+    text-align: center;
+}
+
+.pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+}
+
+.pillar-card {
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    border-radius: 12px;
+    padding: 14px;
+    background: rgba(8, 17, 8, 0.9);
+}
+
+.pillar-card h4 {
+    margin-bottom: 8px;
+    color: #FFFFFF;
+    font-size: 0.95rem;
+}
+
+.system-block {
+    border: 1px solid rgba(0, 255, 128, 0.3);
+    border-radius: 12px;
+    padding: 16px;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.system-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+}
+
+.system-card {
+    background: rgba(12, 12, 12, 0.8);
+    border-radius: 10px;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.system-card h5 {
+    margin-bottom: 6px;
+    color: #FFFF8D;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+.dot-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.dot-list li {
+    position: relative;
+    padding-left: 16px;
+    color: #C8FFD8;
+}
+
+.dot-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #FF00FF;
+}
+
+.split {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+}
+
+.split-card {
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 0, 0.4);
+    padding: 12px;
+    background: rgba(9, 9, 9, 0.8);
+}
+
+.chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.chip {
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 255, 255, 0.1);
+    color: #9CFFFA;
+}
+
+.chip.muted {
+    color: rgba(255, 255, 255, 0.5);
+    border-style: dashed;
+}
+
+.inspiration-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+}
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+}
+
+.detail-grid .info-item {
+    background: rgba(10, 10, 10, 0.9);
+    border: 1px solid rgba(0, 255, 255, 0.25);
+    border-radius: 10px;
+    padding: 12px;
+}
+
+.detail-grid .info-label {
+    display: block;
+    color: #7BFFDA;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.detail-grid .info-value {
+    display: block;
+    color: #FFF79C;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.note {
+    font-size: 0.9rem;
+    color: #C8FFD8;
+    border-left: 3px solid #FF00FF;
+    padding-left: 10px;
 }
 
 /* RESPONSIVE DESIGN */
