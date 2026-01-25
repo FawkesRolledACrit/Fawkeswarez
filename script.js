@@ -79,6 +79,85 @@ let gameData = {
         },
         deliveryWindow: '30 minutes or less per order',
         noFailNote: 'There is no traditional fail state — the “end game” lives in perfect runs, achievements, and unraveling side stories.'
+    },
+    silentroad: {
+        title: 'The Silent Road',
+        subtitle: 'Dark fantasy tabletop RPG',
+        overview: 'Players take on the role of Gloomstalkers—travelers who navigate a world steeped in whispers, omens, and the mysterious Penumbral Arts.',
+        hook: 'Chart your Path, master Penumbral Arts, and survive the Gloom in a narrative-driven RPG where every choice shapes your journey.',
+        pillars: [
+            {
+                title: 'Path-based character system',
+                description: 'Choose from five distinct Paths, each with a major skill and customizable Penumbral Arts, defining your approach to the world.'
+            },
+            {
+                title: 'Penumbral Arts magic system',
+                description: 'Master four mystical arts—Warfare, Observation, Social, Adaptability, Reverence—each with unique abilities that progress with your Rank.'
+            },
+            {
+                title: 'Narrative-first conflict',
+                description: 'Combat uses Wounds and Ranks rather than hit points, emphasizing storytelling and tactical decisions over attrition.'
+            }
+        ],
+        highlights: [
+            'Five unique Paths: Soiled Hands, Muted Sibilance, Sanguine Boot, Tranquil Countenance, and Penetrating Iris.',
+            'Dynamic ability progression system where powers evolve as you advance in Rank (from Rank 5 to Rank 1).',
+            'Gloomtide Surge Points and Conviction mechanics reward strategic play and character moments.',
+            'Armament system with melee and ranged specializations, each with distinct tactical abilities.',
+            'Character creator with integrated rulebook viewer for seamless play experience.'
+        ],
+        loops: [
+            {
+                title: 'Character progression loop',
+                bullets: [
+                    'Advance through Ranks from 5 to 1, gaining enhanced abilities and higher Wound thresholds.',
+                    'Choose and develop Penumbral Arts alongside your Path\'s major skill.',
+                    'Acquire new abilities and improve existing ones through experience and narrative milestones.'
+                ]
+            },
+            {
+                title: 'Conflict resolution loop',
+                bullets: [
+                    'Engage in tactical Conflicts using Action Dice and skill checks.',
+                    'Manage Wounds and utilize Gloomtide Surge Points for dramatic moments.',
+                    'Leverage Path-specific abilities and Penumbral Arts to overcome challenges.'
+                ]
+            },
+            {
+                title: 'Narrative exploration loop',
+                bullets: [
+                    'Navigate the world as a Gloomstalker, uncovering secrets and facing supernatural threats.',
+                    'Interact with the environment through Observation, Social interaction, and Adaptability.',
+                    'Shape the story through choices and character development.'
+                ]
+            }
+        ],
+        mechanics: [
+            'Rank-based progression (5 to 1) with ability scaling',
+            'Wound system instead of traditional hit points',
+            'Action Dice pool for task resolution',
+            'Gloomtide Surge Points for special abilities',
+            'Conviction points for narrative influence',
+            'Penumbral Arts: Warfare, Observation, Social, Adaptability, Reverence'
+        ],
+        inspirations: {
+            narrative: ['Dark fantasy literature', 'Gothic horror', 'Mythic journeys', 'Supernatural mysteries'],
+            mechanical: ['Narrative-focused RPGs', 'Tactical storytelling games', 'Character-driven systems']
+        },
+        development: {
+            progress: '100%',
+            status: 'Alpha Release · Complete and playable',
+            release: 'Available Now',
+            platforms: ['Web-based character creator', 'Digital rulebook']
+        },
+        features: [
+            'Fully playable alpha with complete ruleset',
+            'Interactive character creator with integrated rulebook',
+            'Five distinct character Paths with unique abilities',
+            'Comprehensive ability and progression systems',
+            'Ready for playtesting and group sessions'
+        ],
+        note: 'Currently on hiatus for E.O.D. development but fully playable and ready for playtesting.'
     }
 };
 
@@ -242,6 +321,8 @@ function viewGame(gameId) {
 
     const drivingChips = (game.inspirations?.driving || []).map(item => `<span class="chip">${item}</span>`).join('');
     const horrorChips = (game.inspirations?.horror || []).map(item => `<span class="chip">${item}</span>`).join('');
+    const narrativeChips = (game.inspirations?.narrative || []).map(item => `<span class="chip">${item}</span>`).join('');
+    const mechanicalChips = (game.inspirations?.mechanical || []).map(item => `<span class="chip">${item}</span>`).join('');
     const platformChips = (game.development?.platforms || game.platforms || []).map(item => `<span class="chip">${item}</span>`).join('');
 
     modalTitle.textContent = game.title;
@@ -268,28 +349,41 @@ function viewGame(gameId) {
                 </div>
             ` : ''}
 
-            <div class="system-block split">
-                <div class="split-card">
-                    <h5>Keep Kayla grounded</h5>
-                    <div class="chip-row">${calmToolsMarkup || '<span class="chip muted">TBD</span>'}</div>
+            ${game.mechanics ? `
+                <div class="system-block">
+                    <h4>Key mechanics</h4>
+                    <div class="chip-row">${game.mechanics.map(mech => `<span class="chip">${mech}</span>`).join('')}</div>
                 </div>
-                <div class="split-card">
-                    <h5>Stress inputs</h5>
-                    <ul class="dot-list">${anxietyMarkup || '<li>To be revealed</li>'}</ul>
+            ` : ''}
+
+            ${game.calmTools || game.anxietyFactors ? `
+                <div class="system-block split">
+                    <div class="split-card">
+                        <h5>${game.calmTools ? 'Keep Kayla grounded' : 'Features'}</h5>
+                        <div class="chip-row">${calmToolsMarkup || (game.features || []).map(f => `<span class="chip">${f}</span>`).join('') || '<span class="chip muted">TBD</span>'}</div>
+                    </div>
+                    <div class="split-card">
+                        <h5>${game.anxietyFactors ? 'Stress inputs' : 'Status'}</h5>
+                        ${anxietyMarkup ? `<ul class="dot-list">${anxietyMarkup}</ul>` : `<p class="game-overview">${game.development?.status || 'In development'}</p>`}
+                    </div>
                 </div>
-            </div>
+            ` : ''}
 
             <div class="system-block">
                 <h4>Influences</h4>
                 <div class="inspiration-list">
-                    <div>
-                        <span class="info-label">Driving DNA</span>
-                        <div class="chip-row">${drivingChips || '<span class="chip muted">TBA</span>'}</div>
-                    </div>
-                    <div>
-                        <span class="info-label">Psych horror lens</span>
-                        <div class="chip-row">${horrorChips || '<span class="chip muted">TBA</span>'}</div>
-                    </div>
+                    ${drivingChips || narrativeChips ? `
+                        <div>
+                            <span class="info-label">${drivingChips ? 'Driving DNA' : 'Narrative DNA'}</span>
+                            <div class="chip-row">${drivingChips || narrativeChips || '<span class="chip muted">TBA</span>'}</div>
+                        </div>
+                    ` : ''}
+                    ${horrorChips || mechanicalChips ? `
+                        <div>
+                            <span class="info-label">${horrorChips ? 'Psych horror lens' : 'Mechanical DNA'}</span>
+                            <div class="chip-row">${horrorChips || mechanicalChips || '<span class="chip muted">TBA</span>'}</div>
+                        </div>
+                    ` : ''}
                 </div>
             </div>
 
@@ -310,13 +404,15 @@ function viewGame(gameId) {
                     <span class="info-label">Platforms</span>
                     <div class="chip-row">${platformChips || '<span class="chip muted">TBA</span>'}</div>
                 </div>
+                ${game.deliveryWindow ? `
                 <div class="info-item">
                     <span class="info-label">Delivery promise</span>
-                    <span class="info-value">${game.deliveryWindow || '30 min or less'}</span>
+                    <span class="info-value">${game.deliveryWindow}</span>
                 </div>
+                ` : ''}
             </div>
 
-            ${game.noFailNote ? `<p class="note">${game.noFailNote}</p>` : ''}
+            ${game.noFailNote || game.note ? `<p class="note">${game.noFailNote || game.note}</p>` : ''}
         </div>
     `;
 
