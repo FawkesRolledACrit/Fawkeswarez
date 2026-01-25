@@ -167,31 +167,31 @@
             <h2 class="section-title">💾 CLOUD STORAGE 💾</h2>
             <div class="storage-container">
                 <div class="drive-connector">
-                    <h3>CONNECT GOOGLE DRIVE</h3>
-                    <button class="y2k-button" onclick="connectGoogleDrive()">🔗 CONNECT DRIVE</button>
+                    <h3>MY GOOGLE DRIVES</h3>
+                    <div class="drive-links">
+                        <a href="https://drive.google.com/drive/folders/YOUR_PERSONAL_DRIVE_ID" target="_blank" class="y2k-button">📁 Personal Drive</a>
+                        <a href="https://drive.google.com/drive/folders/YOUR_WORK_DRIVE_ID" target="_blank" class="y2k-button">💼 Work Drive</a>
+                        <a href="https://drive.google.com/drive/folders/YOUR_PROJECTS_DRIVE_ID" target="_blank" class="y2k-button">🎮 Projects Drive</a>
+                    </div>
                     <div id="drive-status" class="status-message">
-                        <span>No drives connected</span>
+                        <span>Quick access to my Google Drives</span>
                     </div>
                 </div>
                 
-                <div class="connected-drives" id="connected-drives">
-                    <!-- Connected drives will appear here -->
-                </div>
-                
-                <div class="storage-stats">
-                    <h3>📈 STORAGE STATISTICS</h3>
+                <div class="storage-info">
+                    <h3>📈 STORAGE OVERVIEW</h3>
                     <div class="stats-grid">
                         <div class="stat-item">
-                            <span class="stat-label">TOTAL FILES</span>
-                            <span class="stat-value" id="total-files">0</span>
+                            <span class="stat-label">DRIVES LINKED</span>
+                            <span class="stat-value">3</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-label">TOTAL SIZE</span>
-                            <span class="stat-value" id="total-size">0 MB</span>
+                            <span class="stat-label">ACCESS TYPE</span>
+                            <span class="stat-value">Direct Links</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-label">DRIVES CONNECTED</span>
-                            <span class="stat-value" id="drives-count">0</span>
+                            <span class="stat-label">SECURITY</span>
+                            <span class="stat-value">Private Only</span>
                         </div>
                     </div>
                 </div>
@@ -259,17 +259,39 @@
         </div>
     </div>
 
-    <script src="script.js?v=3"></script>
     <script>
-        // Debug: Test if showSection function is available
-        console.log('showSection function exists:', typeof showSection);
+        // Test basic JavaScript functionality
+        console.log('JavaScript is loading...');
         
-        // Test navigation manually
-        if (typeof showSection === 'function') {
-            console.log('showSection is loaded and ready');
-        } else {
-            console.error('showSection function not found!');
+        // Simple test function
+        function testFunction() {
+            console.log('Test function works!');
         }
+        
+        // Manual showSection implementation for testing
+        function showSection(sectionId) {
+            console.log('showSection called with:', sectionId);
+            
+            // Hide all sections
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+                console.log('Section found and activated:', sectionId);
+            } else {
+                console.error('Section not found:', sectionId);
+            }
+        }
+        
+        console.log('showSection function defined:', typeof showSection);
+        
+        // Remove any Google Drive connection functionality for security
+        // No external drive connections allowed - only direct links to owner's drives
     </script>
 </body>
 </html>
