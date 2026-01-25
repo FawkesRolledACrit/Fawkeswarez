@@ -259,6 +259,17 @@
         </div>
     </div>
 
-    <script src="script.js?v=2"></script>
+    <script src="script.js?v=3"></script>
+    <script>
+        // Debug: Test if showSection function is available
+        console.log('showSection function exists:', typeof showSection);
+        
+        // Test navigation manually
+        if (typeof showSection === 'function') {
+            console.log('showSection is loaded and ready');
+        } else {
+            console.error('showSection function not found!');
+        }
+    </script>
 </body>
 </html>
