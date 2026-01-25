@@ -291,8 +291,9 @@ marquee {
     aspect-ratio: 3 / 2;
     border: 2px solid #0F0;
     margin-bottom: 15px;
-    overflow: hidden;
+    overflow: visible;
     background: #050505;
+    position: relative;
 }
 
 .game-card:hover {
@@ -311,10 +312,11 @@ marquee {
 }
 
 .game-preview img:hover {
-    transform: scale(1.5);
-    z-index: 10;
+    transform: scale(1.8);
+    z-index: 100;
     position: relative;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9);
+    border: 3px solid #00FFFF;
 }
 
 .game-card h3 {
