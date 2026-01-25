@@ -290,6 +290,168 @@
         
         console.log('showSection function defined:', typeof showSection);
         
+        // Game data for modal
+        let gameData = {
+            silentroad: {
+                title: 'The Silent Road',
+                subtitle: 'Dark fantasy tabletop RPG',
+                overview: 'Players take on the role of Gloomstalkers—travelers who navigate a world steeped in whispers, omens, and the mysterious Penumbral Arts.',
+                hook: 'Chart your Path, master Penumbral Arts, and survive the Gloom in a narrative-driven RPG where every choice shapes your journey.',
+                pillars: [
+                    {
+                        title: 'Path-based character system',
+                        description: 'Choose from five distinct Paths, each with a major skill and customizable Penumbral Arts, defining your approach to the world.'
+                    },
+                    {
+                        title: 'Penumbral Arts magic system',
+                        description: 'Master four mystical arts—Warfare, Observation, Social, Adaptability, Reverence—each with unique abilities that progress with your Rank.'
+                    },
+                    {
+                        title: 'Narrative-first conflict',
+                        description: 'Combat uses Wounds and Ranks rather than hit points, emphasizing storytelling and tactical decisions over attrition.'
+                    }
+                ],
+                highlights: [
+                    'Five unique Paths: Soiled Hands, Muted Sibilance, Sanguine Boot, Tranquil Countenance, and Penetrating Iris.',
+                    'Dynamic ability progression system where powers evolve as you advance in Rank (from Rank 5 to Rank 1).',
+                    'Gloomtide Surge Points and Conviction mechanics reward strategic play and character moments.',
+                    'Armament system with melee and ranged specializations, each with distinct tactical abilities.',
+                    'Character creator with integrated rulebook viewer for seamless play experience.'
+                ],
+                mechanics: [
+                    'Rank-based progression (5 to 1) with ability scaling',
+                    'Wound system instead of traditional hit points',
+                    'Action Dice pool for task resolution',
+                    'Gloomtide Surge Points for special abilities',
+                    'Conviction points for narrative influence',
+                    'Penumbral Arts: Warfare, Observation, Social, Adaptability, Reverence'
+                ],
+                inspirations: {
+                    narrative: ['Dark fantasy literature', 'Gothic horror', 'Mythic journeys', 'Supernatural mysteries'],
+                    mechanical: ['Narrative-focused RPGs', 'Tactical storytelling games', 'Character-driven systems']
+                },
+                development: {
+                    progress: '100%',
+                    status: 'Alpha Release · Complete and playable',
+                    release: 'Available Now',
+                    platforms: ['Web-based character creator', 'Digital rulebook']
+                },
+                features: [
+                    'Fully playable alpha with complete ruleset',
+                    'Interactive character creator with integrated rulebook',
+                    'Five distinct character Paths with unique abilities',
+                    'Comprehensive ability and progression systems',
+                    'Ready for playtesting and group sessions'
+                ],
+                note: 'Currently on hiatus for E.O.D. development but fully playable and ready for playtesting.'
+            }
+        };
+        
+        // Modal functions
+        function viewGame(gameId) {
+            const game = gameData[gameId];
+            if (!game) return;
+
+            const modal = document.getElementById('game-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalBody = document.getElementById('modal-body');
+
+            const pillarsMarkup = (game.pillars || []).map(pillar => `
+                <div class="pillar-card">
+                    <h4>${pillar.title}</h4>
+                    <p>${pillar.description}</p>
+                </div>
+            `).join('');
+
+            const highlightMarkup = (game.highlights || []).map(item => `<li>${item}</li>`).join('');
+            const narrativeChips = (game.inspirations?.narrative || []).map(item => `<span class="chip">${item}</span>`).join('');
+            const mechanicalChips = (game.inspirations?.mechanical || []).map(item => `<span class="chip">${item}</span>`).join('');
+            const platformChips = (game.development?.platforms || game.platforms || []).map(item => `<span class="chip">${item}</span>`).join('');
+
+            modalTitle.textContent = game.title;
+
+            modalBody.innerHTML = `
+                <div class="game-details">
+                    ${game.subtitle ? `<p class="game-subtitle">${game.subtitle}</p>` : ''}
+                    ${game.overview ? `<p class="game-overview">${game.overview}</p>` : ''}
+                    ${game.hook ? `<div class="highlight-callout">${game.hook}</div>` : ''}
+
+                    ${pillarsMarkup ? `<div class="pillars-grid">${pillarsMarkup}</div>` : ''}
+
+                    ${highlightMarkup ? `
+                        <div class="system-block">
+                            <h4>Why it hits different</h4>
+                            <ul class="dot-list">${highlightMarkup}</ul>
+                        </div>
+                    ` : ''}
+
+                    ${game.mechanics ? `
+                        <div class="system-block">
+                            <h4>Key mechanics</h4>
+                            <div class="chip-row">${game.mechanics.map(mech => `<span class="chip">${mech}</span>`).join('')}</div>
+                        </div>
+                    ` : ''}
+
+                    <div class="system-block split">
+                        <div class="split-card">
+                            <h5>Features</h5>
+                            <div class="chip-row">${(game.features || []).map(f => `<span class="chip">${f}</span>`).join('') || '<span class="chip muted">TBD</span>'}</div>
+                        </div>
+                        <div class="split-card">
+                            <h5>Status</h5>
+                            <p class="game-overview">${game.development?.status || 'In development'}</p>
+                        </div>
+                    </div>
+
+                    <div class="system-block">
+                        <h4>Influences</h4>
+                        <div class="inspiration-list">
+                            ${narrativeChips ? `
+                                <div>
+                                    <span class="info-label">Narrative DNA</span>
+                                    <div class="chip-row">${narrativeChips || '<span class="chip muted">TBA</span>'}</div>
+                                </div>
+                            ` : ''}
+                            ${mechanicalChips ? `
+                                <div>
+                                    <span class="info-label">Mechanical DNA</span>
+                                    <div class="chip-row">${mechanicalChips || '<span class="chip muted">TBA</span>'}</div>
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+
+                    <div class="detail-grid compact">
+                        <div class="info-item">
+                            <span class="info-label">Progress</span>
+                            <span class="info-value">${game.development?.progress || game.progress || '—'}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Status</span>
+                            <span class="info-value">${game.development?.status || game.status || '—'}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Release</span>
+                            <span class="info-value">${game.development?.release || game.release || '—'}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Platforms</span>
+                            <div class="chip-row">${platformChips || '<span class="chip muted">TBA</span>'}</div>
+                        </div>
+                    </div>
+
+                    ${game.note ? `<p class="note">${game.note}</p>` : ''}
+                </div>
+            `;
+
+            modal.style.display = 'block';
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('game-modal');
+            modal.style.display = 'none';
+        }
+        
         // Remove any Google Drive connection functionality for security
         // No external drive connections allowed - only direct links to owner's drives
     </script>
