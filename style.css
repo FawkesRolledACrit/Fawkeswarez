@@ -306,15 +306,6 @@ marquee {
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.3s ease, z-index 0.3s ease;
-    cursor: pointer;
-}
-
-.game-preview img:hover {
-    transform: scale(1.5);
-    z-index: 10;
-    position: relative;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
 }
 
 .game-card h3 {
