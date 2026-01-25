@@ -259,17 +259,36 @@
         </div>
     </div>
 
-    <script src="script.js?v=3"></script>
     <script>
-        // Debug: Test if showSection function is available
-        console.log('showSection function exists:', typeof showSection);
+        // Test basic JavaScript functionality
+        console.log('JavaScript is loading...');
         
-        // Test navigation manually
-        if (typeof showSection === 'function') {
-            console.log('showSection is loaded and ready');
-        } else {
-            console.error('showSection function not found!');
+        // Simple test function
+        function testFunction() {
+            console.log('Test function works!');
         }
+        
+        // Manual showSection implementation for testing
+        function showSection(sectionId) {
+            console.log('showSection called with:', sectionId);
+            
+            // Hide all sections
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+                console.log('Section found and activated:', sectionId);
+            } else {
+                console.error('Section not found:', sectionId);
+            }
+        }
+        
+        console.log('showSection function defined:', typeof showSection);
     </script>
 </body>
 </html>
