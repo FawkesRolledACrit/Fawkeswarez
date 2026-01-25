@@ -461,6 +461,64 @@
         
         // Remove any Google Drive connection functionality for security
         // No external drive connections allowed - only direct links to owner's drives
+        
+        // Image hover popup functionality
+        let currentPopup = null;
+        let popupTimeout = null;
+        
+        function createImagePopup(imgSrc) {
+            // Remove existing popup if any
+            if (currentPopup) {
+                currentPopup.remove();
+            }
+            
+            // Create popup element
+            const popup = document.createElement('div');
+            popup.className = 'image-popup';
+            popup.innerHTML = `<img src="${imgSrc}" alt="Game preview">`;
+            
+            // Add to body
+            document.body.appendChild(popup);
+            currentPopup = popup;
+            
+            // Trigger animation
+            setTimeout(() => {
+                popup.classList.add('active');
+            }, 10);
+        }
+        
+        function removeImagePopup() {
+            if (currentPopup) {
+                currentPopup.classList.remove('active');
+                setTimeout(() => {
+                    if (currentPopup) {
+                        currentPopup.remove();
+                        currentPopup = null;
+                    }
+                }, 300);
+            }
+        }
+        
+        // Add hover events to game preview images
+        document.addEventListener('DOMContentLoaded', function() {
+            const gameImages = document.querySelectorAll('.game-preview img');
+            
+            gameImages.forEach(img => {
+                img.addEventListener('mouseenter', function() {
+                    clearTimeout(popupTimeout);
+                    popupTimeout = setTimeout(() => {
+                        createImagePopup(this.src);
+                    }, 200); // Small delay to prevent accidental triggers
+                });
+                
+                img.addEventListener('mouseleave', function() {
+                    clearTimeout(popupTimeout);
+                    popupTimeout = setTimeout(() => {
+                        removeImagePopup();
+                    }, 100);
+                });
+            });
+        });
     </script>
 </body>
 </html>
