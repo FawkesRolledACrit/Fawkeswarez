@@ -104,24 +104,24 @@ const armamentAbilities = {
 };
 const pathImages = {
     soiledHands: {
-        path: "images/Soiled Hands 1.png",
-        skill: "images/Soiled Hands 2.png"
+        path: "images/soiled hands 1.png",
+        skill: "images/soiled hands 2.png"
     },
     mutedSibilance: {
-        path: "images/Muted 1.png",
-        skill: "images/Muted 2.png"
+        path: "images/muted 1.png",
+        skill: "images/muted 2.png"
     },
     sanguineBoot: {
-        path: "images/Boot 1.png",
-        skill: "images/Boot 2.png"
+        path: "images/boot 1.png",
+        skill: "images/boot 2.png"
     },
     tranquilCountenance: {
-        path: "images/Tranq 1.png",
-        skill: "images/Tranq 2.png"
+        path: "images/tranq 1.png",
+        skill: "images/tranq 2.png"
     },
     penetratingIris: {
-        path: "images/Eye 1.png",
-        skill: "images/Eye 2.png"
+        path: "images/eye 1.png",
+        skill: "images/eye 2.png"
     }
 };
 const shroudTypes = {
