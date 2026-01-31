@@ -165,12 +165,18 @@ let gameData = {
 };
 
 // Initialize the website
-document.addEventListener('DOMContentLoaded', function() {
+function bootPortfolio() {
     initializeWebsite();
     startAnimations();
     updateHitCounter();
     loadSavedData();
-});
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bootPortfolio);
+} else {
+    bootPortfolio();
+}
 
 // Website initialization
 function initializeWebsite() {
