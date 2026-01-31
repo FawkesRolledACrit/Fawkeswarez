@@ -5,6 +5,9 @@ const COUNTER_NAMESPACE = 'fawkeswaregames-portfolio-x7s9';
 const COUNTER_KEY = 'visitors';
 const COUNTER_INIT_URL = `https://api.countapi.xyz/create?namespace=${COUNTER_NAMESPACE}&key=${COUNTER_KEY}&value=0`;
 const COUNTER_HIT_URL = `https://api.countapi.xyz/hit/${COUNTER_NAMESPACE}/${COUNTER_KEY}`;
+const COUNTER_GET_URL = `https://api.countapi.xyz/get/${COUNTER_NAMESPACE}/${COUNTER_KEY}`;
+const UNIQUE_VISITOR_FLAG_KEY = 'uniqueVisitorRecorded';
+const UNIQUE_VISITOR_PENDING_KEY = 'uniqueVisitorPending';
 let currentSection = 'home';
 let hitCounter = 0;
 let connectedDrives = [];
@@ -433,22 +436,28 @@ function updateHitCounter() {
     if (!counterElement) return;
 
     sanitizeVisitorCache();
-    fetchVisitorCount()
+    const shouldIncrement = requestUniqueVisitIncrement();
+
+    fetchVisitorCount(shouldIncrement)
         .then((count) => {
             hitCounter = count;
             animateCounter(counterElement, count);
         })
         .catch((error) => {
             console.error('Visitor counter error:', error);
-            const fallbackCount = getFallbackCount();
+            const fallbackCount = getFallbackCount(shouldIncrement);
             hitCounter = fallbackCount;
             animateCounter(counterElement, fallbackCount);
+            if (shouldIncrement) {
+                clearUniqueVisitPending();
+            }
         });
 }
 
-async function fetchVisitorCount() {
+async function fetchVisitorCount(shouldIncrement) {
     await ensureCounterInitialized();
-    const response = await fetch(COUNTER_HIT_URL, { cache: 'no-store' });
+    const endpoint = shouldIncrement ? COUNTER_HIT_URL : COUNTER_GET_URL;
+    const response = await fetch(endpoint, { cache: 'no-store' });
     if (!response.ok) {
         throw new Error(`Counter request failed: ${response.status}`);
     }
@@ -458,14 +467,17 @@ async function fetchVisitorCount() {
         throw new Error('Invalid counter response');
     }
 
+    if (shouldIncrement) {
+        markUniqueVisitRecorded();
+    }
     localStorage.setItem('visitorCount', data.value);
     return data.value;
 }
 
-function getFallbackCount() {
+function getFallbackCount(shouldIncrement) {
     const stored = parseInt(localStorage.getItem('visitorCount'), 10);
-    const base = Number.isFinite(stored) ? stored : hitCounter;
-    const nextValue = base > 0 ? base + 1 : 1;
+    const base = Number.isFinite(stored) ? stored : (Number.isFinite(hitCounter) ? hitCounter : 0);
+    const nextValue = shouldIncrement ? Math.max(1, base + 1) : base;
     localStorage.setItem('visitorCount', nextValue);
     return nextValue;
 }
@@ -487,12 +499,36 @@ function sanitizeVisitorCache() {
     if (namespaceKey && namespaceKey !== COUNTER_NAMESPACE) {
         localStorage.removeItem('visitorCount');
         localStorage.removeItem('counterInitialized');
+        localStorage.removeItem(UNIQUE_VISITOR_FLAG_KEY);
+        localStorage.removeItem(UNIQUE_VISITOR_PENDING_KEY);
     }
 
     const stored = parseInt(localStorage.getItem('visitorCount'), 10);
     if (!Number.isFinite(stored) || stored > 500) {
         localStorage.removeItem('visitorCount');
     }
+}
+
+function requestUniqueVisitIncrement() {
+    if (localStorage.getItem(UNIQUE_VISITOR_FLAG_KEY) === 'true') {
+        return false;
+    }
+
+    if (localStorage.getItem(UNIQUE_VISITOR_PENDING_KEY) === 'true') {
+        return false;
+    }
+
+    localStorage.setItem(UNIQUE_VISITOR_PENDING_KEY, 'true');
+    return true;
+}
+
+function markUniqueVisitRecorded() {
+    localStorage.setItem(UNIQUE_VISITOR_FLAG_KEY, 'true');
+    localStorage.removeItem(UNIQUE_VISITOR_PENDING_KEY);
+}
+
+function clearUniqueVisitPending() {
+    localStorage.removeItem(UNIQUE_VISITOR_PENDING_KEY);
 }
 
 function animateCounter(element, target) {
