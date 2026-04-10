@@ -57,12 +57,27 @@ class LiveStreamPlayer {
     }
     
     setupEventListeners() {
-        this.tuneBtn.addEventListener('click', () => this.tuneIn());
-        this.muteBtn.addEventListener('click', () => this.toggleMute());
+        console.log('Setting up event listeners');
+        console.log('Tune button:', this.tuneBtn);
+        console.log('Mute button:', this.muteBtn);
+        
+        if (this.tuneBtn) {
+            this.tuneBtn.addEventListener('click', () => this.tuneIn());
+            console.log('Tune button listener added');
+        }
+        
+        if (this.muteBtn) {
+            this.muteBtn.addEventListener('click', () => this.toggleMute());
+            console.log('Mute button listener added');
+        }
     }
     
     async tuneIn() {
-        if (this.hasTunedIn) return;
+        console.log('Tune in button clicked');
+        if (this.hasTunedIn) {
+            console.log('Already tuned in');
+            return;
+        }
         
         this.hasTunedIn = true;
         this.tuneBtn.textContent = '📡 TUNED';
@@ -73,6 +88,7 @@ class LiveStreamPlayer {
         
         // Get current schedule position
         const { currentUrl, currentTime, currentTitle } = this.getCurrentSchedulePosition();
+        console.log('Schedule position:', { currentUrl, currentTime, currentTitle });
         
         if (currentUrl && currentUrl !== 'REPLACE_ME') {
             await this.loadVideo(currentUrl, currentTime, currentTitle);
