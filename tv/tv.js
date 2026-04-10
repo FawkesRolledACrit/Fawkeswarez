@@ -14,6 +14,8 @@
     let syncInterval = null;
     let lastSyncTime = 0;
     let isInternalSync = false;
+    let lastExpectedTime = 0;
+    let lastExpectedTitle = '';
 
     function setStatus(text) {
         statusEl.textContent = text;
@@ -70,6 +72,46 @@
         if (!Number.isFinite(seconds)) return 0;
         if (seconds < 0) return 0;
         return seconds;
+    }
+
+    function formatTime(seconds) {
+        if (!Number.isFinite(seconds)) return '--:--';
+        const s = Math.max(0, Math.floor(seconds));
+        const m = Math.floor(s / 60);
+        const r = s % 60;
+        return `${m}:${String(r).padStart(2, '0')}`;
+    }
+
+    async function enforceSeek(expectedTimeSeconds) {
+        // Some hosts/browsers will ignore the first seek and jump to 0.
+        // Retry a few times until we're close enough or we give up.
+        const deadline = Date.now() + 6000;
+        const tolerance = 1.5;
+        const expected = clampSeek(expectedTimeSeconds);
+
+        while (Date.now() < deadline) {
+            if (!Number.isFinite(video.currentTime)) {
+                await new Promise(r => setTimeout(r, 150));
+                continue;
+            }
+
+            const diff = Math.abs(video.currentTime - expected);
+            if (diff <= tolerance) return true;
+
+            // Only try to seek when the media element reports some data.
+            if (video.readyState >= 2) {
+                try {
+                    isInternalSync = true;
+                    video.currentTime = expected;
+                } catch (_) {
+                    // ignore
+                }
+            }
+
+            await new Promise(r => setTimeout(r, 200));
+        }
+
+        return false;
     }
 
     const BLOCK_MS = 30 * 60 * 1000;
@@ -218,6 +260,8 @@
         }
 
         const desiredSeek = clampSeek(seekToTime ?? 0);
+        lastExpectedTime = desiredSeek;
+        lastExpectedTitle = title;
 
         setStatus(`Loading: ${title}`);
         setSource(url);
@@ -263,7 +307,18 @@
             }
 
             await video.play();
-            setStatus(`Now Playing: ${title}`);
+
+            // Enforce seek after playback begins too; some hosts ignore initial seek.
+            if (desiredSeek > 0) {
+                const ok = await enforceSeek(desiredSeek);
+                if (!ok) {
+                    setStatus(`Now Playing: ${title} (expected ${formatTime(desiredSeek)}; got ${formatTime(video.currentTime)} - source may not support seeking)`);
+                } else {
+                    setStatus(`Now Playing: ${title} (${formatTime(video.currentTime)})`);
+                }
+            } else {
+                setStatus(`Now Playing: ${title}`);
+            }
             return true;
         } catch (err) {
             setStatus(`Loaded: ${title} (autoplay blocked)`);
@@ -296,6 +351,8 @@
         }
         const expectedTime = clampSeek((blockElapsedMs - accumulatedTimeMs) / 1000);
         const targetItem = playQueue[targetIndex];
+        lastExpectedTime = expectedTime;
+        lastExpectedTitle = targetItem.title;
 
         const shouldReload =
             newBlockIndex !== currentBlockIndex ||
@@ -327,6 +384,11 @@
                         isInternalSync = false;
                     }, 250);
                 }
+            }
+
+            // Update status so you can see whether it's actually syncing.
+            if (drift <= 8) {
+                setStatus(`Live: ${targetItem.title} (expected ${formatTime(expectedTime)}; actual ${formatTime(video.currentTime)})`);
             }
         }
     }
