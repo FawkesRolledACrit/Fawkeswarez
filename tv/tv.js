@@ -34,6 +34,8 @@ class LiveStreamPlayer {
         this.schedule = null;
         this.syncInterval = null;
         this.currentItemUrl = null;
+        this.desiredMuted = true;
+        this.loadSeq = 0;
         
         // Schedule constants
         this.BLOCK_DURATION = 30 * 60 * 1000; // 30 minutes
@@ -107,6 +109,11 @@ class LiveStreamPlayer {
         this.hasTunedIn = true;
         this.tuneBtn.textContent = '📡 TUNED';
         this.updateStatus('Tuning in...');
+
+        // We have a user gesture now, so default to audio ON.
+        // If the browser blocks unmuted playback, startPlayback() will fall back to muted.
+        this.desiredMuted = false;
+        this.muteBtn.textContent = this.desiredMuted ? '🔊 UNMUTE' : '🔇 MUTE';
         
         // Create video element ONLY NOW
         this.createVideoElement();
@@ -144,7 +151,7 @@ class LiveStreamPlayer {
 
         this.video.preload = 'none';
         this.video.playsInline = true;
-        this.video.muted = true; // Start muted
+        this.video.muted = !!this.desiredMuted;
         this.video.controls = false; // No controls
         this.video.setAttribute('playsinline', '');
 
@@ -198,21 +205,36 @@ class LiveStreamPlayer {
     }
     
     async loadVideo(url, seekTime, title) {
-        console.log('loadVideo called:', { url, seekTime, title });
+        const seq = ++this.loadSeq;
+        console.log('loadVideo called:', { url, seekTime, title, seq });
         this.updateStatus(`Loading: ${title}`);
-        
+
         if (!this.video) {
             console.error('Video element not found!');
             this.updateStatus('Error: Video element not found');
             return;
         }
-        
+
+        // Apply user mute preference consistently.
+        this.video.muted = !!this.desiredMuted;
+        this.video.volume = 1;
+
+        // Abort any in-flight loads cleanly.
+        try { this.video.pause(); } catch {}
+        try {
+            this.video.removeAttribute('src');
+            this.video.load();
+        } catch {}
+
         // Clean up previous HLS instance
         if (this.hls) {
             this.hls.destroy();
             this.hls = null;
         }
-        
+
+        // Ensure UI is in "active" state.
+        this.container.classList.add('active');
+
         const isHLS = url.includes('.m3u8');
         console.log('Video type:', isHLS ? 'HLS' : 'Direct');
         
@@ -235,6 +257,7 @@ class LiveStreamPlayer {
             
             return new Promise((resolve) => {
                 this.hls.on(Hls.Events.MANIFEST_PARSED, () => {
+                    if (seq !== this.loadSeq) return;
                     console.log('HLS manifest parsed');
                     if (seekTime > 0) {
                         this.video.currentTime = seekTime;
@@ -249,6 +272,7 @@ class LiveStreamPlayer {
             
             return new Promise((resolve) => {
                 this.video.addEventListener('loadedmetadata', () => {
+                    if (seq !== this.loadSeq) return;
                     console.log('Metadata loaded (Safari HLS)');
                     if (seekTime > 0) {
                         this.video.currentTime = seekTime;
@@ -257,68 +281,117 @@ class LiveStreamPlayer {
                 }, { once: true });
                 
                 this.video.addEventListener('error', (e) => {
+                    if (seq !== this.loadSeq) return;
                     console.error('Video error (Safari HLS):', e);
                     this.updateStatus('Video error loading HLS');
+                    resolve();
                 }, { once: true });
             });
         } else {
             // Direct MP4/WebM - for all non-HLS files
             console.log('Using direct MP4/WebM');
-            this.video.src = url;
-            
-            return new Promise((resolve) => {
-                let metadataLoaded = false;
-                let errorOccurred = false;
-                
-                const onLoadedMetadata = () => {
-                    if (!metadataLoaded && !errorOccurred) {
-                        metadataLoaded = true;
+
+            const tryLoad = (srcUrl, attempt) => {
+                if (seq !== this.loadSeq) return Promise.resolve();
+                this.video.src = srcUrl;
+                this.video.load();
+
+                return new Promise((resolve) => {
+                    let settled = false;
+                    const finish = () => {
+                        if (settled) return;
+                        settled = true;
+                        resolve();
+                    };
+
+                    const onLoadedMetadata = () => {
+                        if (settled || seq !== this.loadSeq) return;
                         console.log('Metadata loaded (MP4/WebM)');
-                        
-                        if (seekTime > 0) {
+
+                        const proceed = () => {
+                            if (settled || seq !== this.loadSeq) return;
+                            if (!(seekTime > 0)) {
+                                finish();
+                                return;
+                            }
+
                             console.log('Seeking to:', seekTime);
-                            this.video.currentTime = seekTime;
-                            
-                            // Wait for seek to complete
+                            try { this.video.currentTime = seekTime; } catch { finish(); return; }
                             this.video.addEventListener('seeked', () => {
+                                if (seq !== this.loadSeq) return;
                                 console.log('Seek completed');
-                                resolve();
+                                finish();
                             }, { once: true });
+                        };
+
+                        if (this.video.readyState >= 2) {
+                            proceed();
                         } else {
-                            resolve();
+                            this.video.addEventListener('loadeddata', proceed, { once: true });
                         }
-                    }
-                };
-                
-                const onError = (e) => {
-                    if (!errorOccurred) {
-                        errorOccurred = true;
+                    };
+
+                    const onCanPlay = () => {
+                        if (settled || seq !== this.loadSeq) return;
+                        // If metadata never fired but canplay did, proceed.
+                        console.log('Canplay reached (MP4/WebM)');
+                        finish();
+                    };
+
+                    const onError = (e) => {
+                        if (settled || seq !== this.loadSeq) return;
                         console.error('Video error (MP4/WebM):', e);
-                        this.updateStatus(`Video error: ${e.message || 'Unknown error'}`);
-                        resolve();
-                    }
-                };
-                
-                this.video.addEventListener('loadedmetadata', onLoadedMetadata, { once: true });
-                this.video.addEventListener('error', onError, { once: true });
-                
-                // Timeout after 10 seconds
-                setTimeout(() => {
-                    if (!metadataLoaded && !errorOccurred) {
-                        console.log('Timeout waiting for metadata');
-                        this.updateStatus('Video loading timeout');
-                        resolve();
-                    }
-                }, 10000);
-            });
+                        this.updateStatus('Video error loading file');
+                        finish();
+                    };
+
+                    this.video.addEventListener('loadedmetadata', onLoadedMetadata, { once: true });
+                    this.video.addEventListener('canplay', onCanPlay, { once: true });
+                    this.video.addEventListener('error', onError, { once: true });
+
+                    // Stall timeout + one retry with cache-bust.
+                    setTimeout(() => {
+                        if (settled || seq !== this.loadSeq) return;
+                        if (attempt >= 2) {
+                            console.log('Timeout waiting for readiness');
+                            this.updateStatus('Video loading timeout');
+                            finish();
+                            return;
+                        }
+
+                        console.log('Stalled loading, retrying with cache-bust');
+                        this.updateStatus('Retrying load...');
+                        const cacheBustUrl = srcUrl + (srcUrl.includes('?') ? '&' : '?') + 'cb=' + Date.now();
+                        tryLoad(cacheBustUrl, attempt + 1).then(finish);
+                    }, 5000);
+                });
+            };
+
+            return tryLoad(url, 1);
         }
     }
     
     async startPlayback() {
         try {
+            // Ensure the current mute preference is applied right before play().
+            this.video.muted = !!this.desiredMuted;
+            this.video.volume = 1;
             await this.video.play();
             this.updateStatus('Broadcast active');
         } catch (error) {
+            // Common case: browser blocks unmuted playback even after gesture.
+            if (!this.desiredMuted) {
+                try {
+                    this.desiredMuted = true;
+                    this.video.muted = true;
+                    this.muteBtn.textContent = '🔊 UNMUTE';
+                    await this.video.play();
+                    this.updateStatus('Broadcast active (muted)');
+                    return;
+                } catch {
+                    // fall through
+                }
+            }
             this.updateStatus(`Playback failed: ${error.message}`);
         }
     }
@@ -503,10 +576,13 @@ class LiveStreamPlayer {
     }
     
     toggleMute() {
-        if (!this.video) return;
-        
-        this.video.muted = !this.video.muted;
-        this.muteBtn.textContent = this.video.muted ? '🔊 UNMUTE' : '🔇 MUTE';
+        // Allow toggling label before tune-in (preference), but apply only when video exists.
+        this.desiredMuted = !this.desiredMuted;
+        if (this.video) {
+            this.video.muted = !!this.desiredMuted;
+            this.video.volume = 1;
+        }
+        this.muteBtn.textContent = this.desiredMuted ? '🔊 UNMUTE' : '🔇 MUTE';
     }
     
     updateStatus(text) {
