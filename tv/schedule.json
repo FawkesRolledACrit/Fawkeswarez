@@ -1,7 +1,7 @@
 {
   "blocks": [
     {
-      "title": "Dexter's Lab - S01E01 (Parts 1 & 2)",
+      "title": "Dexter's Lab - S01E01",
       "slotSeconds": 1800,
       "events": [
         {
@@ -20,6 +20,337 @@
           "title": "Dexter's Lab S01E01 Part 2",
           "url": "https://files.catbox.moe/z5p8i9.mp4",
           "durationSeconds": 450
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Dexter's Lab - S01E02",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Dexter's Lab S01E02 Part 1",
+          "url": "https://files.catbox.moe/p5iqzf.mp4",
+          "durationSeconds": 852
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Dexter's Lab S01E02 Part 2",
+          "url": "https://files.catbox.moe/lqbh1k.mp4",
+          "durationSeconds": 471
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Dexter's Lab - S01E03",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Dexter's Lab S01E03 Part 1",
+          "url": "https://files.catbox.moe/mmdxdc.mp4",
+          "durationSeconds": 443
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Dexter's Lab S01E03 Part 2",
+          "url": "https://files.catbox.moe/g8jcmg.mp4",
+          "durationSeconds": 415
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Dexter's Lab S01E03 Part 3",
+          "url": "https://files.catbox.moe/b6thw1.mp4",
+          "durationSeconds": 471
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Dexter's Lab - S01E04",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Dexter's Lab S01E04 Part 1",
+          "url": "https://files.catbox.moe/34efpn.mp4",
+          "durationSeconds": 440
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Dexter's Lab S01E04 Part 2",
+          "url": "https://files.catbox.moe/i73ka6.mp4",
+          "durationSeconds": 458
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Dexter's Lab S01E04 Part 3",
+          "url": "https://files.catbox.moe/pjfz83.mp4",
+          "durationSeconds": 451
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Dexter's Lab - S01E05",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Dexter's Lab S01E05 Part 1",
+          "url": "https://files.catbox.moe/cuh5m3.mp4",
+          "durationSeconds": 440
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Dexter's Lab S01E05 Part 2",
+          "url": "https://files.catbox.moe/z0g1wd.mp4",
+          "durationSeconds": 432
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Dexter's Lab S01E05 Part 3",
+          "url": "https://files.catbox.moe/j3upop.mp4",
+          "durationSeconds": 444
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Dexter's Lab - S01E06",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Dexter's Lab S01E06 Part 1",
+          "url": "https://files.catbox.moe/vpkma9.mp4",
+          "durationSeconds": 435
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Dexter's Lab S01E06 Part 2",
+          "url": "https://files.catbox.moe/y2md7d.mp4",
+          "durationSeconds": 431
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Dexter's Lab S01E06 Part 3",
+          "url": "https://files.catbox.moe/rzrfns.mp4",
+          "durationSeconds": 448
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Dexter's Lab - S01E07",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Dexter's Lab S01E07 Part 1",
+          "url": "https://files.catbox.moe/z7j79w.mp4",
+          "durationSeconds": 443
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Dexter's Lab S01E07 Part 2",
+          "url": "https://files.catbox.moe/mqzeun.mp4",
+          "durationSeconds": 445
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Dexter's Lab S01E07 Part 3",
+          "url": "https://files.catbox.moe/rtqg8h.mp4",
+          "durationSeconds": 450
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Dexter's Lab - S01E08",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Dexter's Lab S01E08 Part 1",
+          "url": "https://files.catbox.moe/siazrl.mp4",
+          "durationSeconds": 442
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Dexter's Lab S01E08 Part 2",
+          "url": "https://files.catbox.moe/2uj9y0.mp4",
+          "durationSeconds": 443
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Dexter's Lab S01E08 Part 3",
+          "url": "https://files.catbox.moe/h0jb11.mp4",
+          "durationSeconds": 449
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Dexter's Lab - S01E09",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Dexter's Lab S01E09 Part 1",
+          "url": "https://files.catbox.moe/ouej2x.mp4",
+          "durationSeconds": 443
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Dexter's Lab S01E09 Part 2",
+          "url": "https://files.catbox.moe/ap15x4.mp4",
+          "durationSeconds": 443
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Dexter's Lab S01E09 Part 3",
+          "url": "https://files.catbox.moe/hyiaet.mp4",
+          "durationSeconds": 451
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Dexter's Lab - S01E10",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Dexter's Lab S01E10 Part 1",
+          "url": "https://files.catbox.moe/dhysd8.mp4",
+          "durationSeconds": 442
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Dexter's Lab S01E10 Part 2",
+          "url": "https://files.catbox.moe/khzmxe.mp4",
+          "durationSeconds": 441
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Dexter's Lab S01E10 Part 3",
+          "url": "https://files.catbox.moe/kp8jz4.mp4",
+          "durationSeconds": 448
         },
         {
           "type": "adbreak",

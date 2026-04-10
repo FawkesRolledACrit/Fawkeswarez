@@ -420,7 +420,9 @@ class LiveStreamPlayer {
     
     buildQueue(blockIndex) {
         const queue = [];
-        const block = this.schedule.blocks[0]; // Use first block for now
+        const blocks = this.schedule?.blocks || [];
+        if (!blocks.length) return queue;
+        const block = blocks[((blockIndex % blocks.length) + blocks.length) % blocks.length];
         let usedTime = 0;
         
         for (const event of block.events) {
@@ -433,9 +435,13 @@ class LiveStreamPlayer {
                 });
                 usedTime += event.durationSeconds || 600;
             } else if (event.type === 'adbreak') {
+                const remaining = block.slotSeconds - usedTime;
+                if (event.targetSeconds === 'auto' && remaining <= 0) {
+                    continue;
+                }
                 const ads = this.fillAdBreak(
                     event.targetSeconds === 'auto' 
-                        ? Math.max(60, block.slotSeconds - usedTime)
+                        ? remaining
                         : event.targetSeconds,
                     event.toleranceSeconds || 3,
                     blockIndex * 1000 + queue.length
