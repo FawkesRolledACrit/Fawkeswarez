@@ -6,6 +6,11 @@
 class LiveStreamPlayer {
     constructor() {
         console.log('LiveStreamPlayer constructor');
+        // Use a monotonic clock anchored to wall time to avoid schedule jumps
+        // if the system clock changes (NTP/timezone adjustments, etc.).
+        this._wallClockBaseMs = Date.now();
+        this._monoBaseMs = performance.now();
+
         this.container = document.getElementById('tv-container');
         this.video = null;
         this.hls = null;
@@ -34,6 +39,10 @@ class LiveStreamPlayer {
         this.BLOCK_DURATION = 30 * 60 * 1000; // 30 minutes
         
         this.init();
+    }
+
+    nowMs() {
+        return this._wallClockBaseMs + (performance.now() - this._monoBaseMs);
     }
     
     async init() {
@@ -119,30 +128,43 @@ class LiveStreamPlayer {
     
     createVideoElement() {
         console.log('Creating video element');
-        
-        // Create video element dynamically
-        this.video = document.createElement('video');
-        this.video.id = 'tv-player';
+
+        // Reuse the existing video element in the DOM if present.
+        // (Prevents multiple <video> elements stacking inside the container.)
+        const existing = document.getElementById('tv-player');
+        if (existing) {
+            this.video = existing;
+        } else {
+            // Create video element dynamically
+            this.video = document.createElement('video');
+            this.video.id = 'tv-player';
+            this.video.preload = 'none';
+            this.container.appendChild(this.video);
+        }
+
         this.video.preload = 'none';
         this.video.playsInline = true;
         this.video.muted = true; // Start muted
         this.video.controls = false; // No controls
-        
-        // Style to fill container
+        this.video.setAttribute('playsinline', '');
+
+        // Style: center the video and fit fully inside the frame.
+        // (Some ads are 4:3 / odd sizes; contain keeps them centered.)
         this.video.style.cssText = `
+            position: absolute;
+            inset: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
+            object-position: center;
             background: #000;
             display: block;
         `;
         
         console.log('Video element created:', this.video);
         console.log('Container:', this.container);
-        
-        // Add to container
-        this.container.appendChild(this.video);
-        console.log('Video appended to container');
+
+        console.log('Video attached to container');
         
         // Show video, hide placeholder
         this.container.classList.add('active');
@@ -306,7 +328,7 @@ class LiveStreamPlayer {
             return { currentUrl: null, currentTime: 0, currentTitle: 'No Schedule' };
         }
         
-        const now = Date.now();
+        const now = this.nowMs();
         const blockIndex = Math.floor(now / this.BLOCK_DURATION);
         const blockStart = blockIndex * this.BLOCK_DURATION;
         const blockElapsed = now - blockStart;
@@ -419,7 +441,10 @@ class LiveStreamPlayer {
         const { currentUrl, currentTime, currentTitle } = this.getCurrentSchedulePosition();
         const expectedTime = currentTime;
         const actualTime = this.video.currentTime;
-        
+
+        // Display schedule time as "time into current 30-min block" (stable / monotonic)
+        const blockElapsedSeconds = (this.nowMs() % this.BLOCK_DURATION) / 1000;
+
         // Check if we need to switch videos
         if (currentUrl !== this.currentItemUrl) {
             console.log('Switching to new video:', currentUrl);
@@ -429,10 +454,10 @@ class LiveStreamPlayer {
             });
             return;
         }
-        
+
         // Update UI
         this.currentProgramEl.textContent = currentTitle;
-        this.scheduleTimeEl.textContent = this.formatTime(expectedTime);
+        this.scheduleTimeEl.textContent = this.formatTime(blockElapsedSeconds);
         
         // Correct drift if significant (but not during playback)
         const drift = Math.abs(actualTime - expectedTime);
@@ -456,7 +481,8 @@ class LiveStreamPlayer {
         // Update schedule info every second even before tuning in
         setInterval(() => {
             const position = this.getCurrentSchedulePosition();
-            console.log('Schedule position:', position);
+            // Keep console noise down during normal playback.
+            // console.log('Schedule position:', position);
             
             if (this.currentProgramEl) {
                 this.currentProgramEl.textContent = position.currentTitle;
@@ -464,9 +490,9 @@ class LiveStreamPlayer {
                 console.log('currentProgramEl not found');
             }
             
-            const now = Date.now();
-            const blockElapsed = now % this.BLOCK_DURATION;
-            const timeStr = this.formatTime(blockElapsed / 1000);
+            const now = this.nowMs();
+            const blockElapsedSeconds = (now % this.BLOCK_DURATION) / 1000;
+            const timeStr = this.formatTime(blockElapsedSeconds);
             
             if (this.scheduleTimeEl) {
                 this.scheduleTimeEl.textContent = timeStr;
