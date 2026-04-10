@@ -1,7 +1,7 @@
 (async () => {
     const statusEl = document.getElementById('tv-status');
     const sourceEl = document.getElementById('tv-source');
-    const video = document.getElementById('tv-player');
+    const containerEl = document.getElementById('tv-container');
     const tuneBtn = document.getElementById('tv-tune');
     const muteBtn = document.getElementById('tv-mute');
 
@@ -12,6 +12,7 @@
     let currentItemUrl = null;
     let hls = null;
     let hasTunedIn = false;
+    let video = null;
 
     function setStatus(text) {
         statusEl.textContent = text;
@@ -188,14 +189,62 @@
         return playQueue.length - 1;
     }
 
+    function createVideoElement() {
+        // Create video element dynamically
+        video = document.createElement('video');
+        video.id = 'tv-player';
+        video.playsinline = true;
+        video.preload = 'auto';
+        video.style.cssText = 'width:100%; height:540px; background:#000; border:none; outline:none;';
+        video.setAttribute('disablepictureinpicture', '');
+        video.setAttribute('controlslist', 'nodownload nofullscreen nomute');
+        
+        // Replace container with video
+        containerEl.innerHTML = '';
+        containerEl.appendChild(video);
+        
+        // Add event listeners
+        video.addEventListener('pause', (e) => {
+            if (e.target !== video) return;
+            if (hasTunedIn) {
+                setTimeout(() => {
+                    if (hasTunedIn) {
+                        video.play().catch(() => {});
+                    }
+                }, 100);
+            }
+        });
+
+        video.addEventListener('seeking', (e) => {
+            if (e.target !== video) return;
+            if (hasTunedIn) {
+                setTimeout(() => syncWithSchedule(), 100);
+            }
+        });
+
+        video.addEventListener('ratechange', (e) => {
+            if (e.target !== video) return;
+            video.playbackRate = 1;
+        });
+
+        video.addEventListener('volumechange', (e) => {
+            if (e.target !== video) return;
+            if (muteBtn) {
+                muteBtn.textContent = video.muted ? '🔊 UNMUTE' : '🔇 MUTE';
+            }
+        });
+    }
+
     async function prepareVideo(url, title, seekToTime = null) {
+        if (!video) {
+            createVideoElement();
+        }
+
         cleanupHls();
 
         if (!url || url.includes('REPLACE_ME')) {
             setStatus(`Schedule loaded, but the URL for "${title}" is not set yet.`);
             setSource('Update tv/schedule.json with real video URLs');
-            video.removeAttribute('src');
-            video.load();
             return false;
         }
 
@@ -209,7 +258,6 @@
         if (type === 'hls') {
             if (video.canPlayType('application/vnd.apple.mpegurl')) {
                 video.src = url;
-                video.pause();
             } else if (window.Hls?.isSupported?.()) {
                 hls = new window.Hls({
                     enableWorker: true,
@@ -217,14 +265,12 @@
                 });
                 hls.loadSource(url);
                 hls.attachMedia(video);
-                video.pause();
             } else {
                 setStatus('HLS not supported in this browser. Try Chrome/Edge or use MP4 files for testing.');
                 return false;
             }
         } else {
             video.src = url;
-            video.pause();
         }
 
         // Wait for metadata to be available
@@ -236,12 +282,18 @@
                 if (desiredSeek > 0 && Number.isFinite(video.duration) && desiredSeek < video.duration) {
                     try {
                         video.currentTime = desiredSeek;
-                        setStatus(`Ready: ${title} (${formatTime(video.currentTime)}) - press TUNE IN`);
+                        if (!hasTunedIn) {
+                            setStatus(`Ready: ${title} (${formatTime(video.currentTime)}) - press TUNE IN`);
+                        }
                     } catch (_) {
-                        setStatus(`Ready: ${title} (seek failed) - press TUNE IN`);
+                        if (!hasTunedIn) {
+                            setStatus(`Ready: ${title} (seek failed) - press TUNE IN`);
+                        }
                     }
                 } else {
-                    setStatus(`Ready: ${title} - press TUNE IN`);
+                    if (!hasTunedIn) {
+                        setStatus(`Ready: ${title} - press TUNE IN`);
+                    }
                 }
                 
                 resolve(true);
@@ -252,7 +304,9 @@
             // Fallback timeout
             setTimeout(() => {
                 video.removeEventListener('loadedmetadata', onLoadedMetadata);
-                setStatus(`Ready: ${title} - press TUNE IN`);
+                if (!hasTunedIn) {
+                    setStatus(`Ready: ${title} - press TUNE IN`);
+                }
                 resolve(true);
             }, 5000);
         });
@@ -286,82 +340,30 @@
             void prepareVideo(targetItem.url, targetItem.title, expectedTime);
         } else {
             // Update status with current time
-            if (hasTunedIn && Number.isFinite(video.currentTime)) {
+            if (hasTunedIn && video && Number.isFinite(video.currentTime)) {
                 setStatus(`Live: ${targetItem.title} (expected ${formatTime(expectedTime)}; actual ${formatTime(video.currentTime)})`);
             } else if (!hasTunedIn) {
-                setStatus(`Ready: ${targetItem.title} (expected ${formatTime(expectedTime)}; actual ${formatTime(video.currentTime)}) - press TUNE IN`);
+                setStatus(`Ready: ${targetItem.title} (expected ${formatTime(expectedTime)}; actual ${formatTime(video?.currentTime || 0)}) - press TUNE IN`);
             }
         }
     }
 
-    // Aggressive autoplay blocking
-    video.addEventListener('play', (e) => {
-        if (e.target !== video) return;
-        if (!hasTunedIn) {
-            try {
-                video.pause();
-            } catch (_) {
-                // ignore
-            }
-        }
-    });
-    
-    video.addEventListener('loadeddata', (e) => {
-        if (e.target !== video) return;
-        if (!hasTunedIn) {
-            try {
-                video.pause();
-            } catch (_) {
-                // ignore
-            }
-        }
-    });
-    
-    video.addEventListener('canplay', (e) => {
-        if (e.target !== video) return;
-        if (!hasTunedIn) {
-            try {
-                video.pause();
-            } catch (_) {
-                // ignore
-            }
-        }
-    });
-
-    video.addEventListener('pause', (e) => {
-        if (e.target !== video) return;
-        if (hasTunedIn) {
-            // Auto-resume after pause (unless user hasn't tuned in)
-            setTimeout(() => {
-                if (hasTunedIn) {
-                    video.play().catch(() => {});
-                }
-            }, 100);
-        }
-    });
-
-    video.addEventListener('seeking', (e) => {
-        if (e.target !== video) return;
-        // Allow seeking during tune-in, but sync back after
-        if (hasTunedIn) {
-            setTimeout(() => syncWithSchedule(), 100);
-        }
-    });
-
-    video.addEventListener('ratechange', (e) => {
-        if (e.target !== video) return;
-        video.playbackRate = 1;
-    });
-
     muteBtn?.addEventListener('click', () => {
-        video.muted = !video.muted;
-        muteBtn.textContent = video.muted ? '🔊 UNMUTE' : '🔇 MUTE';
+        if (video) {
+            video.muted = !video.muted;
+            muteBtn.textContent = video.muted ? '🔊 UNMUTE' : '🔇 MUTE';
+        }
     });
 
     tuneBtn?.addEventListener('click', async () => {
         if (hasTunedIn) return;
         hasTunedIn = true;
         tuneBtn.textContent = '📡 TUNED';
+        
+        // Create video element if not exists
+        if (!video) {
+            await prepareVideo(currentItemUrl || 'https://files.catbox.moe/m6185b.mp4', 'Loading...', 0);
+        }
         
         // Start playback
         try {
@@ -377,10 +379,6 @@
         }, 2000);
     });
 
-    // Aggressively prevent any autoplay
-    video.pause();
-    video.autoplay = false;
-    
     try {
         [ads, schedule] = await Promise.all([loadAds(), loadSchedule()]);
         
