@@ -8,8 +8,10 @@
     const nextBtn = document.getElementById('tv-next');
     const muteBtn = document.getElementById('tv-mute');
 
-    let playlist = null;
-    let currentIndex = 0;
+    let ads = null;
+    let schedule = null;
+    let playQueue = [];
+    let currentQueueIndex = 0;
     let hls = null;
 
     function setStatus(text) {
@@ -39,33 +41,108 @@
         return 'unknown';
     }
 
-    async function loadPlaylist() {
-        const res = await fetch('./playlist.json', { cache: 'no-store' });
+    async function loadAds() {
+        const res = await fetch('./ads.json', { cache: 'no-store' });
         if (!res.ok) {
-            throw new Error(`Failed to load playlist.json (HTTP ${res.status})`);
+            throw new Error(`Failed to load ads.json (HTTP ${res.status})`);
         }
         return res.json();
     }
 
-    async function playItem(index) {
-        if (!playlist?.items?.length) {
-            setStatus('No playlist items found.');
+    async function loadSchedule() {
+        const res = await fetch('./schedule.json', { cache: 'no-store' });
+        if (!res.ok) {
+            throw new Error(`Failed to load schedule.json (HTTP ${res.status})`);
+        }
+        return res.json();
+    }
+
+    function fillAdBreak(targetSeconds, toleranceSeconds = 3) {
+        if (!ads?.items?.length) return [];
+        
+        const validAds = ads.items.filter(ad => ad.durationSeconds !== null && ad.durationSeconds > 0);
+        if (validAds.length === 0) return [];
+        
+        const selected = [];
+        let totalDuration = 0;
+        const shuffled = [...validAds].sort(() => Math.random() - 0.5);
+        
+        for (const ad of shuffled) {
+            if (totalDuration + ad.durationSeconds <= targetSeconds + toleranceSeconds) {
+                selected.push({
+                    type: 'ad',
+                    url: ad.url,
+                    title: `Commercial`,
+                    durationSeconds: ad.durationSeconds
+                });
+                totalDuration += ad.durationSeconds;
+                
+                if (totalDuration >= targetSeconds - toleranceSeconds) {
+                    break;
+                }
+            }
+        }
+        
+        return selected;
+    }
+
+    function buildPlayQueue() {
+        if (!schedule?.blocks?.length) return [];
+        
+        const queue = [];
+        
+        for (const block of schedule.blocks) {
+            let blockUsedTime = 0;
+            
+            for (let i = 0; i < block.events.length; i++) {
+                const event = block.events[i];
+                
+                if (event.type === 'segment') {
+                    queue.push({
+                        type: 'segment',
+                        url: event.url,
+                        title: event.title
+                    });
+                    blockUsedTime += 0; // We don't know segment durations yet
+                } else if (event.type === 'adbreak') {
+                    let targetDuration;
+                    
+                    if (event.targetSeconds === 'auto') {
+                        targetDuration = Math.max(60, block.slotSeconds - blockUsedTime);
+                    } else {
+                        targetDuration = event.targetSeconds;
+                    }
+                    
+                    const tolerance = event.toleranceSeconds || 3;
+                    const selectedAds = fillAdBreak(targetDuration, tolerance);
+                    
+                    queue.push(...selectedAds);
+                    blockUsedTime += selectedAds.reduce((sum, ad) => sum + ad.durationSeconds, 0);
+                }
+            }
+        }
+        
+        return queue;
+    }
+
+    async function playQueueItem(index) {
+        if (!playQueue.length) {
+            setStatus('No play queue items found.');
             return;
         }
 
-        currentIndex = ((index % playlist.items.length) + playlist.items.length) % playlist.items.length;
-        const item = playlist.items[currentIndex];
+        currentQueueIndex = ((index % playQueue.length) + playQueue.length) % playQueue.length;
+        const item = playQueue[currentQueueIndex];
 
         const url = item?.url;
-        const title = item?.title || `Item ${currentIndex + 1}`;
-        const explicitType = item?.type;
-        const type = explicitType || inferTypeFromUrl(url);
+        const title = item?.title || `Item ${currentQueueIndex + 1}`;
+        const type = inferTypeFromUrl(url);
 
         cleanupHls();
 
         if (!url || url.includes('REPLACE_ME')) {
-            setStatus(`Playlist loaded, but the URL for "${title}" is not set yet.`);
-            setSource('Update tv/playlist.json with a real Catbox URL');
+            setStatus(`Schedule loaded, but the URL for "${title}" is not set yet.`);
+            setSource('Update tv/schedule.json with real video URLs');
             video.removeAttribute('src');
             video.load();
             return;
@@ -101,7 +178,7 @@
     }
 
     function playNext() {
-        void playItem(currentIndex + 1);
+        void playQueueItem(currentQueueIndex + 1);
     }
 
     video.addEventListener('ended', () => {
@@ -126,16 +203,16 @@
     });
 
     try {
-        playlist = await loadPlaylist();
-        currentIndex = Number.isFinite(playlist?.startIndex) ? playlist.startIndex : 0;
+        [ads, schedule] = await Promise.all([loadAds(), loadSchedule()]);
+        playQueue = buildPlayQueue();
+        currentQueueIndex = 0;
 
-        if (playlist?.autoplay === false) {
-            setStatus('Playlist loaded. Press PLAY.');
+        if (playQueue.length === 0) {
+            setStatus('No playable items found in schedule.');
         } else {
-            setStatus('Playlist loaded. Starting…');
+            setStatus('Schedule loaded. Starting…');
+            await playQueueItem(currentQueueIndex);
         }
-
-        await playItem(currentIndex);
     } catch (e) {
         setStatus(`Error: ${e?.message || e}`);
         setSource('—');

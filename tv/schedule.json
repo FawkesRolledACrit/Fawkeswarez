@@ -1,0 +1,29 @@
+{
+  "blocks": [
+    {
+      "title": "Dexter's Lab - S01E01 (Parts 1 & 2)",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Dexter's Lab S01E01 Part 1",
+          "url": "https://files.catbox.moe/m6185b.mp4"
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Dexter's Lab S01E01 Part 2",
+          "url": "https://files.catbox.moe/m6185b.mp4"
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    }
+  ]
+}
