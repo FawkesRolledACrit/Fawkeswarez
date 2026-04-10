@@ -9,9 +9,11 @@
     let schedule = null;
     let currentBlockIndex = -1;
     let currentQueueIndex = -1;
+    let currentItemUrl = null;
     let hls = null;
     let syncInterval = null;
     let lastSyncTime = 0;
+    let isInternalSync = false;
 
     function setStatus(text) {
         statusEl.textContent = text;
@@ -39,6 +41,38 @@
         if (lowered.includes('.webm')) return 'webm';
         return 'unknown';
     }
+
+    function once(target, eventName, timeoutMs = 8000) {
+        return new Promise((resolve, reject) => {
+            let done = false;
+            const onEvent = () => {
+                if (done) return;
+                done = true;
+                cleanup();
+                resolve();
+            };
+            const onTimeout = () => {
+                if (done) return;
+                done = true;
+                cleanup();
+                reject(new Error(`Timed out waiting for ${eventName}`));
+            };
+            const cleanup = () => {
+                clearTimeout(t);
+                target.removeEventListener(eventName, onEvent);
+            };
+            const t = setTimeout(onTimeout, timeoutMs);
+            target.addEventListener(eventName, onEvent, { once: true });
+        });
+    }
+
+    function clampSeek(seconds) {
+        if (!Number.isFinite(seconds)) return 0;
+        if (seconds < 0) return 0;
+        return seconds;
+    }
+
+    const BLOCK_MS = 30 * 60 * 1000;
 
     async function loadAds() {
         const res = await fetch('./ads.json', { cache: 'no-store' });
@@ -111,13 +145,14 @@
             const event = block.events[i];
             
             if (event.type === 'segment') {
+                const segmentDuration = Number.isFinite(event.durationSeconds) ? event.durationSeconds : 600;
                 queue.push({
                     type: 'segment',
                     url: event.url,
                     title: event.title,
-                    durationSeconds: 876 // Approximate duration for Dexter episode
+                    durationSeconds: segmentDuration
                 });
-                blockUsedTime += 876;
+                blockUsedTime += segmentDuration;
             } else if (event.type === 'adbreak') {
                 let targetDuration;
                 
@@ -141,17 +176,16 @@
     }
 
     function getCurrentScheduleTime() {
-        // Schedule starts at a fixed time (e.g., midnight)
-        const scheduleStart = new Date();
-        scheduleStart.setHours(0, 0, 0, 0); // Start at midnight today
-        
-        const now = new Date();
-        const elapsedMs = now - scheduleStart;
-        
+        // Use epoch-based boundaries so all viewers share the same block boundaries.
+        const nowMs = Date.now();
+        const currentBlockIndex = Math.floor(nowMs / BLOCK_MS);
+        const blockStartMs = currentBlockIndex * BLOCK_MS;
+        const blockElapsedMs = nowMs - blockStartMs;
         return {
-            scheduleStart,
-            elapsedMs,
-            currentBlockIndex: Math.floor(elapsedMs / (30 * 60 * 1000)) // 30-minute blocks
+            nowMs,
+            currentBlockIndex,
+            blockStartMs,
+            blockElapsedMs
         };
     }
 
@@ -183,9 +217,12 @@
             return false;
         }
 
+        const desiredSeek = clampSeek(seekToTime ?? 0);
+
         setStatus(`Loading: ${title}`);
         setSource(url);
 
+        isInternalSync = true;
         const type = inferTypeFromUrl(url);
 
         if (type === 'hls') {
@@ -199,6 +236,7 @@
                 hls.loadSource(url);
                 hls.attachMedia(video);
             } else {
+                isInternalSync = false;
                 setStatus('HLS not supported in this browser. Try Chrome/Edge or use MP4 files for testing.');
                 return false;
             }
@@ -207,18 +245,34 @@
         }
 
         try {
-            await video.play();
-            
-            // Seek to the correct position if specified
-            if (seekToTime !== null && !isNaN(seekToTime) && seekToTime > 0) {
-                video.currentTime = seekToTime;
+            // Wait until we can seek reliably; otherwise browsers often start at 0.
+            await once(video, 'loadedmetadata');
+
+            if (desiredSeek > 0 && Number.isFinite(video.duration) && desiredSeek < video.duration) {
+                try {
+                    video.currentTime = desiredSeek;
+                } catch (_) {
+                    // ignore
+                }
+                // Some browsers require a canplay after setting currentTime.
+                try {
+                    await once(video, 'seeked', 3000);
+                } catch (_) {
+                    // ignore
+                }
             }
-            
+
+            await video.play();
             setStatus(`Now Playing: ${title}`);
             return true;
         } catch (err) {
-            setStatus(`Loaded: ${title} (waiting for autoplay...)`);
+            setStatus(`Loaded: ${title} (autoplay blocked)`);
             return false;
+        } finally {
+            // Keep this true only during the initial load/seek/play window.
+            setTimeout(() => {
+                isInternalSync = false;
+            }, 250);
         }
     }
 
@@ -230,66 +284,51 @@
             return;
         }
         lastSyncTime = now;
-        
-        const { elapsedMs, currentBlockIndex: newBlockIndex } = getCurrentScheduleTime();
-        
-        // Check if we need to load a new block
-        if (newBlockIndex !== currentBlockIndex) {
-            currentBlockIndex = newBlockIndex;
-            const playQueue = buildPlayQueue(currentBlockIndex);
-            
-            if (playQueue.length > 0) {
-                const targetIndex = calculateCurrentQueueIndex(elapsedMs, playQueue);
-                const item = playQueue[targetIndex];
-                
-                // Calculate seek time within current item
-                const blockElapsed = elapsedMs % (30 * 60 * 1000);
-                let accumulatedTime = 0;
-                
-                for (let i = 0; i < targetIndex; i++) {
-                    accumulatedTime += (playQueue[i].durationSeconds || 30) * 1000;
-                }
-                
-                const seekTime = (blockElapsed - accumulatedTime) / 1000;
-                
-                void loadAndPlayVideo(item.url, item.title, Math.max(0, seekTime));
-            }
-        } else {
-            // Just sync the current video's time if needed
-            const blockElapsed = elapsedMs % (30 * 60 * 1000);
-            const playQueue = buildPlayQueue(currentBlockIndex);
-            const targetIndex = calculateCurrentQueueIndex(blockElapsed, playQueue);
-            
-            if (targetIndex !== currentQueueIndex) {
-                // We're in a different item, reload
-                const item = playQueue[targetIndex];
-                let accumulatedTime = 0;
-                
-                for (let i = 0; i < targetIndex; i++) {
-                    accumulatedTime += (playQueue[i].durationSeconds || 30) * 1000;
-                }
-                
-                const seekTime = (blockElapsed - accumulatedTime) / 1000;
-                void loadAndPlayVideo(item.url, item.title, Math.max(0, seekTime));
-            } else {
-                // Same item, just adjust time if needed
-                let accumulatedTime = 0;
-                
-                for (let i = 0; i < targetIndex; i++) {
-                    accumulatedTime += (playQueue[i].durationSeconds || 30) * 1000;
-                }
-                
-                const expectedTime = (blockElapsed - accumulatedTime) / 1000;
-                const currentTimeDiff = Math.abs(video.currentTime - expectedTime);
-                
-                // Only seek if we're off by more than 2 seconds to avoid constant seeking
-                if (currentTimeDiff > 2) {
-                    video.currentTime = Math.max(0, expectedTime);
+
+        const { currentBlockIndex: newBlockIndex, blockElapsedMs } = getCurrentScheduleTime();
+        const playQueue = buildPlayQueue(newBlockIndex);
+        if (!playQueue.length) return;
+
+        const targetIndex = calculateCurrentQueueIndex(blockElapsedMs, playQueue);
+        let accumulatedTimeMs = 0;
+        for (let i = 0; i < targetIndex; i++) {
+            accumulatedTimeMs += (playQueue[i].durationSeconds || 30) * 1000;
+        }
+        const expectedTime = clampSeek((blockElapsedMs - accumulatedTimeMs) / 1000);
+        const targetItem = playQueue[targetIndex];
+
+        const shouldReload =
+            newBlockIndex !== currentBlockIndex ||
+            targetIndex !== currentQueueIndex ||
+            (currentItemUrl && targetItem.url !== currentItemUrl) ||
+            (!currentItemUrl && targetItem.url);
+
+        // Update indices first so the next tick doesn't immediately re-trigger.
+        currentBlockIndex = newBlockIndex;
+        currentQueueIndex = targetIndex;
+
+        if (shouldReload) {
+            currentItemUrl = targetItem.url;
+            void loadAndPlayVideo(targetItem.url, targetItem.title, expectedTime);
+            return;
+        }
+
+        // Same item: only correct drift.
+        if (Number.isFinite(video.currentTime)) {
+            const drift = Math.abs(video.currentTime - expectedTime);
+            if (drift > 2) {
+                try {
+                    isInternalSync = true;
+                    video.currentTime = expectedTime;
+                } catch (_) {
+                    // ignore
+                } finally {
+                    setTimeout(() => {
+                        isInternalSync = false;
+                    }, 250);
                 }
             }
         }
-        
-        currentQueueIndex = calculateCurrentQueueIndex(elapsedMs % (30 * 60 * 1000), buildPlayQueue(currentBlockIndex));
     }
 
     // Prevent user interaction with video
@@ -301,12 +340,14 @@
     video.addEventListener('pause', (e) => {
         if (e.target !== video) return;
         // Prevent pausing - resume immediately
+        if (isInternalSync) return;
         setTimeout(() => video.play().catch(() => {}), 100);
     });
     
     video.addEventListener('seeking', (e) => {
         if (e.target !== video) return;
         // Prevent manual seeking - sync back to schedule
+        if (isInternalSync) return;
         setTimeout(() => syncWithSchedule(), 100);
     });
     
