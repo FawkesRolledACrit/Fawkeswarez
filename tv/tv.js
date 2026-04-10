@@ -3,6 +3,7 @@
     const sourceEl = document.getElementById('tv-source');
     const video = document.getElementById('tv-player');
 
+    const tuneBtn = document.getElementById('tv-tune');
     const muteBtn = document.getElementById('tv-mute');
 
     let ads = null;
@@ -16,6 +17,7 @@
     let isInternalSync = false;
     let lastExpectedTime = 0;
     let lastExpectedTitle = '';
+    let hasTunedIn = false;
 
     function setStatus(text) {
         statusEl.textContent = text;
@@ -248,7 +250,7 @@
         return playQueue.length - 1;
     }
 
-    async function loadAndPlayVideo(url, title, seekToTime = null) {
+    async function loadAndPlayVideo(url, title, seekToTime = null, shouldStartPlayback = true) {
         cleanupHls();
 
         if (!url || url.includes('REPLACE_ME')) {
@@ -306,22 +308,36 @@
                 }
             }
 
-            await video.play();
+            if (shouldStartPlayback) {
+                await video.play();
 
-            // Enforce seek after playback begins too; some hosts ignore initial seek.
-            if (desiredSeek > 0) {
-                const ok = await enforceSeek(desiredSeek);
-                if (!ok) {
-                    setStatus(`Now Playing: ${title} (expected ${formatTime(desiredSeek)}; got ${formatTime(video.currentTime)} - source may not support seeking)`);
+                // Enforce seek after playback begins too; some hosts ignore initial seek.
+                if (desiredSeek > 0) {
+                    const ok = await enforceSeek(desiredSeek);
+                    if (!ok) {
+                        setStatus(`Now Playing: ${title} (expected ${formatTime(desiredSeek)}; got ${formatTime(video.currentTime)} - source may not support seeking)`);
+                    } else {
+                        setStatus(`Now Playing: ${title} (${formatTime(video.currentTime)})`);
+                    }
                 } else {
-                    setStatus(`Now Playing: ${title} (${formatTime(video.currentTime)})`);
+                    setStatus(`Now Playing: ${title}`);
                 }
             } else {
-                setStatus(`Now Playing: ${title}`);
+                // Not tuned in yet: prep the correct position but don't start playback.
+                if (desiredSeek > 0) {
+                    const ok = await enforceSeek(desiredSeek);
+                    if (!ok) {
+                        setStatus(`Ready: ${title} (expected ${formatTime(desiredSeek)}; got ${formatTime(video.currentTime)} - source may not support seeking)`);
+                    } else {
+                        setStatus(`Ready: ${title} (${formatTime(video.currentTime)}) - press TUNE IN`);
+                    }
+                } else {
+                    setStatus(`Ready: ${title} - press TUNE IN`);
+                }
             }
             return true;
         } catch (err) {
-            setStatus(`Loaded: ${title} (autoplay blocked)`);
+            setStatus(`Loaded: ${title} (waiting for TUNE IN)`);
             return false;
         } finally {
             // Keep this true only during the initial load/seek/play window.
@@ -366,7 +382,7 @@
 
         if (shouldReload) {
             currentItemUrl = targetItem.url;
-            void loadAndPlayVideo(targetItem.url, targetItem.title, expectedTime);
+            void loadAndPlayVideo(targetItem.url, targetItem.title, expectedTime, hasTunedIn);
             return;
         }
 
@@ -388,7 +404,11 @@
 
             // Update status so you can see whether it's actually syncing.
             if (drift <= 8) {
-                setStatus(`Live: ${targetItem.title} (expected ${formatTime(expectedTime)}; actual ${formatTime(video.currentTime)})`);
+                if (hasTunedIn) {
+                    setStatus(`Live: ${targetItem.title} (expected ${formatTime(expectedTime)}; actual ${formatTime(video.currentTime)})`);
+                } else {
+                    setStatus(`Ready: ${targetItem.title} (expected ${formatTime(expectedTime)}; actual ${formatTime(video.currentTime)}) - press TUNE IN`);
+                }
             }
         }
     }
@@ -403,6 +423,7 @@
         if (e.target !== video) return;
         // Prevent pausing - resume immediately
         if (isInternalSync) return;
+        if (!hasTunedIn) return;
         setTimeout(() => video.play().catch(() => {}), 100);
     });
     
@@ -432,11 +453,24 @@
         muteBtn.textContent = video.muted ? '🔊 UNMUTE' : '🔇 MUTE';
     });
 
+    tuneBtn?.addEventListener('click', async () => {
+        if (hasTunedIn) return;
+        hasTunedIn = true;
+        tuneBtn.textContent = '📡 TUNED';
+        // Immediately sync and then start playback at the scheduled position.
+        syncWithSchedule();
+        try {
+            await video.play();
+        } catch (_) {
+            // If it fails, next sync tick will try again.
+        }
+    });
+
     try {
         [ads, schedule] = await Promise.all([loadAds(), loadSchedule()]);
         
         // Start schedule sync
-        setStatus('Syncing with live broadcast…');
+        setStatus('Ready to tune in…');
         syncWithSchedule();
         
         // Sync every 2 seconds to maintain tight timing
