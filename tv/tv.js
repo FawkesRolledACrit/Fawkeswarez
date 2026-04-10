@@ -209,6 +209,7 @@
         if (type === 'hls') {
             if (video.canPlayType('application/vnd.apple.mpegurl')) {
                 video.src = url;
+                video.pause();
             } else if (window.Hls?.isSupported?.()) {
                 hls = new window.Hls({
                     enableWorker: true,
@@ -216,12 +217,14 @@
                 });
                 hls.loadSource(url);
                 hls.attachMedia(video);
+                video.pause();
             } else {
                 setStatus('HLS not supported in this browser. Try Chrome/Edge or use MP4 files for testing.');
                 return false;
             }
         } else {
             video.src = url;
+            video.pause();
         }
 
         // Wait for metadata to be available
@@ -291,8 +294,30 @@
         }
     }
 
-    // Simple event handlers
+    // Aggressive autoplay blocking
     video.addEventListener('play', (e) => {
+        if (e.target !== video) return;
+        if (!hasTunedIn) {
+            try {
+                video.pause();
+            } catch (_) {
+                // ignore
+            }
+        }
+    });
+    
+    video.addEventListener('loadeddata', (e) => {
+        if (e.target !== video) return;
+        if (!hasTunedIn) {
+            try {
+                video.pause();
+            } catch (_) {
+                // ignore
+            }
+        }
+    });
+    
+    video.addEventListener('canplay', (e) => {
         if (e.target !== video) return;
         if (!hasTunedIn) {
             try {
@@ -352,6 +377,10 @@
         }, 2000);
     });
 
+    // Aggressively prevent any autoplay
+    video.pause();
+    video.autoplay = false;
+    
     try {
         [ads, schedule] = await Promise.all([loadAds(), loadSchedule()]);
         
