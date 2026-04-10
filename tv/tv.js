@@ -7,10 +7,11 @@
 
     let ads = null;
     let schedule = null;
-    let playQueue = [];
-    let scheduleStartTime = null;
-    let currentQueueIndex = 0;
+    let currentBlockIndex = -1;
+    let currentQueueIndex = -1;
     let hls = null;
+    let syncInterval = null;
+    let lastSyncTime = 0;
 
     function setStatus(text) {
         statusEl.textContent = text;
@@ -99,42 +100,40 @@
         }
     }
 
-    function buildPlayQueue(blockStartTime) {
+    function buildPlayQueue(blockIndex) {
         if (!schedule?.blocks?.length) return [];
         
         const queue = [];
+        const block = schedule.blocks[0]; // Always use first block for now
+        let blockUsedTime = 0;
         
-        for (const block of schedule.blocks) {
-            let blockUsedTime = 0;
+        for (let i = 0; i < block.events.length; i++) {
+            const event = block.events[i];
             
-            for (let i = 0; i < block.events.length; i++) {
-                const event = block.events[i];
+            if (event.type === 'segment') {
+                queue.push({
+                    type: 'segment',
+                    url: event.url,
+                    title: event.title,
+                    durationSeconds: 876 // Approximate duration for Dexter episode
+                });
+                blockUsedTime += 876;
+            } else if (event.type === 'adbreak') {
+                let targetDuration;
                 
-                if (event.type === 'segment') {
-                    queue.push({
-                        type: 'segment',
-                        url: event.url,
-                        title: event.title,
-                        durationSeconds: 0 // We'll estimate this
-                    });
-                    blockUsedTime += 0; // We don't know segment durations yet
-                } else if (event.type === 'adbreak') {
-                    let targetDuration;
-                    
-                    if (event.targetSeconds === 'auto') {
-                        targetDuration = Math.max(60, block.slotSeconds - blockUsedTime);
-                    } else {
-                        targetDuration = event.targetSeconds;
-                    }
-                    
-                    const tolerance = event.toleranceSeconds || 3;
-                    // Use block start time as seed for consistent ad selection
-                    const seed = Math.floor(blockStartTime / 1000) + i;
-                    const selectedAds = fillAdBreak(targetDuration, tolerance, seed);
-                    
-                    queue.push(...selectedAds);
-                    blockUsedTime += selectedAds.reduce((sum, ad) => sum + ad.durationSeconds, 0);
+                if (event.targetSeconds === 'auto') {
+                    targetDuration = Math.max(60, block.slotSeconds - blockUsedTime);
+                } else {
+                    targetDuration = event.targetSeconds;
                 }
+                
+                const tolerance = event.toleranceSeconds || 3;
+                // Use block index and event index as seed for consistent ad selection
+                const seed = blockIndex * 1000 + i;
+                const selectedAds = fillAdBreak(targetDuration, tolerance, seed);
+                
+                queue.push(...selectedAds);
+                blockUsedTime += selectedAds.reduce((sum, ad) => sum + ad.durationSeconds, 0);
             }
         }
         
@@ -152,17 +151,19 @@
         return {
             scheduleStart,
             elapsedMs,
-            currentBlockIndex: Math.floor(elapsedMs / (30 * 60 * 1000)) % schedule.blocks.length // 30-minute blocks
+            currentBlockIndex: Math.floor(elapsedMs / (30 * 60 * 1000)) // 30-minute blocks
         };
     }
 
     function calculateCurrentQueueIndex(elapsedMs, playQueue) {
         if (!playQueue.length) return 0;
         
+        const blockElapsed = elapsedMs % (30 * 60 * 1000);
         let accumulatedTime = 0;
+        
         for (let i = 0; i < playQueue.length; i++) {
-            const itemDuration = playQueue[i].durationSeconds || 30; // Default 30s for unknown durations
-            if (accumulatedTime + (itemDuration * 1000) > elapsedMs % (30 * 60 * 1000)) {
+            const itemDuration = playQueue[i].durationSeconds || 30;
+            if (accumulatedTime + (itemDuration * 1000) > blockElapsed) {
                 return i;
             }
             accumulatedTime += itemDuration * 1000;
@@ -171,19 +172,7 @@
         return playQueue.length - 1;
     }
 
-    async function playQueueItem(index, seekToTime = null) {
-        if (!playQueue.length) {
-            setStatus('No play queue items found.');
-            return;
-        }
-
-        currentQueueIndex = ((index % playQueue.length) + playQueue.length) % playQueue.length;
-        const item = playQueue[currentQueueIndex];
-
-        const url = item?.url;
-        const title = item?.title || `Item ${currentQueueIndex + 1}`;
-        const type = inferTypeFromUrl(url);
-
+    async function loadAndPlayVideo(url, title, seekToTime = null) {
         cleanupHls();
 
         if (!url || url.includes('REPLACE_ME')) {
@@ -191,11 +180,13 @@
             setSource('Update tv/schedule.json with real video URLs');
             video.removeAttribute('src');
             video.load();
-            return;
+            return false;
         }
 
         setStatus(`Loading: ${title}`);
         setSource(url);
+
+        const type = inferTypeFromUrl(url);
 
         if (type === 'hls') {
             if (video.canPlayType('application/vnd.apple.mpegurl')) {
@@ -209,7 +200,7 @@
                 hls.attachMedia(video);
             } else {
                 setStatus('HLS not supported in this browser. Try Chrome/Edge or use MP4 files for testing.');
-                return;
+                return false;
             }
         } else {
             video.src = url;
@@ -219,53 +210,120 @@
             await video.play();
             
             // Seek to the correct position if specified
-            if (seekToTime !== null && !isNaN(seekToTime)) {
+            if (seekToTime !== null && !isNaN(seekToTime) && seekToTime > 0) {
                 video.currentTime = seekToTime;
             }
             
             setStatus(`Now Playing: ${title}`);
+            return true;
         } catch (err) {
-            setStatus(`Loaded: ${title} (press PLAY if autoplay is blocked)`);
+            setStatus(`Loaded: ${title} (waiting for autoplay...)`);
+            return false;
         }
-    }
-
-    function playNext() {
-        // In scheduled mode, we don't manually advance - we sync with schedule
-        syncWithSchedule();
     }
 
     function syncWithSchedule() {
-        const { elapsedMs, currentBlockIndex } = getCurrentScheduleTime();
-        const blockStartTime = currentBlockIndex * 30 * 60 * 1000;
+        const now = Date.now();
         
-        // Rebuild queue for current block to get consistent ad selection
-        playQueue = buildPlayQueue(blockStartTime);
+        // Throttle syncs to once per second maximum
+        if (now - lastSyncTime < 1000) {
+            return;
+        }
+        lastSyncTime = now;
         
-        // Calculate where we should be in the current block
-        const blockElapsed = elapsedMs % (30 * 60 * 1000);
-        const targetIndex = calculateCurrentQueueIndex(blockElapsed, playQueue);
+        const { elapsedMs, currentBlockIndex: newBlockIndex } = getCurrentScheduleTime();
         
-        // Calculate seek time within current item
-        let accumulatedTime = 0;
-        let seekTime = 0;
-        
-        for (let i = 0; i < targetIndex; i++) {
-            accumulatedTime += (playQueue[i].durationSeconds || 30) * 1000;
+        // Check if we need to load a new block
+        if (newBlockIndex !== currentBlockIndex) {
+            currentBlockIndex = newBlockIndex;
+            const playQueue = buildPlayQueue(currentBlockIndex);
+            
+            if (playQueue.length > 0) {
+                const targetIndex = calculateCurrentQueueIndex(elapsedMs, playQueue);
+                const item = playQueue[targetIndex];
+                
+                // Calculate seek time within current item
+                const blockElapsed = elapsedMs % (30 * 60 * 1000);
+                let accumulatedTime = 0;
+                
+                for (let i = 0; i < targetIndex; i++) {
+                    accumulatedTime += (playQueue[i].durationSeconds || 30) * 1000;
+                }
+                
+                const seekTime = (blockElapsed - accumulatedTime) / 1000;
+                
+                void loadAndPlayVideo(item.url, item.title, Math.max(0, seekTime));
+            }
+        } else {
+            // Just sync the current video's time if needed
+            const blockElapsed = elapsedMs % (30 * 60 * 1000);
+            const playQueue = buildPlayQueue(currentBlockIndex);
+            const targetIndex = calculateCurrentQueueIndex(blockElapsed, playQueue);
+            
+            if (targetIndex !== currentQueueIndex) {
+                // We're in a different item, reload
+                const item = playQueue[targetIndex];
+                let accumulatedTime = 0;
+                
+                for (let i = 0; i < targetIndex; i++) {
+                    accumulatedTime += (playQueue[i].durationSeconds || 30) * 1000;
+                }
+                
+                const seekTime = (blockElapsed - accumulatedTime) / 1000;
+                void loadAndPlayVideo(item.url, item.title, Math.max(0, seekTime));
+            } else {
+                // Same item, just adjust time if needed
+                let accumulatedTime = 0;
+                
+                for (let i = 0; i < targetIndex; i++) {
+                    accumulatedTime += (playQueue[i].durationSeconds || 30) * 1000;
+                }
+                
+                const expectedTime = (blockElapsed - accumulatedTime) / 1000;
+                const currentTimeDiff = Math.abs(video.currentTime - expectedTime);
+                
+                // Only seek if we're off by more than 2 seconds to avoid constant seeking
+                if (currentTimeDiff > 2) {
+                    video.currentTime = Math.max(0, expectedTime);
+                }
+            }
         }
         
-        seekTime = (blockElapsed - accumulatedTime) / 1000;
-        
-        if (targetIndex !== currentQueueIndex || Math.abs(seekTime) > 5) {
-            void playQueueItem(targetIndex, Math.max(0, seekTime));
-        }
+        currentQueueIndex = calculateCurrentQueueIndex(elapsedMs % (30 * 60 * 1000), buildPlayQueue(currentBlockIndex));
     }
 
-    video.addEventListener('ended', () => {
-        // In scheduled mode, sync with schedule instead of just advancing
+    // Prevent user interaction with video
+    video.addEventListener('play', (e) => {
+        if (e.target !== video) return;
+        // Allow autoplay but prevent manual play
+    });
+    
+    video.addEventListener('pause', (e) => {
+        if (e.target !== video) return;
+        // Prevent pausing - resume immediately
+        setTimeout(() => video.play().catch(() => {}), 100);
+    });
+    
+    video.addEventListener('seeking', (e) => {
+        if (e.target !== video) return;
+        // Prevent manual seeking - sync back to schedule
         setTimeout(() => syncWithSchedule(), 100);
     });
-
     
+    video.addEventListener('ratechange', (e) => {
+        if (e.target !== video) return;
+        // Prevent speed changes
+        video.playbackRate = 1;
+    });
+    
+    video.addEventListener('volumechange', (e) => {
+        if (e.target !== video) return;
+        // Allow volume changes but sync with mute button
+        if (muteBtn) {
+            muteBtn.textContent = video.muted ? '🔊 UNMUTE' : '🔇 MUTE';
+        }
+    });
+
     muteBtn?.addEventListener('click', () => {
         video.muted = !video.muted;
         muteBtn.textContent = video.muted ? '🔊 UNMUTE' : '🔇 MUTE';
@@ -275,13 +333,13 @@
         [ads, schedule] = await Promise.all([loadAds(), loadSchedule()]);
         
         // Start schedule sync
-        setStatus('Syncing with broadcast schedule…');
+        setStatus('Syncing with live broadcast…');
         syncWithSchedule();
         
-        // Sync every 5 seconds to maintain timing
-        setInterval(() => {
+        // Sync every 2 seconds to maintain tight timing
+        syncInterval = setInterval(() => {
             syncWithSchedule();
-        }, 5000);
+        }, 2000);
         
     } catch (e) {
         setStatus(`Error: ${e?.message || e}`);
