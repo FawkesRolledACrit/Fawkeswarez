@@ -117,12 +117,15 @@ class LiveStreamPlayer {
     }
     
     createVideoElement() {
+        console.log('Creating video element');
+        
         // Create video element dynamically
         this.video = document.createElement('video');
         this.video.id = 'tv-player';
         this.video.preload = 'none';
         this.video.playsInline = true;
         this.video.muted = true; // Start muted
+        this.video.controls = false; // No controls
         
         // Style to fill container
         this.video.style.cssText = `
@@ -130,20 +133,36 @@ class LiveStreamPlayer {
             height: 100%;
             object-fit: cover;
             background: #000;
+            display: block;
         `;
+        
+        console.log('Video element created:', this.video);
+        console.log('Container:', this.container);
         
         // Add to container
         this.container.appendChild(this.video);
+        console.log('Video appended to container');
         
         // Show video, hide placeholder
         this.container.classList.add('active');
+        console.log('Container class set to active');
         
         // Add minimal event listeners
         this.video.addEventListener('error', (e) => {
+            console.error('Video element error:', e);
             this.updateStatus(`Video error: ${e.message || 'Unknown error'}`);
         });
         
+        this.video.addEventListener('loadstart', () => {
+            console.log('Video loadstart event');
+        });
+        
+        this.video.addEventListener('canplay', () => {
+            console.log('Video canplay event');
+        });
+        
         this.video.addEventListener('pause', () => {
+            console.log('Video paused');
             if (this.hasTunedIn) {
                 // Auto-resume if user hasn't explicitly paused
                 setTimeout(() => {
@@ -156,7 +175,14 @@ class LiveStreamPlayer {
     }
     
     async loadVideo(url, seekTime, title) {
+        console.log('loadVideo called:', { url, seekTime, title });
         this.updateStatus(`Loading: ${title}`);
+        
+        if (!this.video) {
+            console.error('Video element not found!');
+            this.updateStatus('Error: Video element not found');
+            return;
+        }
         
         // Clean up previous HLS instance
         if (this.hls) {
@@ -165,8 +191,10 @@ class LiveStreamPlayer {
         }
         
         const isHLS = url.includes('.m3u8');
+        console.log('Video type:', isHLS ? 'HLS' : 'Direct');
         
         if (isHLS && Hls.isSupported()) {
+            console.log('Using HLS.js');
             this.hls = new Hls({
                 enableWorker: true,
                 lowLatencyMode: true,
@@ -177,8 +205,14 @@ class LiveStreamPlayer {
             this.hls.loadSource(url);
             this.hls.attachMedia(this.video);
             
+            this.hls.on(Hls.Events.ERROR, (event, data) => {
+                console.error('HLS error:', data);
+                this.updateStatus(`HLS Error: ${data.details}`);
+            });
+            
             return new Promise((resolve) => {
                 this.hls.on(Hls.Events.MANIFEST_PARSED, () => {
+                    console.log('HLS manifest parsed');
                     if (seekTime > 0) {
                         this.video.currentTime = seekTime;
                     }
@@ -187,26 +221,40 @@ class LiveStreamPlayer {
             });
         } else if (this.video.canPlayType('application/vnd.apple.mpegurl')) {
             // Safari native HLS
+            console.log('Using Safari native HLS');
             this.video.src = url;
             
             return new Promise((resolve) => {
                 this.video.addEventListener('loadedmetadata', () => {
+                    console.log('Metadata loaded (Safari HLS)');
                     if (seekTime > 0) {
                         this.video.currentTime = seekTime;
                     }
                     resolve();
                 }, { once: true });
+                
+                this.video.addEventListener('error', (e) => {
+                    console.error('Video error (Safari HLS):', e);
+                    this.updateStatus('Video error loading HLS');
+                }, { once: true });
             });
         } else {
             // Direct MP4/WebM
+            console.log('Using direct MP4/WebM');
             this.video.src = url;
             
             return new Promise((resolve) => {
                 this.video.addEventListener('loadedmetadata', () => {
+                    console.log('Metadata loaded (MP4/WebM)');
                     if (seekTime > 0) {
                         this.video.currentTime = seekTime;
                     }
                     resolve();
+                }, { once: true });
+                
+                this.video.addEventListener('error', (e) => {
+                    console.error('Video error (MP4/WebM):', e);
+                    this.updateStatus('Video error loading file');
                 }, { once: true });
             });
         }
