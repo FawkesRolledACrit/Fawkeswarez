@@ -28,6 +28,7 @@ class LiveStreamPlayer {
         this.ads = null;
         this.schedule = null;
         this.syncInterval = null;
+        this.currentItemUrl = null;
         
         // Schedule constants
         this.BLOCK_DURATION = 30 * 60 * 1000; // 30 minutes
@@ -415,17 +416,28 @@ class LiveStreamPlayer {
     syncWithSchedule() {
         if (!this.hasTunedIn || !this.video) return;
         
-        const { currentTime, currentTitle } = this.getCurrentSchedulePosition();
+        const { currentUrl, currentTime, currentTitle } = this.getCurrentSchedulePosition();
         const expectedTime = currentTime;
         const actualTime = this.video.currentTime;
+        
+        // Check if we need to switch videos
+        if (currentUrl !== this.currentItemUrl) {
+            console.log('Switching to new video:', currentUrl);
+            this.currentItemUrl = currentUrl;
+            this.loadVideo(currentUrl, expectedTime, currentTitle).then(() => {
+                this.startPlayback();
+            });
+            return;
+        }
         
         // Update UI
         this.currentProgramEl.textContent = currentTitle;
         this.scheduleTimeEl.textContent = this.formatTime(expectedTime);
         
-        // Correct drift if significant
+        // Correct drift if significant (but not during playback)
         const drift = Math.abs(actualTime - expectedTime);
-        if (drift > 3) {
+        if (drift > 5 && !this.video.paused) {
+            console.log('Correcting drift:', { actualTime, expectedTime, drift });
             try {
                 this.video.currentTime = expectedTime;
             } catch (e) {
