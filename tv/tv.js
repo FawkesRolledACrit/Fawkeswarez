@@ -5,6 +5,7 @@
 
 class LiveStreamPlayer {
     constructor() {
+        console.log('LiveStreamPlayer constructor');
         this.container = document.getElementById('tv-container');
         this.video = null;
         this.hls = null;
@@ -13,6 +14,15 @@ class LiveStreamPlayer {
         this.statusText = document.getElementById('status-text');
         this.currentProgramEl = document.getElementById('current-program');
         this.scheduleTimeEl = document.getElementById('schedule-time');
+        
+        console.log('Elements found:', {
+            container: !!this.container,
+            tuneBtn: !!this.tuneBtn,
+            muteBtn: !!this.muteBtn,
+            statusText: !!this.statusText,
+            currentProgramEl: !!this.currentProgramEl,
+            scheduleTimeEl: !!this.scheduleTimeEl
+        });
         
         this.hasTunedIn = false;
         this.ads = null;
@@ -346,14 +356,27 @@ class LiveStreamPlayer {
     }
     
     startScheduleUpdates() {
+        console.log('Starting schedule updates');
         // Update schedule info every second even before tuning in
         setInterval(() => {
-            const { currentTitle } = this.getCurrentSchedulePosition();
-            this.currentProgramEl.textContent = currentTitle;
+            const position = this.getCurrentSchedulePosition();
+            console.log('Schedule position:', position);
+            
+            if (this.currentProgramEl) {
+                this.currentProgramEl.textContent = position.currentTitle;
+            } else {
+                console.log('currentProgramEl not found');
+            }
             
             const now = Date.now();
             const blockElapsed = now % this.BLOCK_DURATION;
-            this.scheduleTimeEl.textContent = this.formatTime(blockElapsed / 1000);
+            const timeStr = this.formatTime(blockElapsed / 1000);
+            
+            if (this.scheduleTimeEl) {
+                this.scheduleTimeEl.textContent = timeStr;
+            } else {
+                console.log('scheduleTimeEl not found');
+            }
         }, 1000);
     }
     
