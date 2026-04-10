@@ -244,18 +244,49 @@ class LiveStreamPlayer {
             this.video.src = url;
             
             return new Promise((resolve) => {
-                this.video.addEventListener('loadedmetadata', () => {
-                    console.log('Metadata loaded (MP4/WebM)');
-                    if (seekTime > 0) {
-                        this.video.currentTime = seekTime;
-                    }
-                    resolve();
-                }, { once: true });
+                let metadataLoaded = false;
+                let errorOccurred = false;
                 
-                this.video.addEventListener('error', (e) => {
-                    console.error('Video error (MP4/WebM):', e);
-                    this.updateStatus('Video error loading file');
-                }, { once: true });
+                const onLoadedMetadata = () => {
+                    if (!metadataLoaded && !errorOccurred) {
+                        metadataLoaded = true;
+                        console.log('Metadata loaded (MP4/WebM)');
+                        
+                        if (seekTime > 0) {
+                            console.log('Seeking to:', seekTime);
+                            this.video.currentTime = seekTime;
+                            
+                            // Wait for seek to complete
+                            this.video.addEventListener('seeked', () => {
+                                console.log('Seek completed');
+                                resolve();
+                            }, { once: true });
+                        } else {
+                            resolve();
+                        }
+                    }
+                };
+                
+                const onError = (e) => {
+                    if (!errorOccurred) {
+                        errorOccurred = true;
+                        console.error('Video error (MP4/WebM):', e);
+                        this.updateStatus(`Video error: ${e.message || 'Unknown error'}`);
+                        resolve();
+                    }
+                };
+                
+                this.video.addEventListener('loadedmetadata', onLoadedMetadata, { once: true });
+                this.video.addEventListener('error', onError, { once: true });
+                
+                // Timeout after 10 seconds
+                setTimeout(() => {
+                    if (!metadataLoaded && !errorOccurred) {
+                        console.log('Timeout waiting for metadata');
+                        this.updateStatus('Video loading timeout');
+                        resolve();
+                    }
+                }, 10000);
             });
         }
     }
