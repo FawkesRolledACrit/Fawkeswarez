@@ -360,15 +360,18 @@
         hasTunedIn = true;
         tuneBtn.textContent = '📡 TUNED';
         
-        // Create video element if not exists
-        if (!video) {
-            await prepareVideo(currentItemUrl || 'https://files.catbox.moe/m6185b.mp4', 'Loading...', 0);
-        }
+        // First sync to get the correct video for current time
+        syncWithSchedule();
+        
+        // Wait a bit for video to be created
+        await new Promise(r => setTimeout(r, 100));
         
         // Start playback
         try {
-            await video.play();
-            setStatus(`Now Playing: ${currentItemUrl ? 'Live Stream' : 'Loading...'}`);
+            if (video) {
+                await video.play();
+                setStatus(`Now Playing: ${currentItemUrl ? 'Live Stream' : 'Loading...'}`);
+            }
         } catch (err) {
             setStatus(`Playback failed - click TUNE IN again`);
         }
@@ -383,7 +386,8 @@
         [ads, schedule] = await Promise.all([loadAds(), loadSchedule()]);
         
         setStatus('Ready to tune in…');
-        syncWithSchedule();
+        // Don't sync yet - wait for TUNE IN to be clicked
+        // syncWithSchedule();
         
     } catch (e) {
         setStatus(`Error: ${e?.message || e}`);
