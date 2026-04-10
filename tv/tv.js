@@ -36,6 +36,11 @@ class LiveStreamPlayer {
     }
     
     async init() {
+        console.log('Initializing LiveStreamPlayer');
+        
+        // Wait a tick to ensure DOM is ready
+        await new Promise(resolve => setTimeout(resolve, 0));
+        
         // NO video element creation here
         // NO autoplay prevention needed because there's no video
         
@@ -388,7 +393,11 @@ class LiveStreamPlayer {
     }
     
     updateStatus(text) {
-        this.statusText.textContent = text;
+        if (this.statusText) {
+            this.statusText.textContent = text;
+        } else {
+            console.log('Status text element not found:', text);
+        }
     }
     
     formatTime(seconds) {
