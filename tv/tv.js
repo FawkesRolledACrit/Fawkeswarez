@@ -3,14 +3,12 @@
     const sourceEl = document.getElementById('tv-source');
     const video = document.getElementById('tv-player');
 
-    const playBtn = document.getElementById('tv-play');
-    const pauseBtn = document.getElementById('tv-pause');
-    const nextBtn = document.getElementById('tv-next');
     const muteBtn = document.getElementById('tv-mute');
 
     let ads = null;
     let schedule = null;
     let playQueue = [];
+    let scheduleStartTime = null;
     let currentQueueIndex = 0;
     let hls = null;
 
@@ -57,7 +55,7 @@
         return res.json();
     }
 
-    function fillAdBreak(targetSeconds, toleranceSeconds = 3) {
+    function fillAdBreak(targetSeconds, toleranceSeconds = 3, seed = null) {
         if (!ads?.items?.length) return [];
         
         const validAds = ads.items.filter(ad => ad.durationSeconds !== null && ad.durationSeconds > 0);
@@ -65,7 +63,10 @@
         
         const selected = [];
         let totalDuration = 0;
-        const shuffled = [...validAds].sort(() => Math.random() - 0.5);
+        
+        // Use seeded random for consistent ad selection across all viewers
+        const rng = seed ? new SeededRandom(seed) : Math;
+        const shuffled = [...validAds].sort(() => rng.random() - 0.5);
         
         for (const ad of shuffled) {
             if (totalDuration + ad.durationSeconds <= targetSeconds + toleranceSeconds) {
@@ -86,7 +87,19 @@
         return selected;
     }
 
-    function buildPlayQueue() {
+    // Simple seeded random number generator for consistent ad selection
+    class SeededRandom {
+        constructor(seed) {
+            this.seed = seed;
+        }
+        
+        random() {
+            this.seed = (this.seed * 9301 + 49297) % 233280;
+            return this.seed / 233280;
+        }
+    }
+
+    function buildPlayQueue(blockStartTime) {
         if (!schedule?.blocks?.length) return [];
         
         const queue = [];
@@ -101,7 +114,8 @@
                     queue.push({
                         type: 'segment',
                         url: event.url,
-                        title: event.title
+                        title: event.title,
+                        durationSeconds: 0 // We'll estimate this
                     });
                     blockUsedTime += 0; // We don't know segment durations yet
                 } else if (event.type === 'adbreak') {
@@ -114,7 +128,9 @@
                     }
                     
                     const tolerance = event.toleranceSeconds || 3;
-                    const selectedAds = fillAdBreak(targetDuration, tolerance);
+                    // Use block start time as seed for consistent ad selection
+                    const seed = Math.floor(blockStartTime / 1000) + i;
+                    const selectedAds = fillAdBreak(targetDuration, tolerance, seed);
                     
                     queue.push(...selectedAds);
                     blockUsedTime += selectedAds.reduce((sum, ad) => sum + ad.durationSeconds, 0);
@@ -125,7 +141,37 @@
         return queue;
     }
 
-    async function playQueueItem(index) {
+    function getCurrentScheduleTime() {
+        // Schedule starts at a fixed time (e.g., midnight)
+        const scheduleStart = new Date();
+        scheduleStart.setHours(0, 0, 0, 0); // Start at midnight today
+        
+        const now = new Date();
+        const elapsedMs = now - scheduleStart;
+        
+        return {
+            scheduleStart,
+            elapsedMs,
+            currentBlockIndex: Math.floor(elapsedMs / (30 * 60 * 1000)) % schedule.blocks.length // 30-minute blocks
+        };
+    }
+
+    function calculateCurrentQueueIndex(elapsedMs, playQueue) {
+        if (!playQueue.length) return 0;
+        
+        let accumulatedTime = 0;
+        for (let i = 0; i < playQueue.length; i++) {
+            const itemDuration = playQueue[i].durationSeconds || 30; // Default 30s for unknown durations
+            if (accumulatedTime + (itemDuration * 1000) > elapsedMs % (30 * 60 * 1000)) {
+                return i;
+            }
+            accumulatedTime += itemDuration * 1000;
+        }
+        
+        return playQueue.length - 1;
+    }
+
+    async function playQueueItem(index, seekToTime = null) {
         if (!playQueue.length) {
             setStatus('No play queue items found.');
             return;
@@ -171,6 +217,12 @@
 
         try {
             await video.play();
+            
+            // Seek to the correct position if specified
+            if (seekToTime !== null && !isNaN(seekToTime)) {
+                video.currentTime = seekToTime;
+            }
+            
             setStatus(`Now Playing: ${title}`);
         } catch (err) {
             setStatus(`Loaded: ${title} (press PLAY if autoplay is blocked)`);
@@ -178,25 +230,42 @@
     }
 
     function playNext() {
-        void playQueueItem(currentQueueIndex + 1);
+        // In scheduled mode, we don't manually advance - we sync with schedule
+        syncWithSchedule();
+    }
+
+    function syncWithSchedule() {
+        const { elapsedMs, currentBlockIndex } = getCurrentScheduleTime();
+        const blockStartTime = currentBlockIndex * 30 * 60 * 1000;
+        
+        // Rebuild queue for current block to get consistent ad selection
+        playQueue = buildPlayQueue(blockStartTime);
+        
+        // Calculate where we should be in the current block
+        const blockElapsed = elapsedMs % (30 * 60 * 1000);
+        const targetIndex = calculateCurrentQueueIndex(blockElapsed, playQueue);
+        
+        // Calculate seek time within current item
+        let accumulatedTime = 0;
+        let seekTime = 0;
+        
+        for (let i = 0; i < targetIndex; i++) {
+            accumulatedTime += (playQueue[i].durationSeconds || 30) * 1000;
+        }
+        
+        seekTime = (blockElapsed - accumulatedTime) / 1000;
+        
+        if (targetIndex !== currentQueueIndex || Math.abs(seekTime) > 5) {
+            void playQueueItem(targetIndex, Math.max(0, seekTime));
+        }
     }
 
     video.addEventListener('ended', () => {
-        playNext();
+        // In scheduled mode, sync with schedule instead of just advancing
+        setTimeout(() => syncWithSchedule(), 100);
     });
 
-    playBtn?.addEventListener('click', () => {
-        void video.play();
-    });
-
-    pauseBtn?.addEventListener('click', () => {
-        video.pause();
-    });
-
-    nextBtn?.addEventListener('click', () => {
-        playNext();
-    });
-
+    
     muteBtn?.addEventListener('click', () => {
         video.muted = !video.muted;
         muteBtn.textContent = video.muted ? '🔊 UNMUTE' : '🔇 MUTE';
@@ -204,15 +273,16 @@
 
     try {
         [ads, schedule] = await Promise.all([loadAds(), loadSchedule()]);
-        playQueue = buildPlayQueue();
-        currentQueueIndex = 0;
-
-        if (playQueue.length === 0) {
-            setStatus('No playable items found in schedule.');
-        } else {
-            setStatus('Schedule loaded. Starting…');
-            await playQueueItem(currentQueueIndex);
-        }
+        
+        // Start schedule sync
+        setStatus('Syncing with broadcast schedule…');
+        syncWithSchedule();
+        
+        // Sync every 5 seconds to maintain timing
+        setInterval(() => {
+            syncWithSchedule();
+        }, 5000);
+        
     } catch (e) {
         setStatus(`Error: ${e?.message || e}`);
         setSource('—');
