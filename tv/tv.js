@@ -16,6 +16,7 @@ class LiveStreamPlayer {
         this.hls = null;
         this.tuneBtn = document.getElementById('tune-btn');
         this.muteBtn = document.getElementById('mute-btn');
+        this.fullscreenBtn = document.getElementById('fullscreen-btn');
         this.statusText = document.getElementById('status-text');
         this.currentProgramEl = document.getElementById('current-program');
         this.scheduleTimeEl = document.getElementById('schedule-time');
@@ -87,7 +88,7 @@ class LiveStreamPlayer {
         console.log('Setting up event listeners');
         console.log('Tune button:', this.tuneBtn);
         console.log('Mute button:', this.muteBtn);
-        
+        console.log('Fullscreen button:', this.fullscreenBtn);
         if (this.tuneBtn) {
             this.tuneBtn.addEventListener('click', () => this.tuneIn());
             console.log('Tune button listener added');
@@ -96,6 +97,87 @@ class LiveStreamPlayer {
         if (this.muteBtn) {
             this.muteBtn.addEventListener('click', () => this.toggleMute());
             console.log('Mute button listener added');
+        }
+
+        if (this.fullscreenBtn) {
+            this.fullscreenBtn.addEventListener('click', () => this.toggleFullscreen());
+            console.log('Fullscreen button listener added');
+        }
+
+        // Keep button label in sync
+        document.addEventListener('fullscreenchange', () => this.updateFullscreenButton());
+        document.addEventListener('webkitfullscreenchange', () => this.updateFullscreenButton());
+    }
+    
+    isFullscreen() {
+        return !!(
+            document.fullscreenElement ||
+            document.webkitFullscreenElement ||
+            document.mozFullScreenElement ||
+            document.msFullscreenElement
+        );
+    }
+
+    updateFullscreenButton() {
+        if (!this.fullscreenBtn) return;
+        this.fullscreenBtn.textContent = this.isFullscreen() ? '🗗 EXIT FULLSCREEN' : '⛶ FULLSCREEN';
+    }
+
+    async toggleFullscreen() {
+        const target = this.container || this.video;
+        if (!target) return;
+
+        // iOS Safari best-effort: only the <video> can enter fullscreen.
+        if (this.video && typeof this.video.webkitEnterFullscreen === 'function') {
+            try {
+                // If we're already in fullscreen via standard API, exit that first.
+                if (this.isFullscreen()) {
+                    await this.exitFullscreen();
+                }
+                this.video.webkitEnterFullscreen();
+                return;
+            } catch {
+                // fall through to standard API
+            }
+        }
+
+        if (this.isFullscreen()) {
+            await this.exitFullscreen();
+            return;
+        }
+
+        await this.enterFullscreen(target);
+    }
+
+    async enterFullscreen(el) {
+        try {
+            if (el.requestFullscreen) {
+                await el.requestFullscreen();
+            } else if (el.webkitRequestFullscreen) {
+                await el.webkitRequestFullscreen();
+            } else if (el.mozRequestFullScreen) {
+                await el.mozRequestFullScreen();
+            } else if (el.msRequestFullscreen) {
+                await el.msRequestFullscreen();
+            }
+        } finally {
+            this.updateFullscreenButton();
+        }
+    }
+
+    async exitFullscreen() {
+        try {
+            if (document.exitFullscreen) {
+                await document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) {
+                await document.webkitExitFullscreen();
+            } else if (document.mozCancelFullScreen) {
+                await document.mozCancelFullScreen();
+            } else if (document.msExitFullscreen) {
+                await document.msExitFullscreen();
+            }
+        } finally {
+            this.updateFullscreenButton();
         }
     }
     
