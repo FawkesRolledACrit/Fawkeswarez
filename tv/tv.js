@@ -219,8 +219,8 @@ class LiveStreamPlayer {
                     resolve();
                 });
             });
-        } else if (this.video.canPlayType('application/vnd.apple.mpegurl')) {
-            // Safari native HLS
+        } else if (isHLS && this.video.canPlayType('application/vnd.apple.mpegurl')) {
+            // Safari native HLS - ONLY for actual HLS files
             console.log('Using Safari native HLS');
             this.video.src = url;
             
@@ -239,7 +239,7 @@ class LiveStreamPlayer {
                 }, { once: true });
             });
         } else {
-            // Direct MP4/WebM
+            // Direct MP4/WebM - for all non-HLS files
             console.log('Using direct MP4/WebM');
             this.video.src = url;
             
