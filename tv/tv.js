@@ -2,7 +2,6 @@
     const statusEl = document.getElementById('tv-status');
     const sourceEl = document.getElementById('tv-source');
     const video = document.getElementById('tv-player');
-
     const tuneBtn = document.getElementById('tv-tune');
     const muteBtn = document.getElementById('tv-mute');
 
@@ -12,13 +11,7 @@
     let currentQueueIndex = -1;
     let currentItemUrl = null;
     let hls = null;
-    let syncInterval = null;
-    let lastSyncTime = 0;
-    let isInternalSync = false;
-    let lastExpectedTime = 0;
-    let lastExpectedTitle = '';
     let hasTunedIn = false;
-    let isBlockingAutoplay = true;
 
     function setStatus(text) {
         statusEl.textContent = text;
@@ -47,36 +40,6 @@
         return 'unknown';
     }
 
-    function once(target, eventName, timeoutMs = 8000) {
-        return new Promise((resolve, reject) => {
-            let done = false;
-            const onEvent = () => {
-                if (done) return;
-                done = true;
-                cleanup();
-                resolve();
-            };
-            const onTimeout = () => {
-                if (done) return;
-                done = true;
-                cleanup();
-                reject(new Error(`Timed out waiting for ${eventName}`));
-            };
-            const cleanup = () => {
-                clearTimeout(t);
-                target.removeEventListener(eventName, onEvent);
-            };
-            const t = setTimeout(onTimeout, timeoutMs);
-            target.addEventListener(eventName, onEvent, { once: true });
-        });
-    }
-
-    function clampSeek(seconds) {
-        if (!Number.isFinite(seconds)) return 0;
-        if (seconds < 0) return 0;
-        return seconds;
-    }
-
     function formatTime(seconds) {
         if (!Number.isFinite(seconds)) return '--:--';
         const s = Math.max(0, Math.floor(seconds));
@@ -85,36 +48,10 @@
         return `${m}:${String(r).padStart(2, '0')}`;
     }
 
-    async function enforceSeek(expectedTimeSeconds) {
-        // Some hosts/browsers will ignore the first seek and jump to 0.
-        // Retry a few times until we're close enough or we give up.
-        const deadline = Date.now() + 6000;
-        const tolerance = 1.5;
-        const expected = clampSeek(expectedTimeSeconds);
-
-        while (Date.now() < deadline) {
-            if (!Number.isFinite(video.currentTime)) {
-                await new Promise(r => setTimeout(r, 150));
-                continue;
-            }
-
-            const diff = Math.abs(video.currentTime - expected);
-            if (diff <= tolerance) return true;
-
-            // Only try to seek when the media element reports some data.
-            if (video.readyState >= 2) {
-                try {
-                    isInternalSync = true;
-                    video.currentTime = expected;
-                } catch (_) {
-                    // ignore
-                }
-            }
-
-            await new Promise(r => setTimeout(r, 200));
-        }
-
-        return false;
+    function clampSeek(seconds) {
+        if (!Number.isFinite(seconds)) return 0;
+        if (seconds < 0) return 0;
+        return seconds;
     }
 
     const BLOCK_MS = 30 * 60 * 1000;
@@ -237,7 +174,7 @@
     function calculateCurrentQueueIndex(elapsedMs, playQueue) {
         if (!playQueue.length) return 0;
         
-        const blockElapsed = elapsedMs % (30 * 60 * 1000);
+        const blockElapsed = elapsedMs % BLOCK_MS;
         let accumulatedTime = 0;
         
         for (let i = 0; i < playQueue.length; i++) {
@@ -251,7 +188,7 @@
         return playQueue.length - 1;
     }
 
-    async function loadAndPlayVideo(url, title, seekToTime = null, shouldStartPlayback = true) {
+    async function prepareVideo(url, title, seekToTime = null) {
         cleanupHls();
 
         if (!url || url.includes('REPLACE_ME')) {
@@ -263,13 +200,10 @@
         }
 
         const desiredSeek = clampSeek(seekToTime ?? 0);
-        lastExpectedTime = desiredSeek;
-        lastExpectedTitle = title;
 
         setStatus(`Loading: ${title}`);
         setSource(url);
 
-        isInternalSync = true;
         const type = inferTypeFromUrl(url);
 
         if (type === 'hls') {
@@ -283,7 +217,6 @@
                 hls.loadSource(url);
                 hls.attachMedia(video);
             } else {
-                isInternalSync = false;
                 setStatus('HLS not supported in this browser. Try Chrome/Edge or use MP4 files for testing.');
                 return false;
             }
@@ -291,79 +224,38 @@
             video.src = url;
         }
 
-        try {
-            // Wait until we can seek reliably; otherwise browsers often start at 0.
-            await once(video, 'loadedmetadata');
-
-            if (desiredSeek > 0 && Number.isFinite(video.duration) && desiredSeek < video.duration) {
-                try {
-                    video.currentTime = desiredSeek;
-                } catch (_) {
-                    // ignore
-                }
-                // Some browsers require a canplay after setting currentTime.
-                try {
-                    await once(video, 'seeked', 3000);
-                } catch (_) {
-                    // ignore
-                }
-            }
-
-            if (shouldStartPlayback) {
-                await video.play();
-
-                // Enforce seek after playback begins too; some hosts ignore initial seek.
-                if (desiredSeek > 0) {
-                    const ok = await enforceSeek(desiredSeek);
-                    if (!ok) {
-                        setStatus(`Now Playing: ${title} (expected ${formatTime(desiredSeek)}; got ${formatTime(video.currentTime)} - source may not support seeking)`);
-                    } else {
-                        setStatus(`Now Playing: ${title} (${formatTime(video.currentTime)})`);
-                    }
-                } else {
-                    setStatus(`Now Playing: ${title}`);
-                }
-            } else {
-                // Not tuned in yet: prep the correct position but don't start playback.
-                if (desiredSeek > 0) {
-                    const ok = await enforceSeek(desiredSeek);
-                    if (!ok) {
-                        setStatus(`Ready: ${title} (expected ${formatTime(desiredSeek)}; got ${formatTime(video.currentTime)} - source may not support seeking)`);
-                    } else {
+        // Wait for metadata to be available
+        return new Promise((resolve) => {
+            const onLoadedMetadata = () => {
+                video.removeEventListener('loadedmetadata', onLoadedMetadata);
+                
+                // Seek to the correct position if specified
+                if (desiredSeek > 0 && Number.isFinite(video.duration) && desiredSeek < video.duration) {
+                    try {
+                        video.currentTime = desiredSeek;
                         setStatus(`Ready: ${title} (${formatTime(video.currentTime)}) - press TUNE IN`);
+                    } catch (_) {
+                        setStatus(`Ready: ${title} (seek failed) - press TUNE IN`);
                     }
                 } else {
                     setStatus(`Ready: ${title} - press TUNE IN`);
                 }
-
-                // Ensure we're paused before tune-in.
-                try {
-                    if (!video.paused) video.pause();
-                } catch (_) {
-                    // ignore
-                }
-            }
-            return true;
-        } catch (err) {
-            setStatus(`Loaded: ${title} (waiting for TUNE IN)`);
-            return false;
-        } finally {
-            // Keep this true only during the initial load/seek/play window.
+                
+                resolve(true);
+            };
+            
+            video.addEventListener('loadedmetadata', onLoadedMetadata);
+            
+            // Fallback timeout
             setTimeout(() => {
-                isInternalSync = false;
-            }, 250);
-        }
+                video.removeEventListener('loadedmetadata', onLoadedMetadata);
+                setStatus(`Ready: ${title} - press TUNE IN`);
+                resolve(true);
+            }, 5000);
+        });
     }
 
     function syncWithSchedule() {
-        const now = Date.now();
-        
-        // Throttle syncs to once per second maximum
-        if (now - lastSyncTime < 1000) {
-            return;
-        }
-        lastSyncTime = now;
-
         const { currentBlockIndex: newBlockIndex, blockElapsedMs } = getCurrentScheduleTime();
         const playQueue = buildPlayQueue(newBlockIndex);
         if (!playQueue.length) return;
@@ -375,8 +267,6 @@
         }
         const expectedTime = clampSeek((blockElapsedMs - accumulatedTimeMs) / 1000);
         const targetItem = playQueue[targetIndex];
-        lastExpectedTime = expectedTime;
-        lastExpectedTitle = targetItem.title;
 
         const shouldReload =
             newBlockIndex !== currentBlockIndex ||
@@ -384,47 +274,26 @@
             (currentItemUrl && targetItem.url !== currentItemUrl) ||
             (!currentItemUrl && targetItem.url);
 
-        // Update indices first so the next tick doesn't immediately re-trigger.
+        // Update indices
         currentBlockIndex = newBlockIndex;
         currentQueueIndex = targetIndex;
 
         if (shouldReload) {
             currentItemUrl = targetItem.url;
-            void loadAndPlayVideo(targetItem.url, targetItem.title, expectedTime, hasTunedIn);
-            return;
-        }
-
-        // Same item: only correct drift.
-        if (Number.isFinite(video.currentTime)) {
-            const drift = Math.abs(video.currentTime - expectedTime);
-            if (drift > 2) {
-                try {
-                    isInternalSync = true;
-                    video.currentTime = expectedTime;
-                } catch (_) {
-                    // ignore
-                } finally {
-                    setTimeout(() => {
-                        isInternalSync = false;
-                    }, 250);
-                }
-            }
-
-            // Update status so you can see whether it's actually syncing.
-            if (drift <= 8) {
-                if (hasTunedIn) {
-                    setStatus(`Live: ${targetItem.title} (expected ${formatTime(expectedTime)}; actual ${formatTime(video.currentTime)})`);
-                } else {
-                    setStatus(`Ready: ${targetItem.title} (expected ${formatTime(expectedTime)}; actual ${formatTime(video.currentTime)}) - press TUNE IN`);
-                }
+            void prepareVideo(targetItem.url, targetItem.title, expectedTime);
+        } else {
+            // Update status with current time
+            if (hasTunedIn && Number.isFinite(video.currentTime)) {
+                setStatus(`Live: ${targetItem.title} (expected ${formatTime(expectedTime)}; actual ${formatTime(video.currentTime)})`);
+            } else if (!hasTunedIn) {
+                setStatus(`Ready: ${targetItem.title} (expected ${formatTime(expectedTime)}; actual ${formatTime(video.currentTime)}) - press TUNE IN`);
             }
         }
     }
 
-    // Prevent user interaction with video
+    // Simple event handlers
     video.addEventListener('play', (e) => {
         if (e.target !== video) return;
-        // Hard-block any playback until the user clicks TUNE IN.
         if (!hasTunedIn) {
             try {
                 video.pause();
@@ -433,34 +302,30 @@
             }
         }
     });
-    
+
     video.addEventListener('pause', (e) => {
         if (e.target !== video) return;
-        // Prevent pausing - resume immediately
-        if (isInternalSync) return;
-        if (!hasTunedIn) return;
-        setTimeout(() => video.play().catch(() => {}), 100);
+        if (hasTunedIn) {
+            // Auto-resume after pause (unless user hasn't tuned in)
+            setTimeout(() => {
+                if (hasTunedIn) {
+                    video.play().catch(() => {});
+                }
+            }, 100);
+        }
     });
-    
+
     video.addEventListener('seeking', (e) => {
         if (e.target !== video) return;
-        // Prevent manual seeking - sync back to schedule
-        if (isInternalSync) return;
-        setTimeout(() => syncWithSchedule(), 100);
+        // Allow seeking during tune-in, but sync back after
+        if (hasTunedIn) {
+            setTimeout(() => syncWithSchedule(), 100);
+        }
     });
-    
+
     video.addEventListener('ratechange', (e) => {
         if (e.target !== video) return;
-        // Prevent speed changes
         video.playbackRate = 1;
-    });
-    
-    video.addEventListener('volumechange', (e) => {
-        if (e.target !== video) return;
-        // Allow volume changes but sync with mute button
-        if (muteBtn) {
-            muteBtn.textContent = video.muted ? '🔊 UNMUTE' : '🔇 MUTE';
-        }
     });
 
     muteBtn?.addEventListener('click', () => {
@@ -471,28 +336,27 @@
     tuneBtn?.addEventListener('click', async () => {
         if (hasTunedIn) return;
         hasTunedIn = true;
-        isBlockingAutoplay = false;
         tuneBtn.textContent = '📡 TUNED';
-        // Immediately sync and then start playback at the scheduled position.
-        syncWithSchedule();
+        
+        // Start playback
         try {
             await video.play();
-        } catch (_) {
-            // If it fails, next sync tick will try again.
+            setStatus(`Now Playing: ${currentItemUrl ? 'Live Stream' : 'Loading...'}`);
+        } catch (err) {
+            setStatus(`Playback failed - click TUNE IN again`);
         }
+        
+        // Start syncing every 2 seconds
+        setInterval(() => {
+            syncWithSchedule();
+        }, 2000);
     });
 
     try {
         [ads, schedule] = await Promise.all([loadAds(), loadSchedule()]);
         
-        // Start schedule sync
         setStatus('Ready to tune in…');
         syncWithSchedule();
-        
-        // Sync every 2 seconds to maintain tight timing
-        syncInterval = setInterval(() => {
-            syncWithSchedule();
-        }, 2000);
         
     } catch (e) {
         setStatus(`Error: ${e?.message || e}`);
