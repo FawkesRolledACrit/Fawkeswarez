@@ -18,6 +18,7 @@
     let lastExpectedTime = 0;
     let lastExpectedTitle = '';
     let hasTunedIn = false;
+    let isBlockingAutoplay = true;
 
     function setStatus(text) {
         statusEl.textContent = text;
@@ -334,6 +335,13 @@
                 } else {
                     setStatus(`Ready: ${title} - press TUNE IN`);
                 }
+
+                // Ensure we're paused before tune-in.
+                try {
+                    if (!video.paused) video.pause();
+                } catch (_) {
+                    // ignore
+                }
             }
             return true;
         } catch (err) {
@@ -416,7 +424,14 @@
     // Prevent user interaction with video
     video.addEventListener('play', (e) => {
         if (e.target !== video) return;
-        // Allow autoplay but prevent manual play
+        // Hard-block any playback until the user clicks TUNE IN.
+        if (!hasTunedIn) {
+            try {
+                video.pause();
+            } catch (_) {
+                // ignore
+            }
+        }
     });
     
     video.addEventListener('pause', (e) => {
@@ -456,6 +471,7 @@
     tuneBtn?.addEventListener('click', async () => {
         if (hasTunedIn) return;
         hasTunedIn = true;
+        isBlockingAutoplay = false;
         tuneBtn.textContent = '📡 TUNED';
         // Immediately sync and then start playback at the scheduled position.
         syncWithSchedule();
