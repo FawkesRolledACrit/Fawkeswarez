@@ -1,396 +1,367 @@
-(async () => {
-    const statusEl = document.getElementById('tv-status');
-    const sourceEl = document.getElementById('tv-source');
-    const containerEl = document.getElementById('tv-container');
-    const tuneBtn = document.getElementById('tv-tune');
-    const muteBtn = document.getElementById('tv-mute');
+/**
+ * Fawkesware TV - Proper Live Streaming Implementation
+ * NO AUTOPLAY - EVER. Video element only created after explicit user interaction.
+ */
 
-    let ads = null;
-    let schedule = null;
-    let currentBlockIndex = -1;
-    let currentQueueIndex = -1;
-    let currentItemUrl = null;
-    let hls = null;
-    let hasTunedIn = false;
-    let video = null;
-
-    function setStatus(text) {
-        statusEl.textContent = text;
+class LiveStreamPlayer {
+    constructor() {
+        this.container = document.getElementById('tv-container');
+        this.video = null;
+        this.hls = null;
+        this.tuneBtn = document.getElementById('tune-btn');
+        this.muteBtn = document.getElementById('mute-btn');
+        this.statusText = document.getElementById('status-text');
+        this.currentProgramEl = document.getElementById('current-program');
+        this.scheduleTimeEl = document.getElementById('schedule-time');
+        
+        this.hasTunedIn = false;
+        this.ads = null;
+        this.schedule = null;
+        this.syncInterval = null;
+        
+        // Schedule constants
+        this.BLOCK_DURATION = 30 * 60 * 1000; // 30 minutes
+        
+        this.init();
     }
-
-    function setSource(text) {
-        sourceEl.textContent = text;
+    
+    async init() {
+        // NO video element creation here
+        // NO autoplay prevention needed because there's no video
+        
+        // Load schedule data
+        try {
+            await this.loadScheduleData();
+            this.updateStatus('Ready to tune in...');
+            this.startScheduleUpdates();
+        } catch (error) {
+            this.updateStatus(`Error loading schedule: ${error.message}`);
+        }
+        
+        // Setup event listeners
+        this.setupEventListeners();
     }
-
-    function cleanupHls() {
-        if (hls) {
-            try {
-                hls.destroy();
-            } catch (_) {
-                // ignore
+    
+    async loadScheduleData() {
+        const [adsResponse, scheduleResponse] = await Promise.all([
+            fetch('./ads.json', { cache: 'no-store' }),
+            fetch('./schedule.json', { cache: 'no-store' })
+        ]);
+        
+        if (!adsResponse.ok || !scheduleResponse.ok) {
+            throw new Error('Failed to load schedule data');
+        }
+        
+        this.ads = await adsResponse.json();
+        this.schedule = await scheduleResponse.json();
+    }
+    
+    setupEventListeners() {
+        this.tuneBtn.addEventListener('click', () => this.tuneIn());
+        this.muteBtn.addEventListener('click', () => this.toggleMute());
+    }
+    
+    async tuneIn() {
+        if (this.hasTunedIn) return;
+        
+        this.hasTunedIn = true;
+        this.tuneBtn.textContent = '📡 TUNED';
+        this.updateStatus('Tuning in...');
+        
+        // Create video element ONLY NOW
+        this.createVideoElement();
+        
+        // Get current schedule position
+        const { currentUrl, currentTime, currentTitle } = this.getCurrentSchedulePosition();
+        
+        if (currentUrl && currentUrl !== 'REPLACE_ME') {
+            await this.loadVideo(currentUrl, currentTime, currentTitle);
+            await this.startPlayback();
+        } else {
+            this.updateStatus('No valid video URL in schedule');
+        }
+        
+        // Start sync interval
+        this.startSyncInterval();
+    }
+    
+    createVideoElement() {
+        // Create video element dynamically
+        this.video = document.createElement('video');
+        this.video.id = 'tv-player';
+        this.video.preload = 'none';
+        this.video.playsInline = true;
+        this.video.muted = true; // Start muted
+        
+        // Style to fill container
+        this.video.style.cssText = `
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background: #000;
+        `;
+        
+        // Add to container
+        this.container.appendChild(this.video);
+        
+        // Show video, hide placeholder
+        this.container.classList.add('active');
+        
+        // Add minimal event listeners
+        this.video.addEventListener('error', (e) => {
+            this.updateStatus(`Video error: ${e.message || 'Unknown error'}`);
+        });
+        
+        this.video.addEventListener('pause', () => {
+            if (this.hasTunedIn) {
+                // Auto-resume if user hasn't explicitly paused
+                setTimeout(() => {
+                    if (this.hasTunedIn && this.video.paused) {
+                        this.video.play().catch(() => {});
+                    }
+                }, 100);
             }
-            hls = null;
+        });
+    }
+    
+    async loadVideo(url, seekTime, title) {
+        this.updateStatus(`Loading: ${title}`);
+        
+        // Clean up previous HLS instance
+        if (this.hls) {
+            this.hls.destroy();
+            this.hls = null;
+        }
+        
+        const isHLS = url.includes('.m3u8');
+        
+        if (isHLS && Hls.isSupported()) {
+            this.hls = new Hls({
+                enableWorker: true,
+                lowLatencyMode: true,
+                maxBufferLength: 30,
+                maxMaxBufferLength: 600
+            });
+            
+            this.hls.loadSource(url);
+            this.hls.attachMedia(this.video);
+            
+            return new Promise((resolve) => {
+                this.hls.on(Hls.Events.MANIFEST_PARSED, () => {
+                    if (seekTime > 0) {
+                        this.video.currentTime = seekTime;
+                    }
+                    resolve();
+                });
+            });
+        } else if (this.video.canPlayType('application/vnd.apple.mpegurl')) {
+            // Safari native HLS
+            this.video.src = url;
+            
+            return new Promise((resolve) => {
+                this.video.addEventListener('loadedmetadata', () => {
+                    if (seekTime > 0) {
+                        this.video.currentTime = seekTime;
+                    }
+                    resolve();
+                }, { once: true });
+            });
+        } else {
+            // Direct MP4/WebM
+            this.video.src = url;
+            
+            return new Promise((resolve) => {
+                this.video.addEventListener('loadedmetadata', () => {
+                    if (seekTime > 0) {
+                        this.video.currentTime = seekTime;
+                    }
+                    resolve();
+                }, { once: true });
+            });
         }
     }
-
-    function inferTypeFromUrl(url) {
-        const lowered = String(url || '').toLowerCase();
-        if (lowered.includes('.m3u8')) return 'hls';
-        if (lowered.includes('.mp4')) return 'mp4';
-        if (lowered.includes('.webm')) return 'webm';
-        return 'unknown';
+    
+    async startPlayback() {
+        try {
+            await this.video.play();
+            this.updateStatus('Broadcast active');
+        } catch (error) {
+            this.updateStatus(`Playback failed: ${error.message}`);
+        }
     }
-
-    function formatTime(seconds) {
+    
+    getCurrentSchedulePosition() {
+        if (!this.schedule?.blocks?.length) {
+            return { currentUrl: null, currentTime: 0, currentTitle: 'No Schedule' };
+        }
+        
+        const now = Date.now();
+        const blockIndex = Math.floor(now / this.BLOCK_DURATION);
+        const blockStart = blockIndex * this.BLOCK_DURATION;
+        const blockElapsed = now - blockStart;
+        
+        // Build queue for current block
+        const queue = this.buildQueue(blockIndex);
+        const position = this.getQueuePosition(blockElapsed, queue);
+        
+        return {
+            currentUrl: queue[position.index]?.url || null,
+            currentTime: position.time,
+            currentTitle: queue[position.index]?.title || 'Unknown',
+            queue: queue
+        };
+    }
+    
+    buildQueue(blockIndex) {
+        const queue = [];
+        const block = this.schedule.blocks[0]; // Use first block for now
+        let usedTime = 0;
+        
+        for (const event of block.events) {
+            if (event.type === 'segment') {
+                queue.push({
+                    type: 'segment',
+                    url: event.url,
+                    title: event.title,
+                    duration: event.durationSeconds || 600
+                });
+                usedTime += event.durationSeconds || 600;
+            } else if (event.type === 'adbreak') {
+                const ads = this.fillAdBreak(
+                    event.targetSeconds === 'auto' 
+                        ? Math.max(60, block.slotSeconds - usedTime)
+                        : event.targetSeconds,
+                    event.toleranceSeconds || 3,
+                    blockIndex * 1000 + queue.length
+                );
+                queue.push(...ads);
+                usedTime += ads.reduce((sum, ad) => sum + ad.duration, 0);
+            }
+        }
+        
+        return queue;
+    }
+    
+    fillAdBreak(targetSeconds, tolerance, seed) {
+        if (!this.ads?.items?.length) return [];
+        
+        const validAds = this.ads.items.filter(ad => ad.durationSeconds > 0);
+        const selected = [];
+        let total = 0;
+        
+        // Simple seeded random for consistency
+        const rng = this.seededRandom(seed);
+        const shuffled = [...validAds].sort(() => rng() - 0.5);
+        
+        for (const ad of shuffled) {
+            if (total + ad.durationSeconds <= targetSeconds + tolerance) {
+                selected.push({
+                    type: 'ad',
+                    url: ad.url,
+                    title: 'Commercial',
+                    duration: ad.durationSeconds
+                });
+                total += ad.durationSeconds;
+                
+                if (total >= targetSeconds - tolerance) break;
+            }
+        }
+        
+        return selected;
+    }
+    
+    seededRandom(seed) {
+        let value = seed;
+        return () => {
+            value = (value * 9301 + 49297) % 233280;
+            return value / 233280;
+        };
+    }
+    
+    getQueuePosition(elapsedMs, queue) {
+        let accumulated = 0;
+        
+        for (let i = 0; i < queue.length; i++) {
+            const itemDuration = queue[i].duration * 1000;
+            if (accumulated + itemDuration > elapsedMs) {
+                return {
+                    index: i,
+                    time: (elapsedMs - accumulated) / 1000
+                };
+            }
+            accumulated += itemDuration;
+        }
+        
+        return { index: queue.length - 1, time: queue[queue.length - 1]?.duration || 0 };
+    }
+    
+    startSyncInterval() {
+        // Sync every 2 seconds to maintain schedule
+        this.syncInterval = setInterval(() => {
+            this.syncWithSchedule();
+        }, 2000);
+    }
+    
+    syncWithSchedule() {
+        if (!this.hasTunedIn || !this.video) return;
+        
+        const { currentTime, currentTitle } = this.getCurrentSchedulePosition();
+        const expectedTime = currentTime;
+        const actualTime = this.video.currentTime;
+        
+        // Update UI
+        this.currentProgramEl.textContent = currentTitle;
+        this.scheduleTimeEl.textContent = this.formatTime(expectedTime);
+        
+        // Correct drift if significant
+        const drift = Math.abs(actualTime - expectedTime);
+        if (drift > 3) {
+            try {
+                this.video.currentTime = expectedTime;
+            } catch (e) {
+                // Ignore seek errors
+            }
+        }
+        
+        // Update status
+        if (drift <= 2) {
+            this.updateStatus(`Live: ${currentTitle}`);
+        }
+    }
+    
+    startScheduleUpdates() {
+        // Update schedule info every second even before tuning in
+        setInterval(() => {
+            const { currentTitle } = this.getCurrentSchedulePosition();
+            this.currentProgramEl.textContent = currentTitle;
+            
+            const now = Date.now();
+            const blockElapsed = now % this.BLOCK_DURATION;
+            this.scheduleTimeEl.textContent = this.formatTime(blockElapsed / 1000);
+        }, 1000);
+    }
+    
+    toggleMute() {
+        if (!this.video) return;
+        
+        this.video.muted = !this.video.muted;
+        this.muteBtn.textContent = this.video.muted ? '🔊 UNMUTE' : '🔇 MUTE';
+    }
+    
+    updateStatus(text) {
+        this.statusText.textContent = text;
+    }
+    
+    formatTime(seconds) {
         if (!Number.isFinite(seconds)) return '--:--';
         const s = Math.max(0, Math.floor(seconds));
         const m = Math.floor(s / 60);
         const r = s % 60;
         return `${m}:${String(r).padStart(2, '0')}`;
     }
+}
 
-    function clampSeek(seconds) {
-        if (!Number.isFinite(seconds)) return 0;
-        if (seconds < 0) return 0;
-        return seconds;
-    }
-
-    const BLOCK_MS = 30 * 60 * 1000;
-
-    async function loadAds() {
-        const res = await fetch('./ads.json', { cache: 'no-store' });
-        if (!res.ok) {
-            throw new Error(`Failed to load ads.json (HTTP ${res.status})`);
-        }
-        return res.json();
-    }
-
-    async function loadSchedule() {
-        const res = await fetch('./schedule.json', { cache: 'no-store' });
-        if (!res.ok) {
-            throw new Error(`Failed to load schedule.json (HTTP ${res.status})`);
-        }
-        return res.json();
-    }
-
-    function fillAdBreak(targetSeconds, toleranceSeconds = 3, seed = null) {
-        if (!ads?.items?.length) return [];
-        
-        const validAds = ads.items.filter(ad => ad.durationSeconds !== null && ad.durationSeconds > 0);
-        if (validAds.length === 0) return [];
-        
-        const selected = [];
-        let totalDuration = 0;
-        
-        // Use seeded random for consistent ad selection across all viewers
-        const rng = seed ? new SeededRandom(seed) : Math;
-        const shuffled = [...validAds].sort(() => rng.random() - 0.5);
-        
-        for (const ad of shuffled) {
-            if (totalDuration + ad.durationSeconds <= targetSeconds + toleranceSeconds) {
-                selected.push({
-                    type: 'ad',
-                    url: ad.url,
-                    title: `Commercial`,
-                    durationSeconds: ad.durationSeconds
-                });
-                totalDuration += ad.durationSeconds;
-                
-                if (totalDuration >= targetSeconds - toleranceSeconds) {
-                    break;
-                }
-            }
-        }
-        
-        return selected;
-    }
-
-    // Simple seeded random number generator for consistent ad selection
-    class SeededRandom {
-        constructor(seed) {
-            this.seed = seed;
-        }
-        
-        random() {
-            this.seed = (this.seed * 9301 + 49297) % 233280;
-            return this.seed / 233280;
-        }
-    }
-
-    function buildPlayQueue(blockIndex) {
-        if (!schedule?.blocks?.length) return [];
-        
-        const queue = [];
-        const block = schedule.blocks[0]; // Always use first block for now
-        let blockUsedTime = 0;
-        
-        for (let i = 0; i < block.events.length; i++) {
-            const event = block.events[i];
-            
-            if (event.type === 'segment') {
-                const segmentDuration = Number.isFinite(event.durationSeconds) ? event.durationSeconds : 600;
-                queue.push({
-                    type: 'segment',
-                    url: event.url,
-                    title: event.title,
-                    durationSeconds: segmentDuration
-                });
-                blockUsedTime += segmentDuration;
-            } else if (event.type === 'adbreak') {
-                let targetDuration;
-                
-                if (event.targetSeconds === 'auto') {
-                    targetDuration = Math.max(60, block.slotSeconds - blockUsedTime);
-                } else {
-                    targetDuration = event.targetSeconds;
-                }
-                
-                const tolerance = event.toleranceSeconds || 3;
-                // Use block index and event index as seed for consistent ad selection
-                const seed = blockIndex * 1000 + i;
-                const selectedAds = fillAdBreak(targetDuration, tolerance, seed);
-                
-                queue.push(...selectedAds);
-                blockUsedTime += selectedAds.reduce((sum, ad) => sum + ad.durationSeconds, 0);
-            }
-        }
-        
-        return queue;
-    }
-
-    function getCurrentScheduleTime() {
-        // Use epoch-based boundaries so all viewers share the same block boundaries.
-        const nowMs = Date.now();
-        const currentBlockIndex = Math.floor(nowMs / BLOCK_MS);
-        const blockStartMs = currentBlockIndex * BLOCK_MS;
-        const blockElapsedMs = nowMs - blockStartMs;
-        return {
-            nowMs,
-            currentBlockIndex,
-            blockStartMs,
-            blockElapsedMs
-        };
-    }
-
-    function calculateCurrentQueueIndex(elapsedMs, playQueue) {
-        if (!playQueue.length) return 0;
-        
-        const blockElapsed = elapsedMs % BLOCK_MS;
-        let accumulatedTime = 0;
-        
-        for (let i = 0; i < playQueue.length; i++) {
-            const itemDuration = playQueue[i].durationSeconds || 30;
-            if (accumulatedTime + (itemDuration * 1000) > blockElapsed) {
-                return i;
-            }
-            accumulatedTime += itemDuration * 1000;
-        }
-        
-        return playQueue.length - 1;
-    }
-
-    function createVideoElement() {
-        // Create video element dynamically
-        video = document.createElement('video');
-        video.id = 'tv-player';
-        video.playsinline = true;
-        video.preload = 'auto';
-        video.style.cssText = 'width:100%; height:540px; background:#000; border:none; outline:none;';
-        video.setAttribute('disablepictureinpicture', '');
-        video.setAttribute('controlslist', 'nodownload nofullscreen nomute');
-        
-        // Replace container with video
-        containerEl.innerHTML = '';
-        containerEl.appendChild(video);
-        
-        // Add event listeners
-        video.addEventListener('pause', (e) => {
-            if (e.target !== video) return;
-            if (hasTunedIn) {
-                setTimeout(() => {
-                    if (hasTunedIn) {
-                        video.play().catch(() => {});
-                    }
-                }, 100);
-            }
-        });
-
-        video.addEventListener('seeking', (e) => {
-            if (e.target !== video) return;
-            if (hasTunedIn) {
-                setTimeout(() => syncWithSchedule(), 100);
-            }
-        });
-
-        video.addEventListener('ratechange', (e) => {
-            if (e.target !== video) return;
-            video.playbackRate = 1;
-        });
-
-        video.addEventListener('volumechange', (e) => {
-            if (e.target !== video) return;
-            if (muteBtn) {
-                muteBtn.textContent = video.muted ? '🔊 UNMUTE' : '🔇 MUTE';
-            }
-        });
-    }
-
-    async function prepareVideo(url, title, seekToTime = null) {
-        if (!video) {
-            createVideoElement();
-        }
-
-        cleanupHls();
-
-        if (!url || url.includes('REPLACE_ME')) {
-            setStatus(`Schedule loaded, but the URL for "${title}" is not set yet.`);
-            setSource('Update tv/schedule.json with real video URLs');
-            return false;
-        }
-
-        const desiredSeek = clampSeek(seekToTime ?? 0);
-
-        setStatus(`Loading: ${title}`);
-        setSource(url);
-
-        const type = inferTypeFromUrl(url);
-
-        if (type === 'hls') {
-            if (video.canPlayType('application/vnd.apple.mpegurl')) {
-                video.src = url;
-            } else if (window.Hls?.isSupported?.()) {
-                hls = new window.Hls({
-                    enableWorker: true,
-                    lowLatencyMode: true
-                });
-                hls.loadSource(url);
-                hls.attachMedia(video);
-            } else {
-                setStatus('HLS not supported in this browser. Try Chrome/Edge or use MP4 files for testing.');
-                return false;
-            }
-        } else {
-            video.src = url;
-        }
-
-        // Wait for metadata to be available
-        return new Promise((resolve) => {
-            const onLoadedMetadata = () => {
-                video.removeEventListener('loadedmetadata', onLoadedMetadata);
-                
-                // Seek to the correct position if specified
-                if (desiredSeek > 0 && Number.isFinite(video.duration) && desiredSeek < video.duration) {
-                    try {
-                        video.currentTime = desiredSeek;
-                        if (!hasTunedIn) {
-                            setStatus(`Ready: ${title} (${formatTime(video.currentTime)}) - press TUNE IN`);
-                        }
-                    } catch (_) {
-                        if (!hasTunedIn) {
-                            setStatus(`Ready: ${title} (seek failed) - press TUNE IN`);
-                        }
-                    }
-                } else {
-                    if (!hasTunedIn) {
-                        setStatus(`Ready: ${title} - press TUNE IN`);
-                    }
-                }
-                
-                resolve(true);
-            };
-            
-            video.addEventListener('loadedmetadata', onLoadedMetadata);
-            
-            // Fallback timeout
-            setTimeout(() => {
-                video.removeEventListener('loadedmetadata', onLoadedMetadata);
-                if (!hasTunedIn) {
-                    setStatus(`Ready: ${title} - press TUNE IN`);
-                }
-                resolve(true);
-            }, 5000);
-        });
-    }
-
-    function syncWithSchedule() {
-        const { currentBlockIndex: newBlockIndex, blockElapsedMs } = getCurrentScheduleTime();
-        const playQueue = buildPlayQueue(newBlockIndex);
-        if (!playQueue.length) return;
-
-        const targetIndex = calculateCurrentQueueIndex(blockElapsedMs, playQueue);
-        let accumulatedTimeMs = 0;
-        for (let i = 0; i < targetIndex; i++) {
-            accumulatedTimeMs += (playQueue[i].durationSeconds || 30) * 1000;
-        }
-        const expectedTime = clampSeek((blockElapsedMs - accumulatedTimeMs) / 1000);
-        const targetItem = playQueue[targetIndex];
-
-        const shouldReload =
-            newBlockIndex !== currentBlockIndex ||
-            targetIndex !== currentQueueIndex ||
-            (currentItemUrl && targetItem.url !== currentItemUrl) ||
-            (!currentItemUrl && targetItem.url);
-
-        // Update indices
-        currentBlockIndex = newBlockIndex;
-        currentQueueIndex = targetIndex;
-
-        if (shouldReload) {
-            currentItemUrl = targetItem.url;
-            void prepareVideo(targetItem.url, targetItem.title, expectedTime);
-        } else {
-            // Update status with current time
-            if (hasTunedIn && video && Number.isFinite(video.currentTime)) {
-                setStatus(`Live: ${targetItem.title} (expected ${formatTime(expectedTime)}; actual ${formatTime(video.currentTime)})`);
-            } else if (!hasTunedIn) {
-                setStatus(`Ready: ${targetItem.title} (expected ${formatTime(expectedTime)}; actual ${formatTime(video?.currentTime || 0)}) - press TUNE IN`);
-            }
-        }
-    }
-
-    muteBtn?.addEventListener('click', () => {
-        if (video) {
-            video.muted = !video.muted;
-            muteBtn.textContent = video.muted ? '🔊 UNMUTE' : '🔇 MUTE';
-        }
-    });
-
-    tuneBtn?.addEventListener('click', async () => {
-        if (hasTunedIn) return;
-        hasTunedIn = true;
-        tuneBtn.textContent = '📡 TUNED';
-        
-        // First sync to get the correct video for current time
-        syncWithSchedule();
-        
-        // Wait a bit for video to be created
-        await new Promise(r => setTimeout(r, 100));
-        
-        // Start playback
-        try {
-            if (video) {
-                await video.play();
-                setStatus(`Now Playing: ${currentItemUrl ? 'Live Stream' : 'Loading...'}`);
-            }
-        } catch (err) {
-            setStatus(`Playback failed - click TUNE IN again`);
-        }
-        
-        // Start syncing every 2 seconds
-        setInterval(() => {
-            syncWithSchedule();
-        }, 2000);
-    });
-
-    try {
-        [ads, schedule] = await Promise.all([loadAds(), loadSchedule()]);
-        
-        setStatus('Ready to tune in…');
-        // Don't sync yet - wait for TUNE IN to be clicked
-        // syncWithSchedule();
-        
-    } catch (e) {
-        setStatus(`Error: ${e?.message || e}`);
-        setSource('—');
-    }
-})();
+// Initialize ONLY when page is fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+    new LiveStreamPlayer();
+});

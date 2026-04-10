@@ -5,58 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>📺 Fawkesware TV 📺</title>
     <link rel="stylesheet" href="../style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Chakra+etch:wght@400;500;600&display=swap" rel="stylesheet">
-    <style>
-        .tv-container {
-            width: 100%;
-            max-width: 960px;
-            height: 540px;
-            background: #000;
-            border: 3px solid #0F0;
-            box-shadow: 0 0 20px rgba(0,255,0,0.35);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #0F0;
-            font-family: 'Chakra Petch', monospace;
-            font-size: 18px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .tv-container video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: none;
-        }
-        
-        .tv-placeholder {
-            z-index: 10;
-        }
-        
-        .tv-container.active video {
-            display: block;
-        }
-        
-        .tv-container.active .tv-placeholder {
-            display: none;
-        }
-        
-        .status-bar {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0,0,0,0.8);
-            color: #0F0;
-            padding: 10px;
-            font-family: 'Chakra Petch', monospace;
-            font-size: 12px;
-            border-top: 1px solid #0F0;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="matrix-bg"></div>
@@ -74,8 +23,8 @@
     <nav class="y2k-nav">
         <div class="nav-buttons">
             <button class="nav-btn" onclick="window.location.href='../'">⬅ BACK</button>
-            <button class="nav-btn" id="tune-btn">📡 TUNE IN</button>
-            <button class="nav-btn" id="mute-btn">🔇 MUTE</button>
+            <button class="nav-btn" id="tv-tune">📡 TUNE IN</button>
+            <button class="nav-btn" id="tv-mute">🔇 MUTE</button>
         </div>
     </nav>
 
@@ -85,22 +34,18 @@
 
             <div class="welcome-box">
                 <div style="display:flex; justify-content:center;">
-                    <div id="tv-container" class="tv-container">
-                        <div class="tv-placeholder">
+                    <div id="tv-container" style="width:100%; max-width:960px; background:#000; border:3px solid #0F0; box-shadow:0 0 20px rgba(0,255,0,0.35); height:540px; display:flex; align-items:center; justify-content:center; color:#0F0; font-family:'Chakra Petch', monospace; font-size:18px; text-align:center;">
+                        <div>
                             <div style="font-size:48px; margin-bottom:20px;">📡</div>
                             <div>READY TO TUNE IN</div>
                             <div style="font-size:14px; margin-top:10px; opacity:0.7;">Click TUNE IN to start broadcast</div>
-                        </div>
-                        <video id="tv-player" preload="none"></video>
-                        <div class="status-bar" id="status-bar">
-                            <span id="status-text">Ready to tune in...</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="blink-box" style="margin-top: 15px;">
-                    <p><strong>Current Program:</strong> <span id="current-program">--</span></p>
-                    <p><strong>Schedule Time:</strong> <span id="schedule-time">--:--</span></p>
+                    <p><strong>Status:</strong> <span id="tv-status">Loading playlist…</span></p>
+                    <p><strong>Source:</strong> <span id="tv-source">—</span></p>
                 </div>
 
                 <div class="featured-content" style="margin-top: 15px;">
