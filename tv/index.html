@@ -4,21 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>📺 Fawkesware TV 📺</title>
-    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Chakra+etch:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* CRITICAL CSS - INLINE TO FORCE LOADING */
-        * {
+        body {
+            background-color: #000000;
+            color: #00FF00;
+            font-family: 'Chakra Petch', monospace;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Chakra Petch', 'Segoe UI', sans-serif;
-            background: #000 !important;
-            color: #0F0 !important;
-            overflow-x: hidden;
         }
         
         .matrix-bg {
@@ -27,93 +20,54 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, #000 25%, #0a0a0a 25%, #0a0a0a 50%, #000 50%, #000 75%, #0a0a0a 75%, #0a0a0a) !important;
+            background: linear-gradient(45deg, #000 25%, #0a0a0a 25%, #0a0a0a 50%, #000 50%, #000 75%, #0a0a0a 75%, #0a0a0a);
             background-size: 20px 20px;
-            animation: matrix-scroll 20s linear infinite;
             z-index: -2;
         }
         
-        @keyframes matrix-scroll {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(20px); }
-        }
-        
-        .stars {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-        
-        .y2k-header {
-            background: linear-gradient(45deg, #FF00FF, #00FFFF, #FFFF00) !important;
+        .header {
+            background: linear-gradient(45deg, #FF00FF, #00FFFF, #FFFF00);
             padding: 20px;
             text-align: center;
-            border-bottom: 5px solid #0F0 !important;
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+            border-bottom: 5px solid #00FF00;
         }
         
-        .glitch-text {
-            font-family: 'Chakra Petch', 'Segoe UI', sans-serif;
+        .title {
             font-size: 2rem;
-            color: #000 !important;
-            text-shadow: 
-                2px 2px 0 #FF00FF,
-                -2px -2px 0 #00FFFF,
-                2px -2px 0 #FFFF00,
-                -2px 2px 0 #0F0 !important;
-            animation: glitch 2s infinite;
-        }
-        
-        @keyframes glitch {
-            0%, 100% { text-shadow: 2px 2px 0 #FF00FF, -2px -2px 0 #00FFFF, 2px -2px 0 #FFFF00, -2px 2px 0 #0F0; }
-            25% { text-shadow: -2px 2px 0 #FF00FF, 2px -2px 0 #00FFFF, -2px -2px 0 #FFFF00, 2px 2px 0 #0F0; }
-            50% { text-shadow: 2px -2px 0 #FF00FF, -2px 2px 0 #00FFFF, 2px 2px 0 #FFFF00, -2px -2px 0 #0F0; }
-            75% { text-shadow: -2px -2px 0 #FF00FF, 2px 2px 0 #00FFFF, -2px 2px 0 #FFFF00, 2px -2px 0 #0F0; }
-        }
-        
-        .under-construction {
-            margin-top: 10px;
-            font-size: 1.2rem;
             color: #000;
-            font-weight: bold;
+            text-shadow: 2px 2px 0 #FF00FF, -2px -2px 0 #00FFFF;
         }
         
-        .y2k-nav {
-            background: #111 !important;
+        .nav {
+            background: #111111;
             padding: 15px;
-            border-bottom: 2px solid #0F0 !important;
+            border-bottom: 2px solid #00FF00;
         }
         
         .nav-buttons {
             display: flex;
             justify-content: center;
             gap: 15px;
-            flex-wrap: wrap;
         }
         
         .nav-btn {
-            background: linear-gradient(45deg, #0F0, #0a0) !important;
-            border: 2px solid #0F0 !important;
-            color: #000 !important;
+            background: linear-gradient(45deg, #00FF00, #0a0);
+            border: 2px solid #00FF00;
+            color: #000;
             padding: 10px 20px;
             font-family: 'Chakra Petch', monospace;
             font-weight: bold;
             cursor: pointer;
-            transition: all 0.3s;
             text-transform: uppercase;
         }
         
         .nav-btn:hover {
-            background: linear-gradient(45deg, #0a0, #0F0) !important;
-            color: #0F0 !important;
+            background: linear-gradient(45deg, #0a0, #00FF00);
+            color: #00FF00;
             box-shadow: 0 0 15px rgba(0,255,0,0.8);
-            transform: scale(1.05);
         }
         
-        .main-content {
+        .content {
             padding: 20px;
             max-width: 1400px;
             margin: 0 auto;
@@ -123,35 +77,21 @@
             text-align: center;
             font-size: 2.5em;
             margin-bottom: 30px;
-            color: #0F0 !important;
+            color: #00FF00;
             text-shadow: 0 0 10px rgba(0,255,0,0.8);
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-        
-        .welcome-box {
-            background: rgba(0,20,0,0.8) !important;
-            border: 2px solid #0F0 !important;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 0 30px rgba(0,255,0,0.3);
         }
         
         .tv-container {
             width: 100%;
             max-width: 960px;
             height: 540px;
-            background: #000 !important;
-            border: 3px solid #0F0 !important;
+            background: #000;
+            border: 3px solid #00FF00;
             box-shadow: 0 0 20px rgba(0,255,0,0.35);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #0F0 !important;
+            color: #00FF00;
             font-family: 'Chakra Petch', monospace;
             font-size: 18px;
             text-align: center;
@@ -167,41 +107,29 @@
             display: none;
         }
         
-        .tv-placeholder {
-            z-index: 10;
-        }
-        
-        .tv-container.active video {
-            display: block;
-        }
-        
-        .tv-container.active .tv-placeholder {
-            display: none;
-        }
-        
         .status-bar {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            background: rgba(0,0,0,0.8) !important;
-            color: #0F0 !important;
+            background: rgba(0,0,0,0.8);
+            color: #00FF00;
             padding: 10px;
             font-family: 'Chakra Petch', monospace;
             font-size: 12px;
-            border-top: 1px solid #0F0;
+            border-top: 1px solid #00FF00;
         }
         
         .stream-info {
             margin-top: 30px;
-            background: rgba(0,30,0,0.6) !important;
-            border: 2px solid #0F0 !important;
+            background: rgba(0,30,0,0.6);
+            border: 2px solid #00FF00;
             border-radius: 10px;
             padding: 20px;
         }
         
         .stream-info h3 {
-            color: #0F0 !important;
+            color: #00FF00;
             margin-bottom: 15px;
             text-align: center;
         }
@@ -216,55 +144,33 @@
             display: flex;
             justify-content: space-between;
             padding: 8px;
-            background: rgba(0,0,0,0.5) !important;
-            border-left: 3px solid #0F0;
+            background: rgba(0,0,0,0.5);
+            border-left: 3px solid #00FF00;
         }
         
         .status-label {
-            color: #0F0 !important;
+            color: #00FF00;
             font-weight: bold;
         }
         
         .stream-controls {
             text-align: center;
             opacity: 0.8;
-            color: #0F0 !important;
-        }
-        
-        .stream-controls p {
-            margin: 5px 0;
-        }
-        
-        @media (max-width: 768px) {
-            .nav-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .glitch-text {
-                font-size: 1.5em;
-            }
-            
-            .tv-container {
-                height: 300px;
-            }
+            color: #00FF00;
         }
     </style>
 </head>
 <body>
     <div class="matrix-bg"></div>
-    <div class="stars"></div>
-
-    <header class="y2k-header">
-        <div class="header-content">
-            <h1 class="glitch-text" data-text="Fawkesware TV">Fawkesware TV</h1>
-            <div class="under-construction">
-                <marquee behavior="scroll" direction="left">📺 24/7 RETRO STREAM 📺 DEXTER'S LAB EVERY 30 MIN 📺 SYNCHRONIZED BROADCAST 📺</marquee>
-            </div>
+    
+    <div class="header">
+        <h1 class="title">Fawkesware TV</h1>
+        <div style="margin-top: 10px; font-size: 1.2rem; color: #000; font-weight: bold;">
+            📺 24/7 RETRO STREAM 📺 DEXTER'S LAB EVERY 30 MIN 📺 SYNCHRONIZED BROADCAST 📺
         </div>
-    </header>
+    </div>
 
-    <nav class="y2k-nav">
+    <div class="nav">
         <div class="nav-buttons">
             <button class="nav-btn" onclick="window.location.href='../'">⬅ BACK</button>
             <button class="nav-btn" id="tune-btn">📡 TUNE IN</button>
@@ -272,54 +178,52 @@
             <button class="nav-btn" id="fullscreen-btn">⛶ FULLSCREEN</button>
             <button class="nav-btn" id="lineup-btn">📅 LINEUP</button>
         </div>
-    </nav>
+    </div>
 
-    <main class="main-content">
-        <section class="content-section active">
-            <h2 class="section-title">📼 NOW PLAYING 📼</h2>
+    <div class="content">
+        <h2 class="section-title">📼 NOW PLAYING 📼</h2>
 
-            <div class="welcome-box">
-                <div style="display:flex; justify-content:center;">
-                    <div id="tv-container" class="tv-container">
-                        <div class="tv-placeholder">
-                            <div style="font-size:48px; margin-bottom:20px;">📡</div>
-                            <div>READY TO TUNE IN</div>
-                            <div style="font-size:14px; margin-top:10px; opacity:0.7;">Click TUNE IN to start broadcast</div>
-                        </div>
-                        <video id="tv-player" preload="none"></video>
-                        <div class="status-bar" id="status-bar">
-                            <span id="status-text">Ready to tune in...</span>
-                        </div>
+        <div style="background: rgba(0,20,0,0.8); border: 2px solid #00FF00; border-radius: 10px; padding: 30px; box-shadow: 0 0 30px rgba(0,255,0,0.3);">
+            <div style="display:flex; justify-content:center;">
+                <div id="tv-container" class="tv-container">
+                    <div class="tv-placeholder">
+                        <div style="font-size:48px; margin-bottom:20px;">📡</div>
+                        <div>READY TO TUNE IN</div>
+                        <div style="font-size:14px; margin-top:10px; opacity:0.7;">Click TUNE IN to start broadcast</div>
                     </div>
-                </div>
-
-                <div class="stream-info">
-                    <h3>📡 STREAM STATUS</h3>
-                    <div class="status-grid">
-                        <div class="status-item">
-                            <span class="status-label">Current Program:</span>
-                            <span id="current-program">OFF AIR</span>
-                        </div>
-                        <div class="status-item">
-                            <span class="status-label">Schedule Time:</span>
-                            <span id="schedule-time">00:00:00</span>
-                        </div>
-                        <div class="status-item">
-                            <span class="status-label">Stream Status:</span>
-                            <span id="stream-status">STANDBY</span>
-                        </div>
-                    </div>
-                    <div class="stream-controls">
-                        <p>This is a true live stream - no user controls available.</p>
-                        <p>All viewers are perfectly synchronized to the same broadcast.</p>
-                        <p>Dexter's Laboratory airs every 30 minutes with commercial breaks.</p>
+                    <video id="tv-player" preload="none"></video>
+                    <div class="status-bar" id="status-bar">
+                        <span id="status-text">Ready to tune in...</span>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
+
+            <div class="stream-info">
+                <h3>📡 STREAM STATUS</h3>
+                <div class="status-grid">
+                    <div class="status-item">
+                        <span class="status-label">Current Program:</span>
+                        <span id="current-program">OFF AIR</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">Schedule Time:</span>
+                        <span id="schedule-time">00:00:00</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">Stream Status:</span>
+                        <span id="stream-status">STANDBY</span>
+                    </div>
+                </div>
+                <div class="stream-controls">
+                    <p>This is a true live stream - no user controls available.</p>
+                    <p>All viewers are perfectly synchronized to the same broadcast.</p>
+                    <p>Dexter's Laboratory airs every 30 minutes with commercial breaks.</p>
+                </div>
+            </div>
+        </div>
+    </div>
     
     <script src="https://cdn.jsdelivr.net/npm/hls.js@1/dist/hls.min.js"></script>
-    <script src="tv.js?t=1712804800"></script>
+    <script src="tv.js?t=1712808400"></script>
 </body>
 </html>
