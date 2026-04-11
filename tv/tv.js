@@ -1135,6 +1135,57 @@ class LiveStreamPlayer {
         
         return totalViewers.toLocaleString();
     }
+    
+    updateStatusDisplay() {
+        const weeklySlot = this.getWeeklySlotForNow();
+        const currentBlock = this.getCurrentBlockInfo();
+        
+        // Update current block - CONSISTENT FORMAT
+        if (this.currentBlockEl) {
+            if (weeklySlot && currentBlock?.blockName) {
+                let blockText = `${currentBlock.blockName} • ${weeklySlot.time} - ${weeklySlot.program}`;
+                if (currentBlock?.episode) {
+                    blockText += ` • ${currentBlock.episode}`;
+                }
+                this.currentBlockEl.textContent = blockText;
+            } else {
+                this.currentBlockEl.textContent = 'OFF AIR';
+            }
+        }
+        
+        // Update current program
+        if (this.currentProgramEl) {
+            const { currentTitle } = this.getCurrentSchedulePosition();
+            this.currentProgramEl.textContent = currentTitle || 'OFF AIR';
+        }
+        
+        // Update schedule time
+        if (this.scheduleTimeEl) {
+            const blockElapsedSeconds = (this.nowMs() % this.BLOCK_DURATION) / 1000;
+            this.scheduleTimeEl.textContent = this.formatTime(blockElapsedSeconds);
+        }
+        
+        // Update next up
+        if (this.nextUpEl) {
+            this.nextUpEl.textContent = this.getNextUp();
+        }
+        
+        // Update stream status with REAL data
+        if (this.streamStatusEl) {
+            const now = new Date();
+            const localTime = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+            
+            if (this.hasTunedIn && this.video && !this.video.paused) {
+                // ACTUALLY LIVE
+                const uptime = this.getStreamUptime();
+                const viewers = this.getViewerCount();
+                this.streamStatusEl.textContent = `🔴 LIVE • ${localTime} • Uptime: ${uptime} • Viewers: ${viewers}`;
+            } else {
+                // NOT LIVE
+                this.streamStatusEl.textContent = `📴 OFF AIR • ${localTime} • Viewers: 0`;
+            }
+        }
+    }
 }
 
 // Initialize immediately or when DOM is ready
