@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>TV Guide - Fawkeswarez</title>
     <link rel="stylesheet" href="../style.css">
     <style>
@@ -268,8 +271,9 @@
         async function loadData() {
             try {
                 const timestamp = new Date().getTime();
-                console.log('Loading weekly lineup with timestamp:', timestamp);
-                const response = await fetch('weekly-lineup.json?t=' + timestamp);
+                const cacheBuster = timestamp + '_' + Math.random().toString(36).substr(2, 9);
+                console.log('Loading weekly lineup with cache buster:', cacheBuster);
+                const response = await fetch('weekly-lineup.json?t=' + cacheBuster);
                 weeklyLineup = await response.json();
                 console.log('Loaded weekly lineup, total entries:', weeklyLineup.length);
                 console.log('First few entries:', weeklyLineup.slice(0, 3));
