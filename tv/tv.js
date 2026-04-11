@@ -81,21 +81,28 @@ class LiveStreamPlayer {
         
         // Wait a tick to ensure DOM is ready
         await new Promise(resolve => setTimeout(resolve, 0));
+        console.log('DOM ready, checking elements...');
         
         // NO video element creation here
         // NO autoplay prevention needed because there's no video
         
         // Load schedule data
         try {
+            console.log('Loading schedule data...');
             await this.loadScheduleData();
+            console.log('Schedule data loaded');
             this.updateStatus('Ready to tune in...');
             this.startScheduleUpdates();
+            console.log('Schedule updates started');
         } catch (error) {
+            console.error('Error loading schedule:', error);
             this.updateStatus(`Error loading schedule: ${error.message}`);
         }
         
         // Setup event listeners
+        console.log('Setting up event listeners...');
         this.setupEventListeners();
+        console.log('Initialization complete');
     }
     
     async loadScheduleData() {
@@ -1125,5 +1132,11 @@ class LiveStreamPlayer {
 
 // Initialize ONLY when page is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
-    new LiveStreamPlayer();
+    console.log('DOMContentLoaded fired, creating LiveStreamPlayer...');
+    try {
+        const player = new LiveStreamPlayer();
+        console.log('LiveStreamPlayer created successfully');
+    } catch (error) {
+        console.error('Error creating LiveStreamPlayer:', error);
+    }
 });
