@@ -168,16 +168,26 @@ class LiveStreamPlayer {
                 const duration = Math.max(0, nextStart - cur.startMin);
                 const slotCount = Math.floor(duration / 30);
                 for (let k = 0; k < slotCount; k++) {
+                    const slotStartMin = cur.startMin + (k * 30);
                     slots.push({
-                        startMin: cur.startMin + (k * 30),
+                        startMin: slotStartMin,
                         endMin: cur.startMin + ((k + 1) * 30),
-                        program: cur.program
+                        program: cur.program,
+                        time: this.minutesToTime(slotStartMin)
                     });
                 }
             }
             out[day] = slots;
         }
         return out;
+    }
+
+    minutesToTime(minutes) {
+        const hours = Math.floor(minutes / 60);
+        const mins = minutes % 60;
+        const period = hours >= 12 ? 'PM' : 'AM';
+        const displayHours = hours === 0 ? 12 : (hours > 12 ? hours - 12 : hours);
+        return `${displayHours}:${mins.toString().padStart(2, '0')} ${period}`;
     }
 
     getWeeklySlotForNow() {
@@ -189,10 +199,11 @@ class LiveStreamPlayer {
         // Find the slot where mins is within [start,end)
         for (const s of slots) {
             if (mins >= s.startMin && mins < s.endMin) {
-                return { ...s, dayName, mins };
+                return { ...s, dayName, mins, time: this.minutesToTime(s.startMin) };
             }
         }
-        return { program: null, startMin: Math.floor(mins / 30) * 30, endMin: Math.floor(mins / 30) * 30 + 30, dayName, mins };
+        const slotStartMin = Math.floor(mins / 30) * 30;
+        return { program: null, startMin: slotStartMin, endMin: slotStartMin + 30, dayName, mins, time: this.minutesToTime(slotStartMin) };
     }
 
     goOffAir(title) {
