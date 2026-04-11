@@ -7,7 +7,136 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Chakra+etch:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* TV container specific overrides */
+        /* Critical CSS - inline to ensure page loads with basic styling */
+        body {
+            font-family: 'Chakra Petch', 'Segoe UI', sans-serif;
+            background: #000;
+            color: #0F0;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #000 25%, #0a0a0a 25%, #0a0a0a 50%, #000 50%, #000 75%, #0a0a0a 75%, #0a0a0a);
+            background-size: 20px 20px;
+            animation: matrix-scroll 20s linear infinite;
+            z-index: -2;
+        }
+        
+        @keyframes matrix-scroll {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(20px); }
+        }
+        
+        .y2k-header {
+            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+            border-bottom: 3px solid #0F0;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0,255,0,0.3);
+        }
+        
+        .glitch-text {
+            font-size: 3em;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #0F0;
+            text-shadow: 2px 2px 0 #F0F, -2px -2px 0 #0FF;
+            animation: glitch 2s infinite;
+        }
+        
+        @keyframes glitch {
+            0%, 100% { text-shadow: 2px 2px 0 #F0F, -2px -2px 0 #0FF; }
+            25% { text-shadow: -2px 2px 0 #F0F, 2px -2px 0 #0FF; }
+            50% { text-shadow: 2px -2px 0 #F0F, -2px 2px 0 #0FF; }
+            75% { text-shadow: -2px -2px 0 #F0F, 2px 2px 0 #0FF; }
+        }
+        
+        .y2k-nav {
+            background: #111;
+            padding: 15px;
+            border-bottom: 2px solid #0F0;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            background: linear-gradient(45deg, #0F0, #0a0);
+            border: 2px solid #0F0;
+            color: #000;
+            padding: 10px 20px;
+            font-family: 'Chakra Petch', monospace;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+        }
+        
+        .nav-btn:hover {
+            background: linear-gradient(45deg, #0a0, #0F0);
+            color: #0F0;
+            box-shadow: 0 0 15px rgba(0,255,0,0.8);
+            transform: scale(1.05);
+        }
+        
+        .main-content {
+            padding: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: #0F0;
+            text-shadow: 0 0 10px rgba(0,255,0,0.8);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .welcome-box {
+            background: rgba(0,20,0,0.8);
+            border: 2px solid #0F0;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 0 30px rgba(0,255,0,0.3);
+        }
+        
+        .tv-container {
+            width: 100%;
+            max-width: 960px;
+            height: 540px;
+            background: #000;
+            border: 3px solid #0F0;
+            box-shadow: 0 0 20px rgba(0,255,0,0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0F0;
+            font-family: 'Chakra Petch', monospace;
+            font-size: 18px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+        
         .tv-container video {
             width: 100%;
             height: 100%;
@@ -25,6 +154,76 @@
         
         .tv-container.active .tv-placeholder {
             display: none;
+        }
+        
+        .status-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.8);
+            color: #0F0;
+            padding: 10px;
+            font-family: 'Chakra Petch', monospace;
+            font-size: 12px;
+            border-top: 1px solid #0F0;
+        }
+        
+        .stream-info {
+            margin-top: 30px;
+            background: rgba(0,30,0,0.6);
+            border: 2px solid #0F0;
+            border-radius: 10px;
+            padding: 20px;
+        }
+        
+        .stream-info h3 {
+            color: #0F0;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .status-grid {
+            display: grid;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .status-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px;
+            background: rgba(0,0,0,0.5);
+            border-left: 3px solid #0F0;
+        }
+        
+        .status-label {
+            color: #0F0;
+            font-weight: bold;
+        }
+        
+        .stream-controls {
+            text-align: center;
+            opacity: 0.8;
+        }
+        
+        .stream-controls p {
+            margin: 5px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .glitch-text {
+                font-size: 2em;
+            }
+            
+            .tv-container {
+                height: 300px;
+            }
         }
     </style>
 </head>
