@@ -20,8 +20,10 @@ class LiveStreamPlayer {
         this.lineupBtn = document.getElementById('lineup-btn');
         this.statusText = document.getElementById('status-text');
         this.currentProgramEl = document.getElementById('current-program');
+        this.currentBlockEl = document.getElementById('current-block');
         this.scheduleTimeEl = document.getElementById('schedule-time');
         this.streamStatusEl = document.getElementById('stream-status');
+        this.nextUpEl = document.getElementById('next-up');
         
         console.log('Elements found:', {
             container: !!this.container,
@@ -862,6 +864,69 @@ class LiveStreamPlayer {
         return searchTerms[program] || [program.toLowerCase()];
     }
     
+    getNextUp() {
+        // Get the next show in the schedule
+        const now = new Date();
+        const currentDay = now.getDay(); // 0 = Sunday, 6 = Saturday
+        const currentHour = now.getHours();
+        const currentMinute = now.getMinutes();
+        
+        // Find current time slot
+        const timeSlots = ['12:00 AM', '12:30 AM', '1:00 AM', '1:30 AM', '2:00 AM', '2:30 AM', '3:00 AM', '3:30 AM',
+                          '4:00 AM', '4:30 AM', '5:00 AM', '5:30 AM', '6:00 AM', '6:30 AM', '7:00 AM', '7:30 AM',
+                          '8:00 AM', '8:30 AM', '9:00 AM', '9:30 AM', '10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM',
+                          '12:00 PM', '12:30 PM', '1:00 PM', '1:30 PM', '2:00 PM', '2:30 PM', '3:00 PM', '3:30 PM',
+                          '4:00 PM', '4:30 PM', '5:00 PM', '5:30 PM', '6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM',
+                          '8:00 PM', '8:30 PM', '9:00 PM', '9:30 PM', '10:00 PM', '10:30 PM', '11:00 PM', '11:30 PM'];
+        
+        // Find current slot index
+        const currentTimeStr = `${currentHour % 12 || 12}:${currentMinute.toString().padStart(2, '0')} ${currentHour >= 12 ? 'PM' : 'AM'}`;
+        let currentSlotIndex = timeSlots.findIndex(slot => slot === currentTimeStr);
+        
+        if (currentSlotIndex === -1) {
+            // Find the next slot
+            currentSlotIndex = timeSlots.findIndex((slot, index) => {
+                const [slotTime, period] = slot.split(' ');
+                const [slotHour, slotMin] = slotTime.split(':').map(Number);
+                const slotHour24 = period === 'PM' && slotHour !== 12 ? slotHour + 12 : (period === 'AM' && slotHour === 12 ? 0 : slotHour);
+                const currentSlotTime = new Date(now);
+                currentSlotTime.setHours(slotHour24, slotMin, 0, 0);
+                return currentSlotTime > now;
+            });
+        }
+        
+        // Get next slot
+        const nextSlotIndex = (currentSlotIndex + 1) % timeSlots.length;
+        const nextTime = timeSlots[nextSlotIndex];
+        
+        // Get the lineup for the current day (or next day if we've wrapped around)
+        let targetDay = currentDay;
+        if (nextSlotIndex === 0) {
+            targetDay = (currentDay + 1) % 7;
+        }
+        
+        const dayName = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][targetDay];
+        
+        if (this.weeklySlotsByDay && this.weeklySlotsByDay[dayName]) {
+            const nextSlot = this.weeklySlotsByDay[dayName].find(slot => slot.time === nextTime);
+            if (nextSlot) {
+                let nextUpText = `${nextSlot.time} - ${nextSlot.program}`;
+                
+                // Add episode info if available
+                if (["Dexter's Laboratory", "The Powerpuff Girls"].includes(nextSlot.program)) {
+                    const episodeData = this.getEpisodeForDate(now, nextSlot.time, nextSlot.program);
+                    if (nextSlot.program === "Dexter's Laboratory" || nextSlot.program === "The Powerpuff Girls") {
+                        nextUpText += ` (S${episodeData.season.toString().padStart(2, '0')}E${episodeData.episode.toString().padStart(2, '0')})`;
+                    }
+                }
+                
+                return nextUpText;
+            }
+        }
+        
+        return `${nextTime} - OFF AIR`;
+    }
+    
     startSyncInterval() {
         // Sync every 2 seconds to maintain schedule
         this.syncInterval = setInterval(() => {
@@ -889,9 +954,17 @@ class LiveStreamPlayer {
             this.currentProgramEl.textContent = currentTitle;
             this.scheduleTimeEl.textContent = this.formatTime(blockElapsedSeconds);
             
+            // Update current block and next up
+            const weeklySlot = this.getWeeklySlotForNow();
+            if (this.currentBlockEl) {
+                this.currentBlockEl.textContent = weeklySlot ? `${weeklySlot.time} - ${weeklySlot.program}` : 'OFF AIR';
+            }
+            if (this.nextUpEl) {
+                this.nextUpEl.textContent = this.getNextUp();
+            }
+            
             // Update stream status for OFF AIR
             if (this.streamStatusEl) {
-                const weeklySlot = this.getWeeklySlotForNow();
                 let streamStatus = 'OFF AIR';
                 if (weeklySlot?.program) {
                     streamStatus = `⏸️ SCHEDULED • ${weeklySlot.time}`;
@@ -924,15 +997,88 @@ class LiveStreamPlayer {
         
         // Get current block information and update enhanced status
         const currentBlock = this.getCurrentBlockInfo();
+        const weeklySlot = this.getWeeklySlotForNow();
+        
+        // Update current block
+        if (this.currentBlockEl) {
+            let blockText = 'LIVE';
+            if (weeklySlot) {
+                blockText = `${weeklySlot.time} - ${weeklySlot.program}`;
+                if (currentBlock?.episode) {
+                    blockText += ` • ${currentBlock.episode}`;
+                }
+            }
+            this.currentBlockEl.textContent = blockText;
+        }
+        
+        // Update next up
+        if (this.nextUpEl) {
+            this.nextUpEl.textContent = this.getNextUp();
+        }
         
         // Update stream status with detailed information
         if (this.streamStatusEl) {
-            let streamStatus = '� LIVE';
+            let streamStatus = '📡 LIVE';
             if (currentBlock) {
                 streamStatus += ` • ${currentBlock.time}`;
                 if (currentBlock.episode) {
                     streamStatus += ` • ${currentBlock.episode}`;
                 }
+            }
+            this.streamStatusEl.textContent = streamStatus;
+        }
+        
+        // Update status with more context
+        if (drift <= 2) {
+            let statusText = `🔴 LIVE: ${currentTitle}`;
+            if (currentBlock?.episode) {
+                statusText += ` • ${currentBlock.episode}`;
+            }
+            this.updateStatus(statusText);
+        }
+    }
+    
+    startSyncInterval() {
+        // Sync every 2 seconds to maintain schedule
+        this.syncInterval = setInterval(() => {
+            this.syncWithSchedule();
+        }, 2000);
+    }
+    
+    syncWithSchedule() {
+    if (!this.hasTunedIn || !this.video) return;
+
+    const { currentUrl, currentTime, currentTitle } = this.getCurrentSchedulePosition();
+    const expectedTime = currentTime;
+    const actualTime = this.video.currentTime;
+
+    // Display schedule time as "time into current 30-min block" (stable / monotonic)
+    const blockElapsedSeconds = (this.nowMs() % this.BLOCK_DURATION) / 1000;
+
+    // OFF AIR / no content assigned
+    if (!currentUrl) {
+        if (this.currentItemUrl !== null) {
+            console.log('Switching to OFF AIR');
+            this.currentItemUrl = null;
+            this.goOffAir(currentTitle || 'OFF AIR');
+        }
+        this.currentProgramEl.textContent = currentTitle;
+        this.scheduleTimeEl.textContent = this.formatTime(blockElapsedSeconds);
+
+        // Update current block and next up
+        const weeklySlot = this.getWeeklySlotForNow();
+        if (this.currentBlockEl) {
+            this.currentBlockEl.textContent = weeklySlot ? `${weeklySlot.time} - ${weeklySlot.program}` : 'OFF AIR';
+        }
+        if (this.nextUpEl) {
+            this.nextUpEl.textContent = this.getNextUp();
+        }
+
+        // Update stream status for OFF AIR
+        if (this.streamStatusEl) {
+            let streamStatus = 'OFF AIR';
+            if (weeklySlot?.program) {
+                streamStatus = `⏸️ SCHEDULED • ${weeklySlot.time}`;
             }
             this.streamStatusEl.textContent = streamStatus;
         }
@@ -969,6 +1115,15 @@ class LiveStreamPlayer {
                 this.scheduleTimeEl.textContent = timeStr;
             } else {
                 console.log('scheduleTimeEl not found');
+            }
+            
+            // Update current block and next up for non-tuned viewers
+            const weeklySlot = this.getWeeklySlotForNow();
+            if (this.currentBlockEl) {
+                this.currentBlockEl.textContent = weeklySlot ? `${weeklySlot.time} - ${weeklySlot.program}` : 'OFF AIR';
+            }
+            if (this.nextUpEl) {
+                this.nextUpEl.textContent = this.getNextUp();
             }
         }, 1000);
     }
