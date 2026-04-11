@@ -6,11 +6,91 @@
     <title>TV Guide - Fawkeswarez</title>
     <link rel="stylesheet" href="../style.css">
     <style>
-        .guide-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+        /* Fallback styles in case CSS fails to load */
+        body {
+            background: #000 !important;
+            color: #0F0 !important;
+            font-family: 'Chakra Petch', monospace;
+            margin: 0;
+            padding: 0;
         }
+        
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #000 25%, #0a0a0a 25%, #0a0a0a 50%, #000 50%, #000 75%, #0a0a0a 75%, #0a0a0a);
+            background-size: 20px 20px;
+            z-index: -2;
+        }
+        
+        .y2k-header {
+            background: linear-gradient(45deg, #FF00FF, #00FFFF, #FFFF00);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 5px solid #0F0;
+        }
+        
+        .glitch-text {
+            font-size: 2rem;
+            color: #000;
+            text-shadow: 2px 2px 0 #FF00FF, -2px -2px 0 #00FFFF;
+        }
+        
+        .y2k-nav {
+            background: #111;
+            padding: 15px;
+            border-bottom: 2px solid #0F0;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            background: linear-gradient(45deg, #0F0, #0a0);
+            border: 2px solid #0F0;
+            color: #000;
+            padding: 10px 20px;
+            font-family: 'Chakra Petch', monospace;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+        
+        .nav-btn:hover {
+            background: linear-gradient(45deg, #0a0, #0F0);
+            color: #0F0;
+            box-shadow: 0 0 15px rgba(0,255,0,0.8);
+        }
+        
+        .main-content {
+            padding: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: #0F0;
+            text-shadow: 0 0 10px rgba(0,255,0,0.8);
+        }
+        
+        .guide-container {
+            background: rgba(0,20,0,0.8);
+            border: 2px solid #0F0;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
         .calendar-header {
             display: flex;
             justify-content: space-between;
@@ -19,20 +99,20 @@
             flex-wrap: wrap;
             gap: 10px;
         }
+        
         .calendar-nav {
             display: flex;
             gap: 10px;
             align-items: center;
         }
+        
         .calendar-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
             gap: 5px;
             margin-bottom: 30px;
-            background: rgba(0,0,0,0.3);
-            padding: 10px;
-            border-radius: 8px;
         }
+        
         .calendar-day-header {
             text-align: center;
             font-weight: bold;
@@ -40,99 +120,110 @@
             background: rgba(0,255,255,0.2);
             border-radius: 4px;
         }
+        
         .calendar-day {
             aspect-ratio: 1;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            border-radius: 4px;
+            padding: 8px;
+            border: 1px solid #0F0;
             cursor: pointer;
             transition: all 0.3s;
-            font-size: 14px;
+            border-radius: 4px;
         }
+        
         .calendar-day:hover {
-            background: rgba(0,255,255,0.3);
-            transform: scale(1.05);
+            background: rgba(0,255,0,0.1);
+            box-shadow: 0 0 10px rgba(0,255,0,0.5);
         }
+        
+        .calendar-day.selected {
+            background: rgba(0,255,0,0.3);
+            border-color: #0F0;
+            box-shadow: 0 0 15px rgba(0,255,0,0.8);
+        }
+        
         .calendar-day.other-month {
             opacity: 0.3;
         }
-        .calendar-day.today {
-            background: rgba(0,255,0,0.3);
-            font-weight: bold;
-        }
-        .calendar-day.selected {
-            background: rgba(0,255,255,0.5);
-            font-weight: bold;
-            box-shadow: 0 0 20px rgba(0,255,255,0.8);
-        }
-        .lineup-section {
-            background: rgba(0,0,0,0.3);
-            padding: 20px;
-            border-radius: 8px;
-        }
+        
         .lineup-date {
-            font-size: 24px;
-            margin-bottom: 20px;
             text-align: center;
-            color: #0ff;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #0F0;
         }
-        .lineup-grid {
+        
+        .lineup-slots {
             display: grid;
             gap: 10px;
         }
-        .lineup-slot {
-            display: grid;
-            grid-template-columns: 100px 1fr;
-            gap: 15px;
-            padding: 10px;
-            background: rgba(0,255,255,0.1);
-            border-radius: 4px;
-            border-left: 4px solid #0ff;
-        }
-        .slot-time {
-            font-weight: bold;
-            color: #0ff;
-        }
-        .slot-program {
+        
+        .slot {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 10px;
+            background: rgba(0,0,0,0.5);
+            border-left: 3px solid #0F0;
         }
-        .slot-title {
+        
+        .slot-time {
             font-weight: bold;
+            color: #0F0;
+            min-width: 80px;
         }
+        
+        .slot-program {
+            flex: 1;
+            margin: 0 20px;
+        }
+        
+        .slot-status {
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            min-width: 80px;
+            text-align: center;
+        }
+        
+        .slot-status.on-air {
+            background: rgba(0,255,0,0.2);
+            color: #0F0;
+            border: 1px solid #0F0;
+        }
+        
+        .slot-status.off-air {
+            background: rgba(255,0,0,0.2);
+            color: #F00;
+            border: 1px solid #F00;
+        }
+        
         .slot-episode {
-            font-size: 12px;
-            opacity: 0.8;
-        }
-        .slot-off-air {
-            opacity: 0.5;
-            font-style: italic;
-        }
-        @media (max-width: 768px) {
-            .calendar-grid {
-                gap: 2px;
-                padding: 5px;
-            }
-            .calendar-day {
-                font-size: 12px;
-            }
-            .lineup-slot {
-                grid-template-columns: 80px 1fr;
-                gap: 10px;
-            }
+            font-size: 0.9em;
+            color: #0F0;
+            margin-top: 5px;
         }
     </style>
 </head>
 <body>
+    <!-- Animated Background -->
+    <div class="matrix-bg"></div>
+    <div class="stars"></div>
+    
+    <!-- Header -->
     <header class="y2k-header">
         <div class="header-content">
-            <h1 class="site-title">📅 TV GUIDE</h1>
-            <div class="header-subtitle">Fawkeswarez Cartoon Network Lineup</div>
+            <h1 class="glitch-text" data-text="TV Guide">TV Guide</h1>
+            <div class="under-construction">
+                <marquee behavior="scroll" direction="left">📅 MONTHLY PROGRAM GUIDE 📅 SELECT ANY DAY TO VIEW LINEUP 📅</marquee>
+            </div>
         </div>
     </header>
 
+    <!-- Navigation -->
     <nav class="y2k-nav">
         <div class="nav-buttons">
             <button class="nav-btn" onclick="window.location.href='./'">⬅ BACK TO TV</button>
@@ -140,28 +231,30 @@
         </div>
     </nav>
 
+    <!-- Main Content -->
     <main class="main-content">
-        <div class="guide-container">
-            <div class="calendar-header">
-                <h2 id="calendar-month">April 2026</h2>
-                <div class="calendar-nav">
+        <section class="content-section active">
+            <h2 class="section-title">📅 PROGRAM SCHEDULE 📅</h2>
+
+            <div class="guide-container">
+                <div class="calendar-header">
                     <button class="nav-btn" onclick="changeMonth(-1)">◀ PREV</button>
-                    <button class="nav-btn" onclick="goToToday()">TODAY</button>
+                    <h3 id="calendar-month">April 2026</h3>
                     <button class="nav-btn" onclick="changeMonth(1)">NEXT ▶</button>
                 </div>
-            </div>
-
-            <div class="calendar-grid" id="calendar">
-                <!-- Calendar will be generated here -->
-            </div>
-
-            <div class="lineup-section">
-                <div class="lineup-date" id="lineup-date">Today's Lineup</div>
-                <div class="lineup-grid" id="lineup-grid">
-                    <!-- Lineup will be generated here -->
+                
+                <div class="calendar-grid" id="calendar">
+                    <!-- Calendar will be generated here -->
                 </div>
             </div>
-        </div>
+
+            <div class="guide-container">
+                <h3 class="lineup-date" id="lineup-date">Select a date to view lineup</h3>
+                <div class="lineup-slots" id="lineup-slots">
+                    <!-- Lineup will be displayed here -->
+                </div>
+            </div>
+        </section>
     </main>
 
     <script>
@@ -191,37 +284,32 @@
             const year = currentDate.getFullYear();
             const month = currentDate.getMonth();
             
+            // Update month display
             document.getElementById('calendar-month').textContent = `${monthNames[month]} ${year}`;
             
-            const firstDay = new Date(year, month, 1);
-            const lastDay = new Date(year, month + 1, 0);
-            const prevLastDay = new Date(year, month, 0);
-            
-            const firstDayOfWeek = firstDay.getDay();
-            const daysInMonth = lastDay.getDate();
-            const daysInPrevMonth = prevLastDay.getDate();
+            // Get first day of month and number of days
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const daysInPrevMonth = new Date(year, month, 0).getDate();
             
             let html = '';
             
-            // Day headers
-            dayNames.forEach(day => {
-                html += `<div class="calendar-day-header">${day.substring(0,3)}</div>`;
+            // Add day headers
+            const dayHeaders = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            dayHeaders.forEach(day => {
+                html += `<div class="calendar-day-header">${day}</div>`;
             });
             
-            // Previous month days
-            for (let i = firstDayOfWeek - 1; i >= 0; i--) {
+            // Add previous month's trailing days
+            for (let i = firstDay - 1; i >= 0; i--) {
                 html += `<div class="calendar-day other-month">${daysInPrevMonth - i}</div>`;
             }
             
-            // Current month days
-            const today = new Date();
+            // Add current month's days
             for (let day = 1; day <= daysInMonth; day++) {
-                const isToday = year === today.getFullYear() && 
-                               month === today.getMonth() && 
-                               day === today.getDate();
-                const isSelected = year === selectedDate.getFullYear() && 
-                                  month === selectedDate.getMonth() && 
-                                  day === selectedDate.getDate();
+                const date = new Date(year, month, day);
+                const isToday = date.toDateString() === new Date().toDateString();
+                const isSelected = date.toDateString() === selectedDate.toDateString();
                 
                 let classes = 'calendar-day';
                 if (isToday) classes += ' today';
@@ -230,9 +318,10 @@
                 html += `<div class="${classes}" onclick="selectDate(${year}, ${month}, ${day})">${day}</div>`;
             }
             
-            // Next month days
-            const remainingCells = 42 - (firstDayOfWeek + daysInMonth);
-            for (let day = 1; day <= remainingCells; day++) {
+            // Add next month's leading days
+            const totalCells = firstDay + daysInMonth;
+            const nextMonthDays = totalCells % 7 === 0 ? 0 : 7 - (totalCells % 7);
+            for (let day = 1; day <= nextMonthDays; day++) {
                 html += `<div class="calendar-day other-month">${day}</div>`;
             }
             
@@ -250,12 +339,51 @@
             renderCalendar();
         }
 
-        function goToToday() {
-            const today = new Date();
-            currentDate = new Date(today);
-            selectedDate = new Date(today);
-            renderCalendar();
-            renderLineup();
+        function renderLineup() {
+            if (!weeklyLineup) return;
+            
+            const dayName = dayNames[selectedDate.getDay()];
+            console.log('Rendering lineup for day:', dayName);
+            const daySlots = weeklyLineup.filter(slot => slot.day === dayName);
+            console.log('Found slots for', dayName, ':', daySlots.length);
+            console.log('Day slots:', daySlots);
+            
+            document.getElementById('lineup-date').textContent = 
+                `${dayName}, ${monthNames[selectedDate.getMonth()]} ${selectedDate.getDate()}, ${selectedDate.getFullYear()}`;
+            
+            let html = '';
+            let dexterSlotCount = 0;
+            
+            daySlots.forEach(slot => {
+                const isDexter = slot.program.includes("Dexter");
+                let episodeInfo = '';
+                
+                if (isDexter) {
+                    const episodeNum = getDexterEpisodeForDate(selectedDate, slot.time);
+                    episodeInfo = `<div class="slot-episode">Episode ${episodeNum}</div>`;
+                    dexterSlotCount++;
+                }
+                
+                const statusClass = isDexter ? 'on-air' : 'off-air';
+                const statusText = isDexter ? '▶' : 'OFF AIR';
+                
+                html += `
+                    <div class="slot">
+                        <div class="slot-time">${slot.time}</div>
+                        <div class="slot-program">
+                            ${slot.program}
+                            ${episodeInfo}
+                        </div>
+                        <div class="slot-status ${statusClass}">${statusText}</div>
+                    </div>
+                `;
+            });
+            
+            if (html === '') {
+                html = '<div style="text-align: center; padding: 40px; color: #0F0;">No programming scheduled for this day</div>';
+            }
+            
+            document.getElementById('lineup-slots').innerHTML = html;
         }
 
         function getDexterEpisodeForDate(date, timeStr) {
@@ -285,54 +413,10 @@
             return episodeIndex + 1; // Episodes are 1-indexed
         }
 
-        function renderLineup() {
-            if (!weeklyLineup) return;
-            
-            const dayName = dayNames[selectedDate.getDay()];
-            console.log('Rendering lineup for day:', dayName);
-            const daySlots = weeklyLineup.filter(slot => slot.day === dayName);
-            console.log('Found slots for', dayName, ':', daySlots.length);
-            console.log('Day slots:', daySlots);
-            
-            document.getElementById('lineup-date').textContent = 
-                `${dayName}, ${monthNames[selectedDate.getMonth()]} ${selectedDate.getDate()}, ${selectedDate.getFullYear()}`;
-            
-            let html = '';
-            let dexterSlotCount = 0;
-            
-            daySlots.forEach(slot => {
-                const isDexter = slot.program.includes("Dexter");
-                let episodeInfo = '';
-                
-                if (isDexter) {
-                    const episodeNum = getDexterEpisodeForDate(selectedDate, slot.time);
-                    episodeInfo = `<div class="slot-episode">Episode ${episodeNum}</div>`;
-                    dexterSlotCount++;
-                }
-                
-                html += `
-                    <div class="lineup-slot">
-                        <div class="slot-time">${slot.time}</div>
-                        <div class="slot-program">
-                            <div>
-                                <div class="slot-title">${slot.program}</div>
-                                ${episodeInfo}
-                            </div>
-                            ${isDexter ? '<div style="color: #0ff;">▶</div>' : '<div class="slot-off-air">OFF AIR</div>'}
-                        </div>
-                    </div>
-                `;
-            });
-            
-            if (html === '') {
-                html = '<div style="text-align: center; opacity: 0.7;">No programming scheduled for this day</div>';
-            }
-            
-            document.getElementById('lineup-grid').innerHTML = html;
-        }
-
-        // Initialize
-        loadData();
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', () => {
+            loadData();
+        });
     </script>
 </body>
 </html>
