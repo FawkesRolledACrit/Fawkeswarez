@@ -738,6 +738,557 @@
           "targetSeconds": "auto"
         }
       ]
+    },
+    {
+      "title": "Powerpuff Girls - S01E01",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Powerpuff Girls S01E01 Part 1",
+          "url": "https://files.catbox.moe/ny2j92.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Powerpuff Girls S01E01 Part 2",
+          "url": "https://files.catbox.moe/4p5u29.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Powerpuff Girls S01E01 Part 3",
+          "url": "https://files.catbox.moe/mm5ni1.mp4",
+          "durationSeconds": 240
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Powerpuff Girls - S01E02",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Powerpuff Girls S01E02 Part 1",
+          "url": "https://files.catbox.moe/reaztr.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Powerpuff Girls S01E02 Part 2",
+          "url": "https://files.catbox.moe/x9m5yu.mp4",
+          "durationSeconds": 840
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Powerpuff Girls - S01E03",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Powerpuff Girls S01E03 Part 1",
+          "url": "PLACEHOLDER_URL",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Powerpuff Girls S01E03 Part 2",
+          "url": "PLACEHOLDER_URL",
+          "durationSeconds": 840
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Powerpuff Girls - S01E04",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Powerpuff Girls S01E04 Part 1",
+          "url": "PLACEHOLDER_URL",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Powerpuff Girls S01E04 Part 2",
+          "url": "PLACEHOLDER_URL",
+          "durationSeconds": 840
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Powerpuff Girls - S01E05",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Powerpuff Girls S01E05 Part 1",
+          "url": "PLACEHOLDER_URL",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Powerpuff Girls S01E05 Part 2",
+          "url": "PLACEHOLDER_URL",
+          "durationSeconds": 840
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Powerpuff Girls - S01E06",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Powerpuff Girls S01E06 Part 1",
+          "url": "PLACEHOLDER_URL",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Powerpuff Girls S01E06 Part 2",
+          "url": "PLACEHOLDER_URL",
+          "durationSeconds": 840
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Powerpuff Girls - S01E07",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Powerpuff Girls S01E07 Part 1",
+          "url": "PLACEHOLDER_URL",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Powerpuff Girls S01E07 Part 2",
+          "url": "PLACEHOLDER_URL",
+          "durationSeconds": 840
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Powerpuff Girls - S01E08",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Powerpuff Girls S01E08 Part 1",
+          "url": "PLACEHOLDER_URL",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Powerpuff Girls S01E08 Part 2",
+          "url": "PLACEHOLDER_URL",
+          "durationSeconds": 840
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Powerpuff Girls - S01E09",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Powerpuff Girls S01E09 Part 1",
+          "url": "PLACEHOLDER_URL",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Powerpuff Girls S01E09 Part 2",
+          "url": "PLACEHOLDER_URL",
+          "durationSeconds": 840
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Powerpuff Girls - S01E10",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Powerpuff Girls S01E10 Part 1",
+          "url": "PLACEHOLDER_URL",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Powerpuff Girls S01E10 Part 2",
+          "url": "PLACEHOLDER_URL",
+          "durationSeconds": 840
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Powerpuff Girls - S01E11",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Powerpuff Girls S01E11 Part 1",
+          "url": "PLACEHOLDER_URL",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Powerpuff Girls S01E11 Part 2",
+          "url": "PLACEHOLDER_URL",
+          "durationSeconds": 840
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Powerpuff Girls - S01E12",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Powerpuff Girls S01E12 Part 1",
+          "url": "PLACEHOLDER_URL",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Powerpuff Girls S01E12 Part 2",
+          "url": "PLACEHOLDER_URL",
+          "durationSeconds": 840
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Powerpuff Girls - S01E13",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Powerpuff Girls S01E13 Part 1",
+          "url": "PLACEHOLDER_URL",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Powerpuff Girls S01E13 Part 2",
+          "url": "PLACEHOLDER_URL",
+          "durationSeconds": 840
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Powerpuff Girls - S02E01",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Powerpuff Girls S02E01 Part 1",
+          "url": "PLACEHOLDER_URL",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Powerpuff Girls S02E01 Part 2",
+          "url": "PLACEHOLDER_URL",
+          "durationSeconds": 840
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Powerpuff Girls - S02E02",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Powerpuff Girls S02E02 Part 1",
+          "url": "PLACEHOLDER_URL",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Powerpuff Girls S02E02 Part 2",
+          "url": "PLACEHOLDER_URL",
+          "durationSeconds": 840
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Powerpuff Girls - S02E03",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Powerpuff Girls S02E03 Part 1",
+          "url": "PLACEHOLDER_URL",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Powerpuff Girls S02E03 Part 2",
+          "url": "PLACEHOLDER_URL",
+          "durationSeconds": 840
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Powerpuff Girls - S02E04",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Powerpuff Girls S02E04 Part 1",
+          "url": "PLACEHOLDER_URL",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Powerpuff Girls S02E04 Part 2",
+          "url": "PLACEHOLDER_URL",
+          "durationSeconds": 840
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Powerpuff Girls - S02E05",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Powerpuff Girls S02E05 Part 1",
+          "url": "PLACEHOLDER_URL",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Powerpuff Girls S02E05 Part 2",
+          "url": "PLACEHOLDER_URL",
+          "durationSeconds": 840
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Powerpuff Girls - S02E06",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Powerpuff Girls S02E06 Part 1",
+          "url": "PLACEHOLDER_URL",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Powerpuff Girls S02E06 Part 2",
+          "url": "PLACEHOLDER_URL",
+          "durationSeconds": 840
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Powerpuff Girls - S02E07",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Powerpuff Girls S02E07 Part 1",
+          "url": "PLACEHOLDER_URL",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Powerpuff Girls S02E07 Part 2",
+          "url": "PLACEHOLDER_URL",
+          "durationSeconds": 840
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
     }
   ]
 }

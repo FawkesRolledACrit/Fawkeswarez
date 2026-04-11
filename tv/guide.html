@@ -382,7 +382,7 @@
                     console.log(`Episode for ${slot.program}:`, episodeData);
                     
                     let episodeDisplay;
-                    if (slot.program === "Dexter's Laboratory") {
+                    if (slot.program === "Dexter's Laboratory" || slot.program === "The Powerpuff Girls") {
                         episodeDisplay = `Season ${episodeData.season.toString().padStart(2, '0')} Episode ${episodeData.episode.toString().padStart(2, '0')}`;
                     } else {
                         episodeDisplay = `Episode ${episodeData.episode}`;
@@ -439,6 +439,27 @@
             if (program === "Dexter's Laboratory") {
                 const episodeCount = 20; // 20 episodes total
                 const offset = 0;
+                const adjustedSlots = totalSlots + offset;
+                const episodeIndex = adjustedSlots % episodeCount;
+                const episodeNum = episodeIndex + 1; // 1-indexed
+                
+                // Determine season and episode
+                let season, episode;
+                if (episodeNum <= 13) {
+                    season = 1;
+                    episode = episodeNum;
+                } else {
+                    season = 2;
+                    episode = episodeNum - 13;
+                }
+                
+                return { episode, season };
+            }
+            
+            // Special handling for Powerpuff Girls
+            if (program === "The Powerpuff Girls") {
+                const episodeCount = 20; // 20 episodes total
+                const offset = 100;
                 const adjustedSlots = totalSlots + offset;
                 const episodeIndex = adjustedSlots % episodeCount;
                 const episodeNum = episodeIndex + 1; // 1-indexed
