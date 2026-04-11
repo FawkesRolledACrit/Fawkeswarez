@@ -146,8 +146,10 @@ class LiveStreamPlayer {
     }
 
     buildWeeklySlots(lineupItems) {
-        // Expand the weekly template into 30-minute slots per day.
-        // Any gaps become OFF AIR.
+        // Convert the weekly template into time windows per day.
+        // IMPORTANT: we do NOT force everything into 30-minute slots.
+        // If weekly-lineup.json has 15-minute entries (e.g. 1:30 then 1:45),
+        // those must remain 15-minute slots.
         const byDay = {};
         for (const item of lineupItems || []) {
             if (!item?.day || !item?.time || !item?.program) continue;
@@ -165,21 +167,30 @@ class LiveStreamPlayer {
             for (let i = 0; i < sorted.length; i++) {
                 const cur = sorted[i];
                 const nextStart = (i + 1 < sorted.length) ? sorted[i + 1].startMin : 24 * 60;
-                const duration = Math.max(0, nextStart - cur.startMin);
-                const slotCount = Math.floor(duration / 30);
-                for (let k = 0; k < slotCount; k++) {
-                    const slotStartMin = cur.startMin + (k * 30);
-                    slots.push({
-                        startMin: slotStartMin,
-                        endMin: cur.startMin + ((k + 1) * 30),
-                        program: cur.program,
-                        time: this.minutesToTime(slotStartMin)
-                    });
-                }
+                const endMin = Math.max(cur.startMin, nextStart);
+                slots.push({
+                    startMin: cur.startMin,
+                    endMin,
+                    program: cur.program,
+                    time: this.minutesToTime(cur.startMin)
+                });
             }
             out[day] = slots;
         }
         return out;
+    }
+
+    getSlotDurationMs(weeklySlot) {
+        const durationMin = Math.max(1, (weeklySlot?.endMin ?? 0) - (weeklySlot?.startMin ?? 0));
+        return durationMin * 60 * 1000;
+    }
+
+    getSlotStartMsForNow(weeklySlot) {
+        const now = new Date(this.nowMs());
+        const slotStart = new Date(now);
+        slotStart.setHours(0, 0, 0, 0);
+        slotStart.setMinutes(weeklySlot.startMin);
+        return slotStart.getTime();
     }
 
     minutesToTime(minutes) {
@@ -632,11 +643,6 @@ class LiveStreamPlayer {
             return { currentUrl: null, currentTime: 0, currentTitle: 'No Schedule' };
         }
 
-        const now = this.nowMs();
-        const globalBlockIndex = Math.floor(now / this.BLOCK_DURATION);
-        const blockStart = globalBlockIndex * this.BLOCK_DURATION;
-        const blockElapsed = now - blockStart;
-
         // Weekly lineup mode: determine what show is supposed to be on NOW.
         const weeklySlot = this.getWeeklySlotForNow();
         const program = weeklySlot?.program;
@@ -655,7 +661,10 @@ class LiveStreamPlayer {
             return { currentUrl: null, currentTime: 0, currentTitle: `${program} (No Video Yet)`, queue: [] };
         }
 
-        const queue = this.buildQueue(globalBlockIndex);
+        const slotStartMs = this.getSlotStartMsForNow(weeklySlot);
+        const blockElapsed = this.nowMs() - slotStartMs;
+
+        const queue = this.buildQueue(weeklySlot);
         const position = this.getQueuePosition(blockElapsed, queue);
         return {
             currentUrl: queue[position.index]?.url || null,
@@ -665,13 +674,13 @@ class LiveStreamPlayer {
         };
     }
     
-    buildQueue(blockIndex) {
+    buildQueue(weeklySlotOverride) {
         const queue = [];
         const blocks = this.schedule?.blocks || [];
         if (!blocks.length) return queue;
 
         // Get current program from weekly lineup
-        const weeklySlot = this.getWeeklySlotForNow();
+        const weeklySlot = weeklySlotOverride || this.getWeeklySlotForNow();
         const program = weeklySlot?.program;
         if (!program) return queue;
 
@@ -685,20 +694,51 @@ class LiveStreamPlayer {
         if (!programBlocks.length) return queue;
 
         // Date-based rotation: schedule.startDate at 00:00 maps to blocks[0].
-        // Then every 30-minute slot advances to the next episode, looping forever.
+        // Then every *weekly slot* (15 min or 30 min, depending on lineup) advances.
         let startBlockIndex = 0;
         if (this.schedule?.startDate) {
             const startMs = Date.parse(this.schedule.startDate + 'T00:00:00');
             if (!Number.isNaN(startMs)) {
-                startBlockIndex = Math.floor(startMs / this.BLOCK_DURATION);
+                const slotDurationMs = this.getSlotDurationMs(weeklySlot);
+                const slotStartMs = this.getSlotStartMsForNow(weeklySlot);
+                const rel = Math.floor((slotStartMs - startMs) / slotDurationMs);
+                const episodeIndex = ((rel % programBlocks.length) + programBlocks.length) % programBlocks.length;
+                const block = programBlocks[episodeIndex];
+
+                let usedTime = 0;
+                for (const event of block.events) {
+                    if (event.type === 'segment') {
+                        queue.push({
+                            type: 'segment',
+                            url: event.url,
+                            title: event.title,
+                            duration: event.durationSeconds || 600
+                        });
+                        usedTime += event.durationSeconds || 600;
+                    } else if (event.type === 'adbreak') {
+                        const remaining = block.slotSeconds - usedTime;
+                        if (event.targetSeconds === 'auto' && remaining <= 0) {
+                            continue;
+                        }
+                        const ads = this.fillAdBreak(
+                            event.targetSeconds === 'auto'
+                                ? remaining
+                                : event.targetSeconds,
+                            event.toleranceSeconds || 3,
+                            Math.floor(slotStartMs / 1000) + queue.length
+                        );
+                        queue.push(...ads);
+                        usedTime += ads.reduce((sum, ad) => sum + ad.duration, 0);
+                    }
+                }
+
+                return queue;
             }
         }
 
-        const rel = blockIndex - startBlockIndex;
-        const episodeIndex = ((rel % programBlocks.length) + programBlocks.length) % programBlocks.length;
-        const block = programBlocks[episodeIndex];
+        // Fallback if startDate is missing/unparseable.
+        const block = programBlocks[0];
         let usedTime = 0;
-        
         for (const event of block.events) {
             if (event.type === 'segment') {
                 queue.push({
@@ -714,17 +754,16 @@ class LiveStreamPlayer {
                     continue;
                 }
                 const ads = this.fillAdBreak(
-                    event.targetSeconds === 'auto' 
+                    event.targetSeconds === 'auto'
                         ? remaining
                         : event.targetSeconds,
                     event.toleranceSeconds || 3,
-                    blockIndex * 1000 + queue.length
+                    Math.floor(this.nowMs() / 1000) + queue.length
                 );
                 queue.push(...ads);
                 usedTime += ads.reduce((sum, ad) => sum + ad.duration, 0);
             }
         }
-        
         return queue;
     }
     
@@ -807,17 +846,14 @@ class LiveStreamPlayer {
         
         // Get episode information for shows that have it
         const program = weeklySlot.program;
-        if (["Dexter's Laboratory", "The Powerpuff Girls"].includes(program)) {
+        if (["Dexter's Laboratory", "The Powerpuff Girls", "Ed, Edd n Eddy", "Space Ghost Coast to Coast", "Aqua Teen Hunger Force"].includes(program)) {
             const now = new Date();
             const timeStr = weeklySlot.time;
             const episodeData = this.getEpisodeForDate(now, timeStr, program);
             
-            let episodeText = '';
-            if (program === "Dexter's Laboratory" || program === "The Powerpuff Girls") {
-                episodeText = `Season ${episodeData.season.toString().padStart(2, '0')} Episode ${episodeData.episode.toString().padStart(2, '0')}`;
-            } else {
-                episodeText = `Episode ${episodeData.episode}`;
-            }
+            const season = (episodeData?.season ?? 1);
+            const episode = (episodeData?.episode ?? 1);
+            const episodeText = `S${season.toString().padStart(2, '0')}E${episode.toString().padStart(2, '0')}`;
             
             return {
                 time: timeStr,
@@ -835,13 +871,23 @@ class LiveStreamPlayer {
     }
     
     getEpisodeForDate(date, timeStr, program) {
-        // Parse the time to get total 30-minute slots since anchor date
-        const [hours, minutes] = timeStr.split(':').map(Number);
+        // Parse the time to get total slots since anchor date.
+        // For Space Ghost + Aqua Teen, weekly-lineup can contain 15-minute slots.
+        // If we used 30-minute math here, 1:30 and 1:45 would show the same episode.
+        const m = String(timeStr || '').trim().match(/^(\d{1,2}):(\d{2})\s*(AM|PM)$/i);
+        if (!m) return { episode: 1, season: 1 };
+        let hour = parseInt(m[1], 10);
+        const minute = parseInt(m[2], 10);
+        const ampm = m[3].toUpperCase();
+        if (hour === 12) hour = 0;
+        if (ampm === 'PM') hour += 12;
+
         const slotDate = new Date(date);
-        slotDate.setHours(hours, minutes, 0, 0);
+        slotDate.setHours(hour, minute, 0, 0);
         
         const anchorDate = new Date('2026-04-01T00:00:00');
-        const totalSlots = Math.floor((slotDate - anchorDate) / (30 * 60 * 1000));
+        const slotMinutes = (["Space Ghost Coast to Coast", "Aqua Teen Hunger Force"].includes(program)) ? 15 : 30;
+        const totalSlots = Math.floor((slotDate - anchorDate) / (slotMinutes * 60 * 1000));
         
         // Special handling for Dexter's Laboratory
         if (program === "Dexter's Laboratory") {
@@ -979,11 +1025,9 @@ class LiveStreamPlayer {
                 let nextUpText = `${nextSlot.time} - ${nextSlot.program}`;
                 
                 // Add episode info if available
-                if (["Dexter's Laboratory", "The Powerpuff Girls"].includes(nextSlot.program)) {
+                if (["Dexter's Laboratory", "The Powerpuff Girls", "Ed, Edd n Eddy", "Space Ghost Coast to Coast", "Aqua Teen Hunger Force"].includes(nextSlot.program)) {
                     const episodeData = this.getEpisodeForDate(now, nextSlot.time, nextSlot.program);
-                    if (nextSlot.program === "Dexter's Laboratory" || nextSlot.program === "The Powerpuff Girls") {
-                        nextUpText += ` (S${episodeData.season.toString().padStart(2, '0')}E${episodeData.episode.toString().padStart(2, '0')})`;
-                    }
+                    nextUpText += ` (S${episodeData.season.toString().padStart(2, '0')}E${episodeData.episode.toString().padStart(2, '0')})`;
                 }
                 
                 return nextUpText;

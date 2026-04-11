@@ -382,11 +382,7 @@
                     console.log(`Episode for ${slot.program}:`, episodeData);
                     
                     let episodeDisplay;
-                    if (slot.program === "Dexter's Laboratory" || slot.program === "The Powerpuff Girls") {
-                        episodeDisplay = `Season ${episodeData.season.toString().padStart(2, '0')} Episode ${episodeData.episode.toString().padStart(2, '0')}`;
-                    } else {
-                        episodeDisplay = `Episode ${episodeData.episode}`;
-                    }
+                    episodeDisplay = `S${episodeData.season.toString().padStart(2, '0')}E${episodeData.episode.toString().padStart(2, '0')}`;
                     
                     episodeInfo = `<div class="slot-episode">${episodeDisplay}</div>`;
                 }
@@ -431,9 +427,11 @@
             // Create date at the given time
             const slotDate = new Date(date.getFullYear(), date.getMonth(), date.getDate(), hour, minute, 0);
             
-            // Calculate total 30-minute slots since April 1, 2026 00:00
+            // Calculate total slots since April 1, 2026 00:00.
+            // Space Ghost + Aqua Teen are 15-minute shows, so 1:30 and 1:45 must advance.
             const msDiff = slotDate - april1;
-            const totalSlots = Math.floor(msDiff / (1000 * 60 * 30)); // 30-minute slots
+            const slotMinutes = (program === 'Space Ghost Coast to Coast' || program === 'Aqua Teen Hunger Force') ? 15 : 30;
+            const totalSlots = Math.floor(msDiff / (1000 * 60 * slotMinutes));
             
             // Special handling for Dexter's Laboratory
             if (program === "Dexter's Laboratory") {
