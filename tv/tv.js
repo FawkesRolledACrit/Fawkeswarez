@@ -1017,6 +1017,14 @@ class LiveStreamPlayer {
                 this.currentItemUrl = null;
                 this.goOffAir(currentTitle || 'OFF AIR');
             }
+            
+            // Update status to show what's actually happening
+            if (currentTitle && currentTitle.includes('(No Video Yet)')) {
+                this.updateStatus(`📺 ${currentTitle}`);
+            } else {
+                this.updateStatus(`📴 OFF AIR`);
+            }
+            
             this.currentProgramEl.textContent = currentTitle;
             this.scheduleTimeEl.textContent = this.formatTime(blockElapsedSeconds);
             
@@ -1175,13 +1183,20 @@ class LiveStreamPlayer {
             const now = new Date();
             const localTime = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
             
-            if (this.hasTunedIn && this.video && !this.video.paused) {
-                // ACTUALLY LIVE
+            if (this.hasTunedIn) {
+                // USER HAS TUNED IN - SHOW AS LIVE
                 const uptime = this.getStreamUptime();
                 const viewers = this.getViewerCount();
-                this.streamStatusEl.textContent = `🔴 LIVE • ${localTime} • Uptime: ${uptime} • Viewers: ${viewers}`;
+                
+                // Check if actually playing video or just showing schedule
+                const { currentUrl } = this.getCurrentSchedulePosition();
+                if (currentUrl && this.video && !this.video.paused) {
+                    this.streamStatusEl.textContent = `🔴 LIVE • ${localTime} • Uptime: ${uptime} • Viewers: ${viewers}`;
+                } else {
+                    this.streamStatusEl.textContent = `🟡 SCHEDULED • ${localTime} • Uptime: ${uptime} • Viewers: ${viewers}`;
+                }
             } else {
-                // NOT LIVE
+                // NOT TUNED IN
                 this.streamStatusEl.textContent = `📴 OFF AIR • ${localTime} • Viewers: 0`;
             }
         }
