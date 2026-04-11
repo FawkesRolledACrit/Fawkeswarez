@@ -200,11 +200,17 @@ class LiveStreamPlayer {
     
     setupEventListeners() {
         console.log('Setting up event listeners');
+        console.log('Hls.js available:', typeof Hls !== 'undefined');
         console.log('Tune button:', this.tuneBtn);
         console.log('Mute button:', this.muteBtn);
         console.log('Fullscreen button:', this.fullscreenBtn);
+        console.log('Lineup button:', this.lineupBtn);
+        
         if (this.tuneBtn) {
-            this.tuneBtn.addEventListener('click', () => this.tuneIn());
+            this.tuneBtn.addEventListener('click', () => {
+                console.log('Tune button clicked!');
+                this.tuneIn();
+            });
             console.log('Tune button listener added');
         }
         
@@ -219,7 +225,10 @@ class LiveStreamPlayer {
         }
 
         if (this.lineupBtn) {
-            this.lineupBtn.addEventListener('click', () => window.open('./guide.html', '_blank'));
+            this.lineupBtn.addEventListener('click', () => {
+                console.log('Lineup button clicked!');
+                window.open('./guide.html', '_blank');
+            });
             console.log('Lineup button listener added');
         }
 
