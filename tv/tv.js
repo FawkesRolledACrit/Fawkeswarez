@@ -1060,54 +1060,6 @@ class LiveStreamPlayer {
         }, 2000);
     }
     
-    syncWithSchedule() {
-    if (!this.hasTunedIn || !this.video) return;
-
-    const { currentUrl, currentTime, currentTitle } = this.getCurrentSchedulePosition();
-    const expectedTime = currentTime;
-    const actualTime = this.video.currentTime;
-
-    // Display schedule time as "time into current 30-min block" (stable / monotonic)
-    const blockElapsedSeconds = (this.nowMs() % this.BLOCK_DURATION) / 1000;
-
-    // OFF AIR / no content assigned
-    if (!currentUrl) {
-        if (this.currentItemUrl !== null) {
-            console.log('Switching to OFF AIR');
-            this.currentItemUrl = null;
-            this.goOffAir(currentTitle || 'OFF AIR');
-        }
-        this.currentProgramEl.textContent = currentTitle;
-        this.scheduleTimeEl.textContent = this.formatTime(blockElapsedSeconds);
-
-        // Update current block and next up
-        const weeklySlot = this.getWeeklySlotForNow();
-        if (this.currentBlockEl) {
-            this.currentBlockEl.textContent = weeklySlot ? `${weeklySlot.time} - ${weeklySlot.program}` : 'OFF AIR';
-        }
-        if (this.nextUpEl) {
-            this.nextUpEl.textContent = this.getNextUp();
-        }
-
-        // Update stream status for OFF AIR
-        if (this.streamStatusEl) {
-            let streamStatus = 'OFF AIR';
-            if (weeklySlot?.program) {
-                streamStatus = `⏸️ SCHEDULED • ${weeklySlot.time}`;
-            }
-            this.streamStatusEl.textContent = streamStatus;
-        }
-        
-        // Update status with more context
-        if (drift <= 2) {
-            let statusText = `🔴 LIVE: ${currentTitle}`;
-            if (currentBlock?.episode) {
-                statusText += ` • ${currentBlock.episode}`;
-            }
-            this.updateStatus(statusText);
-        }
-    }
-    
     startScheduleUpdates() {
         console.log('Starting schedule updates');
         // Update schedule info every second even before tuning in
