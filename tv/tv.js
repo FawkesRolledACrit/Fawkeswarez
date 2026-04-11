@@ -769,9 +769,29 @@ class LiveStreamPlayer {
         return { index: queue.length - 1, time: queue[queue.length - 1]?.duration || 0 };
     }
     
+    getBlockName(hour) {
+        // Cartoon Network-style block names
+        if (hour >= 6 && hour < 10) {
+            return "MORNING MAYHEM"; // 6am-10am
+        } else if (hour >= 10 && hour < 14) {
+            return "MIDDAY MADNESS"; // 10am-2pm
+        } else if (hour >= 14 && hour < 18) {
+            return "AFTERNOON ACTION"; // 2pm-6pm
+        } else if (hour >= 18 && hour < 22) {
+            return "PRIME TIME POWER"; // 6pm-10pm
+        } else {
+            return "ADULT SWIM"; // 10pm-6am
+        }
+    }
+
     getCurrentBlockInfo() {
         const weeklySlot = this.getWeeklySlotForNow();
         if (!weeklySlot) return null;
+        
+        // Get current hour for block naming
+        const now = new Date();
+        const currentHour = now.getHours();
+        const blockName = this.getBlockName(currentHour);
         
         // Get episode information for shows that have it
         const program = weeklySlot.program;
@@ -790,13 +810,15 @@ class LiveStreamPlayer {
             return {
                 time: timeStr,
                 episode: episodeText,
-                program: program
+                program: program,
+                blockName: blockName
             };
         }
         
         return {
             time: weeklySlot.time,
-            program: program
+            program: program,
+            blockName: blockName
         };
     }
     
@@ -988,8 +1010,13 @@ class LiveStreamPlayer {
             
             // Update current block and next up
             const weeklySlot = this.getWeeklySlotForNow();
+            const currentBlock = this.getCurrentBlockInfo();
             if (this.currentBlockEl) {
-                this.currentBlockEl.textContent = weeklySlot ? `${weeklySlot.time} - ${weeklySlot.program}` : 'OFF AIR';
+                if (weeklySlot && currentBlock?.blockName) {
+                    this.currentBlockEl.textContent = `${currentBlock.blockName} • ${weeklySlot.time} - ${weeklySlot.program}`;
+                } else {
+                    this.currentBlockEl.textContent = 'OFF AIR';
+                }
             }
             if (this.nextUpEl) {
                 this.nextUpEl.textContent = this.getNextUp();
@@ -1034,8 +1061,8 @@ class LiveStreamPlayer {
         // Update current block
         if (this.currentBlockEl) {
             let blockText = 'LIVE';
-            if (weeklySlot) {
-                blockText = `${weeklySlot.time} - ${weeklySlot.program}`;
+            if (weeklySlot && currentBlock?.blockName) {
+                blockText = `${currentBlock.blockName} • ${weeklySlot.time} - ${weeklySlot.program}`;
                 if (currentBlock?.episode) {
                     blockText += ` • ${currentBlock.episode}`;
                 }

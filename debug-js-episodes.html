@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Episode Calculation</title>
+</head>
+<body>
+    <h1>Debug Episode Calculation</h1>
+    <div id="output"></div>
+    
+    <script>
+        const BLOCK_DURATION = 30 * 60 * 1000; // 30 minutes
+        
+        function getDexterEpisodeForDate(date, timeStr) {
+            // Calculate total 30-minute slots since April 1, 2026 at 00:00
+            const april1 = new Date(2026, 3, 1, 0, 0, 0); // Month is 0-indexed
+            
+            // Parse the time string to get minutes since midnight
+            const timeMatch = timeStr.match(/(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+            if (!timeMatch) return 1;
+            
+            let hour = parseInt(timeMatch[1], 10);
+            const minute = parseInt(timeMatch[2], 10);
+            const ampm = timeMatch[3].toUpperCase();
+            
+            if (hour === 12) hour = 0;
+            if (ampm === 'PM') hour += 12;
+            
+            // Create date at the given time
+            const slotDate = new Date(date.getFullYear(), date.getMonth(), date.getDate(), hour, minute, 0);
+            
+            // Calculate total 30-minute slots since April 1, 2026 00:00
+            const msDiff = slotDate - april1;
+            const totalSlots = Math.floor(msDiff / (1000 * 60 * 30)); // 30-minute slots
+            
+            const episodeIndex = totalSlots % 11; // 11 episodes in rotation
+            
+            return episodeIndex + 1; // Episodes are 1-indexed
+        }
+        
+        function buildQueueEpisode(blockIndex) {
+            const blocks = 11; // We have 11 episodes
+            const startDate = "2026-04-01";
+            
+            let startBlockIndex = 0;
+            const startMs = Date.parse(startDate + 'T00:00:00');
+            if (!Number.isNaN(startMs)) {
+                startBlockIndex = Math.floor(startMs / BLOCK_DURATION);
+            }
+            
+            const rel = blockIndex - startBlockIndex;
+            const episodeIndex = ((rel % blocks) + blocks) % blocks;
+            
+            return episodeIndex + 1; // 1-indexed
+        }
+        
+        function debug() {
+            const output = document.getElementById('output');
+            const today = new Date();
+            
+            output.innerHTML = `<h2>Today: ${today}</h2>`;
+            
+            // Test times
+            const times = ["6:00 AM", "6:30 AM"];
+            
+            times.forEach(timeStr => {
+                // Method 1: guide.html method
+                const episode1 = getDexterEpisodeForDate(today, timeStr);
+                
+                // Method 2: tv.js method
+                const timeMatch = timeStr.match(/(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+                let hour = parseInt(timeMatch[1], 10);
+                const minute = parseInt(timeMatch[2], 10);
+                const ampm = timeMatch[3].toUpperCase();
+                
+                if (hour === 12) hour = 0;
+                if (ampm === 'PM') hour += 12;
+                
+                const slotDate = new Date(today.getFullYear(), today.getMonth(), today.getDate(), hour, minute, 0);
+                const globalBlockIndex = Math.floor(slotDate.getTime() / BLOCK_DURATION);
+                const episode2 = buildQueueEpisode(globalBlockIndex);
+                
+                output.innerHTML += `
+                    <p><strong>${timeStr}</strong><br>
+                    Guide method: Episode ${episode1}<br>
+                    TV method: Episode ${episode2}<br>
+                    Slot date: ${slotDate}</p>
+                `;
+            });
+        }
+        
+        debug();
+    </script>
+</body>
+</html>
