@@ -17,6 +17,7 @@ class LiveStreamPlayer {
         this.tuneBtn = document.getElementById('tune-btn');
         this.muteBtn = document.getElementById('mute-btn');
         this.fullscreenBtn = document.getElementById('fullscreen-btn');
+        this.lineupBtn = document.getElementById('lineup-btn');
         this.statusText = document.getElementById('status-text');
         this.currentProgramEl = document.getElementById('current-program');
         this.scheduleTimeEl = document.getElementById('schedule-time');
@@ -25,6 +26,8 @@ class LiveStreamPlayer {
             container: !!this.container,
             tuneBtn: !!this.tuneBtn,
             muteBtn: !!this.muteBtn,
+            fullscreenBtn: !!this.fullscreenBtn,
+            lineupBtn: !!this.lineupBtn,
             statusText: !!this.statusText,
             currentProgramEl: !!this.currentProgramEl,
             scheduleTimeEl: !!this.scheduleTimeEl
@@ -195,6 +198,11 @@ class LiveStreamPlayer {
         if (this.fullscreenBtn) {
             this.fullscreenBtn.addEventListener('click', () => this.toggleFullscreen());
             console.log('Fullscreen button listener added');
+        }
+
+        if (this.lineupBtn) {
+            this.lineupBtn.addEventListener('click', () => window.open('./guide.html', '_blank'));
+            console.log('Lineup button listener added');
         }
 
         // Keep button label in sync
