@@ -37,6 +37,9 @@ class LiveStreamPlayer {
         this.currentItemUrl = null;
         this.desiredMuted = true;
         this.loadSeq = 0;
+
+        this.weeklyLineup = null;
+        this.weeklySlotsByDay = null;
         
         // Schedule constants
         this.BLOCK_DURATION = 30 * 60 * 1000; // 30 minutes
@@ -71,9 +74,10 @@ class LiveStreamPlayer {
     }
     
     async loadScheduleData() {
-        const [adsResponse, scheduleResponse] = await Promise.all([
+        const [adsResponse, scheduleResponse, weeklyResponse] = await Promise.all([
             fetch('./ads.json', { cache: 'no-store' }),
-            fetch('./schedule.json', { cache: 'no-store' })
+            fetch('./schedule.json', { cache: 'no-store' }),
+            fetch('./weekly-lineup.json', { cache: 'no-store' }).catch(() => null)
         ]);
         
         if (!adsResponse.ok || !scheduleResponse.ok) {
@@ -82,6 +86,95 @@ class LiveStreamPlayer {
         
         this.ads = await adsResponse.json();
         this.schedule = await scheduleResponse.json();
+
+        if (weeklyResponse && weeklyResponse.ok) {
+            this.weeklyLineup = await weeklyResponse.json();
+            this.weeklySlotsByDay = this.buildWeeklySlots(this.weeklyLineup);
+        }
+    }
+
+    parseTimeToMinutes(timeStr) {
+        // Handles "6:00 AM", "12:00 PM", "10:30 PM"
+        const s = (timeStr || '').trim();
+        const m = s.match(/^(\d{1,2}):(\d{2})\s*(AM|PM)$/i);
+        if (!m) return null;
+        let hh = parseInt(m[1], 10);
+        const mm = parseInt(m[2], 10);
+        const ampm = m[3].toUpperCase();
+        if (hh === 12) hh = 0;
+        if (ampm === 'PM') hh += 12;
+        return hh * 60 + mm;
+    }
+
+    getDayName(dateObj) {
+        const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        return days[dateObj.getDay()];
+    }
+
+    buildWeeklySlots(lineupItems) {
+        // Expand the weekly template into 30-minute slots per day.
+        // Any gaps become OFF AIR.
+        const byDay = {};
+        for (const item of lineupItems || []) {
+            if (!item?.day || !item?.time || !item?.program) continue;
+            const day = String(item.day).trim();
+            const startMin = this.parseTimeToMinutes(item.time);
+            if (startMin == null) continue;
+            if (!byDay[day]) byDay[day] = [];
+            byDay[day].push({ startMin, program: String(item.program).trim() });
+        }
+
+        const out = {};
+        for (const [day, entries] of Object.entries(byDay)) {
+            const sorted = entries.sort((a, b) => a.startMin - b.startMin);
+            const slots = [];
+            for (let i = 0; i < sorted.length; i++) {
+                const cur = sorted[i];
+                const nextStart = (i + 1 < sorted.length) ? sorted[i + 1].startMin : 24 * 60;
+                const duration = Math.max(0, nextStart - cur.startMin);
+                const slotCount = Math.floor(duration / 30);
+                for (let k = 0; k < slotCount; k++) {
+                    slots.push({
+                        startMin: cur.startMin + (k * 30),
+                        endMin: cur.startMin + ((k + 1) * 30),
+                        program: cur.program
+                    });
+                }
+            }
+            out[day] = slots;
+        }
+        return out;
+    }
+
+    getWeeklySlotForNow() {
+        if (!this.weeklySlotsByDay) return null;
+        const d = new Date(this.nowMs());
+        const dayName = this.getDayName(d);
+        const mins = d.getHours() * 60 + d.getMinutes();
+        const slots = this.weeklySlotsByDay[dayName] || [];
+        // Find the slot where mins is within [start,end)
+        for (const s of slots) {
+            if (mins >= s.startMin && mins < s.endMin) {
+                return { ...s, dayName, mins };
+            }
+        }
+        return { program: null, startMin: Math.floor(mins / 30) * 30, endMin: Math.floor(mins / 30) * 30 + 30, dayName, mins };
+    }
+
+    goOffAir(title) {
+        this.currentItemUrl = null;
+        if (this.hls) {
+            this.hls.destroy();
+            this.hls = null;
+        }
+        if (this.video) {
+            try { this.video.pause(); } catch {}
+            try {
+                this.video.removeAttribute('src');
+                this.video.load();
+            } catch {}
+        }
+        this.updateStatus(title || 'OFF AIR');
     }
     
     setupEventListeners() {
@@ -203,12 +296,13 @@ class LiveStreamPlayer {
         // Get current schedule position
         const { currentUrl, currentTime, currentTitle } = this.getCurrentSchedulePosition();
         console.log('Schedule position:', { currentUrl, currentTime, currentTitle });
-        
+
         if (currentUrl && currentUrl !== 'REPLACE_ME') {
             await this.loadVideo(currentUrl, currentTime, currentTitle);
             await this.startPlayback();
         } else {
-            this.updateStatus('No valid video URL in schedule');
+            // OFF AIR or not-yet-assigned programming: show black screen.
+            this.goOffAir(currentTitle || 'OFF AIR');
         }
         
         // Start sync interval
@@ -482,21 +576,32 @@ class LiveStreamPlayer {
         if (!this.schedule?.blocks?.length) {
             return { currentUrl: null, currentTime: 0, currentTitle: 'No Schedule' };
         }
-        
+
         const now = this.nowMs();
-        const blockIndex = Math.floor(now / this.BLOCK_DURATION);
-        const blockStart = blockIndex * this.BLOCK_DURATION;
+        const globalBlockIndex = Math.floor(now / this.BLOCK_DURATION);
+        const blockStart = globalBlockIndex * this.BLOCK_DURATION;
         const blockElapsed = now - blockStart;
-        
-        // Build queue for current block
-        const queue = this.buildQueue(blockIndex);
+
+        // Weekly lineup mode: determine what show is supposed to be on NOW.
+        const weeklySlot = this.getWeeklySlotForNow();
+        const program = weeklySlot?.program;
+
+        if (!program) {
+            return { currentUrl: null, currentTime: 0, currentTitle: 'OFF AIR', queue: [] };
+        }
+
+        // Only Dexter is wired up for now. Everything else is intentionally OFF AIR.
+        if (program !== "Dexter's Laboratory") {
+            return { currentUrl: null, currentTime: 0, currentTitle: `${program} (No Video Yet)`, queue: [] };
+        }
+
+        const queue = this.buildQueue(globalBlockIndex);
         const position = this.getQueuePosition(blockElapsed, queue);
-        
         return {
             currentUrl: queue[position.index]?.url || null,
             currentTime: position.time,
-            currentTitle: queue[position.index]?.title || 'Unknown',
-            queue: queue
+            currentTitle: queue[position.index]?.title || program,
+            queue
         };
     }
     
@@ -618,6 +723,18 @@ class LiveStreamPlayer {
 
         // Display schedule time as "time into current 30-min block" (stable / monotonic)
         const blockElapsedSeconds = (this.nowMs() % this.BLOCK_DURATION) / 1000;
+
+        // OFF AIR / no content assigned
+        if (!currentUrl) {
+            if (this.currentItemUrl !== null) {
+                console.log('Switching to OFF AIR');
+                this.currentItemUrl = null;
+                this.goOffAir(currentTitle || 'OFF AIR');
+            }
+            this.currentProgramEl.textContent = currentTitle;
+            this.scheduleTimeEl.textContent = this.formatTime(blockElapsedSeconds);
+            return;
+        }
 
         // Check if we need to switch videos
         if (currentUrl !== this.currentItemUrl) {
