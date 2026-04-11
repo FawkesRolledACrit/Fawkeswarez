@@ -598,8 +598,12 @@ class LiveStreamPlayer {
             return { currentUrl: null, currentTime: 0, currentTitle: 'OFF AIR', queue: [] };
         }
 
-        // Only Dexter is wired up for now. Everything else is intentionally OFF AIR.
-        if (program !== "Dexter's Laboratory") {
+        // Check if this program has videos available in schedule.json
+        const hasProgramVideos = this.schedule.blocks.some(block => 
+            block.title.toLowerCase().includes(program.toLowerCase().replace("the powerpuff girls", "powerpuff girls").replace("dexter's laboratory", "dexter"))
+        );
+        
+        if (!hasProgramVideos) {
             return { currentUrl: null, currentTime: 0, currentTitle: `${program} (No Video Yet)`, queue: [] };
         }
 
@@ -618,6 +622,22 @@ class LiveStreamPlayer {
         const blocks = this.schedule?.blocks || [];
         if (!blocks.length) return queue;
 
+        // Get current program from weekly lineup
+        const weeklySlot = this.getWeeklySlotForNow();
+        const program = weeklySlot?.program;
+        if (!program) return queue;
+
+        // Filter blocks to only include episodes for the current program
+        const programBlocks = blocks.filter(block => {
+            const blockTitle = block.title.toLowerCase();
+            const searchProgram = program.toLowerCase()
+                .replace("the powerpuff girls", "powerpuff girls")
+                .replace("dexter's laboratory", "dexter");
+            return blockTitle.includes(searchProgram);
+        });
+
+        if (!programBlocks.length) return queue;
+
         // Date-based rotation: schedule.startDate at 00:00 maps to blocks[0].
         // Then every 30-minute slot advances to the next episode, looping forever.
         let startBlockIndex = 0;
@@ -629,8 +649,8 @@ class LiveStreamPlayer {
         }
 
         const rel = blockIndex - startBlockIndex;
-        const episodeIndex = ((rel % blocks.length) + blocks.length) % blocks.length;
-        const block = blocks[episodeIndex];
+        const episodeIndex = ((rel % programBlocks.length) + programBlocks.length) % programBlocks.length;
+        const block = programBlocks[episodeIndex];
         let usedTime = 0;
         
         for (const event of block.events) {
