@@ -1,1122 +1,1682 @@
 [
     {
-        "time":  "12:00 AM",
-        "day":  "Monday",
-        "program":  "Home Movies"
+        "time": "12:00 AM",
+        "day": "Monday",
+        "program": "Off Air"
     },
     {
-        "time":  "12:00 AM",
-        "day":  "Monday",
-        "program":  "Space Ghost"
+        "time": "12:30 AM",
+        "day": "Monday",
+        "program": "Off Air"
     },
     {
-        "time":  "12:30 AM",
-        "day":  "Monday",
-        "program":  "Home Movies"
+        "time": "1:00 AM",
+        "day": "Monday",
+        "program": "Off Air"
     },
     {
-        "time":  "6:00 AM",
-        "day":  "Monday",
-        "program":  "Dexter\u0027s Laboratory"
+        "time": "1:30 AM",
+        "day": "Monday",
+        "program": "Off Air"
     },
     {
-        "time":  "6:30 AM",
-        "day":  "Monday",
-        "program":  "Dexter\u0027s Laboratory"
+        "time": "2:00 AM",
+        "day": "Monday",
+        "program": "Off Air"
     },
     {
-        "time":  "7:00 AM",
-        "day":  "Monday",
-        "program":  "The Powerpuff Girls"
+        "time": "2:30 AM",
+        "day": "Monday",
+        "program": "Off Air"
     },
     {
-        "time":  "7:30 AM",
-        "day":  "Monday",
-        "program":  "The Powerpuff Girls"
+        "time": "3:00 AM",
+        "day": "Monday",
+        "program": "Off Air"
     },
     {
-        "time":  "8:00 AM",
-        "day":  "Monday",
-        "program":  "Ed, Edd n Eddy"
+        "time": "3:30 AM",
+        "day": "Monday",
+        "program": "Off Air"
     },
     {
-        "time":  "8:30 AM",
-        "day":  "Monday",
-        "program":  "Ed, Edd n Eddy"
+        "time": "4:00 AM",
+        "day": "Monday",
+        "program": "Off Air"
     },
     {
-        "time":  "9:00 AM",
-        "day":  "Monday",
-        "program":  "Courage the Cowardly Dog"
+        "time": "4:30 AM",
+        "day": "Monday",
+        "program": "Off Air"
     },
     {
-        "time":  "9:30 AM",
-        "day":  "Monday",
-        "program":  "Courage the Cowardly Dog"
+        "time": "5:00 AM",
+        "day": "Monday",
+        "program": "Off Air"
     },
     {
-        "time":  "10:00 AM",
-        "day":  "Monday",
-        "program":  "Johnny Bravo"
+        "time": "5:30 AM",
+        "day": "Monday",
+        "program": "Off Air"
     },
     {
-        "time":  "10:30 AM",
-        "day":  "Monday",
-        "program":  "Johnny Bravo"
+        "time": "6:00 AM",
+        "day": "Monday",
+        "program": "Dexter's Laboratory"
     },
     {
-        "time":  "11:00 AM",
-        "day":  "Monday",
-        "program":  "Cow and Chicken"
+        "time": "6:30 AM",
+        "day": "Monday",
+        "program": "Dexter's Laboratory"
     },
     {
-        "time":  "11:30 AM",
-        "day":  "Monday",
-        "program":  "Cow and Chicken"
+        "time": "7:00 AM",
+        "day": "Monday",
+        "program": "The Powerpuff Girls"
     },
     {
-        "time":  "12:00 PM",
-        "day":  "Monday",
-        "program":  "I Am Weasel"
+        "time": "7:30 AM",
+        "day": "Monday",
+        "program": "The Powerpuff Girls"
     },
     {
-        "time":  "12:30 PM",
-        "day":  "Monday",
-        "program":  "I Am Weasel"
+        "time": "8:00 AM",
+        "day": "Monday",
+        "program": "Ed, Edd n Eddy"
     },
     {
-        "time":  "1:00 PM",
-        "day":  "Monday",
-        "program":  "Billy \u0026 Mandy"
+        "time": "8:30 AM",
+        "day": "Monday",
+        "program": "Ed, Edd n Eddy"
     },
     {
-        "time":  "1:30 PM",
-        "day":  "Monday",
-        "program":  "Billy \u0026 Mandy"
+        "time": "9:00 AM",
+        "day": "Monday",
+        "program": "Courage the Cowardly Dog"
     },
     {
-        "time":  "3:00 PM",
-        "day":  "Monday",
-        "program":  "Teen Titans"
+        "time": "9:30 AM",
+        "day": "Monday",
+        "program": "Courage the Cowardly Dog"
     },
     {
-        "time":  "3:30 PM",
-        "day":  "Monday",
-        "program":  "Teen Titans"
+        "time": "10:00 AM",
+        "day": "Monday",
+        "program": "Johnny Bravo"
     },
     {
-        "time":  "4:00 PM",
-        "day":  "Monday",
-        "program":  "Samurai Jack"
+        "time": "10:30 AM",
+        "day": "Monday",
+        "program": "Johnny Bravo"
     },
     {
-        "time":  "4:30 PM",
-        "day":  "Monday",
-        "program":  "Samurai Jack"
+        "time": "11:00 AM",
+        "day": "Monday",
+        "program": "Cow and Chicken"
     },
     {
-        "time":  "5:00 PM",
-        "day":  "Monday",
-        "program":  "Justice League"
+        "time": "11:30 AM",
+        "day": "Monday",
+        "program": "Cow and Chicken"
     },
     {
-        "time":  "5:30 PM",
-        "day":  "Monday",
-        "program":  "Justice League"
+        "time": "12:00 PM",
+        "day": "Monday",
+        "program": "I Am Weasel"
     },
     {
-        "time":  "6:00 PM",
-        "day":  "Monday",
-        "program":  "Dragon Ball Z"
+        "time": "12:30 PM",
+        "day": "Monday",
+        "program": "I Am Weasel"
     },
     {
-        "time":  "6:30 PM",
-        "day":  "Monday",
-        "program":  "Dragon Ball Z"
+        "time": "1:00 PM",
+        "day": "Monday",
+        "program": "Dexter's Laboratory"
     },
     {
-        "time":  "7:00 PM",
-        "day":  "Monday",
-        "program":  "Billy \u0026 Mandy"
+        "time": "1:30 PM",
+        "day": "Monday",
+        "program": "Dexter's Laboratory"
     },
     {
-        "time":  "7:30 PM",
-        "day":  "Monday",
-        "program":  "Billy \u0026 Mandy"
+        "time": "2:00 PM",
+        "day": "Monday",
+        "program": "The Powerpuff Girls"
     },
     {
-        "time":  "8:00 PM",
-        "day":  "Monday",
-        "program":  "Foster\u0027s Home"
+        "time": "2:30 PM",
+        "day": "Monday",
+        "program": "The Powerpuff Girls"
     },
     {
-        "time":  "8:30 PM",
-        "day":  "Monday",
-        "program":  "Foster\u0027s Home"
+        "time": "3:00 PM",
+        "day": "Monday",
+        "program": "Ed, Edd n Eddy"
     },
     {
-        "time":  "9:00 PM",
-        "day":  "Monday",
-        "program":  "Courage"
+        "time": "3:30 PM",
+        "day": "Monday",
+        "program": "Ed, Edd n Eddy"
     },
     {
-        "time":  "9:30 PM",
-        "day":  "Monday",
-        "program":  "Courage"
+        "time": "4:00 PM",
+        "day": "Monday",
+        "program": "Courage the Cowardly Dog"
     },
     {
-        "time":  "10:00 PM",
-        "day":  "Monday",
-        "program":  "Aqua Teen Hunger Force"
+        "time": "4:30 PM",
+        "day": "Monday",
+        "program": "Courage the Cowardly Dog"
     },
     {
-        "time":  "10:30 PM",
-        "day":  "Monday",
-        "program":  "Aqua Teen Hunger Force"
+        "time": "5:00 PM",
+        "day": "Monday",
+        "program": "Johnny Bravo"
     },
     {
-        "time":  "10:30 PM",
-        "day":  "Monday",
-        "program":  "Sealab 2021"
+        "time": "5:30 PM",
+        "day": "Monday",
+        "program": "Johnny Bravo"
     },
     {
-        "time":  "11:00 PM",
-        "day":  "Monday",
-        "program":  "Brak Show"
+        "time": "6:00 PM",
+        "day": "Monday",
+        "program": "Cow and Chicken"
     },
     {
-        "time":  "11:00 PM",
-        "day":  "Monday",
-        "program":  "Sealab 2021"
+        "time": "6:30 PM",
+        "day": "Monday",
+        "program": "Cow and Chicken"
     },
     {
-        "time":  "11:30 PM",
-        "day":  "Monday",
-        "program":  "Brak Show"
+        "time": "7:00 PM",
+        "day": "Monday",
+        "program": "I Am Weasel"
     },
     {
-        "time":  "11:30 PM",
-        "day":  "Monday",
-        "program":  "Space Ghost"
+        "time": "7:30 PM",
+        "day": "Monday",
+        "program": "I Am Weasel"
     },
     {
-        "time":  "12:00 AM",
-        "day":  "Tuesday",
-        "program":  "Space Ghost"
+        "time": "8:00 PM",
+        "day": "Monday",
+        "program": "Dexter's Laboratory"
     },
     {
-        "time":  "12:00 AM",
-        "day":  "Tuesday",
-        "program":  "Home Movies"
+        "time": "8:30 PM",
+        "day": "Monday",
+        "program": "Dexter's Laboratory"
     },
     {
-        "time":  "12:30 AM",
-        "day":  "Tuesday",
-        "program":  "Home Movies"
+        "time": "9:00 PM",
+        "day": "Monday",
+        "program": "The Powerpuff Girls"
     },
     {
-        "time":  "6:00 AM",
-        "day":  "Tuesday",
-        "program":  "Dexter\u0027s Laboratory"
+        "time": "9:30 PM",
+        "day": "Monday",
+        "program": "The Powerpuff Girls"
     },
     {
-        "time":  "6:30 AM",
-        "day":  "Tuesday",
-        "program":  "Dexter\u0027s Laboratory"
+        "time": "10:00 PM",
+        "day": "Monday",
+        "program": "Ed, Edd n Eddy"
     },
     {
-        "time":  "7:00 AM",
-        "day":  "Tuesday",
-        "program":  "The Powerpuff Girls"
+        "time": "10:30 PM",
+        "day": "Monday",
+        "program": "Ed, Edd n Eddy"
     },
     {
-        "time":  "7:30 AM",
-        "day":  "Tuesday",
-        "program":  "The Powerpuff Girls"
+        "time": "11:00 PM",
+        "day": "Monday",
+        "program": "Off Air"
     },
     {
-        "time":  "8:00 AM",
-        "day":  "Tuesday",
-        "program":  "Ed, Edd n Eddy"
+        "time": "11:30 PM",
+        "day": "Monday",
+        "program": "Off Air"
     },
     {
-        "time":  "8:30 AM",
-        "day":  "Tuesday",
-        "program":  "Ed, Edd n Eddy"
+        "time": "12:00 AM",
+        "day": "Tuesday",
+        "program": "Off Air"
     },
     {
-        "time":  "9:00 AM",
-        "day":  "Tuesday",
-        "program":  "Courage the Cowardly Dog"
+        "time": "12:30 AM",
+        "day": "Tuesday",
+        "program": "Off Air"
     },
     {
-        "time":  "9:30 AM",
-        "day":  "Tuesday",
-        "program":  "Courage the Cowardly Dog"
+        "time": "1:00 AM",
+        "day": "Tuesday",
+        "program": "Off Air"
     },
     {
-        "time":  "10:00 AM",
-        "day":  "Tuesday",
-        "program":  "Johnny Bravo"
+        "time": "1:30 AM",
+        "day": "Tuesday",
+        "program": "Off Air"
     },
     {
-        "time":  "10:30 AM",
-        "day":  "Tuesday",
-        "program":  "Johnny Bravo"
+        "time": "2:00 AM",
+        "day": "Tuesday",
+        "program": "Off Air"
     },
     {
-        "time":  "11:00 AM",
-        "day":  "Tuesday",
-        "program":  "Cow and Chicken"
+        "time": "2:30 AM",
+        "day": "Tuesday",
+        "program": "Off Air"
     },
     {
-        "time":  "11:30 AM",
-        "day":  "Tuesday",
-        "program":  "Cow and Chicken"
+        "time": "3:00 AM",
+        "day": "Tuesday",
+        "program": "Off Air"
     },
     {
-        "time":  "12:00 PM",
-        "day":  "Tuesday",
-        "program":  "I Am Weasel"
+        "time": "3:30 AM",
+        "day": "Tuesday",
+        "program": "Off Air"
     },
     {
-        "time":  "12:30 PM",
-        "day":  "Tuesday",
-        "program":  "I Am Weasel"
+        "time": "4:00 AM",
+        "day": "Tuesday",
+        "program": "Off Air"
     },
     {
-        "time":  "1:00 PM",
-        "day":  "Tuesday",
-        "program":  "Billy \u0026 Mandy"
+        "time": "4:30 AM",
+        "day": "Tuesday",
+        "program": "Off Air"
     },
     {
-        "time":  "1:30 PM",
-        "day":  "Tuesday",
-        "program":  "Billy \u0026 Mandy"
+        "time": "5:00 AM",
+        "day": "Tuesday",
+        "program": "Off Air"
     },
     {
-        "time":  "3:00 PM",
-        "day":  "Tuesday",
-        "program":  "Teen Titans"
+        "time": "5:30 AM",
+        "day": "Tuesday",
+        "program": "Off Air"
     },
     {
-        "time":  "3:30 PM",
-        "day":  "Tuesday",
-        "program":  "Teen Titans"
+        "time": "6:00 AM",
+        "day": "Tuesday",
+        "program": "Dexter's Laboratory"
     },
     {
-        "time":  "4:00 PM",
-        "day":  "Tuesday",
-        "program":  "Samurai Jack"
+        "time": "6:30 AM",
+        "day": "Tuesday",
+        "program": "Dexter's Laboratory"
     },
     {
-        "time":  "4:30 PM",
-        "day":  "Tuesday",
-        "program":  "Samurai Jack"
+        "time": "7:00 AM",
+        "day": "Tuesday",
+        "program": "The Powerpuff Girls"
     },
     {
-        "time":  "5:00 PM",
-        "day":  "Tuesday",
-        "program":  "Justice League"
+        "time": "7:30 AM",
+        "day": "Tuesday",
+        "program": "The Powerpuff Girls"
     },
     {
-        "time":  "5:30 PM",
-        "day":  "Tuesday",
-        "program":  "Justice League"
+        "time": "8:00 AM",
+        "day": "Tuesday",
+        "program": "Ed, Edd n Eddy"
     },
     {
-        "time":  "6:00 PM",
-        "day":  "Tuesday",
-        "program":  "Dragon Ball Z"
+        "time": "8:30 AM",
+        "day": "Tuesday",
+        "program": "Ed, Edd n Eddy"
     },
     {
-        "time":  "6:30 PM",
-        "day":  "Tuesday",
-        "program":  "Dragon Ball Z"
+        "time": "9:00 AM",
+        "day": "Tuesday",
+        "program": "Courage the Cowardly Dog"
     },
     {
-        "time":  "7:00 PM",
-        "day":  "Tuesday",
-        "program":  "Billy \u0026 Mandy"
+        "time": "9:30 AM",
+        "day": "Tuesday",
+        "program": "Courage the Cowardly Dog"
     },
     {
-        "time":  "7:30 PM",
-        "day":  "Tuesday",
-        "program":  "Billy \u0026 Mandy"
+        "time": "10:00 AM",
+        "day": "Tuesday",
+        "program": "Johnny Bravo"
     },
     {
-        "time":  "8:00 PM",
-        "day":  "Tuesday",
-        "program":  "Foster\u0027s Home"
+        "time": "10:30 AM",
+        "day": "Tuesday",
+        "program": "Johnny Bravo"
     },
     {
-        "time":  "8:30 PM",
-        "day":  "Tuesday",
-        "program":  "Foster\u0027s Home"
+        "time": "11:00 AM",
+        "day": "Tuesday",
+        "program": "Cow and Chicken"
     },
     {
-        "time":  "9:00 PM",
-        "day":  "Tuesday",
-        "program":  "Courage"
+        "time": "11:30 AM",
+        "day": "Tuesday",
+        "program": "Cow and Chicken"
     },
     {
-        "time":  "9:30 PM",
-        "day":  "Tuesday",
-        "program":  "Courage"
+        "time": "12:00 PM",
+        "day": "Tuesday",
+        "program": "I Am Weasel"
     },
     {
-        "time":  "10:00 PM",
-        "day":  "Tuesday",
-        "program":  "Aqua Teen Hunger Force"
+        "time": "12:30 PM",
+        "day": "Tuesday",
+        "program": "I Am Weasel"
     },
     {
-        "time":  "10:30 PM",
-        "day":  "Tuesday",
-        "program":  "Aqua Teen Hunger Force"
+        "time": "1:00 PM",
+        "day": "Tuesday",
+        "program": "Dexter's Laboratory"
     },
     {
-        "time":  "10:30 PM",
-        "day":  "Tuesday",
-        "program":  "Sealab 2021"
+        "time": "1:30 PM",
+        "day": "Tuesday",
+        "program": "Dexter's Laboratory"
     },
     {
-        "time":  "11:00 PM",
-        "day":  "Tuesday",
-        "program":  "Sealab 2021"
+        "time": "2:00 PM",
+        "day": "Tuesday",
+        "program": "The Powerpuff Girls"
     },
     {
-        "time":  "11:00 PM",
-        "day":  "Tuesday",
-        "program":  "Brak Show"
+        "time": "2:30 PM",
+        "day": "Tuesday",
+        "program": "The Powerpuff Girls"
     },
     {
-        "time":  "11:30 PM",
-        "day":  "Tuesday",
-        "program":  "Space Ghost"
+        "time": "3:00 PM",
+        "day": "Tuesday",
+        "program": "Ed, Edd n Eddy"
     },
     {
-        "time":  "11:30 PM",
-        "day":  "Tuesday",
-        "program":  "Brak Show"
+        "time": "3:30 PM",
+        "day": "Tuesday",
+        "program": "Ed, Edd n Eddy"
     },
     {
-        "time":  "12:00 AM",
-        "day":  "Wednesday",
-        "program":  "Space Ghost"
+        "time": "4:00 PM",
+        "day": "Tuesday",
+        "program": "Courage the Cowardly Dog"
     },
     {
-        "time":  "12:00 AM",
-        "day":  "Wednesday",
-        "program":  "Home Movies"
+        "time": "4:30 PM",
+        "day": "Tuesday",
+        "program": "Courage the Cowardly Dog"
     },
     {
-        "time":  "12:30 AM",
-        "day":  "Wednesday",
-        "program":  "Home Movies"
+        "time": "5:00 PM",
+        "day": "Tuesday",
+        "program": "Johnny Bravo"
     },
     {
-        "time":  "6:00 AM",
-        "day":  "Wednesday",
-        "program":  "Dexter\u0027s Laboratory"
+        "time": "5:30 PM",
+        "day": "Tuesday",
+        "program": "Johnny Bravo"
     },
     {
-        "time":  "6:30 AM",
-        "day":  "Wednesday",
-        "program":  "Dexter\u0027s Laboratory"
+        "time": "6:00 PM",
+        "day": "Tuesday",
+        "program": "Cow and Chicken"
     },
     {
-        "time":  "7:00 AM",
-        "day":  "Wednesday",
-        "program":  "The Powerpuff Girls"
+        "time": "6:30 PM",
+        "day": "Tuesday",
+        "program": "Cow and Chicken"
     },
     {
-        "time":  "7:30 AM",
-        "day":  "Wednesday",
-        "program":  "The Powerpuff Girls"
+        "time": "7:00 PM",
+        "day": "Tuesday",
+        "program": "I Am Weasel"
     },
     {
-        "time":  "8:00 AM",
-        "day":  "Wednesday",
-        "program":  "Ed, Edd n Eddy"
+        "time": "7:30 PM",
+        "day": "Tuesday",
+        "program": "I Am Weasel"
     },
     {
-        "time":  "8:30 AM",
-        "day":  "Wednesday",
-        "program":  "Ed, Edd n Eddy"
+        "time": "8:00 PM",
+        "day": "Tuesday",
+        "program": "Dexter's Laboratory"
     },
     {
-        "time":  "9:00 AM",
-        "day":  "Wednesday",
-        "program":  "Courage the Cowardly Dog"
+        "time": "8:30 PM",
+        "day": "Tuesday",
+        "program": "Dexter's Laboratory"
     },
     {
-        "time":  "9:30 AM",
-        "day":  "Wednesday",
-        "program":  "Courage the Cowardly Dog"
+        "time": "9:00 PM",
+        "day": "Tuesday",
+        "program": "The Powerpuff Girls"
     },
     {
-        "time":  "10:00 AM",
-        "day":  "Wednesday",
-        "program":  "Johnny Bravo"
+        "time": "9:30 PM",
+        "day": "Tuesday",
+        "program": "The Powerpuff Girls"
     },
     {
-        "time":  "10:30 AM",
-        "day":  "Wednesday",
-        "program":  "Johnny Bravo"
+        "time": "10:00 PM",
+        "day": "Tuesday",
+        "program": "Ed, Edd n Eddy"
     },
     {
-        "time":  "11:00 AM",
-        "day":  "Wednesday",
-        "program":  "Cow and Chicken"
+        "time": "10:30 PM",
+        "day": "Tuesday",
+        "program": "Ed, Edd n Eddy"
     },
     {
-        "time":  "11:30 AM",
-        "day":  "Wednesday",
-        "program":  "Cow and Chicken"
+        "time": "11:00 PM",
+        "day": "Tuesday",
+        "program": "Off Air"
     },
     {
-        "time":  "12:00 PM",
-        "day":  "Wednesday",
-        "program":  "I Am Weasel"
+        "time": "11:30 PM",
+        "day": "Tuesday",
+        "program": "Off Air"
     },
     {
-        "time":  "12:30 PM",
-        "day":  "Wednesday",
-        "program":  "I Am Weasel"
+        "time": "12:00 AM",
+        "day": "Wednesday",
+        "program": "Off Air"
     },
     {
-        "time":  "1:00 PM",
-        "day":  "Wednesday",
-        "program":  "Billy \u0026 Mandy"
+        "time": "12:30 AM",
+        "day": "Wednesday",
+        "program": "Off Air"
     },
     {
-        "time":  "1:30 PM",
-        "day":  "Wednesday",
-        "program":  "Billy \u0026 Mandy"
+        "time": "1:00 AM",
+        "day": "Wednesday",
+        "program": "Off Air"
     },
     {
-        "time":  "3:00 PM",
-        "day":  "Wednesday",
-        "program":  "Teen Titans"
+        "time": "1:30 AM",
+        "day": "Wednesday",
+        "program": "Off Air"
     },
     {
-        "time":  "3:30 PM",
-        "day":  "Wednesday",
-        "program":  "Teen Titans"
+        "time": "2:00 AM",
+        "day": "Wednesday",
+        "program": "Off Air"
     },
     {
-        "time":  "4:00 PM",
-        "day":  "Wednesday",
-        "program":  "Samurai Jack"
+        "time": "2:30 AM",
+        "day": "Wednesday",
+        "program": "Off Air"
     },
     {
-        "time":  "4:30 PM",
-        "day":  "Wednesday",
-        "program":  "Samurai Jack"
+        "time": "3:00 AM",
+        "day": "Wednesday",
+        "program": "Off Air"
     },
     {
-        "time":  "5:00 PM",
-        "day":  "Wednesday",
-        "program":  "Justice League"
+        "time": "3:30 AM",
+        "day": "Wednesday",
+        "program": "Off Air"
     },
     {
-        "time":  "5:30 PM",
-        "day":  "Wednesday",
-        "program":  "Justice League"
+        "time": "4:00 AM",
+        "day": "Wednesday",
+        "program": "Off Air"
     },
     {
-        "time":  "6:00 PM",
-        "day":  "Wednesday",
-        "program":  "Dragon Ball Z"
+        "time": "4:30 AM",
+        "day": "Wednesday",
+        "program": "Off Air"
     },
     {
-        "time":  "6:30 PM",
-        "day":  "Wednesday",
-        "program":  "Dragon Ball Z"
+        "time": "5:00 AM",
+        "day": "Wednesday",
+        "program": "Off Air"
     },
     {
-        "time":  "7:00 PM",
-        "day":  "Wednesday",
-        "program":  "Billy \u0026 Mandy"
+        "time": "5:30 AM",
+        "day": "Wednesday",
+        "program": "Off Air"
     },
     {
-        "time":  "7:30 PM",
-        "day":  "Wednesday",
-        "program":  "Billy \u0026 Mandy"
+        "time": "6:00 AM",
+        "day": "Wednesday",
+        "program": "Dexter's Laboratory"
     },
     {
-        "time":  "8:00 PM",
-        "day":  "Wednesday",
-        "program":  "Foster\u0027s Home"
+        "time": "6:30 AM",
+        "day": "Wednesday",
+        "program": "Dexter's Laboratory"
     },
     {
-        "time":  "8:30 PM",
-        "day":  "Wednesday",
-        "program":  "Foster\u0027s Home"
+        "time": "7:00 AM",
+        "day": "Wednesday",
+        "program": "The Powerpuff Girls"
     },
     {
-        "time":  "9:00 PM",
-        "day":  "Wednesday",
-        "program":  "Courage"
+        "time": "7:30 AM",
+        "day": "Wednesday",
+        "program": "The Powerpuff Girls"
     },
     {
-        "time":  "9:30 PM",
-        "day":  "Wednesday",
-        "program":  "Courage"
+        "time": "8:00 AM",
+        "day": "Wednesday",
+        "program": "Ed, Edd n Eddy"
     },
     {
-        "time":  "10:00 PM",
-        "day":  "Wednesday",
-        "program":  "Aqua Teen Hunger Force"
+        "time": "8:30 AM",
+        "day": "Wednesday",
+        "program": "Ed, Edd n Eddy"
     },
     {
-        "time":  "10:30 PM",
-        "day":  "Wednesday",
-        "program":  "Sealab 2021"
+        "time": "9:00 AM",
+        "day": "Wednesday",
+        "program": "Courage the Cowardly Dog"
     },
     {
-        "time":  "10:30 PM",
-        "day":  "Wednesday",
-        "program":  "Aqua Teen Hunger Force"
+        "time": "9:30 AM",
+        "day": "Wednesday",
+        "program": "Courage the Cowardly Dog"
     },
     {
-        "time":  "11:00 PM",
-        "day":  "Wednesday",
-        "program":  "Sealab 2021"
+        "time": "10:00 AM",
+        "day": "Wednesday",
+        "program": "Johnny Bravo"
     },
     {
-        "time":  "11:00 PM",
-        "day":  "Wednesday",
-        "program":  "Brak Show"
+        "time": "10:30 AM",
+        "day": "Wednesday",
+        "program": "Johnny Bravo"
     },
     {
-        "time":  "11:30 PM",
-        "day":  "Wednesday",
-        "program":  "Space Ghost"
+        "time": "11:00 AM",
+        "day": "Wednesday",
+        "program": "Cow and Chicken"
     },
     {
-        "time":  "11:30 PM",
-        "day":  "Wednesday",
-        "program":  "Brak Show"
+        "time": "11:30 AM",
+        "day": "Wednesday",
+        "program": "Cow and Chicken"
     },
     {
-        "time":  "12:00 AM",
-        "day":  "Thursday",
-        "program":  "Space Ghost"
+        "time": "12:00 PM",
+        "day": "Wednesday",
+        "program": "I Am Weasel"
     },
     {
-        "time":  "12:00 AM",
-        "day":  "Thursday",
-        "program":  "Home Movies"
+        "time": "12:30 PM",
+        "day": "Wednesday",
+        "program": "I Am Weasel"
     },
     {
-        "time":  "12:30 AM",
-        "day":  "Thursday",
-        "program":  "Home Movies"
+        "time": "1:00 PM",
+        "day": "Wednesday",
+        "program": "Dexter's Laboratory"
     },
     {
-        "time":  "6:00 AM",
-        "day":  "Thursday",
-        "program":  "Dexter\u0027s Laboratory"
+        "time": "1:30 PM",
+        "day": "Wednesday",
+        "program": "Dexter's Laboratory"
     },
     {
-        "time":  "6:30 AM",
-        "day":  "Thursday",
-        "program":  "Dexter\u0027s Laboratory"
+        "time": "2:00 PM",
+        "day": "Wednesday",
+        "program": "The Powerpuff Girls"
     },
     {
-        "time":  "7:00 AM",
-        "day":  "Thursday",
-        "program":  "The Powerpuff Girls"
+        "time": "2:30 PM",
+        "day": "Wednesday",
+        "program": "The Powerpuff Girls"
     },
     {
-        "time":  "7:30 AM",
-        "day":  "Thursday",
-        "program":  "The Powerpuff Girls"
+        "time": "3:00 PM",
+        "day": "Wednesday",
+        "program": "Ed, Edd n Eddy"
     },
     {
-        "time":  "8:00 AM",
-        "day":  "Thursday",
-        "program":  "Ed, Edd n Eddy"
+        "time": "3:30 PM",
+        "day": "Wednesday",
+        "program": "Ed, Edd n Eddy"
     },
     {
-        "time":  "8:30 AM",
-        "day":  "Thursday",
-        "program":  "Ed, Edd n Eddy"
+        "time": "4:00 PM",
+        "day": "Wednesday",
+        "program": "Courage the Cowardly Dog"
     },
     {
-        "time":  "9:00 AM",
-        "day":  "Thursday",
-        "program":  "Courage the Cowardly Dog"
+        "time": "4:30 PM",
+        "day": "Wednesday",
+        "program": "Courage the Cowardly Dog"
     },
     {
-        "time":  "9:30 AM",
-        "day":  "Thursday",
-        "program":  "Courage the Cowardly Dog"
+        "time": "5:00 PM",
+        "day": "Wednesday",
+        "program": "Johnny Bravo"
     },
     {
-        "time":  "10:00 AM",
-        "day":  "Thursday",
-        "program":  "Johnny Bravo"
+        "time": "5:30 PM",
+        "day": "Wednesday",
+        "program": "Johnny Bravo"
     },
     {
-        "time":  "10:30 AM",
-        "day":  "Thursday",
-        "program":  "Johnny Bravo"
+        "time": "6:00 PM",
+        "day": "Wednesday",
+        "program": "Cow and Chicken"
     },
     {
-        "time":  "11:00 AM",
-        "day":  "Thursday",
-        "program":  "Cow and Chicken"
+        "time": "6:30 PM",
+        "day": "Wednesday",
+        "program": "Cow and Chicken"
     },
     {
-        "time":  "11:30 AM",
-        "day":  "Thursday",
-        "program":  "Cow and Chicken"
+        "time": "7:00 PM",
+        "day": "Wednesday",
+        "program": "I Am Weasel"
     },
     {
-        "time":  "12:00 PM",
-        "day":  "Thursday",
-        "program":  "I Am Weasel"
+        "time": "7:30 PM",
+        "day": "Wednesday",
+        "program": "I Am Weasel"
     },
     {
-        "time":  "12:30 PM",
-        "day":  "Thursday",
-        "program":  "I Am Weasel"
+        "time": "8:00 PM",
+        "day": "Wednesday",
+        "program": "Dexter's Laboratory"
     },
     {
-        "time":  "1:00 PM",
-        "day":  "Thursday",
-        "program":  "Billy \u0026 Mandy"
+        "time": "8:30 PM",
+        "day": "Wednesday",
+        "program": "Dexter's Laboratory"
     },
     {
-        "time":  "1:30 PM",
-        "day":  "Thursday",
-        "program":  "Billy \u0026 Mandy"
+        "time": "9:00 PM",
+        "day": "Wednesday",
+        "program": "The Powerpuff Girls"
     },
     {
-        "time":  "3:00 PM",
-        "day":  "Thursday",
-        "program":  "Teen Titans"
+        "time": "9:30 PM",
+        "day": "Wednesday",
+        "program": "The Powerpuff Girls"
     },
     {
-        "time":  "3:30 PM",
-        "day":  "Thursday",
-        "program":  "Teen Titans"
+        "time": "10:00 PM",
+        "day": "Wednesday",
+        "program": "Ed, Edd n Eddy"
     },
     {
-        "time":  "4:00 PM",
-        "day":  "Thursday",
-        "program":  "Samurai Jack"
+        "time": "10:30 PM",
+        "day": "Wednesday",
+        "program": "Ed, Edd n Eddy"
     },
     {
-        "time":  "4:30 PM",
-        "day":  "Thursday",
-        "program":  "Samurai Jack"
+        "time": "11:00 PM",
+        "day": "Wednesday",
+        "program": "Off Air"
     },
     {
-        "time":  "5:00 PM",
-        "day":  "Thursday",
-        "program":  "Justice League"
+        "time": "11:30 PM",
+        "day": "Wednesday",
+        "program": "Off Air"
     },
     {
-        "time":  "5:30 PM",
-        "day":  "Thursday",
-        "program":  "Justice League"
+        "time": "12:00 AM",
+        "day": "Thursday",
+        "program": "Off Air"
     },
     {
-        "time":  "6:00 PM",
-        "day":  "Thursday",
-        "program":  "Dragon Ball Z"
+        "time": "12:30 AM",
+        "day": "Thursday",
+        "program": "Off Air"
     },
     {
-        "time":  "6:30 PM",
-        "day":  "Thursday",
-        "program":  "Dragon Ball Z"
+        "time": "1:00 AM",
+        "day": "Thursday",
+        "program": "Off Air"
     },
     {
-        "time":  "7:00 PM",
-        "day":  "Thursday",
-        "program":  "Billy \u0026 Mandy"
+        "time": "1:30 AM",
+        "day": "Thursday",
+        "program": "Off Air"
     },
     {
-        "time":  "7:30 PM",
-        "day":  "Thursday",
-        "program":  "Billy \u0026 Mandy"
+        "time": "2:00 AM",
+        "day": "Thursday",
+        "program": "Off Air"
     },
     {
-        "time":  "8:00 PM",
-        "day":  "Thursday",
-        "program":  "Foster\u0027s Home"
+        "time": "2:30 AM",
+        "day": "Thursday",
+        "program": "Off Air"
     },
     {
-        "time":  "8:30 PM",
-        "day":  "Thursday",
-        "program":  "Foster\u0027s Home"
+        "time": "3:00 AM",
+        "day": "Thursday",
+        "program": "Off Air"
     },
     {
-        "time":  "9:00 PM",
-        "day":  "Thursday",
-        "program":  "Courage"
+        "time": "3:30 AM",
+        "day": "Thursday",
+        "program": "Off Air"
     },
     {
-        "time":  "9:30 PM",
-        "day":  "Thursday",
-        "program":  "Courage"
+        "time": "4:00 AM",
+        "day": "Thursday",
+        "program": "Off Air"
     },
     {
-        "time":  "10:00 PM",
-        "day":  "Thursday",
-        "program":  "Aqua Teen Hunger Force"
+        "time": "4:30 AM",
+        "day": "Thursday",
+        "program": "Off Air"
     },
     {
-        "time":  "10:30 PM",
-        "day":  "Thursday",
-        "program":  "Aqua Teen Hunger Force"
+        "time": "5:00 AM",
+        "day": "Thursday",
+        "program": "Off Air"
     },
     {
-        "time":  "10:30 PM",
-        "day":  "Thursday",
-        "program":  "Sealab 2021"
+        "time": "5:30 AM",
+        "day": "Thursday",
+        "program": "Off Air"
     },
     {
-        "time":  "11:00 PM",
-        "day":  "Thursday",
-        "program":  "Sealab 2021"
+        "time": "6:00 AM",
+        "day": "Thursday",
+        "program": "Dexter's Laboratory"
     },
     {
-        "time":  "11:00 PM",
-        "day":  "Thursday",
-        "program":  "Brak Show"
+        "time": "6:30 AM",
+        "day": "Thursday",
+        "program": "Dexter's Laboratory"
     },
     {
-        "time":  "11:30 PM",
-        "day":  "Thursday",
-        "program":  "Brak Show"
+        "time": "7:00 AM",
+        "day": "Thursday",
+        "program": "The Powerpuff Girls"
     },
     {
-        "time":  "11:30 PM",
-        "day":  "Thursday",
-        "program":  "Space Ghost"
+        "time": "7:30 AM",
+        "day": "Thursday",
+        "program": "The Powerpuff Girls"
     },
     {
-        "time":  "12:00 AM",
-        "day":  "Friday",
-        "program":  "Home Movies"
+        "time": "8:00 AM",
+        "day": "Thursday",
+        "program": "Ed, Edd n Eddy"
     },
     {
-        "time":  "12:00 AM",
-        "day":  "Friday",
-        "program":  "Space Ghost"
+        "time": "8:30 AM",
+        "day": "Thursday",
+        "program": "Ed, Edd n Eddy"
     },
     {
-        "time":  "12:30 AM",
-        "day":  "Friday",
-        "program":  "Home Movies"
+        "time": "9:00 AM",
+        "day": "Thursday",
+        "program": "Courage the Cowardly Dog"
     },
     {
-        "time":  "6:00 AM",
-        "day":  "Friday",
-        "program":  "Dexter\u0027s Laboratory"
+        "time": "9:30 AM",
+        "day": "Thursday",
+        "program": "Courage the Cowardly Dog"
     },
     {
-        "time":  "6:30 AM",
-        "day":  "Friday",
-        "program":  "Dexter\u0027s Laboratory"
+        "time": "10:00 AM",
+        "day": "Thursday",
+        "program": "Johnny Bravo"
     },
     {
-        "time":  "7:00 AM",
-        "day":  "Friday",
-        "program":  "The Powerpuff Girls"
+        "time": "10:30 AM",
+        "day": "Thursday",
+        "program": "Johnny Bravo"
     },
     {
-        "time":  "7:30 AM",
-        "day":  "Friday",
-        "program":  "The Powerpuff Girls"
+        "time": "11:00 AM",
+        "day": "Thursday",
+        "program": "Cow and Chicken"
     },
     {
-        "time":  "8:00 AM",
-        "day":  "Friday",
-        "program":  "Ed, Edd n Eddy"
+        "time": "11:30 AM",
+        "day": "Thursday",
+        "program": "Cow and Chicken"
     },
     {
-        "time":  "8:30 AM",
-        "day":  "Friday",
-        "program":  "Ed, Edd n Eddy"
+        "time": "12:00 PM",
+        "day": "Thursday",
+        "program": "I Am Weasel"
     },
     {
-        "time":  "9:00 AM",
-        "day":  "Friday",
-        "program":  "Courage the Cowardly Dog"
+        "time": "12:30 PM",
+        "day": "Thursday",
+        "program": "I Am Weasel"
     },
     {
-        "time":  "9:30 AM",
-        "day":  "Friday",
-        "program":  "Courage the Cowardly Dog"
+        "time": "1:00 PM",
+        "day": "Thursday",
+        "program": "Dexter's Laboratory"
     },
     {
-        "time":  "10:00 AM",
-        "day":  "Friday",
-        "program":  "Johnny Bravo"
+        "time": "1:30 PM",
+        "day": "Thursday",
+        "program": "Dexter's Laboratory"
     },
     {
-        "time":  "10:30 AM",
-        "day":  "Friday",
-        "program":  "Johnny Bravo"
+        "time": "2:00 PM",
+        "day": "Thursday",
+        "program": "The Powerpuff Girls"
     },
     {
-        "time":  "11:00 AM",
-        "day":  "Friday",
-        "program":  "Cow and Chicken"
+        "time": "2:30 PM",
+        "day": "Thursday",
+        "program": "The Powerpuff Girls"
     },
     {
-        "time":  "11:30 AM",
-        "day":  "Friday",
-        "program":  "Cow and Chicken"
+        "time": "3:00 PM",
+        "day": "Thursday",
+        "program": "Ed, Edd n Eddy"
     },
     {
-        "time":  "12:00 PM",
-        "day":  "Friday",
-        "program":  "I Am Weasel"
+        "time": "3:30 PM",
+        "day": "Thursday",
+        "program": "Ed, Edd n Eddy"
     },
     {
-        "time":  "12:30 PM",
-        "day":  "Friday",
-        "program":  "I Am Weasel"
+        "time": "4:00 PM",
+        "day": "Thursday",
+        "program": "Courage the Cowardly Dog"
     },
     {
-        "time":  "1:00 PM",
-        "day":  "Friday",
-        "program":  "Billy \u0026 Mandy"
+        "time": "4:30 PM",
+        "day": "Thursday",
+        "program": "Courage the Cowardly Dog"
     },
     {
-        "time":  "1:30 PM",
-        "day":  "Friday",
-        "program":  "Billy \u0026 Mandy"
+        "time": "5:00 PM",
+        "day": "Thursday",
+        "program": "Johnny Bravo"
     },
     {
-        "time":  "3:00 PM",
-        "day":  "Friday",
-        "program":  "Teen Titans"
+        "time": "5:30 PM",
+        "day": "Thursday",
+        "program": "Johnny Bravo"
     },
     {
-        "time":  "3:30 PM",
-        "day":  "Friday",
-        "program":  "Teen Titans"
+        "time": "6:00 PM",
+        "day": "Thursday",
+        "program": "Cow and Chicken"
     },
     {
-        "time":  "4:00 PM",
-        "day":  "Friday",
-        "program":  "Samurai Jack"
+        "time": "6:30 PM",
+        "day": "Thursday",
+        "program": "Cow and Chicken"
     },
     {
-        "time":  "4:30 PM",
-        "day":  "Friday",
-        "program":  "Samurai Jack"
+        "time": "7:00 PM",
+        "day": "Thursday",
+        "program": "I Am Weasel"
     },
     {
-        "time":  "5:00 PM",
-        "day":  "Friday",
-        "program":  "Justice League"
+        "time": "7:30 PM",
+        "day": "Thursday",
+        "program": "I Am Weasel"
     },
     {
-        "time":  "5:30 PM",
-        "day":  "Friday",
-        "program":  "Justice League"
+        "time": "8:00 PM",
+        "day": "Thursday",
+        "program": "Dexter's Laboratory"
     },
     {
-        "time":  "6:00 PM",
-        "day":  "Friday",
-        "program":  "Dragon Ball Z"
+        "time": "8:30 PM",
+        "day": "Thursday",
+        "program": "Dexter's Laboratory"
     },
     {
-        "time":  "6:30 PM",
-        "day":  "Friday",
-        "program":  "Dragon Ball Z"
+        "time": "9:00 PM",
+        "day": "Thursday",
+        "program": "The Powerpuff Girls"
     },
     {
-        "time":  "7:00 PM",
-        "day":  "Friday",
-        "program":  "Billy \u0026 Mandy"
+        "time": "9:30 PM",
+        "day": "Thursday",
+        "program": "The Powerpuff Girls"
     },
     {
-        "time":  "7:30 PM",
-        "day":  "Friday",
-        "program":  "Billy \u0026 Mandy"
+        "time": "10:00 PM",
+        "day": "Thursday",
+        "program": "Ed, Edd n Eddy"
     },
     {
-        "time":  "8:00 PM",
-        "day":  "Friday",
-        "program":  "Foster\u0027s Home"
+        "time": "10:30 PM",
+        "day": "Thursday",
+        "program": "Ed, Edd n Eddy"
     },
     {
-        "time":  "8:30 PM",
-        "day":  "Friday",
-        "program":  "Foster\u0027s Home"
+        "time": "11:00 PM",
+        "day": "Thursday",
+        "program": "Off Air"
     },
     {
-        "time":  "9:00 PM",
-        "day":  "Friday",
-        "program":  "Courage"
+        "time": "11:30 PM",
+        "day": "Thursday",
+        "program": "Off Air"
     },
     {
-        "time":  "9:30 PM",
-        "day":  "Friday",
-        "program":  "Courage"
+        "time": "12:00 AM",
+        "day": "Friday",
+        "program": "Off Air"
     },
     {
-        "time":  "10:00 PM",
-        "day":  "Friday",
-        "program":  "Aqua Teen Hunger Force"
+        "time": "12:30 AM",
+        "day": "Friday",
+        "program": "Off Air"
     },
     {
-        "time":  "10:30 PM",
-        "day":  "Friday",
-        "program":  "Aqua Teen Hunger Force"
+        "time": "1:00 AM",
+        "day": "Friday",
+        "program": "Off Air"
     },
     {
-        "time":  "10:30 PM",
-        "day":  "Friday",
-        "program":  "Sealab 2021"
+        "time": "1:30 AM",
+        "day": "Friday",
+        "program": "Off Air"
     },
     {
-        "time":  "11:00 PM",
-        "day":  "Friday",
-        "program":  "Brak Show"
+        "time": "2:00 AM",
+        "day": "Friday",
+        "program": "Off Air"
     },
     {
-        "time":  "11:00 PM",
-        "day":  "Friday",
-        "program":  "Sealab 2021"
+        "time": "2:30 AM",
+        "day": "Friday",
+        "program": "Off Air"
     },
     {
-        "time":  "11:30 PM",
-        "day":  "Friday",
-        "program":  "Brak Show"
+        "time": "3:00 AM",
+        "day": "Friday",
+        "program": "Off Air"
     },
     {
-        "time":  "11:30 PM",
-        "day":  "Friday",
-        "program":  "Space Ghost"
+        "time": "3:30 AM",
+        "day": "Friday",
+        "program": "Off Air"
     },
     {
-        "time":  "8:00 AM",
-        "day":  "Saturday",
-        "program":  "Cartoon Cartoon Marathon"
+        "time": "4:00 AM",
+        "day": "Friday",
+        "program": "Off Air"
     },
     {
-        "time":  "8:30 AM",
-        "day":  "Saturday",
-        "program":  "Cartoon Cartoon Marathon"
+        "time": "4:30 AM",
+        "day": "Friday",
+        "program": "Off Air"
     },
     {
-        "time":  "12:00 PM",
-        "day":  "Saturday",
-        "program":  "Samurai Jack Marathon"
+        "time": "5:00 AM",
+        "day": "Friday",
+        "program": "Off Air"
     },
     {
-        "time":  "12:30 PM",
-        "day":  "Saturday",
-        "program":  "Samurai Jack Marathon"
+        "time": "5:30 AM",
+        "day": "Friday",
+        "program": "Off Air"
     },
     {
-        "time":  "3:00 PM",
-        "day":  "Saturday",
-        "program":  "Teen Titans Marathon"
+        "time": "6:00 AM",
+        "day": "Friday",
+        "program": "Dexter's Laboratory"
     },
     {
-        "time":  "3:30 PM",
-        "day":  "Saturday",
-        "program":  "Teen Titans Marathon"
+        "time": "6:30 AM",
+        "day": "Friday",
+        "program": "Dexter's Laboratory"
     },
     {
-        "time":  "6:00 PM",
-        "day":  "Saturday",
-        "program":  "Dragon Ball Z Marathon"
+        "time": "7:00 AM",
+        "day": "Friday",
+        "program": "The Powerpuff Girls"
     },
     {
-        "time":  "6:30 PM",
-        "day":  "Saturday",
-        "program":  "Dragon Ball Z Marathon"
+        "time": "7:30 AM",
+        "day": "Friday",
+        "program": "The Powerpuff Girls"
     },
     {
-        "time":  "8:00 PM",
-        "day":  "Saturday",
-        "program":  "Rotating Movie"
+        "time": "8:00 AM",
+        "day": "Friday",
+        "program": "Ed, Edd n Eddy"
     },
     {
-        "time":  "8:30 PM",
-        "day":  "Saturday",
-        "program":  "Rotating Movie"
+        "time": "8:30 AM",
+        "day": "Friday",
+        "program": "Ed, Edd n Eddy"
     },
     {
-        "time":  "10:00 PM",
-        "day":  "Saturday",
-        "program":  "ATHF Marathon"
+        "time": "9:00 AM",
+        "day": "Friday",
+        "program": "Courage the Cowardly Dog"
     },
     {
-        "time":  "10:30 PM",
-        "day":  "Saturday",
-        "program":  "ATHF Marathon"
+        "time": "9:30 AM",
+        "day": "Friday",
+        "program": "Courage the Cowardly Dog"
     },
     {
-        "time":  "8:00 AM",
-        "day":  "Sunday",
-        "program":  "Cartoon Cartoon Marathon"
+        "time": "10:00 AM",
+        "day": "Friday",
+        "program": "Johnny Bravo"
     },
     {
-        "time":  "8:30 AM",
-        "day":  "Sunday",
-        "program":  "Cartoon Cartoon Marathon"
+        "time": "10:30 AM",
+        "day": "Friday",
+        "program": "Johnny Bravo"
     },
     {
-        "time":  "12:00 PM",
-        "day":  "Sunday",
-        "program":  "Samurai Jack Marathon"
+        "time": "11:00 AM",
+        "day": "Friday",
+        "program": "Cow and Chicken"
     },
     {
-        "time":  "12:30 PM",
-        "day":  "Sunday",
-        "program":  "Samurai Jack Marathon"
+        "time": "11:30 AM",
+        "day": "Friday",
+        "program": "Cow and Chicken"
     },
     {
-        "time":  "3:00 PM",
-        "day":  "Sunday",
-        "program":  "Teen Titans Marathon"
+        "time": "12:00 PM",
+        "day": "Friday",
+        "program": "I Am Weasel"
     },
     {
-        "time":  "3:30 PM",
-        "day":  "Sunday",
-        "program":  "Teen Titans Marathon"
+        "time": "12:30 PM",
+        "day": "Friday",
+        "program": "I Am Weasel"
     },
     {
-        "time":  "6:00 PM",
-        "day":  "Sunday",
-        "program":  "Dragon Ball Z Marathon"
+        "time": "1:00 PM",
+        "day": "Friday",
+        "program": "Dexter's Laboratory"
     },
     {
-        "time":  "6:30 PM",
-        "day":  "Sunday",
-        "program":  "Dragon Ball Z Marathon"
+        "time": "1:30 PM",
+        "day": "Friday",
+        "program": "Dexter's Laboratory"
     },
     {
-        "time":  "8:00 PM",
-        "day":  "Sunday",
-        "program":  "Rotating Movie"
+        "time": "2:00 PM",
+        "day": "Friday",
+        "program": "The Powerpuff Girls"
     },
     {
-        "time":  "8:30 PM",
-        "day":  "Sunday",
-        "program":  "Rotating Movie"
+        "time": "2:30 PM",
+        "day": "Friday",
+        "program": "The Powerpuff Girls"
     },
     {
-        "time":  "10:00 PM",
-        "day":  "Sunday",
-        "program":  "ATHF Marathon"
+        "time": "3:00 PM",
+        "day": "Friday",
+        "program": "Ed, Edd n Eddy"
     },
     {
-        "time":  "10:30 PM",
-        "day":  "Sunday",
-        "program":  "ATHF Marathon"
+        "time": "3:30 PM",
+        "day": "Friday",
+        "program": "Ed, Edd n Eddy"
+    },
+    {
+        "time": "4:00 PM",
+        "day": "Friday",
+        "program": "Courage the Cowardly Dog"
+    },
+    {
+        "time": "4:30 PM",
+        "day": "Friday",
+        "program": "Courage the Cowardly Dog"
+    },
+    {
+        "time": "5:00 PM",
+        "day": "Friday",
+        "program": "Johnny Bravo"
+    },
+    {
+        "time": "5:30 PM",
+        "day": "Friday",
+        "program": "Johnny Bravo"
+    },
+    {
+        "time": "6:00 PM",
+        "day": "Friday",
+        "program": "Cow and Chicken"
+    },
+    {
+        "time": "6:30 PM",
+        "day": "Friday",
+        "program": "Cow and Chicken"
+    },
+    {
+        "time": "7:00 PM",
+        "day": "Friday",
+        "program": "I Am Weasel"
+    },
+    {
+        "time": "7:30 PM",
+        "day": "Friday",
+        "program": "I Am Weasel"
+    },
+    {
+        "time": "8:00 PM",
+        "day": "Friday",
+        "program": "Dexter's Laboratory"
+    },
+    {
+        "time": "8:30 PM",
+        "day": "Friday",
+        "program": "Dexter's Laboratory"
+    },
+    {
+        "time": "9:00 PM",
+        "day": "Friday",
+        "program": "The Powerpuff Girls"
+    },
+    {
+        "time": "9:30 PM",
+        "day": "Friday",
+        "program": "The Powerpuff Girls"
+    },
+    {
+        "time": "10:00 PM",
+        "day": "Friday",
+        "program": "Ed, Edd n Eddy"
+    },
+    {
+        "time": "10:30 PM",
+        "day": "Friday",
+        "program": "Ed, Edd n Eddy"
+    },
+    {
+        "time": "11:00 PM",
+        "day": "Friday",
+        "program": "Off Air"
+    },
+    {
+        "time": "11:30 PM",
+        "day": "Friday",
+        "program": "Off Air"
+    },
+    {
+        "time": "12:00 AM",
+        "day": "Saturday",
+        "program": "Off Air"
+    },
+    {
+        "time": "12:30 AM",
+        "day": "Saturday",
+        "program": "Off Air"
+    },
+    {
+        "time": "1:00 AM",
+        "day": "Saturday",
+        "program": "Off Air"
+    },
+    {
+        "time": "1:30 AM",
+        "day": "Saturday",
+        "program": "Off Air"
+    },
+    {
+        "time": "2:00 AM",
+        "day": "Saturday",
+        "program": "Off Air"
+    },
+    {
+        "time": "2:30 AM",
+        "day": "Saturday",
+        "program": "Off Air"
+    },
+    {
+        "time": "3:00 AM",
+        "day": "Saturday",
+        "program": "Off Air"
+    },
+    {
+        "time": "3:30 AM",
+        "day": "Saturday",
+        "program": "Off Air"
+    },
+    {
+        "time": "4:00 AM",
+        "day": "Saturday",
+        "program": "Off Air"
+    },
+    {
+        "time": "4:30 AM",
+        "day": "Saturday",
+        "program": "Off Air"
+    },
+    {
+        "time": "5:00 AM",
+        "day": "Saturday",
+        "program": "Off Air"
+    },
+    {
+        "time": "5:30 AM",
+        "day": "Saturday",
+        "program": "Off Air"
+    },
+    {
+        "time": "6:00 AM",
+        "day": "Saturday",
+        "program": "Dexter's Laboratory"
+    },
+    {
+        "time": "6:30 AM",
+        "day": "Saturday",
+        "program": "Dexter's Laboratory"
+    },
+    {
+        "time": "7:00 AM",
+        "day": "Saturday",
+        "program": "The Powerpuff Girls"
+    },
+    {
+        "time": "7:30 AM",
+        "day": "Saturday",
+        "program": "The Powerpuff Girls"
+    },
+    {
+        "time": "8:00 AM",
+        "day": "Saturday",
+        "program": "Ed, Edd n Eddy"
+    },
+    {
+        "time": "8:30 AM",
+        "day": "Saturday",
+        "program": "Ed, Edd n Eddy"
+    },
+    {
+        "time": "9:00 AM",
+        "day": "Saturday",
+        "program": "Courage the Cowardly Dog"
+    },
+    {
+        "time": "9:30 AM",
+        "day": "Saturday",
+        "program": "Courage the Cowardly Dog"
+    },
+    {
+        "time": "10:00 AM",
+        "day": "Saturday",
+        "program": "Johnny Bravo"
+    },
+    {
+        "time": "10:30 AM",
+        "day": "Saturday",
+        "program": "Johnny Bravo"
+    },
+    {
+        "time": "11:00 AM",
+        "day": "Saturday",
+        "program": "Cow and Chicken"
+    },
+    {
+        "time": "11:30 AM",
+        "day": "Saturday",
+        "program": "Cow and Chicken"
+    },
+    {
+        "time": "12:00 PM",
+        "day": "Saturday",
+        "program": "I Am Weasel"
+    },
+    {
+        "time": "12:30 PM",
+        "day": "Saturday",
+        "program": "I Am Weasel"
+    },
+    {
+        "time": "1:00 PM",
+        "day": "Saturday",
+        "program": "Dexter's Laboratory"
+    },
+    {
+        "time": "1:30 PM",
+        "day": "Saturday",
+        "program": "Dexter's Laboratory"
+    },
+    {
+        "time": "2:00 PM",
+        "day": "Saturday",
+        "program": "The Powerpuff Girls"
+    },
+    {
+        "time": "2:30 PM",
+        "day": "Saturday",
+        "program": "The Powerpuff Girls"
+    },
+    {
+        "time": "3:00 PM",
+        "day": "Saturday",
+        "program": "Ed, Edd n Eddy"
+    },
+    {
+        "time": "3:30 PM",
+        "day": "Saturday",
+        "program": "Ed, Edd n Eddy"
+    },
+    {
+        "time": "4:00 PM",
+        "day": "Saturday",
+        "program": "Courage the Cowardly Dog"
+    },
+    {
+        "time": "4:30 PM",
+        "day": "Saturday",
+        "program": "Courage the Cowardly Dog"
+    },
+    {
+        "time": "5:00 PM",
+        "day": "Saturday",
+        "program": "Johnny Bravo"
+    },
+    {
+        "time": "5:30 PM",
+        "day": "Saturday",
+        "program": "Johnny Bravo"
+    },
+    {
+        "time": "6:00 PM",
+        "day": "Saturday",
+        "program": "Cow and Chicken"
+    },
+    {
+        "time": "6:30 PM",
+        "day": "Saturday",
+        "program": "Cow and Chicken"
+    },
+    {
+        "time": "7:00 PM",
+        "day": "Saturday",
+        "program": "I Am Weasel"
+    },
+    {
+        "time": "7:30 PM",
+        "day": "Saturday",
+        "program": "I Am Weasel"
+    },
+    {
+        "time": "8:00 PM",
+        "day": "Saturday",
+        "program": "Dexter's Laboratory"
+    },
+    {
+        "time": "8:30 PM",
+        "day": "Saturday",
+        "program": "Dexter's Laboratory"
+    },
+    {
+        "time": "9:00 PM",
+        "day": "Saturday",
+        "program": "The Powerpuff Girls"
+    },
+    {
+        "time": "9:30 PM",
+        "day": "Saturday",
+        "program": "The Powerpuff Girls"
+    },
+    {
+        "time": "10:00 PM",
+        "day": "Saturday",
+        "program": "Ed, Edd n Eddy"
+    },
+    {
+        "time": "10:30 PM",
+        "day": "Saturday",
+        "program": "Ed, Edd n Eddy"
+    },
+    {
+        "time": "11:00 PM",
+        "day": "Saturday",
+        "program": "Off Air"
+    },
+    {
+        "time": "11:30 PM",
+        "day": "Saturday",
+        "program": "Off Air"
+    },
+    {
+        "time": "12:00 AM",
+        "day": "Sunday",
+        "program": "Off Air"
+    },
+    {
+        "time": "12:30 AM",
+        "day": "Sunday",
+        "program": "Off Air"
+    },
+    {
+        "time": "1:00 AM",
+        "day": "Sunday",
+        "program": "Off Air"
+    },
+    {
+        "time": "1:30 AM",
+        "day": "Sunday",
+        "program": "Off Air"
+    },
+    {
+        "time": "2:00 AM",
+        "day": "Sunday",
+        "program": "Off Air"
+    },
+    {
+        "time": "2:30 AM",
+        "day": "Sunday",
+        "program": "Off Air"
+    },
+    {
+        "time": "3:00 AM",
+        "day": "Sunday",
+        "program": "Off Air"
+    },
+    {
+        "time": "3:30 AM",
+        "day": "Sunday",
+        "program": "Off Air"
+    },
+    {
+        "time": "4:00 AM",
+        "day": "Sunday",
+        "program": "Off Air"
+    },
+    {
+        "time": "4:30 AM",
+        "day": "Sunday",
+        "program": "Off Air"
+    },
+    {
+        "time": "5:00 AM",
+        "day": "Sunday",
+        "program": "Off Air"
+    },
+    {
+        "time": "5:30 AM",
+        "day": "Sunday",
+        "program": "Off Air"
+    },
+    {
+        "time": "6:00 AM",
+        "day": "Sunday",
+        "program": "Dexter's Laboratory"
+    },
+    {
+        "time": "6:30 AM",
+        "day": "Sunday",
+        "program": "Dexter's Laboratory"
+    },
+    {
+        "time": "7:00 AM",
+        "day": "Sunday",
+        "program": "The Powerpuff Girls"
+    },
+    {
+        "time": "7:30 AM",
+        "day": "Sunday",
+        "program": "The Powerpuff Girls"
+    },
+    {
+        "time": "8:00 AM",
+        "day": "Sunday",
+        "program": "Ed, Edd n Eddy"
+    },
+    {
+        "time": "8:30 AM",
+        "day": "Sunday",
+        "program": "Ed, Edd n Eddy"
+    },
+    {
+        "time": "9:00 AM",
+        "day": "Sunday",
+        "program": "Courage the Cowardly Dog"
+    },
+    {
+        "time": "9:30 AM",
+        "day": "Sunday",
+        "program": "Courage the Cowardly Dog"
+    },
+    {
+        "time": "10:00 AM",
+        "day": "Sunday",
+        "program": "Johnny Bravo"
+    },
+    {
+        "time": "10:30 AM",
+        "day": "Sunday",
+        "program": "Johnny Bravo"
+    },
+    {
+        "time": "11:00 AM",
+        "day": "Sunday",
+        "program": "Cow and Chicken"
+    },
+    {
+        "time": "11:30 AM",
+        "day": "Sunday",
+        "program": "Cow and Chicken"
+    },
+    {
+        "time": "12:00 PM",
+        "day": "Sunday",
+        "program": "I Am Weasel"
+    },
+    {
+        "time": "12:30 PM",
+        "day": "Sunday",
+        "program": "I Am Weasel"
+    },
+    {
+        "time": "1:00 PM",
+        "day": "Sunday",
+        "program": "Dexter's Laboratory"
+    },
+    {
+        "time": "1:30 PM",
+        "day": "Sunday",
+        "program": "Dexter's Laboratory"
+    },
+    {
+        "time": "2:00 PM",
+        "day": "Sunday",
+        "program": "The Powerpuff Girls"
+    },
+    {
+        "time": "2:30 PM",
+        "day": "Sunday",
+        "program": "The Powerpuff Girls"
+    },
+    {
+        "time": "3:00 PM",
+        "day": "Sunday",
+        "program": "Ed, Edd n Eddy"
+    },
+    {
+        "time": "3:30 PM",
+        "day": "Sunday",
+        "program": "Ed, Edd n Eddy"
+    },
+    {
+        "time": "4:00 PM",
+        "day": "Sunday",
+        "program": "Courage the Cowardly Dog"
+    },
+    {
+        "time": "4:30 PM",
+        "day": "Sunday",
+        "program": "Courage the Cowardly Dog"
+    },
+    {
+        "time": "5:00 PM",
+        "day": "Sunday",
+        "program": "Johnny Bravo"
+    },
+    {
+        "time": "5:30 PM",
+        "day": "Sunday",
+        "program": "Johnny Bravo"
+    },
+    {
+        "time": "6:00 PM",
+        "day": "Sunday",
+        "program": "Cow and Chicken"
+    },
+    {
+        "time": "6:30 PM",
+        "day": "Sunday",
+        "program": "Cow and Chicken"
+    },
+    {
+        "time": "7:00 PM",
+        "day": "Sunday",
+        "program": "I Am Weasel"
+    },
+    {
+        "time": "7:30 PM",
+        "day": "Sunday",
+        "program": "I Am Weasel"
+    },
+    {
+        "time": "8:00 PM",
+        "day": "Sunday",
+        "program": "Dexter's Laboratory"
+    },
+    {
+        "time": "8:30 PM",
+        "day": "Sunday",
+        "program": "Dexter's Laboratory"
+    },
+    {
+        "time": "9:00 PM",
+        "day": "Sunday",
+        "program": "The Powerpuff Girls"
+    },
+    {
+        "time": "9:30 PM",
+        "day": "Sunday",
+        "program": "The Powerpuff Girls"
+    },
+    {
+        "time": "10:00 PM",
+        "day": "Sunday",
+        "program": "Ed, Edd n Eddy"
+    },
+    {
+        "time": "10:30 PM",
+        "day": "Sunday",
+        "program": "Ed, Edd n Eddy"
+    },
+    {
+        "time": "11:00 PM",
+        "day": "Sunday",
+        "program": "Off Air"
+    },
+    {
+        "time": "11:30 PM",
+        "day": "Sunday",
+        "program": "Off Air"
     }
 ]
