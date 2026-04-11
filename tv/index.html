@@ -6,7 +6,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>📺 Fawkesware TV v2.1 📺</title>
+    <title>📺 Fawkesware TV v2.4 📺</title>
     <script>
         // Cache-bust CSS
         const cssLink = document.createElement('link');
@@ -149,6 +149,7 @@
     
     <script>
         // Force cache-busting with current timestamp and random number
+        console.log('TV index.html build v2.4');
         const cacheBust = Date.now() + '_' + Math.random().toString(36).substr(2, 9);
         const script = document.createElement('script');
         script.src = 'tv.js?t=' + cacheBust;
