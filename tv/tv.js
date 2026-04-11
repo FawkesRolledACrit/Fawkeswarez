@@ -600,8 +600,9 @@ class LiveStreamPlayer {
         }
 
         // Check if this program has videos available in schedule.json
+        const programSearchTerms = this.getProgramSearchTerms(program);
         const hasProgramVideos = this.schedule.blocks.some(block => 
-            block.title.toLowerCase().includes(program.toLowerCase().replace("the powerpuff girls", "powerpuff girls").replace("dexter's laboratory", "dexter"))
+            programSearchTerms.some(term => block.title.toLowerCase().includes(term.toLowerCase()))
         );
         
         if (!hasProgramVideos) {
@@ -629,12 +630,10 @@ class LiveStreamPlayer {
         if (!program) return queue;
 
         // Filter blocks to only include episodes for the current program
+        const programSearchTerms = this.getProgramSearchTerms(program);
         const programBlocks = blocks.filter(block => {
             const blockTitle = block.title.toLowerCase();
-            const searchProgram = program.toLowerCase()
-                .replace("the powerpuff girls", "powerpuff girls")
-                .replace("dexter's laboratory", "dexter");
-            return blockTitle.includes(searchProgram);
+            return programSearchTerms.some(term => blockTitle.includes(term.toLowerCase()));
         });
 
         if (!programBlocks.length) return queue;
@@ -840,6 +839,29 @@ class LiveStreamPlayer {
         return { episode: episodeIndex + 1, season: 1 };
     }
     
+    getProgramSearchTerms(program) {
+        // Return multiple search terms for each program to handle variations in naming
+        const searchTerms = {
+            "Dexter's Laboratory": ["dexter", "dexter's laboratory"],
+            "The Powerpuff Girls": ["powerpuff", "powerpuff girls"],
+            "Ed, Edd n Eddy": ["ed", "ed, edd n eddy", "ed edd n eddy"],
+            "Johnny Bravo": ["johnny", "johnny bravo"],
+            "Courage the Cowardly Dog": ["courage", "courage the cowardly dog"],
+            "Cow and Chicken": ["cow", "cow and chicken"],
+            "I Am Weasel": ["weasel", "i am weasel"],
+            "Tom and Jerry": ["tom", "tom and jerry"],
+            "The Venture Bros": ["venture", "venture bros"],
+            "Harvey Birdman, Attorney at Law": ["harvey", "harvey birdman"],
+            "Tom Goes to the Mayor": ["tom goes", "tom goes to the mayor"],
+            "Brak Show": ["brak", "brak show"],
+            "Home Movies": ["home", "home movies"],
+            "Aqua Teen Hunger Force": ["aqua", "aqua teen", "athf"],
+            "Sealab 2021": ["sealab", "sealab 2021"]
+        };
+        
+        return searchTerms[program] || [program.toLowerCase()];
+    }
+    
     startSyncInterval() {
         // Sync every 2 seconds to maintain schedule
         this.syncInterval = setInterval(() => {
@@ -866,6 +888,16 @@ class LiveStreamPlayer {
             }
             this.currentProgramEl.textContent = currentTitle;
             this.scheduleTimeEl.textContent = this.formatTime(blockElapsedSeconds);
+            
+            // Update stream status for OFF AIR
+            if (this.streamStatusEl) {
+                const weeklySlot = this.getWeeklySlotForNow();
+                let streamStatus = 'OFF AIR';
+                if (weeklySlot?.program) {
+                    streamStatus = `⏸️ SCHEDULED • ${weeklySlot.time}`;
+                }
+                this.streamStatusEl.textContent = streamStatus;
+            }
             return;
         }
 
@@ -890,6 +922,21 @@ class LiveStreamPlayer {
             }
         }
         
+        // Get current block information and update enhanced status
+        const currentBlock = this.getCurrentBlockInfo();
+        
+        // Update stream status with detailed information
+        if (this.streamStatusEl) {
+            let streamStatus = '� LIVE';
+            if (currentBlock) {
+                streamStatus += ` • ${currentBlock.time}`;
+                if (currentBlock.episode) {
+                    streamStatus += ` • ${currentBlock.episode}`;
+                }
+            }
+            this.streamStatusEl.textContent = streamStatus;
+        }
+        
         // Update status with more context
         if (drift <= 2) {
             let statusText = `🔴 LIVE: ${currentTitle}`;
@@ -897,7 +944,6 @@ class LiveStreamPlayer {
                 statusText += ` • ${currentBlock.episode}`;
             }
             this.updateStatus(statusText);
-            this.updateStatus(`Live: ${currentTitle}`);
         }
     }
     
