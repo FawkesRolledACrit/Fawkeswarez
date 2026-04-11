@@ -620,6 +620,7 @@ class LiveStreamPlayer {
 
         // Date-based rotation: schedule.startDate at 00:00 maps to blocks[0].
         // Then every 30-minute slot advances to the next episode, looping forever.
+        // This ensures consecutive episodes without daily repeats.
         let startBlockIndex = 0;
         if (this.schedule?.startDate) {
             const startMs = Date.parse(this.schedule.startDate + 'T00:00:00');
@@ -628,6 +629,7 @@ class LiveStreamPlayer {
             }
         }
 
+        // Use global block index to ensure consecutive episodes across all days
         const rel = blockIndex - startBlockIndex;
         const episodeIndex = ((rel % blocks.length) + blocks.length) % blocks.length;
         const block = blocks[episodeIndex];

@@ -254,13 +254,28 @@
             renderLineup();
         }
 
-        function getDexterEpisodeForDate(date) {
-            // Calculate days since April 1, 2026
-            const april1 = new Date(2026, 3, 1); // Month is 0-indexed
-            const daysDiff = Math.floor((date - april1) / (1000 * 60 * 60 * 24));
+        function getDexterEpisodeForDate(date, timeStr) {
+            // Calculate total 30-minute slots since April 1, 2026 at 00:00
+            const april1 = new Date(2026, 3, 1, 0, 0, 0); // Month is 0-indexed
             
-            // Each day has 48 half-hour slots, Dexter advances every 30 minutes
-            const totalSlots = daysDiff * 48;
+            // Parse the time string to get minutes since midnight
+            const timeMatch = timeStr.match(/(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+            if (!timeMatch) return 1;
+            
+            let hour = parseInt(timeMatch[1], 10);
+            const minute = parseInt(timeMatch[2], 10);
+            const ampm = timeMatch[3].toUpperCase();
+            
+            if (hour === 12) hour = 0;
+            if (ampm === 'PM') hour += 12;
+            
+            // Create date at the given time
+            const slotDate = new Date(date.getFullYear(), date.getMonth(), date.getDate(), hour, minute, 0);
+            
+            // Calculate total 30-minute slots since April 1, 2026 00:00
+            const msDiff = slotDate - april1;
+            const totalSlots = Math.floor(msDiff / (1000 * 60 * 30)); // 30-minute slots
+            
             const episodeIndex = totalSlots % 11; // 11 episodes in rotation
             
             return episodeIndex + 1; // Episodes are 1-indexed
@@ -283,7 +298,7 @@
                 let episodeInfo = '';
                 
                 if (isDexter) {
-                    const episodeNum = getDexterEpisodeForDate(selectedDate);
+                    const episodeNum = getDexterEpisodeForDate(selectedDate, slot.time);
                     episodeInfo = `<div class="slot-episode">Episode ${episodeNum}</div>`;
                     dexterSlotCount++;
                 }
