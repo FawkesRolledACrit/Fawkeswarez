@@ -1132,13 +1132,21 @@ class LiveStreamPlayer {
     }
 }
 
-// Initialize ONLY when page is fully loaded
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOMContentLoaded fired, creating LiveStreamPlayer...');
+// Initialize immediately or when DOM is ready
+function initializePlayer() {
+    console.log('Initializing player - DOM ready:', document.readyState);
     try {
         const player = new LiveStreamPlayer();
         console.log('LiveStreamPlayer created successfully');
     } catch (error) {
         console.error('Error creating LiveStreamPlayer:', error);
     }
-});
+}
+
+if (document.readyState === 'loading') {
+    console.log('DOM still loading, waiting for DOMContentLoaded...');
+    document.addEventListener('DOMContentLoaded', initializePlayer);
+} else {
+    console.log('DOM already loaded, initializing immediately...');
+    initializePlayer();
+}
