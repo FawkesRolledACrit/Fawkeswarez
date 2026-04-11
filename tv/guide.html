@@ -174,8 +174,12 @@
 
         async function loadData() {
             try {
-                const response = await fetch('weekly-lineup.json?t=' + Date.now());
+                const timestamp = new Date().getTime();
+                console.log('Loading weekly lineup with timestamp:', timestamp);
+                const response = await fetch('weekly-lineup.json?t=' + timestamp);
                 weeklyLineup = await response.json();
+                console.log('Loaded weekly lineup, total entries:', weeklyLineup.length);
+                console.log('First few entries:', weeklyLineup.slice(0, 3));
                 renderCalendar();
                 renderLineup();
             } catch (error) {
@@ -285,7 +289,10 @@
             if (!weeklyLineup) return;
             
             const dayName = dayNames[selectedDate.getDay()];
+            console.log('Rendering lineup for day:', dayName);
             const daySlots = weeklyLineup.filter(slot => slot.day === dayName);
+            console.log('Found slots for', dayName, ':', daySlots.length);
+            console.log('Day slots:', daySlots);
             
             document.getElementById('lineup-date').textContent = 
                 `${dayName}, ${monthNames[selectedDate.getMonth()]} ${selectedDate.getDate()}, ${selectedDate.getFullYear()}`;
