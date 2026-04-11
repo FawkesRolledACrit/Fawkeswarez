@@ -5,19 +5,7 @@
 
 class LiveStreamPlayer {
     constructor() {
-        console.log('LiveStreamPlayer constructor v2.2');
-        
-        // Force reload if page is using old cached version
-        if (!window.location.search.includes('force_refresh=')) {
-            const lastVersion = localStorage.getItem('tvPlayerVersion');
-            const currentVersion = '2.2';
-            if (lastVersion !== currentVersion) {
-                localStorage.setItem('tvPlayerVersion', currentVersion);
-                console.log('New version detected, forcing refresh...');
-                window.location.href = window.location.pathname + '?force_refresh=' + Date.now();
-                return;
-            }
-        }
+        console.log('LiveStreamPlayer constructor v2.3');
         // Use a monotonic clock anchored to wall time to avoid schedule jumps
         // if the system clock changes (NTP/timezone adjustments, etc.).
         this._wallClockBaseMs = Date.now();
@@ -66,6 +54,22 @@ class LiveStreamPlayer {
         this.BLOCK_DURATION = 30 * 60 * 1000; // 30 minutes
         
         this.init();
+    }
+
+    ensureHlsScriptLoaded() {
+        if (typeof Hls !== 'undefined') return Promise.resolve(true);
+        if (this._hlsLoadPromise) return this._hlsLoadPromise;
+
+        this._hlsLoadPromise = new Promise((resolve) => {
+            const script = document.createElement('script');
+            script.src = 'https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.4.12/hls.min.js';
+            script.async = true;
+            script.onload = () => resolve(typeof Hls !== 'undefined');
+            script.onerror = () => resolve(false);
+            document.head.appendChild(script);
+        });
+
+        return this._hlsLoadPromise;
     }
 
     nowMs() {
@@ -227,7 +231,7 @@ class LiveStreamPlayer {
         if (this.lineupBtn) {
             this.lineupBtn.addEventListener('click', () => {
                 console.log('Lineup button clicked!');
-                window.open('./guide.html', '_blank');
+                window.location.href = './guide.html';
             });
             console.log('Lineup button listener added');
         }
@@ -319,12 +323,6 @@ class LiveStreamPlayer {
         this.hasTunedIn = true;
         this.tuneBtn.textContent = '📡 TUNED';
         this.updateStatus('Tuning in...');
-
-        // Test: Just update status to see if button works
-        setTimeout(() => {
-            this.updateStatus('📡 TUNED IN - Testing buttons');
-            console.log('Button test successful!');
-        }, 500);
 
         // We have a user gesture now, so default to audio ON.
         // If the browser blocks unmuted playback, startPlayback() will fall back to muted.
@@ -440,8 +438,13 @@ class LiveStreamPlayer {
 
         const isHLS = url.includes('.m3u8');
         console.log('Video type:', isHLS ? 'HLS' : 'Direct');
-        
-        if (isHLS && Hls.isSupported()) {
+
+        if (isHLS && typeof Hls === 'undefined') {
+            const loaded = await this.ensureHlsScriptLoaded();
+            console.log('Hls.js loaded dynamically:', loaded);
+        }
+
+        if (isHLS && typeof Hls !== 'undefined' && Hls.isSupported()) {
             console.log('Using HLS.js');
             this.hls = new Hls({
                 enableWorker: true,
@@ -491,6 +494,10 @@ class LiveStreamPlayer {
                 }, { once: true });
             });
         } else {
+            if (isHLS) {
+                this.updateStatus('HLS not supported in this browser (and HLS.js is blocked).');
+                return;
+            }
             // Direct MP4/WebM - for all non-HLS files
             console.log('Using direct MP4/WebM');
 
@@ -1052,13 +1059,6 @@ class LiveStreamPlayer {
             }
             this.updateStatus(statusText);
         }
-    }
-    
-    startSyncInterval() {
-        // Sync every 2 seconds to maintain schedule
-        this.syncInterval = setInterval(() => {
-            this.syncWithSchedule();
-        }, 2000);
     }
     
     startScheduleUpdates() {
