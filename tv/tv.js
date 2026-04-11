@@ -5,12 +5,12 @@
 
 class LiveStreamPlayer {
     constructor() {
-        console.log('LiveStreamPlayer constructor v2.0');
+        console.log('LiveStreamPlayer constructor v2.1');
         
         // Force reload if page is using old cached version
         if (!window.location.search.includes('force_refresh=')) {
             const lastVersion = localStorage.getItem('tvPlayerVersion');
-            const currentVersion = '2.0';
+            const currentVersion = '2.1';
             if (lastVersion !== currentVersion) {
                 localStorage.setItem('tvPlayerVersion', currentVersion);
                 console.log('New version detected, forcing refresh...');
@@ -310,7 +310,7 @@ class LiveStreamPlayer {
     }
     
     async tuneIn() {
-        console.log('Tune in button clicked');
+        console.log('Tune in called');
         if (this.hasTunedIn) {
             console.log('Already tuned in');
             return;
@@ -320,28 +320,20 @@ class LiveStreamPlayer {
         this.tuneBtn.textContent = '📡 TUNED';
         this.updateStatus('Tuning in...');
 
+        // Test: Just update status to see if button works
+        setTimeout(() => {
+            this.updateStatus('📡 TUNED IN - Testing buttons');
+            console.log('Button test successful!');
+        }, 500);
+
         // We have a user gesture now, so default to audio ON.
         // If the browser blocks unmuted playback, startPlayback() will fall back to muted.
         this.desiredMuted = false;
-        this.muteBtn.textContent = this.desiredMuted ? '🔊 UNMUTE' : '🔇 MUTE';
-        
-        // Create video element ONLY NOW
-        this.createVideoElement();
-        
-        // Get current schedule position
-        const { currentUrl, currentTime, currentTitle } = this.getCurrentSchedulePosition();
-        console.log('Schedule position:', { currentUrl, currentTime, currentTitle });
 
-        if (currentUrl && currentUrl !== 'REPLACE_ME') {
-            await this.loadVideo(currentUrl, currentTime, currentTitle);
-            await this.startPlayback();
-        } else {
-            // OFF AIR or not-yet-assigned programming: show black screen.
-            this.goOffAir(currentTitle || 'OFF AIR');
-        }
-        
-        // Start sync interval
+        // Create video element and start playback
+        this.createVideoElement();
         this.startSyncInterval();
+        this.syncWithSchedule();
     }
     
     createVideoElement() {
