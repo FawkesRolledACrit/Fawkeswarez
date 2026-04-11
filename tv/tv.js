@@ -1116,34 +1116,7 @@ class LiveStreamPlayer {
         }
     }
     
-    getViewerCount() {
-        if (!this.hasTunedIn) return '0';
         
-        // Simulate viewer count based on time of day and random variation
-        const now = new Date();
-        const hour = now.getHours();
-        
-        // Base viewers by time block
-        let baseViewers;
-        if (hour >= 6 && hour < 10) {
-            baseViewers = 150; // Morning Mayhem
-        } else if (hour >= 10 && hour < 14) {
-            baseViewers = 200; // Midday Madness
-        } else if (hour >= 14 && hour < 18) {
-            baseViewers = 300; // Afternoon Action
-        } else if (hour >= 18 && hour < 22) {
-            baseViewers = 450; // Prime Time Power
-        } else {
-            baseViewers = 250; // Adult Swim
-        }
-        
-        // Add some variation
-        const variation = Math.floor(Math.random() * 100) - 50;
-        const totalViewers = Math.max(1, baseViewers + variation);
-        
-        return totalViewers.toLocaleString();
-    }
-    
     updateStatusDisplay() {
         const weeklySlot = this.getWeeklySlotForNow();
         const currentBlock = this.getCurrentBlockInfo();
@@ -1186,18 +1159,17 @@ class LiveStreamPlayer {
             if (this.hasTunedIn) {
                 // USER HAS TUNED IN - SHOW AS LIVE
                 const uptime = this.getStreamUptime();
-                const viewers = this.getViewerCount();
                 
                 // Check if actually playing video or just showing schedule
                 const { currentUrl } = this.getCurrentSchedulePosition();
                 if (currentUrl && this.video && !this.video.paused) {
-                    this.streamStatusEl.textContent = `🔴 LIVE • ${localTime} • Uptime: ${uptime} • Viewers: ${viewers}`;
+                    this.streamStatusEl.textContent = `🔴 LIVE • ${localTime} • Uptime: ${uptime}`;
                 } else {
-                    this.streamStatusEl.textContent = `🟡 SCHEDULED • ${localTime} • Uptime: ${uptime} • Viewers: ${viewers}`;
+                    this.streamStatusEl.textContent = `🟡 SCHEDULED • ${localTime} • Uptime: ${uptime}`;
                 }
             } else {
                 // NOT TUNED IN
-                this.streamStatusEl.textContent = `📴 OFF AIR • ${localTime} • Viewers: 0`;
+                this.streamStatusEl.textContent = `📴 OFF AIR • ${localTime}`;
             }
         }
     }
