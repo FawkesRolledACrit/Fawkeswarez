@@ -1851,6 +1851,1550 @@
           "targetSeconds": "auto"
         }
       ]
+    },
+    {
+      "title": "Space Ghost Coast to Coast - S1E1 & S1E2",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S1E1",
+          "url": "https://files.catbox.moe/rvxs7m.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S1E2",
+          "url": "https://files.catbox.moe/goqyml.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Space Ghost Coast to Coast - S1E3 & S1E4",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S1E3",
+          "url": "https://files.catbox.moe/tyv931.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S1E4",
+          "url": "https://files.catbox.moe/98ej9f.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Space Ghost Coast to Coast - S1E5 & S1E6",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S1E5",
+          "url": "https://files.catbox.moe/rps76n.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S1E6",
+          "url": "https://files.catbox.moe/lgc7t2.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Space Ghost Coast to Coast - S1E7 & S1E8",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S1E7",
+          "url": "https://files.catbox.moe/puys1b.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S1E8",
+          "url": "https://files.catbox.moe/huk3bg.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Space Ghost Coast to Coast - S1E9 & S1E10",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S1E9",
+          "url": "https://files.catbox.moe/22y22u.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S1E10",
+          "url": "https://files.catbox.moe/t1v29p.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Space Ghost Coast to Coast - S2E1 & S2E2",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S2E1",
+          "url": "https://files.catbox.moe/unmawu.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S2E2",
+          "url": "https://files.catbox.moe/yuoi05.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Space Ghost Coast to Coast - S2E3 & S2E4",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S2E3",
+          "url": "https://files.catbox.moe/f7zu85.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S2E4",
+          "url": "https://files.catbox.moe/9w2j38.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Space Ghost Coast to Coast - S2E5 & S2E6",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S2E5",
+          "url": "https://files.catbox.moe/nkxxqn.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S2E6",
+          "url": "https://files.catbox.moe/0b98q1.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Space Ghost Coast to Coast - S2E7 & S2E8",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S2E7",
+          "url": "https://files.catbox.moe/7dz77e.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S2E8",
+          "url": "https://files.catbox.moe/4ajlyy.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Space Ghost Coast to Coast - S2E9 & S3E1",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S2E9",
+          "url": "https://files.catbox.moe/g78yqx.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S3E1",
+          "url": "https://files.catbox.moe/7sivtc.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Space Ghost Coast to Coast - S3E2 & S3E3",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S3E2",
+          "url": "https://files.catbox.moe/zlxp1m.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S3E3",
+          "url": "https://files.catbox.moe/rzeipt.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Space Ghost Coast to Coast - S3E4 & S3E5",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S3E4",
+          "url": "https://files.catbox.moe/gs2vg5.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S3E5",
+          "url": "https://files.catbox.moe/4lgmfa.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Space Ghost Coast to Coast - S3E6 & S3E7",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S3E6",
+          "url": "https://files.catbox.moe/tg1n4q.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S3E7",
+          "url": "https://files.catbox.moe/q4oggo.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Space Ghost Coast to Coast - S3E8 & S3E9",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S3E8",
+          "url": "https://files.catbox.moe/bpzyxk.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S3E9",
+          "url": "https://files.catbox.moe/rmhm3o.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Space Ghost Coast to Coast - S3E10 & S3E11",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S3E10",
+          "url": "https://files.catbox.moe/6185nc.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S3E11",
+          "url": "https://files.catbox.moe/fw1j5s.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Space Ghost Coast to Coast - S3E12 & S3E13",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S3E12",
+          "url": "https://files.catbox.moe/5g84xv.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S3E13",
+          "url": "https://files.catbox.moe/l5sd34.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Space Ghost Coast to Coast - S3E14 & S3E15",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S3E14",
+          "url": "https://files.catbox.moe/6d6eky.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S3E15",
+          "url": "https://files.catbox.moe/j9wbwd.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Space Ghost Coast to Coast - S4E1 & S4E2",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S4E1",
+          "url": "https://files.catbox.moe/nuepvy.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S4E2",
+          "url": "https://files.catbox.moe/cthdmt.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Space Ghost Coast to Coast - S4E3 & S4E4",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S4E3",
+          "url": "https://files.catbox.moe/0j3a4l.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S4E4",
+          "url": "https://files.catbox.moe/vz27ej.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Space Ghost Coast to Coast - S4E5 & S4E6",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S4E5",
+          "url": "https://files.catbox.moe/770xwh.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S4E6",
+          "url": "https://files.catbox.moe/m3a6da.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Space Ghost Coast to Coast - S4E7 & S4E8",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S4E7",
+          "url": "https://files.catbox.moe/sic5jh.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S4E8",
+          "url": "https://files.catbox.moe/xd2c11.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Space Ghost Coast to Coast - S4E9 & S4E10",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S4E9",
+          "url": "https://files.catbox.moe/btdwh0.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S4E10",
+          "url": "https://files.catbox.moe/a8nudt.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Space Ghost Coast to Coast - S4E11 & S4E12",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S4E11",
+          "url": "https://files.catbox.moe/l0nj6o.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S4E12",
+          "url": "https://files.catbox.moe/r3i658.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Space Ghost Coast to Coast - S4E13 & S4E14",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S4E13",
+          "url": "https://files.catbox.moe/5x00ue.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S4E14",
+          "url": "https://files.catbox.moe/7mg4op.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Space Ghost Coast to Coast - S4E15 & S4E16",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S4E15",
+          "url": "https://files.catbox.moe/sxv4kb.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S4E16",
+          "url": "https://files.catbox.moe/wsjy8f.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Space Ghost Coast to Coast - S4E17 & S4E18",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S4E17",
+          "url": "https://files.catbox.moe/cl3wul.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S4E18",
+          "url": "https://files.catbox.moe/it41lk.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Space Ghost Coast to Coast - S4E19 & S4E20",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S4E19",
+          "url": "https://files.catbox.moe/b2h99p.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S4E20",
+          "url": "https://files.catbox.moe/q2mbh2.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Space Ghost Coast to Coast - S4E21 & S4E22",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S4E21",
+          "url": "https://files.catbox.moe/wnx2d8.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S4E22",
+          "url": "https://files.catbox.moe/0wetss.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Space Ghost Coast to Coast - S4E23 & S4E24",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S4E23",
+          "url": "https://files.catbox.moe/gl7yqi.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S4E24",
+          "url": "https://files.catbox.moe/stcltc.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Space Ghost Coast to Coast - S4E25",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Space Ghost Coast to Coast S4E25",
+          "url": "https://files.catbox.moe/6o5973.mkv",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Aqua Teen Hunger Force - S1E1 & S1E2",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S1E1",
+          "url": "https://files.catbox.moe/zbxld3.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S1E2",
+          "url": "https://files.catbox.moe/ixmr3x.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Aqua Teen Hunger Force - S1E3 & S1E4",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S1E3",
+          "url": "https://files.catbox.moe/tf7b1p.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S1E4",
+          "url": "https://files.catbox.moe/mb3anp.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Aqua Teen Hunger Force - S1E5 & S1E6",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S1E5",
+          "url": "https://files.catbox.moe/8g0bx8.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S1E6",
+          "url": "https://files.catbox.moe/rfg60l.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Aqua Teen Hunger Force - S1E7 & S1E8",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S1E7",
+          "url": "https://files.catbox.moe/djt5so.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S1E8",
+          "url": "https://files.catbox.moe/yaixfx.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Aqua Teen Hunger Force - S1E9 & S1E10",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S1E9",
+          "url": "https://files.catbox.moe/2ixyu5.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S1E10",
+          "url": "https://files.catbox.moe/ffqrq2.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Aqua Teen Hunger Force - S1E11 & S1E12",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S1E11",
+          "url": "https://files.catbox.moe/wbkun7.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S1E12",
+          "url": "https://files.catbox.moe/79sjv2.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Aqua Teen Hunger Force - S1E13 & S1E14",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S1E13",
+          "url": "https://files.catbox.moe/4una8c.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S1E14",
+          "url": "https://files.catbox.moe/1n6rle.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Aqua Teen Hunger Force - S1E15 & S1E16",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S1E15",
+          "url": "https://files.catbox.moe/6b5935.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S1E16",
+          "url": "https://files.catbox.moe/djjmpu.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Aqua Teen Hunger Force - S1E17 & S1E18",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S1E17",
+          "url": "https://files.catbox.moe/wc28rj.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S1E18",
+          "url": "https://files.catbox.moe/0xdkik.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Aqua Teen Hunger Force - S2E1 & S2E2",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S2E1",
+          "url": "https://files.catbox.moe/mval14.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S2E2",
+          "url": "https://files.catbox.moe/i0h5jf.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Aqua Teen Hunger Force - S2E3 & S2E4",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S2E3",
+          "url": "https://files.catbox.moe/591159.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S2E4",
+          "url": "https://files.catbox.moe/6pcysi.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Aqua Teen Hunger Force - S2E5 & S2E6",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S2E5",
+          "url": "https://files.catbox.moe/wn3ksa.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S2E6",
+          "url": "https://files.catbox.moe/16yygg.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Aqua Teen Hunger Force - S2E7 & S2E8",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S2E7",
+          "url": "https://files.catbox.moe/yw1av6.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S2E8",
+          "url": "https://files.catbox.moe/w4pi1z.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Aqua Teen Hunger Force - S2E9 & S2E10",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S2E9",
+          "url": "https://files.catbox.moe/m2x9ov.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S2E10",
+          "url": "https://files.catbox.moe/w2c885.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Aqua Teen Hunger Force - S2E11 & S2E12",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S2E11",
+          "url": "https://files.catbox.moe/ryr35g.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S2E12",
+          "url": "https://files.catbox.moe/muzy83.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Aqua Teen Hunger Force - S2E13 & S2E14",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S2E13",
+          "url": "https://files.catbox.moe/vmhv3z.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S2E14",
+          "url": "https://files.catbox.moe/c4o4ne.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Aqua Teen Hunger Force - S2E15 & S2E16",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S2E15",
+          "url": "https://files.catbox.moe/to9vuy.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S2E16",
+          "url": "https://files.catbox.moe/n2bvt1.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Aqua Teen Hunger Force - S2E17 & S2E18",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S2E17",
+          "url": "https://files.catbox.moe/4l913q.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S2E18",
+          "url": "https://files.catbox.moe/8gyq1b.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Aqua Teen Hunger Force - S2E19 & S2E20",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S2E19",
+          "url": "https://files.catbox.moe/n16w3c.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S2E20",
+          "url": "https://files.catbox.moe/qv57op.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Aqua Teen Hunger Force - S2E21 & S2E22",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S2E21",
+          "url": "https://files.catbox.moe/4znw06.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S2E22",
+          "url": "https://files.catbox.moe/3ivftm.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Aqua Teen Hunger Force - S2E23 & S2E24",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S2E23",
+          "url": "https://files.catbox.moe/n1i987.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S2E24",
+          "url": "https://files.catbox.moe/rhopp0.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Aqua Teen Hunger Force - S3E1 & S3E2",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S3E1",
+          "url": "https://files.catbox.moe/zzvslz.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S3E2",
+          "url": "https://files.catbox.moe/4v09o2.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Aqua Teen Hunger Force - S3E3 & S3E4",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S3E3",
+          "url": "https://files.catbox.moe/dwwncr.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S3E4",
+          "url": "https://files.catbox.moe/zev3x8.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Aqua Teen Hunger Force - S3E5 & S3E6",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S3E5",
+          "url": "https://files.catbox.moe/0qzpfc.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S3E6",
+          "url": "https://files.catbox.moe/4nayp4.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Aqua Teen Hunger Force - S3E7 & S3E8",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S3E7",
+          "url": "https://files.catbox.moe/116fpv.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S3E8",
+          "url": "https://files.catbox.moe/d2436a.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Aqua Teen Hunger Force - S3E9 & S3E10",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S3E9",
+          "url": "https://files.catbox.moe/qzjmba.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S3E10",
+          "url": "https://files.catbox.moe/v2cvi3.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Aqua Teen Hunger Force - S3E11 & S3E12",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S3E11",
+          "url": "https://files.catbox.moe/dnjuek.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S3E12",
+          "url": "https://files.catbox.moe/goxn36.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Aqua Teen Hunger Force - S3E13",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Aqua Teen Hunger Force S3E13",
+          "url": "https://files.catbox.moe/xrklsj.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
     }
   ]
 }
