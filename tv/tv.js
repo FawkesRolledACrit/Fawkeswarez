@@ -21,6 +21,7 @@ class LiveStreamPlayer {
         this.statusText = document.getElementById('status-text');
         this.currentProgramEl = document.getElementById('current-program');
         this.scheduleTimeEl = document.getElementById('schedule-time');
+        this.streamStatusEl = document.getElementById('stream-status');
         
         console.log('Elements found:', {
             container: !!this.container,
@@ -735,6 +736,110 @@ class LiveStreamPlayer {
         return { index: queue.length - 1, time: queue[queue.length - 1]?.duration || 0 };
     }
     
+    getCurrentBlockInfo() {
+        const weeklySlot = this.getWeeklySlotForNow();
+        if (!weeklySlot) return null;
+        
+        // Get episode information for shows that have it
+        const program = weeklySlot.program;
+        if (["Dexter's Laboratory", "The Powerpuff Girls"].includes(program)) {
+            const now = new Date();
+            const timeStr = weeklySlot.time;
+            const episodeData = this.getEpisodeForDate(now, timeStr, program);
+            
+            let episodeText = '';
+            if (program === "Dexter's Laboratory" || program === "The Powerpuff Girls") {
+                episodeText = `Season ${episodeData.season.toString().padStart(2, '0')} Episode ${episodeData.episode.toString().padStart(2, '0')}`;
+            } else {
+                episodeText = `Episode ${episodeData.episode}`;
+            }
+            
+            return {
+                time: timeStr,
+                episode: episodeText,
+                program: program
+            };
+        }
+        
+        return {
+            time: weeklySlot.time,
+            program: program
+        };
+    }
+    
+    getEpisodeForDate(date, timeStr, program) {
+        // Parse the time to get total 30-minute slots since anchor date
+        const [hours, minutes] = timeStr.split(':').map(Number);
+        const slotDate = new Date(date);
+        slotDate.setHours(hours, minutes, 0, 0);
+        
+        const anchorDate = new Date('2026-04-01T00:00:00');
+        const totalSlots = Math.floor((slotDate - anchorDate) / (30 * 60 * 1000));
+        
+        // Special handling for Dexter's Laboratory
+        if (program === "Dexter's Laboratory") {
+            const episodeCount = 20;
+            const episodeIndex = totalSlots % episodeCount;
+            const episodeNum = episodeIndex + 1;
+            
+            let season, episode;
+            if (episodeNum <= 13) {
+                season = 1;
+                episode = episodeNum;
+            } else {
+                season = 2;
+                episode = episodeNum - 13;
+            }
+            
+            return { episode, season };
+        }
+        
+        // Special handling for Powerpuff Girls
+        if (program === "The Powerpuff Girls") {
+            const episodeCount = 20;
+            const offset = 100;
+            const adjustedSlots = totalSlots + offset;
+            const episodeIndex = adjustedSlots % episodeCount;
+            const episodeNum = episodeIndex + 1;
+            
+            let season, episode;
+            if (episodeNum <= 13) {
+                season = 1;
+                episode = episodeNum;
+            } else {
+                season = 2;
+                episode = episodeNum - 13;
+            }
+            
+            return { episode, season };
+        }
+        
+        // Different episode counts for other shows
+        let episodeCount;
+        if (["The Powerpuff Girls", "Ed, Edd n Eddy", "Johnny Bravo"].includes(program)) {
+            episodeCount = 20;
+        } else {
+            episodeCount = 15;
+        }
+        
+        const programOffsets = {
+            "Dexter's Laboratory": 0,
+            "The Powerpuff Girls": 100,
+            "Ed, Edd n Eddy": 200,
+            "Johnny Bravo": 300,
+            "Courage the Cowardly Dog": 400,
+            "Cow and Chicken": 500,
+            "I Am Weasel": 600,
+            "Tom and Jerry": 700
+        };
+        
+        const offset = programOffsets[program] || 0;
+        const adjustedSlots = totalSlots + offset;
+        const episodeIndex = adjustedSlots % episodeCount;
+        
+        return { episode: episodeIndex + 1, season: 1 };
+    }
+    
     startSyncInterval() {
         // Sync every 2 seconds to maintain schedule
         this.syncInterval = setInterval(() => {
@@ -774,10 +879,6 @@ class LiveStreamPlayer {
             return;
         }
 
-        // Update UI
-        this.currentProgramEl.textContent = currentTitle;
-        this.scheduleTimeEl.textContent = this.formatTime(blockElapsedSeconds);
-        
         // Correct drift if significant (but not during playback)
         const drift = Math.abs(actualTime - expectedTime);
         if (drift > 5 && !this.video.paused) {
@@ -789,8 +890,13 @@ class LiveStreamPlayer {
             }
         }
         
-        // Update status
+        // Update status with more context
         if (drift <= 2) {
+            let statusText = `🔴 LIVE: ${currentTitle}`;
+            if (currentBlock?.episode) {
+                statusText += ` • ${currentBlock.episode}`;
+            }
+            this.updateStatus(statusText);
             this.updateStatus(`Live: ${currentTitle}`);
         }
     }
