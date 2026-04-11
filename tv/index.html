@@ -3,8 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>📺 Fawkesware TV 📺</title>
-    <link rel="stylesheet" href="../style.css">
+    <script>
+        // Cache-bust CSS
+        const cssLink = document.createElement('link');
+        cssLink.rel = 'stylesheet';
+        cssLink.href = '../style.css?t=' + Date.now();
+        document.head.appendChild(cssLink);
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         .tv-container {
@@ -131,6 +140,11 @@
     </main>
     
     <script src="https://cdn.jsdelivr.net/npm/hls.js@1/dist/hls.min.js"></script>
-    <script src="tv.js?t=1712812000"></script>
+    <script>
+        // Force cache-busting with current timestamp
+        const script = document.createElement('script');
+        script.src = 'tv.js?t=' + Date.now();
+        document.head.appendChild(script);
+    </script>
 </body>
 </html>
