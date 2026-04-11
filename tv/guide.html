@@ -356,16 +356,30 @@
             
             daySlots.forEach(slot => {
                 const isDexter = slot.program.includes("Dexter");
+                const isCartoon = [
+                    "Dexter's Laboratory", "The Powerpuff Girls", "Ed, Edd n Eddy", 
+                    "Johnny Bravo", "Courage the Cowardly Dog", "Cow & Chicken", 
+                    "I Am Weasel", "Billy & Mandy", "Foster's Home"
+                ].includes(slot.program);
+                const isAction = [
+                    "Samurai Jack", "Teen Titans", "Justice League", "Dragon Ball Z"
+                ].includes(slot.program);
+                const isAdultSwim = [
+                    "Space Ghost Coast to Coast", "Aqua Teen Hunger Force", "Sealab 2021", 
+                    "Brak Show", "Home Movies", "The Venture Bros", 
+                    "Harvey Birdman, Attorney at Law", "Tom Goes to the Mayor"
+                ].includes(slot.program);
+                
                 let episodeInfo = '';
                 
-                if (isDexter) {
-                    const episodeNum = getDexterEpisodeForDate(selectedDate, slot.time);
+                if (isDexter || isCartoon || isAction || isAdultSwim) {
+                    const episodeNum = getEpisodeForDate(selectedDate, slot.time, slot.program);
                     episodeInfo = `<div class="slot-episode">Episode ${episodeNum}</div>`;
-                    dexterSlotCount++;
+                    if (isDexter) dexterSlotCount++;
                 }
                 
-                const statusClass = isDexter ? 'on-air' : 'off-air';
-                const statusText = isDexter ? '▶' : 'OFF AIR';
+                const statusClass = (isDexter || isCartoon || isAction || isAdultSwim) ? 'on-air' : 'off-air';
+                const statusText = (isDexter || isCartoon || isAction || isAdultSwim) ? '▶' : 'OFF AIR';
                 
                 html += `
                     <div class="slot">
@@ -386,7 +400,7 @@
             document.getElementById('lineup-slots').innerHTML = html;
         }
 
-        function getDexterEpisodeForDate(date, timeStr) {
+        function getEpisodeForDate(date, timeStr, program) {
             // Calculate total 30-minute slots since April 1, 2026 at 00:00
             const april1 = new Date(2026, 3, 1, 0, 0, 0); // Month is 0-indexed
             
@@ -408,9 +422,49 @@
             const msDiff = slotDate - april1;
             const totalSlots = Math.floor(msDiff / (1000 * 60 * 30)); // 30-minute slots
             
-            const episodeIndex = totalSlots % 15; // 15 episodes in rotation
+            // Different episode counts for different shows
+            let episodeCount;
+            if (["Dexter's Laboratory", "The Powerpuff Girls", "Ed, Edd n Eddy", "Johnny Bravo"].includes(program)) {
+                episodeCount = 20; // Frequent shows have 20 episodes
+            } else {
+                episodeCount = 15; // Regular shows have 15 episodes
+            }
+            
+            // Add program-specific offset to prevent all shows showing same episode number
+            const programOffsets = {
+                "Dexter's Laboratory": 0,
+                "The Powerpuff Girls": 100,
+                "Ed, Edd n Eddy": 200,
+                "Johnny Bravo": 300,
+                "Courage the Cowardly Dog": 400,
+                "Cow & Chicken": 500,
+                "I Am Weasel": 600,
+                "Billy & Mandy": 700,
+                "Foster's Home": 800,
+                "Samurai Jack": 900,
+                "Teen Titans": 1000,
+                "Justice League": 1100,
+                "Dragon Ball Z": 1200,
+                "Space Ghost Coast to Coast": 1300,
+                "Aqua Teen Hunger Force": 1400,
+                "Sealab 2021": 1500,
+                "Brak Show": 1600,
+                "Home Movies": 1700,
+                "The Venture Bros": 1800,
+                "Harvey Birdman, Attorney at Law": 1900,
+                "Tom Goes to the Mayor": 2000
+            };
+            
+            const offset = programOffsets[program] || 0;
+            const adjustedSlots = totalSlots + offset;
+            const episodeIndex = adjustedSlots % episodeCount;
             
             return episodeIndex + 1; // Episodes are 1-indexed
+        }
+
+        function getDexterEpisodeForDate(date, timeStr) {
+            // Keep for backward compatibility
+            return getEpisodeForDate(date, timeStr, "Dexter's Laboratory");
         }
 
         // Initialize on load
