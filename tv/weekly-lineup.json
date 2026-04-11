@@ -7,7 +7,7 @@
     {
         "time": "12:30 AM",
         "day": "Monday",
-        "program": "Space Ghost Coast to Coast"
+        "program": "The Venture Bros"
     },
     {
         "time": "1:00 AM",
@@ -17,7 +17,7 @@
     {
         "time": "1:30 AM",
         "day": "Monday",
-        "program": "Aqua Teen Hunger Force"
+        "program": "Harvey Birdman, Attorney at Law"
     },
     {
         "time": "2:00 AM",
@@ -27,7 +27,7 @@
     {
         "time": "2:30 AM",
         "day": "Monday",
-        "program": "Sealab 2021"
+        "program": "Tom Goes to the Mayor"
     },
     {
         "time": "3:00 AM",
@@ -37,27 +37,27 @@
     {
         "time": "3:30 AM",
         "day": "Monday",
-        "program": "Brak Show"
+        "program": "Home Movies"
     },
     {
         "time": "4:00 AM",
         "day": "Monday",
-        "program": "Home Movies"
+        "program": "Space Ghost Coast to Coast"
     },
     {
         "time": "4:30 AM",
         "day": "Monday",
-        "program": "Home Movies"
+        "program": "The Venture Bros"
     },
     {
         "time": "5:00 AM",
         "day": "Monday",
-        "program": "Space Ghost Coast to Coast"
+        "program": "Aqua Teen Hunger Force"
     },
     {
         "time": "5:30 AM",
         "day": "Monday",
-        "program": "Space Ghost Coast to Coast"
+        "program": "Harvey Birdman, Attorney at Law"
     },
     {
         "time": "6:00 AM",
@@ -222,12 +222,12 @@
     {
         "time": "10:00 PM",
         "day": "Monday",
-        "program": "Aqua Teen Hunger Force"
+        "program": "Sealab 2021"
     },
     {
         "time": "10:30 PM",
         "day": "Monday",
-        "program": "Sealab 2021"
+        "program": "Tom Goes to the Mayor"
     },
     {
         "time": "11:00 PM",
@@ -247,57 +247,57 @@
     {
         "time": "12:30 AM",
         "day": "Tuesday",
-        "program": "Home Movies"
+        "program": "Brak Show"
     },
     {
         "time": "1:00 AM",
         "day": "Tuesday",
-        "program": "Brak Show"
+        "program": "Tom Goes to the Mayor"
     },
     {
         "time": "1:30 AM",
         "day": "Tuesday",
-        "program": "Brak Show"
+        "program": "Sealab 2021"
     },
     {
         "time": "2:00 AM",
         "day": "Tuesday",
-        "program": "Sealab 2021"
+        "program": "Harvey Birdman, Attorney at Law"
     },
     {
         "time": "2:30 AM",
         "day": "Tuesday",
-        "program": "Sealab 2021"
+        "program": "Aqua Teen Hunger Force"
     },
     {
         "time": "3:00 AM",
         "day": "Tuesday",
-        "program": "Aqua Teen Hunger Force"
+        "program": "The Venture Bros"
     },
     {
         "time": "3:30 AM",
         "day": "Tuesday",
-        "program": "Aqua Teen Hunger Force"
+        "program": "Space Ghost Coast to Coast"
     },
     {
         "time": "4:00 AM",
         "day": "Tuesday",
-        "program": "Space Ghost Coast to Coast"
+        "program": "Home Movies"
     },
     {
         "time": "4:30 AM",
         "day": "Tuesday",
-        "program": "Space Ghost Coast to Coast"
+        "program": "Brak Show"
     },
     {
         "time": "5:00 AM",
         "day": "Tuesday",
-        "program": "Home Movies"
+        "program": "Tom Goes to the Mayor"
     },
     {
         "time": "5:30 AM",
         "day": "Tuesday",
-        "program": "Home Movies"
+        "program": "Sealab 2021"
     },
     {
         "time": "6:00 AM",
@@ -462,17 +462,17 @@
     {
         "time": "10:00 PM",
         "day": "Tuesday",
-        "program": "Sealab 2021"
+        "program": "Harvey Birdman, Attorney at Law"
     },
     {
         "time": "10:30 PM",
         "day": "Tuesday",
-        "program": "Brak Show"
+        "program": "Aqua Teen Hunger Force"
     },
     {
         "time": "11:00 PM",
         "day": "Tuesday",
-        "program": "Home Movies"
+        "program": "The Venture Bros"
     },
     {
         "time": "11:30 PM",
@@ -487,57 +487,57 @@
     {
         "time": "12:30 AM",
         "day": "Wednesday",
-        "program": "Space Ghost Coast to Coast"
+        "program": "The Venture Bros"
     },
     {
         "time": "1:00 AM",
         "day": "Wednesday",
-        "program": "Home Movies"
+        "program": "Aqua Teen Hunger Force"
     },
     {
         "time": "1:30 AM",
         "day": "Wednesday",
-        "program": "Home Movies"
+        "program": "Harvey Birdman, Attorney at Law"
     },
     {
         "time": "2:00 AM",
         "day": "Wednesday",
-        "program": "Brak Show"
+        "program": "Sealab 2021"
     },
     {
         "time": "2:30 AM",
         "day": "Wednesday",
-        "program": "Brak Show"
+        "program": "Tom Goes to the Mayor"
     },
     {
         "time": "3:00 AM",
         "day": "Wednesday",
-        "program": "Sealab 2021"
+        "program": "Brak Show"
     },
     {
         "time": "3:30 AM",
         "day": "Wednesday",
-        "program": "Sealab 2021"
+        "program": "Home Movies"
     },
     {
         "time": "4:00 AM",
         "day": "Wednesday",
-        "program": "Aqua Teen Hunger Force"
+        "program": "Space Ghost Coast to Coast"
     },
     {
         "time": "4:30 AM",
         "day": "Wednesday",
-        "program": "Aqua Teen Hunger Force"
+        "program": "The Venture Bros"
     },
     {
         "time": "5:00 AM",
         "day": "Wednesday",
-        "program": "Space Ghost Coast to Coast"
+        "program": "Aqua Teen Hunger Force"
     },
     {
         "time": "5:30 AM",
         "day": "Wednesday",
-        "program": "Space Ghost Coast to Coast"
+        "program": "Harvey Birdman, Attorney at Law"
     },
     {
         "time": "6:00 AM",
@@ -717,67 +717,67 @@
     {
         "time": "11:30 PM",
         "day": "Wednesday",
-        "program": "Aqua Teen Hunger Force"
+        "program": "The Venture Bros"
     },
     {
         "time": "12:00 AM",
         "day": "Thursday",
-        "program": "Aqua Teen Hunger Force"
+        "program": "The Venture Bros"
     },
     {
         "time": "12:30 AM",
         "day": "Thursday",
-        "program": "Aqua Teen Hunger Force"
+        "program": "Space Ghost Coast to Coast"
     },
     {
         "time": "1:00 AM",
         "day": "Thursday",
-        "program": "Space Ghost Coast to Coast"
+        "program": "Home Movies"
     },
     {
         "time": "1:30 AM",
         "day": "Thursday",
-        "program": "Space Ghost Coast to Coast"
+        "program": "Brak Show"
     },
     {
         "time": "2:00 AM",
         "day": "Thursday",
-        "program": "Home Movies"
+        "program": "Tom Goes to the Mayor"
     },
     {
         "time": "2:30 AM",
         "day": "Thursday",
-        "program": "Home Movies"
+        "program": "Sealab 2021"
     },
     {
         "time": "3:00 AM",
         "day": "Thursday",
-        "program": "Brak Show"
+        "program": "Aqua Teen Hunger Force"
     },
     {
         "time": "3:30 AM",
         "day": "Thursday",
-        "program": "Brak Show"
+        "program": "Harvey Birdman, Attorney at Law"
     },
     {
         "time": "4:00 AM",
         "day": "Thursday",
-        "program": "Sealab 2021"
+        "program": "The Venture Bros"
     },
     {
         "time": "4:30 AM",
         "day": "Thursday",
-        "program": "Sealab 2021"
+        "program": "Space Ghost Coast to Coast"
     },
     {
         "time": "5:00 AM",
         "day": "Thursday",
-        "program": "Aqua Teen Hunger Force"
+        "program": "Home Movies"
     },
     {
         "time": "5:30 AM",
         "day": "Thursday",
-        "program": "Aqua Teen Hunger Force"
+        "program": "Brak Show"
     },
     {
         "time": "6:00 AM",
@@ -947,7 +947,7 @@
     {
         "time": "10:30 PM",
         "day": "Thursday",
-        "program": "Space Ghost Coast to Coast"
+        "program": "Tom Goes to the Mayor"
     },
     {
         "time": "11:00 PM",
@@ -967,17 +967,17 @@
     {
         "time": "12:30 AM",
         "day": "Friday",
-        "program": "Sealab 2021"
+        "program": "Aqua Teen Hunger Force"
     },
     {
         "time": "1:00 AM",
         "day": "Friday",
-        "program": "Aqua Teen Hunger Force"
+        "program": "Tom Goes to the Mayor"
     },
     {
         "time": "1:30 AM",
         "day": "Friday",
-        "program": "Aqua Teen Hunger Force"
+        "program": "Harvey Birdman, Attorney at Law"
     },
     {
         "time": "2:00 AM",
@@ -987,7 +987,7 @@
     {
         "time": "2:30 AM",
         "day": "Friday",
-        "program": "Space Ghost Coast to Coast"
+        "program": "The Venture Bros"
     },
     {
         "time": "3:00 AM",
@@ -997,27 +997,27 @@
     {
         "time": "3:30 AM",
         "day": "Friday",
-        "program": "Home Movies"
+        "program": "Brak Show"
     },
     {
         "time": "4:00 AM",
         "day": "Friday",
-        "program": "Brak Show"
+        "program": "Sealab 2021"
     },
     {
         "time": "4:30 AM",
         "day": "Friday",
-        "program": "Brak Show"
+        "program": "Aqua Teen Hunger Force"
     },
     {
         "time": "5:00 AM",
         "day": "Friday",
-        "program": "Sealab 2021"
+        "program": "Tom Goes to the Mayor"
     },
     {
         "time": "5:30 AM",
         "day": "Friday",
-        "program": "Sealab 2021"
+        "program": "Harvey Birdman, Attorney at Law"
     },
     {
         "time": "6:00 AM",
@@ -1187,77 +1187,77 @@
     {
         "time": "10:30 PM",
         "day": "Friday",
-        "program": "Aqua Teen Hunger Force"
+        "program": "The Venture Bros"
     },
     {
         "time": "11:00 PM",
         "day": "Friday",
-        "program": "Sealab 2021"
+        "program": "Aqua Teen Hunger Force"
     },
     {
         "time": "11:30 PM",
         "day": "Friday",
-        "program": "Brak Show"
+        "program": "Harvey Birdman, Attorney at Law"
     },
     {
         "time": "12:00 AM",
         "day": "Saturday",
-        "program": "Brak Show"
+        "program": "Harvey Birdman, Attorney at Law"
     },
     {
         "time": "12:30 AM",
         "day": "Saturday",
-        "program": "Brak Show"
+        "program": "Aqua Teen Hunger Force"
     },
     {
         "time": "1:00 AM",
         "day": "Saturday",
-        "program": "Sealab 2021"
+        "program": "The Venture Bros"
     },
     {
         "time": "1:30 AM",
         "day": "Saturday",
-        "program": "Sealab 2021"
+        "program": "Space Ghost Coast to Coast"
     },
     {
         "time": "2:00 AM",
         "day": "Saturday",
-        "program": "Aqua Teen Hunger Force"
+        "program": "Sealab 2021"
     },
     {
         "time": "2:30 AM",
         "day": "Saturday",
-        "program": "Aqua Teen Hunger Force"
+        "program": "Tom Goes to the Mayor"
     },
     {
         "time": "3:00 AM",
         "day": "Saturday",
-        "program": "Space Ghost Coast to Coast"
+        "program": "Brak Show"
     },
     {
         "time": "3:30 AM",
         "day": "Saturday",
-        "program": "Space Ghost Coast to Coast"
+        "program": "Home Movies"
     },
     {
         "time": "4:00 AM",
         "day": "Saturday",
-        "program": "Home Movies"
+        "program": "Harvey Birdman, Attorney at Law"
     },
     {
         "time": "4:30 AM",
         "day": "Saturday",
-        "program": "Home Movies"
+        "program": "Aqua Teen Hunger Force"
     },
     {
         "time": "5:00 AM",
         "day": "Saturday",
-        "program": "Brak Show"
+        "program": "The Venture Bros"
     },
     {
         "time": "5:30 AM",
         "day": "Saturday",
-        "program": "Brak Show"
+        "program": "Space Ghost Coast to Coast"
     },
     {
         "time": "6:00 AM",
@@ -1427,12 +1427,12 @@
     {
         "time": "10:30 PM",
         "day": "Saturday",
-        "program": "Space Ghost Coast to Coast"
+        "program": "Brak Show"
     },
     {
         "time": "11:00 PM",
         "day": "Saturday",
-        "program": "Aqua Teen Hunger Force"
+        "program": "Tom Goes to the Mayor"
     },
     {
         "time": "11:30 PM",
@@ -1442,57 +1442,57 @@
     {
         "time": "12:00 AM",
         "day": "Sunday",
-        "program": "Home Movies"
+        "program": "Tom Goes to the Mayor"
     },
     {
         "time": "12:30 AM",
         "day": "Sunday",
-        "program": "Home Movies"
+        "program": "Sealab 2021"
     },
     {
         "time": "1:00 AM",
         "day": "Sunday",
-        "program": "Space Ghost Coast to Coast"
+        "program": "Brak Show"
     },
     {
         "time": "1:30 AM",
         "day": "Sunday",
-        "program": "Space Ghost Coast to Coast"
+        "program": "Home Movies"
     },
     {
         "time": "2:00 AM",
         "day": "Sunday",
-        "program": "Brak Show"
+        "program": "Space Ghost Coast to Coast"
     },
     {
         "time": "2:30 AM",
         "day": "Sunday",
-        "program": "Brak Show"
+        "program": "The Venture Bros"
     },
     {
         "time": "3:00 AM",
         "day": "Sunday",
-        "program": "Sealab 2021"
+        "program": "Aqua Teen Hunger Force"
     },
     {
         "time": "3:30 AM",
         "day": "Sunday",
-        "program": "Sealab 2021"
+        "program": "Harvey Birdman, Attorney at Law"
     },
     {
         "time": "4:00 AM",
         "day": "Sunday",
-        "program": "Aqua Teen Hunger Force"
+        "program": "Tom Goes to the Mayor"
     },
     {
         "time": "4:30 AM",
         "day": "Sunday",
-        "program": "Aqua Teen Hunger Force"
+        "program": "Sealab 2021"
     },
     {
         "time": "5:00 AM",
         "day": "Sunday",
-        "program": "Home Movies"
+        "program": "Brak Show"
     },
     {
         "time": "5:30 AM",
@@ -1667,16 +1667,16 @@
     {
         "time": "10:30 PM",
         "day": "Sunday",
-        "program": "Home Movies"
+        "program": "The Venture Bros"
     },
     {
         "time": "11:00 PM",
         "day": "Sunday",
-        "program": "Brak Show"
+        "program": "Aqua Teen Hunger Force"
     },
     {
         "time": "11:30 PM",
         "day": "Sunday",
-        "program": "Aqua Teen Hunger Force"
+        "program": "Harvey Birdman, Attorney at Law"
     }
 ]
