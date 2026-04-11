@@ -355,34 +355,32 @@
             let dexterSlotCount = 0;
             
             daySlots.forEach(slot => {
-                const isDexter = slot.program.includes("Dexter");
-                const isCartoon = [
+                console.log(`Processing slot: ${slot.program}`);
+                
+                // Check if this is any show that should have episodes
+                const allShows = [
                     "Dexter's Laboratory", "The Powerpuff Girls", "Ed, Edd n Eddy", 
                     "Johnny Bravo", "Courage the Cowardly Dog", "Cow & Chicken", 
-                    "I Am Weasel", "Billy & Mandy", "Foster's Home"
-                ].includes(slot.program);
-                const isAction = [
-                    "Samurai Jack", "Teen Titans", "Justice League", "Dragon Ball Z"
-                ].includes(slot.program);
-                const isAdultSwim = [
+                    "I Am Weasel", "Billy & Mandy", "Foster's Home",
+                    "Samurai Jack", "Teen Titans", "Justice League", "Dragon Ball Z",
                     "Space Ghost Coast to Coast", "Aqua Teen Hunger Force", "Sealab 2021", 
                     "Brak Show", "Home Movies", "The Venture Bros", 
                     "Harvey Birdman, Attorney at Law", "Tom Goes to the Mayor"
-                ].includes(slot.program);
+                ];
                 
-                console.log(`Slot: ${slot.program} - Dexter:${isDexter} Cartoon:${isCartoon} Action:${isAction} AdultSwim:${isAdultSwim}`);
+                const hasEpisodes = allShows.includes(slot.program);
+                console.log(`Show ${slot.program} has episodes: ${hasEpisodes}`);
                 
                 let episodeInfo = '';
                 
-                if (isDexter || isCartoon || isAction || isAdultSwim) {
+                if (hasEpisodes) {
                     const episodeNum = getEpisodeForDate(selectedDate, slot.time, slot.program);
                     console.log(`Episode for ${slot.program}: ${episodeNum}`);
                     episodeInfo = `<div class="slot-episode">Episode ${episodeNum}</div>`;
-                    if (isDexter) dexterSlotCount++;
                 }
                 
-                const statusClass = (isDexter || isCartoon || isAction || isAdultSwim) ? 'on-air' : 'off-air';
-                const statusText = (isDexter || isCartoon || isAction || isAdultSwim) ? '▶' : 'OFF AIR';
+                const statusClass = hasEpisodes ? 'on-air' : 'off-air';
+                const statusText = hasEpisodes ? '▶' : 'OFF AIR';
                 
                 html += `
                     <div class="slot">
