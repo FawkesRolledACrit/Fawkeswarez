@@ -174,7 +174,7 @@
 
         async function loadData() {
             try {
-                const response = await fetch('weekly-lineup.json');
+                const response = await fetch('weekly-lineup.json?t=' + Date.now());
                 weeklyLineup = await response.json();
                 renderCalendar();
                 renderLineup();
