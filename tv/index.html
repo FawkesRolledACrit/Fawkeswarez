@@ -149,10 +149,15 @@
     
     <script src="https://cdn.jsdelivr.net/npm/hls.js@1/dist/hls.min.js"></script>
     <script>
-        // Force cache-busting with current timestamp
+        // Force cache-busting with current timestamp and random number
+        const cacheBust = Date.now() + '_' + Math.random().toString(36).substr(2, 9);
         const script = document.createElement('script');
-        script.src = 'tv.js?t=' + Date.now();
+        script.src = 'tv.js?t=' + cacheBust;
         document.head.appendChild(script);
+        
+        // Debug: Log when script loads
+        script.onload = () => console.log('TV Player loaded with cache bust:', cacheBust);
+        script.onerror = () => console.error('Failed to load TV Player');
     </script>
 </body>
 </html>

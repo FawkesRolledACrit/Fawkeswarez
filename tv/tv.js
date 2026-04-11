@@ -5,7 +5,19 @@
 
 class LiveStreamPlayer {
     constructor() {
-        console.log('LiveStreamPlayer constructor');
+        console.log('LiveStreamPlayer constructor v2.0');
+        
+        // Force reload if page is using old cached version
+        if (!window.location.search.includes('force_refresh=')) {
+            const lastVersion = localStorage.getItem('tvPlayerVersion');
+            const currentVersion = '2.0';
+            if (lastVersion !== currentVersion) {
+                localStorage.setItem('tvPlayerVersion', currentVersion);
+                console.log('New version detected, forcing refresh...');
+                window.location.href = window.location.pathname + '?force_refresh=' + Date.now();
+                return;
+            }
+        }
         // Use a monotonic clock anchored to wall time to avoid schedule jumps
         // if the system clock changes (NTP/timezone adjustments, etc.).
         this._wallClockBaseMs = Date.now();
@@ -33,7 +45,10 @@ class LiveStreamPlayer {
             lineupBtn: !!this.lineupBtn,
             statusText: !!this.statusText,
             currentProgramEl: !!this.currentProgramEl,
-            scheduleTimeEl: !!this.scheduleTimeEl
+            currentBlockEl: !!this.currentBlockEl,
+            scheduleTimeEl: !!this.scheduleTimeEl,
+            streamStatusEl: !!this.streamStatusEl,
+            nextUpEl: !!this.nextUpEl
         });
         
         this.hasTunedIn = false;
