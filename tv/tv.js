@@ -1,3 +1,5 @@
+console.log('TV.JS LOADED v2.4 -', Date.now());
+
 /**
  * Fawkesware TV - Proper Live Streaming Implementation
  * NO AUTOPLAY - EVER. Video element only created after explicit user interaction.
@@ -5,7 +7,7 @@
 
 class LiveStreamPlayer {
     constructor() {
-        console.log('LiveStreamPlayer constructor v2.3');
+        console.log('LiveStreamPlayer constructor v2.4');
         // Use a monotonic clock anchored to wall time to avoid schedule jumps
         // if the system clock changes (NTP/timezone adjustments, etc.).
         this._wallClockBaseMs = Date.now();
