@@ -504,7 +504,20 @@ class LiveStreamPlayer {
         const queue = [];
         const blocks = this.schedule?.blocks || [];
         if (!blocks.length) return queue;
-        const block = blocks[((blockIndex % blocks.length) + blocks.length) % blocks.length];
+
+        // Date-based rotation: schedule.startDate at 00:00 maps to blocks[0].
+        // Then every 30-minute slot advances to the next episode, looping forever.
+        let startBlockIndex = 0;
+        if (this.schedule?.startDate) {
+            const startMs = Date.parse(this.schedule.startDate + 'T00:00:00');
+            if (!Number.isNaN(startMs)) {
+                startBlockIndex = Math.floor(startMs / this.BLOCK_DURATION);
+            }
+        }
+
+        const rel = blockIndex - startBlockIndex;
+        const episodeIndex = ((rel % blocks.length) + blocks.length) % blocks.length;
+        const block = blocks[episodeIndex];
         let usedTime = 0;
         
         for (const event of block.events) {

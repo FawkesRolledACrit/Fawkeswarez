@@ -1,4 +1,5 @@
 {
+  "startDate": "2026-04-01",
   "blocks": [
     {
       "title": "Dexter's Lab - S01E01",
@@ -351,6 +352,44 @@
           "title": "Dexter's Lab S01E10 Part 3",
           "url": "https://files.catbox.moe/kp8jz4.mp4",
           "durationSeconds": 448
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Dexter's Lab - S01E11",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Dexter's Lab S01E11 Part 1",
+          "url": "https://files.catbox.moe/ir0kvw.mp4",
+          "durationSeconds": 441
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Dexter's Lab S01E11 Part 2",
+          "url": "https://files.catbox.moe/3etzun.mp4",
+          "durationSeconds": 443
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Dexter's Lab S01E11 Part 3",
+          "url": "https://files.catbox.moe/4sv2oz.mp4",
+          "durationSeconds": 449
         },
         {
           "type": "adbreak",
