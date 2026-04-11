@@ -370,10 +370,13 @@
                     "Harvey Birdman, Attorney at Law", "Tom Goes to the Mayor"
                 ].includes(slot.program);
                 
+                console.log(`Slot: ${slot.program} - Dexter:${isDexter} Cartoon:${isCartoon} Action:${isAction} AdultSwim:${isAdultSwim}`);
+                
                 let episodeInfo = '';
                 
                 if (isDexter || isCartoon || isAction || isAdultSwim) {
                     const episodeNum = getEpisodeForDate(selectedDate, slot.time, slot.program);
+                    console.log(`Episode for ${slot.program}: ${episodeNum}`);
                     episodeInfo = `<div class="slot-episode">Episode ${episodeNum}</div>`;
                     if (isDexter) dexterSlotCount++;
                 }
