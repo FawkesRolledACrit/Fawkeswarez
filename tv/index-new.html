@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>📺 Fawkesware TV v2.2 📺</title>
+    <script>
+        // Cache-bust CSS
+        const cssLink = document.createElement('link');
+        cssLink.rel = 'stylesheet';
+        cssLink.href = '../style.css?t=' + Date.now();
+        document.head.appendChild(cssLink);
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .tv-container {
+            width: 100%;
+            max-width: 960px;
+            height: 540px;
+            background: #000;
+            border: 3px solid #0F0;
+            box-shadow: 0 0 20px rgba(0,255,0,0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tv-placeholder {
+            text-align: center;
+            color: #0F0;
+            font-family: 'Chakra Petch', monospace;
+        }
+        
+        .status-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.8);
+            color: #0F0;
+            padding: 5px 10px;
+            font-family: 'Chakra Petch', monospace;
+            font-size: 12px;
+        }
+        
+        .tv-container:not(.active) .tv-player {
+            display: none;
+        }
+        
+        .tv-container.active .tv-placeholder {
+            display: none;
+        }
+        
+        .nav-btn {
+            background: linear-gradient(135deg, #0F0, #0A0);
+            border: 2px solid #0F0;
+            color: #000;
+            padding: 10px 20px;
+            font-family: 'Chakra Petch', monospace;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .nav-btn:hover {
+            background: linear-gradient(135deg, #0A0, #0F0);
+            box-shadow: 0 0 15px rgba(0,255,0,0.5);
+            transform: translateY(-2px);
+        }
+        
+        .status-grid {
+            display: grid;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .status-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            background: rgba(0,255,0,0.1);
+            border: 1px solid #0F0;
+            border-radius: 5px;
+        }
+        
+        .status-label {
+            color: #0F0;
+            font-weight: 600;
+        }
+        
+        .stream-info {
+            background: rgba(0,0,0,0.8);
+            border: 2px solid #0F0;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body style="background: #000; color: #0F0; font-family: 'Chakra Petch', monospace; margin: 0; padding: 20px;">
+    <nav style="text-align: center; margin-bottom: 20px;">
+        <button class="nav-btn" id="tune-btn">📡 TUNE IN</button>
+        <button class="nav-btn" id="mute-btn">🔇 MUTE</button>
+        <button class="nav-btn" id="fullscreen-btn">⛶ FULLSCREEN</button>
+        <button class="nav-btn" id="lineup-btn">📅 LINEUP</button>
+    </nav>
+
+    <main style="max-width: 1200px; margin: 0 auto;">
+        <section style="text-align: center;">
+            <h2 style="color: #0F0; margin-bottom: 20px;">📼 NOW PLAYING 📼</h2>
+
+            <div style="display:flex; justify-content:center;">
+                <div id="tv-container" class="tv-container">
+                    <div class="tv-placeholder">
+                        <div style="font-size:48px; margin-bottom:20px;">📡</div>
+                        <div>READY TO TUNE IN</div>
+                        <div style="font-size:14px; margin-top:10px; opacity:0.7;">Click TUNE IN to start broadcast</div>
+                    </div>
+                    <video id="tv-player" preload="none"></video>
+                    <div class="status-bar" id="status-bar">
+                        <span id="status-text">Ready to tune in...</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stream-info">
+                <h3>📡 STREAM STATUS</h3>
+                <div class="status-grid">
+                    <div class="status-item">
+                        <span class="status-label">Current Block:</span>
+                        <span id="current-block">OFF AIR</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">Current Program:</span>
+                        <span id="current-program">OFF AIR</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">Schedule Time:</span>
+                        <span id="schedule-time">00:00:00</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">Stream Status:</span>
+                        <span id="stream-status">STANDBY</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">Next Up:</span>
+                        <span id="next-up">TBD</span>
+                    </div>
+                </div>
+                <div style="margin-top: 20px; padding: 15px; background: rgba(0,255,0,0.05); border-radius: 5px;">
+                    <p>This is a true live stream - no user controls available.</p>
+                    <p>All viewers are perfectly synchronized to the same broadcast.</p>
+                    <p>Shows air in 30-minute blocks with proper episode rotation and commercial breaks.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Use a different CDN that shouldn't trigger tracking prevention -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.4.12/hls.min.js"></script>
+    <script>
+        // Force cache-busting with current timestamp and random number
+        const cacheBust = Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+        const script = document.createElement('script');
+        script.src = 'tv.js?t=' + cacheBust;
+        document.head.appendChild(script);
+        
+        // Debug: Log when script loads
+        script.onload = () => console.log('TV Player loaded with cache bust:', cacheBust);
+        script.onerror = () => console.error('Failed to load TV Player');
+    </script>
+</body>
+</html>

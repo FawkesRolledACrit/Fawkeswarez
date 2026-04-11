@@ -5,12 +5,12 @@
 
 class LiveStreamPlayer {
     constructor() {
-        console.log('LiveStreamPlayer constructor v2.1');
+        console.log('LiveStreamPlayer constructor v2.2');
         
         // Force reload if page is using old cached version
         if (!window.location.search.includes('force_refresh=')) {
             const lastVersion = localStorage.getItem('tvPlayerVersion');
-            const currentVersion = '2.1';
+            const currentVersion = '2.2';
             if (lastVersion !== currentVersion) {
                 localStorage.setItem('tvPlayerVersion', currentVersion);
                 console.log('New version detected, forcing refresh...');
