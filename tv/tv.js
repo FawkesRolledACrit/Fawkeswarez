@@ -1020,30 +1020,8 @@ class LiveStreamPlayer {
             this.currentProgramEl.textContent = currentTitle;
             this.scheduleTimeEl.textContent = this.formatTime(blockElapsedSeconds);
             
-            // Update current block and next up
-            const weeklySlot = this.getWeeklySlotForNow();
-            const currentBlock = this.getCurrentBlockInfo();
-            if (this.currentBlockEl) {
-                if (weeklySlot && currentBlock?.blockName) {
-                    this.currentBlockEl.textContent = `${currentBlock.blockName} • ${weeklySlot.time} - ${weeklySlot.program}`;
-                } else {
-                    this.currentBlockEl.textContent = 'OFF AIR';
-                }
-            }
-            if (this.nextUpEl) {
-                this.nextUpEl.textContent = this.getNextUp();
-            }
-            
-            // Update stream status for OFF AIR
-            if (this.streamStatusEl) {
-                const now = new Date();
-                const localTime = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
-                const uptime = this.getStreamUptime();
-                const viewers = this.getViewerCount();
-                
-                let streamStatus = `📴 OFF AIR • ${localTime} • Viewers: ${viewers}`;
-                this.streamStatusEl.textContent = streamStatus;
-            }
+            // Use unified status display
+            this.updateStatusDisplay();
             return;
         }
 
@@ -1068,37 +1046,8 @@ class LiveStreamPlayer {
             }
         }
         
-        // Get current block information and update enhanced status
-        const currentBlock = this.getCurrentBlockInfo();
-        const weeklySlot = this.getWeeklySlotForNow();
-        
-        // Update current block
-        if (this.currentBlockEl) {
-            let blockText = 'LIVE';
-            if (weeklySlot && currentBlock?.blockName) {
-                blockText = `${currentBlock.blockName} • ${weeklySlot.time} - ${weeklySlot.program}`;
-                if (currentBlock?.episode) {
-                    blockText += ` • ${currentBlock.episode}`;
-                }
-            }
-            this.currentBlockEl.textContent = blockText;
-        }
-        
-        // Update next up
-        if (this.nextUpEl) {
-            this.nextUpEl.textContent = this.getNextUp();
-        }
-        
-        // Update stream status with actual metrics
-        if (this.streamStatusEl) {
-            const now = new Date();
-            const localTime = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
-            const uptime = this.getStreamUptime();
-            const viewers = this.getViewerCount();
-            
-            let streamStatus = `🔴 LIVE • ${localTime} • Uptime: ${uptime} • Viewers: ${viewers}`;
-            this.streamStatusEl.textContent = streamStatus;
-        }
+        // Use unified status display
+        this.updateStatusDisplay();
         
         // Update status with more context
         if (drift <= 2) {
@@ -1112,37 +1061,10 @@ class LiveStreamPlayer {
     
     startScheduleUpdates() {
         console.log('Starting schedule updates');
-        // Update schedule info every second even before tuning in
-        setInterval(() => {
-            const position = this.getCurrentSchedulePosition();
-            // Keep console noise down during normal playback.
-            // console.log('Schedule position:', position);
-            
-            if (this.currentProgramEl) {
-                this.currentProgramEl.textContent = position.currentTitle;
-            } else {
-                console.log('currentProgramEl not found');
-            }
-            
-            const now = this.nowMs();
-            const blockElapsedSeconds = (now % this.BLOCK_DURATION) / 1000;
-            const timeStr = this.formatTime(blockElapsedSeconds);
-            
-            if (this.scheduleTimeEl) {
-                this.scheduleTimeEl.textContent = timeStr;
-            } else {
-                console.log('scheduleTimeEl not found');
-            }
-            
-            // Update current block and next up for non-tuned viewers
-            const weeklySlot = this.getWeeklySlotForNow();
-            if (this.currentBlockEl) {
-                this.currentBlockEl.textContent = weeklySlot ? `${weeklySlot.time} - ${weeklySlot.program}` : 'OFF AIR';
-            }
-            if (this.nextUpEl) {
-                this.nextUpEl.textContent = this.getNextUp();
-            }
-        }, 1000);
+        // Update schedule info every 2 seconds to match sync interval
+        this.scheduleUpdateInterval = setInterval(() => {
+            this.updateStatusDisplay();
+        }, 2000);
     }
     
     toggleMute() {
