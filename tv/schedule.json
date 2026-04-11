@@ -1300,6 +1300,557 @@
           "targetSeconds": "auto"
         }
       ]
+    },
+    {
+      "title": "Ed, Edd n Eddy - S01E01",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Ed, Edd n Eddy S01E01 Part 1",
+          "url": "https://files.catbox.moe/zy669c.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Ed, Edd n Eddy S01E01 Part 2",
+          "url": "https://files.catbox.moe/oq8b73.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Ed, Edd n Eddy S01E01 Part 3",
+          "url": "https://files.catbox.moe/zwq70i.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Ed, Edd n Eddy - S01E02",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Ed, Edd n Eddy S01E02 Part 1",
+          "url": "https://files.catbox.moe/kd31f7.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Ed, Edd n Eddy S01E02 Part 2",
+          "url": "https://files.catbox.moe/fi7d2r.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Ed, Edd n Eddy - S01E03",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Ed, Edd n Eddy S01E03 Part 1",
+          "url": "https://files.catbox.moe/hixwu8.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Ed, Edd n Eddy S01E03 Part 2",
+          "url": "https://files.catbox.moe/p54tiz.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Ed, Edd n Eddy - S01E04",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Ed, Edd n Eddy S01E04 Part 1",
+          "url": "https://files.catbox.moe/q3xkwk.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Ed, Edd n Eddy S01E04 Part 2",
+          "url": "https://files.catbox.moe/eyv5co.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Ed, Edd n Eddy - S01E05",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Ed, Edd n Eddy S01E05 Part 1",
+          "url": "https://files.catbox.moe/s2zr4g.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Ed, Edd n Eddy S01E05 Part 2",
+          "url": "https://files.catbox.moe/8ls1h3.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Ed, Edd n Eddy - S01E06",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Ed, Edd n Eddy S01E06 Part 1",
+          "url": "https://files.catbox.moe/plljxx.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Ed, Edd n Eddy S01E06 Part 2",
+          "url": "https://files.catbox.moe/5bt5um.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Ed, Edd n Eddy - S01E07",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Ed, Edd n Eddy S01E07 Part 1",
+          "url": "https://files.catbox.moe/o9zvg6.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Ed, Edd n Eddy S01E07 Part 2",
+          "url": "https://files.catbox.moe/imqs3v.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Ed, Edd n Eddy - S01E08",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Ed, Edd n Eddy S01E08 Part 1",
+          "url": "https://files.catbox.moe/6ydv31.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Ed, Edd n Eddy S01E08 Part 2",
+          "url": "https://files.catbox.moe/fd1yny.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Ed, Edd n Eddy - S01E09",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Ed, Edd n Eddy S01E09 Part 1",
+          "url": "https://files.catbox.moe/3jeyk1.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Ed, Edd n Eddy S01E09 Part 2",
+          "url": "https://files.catbox.moe/dufv0v.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Ed, Edd n Eddy - S01E10",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Ed, Edd n Eddy S01E10 Part 1",
+          "url": "https://files.catbox.moe/ai29fn.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Ed, Edd n Eddy S01E10 Part 2",
+          "url": "https://files.catbox.moe/nky7fo.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Ed, Edd n Eddy - S01E11",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Ed, Edd n Eddy S01E11 Part 1",
+          "url": "https://files.catbox.moe/swft9p.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Ed, Edd n Eddy S01E11 Part 2",
+          "url": "https://files.catbox.moe/sgnz9a.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Ed, Edd n Eddy - S01E12",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Ed, Edd n Eddy S01E12 Part 1",
+          "url": "https://files.catbox.moe/v9lcii.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Ed, Edd n Eddy S01E12 Part 2",
+          "url": "https://files.catbox.moe/e5ceir.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Ed, Edd n Eddy - S01E13",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Ed, Edd n Eddy S01E13 Part 1",
+          "url": "https://files.catbox.moe/sy5c8s.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Ed, Edd n Eddy S01E13 Part 2",
+          "url": "https://files.catbox.moe/bw6g36.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Ed, Edd n Eddy - S02E01",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Ed, Edd n Eddy S02E01 Part 1",
+          "url": "https://files.catbox.moe/5sfo80.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Ed, Edd n Eddy S02E01 Part 2",
+          "url": "https://files.catbox.moe/22ylj2.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Ed, Edd n Eddy - S02E02",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Ed, Edd n Eddy S02E02 Part 1",
+          "url": "https://files.catbox.moe/avpl94.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Ed, Edd n Eddy S02E02 Part 2",
+          "url": "https://files.catbox.moe/06pkus.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Ed, Edd n Eddy - S02E03",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Ed, Edd n Eddy S02E03 Part 1",
+          "url": "https://files.catbox.moe/ivh73q.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Ed, Edd n Eddy S02E03 Part 2",
+          "url": "https://files.catbox.moe/qxtk5x.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Ed, Edd n Eddy - S02E04",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Ed, Edd n Eddy S02E04 Part 1",
+          "url": "https://files.catbox.moe/s6tv3i.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Ed, Edd n Eddy S02E04 Part 2",
+          "url": "https://files.catbox.moe/047n2b.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Ed, Edd n Eddy - S02E05",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Ed, Edd n Eddy S02E05 Part 1",
+          "url": "https://files.catbox.moe/4pdsf9.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Ed, Edd n Eddy S02E05 Part 2",
+          "url": "https://files.catbox.moe/7g448z.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Ed, Edd n Eddy - S02E06",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Ed, Edd n Eddy S02E06 Part 1",
+          "url": "https://files.catbox.moe/mp39j4.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Ed, Edd n Eddy S02E06 Part 2",
+          "url": "https://files.catbox.moe/r2obxp.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Ed, Edd n Eddy - S02E07",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Ed, Edd n Eddy S02E07 Part 1",
+          "url": "https://files.catbox.moe/12gjm2.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Ed, Edd n Eddy S02E07 Part 2",
+          "url": "https://files.catbox.moe/nxh4kb.mp4",
+          "durationSeconds": 600
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto"
+        }
+      ]
     }
   ]
 }
