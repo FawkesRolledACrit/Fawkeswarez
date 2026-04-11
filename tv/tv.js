@@ -589,14 +589,6 @@ class LiveStreamPlayer {
         const globalBlockIndex = Math.floor(now / this.BLOCK_DURATION);
         const blockStart = globalBlockIndex * this.BLOCK_DURATION;
         const blockElapsed = now - blockStart;
-        
-        // Debug logging
-        console.log('getCurrentSchedulePosition debug:', {
-            now: new Date(now),
-            globalBlockIndex,
-            blockStart: new Date(blockStart),
-            blockElapsed
-        });
 
         // Weekly lineup mode: determine what show is supposed to be on NOW.
         const weeklySlot = this.getWeeklySlotForNow();
@@ -641,16 +633,6 @@ class LiveStreamPlayer {
         const rel = blockIndex - startBlockIndex;
         const episodeIndex = ((rel % blocks.length) + blocks.length) % blocks.length;
         const block = blocks[episodeIndex];
-        
-        // Debug logging
-        console.log('buildQueue debug:', {
-            blockIndex,
-            startBlockIndex,
-            rel,
-            episodeIndex,
-            episodeNumber: episodeIndex + 1,
-            blockTitle: block.title
-        });
         let usedTime = 0;
         
         for (const event of block.events) {
