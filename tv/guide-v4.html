@@ -855,9 +855,9 @@
                                 <div class="slot-status"></div>
                             </div>
                         `;
+                        // Skip rendering the header slot itself
+                        continue;
                     }
-                    // Skip rendering the header slot itself
-                    continue;
                 }
 
                 const slotTimeBlock = canonicalBlockForSlot(daySlots, i);
