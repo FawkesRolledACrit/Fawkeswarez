@@ -9140,21 +9140,9 @@
                                           "toleranceSeconds":  3
                                       },
                                       {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S01E01",
-                                          "url":  "https://files.catbox.moe/lijhnf.avi",
-                                          "durationSeconds":  900
-                                      },
-                                      {
                                           "type":  "adbreak",
                                           "targetSeconds":  180,
                                           "toleranceSeconds":  3
-                                      },
-                                      {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S01E02",
-                                          "url":  "https://files.catbox.moe/9evkcw.avi",
-                                          "durationSeconds":  900
                                       },
                                       {
                                           "type":  "adbreak",
@@ -9190,21 +9178,9 @@
                                           "toleranceSeconds":  3
                                       },
                                       {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S02E02",
-                                          "url":  "https://files.catbox.moe/0f0yk2.avi",
-                                          "durationSeconds":  900
-                                      },
-                                      {
                                           "type":  "adbreak",
                                           "targetSeconds":  180,
                                           "toleranceSeconds":  3
-                                      },
-                                      {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S02E03",
-                                          "url":  "https://files.catbox.moe/i5pf1e.avi",
-                                          "durationSeconds":  900
                                       },
                                       {
                                           "type":  "adbreak",
@@ -9245,21 +9221,9 @@
                                           "toleranceSeconds":  3
                                       },
                                       {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S03E01",
-                                          "url":  "https://files.catbox.moe/uouf1w.avi",
-                                          "durationSeconds":  900
-                                      },
-                                      {
                                           "type":  "adbreak",
                                           "targetSeconds":  180,
                                           "toleranceSeconds":  3
-                                      },
-                                      {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S03E02",
-                                          "url":  "https://files.catbox.moe/0glg8s.avi",
-                                          "durationSeconds":  900
                                       },
                                       {
                                           "type":  "adbreak",
@@ -9295,21 +9259,9 @@
                                           "toleranceSeconds":  3
                                       },
                                       {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S04E02",
-                                          "url":  "https://files.catbox.moe/enwhdf.avi",
-                                          "durationSeconds":  900
-                                      },
-                                      {
                                           "type":  "adbreak",
                                           "targetSeconds":  180,
                                           "toleranceSeconds":  3
-                                      },
-                                      {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S04E03",
-                                          "url":  "https://files.catbox.moe/3weie9.avi",
-                                          "durationSeconds":  900
                                       },
                                       {
                                           "type":  "adbreak",
@@ -9350,21 +9302,9 @@
                                           "toleranceSeconds":  3
                                       },
                                       {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S05E01",
-                                          "url":  "https://files.catbox.moe/l64jn9.avi",
-                                          "durationSeconds":  900
-                                      },
-                                      {
                                           "type":  "adbreak",
                                           "targetSeconds":  180,
                                           "toleranceSeconds":  3
-                                      },
-                                      {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S05E02",
-                                          "url":  "https://files.catbox.moe/juq18w.avi",
-                                          "durationSeconds":  900
                                       },
                                       {
                                           "type":  "adbreak",
@@ -9400,21 +9340,9 @@
                                           "toleranceSeconds":  3
                                       },
                                       {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S06E02",
-                                          "url":  "https://files.catbox.moe/placeholder_i_am_weasel_S06E02.mp4",
-                                          "durationSeconds":  900
-                                      },
-                                      {
                                           "type":  "adbreak",
                                           "targetSeconds":  180,
                                           "toleranceSeconds":  3
-                                      },
-                                      {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S06E03",
-                                          "url":  "https://files.catbox.moe/placeholder_i_am_weasel_S06E03.mp4",
-                                          "durationSeconds":  900
                                       },
                                       {
                                           "type":  "adbreak",
@@ -9455,21 +9383,9 @@
                                           "toleranceSeconds":  3
                                       },
                                       {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S07E01",
-                                          "url":  "https://files.catbox.moe/placeholder_i_am_weasel_S07E01.mp4",
-                                          "durationSeconds":  900
-                                      },
-                                      {
                                           "type":  "adbreak",
                                           "targetSeconds":  180,
                                           "toleranceSeconds":  3
-                                      },
-                                      {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S07E02",
-                                          "url":  "https://files.catbox.moe/placeholder_i_am_weasel_S07E02.mp4",
-                                          "durationSeconds":  900
                                       },
                                       {
                                           "type":  "adbreak",
@@ -9505,21 +9421,9 @@
                                           "toleranceSeconds":  3
                                       },
                                       {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S08E02",
-                                          "url":  "https://files.catbox.moe/placeholder_i_am_weasel_S08E02.mp4",
-                                          "durationSeconds":  900
-                                      },
-                                      {
                                           "type":  "adbreak",
                                           "targetSeconds":  180,
                                           "toleranceSeconds":  3
-                                      },
-                                      {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S08E03",
-                                          "url":  "https://files.catbox.moe/placeholder_i_am_weasel_S08E03.mp4",
-                                          "durationSeconds":  900
                                       },
                                       {
                                           "type":  "adbreak",
@@ -9560,21 +9464,9 @@
                                           "toleranceSeconds":  3
                                       },
                                       {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S09E01",
-                                          "url":  "https://files.catbox.moe/placeholder_i_am_weasel_S09E01.mp4",
-                                          "durationSeconds":  900
-                                      },
-                                      {
                                           "type":  "adbreak",
                                           "targetSeconds":  180,
                                           "toleranceSeconds":  3
-                                      },
-                                      {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S09E02",
-                                          "url":  "https://files.catbox.moe/placeholder_i_am_weasel_S09E02.mp4",
-                                          "durationSeconds":  900
                                       },
                                       {
                                           "type":  "adbreak",
@@ -9610,21 +9502,9 @@
                                           "toleranceSeconds":  3
                                       },
                                       {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S10E02",
-                                          "url":  "https://files.catbox.moe/placeholder_i_am_weasel_S10E02.mp4",
-                                          "durationSeconds":  900
-                                      },
-                                      {
                                           "type":  "adbreak",
                                           "targetSeconds":  180,
                                           "toleranceSeconds":  3
-                                      },
-                                      {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S10E03",
-                                          "url":  "https://files.catbox.moe/placeholder_i_am_weasel_S10E03.mp4",
-                                          "durationSeconds":  900
                                       },
                                       {
                                           "type":  "adbreak",
@@ -9665,21 +9545,9 @@
                                           "toleranceSeconds":  3
                                       },
                                       {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S11E01",
-                                          "url":  "https://files.catbox.moe/placeholder_i_am_weasel_S11E01.mp4",
-                                          "durationSeconds":  900
-                                      },
-                                      {
                                           "type":  "adbreak",
                                           "targetSeconds":  180,
                                           "toleranceSeconds":  3
-                                      },
-                                      {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S11E02",
-                                          "url":  "https://files.catbox.moe/placeholder_i_am_weasel_S11E02.mp4",
-                                          "durationSeconds":  900
                                       },
                                       {
                                           "type":  "adbreak",
@@ -9715,21 +9583,9 @@
                                           "toleranceSeconds":  3
                                       },
                                       {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S12E02",
-                                          "url":  "https://files.catbox.moe/placeholder_i_am_weasel_S12E02.mp4",
-                                          "durationSeconds":  900
-                                      },
-                                      {
                                           "type":  "adbreak",
                                           "targetSeconds":  180,
                                           "toleranceSeconds":  3
-                                      },
-                                      {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S12E03",
-                                          "url":  "https://files.catbox.moe/placeholder_i_am_weasel_S12E03.mp4",
-                                          "durationSeconds":  900
                                       },
                                       {
                                           "type":  "adbreak",
@@ -9770,21 +9626,9 @@
                                           "toleranceSeconds":  3
                                       },
                                       {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S13E01",
-                                          "url":  "https://files.catbox.moe/placeholder_i_am_weasel_S13E01.mp4",
-                                          "durationSeconds":  900
-                                      },
-                                      {
                                           "type":  "adbreak",
                                           "targetSeconds":  180,
                                           "toleranceSeconds":  3
-                                      },
-                                      {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S13E02",
-                                          "url":  "https://files.catbox.moe/placeholder_i_am_weasel_S13E02.mp4",
-                                          "durationSeconds":  900
                                       },
                                       {
                                           "type":  "adbreak",
@@ -9820,21 +9664,9 @@
                                           "toleranceSeconds":  3
                                       },
                                       {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S01E02",
-                                          "url":  "https://files.catbox.moe/9evkcw.avi",
-                                          "durationSeconds":  900
-                                      },
-                                      {
                                           "type":  "adbreak",
                                           "targetSeconds":  180,
                                           "toleranceSeconds":  3
-                                      },
-                                      {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S01E03",
-                                          "url":  "https://files.catbox.moe/18yibr.avi",
-                                          "durationSeconds":  900
                                       },
                                       {
                                           "type":  "adbreak",
@@ -9875,21 +9707,9 @@
                                           "toleranceSeconds":  3
                                       },
                                       {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S02E01",
-                                          "url":  "https://files.catbox.moe/ikgkud.avi",
-                                          "durationSeconds":  900
-                                      },
-                                      {
                                           "type":  "adbreak",
                                           "targetSeconds":  180,
                                           "toleranceSeconds":  3
-                                      },
-                                      {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S02E02",
-                                          "url":  "https://files.catbox.moe/0f0yk2.avi",
-                                          "durationSeconds":  900
                                       },
                                       {
                                           "type":  "adbreak",
@@ -9925,21 +9745,9 @@
                                           "toleranceSeconds":  3
                                       },
                                       {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S03E02",
-                                          "url":  "https://files.catbox.moe/0glg8s.avi",
-                                          "durationSeconds":  900
-                                      },
-                                      {
                                           "type":  "adbreak",
                                           "targetSeconds":  180,
                                           "toleranceSeconds":  3
-                                      },
-                                      {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S03E03",
-                                          "url":  "https://files.catbox.moe/rhwtka.avi",
-                                          "durationSeconds":  900
                                       },
                                       {
                                           "type":  "adbreak",
@@ -9980,21 +9788,9 @@
                                           "toleranceSeconds":  3
                                       },
                                       {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S04E01",
-                                          "url":  "https://files.catbox.moe/nubn0d.avi",
-                                          "durationSeconds":  900
-                                      },
-                                      {
                                           "type":  "adbreak",
                                           "targetSeconds":  180,
                                           "toleranceSeconds":  3
-                                      },
-                                      {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S04E02",
-                                          "url":  "https://files.catbox.moe/enwhdf.avi",
-                                          "durationSeconds":  900
                                       },
                                       {
                                           "type":  "adbreak",
@@ -10030,21 +9826,9 @@
                                           "toleranceSeconds":  3
                                       },
                                       {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S05E02",
-                                          "url":  "https://files.catbox.moe/juq18w.avi",
-                                          "durationSeconds":  900
-                                      },
-                                      {
                                           "type":  "adbreak",
                                           "targetSeconds":  180,
                                           "toleranceSeconds":  3
-                                      },
-                                      {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S05E03",
-                                          "url":  "https://files.catbox.moe/msoa7v.avi",
-                                          "durationSeconds":  900
                                       },
                                       {
                                           "type":  "adbreak",
@@ -10085,21 +9869,9 @@
                                           "toleranceSeconds":  3
                                       },
                                       {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S06E01",
-                                          "url":  "https://files.catbox.moe/placeholder_i_am_weasel_S06E01.mp4",
-                                          "durationSeconds":  900
-                                      },
-                                      {
                                           "type":  "adbreak",
                                           "targetSeconds":  180,
                                           "toleranceSeconds":  3
-                                      },
-                                      {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S06E02",
-                                          "url":  "https://files.catbox.moe/placeholder_i_am_weasel_S06E02.mp4",
-                                          "durationSeconds":  900
                                       },
                                       {
                                           "type":  "adbreak",
@@ -10135,21 +9907,9 @@
                                           "toleranceSeconds":  3
                                       },
                                       {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S07E02",
-                                          "url":  "https://files.catbox.moe/placeholder_i_am_weasel_S07E02.mp4",
-                                          "durationSeconds":  900
-                                      },
-                                      {
                                           "type":  "adbreak",
                                           "targetSeconds":  180,
                                           "toleranceSeconds":  3
-                                      },
-                                      {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S07E03",
-                                          "url":  "https://files.catbox.moe/placeholder_i_am_weasel_S07E03.mp4",
-                                          "durationSeconds":  900
                                       },
                                       {
                                           "type":  "adbreak",
@@ -10190,21 +9950,9 @@
                                           "toleranceSeconds":  3
                                       },
                                       {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S08E01",
-                                          "url":  "https://files.catbox.moe/placeholder_i_am_weasel_S08E01.mp4",
-                                          "durationSeconds":  900
-                                      },
-                                      {
                                           "type":  "adbreak",
                                           "targetSeconds":  180,
                                           "toleranceSeconds":  3
-                                      },
-                                      {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S08E02",
-                                          "url":  "https://files.catbox.moe/placeholder_i_am_weasel_S08E02.mp4",
-                                          "durationSeconds":  900
                                       },
                                       {
                                           "type":  "adbreak",
@@ -10240,21 +9988,9 @@
                                           "toleranceSeconds":  3
                                       },
                                       {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S09E02",
-                                          "url":  "https://files.catbox.moe/placeholder_i_am_weasel_S09E02.mp4",
-                                          "durationSeconds":  900
-                                      },
-                                      {
                                           "type":  "adbreak",
                                           "targetSeconds":  180,
                                           "toleranceSeconds":  3
-                                      },
-                                      {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S09E03",
-                                          "url":  "https://files.catbox.moe/placeholder_i_am_weasel_S09E03.mp4",
-                                          "durationSeconds":  900
                                       },
                                       {
                                           "type":  "adbreak",
@@ -10295,21 +10031,9 @@
                                           "toleranceSeconds":  3
                                       },
                                       {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S10E01",
-                                          "url":  "https://files.catbox.moe/placeholder_i_am_weasel_S10E01.mp4",
-                                          "durationSeconds":  900
-                                      },
-                                      {
                                           "type":  "adbreak",
                                           "targetSeconds":  180,
                                           "toleranceSeconds":  3
-                                      },
-                                      {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S10E02",
-                                          "url":  "https://files.catbox.moe/placeholder_i_am_weasel_S10E02.mp4",
-                                          "durationSeconds":  900
                                       },
                                       {
                                           "type":  "adbreak",
@@ -10345,21 +10069,9 @@
                                           "toleranceSeconds":  3
                                       },
                                       {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S11E02",
-                                          "url":  "https://files.catbox.moe/placeholder_i_am_weasel_S11E02.mp4",
-                                          "durationSeconds":  900
-                                      },
-                                      {
                                           "type":  "adbreak",
                                           "targetSeconds":  180,
                                           "toleranceSeconds":  3
-                                      },
-                                      {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S11E03",
-                                          "url":  "https://files.catbox.moe/placeholder_i_am_weasel_S11E03.mp4",
-                                          "durationSeconds":  900
                                       },
                                       {
                                           "type":  "adbreak",
@@ -10400,21 +10112,9 @@
                                           "toleranceSeconds":  3
                                       },
                                       {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S12E01",
-                                          "url":  "https://files.catbox.moe/placeholder_i_am_weasel_S12E01.mp4",
-                                          "durationSeconds":  900
-                                      },
-                                      {
                                           "type":  "adbreak",
                                           "targetSeconds":  180,
                                           "toleranceSeconds":  3
-                                      },
-                                      {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S12E02",
-                                          "url":  "https://files.catbox.moe/placeholder_i_am_weasel_S12E02.mp4",
-                                          "durationSeconds":  900
                                       },
                                       {
                                           "type":  "adbreak",
@@ -10450,21 +10150,9 @@
                                           "toleranceSeconds":  3
                                       },
                                       {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S13E02",
-                                          "url":  "https://files.catbox.moe/placeholder_i_am_weasel_S13E02.mp4",
-                                          "durationSeconds":  900
-                                      },
-                                      {
                                           "type":  "adbreak",
                                           "targetSeconds":  180,
                                           "toleranceSeconds":  3
-                                      },
-                                      {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S13E03",
-                                          "url":  "https://files.catbox.moe/placeholder_i_am_weasel_S13E03.mp4",
-                                          "durationSeconds":  900
                                       },
                                       {
                                           "type":  "adbreak",
@@ -10505,21 +10193,9 @@
                                           "toleranceSeconds":  3
                                       },
                                       {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S01E01",
-                                          "url":  "https://files.catbox.moe/lijhnf.avi",
-                                          "durationSeconds":  900
-                                      },
-                                      {
                                           "type":  "adbreak",
                                           "targetSeconds":  180,
                                           "toleranceSeconds":  3
-                                      },
-                                      {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S01E02",
-                                          "url":  "https://files.catbox.moe/9evkcw.avi",
-                                          "durationSeconds":  900
                                       },
                                       {
                                           "type":  "adbreak",
@@ -10555,21 +10231,9 @@
                                           "toleranceSeconds":  3
                                       },
                                       {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S02E02",
-                                          "url":  "https://files.catbox.moe/0f0yk2.avi",
-                                          "durationSeconds":  900
-                                      },
-                                      {
                                           "type":  "adbreak",
                                           "targetSeconds":  180,
                                           "toleranceSeconds":  3
-                                      },
-                                      {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S02E03",
-                                          "url":  "https://files.catbox.moe/i5pf1e.avi",
-                                          "durationSeconds":  900
                                       },
                                       {
                                           "type":  "adbreak",
@@ -10610,21 +10274,9 @@
                                           "toleranceSeconds":  3
                                       },
                                       {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S03E01",
-                                          "url":  "https://files.catbox.moe/uouf1w.avi",
-                                          "durationSeconds":  900
-                                      },
-                                      {
                                           "type":  "adbreak",
                                           "targetSeconds":  180,
                                           "toleranceSeconds":  3
-                                      },
-                                      {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S03E02",
-                                          "url":  "https://files.catbox.moe/0glg8s.avi",
-                                          "durationSeconds":  900
                                       },
                                       {
                                           "type":  "adbreak",
@@ -10660,21 +10312,9 @@
                                           "toleranceSeconds":  3
                                       },
                                       {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S04E02",
-                                          "url":  "https://files.catbox.moe/enwhdf.avi",
-                                          "durationSeconds":  900
-                                      },
-                                      {
                                           "type":  "adbreak",
                                           "targetSeconds":  180,
                                           "toleranceSeconds":  3
-                                      },
-                                      {
-                                          "type":  "segment",
-                                          "title":  "I Am Weasel S04E03",
-                                          "url":  "https://files.catbox.moe/3weie9.avi",
-                                          "durationSeconds":  900
                                       },
                                       {
                                           "type":  "adbreak",
