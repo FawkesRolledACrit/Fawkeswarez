@@ -416,9 +416,11 @@
 
             const SPECIAL_PROGRAMS = new Set([
                 'Paid Programming',
-                'Boondocks Marathon',
+                'The Boondocks',
                 'Nostalgia Night',
-                'Nostalgia Night Preshow'
+                'Nostalgia Night Preshow',
+                'Movie A',
+                'Movie B'
             ]);
 
             const BLOCK_POOLS = {
@@ -429,7 +431,23 @@
                     'Sealab 2021',
                     'Home Movies',
                     'Tom Goes to the Mayor',
-                    'The Brak Show'
+                    'The Brak Show',
+                    'The Venture Bros',
+                    'Space Ghost Coast to Coast',
+                    'The Boondocks'
+                ]),
+                'WEEKEND BOON': new Set([
+                    'The Boondocks'
+                ]),
+                'NOSTALGIA NIGHT PRESHOW': new Set([
+                    'Nostalgia Night Preshow'
+                ]),
+                'NOSTALGIA NIGHT': new Set([
+                    'Movie A',
+                    'Movie B'
+                ]),
+                'PAID PROGRAMMING': new Set([
+                    'Paid Programming'
                 ]),
                 'MORNING MILK': new Set([
                     "Dexter's Laboratory",
@@ -468,14 +486,26 @@
                         statusClass = 'special';
                         statusText = '📺';
                     }
-                } else if (slot.program === 'Boondocks Marathon') {
+                } else if (slot.program === 'The Boondocks') {
                     hasEpisodes = scheduleData && scheduleData.blocks && scheduleData.blocks.some(block => block.blockType === 'marathon');
                     if (hasEpisodes) {
-                        episodeInfo = '<div class="slot-episode">All-Day Marathon</div>';
+                        episodeInfo = '<div class="slot-episode">Weekend Marathon</div>';
                         statusClass = 'special';
                         statusText = '🎬';
                     }
                 } else if (slot.program === 'Nostalgia Night') {
+                    const hasMovies = scheduleData && scheduleData.blocks && scheduleData.blocks.some(block => block.blockType === 'movie');
+                    if (hasMovies) {
+                        // Show which movie is playing based on occurrence
+                        const movieBlocks = scheduleData.blocks.filter(block => block.blockType === 'movie');
+                        const occ = getProgramOccurrenceIndex(slot.program, slot.time, selectedDate);
+                        const movieIndex = occ % movieBlocks.length;
+                        const movieTitle = movieBlocks[movieIndex].title;
+                        episodeInfo = `<div class="slot-episode">${movieTitle}</div>`;
+                        statusClass = 'special';
+                        statusText = '🎥';
+                    }
+                } else if (slot.program === 'Movie A' || slot.program === 'Movie B') {
                     const hasMovies = scheduleData && scheduleData.blocks && scheduleData.blocks.some(block => block.blockType === 'movie');
                     if (hasMovies) {
                         // Show which movie is playing based on occurrence
@@ -537,38 +567,118 @@
                 return (prev && slotLooksLikeCartoonCartoonsContext(prev)) || (next && slotLooksLikeCartoonCartoonsContext(next));
             }
 
-            function getTimeBlockNameForMinutes(mins) {
+            function getTimeBlockNameForMinutes(mins, day) {
                 const hour = Math.floor((mins || 0) / 60);
                 const minute = (mins || 0) % 60;
                 const totalMins = hour * 60 + minute;
 
-                // 12am-6am: Adult Swim (0-360 mins)
-                if (totalMins >= 0 && totalMins < 360) {
-                    return 'ADULT SWIM';
+                // === SATURDAY ===
+                if (day === 'Saturday') {
+                    // 12am-6am: Adult Swim
+                    if (totalMins >= 0 && totalMins < 360) {
+                        return 'ADULT SWIM';
+                    }
+                    // 6am-10pm: Weekend Boon (360-1320 mins)
+                    else if (totalMins >= 360 && totalMins < 1320) {
+                        return 'WEEKEND BOON';
+                    }
+                    // 10pm-12am: Adult Swim
+                    else {
+                        return 'ADULT SWIM';
+                    }
                 }
-                // 6am-11am: Morning Milk (360-660 mins)
-                else if (totalMins >= 360 && totalMins < 660) {
-                    return 'MORNING MILK';
+                // === SUNDAY ===
+                else if (day === 'Sunday') {
+                    // 12am-6am: Adult Swim
+                    if (totalMins >= 0 && totalMins < 360) {
+                        return 'ADULT SWIM';
+                    }
+                    // 6am-11am: Morning Milk
+                    else if (totalMins >= 360 && totalMins < 660) {
+                        return 'MORNING MILK';
+                    }
+                    // 11am-12pm: Cartoon Cartoons
+                    else if (totalMins >= 660 && totalMins < 720) {
+                        return 'CARTOON CARTOONS';
+                    }
+                    // 12pm-3pm: Nostalgia Night Preshow
+                    else if (totalMins >= 720 && totalMins < 900) {
+                        return 'NOSTALGIA NIGHT PRESHOW';
+                    }
+                    // 3pm-11pm: Nostalgia Night
+                    else if (totalMins >= 900 && totalMins < 1380) {
+                        return 'NOSTALGIA NIGHT';
+                    }
+                    // 11pm-12am: Adult Swim
+                    else {
+                        return 'ADULT SWIM';
+                    }
                 }
-                // 11am-12pm: Cartoon Cartoons (660-720 mins)
-                else if (totalMins >= 660 && totalMins < 720) {
-                    return 'CARTOON CARTOONS';
+                // === MONDAY ===
+                else if (day === 'Monday') {
+                    // 12am-3am: Adult Swim Short Run
+                    if (totalMins >= 0 && totalMins < 180) {
+                        return 'ADULT SWIM';
+                    }
+                    // 3am-6am: Paid Programming
+                    else if (totalMins >= 180 && totalMins < 360) {
+                        return 'PAID PROGRAMMING';
+                    }
+                    // 6am-11am: Morning Milk
+                    else if (totalMins >= 360 && totalMins < 660) {
+                        return 'MORNING MILK';
+                    }
+                    // 11am-12pm: Cartoon Cartoons
+                    else if (totalMins >= 660 && totalMins < 720) {
+                        return 'CARTOON CARTOONS';
+                    }
+                    // 12pm-3pm: Midday Madness
+                    else if (totalMins >= 720 && totalMins < 900) {
+                        return 'MIDDAY MADNESS';
+                    }
+                    // 3pm-7:30pm: Afternoon Action
+                    else if (totalMins >= 900 && totalMins < 1170) {
+                        return 'AFTERNOON ACTION';
+                    }
+                    // 7:30pm-9pm: All-Time Animes
+                    else if (totalMins >= 1170 && totalMins < 1260) {
+                        return 'ALL-TIME ANIMES';
+                    }
+                    // 9pm-12am: Adult Swim
+                    else {
+                        return 'ADULT SWIM';
+                    }
                 }
-                // 12pm-3pm: Midday Madness (720-900 mins)
-                else if (totalMins >= 720 && totalMins < 900) {
-                    return 'MIDDAY MADNESS';
-                }
-                // 3pm-7:30pm: Afternoon Action (900-1170 mins) - 3pm = 900, 7:30pm = 1170
-                else if (totalMins >= 900 && totalMins < 1170) {
-                    return 'AFTERNOON ACTION';
-                }
-                // 7:30pm-9pm: All-Time Animes (1170-1260 mins) - 7:30pm = 1170, 9pm = 1260
-                else if (totalMins >= 1170 && totalMins < 1260) {
-                    return 'ALL-TIME ANIMES';
-                }
-                // 9pm-12am: Adult Swim (1260-1440 mins)
+                // === TUE-FRI (weekday) ===
                 else {
-                    return 'ADULT SWIM';
+                    // 12am-6am: Adult Swim
+                    if (totalMins >= 0 && totalMins < 360) {
+                        return 'ADULT SWIM';
+                    }
+                    // 6am-11am: Morning Milk
+                    else if (totalMins >= 360 && totalMins < 660) {
+                        return 'MORNING MILK';
+                    }
+                    // 11am-12pm: Cartoon Cartoons
+                    else if (totalMins >= 660 && totalMins < 720) {
+                        return 'CARTOON CARTOONS';
+                    }
+                    // 12pm-3pm: Midday Madness
+                    else if (totalMins >= 720 && totalMins < 900) {
+                        return 'MIDDAY MADNESS';
+                    }
+                    // 3pm-7:30pm: Afternoon Action
+                    else if (totalMins >= 900 && totalMins < 1170) {
+                        return 'AFTERNOON ACTION';
+                    }
+                    // 7:30pm-9pm: All-Time Animes
+                    else if (totalMins >= 1170 && totalMins < 1260) {
+                        return 'ALL-TIME ANIMES';
+                    }
+                    // 9pm-12am: Adult Swim
+                    else {
+                        return 'ADULT SWIM';
+                    }
                 }
             }
 
@@ -581,7 +691,7 @@
                 //     return 'CARTOON CARTOONS';
                 // }
                 const mins = timeToMinutes(slot.time);
-                return getTimeBlockNameForMinutes(mins);
+                return getTimeBlockNameForMinutes(mins, slot.day);
             }
 
             function renderTimeBlockHeader(blockName, timeStr) {
@@ -604,6 +714,18 @@
                         break;
                     case 'ALL-TIME ANIMES':
                         subtitle = 'Classic anime block';
+                        break;
+                    case 'WEEKEND BOON':
+                        subtitle = 'All-day Boondocks marathon';
+                        break;
+                    case 'NOSTALGIA NIGHT PRESHOW':
+                        subtitle = 'Pre-show buildup';
+                        break;
+                    case 'NOSTALGIA NIGHT':
+                        subtitle = 'Double feature movie night';
+                        break;
+                    case 'PAID PROGRAMMING':
+                        subtitle = 'Paid content';
                         break;
                     default:
                         subtitle = 'Programming block';

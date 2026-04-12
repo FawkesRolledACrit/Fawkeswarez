@@ -2,107 +2,97 @@
     {
         "day":  "Sunday",
         "time":  "12:00 AM",
-        "program":  "Tom Goes to the Mayor"
+        "program":  "King of the Hill"
     },
     {
         "day":  "Sunday",
         "time":  "12:30 AM",
-        "program":  "Sealab 2021"
+        "program":  "King of the Hill"
     },
     {
         "day":  "Sunday",
         "time":  "1:00 AM",
-        "program":  "Brak Show"
+        "program":  "Family Guy"
     },
     {
         "day":  "Sunday",
         "time":  "1:30 AM",
-        "program":  "Home Movies"
+        "program":  "Family Guy"
     },
     {
         "day":  "Sunday",
         "time":  "2:00 AM",
-        "program":  "Space Ghost Coast to Coast"
+        "program":  "Aqua Teen Hunger Force"
     },
     {
         "day":  "Sunday",
         "time":  "2:15 AM",
-        "program":  "Space Ghost Coast to Coast"
+        "program":  "Aqua Teen Hunger Force"
     },
     {
         "day":  "Sunday",
         "time":  "2:30 AM",
-        "program":  "The Venture Bros"
-    },
-    {
-        "day":  "Sunday",
-        "time":  "3:00 AM",
-        "program":  "Aqua Teen Hunger Force"
-    },
-    {
-        "day":  "Sunday",
-        "time":  "3:15 AM",
-        "program":  "Aqua Teen Hunger Force"
-    },
-    {
-        "day":  "Sunday",
-        "time":  "3:30 AM",
-        "program":  "Harvey Birdman, Attorney at Law"
-    },
-    {
-        "day":  "Sunday",
-        "time":  "4:00 AM",
-        "program":  "Tom Goes to the Mayor"
-    },
-    {
-        "day":  "Sunday",
-        "time":  "4:30 AM",
-        "program":  "Sealab 2021"
-    },
-    {
-        "day":  "Sunday",
-        "time":  "5:00 AM",
-        "program":  "Brak Show"
-    },
-    {
-        "day":  "Sunday",
-        "time":  "5:30 AM",
         "program":  "Home Movies"
     },
     {
         "day":  "Sunday",
+        "time":  "2:45 AM",
+        "program":  "Home Movies"
+    },
+    {
+        "day":  "Sunday",
+        "time":  "3:00 AM",
+        "program":  "Tom Goes to the Mayor"
+    },
+    {
+        "day":  "Sunday",
+        "time":  "3:15 AM",
+        "program":  "Tom Goes to the Mayor"
+    },
+    {
+        "day":  "Sunday",
+        "time":  "3:30 AM",
+        "program":  "The Brak Show"
+    },
+    {
+        "day":  "Sunday",
+        "time":  "4:00 AM",
+        "program":  "Sealab 2021"
+    },
+    {
+        "day":  "Sunday",
         "time":  "6:00 AM",
-        "program":  "The Powerpuff Girls"
+        "program":  "Dexter\u0027s Laboratory"
     },
     {
         "day":  "Sunday",
         "time":  "6:30 AM",
-        "program":  "Ed, Edd n Eddy"
+        "program":  "Dexter\u0027s Laboratory"
     },
     {
         "day":  "Sunday",
         "time":  "7:00 AM",
-        "program":  "Johnny Bravo"
+        "program":  "The Powerpuff Girls"
     },
     {
         "day":  "Sunday",
         "time":  "7:30 AM",
-        "program":  "Courage the Cowardly Dog"
+        "program":  "The Powerpuff Girls"
     },
     {
         "day":  "Sunday",
         "time":  "8:00 AM",
-        "program":  "Cartoon Cartoons"
+        "program":  "Ed, Edd n Eddy"
     },
     {
         "day":  "Sunday",
         "time":  "8:30 AM",
-        "program":  "Sheep in the Big City"
+        "program":  "Ed, Edd n Eddy"
     },
     {
         "day":  "Sunday",
         "time":  "9:00 AM",
-        "program":  "Billy \u0026 Mandy"
+        "program":  "Foster\u0027s Home"
     },
     {
         "day":  "Sunday",
@@ -112,37 +102,37 @@
     {
         "day":  "Sunday",
         "time":  "10:00 AM",
-        "program":  "Dexter\u0027s Laboratory"
+        "program":  "Billy \u0026 Mandy"
     },
     {
         "day":  "Sunday",
         "time":  "10:30 AM",
-        "program":  "The Powerpuff Girls"
+        "program":  "Billy \u0026 Mandy"
     },
     {
         "day":  "Sunday",
         "time":  "11:00 AM",
-        "program":  "Ed, Edd n Eddy"
+        "program":  "Cow \u0026 Chicken"
+    },
+    {
+        "day":  "Sunday",
+        "time":  "11:15 AM",
+        "program":  "I Am Weasel"
     },
     {
         "day":  "Sunday",
         "time":  "11:30 AM",
-        "program":  "Johnny Bravo"
+        "program":  "Sheep in the Big City"
     },
     {
         "day":  "Sunday",
         "time":  "12:00 PM",
-        "program":  "Courage the Cowardly Dog"
+        "program":  "Nostalgia Night Preshow"
     },
     {
         "day":  "Sunday",
         "time":  "12:30 PM",
-        "program":  "Cartoon Cartoons"
-    },
-    {
-        "day":  "Sunday",
-        "time":  "1:00 PM",
-        "program":  "Sheep in the Big City"
+        "program":  "Nostalgia Night Preshow"
     },
     {
         "day":  "Sunday",
@@ -167,112 +157,52 @@
     {
         "day":  "Sunday",
         "time":  "3:00 PM",
-        "program":  "Nostalgia Night"
-    },
-    {
-        "day":  "Sunday",
-        "time":  "3:30 PM",
-        "program":  "Nostalgia Night"
-    },
-    {
-        "day":  "Sunday",
-        "time":  "4:00 PM",
-        "program":  "Nostalgia Night"
-    },
-    {
-        "day":  "Sunday",
-        "time":  "4:30 PM",
-        "program":  "Nostalgia Night"
+        "program":  "Movie A"
     },
     {
         "day":  "Sunday",
         "time":  "5:00 PM",
-        "program":  "Nostalgia Night"
-    },
-    {
-        "day":  "Sunday",
-        "time":  "5:30 PM",
-        "program":  "Nostalgia Night"
-    },
-    {
-        "day":  "Sunday",
-        "time":  "6:00 PM",
-        "program":  "Nostalgia Night"
-    },
-    {
-        "day":  "Sunday",
-        "time":  "6:30 PM",
-        "program":  "Nostalgia Night"
+        "program":  "Movie B"
     },
     {
         "day":  "Sunday",
         "time":  "7:00 PM",
-        "program":  "Nostalgia Night"
-    },
-    {
-        "day":  "Sunday",
-        "time":  "7:30 PM",
-        "program":  "Nostalgia Night"
-    },
-    {
-        "day":  "Sunday",
-        "time":  "8:00 PM",
-        "program":  "Nostalgia Night"
-    },
-    {
-        "day":  "Sunday",
-        "time":  "8:30 PM",
-        "program":  "Nostalgia Night"
+        "program":  "Movie A"
     },
     {
         "day":  "Sunday",
         "time":  "9:00 PM",
-        "program":  "Nostalgia Night"
-    },
-    {
-        "day":  "Sunday",
-        "time":  "9:30 PM",
-        "program":  "Nostalgia Night"
-    },
-    {
-        "day":  "Sunday",
-        "time":  "10:00 PM",
-        "program":  "Nostalgia Night"
-    },
-    {
-        "day":  "Sunday",
-        "time":  "10:15 PM",
-        "program":  "Nostalgia Night"
-    },
-    {
-        "day":  "Sunday",
-        "time":  "10:30 PM",
-        "program":  "Nostalgia Night"
+        "program":  "Movie B"
     },
     {
         "day":  "Sunday",
         "time":  "11:00 PM",
-        "program":  "Aqua Teen Hunger Force"
-    },
-    {
-        "day":  "Sunday",
-        "time":  "11:15 PM",
-        "program":  "Aqua Teen Hunger Force"
+        "program":  "King of the Hill"
     },
     {
         "day":  "Sunday",
         "time":  "11:30 PM",
-        "program":  "Harvey Birdman, Attorney at Law"
+        "program":  "Family Guy"
     },
     {
         "day":  "Monday",
         "time":  "12:00 AM",
-        "program":  "Space Ghost Coast to Coast"
+        "program":  "Tom Goes to the Mayor"
+    },
+    {
+        "day":  "Monday",
+        "time":  "12:00 AM",
+        "program":  "The Venture Bros"
     },
     {
         "day":  "Monday",
         "time":  "12:15 AM",
-        "program":  "Space Ghost Coast to Coast"
+        "program":  "Tom Goes to the Mayor"
+    },
+    {
+        "day":  "Monday",
+        "time":  "12:30 AM",
+        "program":  "The Brak Show"
     },
     {
         "day":  "Monday",
@@ -283,6 +213,11 @@
         "day":  "Monday",
         "time":  "1:00 AM",
         "program":  "Aqua Teen Hunger Force"
+    },
+    {
+        "day":  "Monday",
+        "time":  "1:00 AM",
+        "program":  "Sealab 2021"
     },
     {
         "day":  "Monday",
@@ -292,1411 +227,1596 @@
     {
         "day":  "Monday",
         "time":  "1:30 AM",
-        "program":  "Harvey Birdman, Attorney at Law"
-    },
-    {
-        "day":  "Monday",
-        "time":  "2:00 AM",
-        "program":  "Sealab 2021"
-    },
-    {
-        "day":  "Monday",
-        "time":  "2:30 AM",
-        "program":  "Tom Goes to the Mayor"
-    },
-    {
-        "day":  "Monday",
-        "time":  "3:00 AM",
-        "program":  "Paid Programming"
-    },
-    {
-        "day":  "Monday",
-        "time":  "3:30 AM",
-        "program":  "Paid Programming"
-    },
-    {
-        "day":  "Monday",
-        "time":  "4:00 AM",
-        "program":  "Paid Programming"
-    },
-    {
-        "day":  "Monday",
-        "time":  "4:15 AM",
-        "program":  "Paid Programming"
-    },
-    {
-        "day":  "Monday",
-        "time":  "4:30 AM",
-        "program":  "Paid Programming"
-    },
-    {
-        "day":  "Monday",
-        "time":  "5:00 AM",
-        "program":  "Paid Programming"
-    },
-    {
-        "day":  "Monday",
-        "time":  "5:15 AM",
-        "program":  "Paid Programming"
-    },
-    {
-        "day":  "Monday",
-        "time":  "5:30 AM",
-        "program":  "Paid Programming"
-    },
-    {
-        "day":  "Monday",
-        "time":  "6:00 AM",
-        "program":  "Dexter\u0027s Laboratory"
-    },
-    {
-        "day":  "Monday",
-        "time":  "6:30 AM",
-        "program":  "The Powerpuff Girls"
-    },
-    {
-        "day":  "Monday",
-        "time":  "7:00 AM",
-        "program":  "Ed, Edd n Eddy"
-    },
-    {
-        "day":  "Monday",
-        "time":  "7:30 AM",
-        "program":  "Courage the Cowardly Dog"
-    },
-    {
-        "day":  "Monday",
-        "time":  "8:00 AM",
-        "program":  "Johnny Bravo"
-    },
-    {
-        "day":  "Monday",
-        "time":  "8:30 AM",
-        "program":  "Cartoon Cartoons"
-    },
-    {
-        "day":  "Monday",
-        "time":  "9:00 AM",
-        "program":  "Sheep in the Big City"
-    },
-    {
-        "day":  "Monday",
-        "time":  "9:30 AM",
-        "program":  "Billy \u0026 Mandy"
-    },
-    {
-        "day":  "Monday",
-        "time":  "10:00 AM",
-        "program":  "Foster\u0027s Home"
-    },
-    {
-        "day":  "Monday",
-        "time":  "10:30 AM",
-        "program":  "Dexter\u0027s Laboratory"
-    },
-    {
-        "day":  "Monday",
-        "time":  "11:00 AM",
-        "program":  "The Powerpuff Girls"
-    },
-    {
-        "day":  "Monday",
-        "time":  "11:30 AM",
-        "program":  "Ed, Edd n Eddy"
-    },
-    {
-        "day":  "Monday",
-        "time":  "12:00 PM",
-        "program":  "Johnny Bravo"
-    },
-    {
-        "day":  "Monday",
-        "time":  "12:30 PM",
-        "program":  "Courage the Cowardly Dog"
-    },
-    {
-        "day":  "Monday",
-        "time":  "1:00 PM",
-        "program":  "Cartoon Cartoons"
-    },
-    {
-        "day":  "Monday",
-        "time":  "1:30 PM",
-        "program":  "Sheep in the Big City"
-    },
-    {
-        "day":  "Monday",
-        "time":  "2:00 PM",
-        "program":  "Billy \u0026 Mandy"
-    },
-    {
-        "day":  "Monday",
-        "time":  "2:30 PM",
-        "program":  "Foster\u0027s Home"
-    },
-    {
-        "day":  "Monday",
-        "time":  "3:00 PM",
-        "program":  "Samurai Jack"
-    },
-    {
-        "day":  "Monday",
-        "time":  "3:30 PM",
-        "program":  "Teen Titans"
-    },
-    {
-        "day":  "Monday",
-        "time":  "4:30 PM",
-        "program":  "Dragon Ball Z"
-    },
-    {
-        "day":  "Monday",
-        "time":  "5:00 PM",
-        "program":  "Samurai Jack"
-    },
-    {
-        "day":  "Monday",
-        "time":  "5:30 PM",
-        "program":  "Teen Titans"
-    },
-    {
-        "day":  "Monday",
-        "time":  "6:30 PM",
-        "program":  "Dragon Ball Z"
-    },
-    {
-        "day":  "Monday",
-        "time":  "7:00 PM",
-        "program":  "Samurai Jack"
-    },
-    {
-        "day":  "Monday",
-        "time":  "7:30 PM",
-        "program":  "Teen Titans"
-    },
-    {
-        "day":  "Monday",
-        "time":  "8:30 PM",
-        "program":  "Dragon Ball Z"
-    },
-    {
-        "day":  "Monday",
-        "time":  "9:00 PM",
-        "program":  "Samurai Jack"
-    },
-    {
-        "day":  "Monday",
-        "time":  "9:30 PM",
-        "program":  "Teen Titans"
-    },
-    {
-        "day":  "Monday",
-        "time":  "10:00 PM",
-        "program":  "Sealab 2021"
-    },
-    {
-        "day":  "Monday",
-        "time":  "10:30 PM",
-        "program":  "Tom Goes to the Mayor"
-    },
-    {
-        "day":  "Monday",
-        "time":  "11:00 PM",
-        "program":  "Brak Show"
-    },
-    {
-        "day":  "Monday",
-        "time":  "11:30 PM",
-        "program":  "Home Movies"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "12:00 AM",
-        "program":  "Tom Goes to the Mayor"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "12:15 AM",
-        "program":  "Tom Goes to the Mayor"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "12:30 AM",
-        "program":  "The Brak Show"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "1:00 AM",
-        "program":  "Sealab 2021"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "1:30 AM",
-        "program":  "King of the Hill"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "2:00 AM",
-        "program":  "King of the Hill"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "2:30 AM",
-        "program":  "Family Guy"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "3:00 AM",
-        "program":  "Family Guy"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "3:30 AM",
-        "program":  "Aqua Teen Hunger Force"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "3:45 AM",
-        "program":  "Aqua Teen Hunger Force"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "4:00 AM",
-        "program":  "Home Movies"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "4:15 AM",
-        "program":  "Home Movies"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "4:30 AM",
-        "program":  "Tom Goes to the Mayor"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "4:45 AM",
-        "program":  "Tom Goes to the Mayor"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "5:00 AM",
-        "program":  "The Brak Show"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "5:30 AM",
-        "program":  "Sealab 2021"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "6:00 AM",
-        "program":  "Dexter\u0027s Laboratory"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "6:30 AM",
-        "program":  "Dexter\u0027s Laboratory"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "7:00 AM",
-        "program":  "The Powerpuff Girls"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "7:30 AM",
-        "program":  "The Powerpuff Girls"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "8:00 AM",
-        "program":  "Ed, Edd n Eddy"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "8:30 AM",
-        "program":  "Ed, Edd n Eddy"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "9:00 AM",
-        "program":  "Foster\u0027s Home"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "9:30 AM",
-        "program":  "Foster\u0027s Home"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "10:00 AM",
-        "program":  "Billy \u0026 Mandy"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "10:30 AM",
-        "program":  "Billy \u0026 Mandy"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "11:00 AM",
-        "program":  "Cow \u0026 Chicken"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "11:15 AM",
-        "program":  "I Am Weasel"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "11:30 AM",
-        "program":  "Sheep in the Big City"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "12:00 PM",
-        "program":  "Johnny Bravo"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "12:30 PM",
-        "program":  "Johnny Bravo"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "1:00 PM",
-        "program":  "Johnny Bravo"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "1:30 PM",
-        "program":  "Courage the Cowardly Dog"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "2:00 PM",
-        "program":  "Courage the Cowardly Dog"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "2:30 PM",
-        "program":  "Courage the Cowardly Dog"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "3:00 PM",
-        "program":  "Samurai Jack"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "3:30 PM",
-        "program":  "Samurai Jack"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "4:00 PM",
-        "program":  "Samurai Jack"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "4:30 PM",
-        "program":  "Teen Titans"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "5:00 PM",
-        "program":  "Teen Titans"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "5:30 PM",
-        "program":  "Teen Titans"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "6:00 PM",
-        "program":  "Codename: Kids Next Door"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "6:30 PM",
-        "program":  "Codename: Kids Next Door"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "7:00 PM",
-        "program":  "Codename: Kids Next Door"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "7:30 PM",
-        "program":  "Dragon Ball Z"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "8:00 PM",
-        "program":  "Dragon Ball Z"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "8:30 PM",
-        "program":  "Cowboy Bebop"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "9:00 PM",
-        "program":  "King of the Hill"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "9:30 PM",
-        "program":  "King of the Hill"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "10:00 PM",
-        "program":  "Family Guy"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "10:30 PM",
-        "program":  "Family Guy"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "11:00 PM",
-        "program":  "Aqua Teen Hunger Force"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "11:15 PM",
-        "program":  "Aqua Teen Hunger Force"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "11:30 PM",
-        "program":  "Home Movies"
-    },
-    {
-        "day":  "Tuesday",
-        "time":  "11:45 PM",
-        "program":  "Home Movies"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "12:00 AM",
-        "program":  "Tom Goes to the Mayor"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "12:15 AM",
-        "program":  "Tom Goes to the Mayor"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "12:30 AM",
-        "program":  "The Brak Show"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "1:00 AM",
-        "program":  "Sealab 2021"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "1:30 AM",
-        "program":  "King of the Hill"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "2:00 AM",
-        "program":  "King of the Hill"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "2:30 AM",
-        "program":  "Family Guy"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "3:00 AM",
-        "program":  "Family Guy"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "3:30 AM",
-        "program":  "Aqua Teen Hunger Force"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "3:45 AM",
-        "program":  "Aqua Teen Hunger Force"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "4:00 AM",
-        "program":  "Home Movies"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "4:15 AM",
-        "program":  "Home Movies"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "4:30 AM",
-        "program":  "Tom Goes to the Mayor"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "4:45 AM",
-        "program":  "Tom Goes to the Mayor"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "5:00 AM",
-        "program":  "The Brak Show"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "5:30 AM",
-        "program":  "Sealab 2021"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "6:00 AM",
-        "program":  "Dexter\u0027s Laboratory"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "6:30 AM",
-        "program":  "Dexter\u0027s Laboratory"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "7:00 AM",
-        "program":  "The Powerpuff Girls"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "7:30 AM",
-        "program":  "The Powerpuff Girls"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "8:00 AM",
-        "program":  "Ed, Edd n Eddy"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "8:30 AM",
-        "program":  "Ed, Edd n Eddy"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "9:00 AM",
-        "program":  "Foster\u0027s Home"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "9:30 AM",
-        "program":  "Foster\u0027s Home"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "10:00 AM",
-        "program":  "Billy \u0026 Mandy"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "10:30 AM",
-        "program":  "Billy \u0026 Mandy"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "11:00 AM",
-        "program":  "Cow \u0026 Chicken"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "11:15 AM",
-        "program":  "I Am Weasel"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "11:30 AM",
-        "program":  "Sheep in the Big City"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "12:00 PM",
-        "program":  "Johnny Bravo"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "12:30 PM",
-        "program":  "Johnny Bravo"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "1:00 PM",
-        "program":  "Johnny Bravo"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "1:30 PM",
-        "program":  "Courage the Cowardly Dog"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "2:00 PM",
-        "program":  "Courage the Cowardly Dog"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "2:30 PM",
-        "program":  "Courage the Cowardly Dog"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "3:00 PM",
-        "program":  "Samurai Jack"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "3:30 PM",
-        "program":  "Samurai Jack"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "4:00 PM",
-        "program":  "Samurai Jack"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "4:30 PM",
-        "program":  "Teen Titans"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "5:00 PM",
-        "program":  "Teen Titans"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "5:30 PM",
-        "program":  "Teen Titans"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "6:00 PM",
-        "program":  "Codename: Kids Next Door"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "6:30 PM",
-        "program":  "Codename: Kids Next Door"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "7:00 PM",
-        "program":  "Codename: Kids Next Door"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "7:30 PM",
-        "program":  "Dragon Ball Z"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "8:00 PM",
-        "program":  "Dragon Ball Z"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "8:30 PM",
-        "program":  "Cowboy Bebop"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "9:00 PM",
-        "program":  "King of the Hill"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "9:30 PM",
-        "program":  "King of the Hill"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "10:00 PM",
-        "program":  "Family Guy"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "10:30 PM",
-        "program":  "Family Guy"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "11:00 PM",
-        "program":  "Aqua Teen Hunger Force"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "11:15 PM",
-        "program":  "Aqua Teen Hunger Force"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "11:30 PM",
-        "program":  "Home Movies"
-    },
-    {
-        "day":  "Wednesday",
-        "time":  "11:45 PM",
-        "program":  "Home Movies"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "12:00 AM",
-        "program":  "Tom Goes to the Mayor"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "12:15 AM",
-        "program":  "Tom Goes to the Mayor"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "12:30 AM",
-        "program":  "The Brak Show"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "1:00 AM",
-        "program":  "Sealab 2021"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "1:30 AM",
-        "program":  "King of the Hill"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "2:00 AM",
-        "program":  "King of the Hill"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "2:30 AM",
-        "program":  "Family Guy"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "3:00 AM",
-        "program":  "Family Guy"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "3:30 AM",
-        "program":  "Aqua Teen Hunger Force"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "3:45 AM",
-        "program":  "Aqua Teen Hunger Force"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "4:00 AM",
-        "program":  "Home Movies"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "4:15 AM",
-        "program":  "Home Movies"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "4:30 AM",
-        "program":  "Tom Goes to the Mayor"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "4:45 AM",
-        "program":  "Tom Goes to the Mayor"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "5:00 AM",
-        "program":  "The Brak Show"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "5:30 AM",
-        "program":  "Sealab 2021"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "6:00 AM",
-        "program":  "Dexter\u0027s Laboratory"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "6:30 AM",
-        "program":  "Dexter\u0027s Laboratory"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "7:00 AM",
-        "program":  "The Powerpuff Girls"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "7:30 AM",
-        "program":  "The Powerpuff Girls"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "8:00 AM",
-        "program":  "Ed, Edd n Eddy"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "8:30 AM",
-        "program":  "Ed, Edd n Eddy"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "9:00 AM",
-        "program":  "Foster\u0027s Home"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "9:30 AM",
-        "program":  "Foster\u0027s Home"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "10:00 AM",
-        "program":  "Billy \u0026 Mandy"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "10:30 AM",
-        "program":  "Billy \u0026 Mandy"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "11:00 AM",
-        "program":  "Cow \u0026 Chicken"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "11:15 AM",
-        "program":  "I Am Weasel"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "11:30 AM",
-        "program":  "Sheep in the Big City"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "12:00 PM",
-        "program":  "Johnny Bravo"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "12:30 PM",
-        "program":  "Johnny Bravo"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "1:00 PM",
-        "program":  "Johnny Bravo"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "1:30 PM",
-        "program":  "Courage the Cowardly Dog"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "2:00 PM",
-        "program":  "Courage the Cowardly Dog"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "2:30 PM",
-        "program":  "Courage the Cowardly Dog"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "3:00 PM",
-        "program":  "Samurai Jack"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "3:30 PM",
-        "program":  "Samurai Jack"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "4:00 PM",
-        "program":  "Samurai Jack"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "4:30 PM",
-        "program":  "Teen Titans"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "5:00 PM",
-        "program":  "Teen Titans"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "5:30 PM",
-        "program":  "Teen Titans"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "6:00 PM",
-        "program":  "Codename: Kids Next Door"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "6:30 PM",
-        "program":  "Codename: Kids Next Door"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "7:00 PM",
-        "program":  "Codename: Kids Next Door"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "7:30 PM",
-        "program":  "Dragon Ball Z"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "8:00 PM",
-        "program":  "Dragon Ball Z"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "8:30 PM",
-        "program":  "Cowboy Bebop"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "9:00 PM",
-        "program":  "King of the Hill"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "9:30 PM",
-        "program":  "King of the Hill"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "10:00 PM",
-        "program":  "Family Guy"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "10:30 PM",
-        "program":  "Family Guy"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "11:00 PM",
-        "program":  "Aqua Teen Hunger Force"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "11:15 PM",
-        "program":  "Aqua Teen Hunger Force"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "11:30 PM",
-        "program":  "Home Movies"
-    },
-    {
-        "day":  "Thursday",
-        "time":  "11:45 PM",
-        "program":  "Home Movies"
-    },
-    {
-        "day":  "Friday",
-        "time":  "12:00 AM",
-        "program":  "Tom Goes to the Mayor"
-    },
-    {
-        "day":  "Friday",
-        "time":  "12:15 AM",
-        "program":  "Tom Goes to the Mayor"
-    },
-    {
-        "day":  "Friday",
-        "time":  "12:30 AM",
-        "program":  "The Brak Show"
-    },
-    {
-        "day":  "Friday",
-        "time":  "1:00 AM",
-        "program":  "Sealab 2021"
-    },
-    {
-        "day":  "Friday",
-        "time":  "1:30 AM",
-        "program":  "King of the Hill"
-    },
-    {
-        "day":  "Friday",
-        "time":  "2:00 AM",
-        "program":  "King of the Hill"
-    },
-    {
-        "day":  "Friday",
-        "time":  "2:30 AM",
-        "program":  "Family Guy"
-    },
-    {
-        "day":  "Friday",
-        "time":  "3:00 AM",
-        "program":  "Family Guy"
-    },
-    {
-        "day":  "Friday",
-        "time":  "3:30 AM",
-        "program":  "Aqua Teen Hunger Force"
-    },
-    {
-        "day":  "Friday",
-        "time":  "3:45 AM",
-        "program":  "Aqua Teen Hunger Force"
-    },
-    {
-        "day":  "Friday",
-        "time":  "4:00 AM",
-        "program":  "Home Movies"
-    },
-    {
-        "day":  "Friday",
-        "time":  "4:15 AM",
-        "program":  "Home Movies"
-    },
-    {
-        "day":  "Friday",
-        "time":  "4:30 AM",
-        "program":  "Tom Goes to the Mayor"
-    },
-    {
-        "day":  "Friday",
-        "time":  "4:45 AM",
-        "program":  "Tom Goes to the Mayor"
-    },
-    {
-        "day":  "Friday",
-        "time":  "5:00 AM",
-        "program":  "The Brak Show"
-    },
-    {
-        "day":  "Friday",
-        "time":  "5:30 AM",
-        "program":  "Sealab 2021"
-    },
-    {
-        "day":  "Friday",
-        "time":  "6:00 AM",
-        "program":  "Dexter\u0027s Laboratory"
-    },
-    {
-        "day":  "Friday",
-        "time":  "6:30 AM",
-        "program":  "Dexter\u0027s Laboratory"
-    },
-    {
-        "day":  "Friday",
-        "time":  "7:00 AM",
-        "program":  "The Powerpuff Girls"
-    },
-    {
-        "day":  "Friday",
-        "time":  "7:30 AM",
-        "program":  "The Powerpuff Girls"
-    },
-    {
-        "day":  "Friday",
-        "time":  "8:00 AM",
-        "program":  "Ed, Edd n Eddy"
-    },
-    {
-        "day":  "Friday",
-        "time":  "8:30 AM",
-        "program":  "Ed, Edd n Eddy"
-    },
-    {
-        "day":  "Friday",
-        "time":  "9:00 AM",
-        "program":  "Foster\u0027s Home"
-    },
-    {
-        "day":  "Friday",
-        "time":  "9:30 AM",
-        "program":  "Foster\u0027s Home"
-    },
-    {
-        "day":  "Friday",
-        "time":  "10:00 AM",
-        "program":  "Billy \u0026 Mandy"
-    },
-    {
-        "day":  "Friday",
-        "time":  "10:30 AM",
-        "program":  "Billy \u0026 Mandy"
-    },
-    {
-        "day":  "Friday",
-        "time":  "11:00 AM",
-        "program":  "Cow \u0026 Chicken"
-    },
-    {
-        "day":  "Friday",
-        "time":  "11:15 AM",
-        "program":  "I Am Weasel"
-    },
-    {
-        "day":  "Friday",
-        "time":  "11:30 AM",
-        "program":  "Sheep in the Big City"
-    },
-    {
-        "day":  "Friday",
-        "time":  "12:00 PM",
-        "program":  "Johnny Bravo"
-    },
-    {
-        "day":  "Friday",
-        "time":  "12:30 PM",
-        "program":  "Johnny Bravo"
-    },
-    {
-        "day":  "Friday",
-        "time":  "1:00 PM",
-        "program":  "Johnny Bravo"
-    },
-    {
-        "day":  "Friday",
-        "time":  "1:30 PM",
-        "program":  "Courage the Cowardly Dog"
-    },
-    {
-        "day":  "Friday",
-        "time":  "2:00 PM",
-        "program":  "Courage the Cowardly Dog"
-    },
-    {
-        "day":  "Friday",
-        "time":  "2:30 PM",
-        "program":  "Courage the Cowardly Dog"
-    },
-    {
-        "day":  "Friday",
-        "time":  "3:00 PM",
-        "program":  "Samurai Jack"
-    },
-    {
-        "day":  "Friday",
-        "time":  "3:30 PM",
-        "program":  "Samurai Jack"
-    },
-    {
-        "day":  "Friday",
-        "time":  "4:00 PM",
-        "program":  "Samurai Jack"
-    },
-    {
-        "day":  "Friday",
-        "time":  "4:30 PM",
-        "program":  "Teen Titans"
-    },
-    {
-        "day":  "Friday",
-        "time":  "5:00 PM",
-        "program":  "Teen Titans"
-    },
-    {
-        "day":  "Friday",
-        "time":  "5:30 PM",
-        "program":  "Teen Titans"
-    },
-    {
-        "day":  "Friday",
-        "time":  "6:00 PM",
-        "program":  "Codename: Kids Next Door"
-    },
-    {
-        "day":  "Friday",
-        "time":  "6:30 PM",
-        "program":  "Codename: Kids Next Door"
-    },
-    {
-        "day":  "Friday",
-        "time":  "7:00 PM",
-        "program":  "Codename: Kids Next Door"
-    },
-    {
-        "day":  "Friday",
-        "time":  "7:30 PM",
-        "program":  "Dragon Ball Z"
-    },
-    {
-        "day":  "Friday",
-        "time":  "8:00 PM",
-        "program":  "Dragon Ball Z"
-    },
-    {
-        "day":  "Friday",
-        "time":  "8:30 PM",
-        "program":  "Cowboy Bebop"
-    },
-    {
-        "day":  "Friday",
-        "time":  "9:00 PM",
-        "program":  "King of the Hill"
-    },
-    {
-        "day":  "Friday",
-        "time":  "9:30 PM",
-        "program":  "King of the Hill"
-    },
-    {
-        "day":  "Friday",
-        "time":  "10:00 PM",
-        "program":  "Family Guy"
-    },
-    {
-        "day":  "Friday",
-        "time":  "10:30 PM",
-        "program":  "Family Guy"
-    },
-    {
-        "day":  "Friday",
-        "time":  "11:00 PM",
-        "program":  "Aqua Teen Hunger Force"
-    },
-    {
-        "day":  "Friday",
-        "time":  "11:15 PM",
-        "program":  "Aqua Teen Hunger Force"
-    },
-    {
-        "day":  "Friday",
-        "time":  "11:30 PM",
-        "program":  "Home Movies"
-    },
-    {
-        "day":  "Friday",
-        "time":  "11:45 PM",
-        "program":  "Home Movies"
-    },
-    {
-        "day":  "Saturday",
-        "time":  "1:00 AM",
-        "program":  "The Venture Bros"
-    },
-    {
-        "day":  "Saturday",
-        "time":  "1:30 AM",
         "program":  "Space Ghost Coast to Coast"
     },
     {
-        "day":  "Saturday",
+        "day":  "Monday",
         "time":  "1:45 AM",
         "program":  "Space Ghost Coast to Coast"
     },
     {
+        "day":  "Monday",
+        "time":  "2:00 AM",
+        "program":  "Tom Goes to the Mayor"
+    },
+    {
+        "day":  "Monday",
+        "time":  "2:15 AM",
+        "program":  "Tom Goes to the Mayor"
+    },
+    {
+        "day":  "Monday",
+        "time":  "2:30 AM",
+        "program":  "Home Movies"
+    },
+    {
+        "day":  "Monday",
+        "time":  "2:45 AM",
+        "program":  "Home Movies"
+    },
+    {
+        "day":  "Monday",
+        "time":  "3:00 AM",
+        "program":  "Paid Programming"
+    },
+    {
+        "day":  "Monday",
+        "time":  "3:30 AM",
+        "program":  "Paid Programming"
+    },
+    {
+        "day":  "Monday",
+        "time":  "4:00 AM",
+        "program":  "Paid Programming"
+    },
+    {
+        "day":  "Monday",
+        "time":  "4:30 AM",
+        "program":  "Paid Programming"
+    },
+    {
+        "day":  "Monday",
+        "time":  "5:00 AM",
+        "program":  "Paid Programming"
+    },
+    {
+        "day":  "Monday",
+        "time":  "5:30 AM",
+        "program":  "Paid Programming"
+    },
+    {
+        "day":  "Monday",
+        "time":  "6:00 AM",
+        "program":  "Dexter\u0027s Laboratory"
+    },
+    {
+        "day":  "Monday",
+        "time":  "6:30 AM",
+        "program":  "Dexter\u0027s Laboratory"
+    },
+    {
+        "day":  "Monday",
+        "time":  "7:00 AM",
+        "program":  "The Powerpuff Girls"
+    },
+    {
+        "day":  "Monday",
+        "time":  "7:30 AM",
+        "program":  "The Powerpuff Girls"
+    },
+    {
+        "day":  "Monday",
+        "time":  "8:00 AM",
+        "program":  "Ed, Edd n Eddy"
+    },
+    {
+        "day":  "Monday",
+        "time":  "8:30 AM",
+        "program":  "Ed, Edd n Eddy"
+    },
+    {
+        "day":  "Monday",
+        "time":  "9:00 AM",
+        "program":  "Foster\u0027s Home"
+    },
+    {
+        "day":  "Monday",
+        "time":  "9:30 AM",
+        "program":  "Foster\u0027s Home"
+    },
+    {
+        "day":  "Monday",
+        "time":  "10:00 AM",
+        "program":  "Billy \u0026 Mandy"
+    },
+    {
+        "day":  "Monday",
+        "time":  "10:30 AM",
+        "program":  "Billy \u0026 Mandy"
+    },
+    {
+        "day":  "Monday",
+        "time":  "11:00 AM",
+        "program":  "Cow \u0026 Chicken"
+    },
+    {
+        "day":  "Monday",
+        "time":  "11:15 AM",
+        "program":  "I Am Weasel"
+    },
+    {
+        "day":  "Monday",
+        "time":  "11:30 AM",
+        "program":  "Sheep in the Big City"
+    },
+    {
+        "day":  "Monday",
+        "time":  "12:00 PM",
+        "program":  "Johnny Bravo"
+    },
+    {
+        "day":  "Monday",
+        "time":  "12:30 PM",
+        "program":  "Johnny Bravo"
+    },
+    {
+        "day":  "Monday",
+        "time":  "1:00 PM",
+        "program":  "Johnny Bravo"
+    },
+    {
+        "day":  "Monday",
+        "time":  "1:30 PM",
+        "program":  "Courage the Cowardly Dog"
+    },
+    {
+        "day":  "Monday",
+        "time":  "2:00 PM",
+        "program":  "Courage the Cowardly Dog"
+    },
+    {
+        "day":  "Monday",
+        "time":  "2:30 PM",
+        "program":  "Courage the Cowardly Dog"
+    },
+    {
+        "day":  "Monday",
+        "time":  "3:00 PM",
+        "program":  "Samurai Jack"
+    },
+    {
+        "day":  "Monday",
+        "time":  "3:30 PM",
+        "program":  "Samurai Jack"
+    },
+    {
+        "day":  "Monday",
+        "time":  "4:00 PM",
+        "program":  "Samurai Jack"
+    },
+    {
+        "day":  "Monday",
+        "time":  "4:30 PM",
+        "program":  "Teen Titans"
+    },
+    {
+        "day":  "Monday",
+        "time":  "5:00 PM",
+        "program":  "Teen Titans"
+    },
+    {
+        "day":  "Monday",
+        "time":  "5:30 PM",
+        "program":  "Teen Titans"
+    },
+    {
+        "day":  "Monday",
+        "time":  "6:00 PM",
+        "program":  "Codename: Kids Next Door"
+    },
+    {
+        "day":  "Monday",
+        "time":  "6:30 PM",
+        "program":  "Codename: Kids Next Door"
+    },
+    {
+        "day":  "Monday",
+        "time":  "7:00 PM",
+        "program":  "Codename: Kids Next Door"
+    },
+    {
+        "day":  "Monday",
+        "time":  "7:30 PM",
+        "program":  "Dragon Ball Z"
+    },
+    {
+        "day":  "Monday",
+        "time":  "8:00 PM",
+        "program":  "Dragon Ball Z"
+    },
+    {
+        "day":  "Monday",
+        "time":  "8:30 PM",
+        "program":  "Cowboy Bebop"
+    },
+    {
+        "day":  "Monday",
+        "time":  "9:00 PM",
+        "program":  "King of the Hill"
+    },
+    {
+        "day":  "Monday",
+        "time":  "9:30 PM",
+        "program":  "King of the Hill"
+    },
+    {
+        "day":  "Monday",
+        "time":  "10:00 PM",
+        "program":  "Family Guy"
+    },
+    {
+        "day":  "Monday",
+        "time":  "10:30 PM",
+        "program":  "Family Guy"
+    },
+    {
+        "day":  "Monday",
+        "time":  "11:00 PM",
+        "program":  "Aqua Teen Hunger Force"
+    },
+    {
+        "day":  "Monday",
+        "time":  "11:15 PM",
+        "program":  "Aqua Teen Hunger Force"
+    },
+    {
+        "day":  "Monday",
+        "time":  "11:30 PM",
+        "program":  "Home Movies"
+    },
+    {
+        "day":  "Monday",
+        "time":  "11:45 PM",
+        "program":  "Home Movies"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "12:00 AM",
+        "program":  "Tom Goes to the Mayor"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "12:15 AM",
+        "program":  "Tom Goes to the Mayor"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "12:30 AM",
+        "program":  "The Brak Show"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "1:00 AM",
+        "program":  "Sealab 2021"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "1:30 AM",
+        "program":  "King of the Hill"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "2:00 AM",
+        "program":  "King of the Hill"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "2:30 AM",
+        "program":  "Family Guy"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "3:00 AM",
+        "program":  "Family Guy"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "3:30 AM",
+        "program":  "Aqua Teen Hunger Force"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "3:45 AM",
+        "program":  "Aqua Teen Hunger Force"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "4:00 AM",
+        "program":  "Home Movies"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "4:15 AM",
+        "program":  "Home Movies"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "4:30 AM",
+        "program":  "Tom Goes to the Mayor"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "4:45 AM",
+        "program":  "Tom Goes to the Mayor"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "5:00 AM",
+        "program":  "The Brak Show"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "5:30 AM",
+        "program":  "Sealab 2021"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "6:00 AM",
+        "program":  "Dexter\u0027s Laboratory"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "6:30 AM",
+        "program":  "Dexter\u0027s Laboratory"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "7:00 AM",
+        "program":  "The Powerpuff Girls"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "7:30 AM",
+        "program":  "The Powerpuff Girls"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "8:00 AM",
+        "program":  "Ed, Edd n Eddy"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "8:30 AM",
+        "program":  "Ed, Edd n Eddy"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "9:00 AM",
+        "program":  "Foster\u0027s Home"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "9:30 AM",
+        "program":  "Foster\u0027s Home"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "10:00 AM",
+        "program":  "Billy \u0026 Mandy"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "10:30 AM",
+        "program":  "Billy \u0026 Mandy"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "11:00 AM",
+        "program":  "Cow \u0026 Chicken"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "11:15 AM",
+        "program":  "I Am Weasel"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "11:30 AM",
+        "program":  "Sheep in the Big City"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "12:00 PM",
+        "program":  "Johnny Bravo"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "12:30 PM",
+        "program":  "Johnny Bravo"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "1:00 PM",
+        "program":  "Johnny Bravo"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "1:30 PM",
+        "program":  "Courage the Cowardly Dog"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "2:00 PM",
+        "program":  "Courage the Cowardly Dog"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "2:30 PM",
+        "program":  "Courage the Cowardly Dog"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "3:00 PM",
+        "program":  "Samurai Jack"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "3:30 PM",
+        "program":  "Samurai Jack"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "4:00 PM",
+        "program":  "Samurai Jack"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "4:30 PM",
+        "program":  "Teen Titans"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "5:00 PM",
+        "program":  "Teen Titans"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "5:30 PM",
+        "program":  "Teen Titans"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "6:00 PM",
+        "program":  "Codename: Kids Next Door"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "6:30 PM",
+        "program":  "Codename: Kids Next Door"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "7:00 PM",
+        "program":  "Codename: Kids Next Door"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "7:30 PM",
+        "program":  "Dragon Ball Z"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "8:00 PM",
+        "program":  "Dragon Ball Z"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "8:30 PM",
+        "program":  "Cowboy Bebop"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "9:00 PM",
+        "program":  "King of the Hill"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "9:30 PM",
+        "program":  "King of the Hill"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "10:00 PM",
+        "program":  "Family Guy"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "10:30 PM",
+        "program":  "Family Guy"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "11:00 PM",
+        "program":  "Aqua Teen Hunger Force"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "11:15 PM",
+        "program":  "Aqua Teen Hunger Force"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "11:30 PM",
+        "program":  "Home Movies"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "11:45 PM",
+        "program":  "Home Movies"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "12:00 AM",
+        "program":  "Tom Goes to the Mayor"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "12:15 AM",
+        "program":  "Tom Goes to the Mayor"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "12:30 AM",
+        "program":  "The Brak Show"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "1:00 AM",
+        "program":  "Sealab 2021"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "1:30 AM",
+        "program":  "King of the Hill"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "2:00 AM",
+        "program":  "King of the Hill"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "2:30 AM",
+        "program":  "Family Guy"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "3:00 AM",
+        "program":  "Family Guy"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "3:30 AM",
+        "program":  "Aqua Teen Hunger Force"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "3:45 AM",
+        "program":  "Aqua Teen Hunger Force"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "4:00 AM",
+        "program":  "Home Movies"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "4:15 AM",
+        "program":  "Home Movies"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "4:30 AM",
+        "program":  "Tom Goes to the Mayor"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "4:45 AM",
+        "program":  "Tom Goes to the Mayor"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "5:00 AM",
+        "program":  "The Brak Show"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "5:30 AM",
+        "program":  "Sealab 2021"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "6:00 AM",
+        "program":  "Dexter\u0027s Laboratory"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "6:30 AM",
+        "program":  "Dexter\u0027s Laboratory"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "7:00 AM",
+        "program":  "The Powerpuff Girls"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "7:30 AM",
+        "program":  "The Powerpuff Girls"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "8:00 AM",
+        "program":  "Ed, Edd n Eddy"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "8:30 AM",
+        "program":  "Ed, Edd n Eddy"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "9:00 AM",
+        "program":  "Foster\u0027s Home"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "9:30 AM",
+        "program":  "Foster\u0027s Home"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "10:00 AM",
+        "program":  "Billy \u0026 Mandy"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "10:30 AM",
+        "program":  "Billy \u0026 Mandy"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "11:00 AM",
+        "program":  "Cow \u0026 Chicken"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "11:15 AM",
+        "program":  "I Am Weasel"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "11:30 AM",
+        "program":  "Sheep in the Big City"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "12:00 PM",
+        "program":  "Johnny Bravo"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "12:30 PM",
+        "program":  "Johnny Bravo"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "1:00 PM",
+        "program":  "Johnny Bravo"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "1:30 PM",
+        "program":  "Courage the Cowardly Dog"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "2:00 PM",
+        "program":  "Courage the Cowardly Dog"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "2:30 PM",
+        "program":  "Courage the Cowardly Dog"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "3:00 PM",
+        "program":  "Samurai Jack"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "3:30 PM",
+        "program":  "Samurai Jack"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "4:00 PM",
+        "program":  "Samurai Jack"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "4:30 PM",
+        "program":  "Teen Titans"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "5:00 PM",
+        "program":  "Teen Titans"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "5:30 PM",
+        "program":  "Teen Titans"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "6:00 PM",
+        "program":  "Codename: Kids Next Door"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "6:30 PM",
+        "program":  "Codename: Kids Next Door"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "7:00 PM",
+        "program":  "Codename: Kids Next Door"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "7:30 PM",
+        "program":  "Dragon Ball Z"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "8:00 PM",
+        "program":  "Dragon Ball Z"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "8:30 PM",
+        "program":  "Cowboy Bebop"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "9:00 PM",
+        "program":  "King of the Hill"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "9:30 PM",
+        "program":  "King of the Hill"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "10:00 PM",
+        "program":  "Family Guy"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "10:30 PM",
+        "program":  "Family Guy"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "11:00 PM",
+        "program":  "Aqua Teen Hunger Force"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "11:15 PM",
+        "program":  "Aqua Teen Hunger Force"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "11:30 PM",
+        "program":  "Home Movies"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "11:45 PM",
+        "program":  "Home Movies"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "12:00 AM",
+        "program":  "Tom Goes to the Mayor"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "12:15 AM",
+        "program":  "Tom Goes to the Mayor"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "12:30 AM",
+        "program":  "The Brak Show"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "1:00 AM",
+        "program":  "Sealab 2021"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "1:30 AM",
+        "program":  "King of the Hill"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "2:00 AM",
+        "program":  "King of the Hill"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "2:30 AM",
+        "program":  "Family Guy"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "3:00 AM",
+        "program":  "Family Guy"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "3:30 AM",
+        "program":  "Aqua Teen Hunger Force"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "3:45 AM",
+        "program":  "Aqua Teen Hunger Force"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "4:00 AM",
+        "program":  "Home Movies"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "4:15 AM",
+        "program":  "Home Movies"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "4:30 AM",
+        "program":  "Tom Goes to the Mayor"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "4:45 AM",
+        "program":  "Tom Goes to the Mayor"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "5:00 AM",
+        "program":  "The Brak Show"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "5:30 AM",
+        "program":  "Sealab 2021"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "6:00 AM",
+        "program":  "Dexter\u0027s Laboratory"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "6:30 AM",
+        "program":  "Dexter\u0027s Laboratory"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "7:00 AM",
+        "program":  "The Powerpuff Girls"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "7:30 AM",
+        "program":  "The Powerpuff Girls"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "8:00 AM",
+        "program":  "Ed, Edd n Eddy"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "8:30 AM",
+        "program":  "Ed, Edd n Eddy"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "9:00 AM",
+        "program":  "Foster\u0027s Home"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "9:30 AM",
+        "program":  "Foster\u0027s Home"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "10:00 AM",
+        "program":  "Billy \u0026 Mandy"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "10:30 AM",
+        "program":  "Billy \u0026 Mandy"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "11:00 AM",
+        "program":  "Cow \u0026 Chicken"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "11:15 AM",
+        "program":  "I Am Weasel"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "11:30 AM",
+        "program":  "Sheep in the Big City"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "12:00 PM",
+        "program":  "Johnny Bravo"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "12:30 PM",
+        "program":  "Johnny Bravo"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "1:00 PM",
+        "program":  "Johnny Bravo"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "1:30 PM",
+        "program":  "Courage the Cowardly Dog"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "2:00 PM",
+        "program":  "Courage the Cowardly Dog"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "2:30 PM",
+        "program":  "Courage the Cowardly Dog"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "3:00 PM",
+        "program":  "Samurai Jack"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "3:30 PM",
+        "program":  "Samurai Jack"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "4:00 PM",
+        "program":  "Samurai Jack"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "4:30 PM",
+        "program":  "Teen Titans"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "5:00 PM",
+        "program":  "Teen Titans"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "5:30 PM",
+        "program":  "Teen Titans"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "6:00 PM",
+        "program":  "Codename: Kids Next Door"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "6:30 PM",
+        "program":  "Codename: Kids Next Door"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "7:00 PM",
+        "program":  "Codename: Kids Next Door"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "7:30 PM",
+        "program":  "Dragon Ball Z"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "8:00 PM",
+        "program":  "Dragon Ball Z"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "8:30 PM",
+        "program":  "Cowboy Bebop"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "9:00 PM",
+        "program":  "King of the Hill"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "9:30 PM",
+        "program":  "King of the Hill"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "10:00 PM",
+        "program":  "Family Guy"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "10:30 PM",
+        "program":  "Family Guy"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "11:00 PM",
+        "program":  "Aqua Teen Hunger Force"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "11:15 PM",
+        "program":  "Aqua Teen Hunger Force"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "11:30 PM",
+        "program":  "Home Movies"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "11:45 PM",
+        "program":  "Home Movies"
+    },
+    {
+        "day":  "Friday",
+        "time":  "12:00 AM",
+        "program":  "Tom Goes to the Mayor"
+    },
+    {
+        "day":  "Friday",
+        "time":  "12:15 AM",
+        "program":  "Tom Goes to the Mayor"
+    },
+    {
+        "day":  "Friday",
+        "time":  "12:30 AM",
+        "program":  "The Brak Show"
+    },
+    {
+        "day":  "Friday",
+        "time":  "1:00 AM",
+        "program":  "Sealab 2021"
+    },
+    {
+        "day":  "Friday",
+        "time":  "1:30 AM",
+        "program":  "King of the Hill"
+    },
+    {
+        "day":  "Friday",
+        "time":  "2:00 AM",
+        "program":  "King of the Hill"
+    },
+    {
+        "day":  "Friday",
+        "time":  "2:30 AM",
+        "program":  "Family Guy"
+    },
+    {
+        "day":  "Friday",
+        "time":  "3:00 AM",
+        "program":  "Family Guy"
+    },
+    {
+        "day":  "Friday",
+        "time":  "3:30 AM",
+        "program":  "Aqua Teen Hunger Force"
+    },
+    {
+        "day":  "Friday",
+        "time":  "3:45 AM",
+        "program":  "Aqua Teen Hunger Force"
+    },
+    {
+        "day":  "Friday",
+        "time":  "4:00 AM",
+        "program":  "Home Movies"
+    },
+    {
+        "day":  "Friday",
+        "time":  "4:15 AM",
+        "program":  "Home Movies"
+    },
+    {
+        "day":  "Friday",
+        "time":  "4:30 AM",
+        "program":  "Tom Goes to the Mayor"
+    },
+    {
+        "day":  "Friday",
+        "time":  "4:45 AM",
+        "program":  "Tom Goes to the Mayor"
+    },
+    {
+        "day":  "Friday",
+        "time":  "5:00 AM",
+        "program":  "The Brak Show"
+    },
+    {
+        "day":  "Friday",
+        "time":  "5:30 AM",
+        "program":  "Sealab 2021"
+    },
+    {
+        "day":  "Friday",
+        "time":  "6:00 AM",
+        "program":  "Dexter\u0027s Laboratory"
+    },
+    {
+        "day":  "Friday",
+        "time":  "6:30 AM",
+        "program":  "Dexter\u0027s Laboratory"
+    },
+    {
+        "day":  "Friday",
+        "time":  "7:00 AM",
+        "program":  "The Powerpuff Girls"
+    },
+    {
+        "day":  "Friday",
+        "time":  "7:30 AM",
+        "program":  "The Powerpuff Girls"
+    },
+    {
+        "day":  "Friday",
+        "time":  "8:00 AM",
+        "program":  "Ed, Edd n Eddy"
+    },
+    {
+        "day":  "Friday",
+        "time":  "8:30 AM",
+        "program":  "Ed, Edd n Eddy"
+    },
+    {
+        "day":  "Friday",
+        "time":  "9:00 AM",
+        "program":  "Foster\u0027s Home"
+    },
+    {
+        "day":  "Friday",
+        "time":  "9:30 AM",
+        "program":  "Foster\u0027s Home"
+    },
+    {
+        "day":  "Friday",
+        "time":  "10:00 AM",
+        "program":  "Billy \u0026 Mandy"
+    },
+    {
+        "day":  "Friday",
+        "time":  "10:30 AM",
+        "program":  "Billy \u0026 Mandy"
+    },
+    {
+        "day":  "Friday",
+        "time":  "11:00 AM",
+        "program":  "Cow \u0026 Chicken"
+    },
+    {
+        "day":  "Friday",
+        "time":  "11:15 AM",
+        "program":  "I Am Weasel"
+    },
+    {
+        "day":  "Friday",
+        "time":  "11:30 AM",
+        "program":  "Sheep in the Big City"
+    },
+    {
+        "day":  "Friday",
+        "time":  "12:00 PM",
+        "program":  "Johnny Bravo"
+    },
+    {
+        "day":  "Friday",
+        "time":  "12:30 PM",
+        "program":  "Johnny Bravo"
+    },
+    {
+        "day":  "Friday",
+        "time":  "1:00 PM",
+        "program":  "Johnny Bravo"
+    },
+    {
+        "day":  "Friday",
+        "time":  "1:30 PM",
+        "program":  "Courage the Cowardly Dog"
+    },
+    {
+        "day":  "Friday",
+        "time":  "2:00 PM",
+        "program":  "Courage the Cowardly Dog"
+    },
+    {
+        "day":  "Friday",
+        "time":  "2:30 PM",
+        "program":  "Courage the Cowardly Dog"
+    },
+    {
+        "day":  "Friday",
+        "time":  "3:00 PM",
+        "program":  "Samurai Jack"
+    },
+    {
+        "day":  "Friday",
+        "time":  "3:30 PM",
+        "program":  "Samurai Jack"
+    },
+    {
+        "day":  "Friday",
+        "time":  "4:00 PM",
+        "program":  "Samurai Jack"
+    },
+    {
+        "day":  "Friday",
+        "time":  "4:30 PM",
+        "program":  "Teen Titans"
+    },
+    {
+        "day":  "Friday",
+        "time":  "5:00 PM",
+        "program":  "Teen Titans"
+    },
+    {
+        "day":  "Friday",
+        "time":  "5:30 PM",
+        "program":  "Teen Titans"
+    },
+    {
+        "day":  "Friday",
+        "time":  "6:00 PM",
+        "program":  "Codename: Kids Next Door"
+    },
+    {
+        "day":  "Friday",
+        "time":  "6:30 PM",
+        "program":  "Codename: Kids Next Door"
+    },
+    {
+        "day":  "Friday",
+        "time":  "7:00 PM",
+        "program":  "Codename: Kids Next Door"
+    },
+    {
+        "day":  "Friday",
+        "time":  "7:30 PM",
+        "program":  "Dragon Ball Z"
+    },
+    {
+        "day":  "Friday",
+        "time":  "8:00 PM",
+        "program":  "Dragon Ball Z"
+    },
+    {
+        "day":  "Friday",
+        "time":  "8:30 PM",
+        "program":  "Cowboy Bebop"
+    },
+    {
+        "day":  "Friday",
+        "time":  "9:00 PM",
+        "program":  "King of the Hill"
+    },
+    {
+        "day":  "Friday",
+        "time":  "9:30 PM",
+        "program":  "King of the Hill"
+    },
+    {
+        "day":  "Friday",
+        "time":  "10:00 PM",
+        "program":  "Family Guy"
+    },
+    {
+        "day":  "Friday",
+        "time":  "10:30 PM",
+        "program":  "Family Guy"
+    },
+    {
+        "day":  "Friday",
+        "time":  "11:00 PM",
+        "program":  "Aqua Teen Hunger Force"
+    },
+    {
+        "day":  "Friday",
+        "time":  "11:15 PM",
+        "program":  "Aqua Teen Hunger Force"
+    },
+    {
+        "day":  "Friday",
+        "time":  "11:30 PM",
+        "program":  "Home Movies"
+    },
+    {
+        "day":  "Friday",
+        "time":  "11:45 PM",
+        "program":  "Home Movies"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "12:00 AM",
+        "program":  "King of the Hill"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "12:30 AM",
+        "program":  "King of the Hill"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "1:00 AM",
+        "program":  "Family Guy"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "1:30 AM",
+        "program":  "Family Guy"
+    },
+    {
         "day":  "Saturday",
         "time":  "2:00 AM",
-        "program":  "Sealab 2021"
+        "program":  "Aqua Teen Hunger Force"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "2:15 AM",
+        "program":  "Aqua Teen Hunger Force"
     },
     {
         "day":  "Saturday",
         "time":  "2:30 AM",
-        "program":  "Tom Goes to the Mayor"
+        "program":  "Home Movies"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "2:45 AM",
+        "program":  "Home Movies"
     },
     {
         "day":  "Saturday",
         "time":  "3:00 AM",
-        "program":  "Brak Show"
-    },
-    {
-        "day":  "Saturday",
-        "time":  "3:30 AM",
-        "program":  "Home Movies"
-    },
-    {
-        "day":  "Saturday",
-        "time":  "4:00 AM",
-        "program":  "Harvey Birdman, Attorney at Law"
-    },
-    {
-        "day":  "Saturday",
-        "time":  "4:30 AM",
-        "program":  "Aqua Teen Hunger Force"
-    },
-    {
-        "day":  "Saturday",
-        "time":  "4:45 AM",
-        "program":  "Aqua Teen Hunger Force"
-    },
-    {
-        "day":  "Saturday",
-        "time":  "5:00 AM",
-        "program":  "The Venture Bros"
-    },
-    {
-        "day":  "Saturday",
-        "time":  "5:30 AM",
-        "program":  "Space Ghost Coast to Coast"
-    },
-    {
-        "day":  "Saturday",
-        "time":  "5:45 AM",
-        "program":  "Space Ghost Coast to Coast"
-    },
-    {
-        "day":  "Saturday",
-        "time":  "6:00 AM",
-        "program":  "Boondocks Marathon"
-    },
-    {
-        "day":  "Saturday",
-        "time":  "10:00 PM",
-        "program":  "Home Movies"
-    },
-    {
-        "day":  "Saturday",
-        "time":  "10:30 PM",
-        "program":  "Brak Show"
-    },
-    {
-        "day":  "Saturday",
-        "time":  "11:00 PM",
         "program":  "Tom Goes to the Mayor"
     },
     {
         "day":  "Saturday",
-        "time":  "11:30 PM",
+        "time":  "3:15 AM",
+        "program":  "Tom Goes to the Mayor"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "3:30 AM",
+        "program":  "The Brak Show"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "4:00 AM",
         "program":  "Sealab 2021"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "6:00 AM",
+        "program":  "The Boondocks"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "6:30 AM",
+        "program":  "The Boondocks"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "7:00 AM",
+        "program":  "The Boondocks"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "7:30 AM",
+        "program":  "The Boondocks"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "8:00 AM",
+        "program":  "The Boondocks"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "8:30 AM",
+        "program":  "The Boondocks"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "9:00 AM",
+        "program":  "The Boondocks"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "9:30 AM",
+        "program":  "The Boondocks"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "10:00 AM",
+        "program":  "The Boondocks"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "10:30 AM",
+        "program":  "The Boondocks"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "11:00 AM",
+        "program":  "The Boondocks"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "11:30 AM",
+        "program":  "The Boondocks"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "12:00 PM",
+        "program":  "The Boondocks"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "12:30 PM",
+        "program":  "The Boondocks"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "1:00 PM",
+        "program":  "The Boondocks"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "1:30 PM",
+        "program":  "The Boondocks"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "2:00 PM",
+        "program":  "The Boondocks"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "2:30 PM",
+        "program":  "The Boondocks"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "3:00 PM",
+        "program":  "The Boondocks"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "3:30 PM",
+        "program":  "The Boondocks"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "4:00 PM",
+        "program":  "The Boondocks"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "4:30 PM",
+        "program":  "The Boondocks"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "5:00 PM",
+        "program":  "The Boondocks"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "5:30 PM",
+        "program":  "The Boondocks"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "6:00 PM",
+        "program":  "The Boondocks"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "6:30 PM",
+        "program":  "The Boondocks"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "7:00 PM",
+        "program":  "The Boondocks"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "7:30 PM",
+        "program":  "The Boondocks"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "8:00 PM",
+        "program":  "The Boondocks"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "8:30 PM",
+        "program":  "The Boondocks"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "9:00 PM",
+        "program":  "The Boondocks"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "9:30 PM",
+        "program":  "The Boondocks"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "10:00 PM",
+        "program":  "King of the Hill"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "10:30 PM",
+        "program":  "King of the Hill"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "11:00 PM",
+        "program":  "Family Guy"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "11:30 PM",
+        "program":  "Family Guy"
     }
 ]
