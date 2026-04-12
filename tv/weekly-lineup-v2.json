@@ -61,13 +61,43 @@
     },
     {
         "day":  "Sunday",
+        "time":  "4:30 AM",
+        "program":  "King of the Hill"
+    },
+    {
+        "day":  "Sunday",
+        "time":  "5:00 AM",
+        "program":  "King of the Hill"
+    },
+    {
+        "day":  "Sunday",
+        "time":  "5:30 AM",
+        "program":  "Family Guy"
+    },
+    {
+        "day":  "Sunday",
+        "time":  "6:00 AM",
+        "program":  "Family Guy"
+    },
+    {
+        "day":  "Sunday",
         "time":  "6:00 AM",
         "program":  "Dexter\u0027s Laboratory"
     },
     {
         "day":  "Sunday",
         "time":  "6:30 AM",
+        "program":  "Aqua Teen Hunger Force"
+    },
+    {
+        "day":  "Sunday",
+        "time":  "6:30 AM",
         "program":  "Dexter\u0027s Laboratory"
+    },
+    {
+        "day":  "Sunday",
+        "time":  "6:45 AM",
+        "program":  "Aqua Teen Hunger Force"
     },
     {
         "day":  "Sunday",
@@ -187,12 +217,12 @@
     {
         "day":  "Monday",
         "time":  "12:30 AM",
-        "program":  "The Brak Show"
+        "program":  "The Venture Bros"
     },
     {
         "day":  "Monday",
         "time":  "12:30 AM",
-        "program":  "The Venture Bros"
+        "program":  "The Brak Show"
     },
     {
         "day":  "Monday",
