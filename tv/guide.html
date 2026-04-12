@@ -193,15 +193,19 @@
         }
         
         .slot-status.on-air {
-            background: rgba(0,255,0,0.2);
-            color: #0F0;
-            border: 1px solid #0F0;
+            background: linear-gradient(135deg, #0F0, #090);
+            color: #000;
         }
         
         .slot-status.off-air {
-            background: rgba(255,0,0,0.2);
-            color: #F00;
-            border: 1px solid #F00;
+            background: linear-gradient(135deg, #F00, #900);
+            color: #FFF;
+        }
+        
+        .slot-status.special {
+            background: linear-gradient(135deg, #FF0, #F90);
+            color: #000;
+            font-weight: bold;
         }
         
         .slot-episode {
@@ -370,29 +374,56 @@
             daySlots.forEach(slot => {
                 console.log(`Processing slot: ${slot.program}`);
                 
-                // Only show episode info for shows that actually have videos in schedule.json
-                const hasEpisodes = scheduleData && scheduleData.blocks && scheduleData.blocks.some(block => {
-                    const title = block.title.toLowerCase();
-                    const programLower = slot.program.toLowerCase();
-                    // Exact match or contains match for common variations
-                    return title === programLower || title.includes(programLower) || programLower.includes(title);
-                });
-                console.log(`Show ${slot.program} has episodes: ${hasEpisodes}`);
-                
+                // Handle special block types and check for regular shows
+                let hasEpisodes = false;
                 let episodeInfo = '';
+                let statusClass = 'off-air';
+                let statusText = 'OFF AIR';
                 
-                if (hasEpisodes) {
-                    const episodeData = getEpisodeForDate(selectedDate, slot.time, slot.program);
-                    console.log(`Episode for ${slot.program}:`, episodeData);
+                if (slot.program === 'Paid Programming') {
+                    hasEpisodes = scheduleData && scheduleData.blocks && scheduleData.blocks.some(block => block.blockType === 'paid');
+                    if (hasEpisodes) {
+                        episodeInfo = '<div class="slot-episode">Paid Content</div>';
+                        statusClass = 'special';
+                        statusText = '📺';
+                    }
+                } else if (slot.program === 'Boondocks Marathon') {
+                    hasEpisodes = scheduleData && scheduleData.blocks && scheduleData.blocks.some(block => block.blockType === 'marathon');
+                    if (hasEpisodes) {
+                        episodeInfo = '<div class="slot-episode">All-Day Marathon</div>';
+                        statusClass = 'special';
+                        statusText = '🎬';
+                    }
+                } else if (slot.program === 'Nostalgia Night') {
+                    const hasMovies = scheduleData && scheduleData.blocks && scheduleData.blocks.some(block => block.blockType === 'movie');
+                    if (hasMovies) {
+                        // Show which movie is playing based on occurrence
+                        const movieBlocks = scheduleData.blocks.filter(block => block.blockType === 'movie');
+                        const occ = getProgramOccurrenceIndex(slot.program, slot.time, selectedDate);
+                        const movieIndex = occ % movieBlocks.length;
+                        const movieTitle = movieBlocks[movieIndex].title;
+                        episodeInfo = `<div class="slot-episode">${movieTitle}</div>`;
+                        statusClass = 'special';
+                        statusText = '🎥';
+                    }
+                } else {
+                    // Regular shows - check if they have episodes
+                    hasEpisodes = scheduleData && scheduleData.blocks && scheduleData.blocks.some(block => {
+                        const title = block.title.toLowerCase();
+                        const programLower = slot.program.toLowerCase();
+                        return !block.blockType && (title === programLower || title.includes(programLower) || programLower.includes(title));
+                    });
                     
-                    let episodeDisplay;
-                    episodeDisplay = `S${episodeData.season.toString().padStart(2, '0')}E${episodeData.episode.toString().padStart(2, '0')}`;
-                    
-                    episodeInfo = `<div class="slot-episode">${episodeDisplay}</div>`;
+                    if (hasEpisodes) {
+                        const episodeData = getEpisodeForDate(selectedDate, slot.time, slot.program);
+                        const episodeDisplay = `S${episodeData.season.toString().padStart(2, '0')}E${episodeData.episode.toString().padStart(2, '0')}`;
+                        episodeInfo = `<div class="slot-episode">${episodeDisplay}</div>`;
+                        statusClass = 'on-air';
+                        statusText = '▶';
+                    }
                 }
                 
-                const statusClass = hasEpisodes ? 'on-air' : 'off-air';
-                const statusText = hasEpisodes ? '▶' : 'OFF AIR';
+                console.log(`Show ${slot.program} has episodes: ${hasEpisodes}`);
                 
                 html += `
                     <div class="slot">

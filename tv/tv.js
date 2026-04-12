@@ -750,11 +750,82 @@ class LiveStreamPlayer {
         const program = weeklySlot?.program;
         if (!program) return queue;
 
-        // Filter blocks to only include episodes for the current program
+        // Handle special block types first
+        if (program === 'Paid Programming') {
+            const paidBlocks = blocks.filter(block => block.blockType === 'paid');
+            if (paidBlocks.length > 0) {
+                const block = paidBlocks[0];
+                for (const event of block.events) {
+                    if (event.type === 'segment') {
+                        queue.push({
+                            type: 'segment',
+                            url: event.url,
+                            title: 'Paid Programming',
+                            duration: event.durationSeconds || 10800
+                        });
+                    }
+                }
+                return queue;
+            }
+        }
+
+        if (program === 'Boondocks Marathon') {
+            const marathonBlocks = blocks.filter(block => block.blockType === 'marathon');
+            if (marathonBlocks.length > 0) {
+                const block = marathonBlocks[0];
+                for (const event of block.events) {
+                    if (event.type === 'segment') {
+                        queue.push({
+                            type: 'segment',
+                            url: event.url,
+                            title: event.title,
+                            duration: event.durationSeconds || 1320
+                        });
+                    } else if (event.type === 'adbreak' && event.targetSeconds === 'auto') {
+                        // Only allow auto ads at the very end of marathon
+                        continue;
+                    }
+                }
+                return queue;
+            }
+        }
+
+        if (program === 'Nostalgia Night') {
+            const movieBlocks = blocks.filter(block => block.blockType === 'movie');
+            if (movieBlocks.length > 0) {
+                // Rotate through movies for different occurrences
+                const slotStartMs = this.getSlotStartMsForNow(weeklySlot);
+                const startMs = Date.parse(this.schedule.startDate + 'T00:00:00');
+                const occ = this.getProgramOccurrenceIndex(program, weeklySlot, slotStartMs, startMs);
+                const movieIndex = occ % movieBlocks.length;
+                const block = movieBlocks[movieIndex];
+                
+                for (const event of block.events) {
+                    if (event.type === 'segment') {
+                        queue.push({
+                            type: 'segment',
+                            url: event.url,
+                            title: event.title,
+                            duration: event.durationSeconds || 7200
+                        });
+                    } else if (event.type === 'adbreak') {
+                        const ads = this.fillAdBreak(
+                            event.targetSeconds === 'auto' ? 180 : event.targetSeconds,
+                            event.toleranceSeconds || 3,
+                            Math.floor(slotStartMs / 1000) + queue.length
+                        );
+                        queue.push(...ads);
+                    }
+                }
+                return queue;
+            }
+        }
+
+        // Filter blocks to only include episodes for regular shows
         const programSearchTerms = this.getProgramSearchTerms(program);
         const programBlocks = blocks.filter(block => {
             const blockTitle = block.title.toLowerCase();
-            return programSearchTerms.some(term => blockTitle.includes(term.toLowerCase()));
+            return !block.blockType && programSearchTerms.some(term => blockTitle.includes(term.toLowerCase()));
         });
 
         if (!programBlocks.length) return queue;
