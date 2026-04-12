@@ -2,8 +2,8 @@
 
 Only shows with actual (non-placeholder) video URLs
 
-**Total Shows with Real URLs:** 6
-**Total Episodes:** 189
+**Total Shows with Real URLs:** 8
+**Total Episodes:** 268
 
 ## Aqua Teen Hunger Force
 
@@ -1733,6 +1733,563 @@ Only shows with actual (non-placeholder) video URLs
 2. **The Venture Bros S02E02 Part 2**
    - URL: `https://files.catbox.moe/rffga7.mp4`
    - Duration: 660s
+
+---
+
+## I Am Weasel
+
+**Episodes:** 79
+
+### S1E1
+1. **I Am Weasel S01E01**
+   - URL: `https://files.catbox.moe/lijhnf.avi`
+   - Duration: 420s
+
+---
+
+### S1E2
+1. **I Am Weasel S01E02**
+   - URL: `https://files.catbox.moe/9evkcw.avi`
+   - Duration: 420s
+
+---
+
+### S1E3
+1. **I Am Weasel S01E03**
+   - URL: `https://files.catbox.moe/18yibr.avi`
+   - Duration: 420s
+
+---
+
+### S1E4
+1. **I Am Weasel S01E04**
+   - URL: `https://files.catbox.moe/zri1v8.avi`
+   - Duration: 420s
+
+---
+
+### S1E5
+1. **I Am Weasel S01E05**
+   - URL: `https://files.catbox.moe/7e011u.avi`
+   - Duration: 420s
+
+---
+
+### S1E6
+1. **I Am Weasel S01E06**
+   - URL: `https://files.catbox.moe/cepl22.avi`
+   - Duration: 420s
+
+---
+
+### S1E7
+1. **I Am Weasel S01E07**
+   - URL: `https://files.catbox.moe/xymdd5.avi`
+   - Duration: 420s
+
+---
+
+### S1E8
+1. **I Am Weasel S01E08**
+   - URL: `https://files.catbox.moe/s3elk9.avi`
+   - Duration: 420s
+
+---
+
+### S1E9
+1. **I Am Weasel S01E09**
+   - URL: `https://files.catbox.moe/gkg5mm.avi`
+   - Duration: 420s
+
+---
+
+### S1E10
+1. **I Am Weasel S01E10**
+   - URL: `https://files.catbox.moe/6gjxov.avi`
+   - Duration: 420s
+
+---
+
+### S1E11
+1. **I Am Weasel S01E11**
+   - URL: `https://files.catbox.moe/j3t6n8.avi`
+   - Duration: 420s
+
+---
+
+### S1E12
+1. **I Am Weasel S01E12**
+   - URL: `https://files.catbox.moe/cjceti.avi`
+   - Duration: 420s
+
+---
+
+### S1E13
+1. **I Am Weasel S01E13**
+   - URL: `https://files.catbox.moe/5u5rsz.avi`
+   - Duration: 420s
+
+---
+
+### S2E1
+1. **I Am Weasel S02E01**
+   - URL: `https://files.catbox.moe/ikgkud.avi`
+   - Duration: 420s
+
+---
+
+### S2E2
+1. **I Am Weasel S02E02**
+   - URL: `https://files.catbox.moe/0f0yk2.avi`
+   - Duration: 420s
+
+---
+
+### S2E3
+1. **I Am Weasel S02E03**
+   - URL: `https://files.catbox.moe/i5pf1e.avi`
+   - Duration: 420s
+
+---
+
+### S2E4
+1. **I Am Weasel S02E04**
+   - URL: `https://files.catbox.moe/xl8eyf.avi`
+   - Duration: 420s
+
+---
+
+### S2E5
+1. **I Am Weasel S02E05**
+   - URL: `https://files.catbox.moe/af7q0p.avi`
+   - Duration: 420s
+
+---
+
+### S2E6
+1. **I Am Weasel S02E06**
+   - URL: `https://files.catbox.moe/1dm9k0.avi`
+   - Duration: 420s
+
+---
+
+### S2E7
+1. **I Am Weasel S02E07**
+   - URL: `https://files.catbox.moe/9skgub.avi`
+   - Duration: 420s
+
+---
+
+### S2E8
+1. **I Am Weasel S02E08**
+   - URL: `https://files.catbox.moe/04o19p.avi`
+   - Duration: 420s
+
+---
+
+### S2E9
+1. **I Am Weasel S02E09**
+   - URL: `https://files.catbox.moe/vcgdc9.avi`
+   - Duration: 420s
+
+---
+
+### S2E10
+1. **I Am Weasel S02E10**
+   - URL: `https://files.catbox.moe/g9i56n.avi`
+   - Duration: 420s
+
+---
+
+### S2E11
+1. **I Am Weasel S02E11**
+   - URL: `https://files.catbox.moe/wpzm8b.avi`
+   - Duration: 420s
+
+---
+
+### S2E12
+1. **I Am Weasel S02E12**
+   - URL: `https://files.catbox.moe/cdwll9.avi`
+   - Duration: 420s
+
+---
+
+### S2E13
+1. **I Am Weasel S02E13**
+   - URL: `https://files.catbox.moe/6upu9l.avi`
+   - Duration: 420s
+
+---
+
+### S3E1
+1. **I Am Weasel S03E01**
+   - URL: `https://files.catbox.moe/uouf1w.avi`
+   - Duration: 420s
+
+---
+
+### S3E2
+1. **I Am Weasel S03E02**
+   - URL: `https://files.catbox.moe/0glg8s.avi`
+   - Duration: 420s
+
+---
+
+### S3E3
+1. **I Am Weasel S03E03**
+   - URL: `https://files.catbox.moe/rhwtka.avi`
+   - Duration: 420s
+
+---
+
+### S3E4
+1. **I Am Weasel S03E04**
+   - URL: `https://files.catbox.moe/g62lxv.avi`
+   - Duration: 420s
+
+---
+
+### S3E5
+1. **I Am Weasel S03E05**
+   - URL: `https://files.catbox.moe/pwwo4j.avi`
+   - Duration: 420s
+
+---
+
+### S3E6
+1. **I Am Weasel S03E06**
+   - URL: `https://files.catbox.moe/cgu29q.avi`
+   - Duration: 420s
+
+---
+
+### S3E7
+1. **I Am Weasel S03E07**
+   - URL: `https://files.catbox.moe/loezpr.avi`
+   - Duration: 420s
+
+---
+
+### S3E8
+1. **I Am Weasel S03E08**
+   - URL: `https://files.catbox.moe/xoaako.avi`
+   - Duration: 420s
+
+---
+
+### S3E9
+1. **I Am Weasel S03E09**
+   - URL: `https://files.catbox.moe/x7gcpa.avi`
+   - Duration: 420s
+
+---
+
+### S3E10
+1. **I Am Weasel S03E10**
+   - URL: `https://files.catbox.moe/brwspg.avi`
+   - Duration: 420s
+
+---
+
+### S3E11
+1. **I Am Weasel S03E11**
+   - URL: `https://files.catbox.moe/5aad81.avi`
+   - Duration: 420s
+
+---
+
+### S3E12
+1. **I Am Weasel S03E12**
+   - URL: `https://files.catbox.moe/qqqkht.avi`
+   - Duration: 420s
+
+---
+
+### S3E13
+1. **I Am Weasel S03E13**
+   - URL: `https://files.catbox.moe/7tl9na.avi`
+   - Duration: 420s
+
+---
+
+### S4E1
+1. **I Am Weasel S04E01**
+   - URL: `https://files.catbox.moe/nubn0d.avi`
+   - Duration: 420s
+
+---
+
+### S4E2
+1. **I Am Weasel S04E02**
+   - URL: `https://files.catbox.moe/enwhdf.avi`
+   - Duration: 420s
+
+---
+
+### S4E3
+1. **I Am Weasel S04E03**
+   - URL: `https://files.catbox.moe/3weie9.avi`
+   - Duration: 420s
+
+---
+
+### S4E4
+1. **I Am Weasel S04E04**
+   - URL: `https://files.catbox.moe/xoh483.avi`
+   - Duration: 420s
+
+---
+
+### S4E5
+1. **I Am Weasel S04E05**
+   - URL: `https://files.catbox.moe/zfi0ex.avi`
+   - Duration: 420s
+
+---
+
+### S4E6
+1. **I Am Weasel S04E06**
+   - URL: `https://files.catbox.moe/bt4376.avi`
+   - Duration: 420s
+
+---
+
+### S4E7
+1. **I Am Weasel S04E07**
+   - URL: `https://files.catbox.moe/it452f.avi`
+   - Duration: 420s
+
+---
+
+### S4E8
+1. **I Am Weasel S04E08**
+   - URL: `https://files.catbox.moe/4m32ct.avi`
+   - Duration: 420s
+
+---
+
+### S4E9
+1. **I Am Weasel S04E09**
+   - URL: `https://files.catbox.moe/xbn1td.avi`
+   - Duration: 420s
+
+---
+
+### S4E10
+1. **I Am Weasel S04E10**
+   - URL: `https://files.catbox.moe/csqm6n.avi`
+   - Duration: 420s
+
+---
+
+### S4E11
+1. **I Am Weasel S04E11**
+   - URL: `https://files.catbox.moe/hs0ndj.avi`
+   - Duration: 420s
+
+---
+
+### S4E12
+1. **I Am Weasel S04E12**
+   - URL: `https://files.catbox.moe/8s7uhf.avi`
+   - Duration: 420s
+
+---
+
+### S4E13
+1. **I Am Weasel S04E13**
+   - URL: `https://files.catbox.moe/8vuuwy.avi`
+   - Duration: 420s
+
+---
+
+### S5E1
+1. **I Am Weasel S05E01**
+   - URL: `https://files.catbox.moe/l64jn9.avi`
+   - Duration: 420s
+
+---
+
+### S5E2
+1. **I Am Weasel S05E02**
+   - URL: `https://files.catbox.moe/juq18w.avi`
+   - Duration: 420s
+
+---
+
+### S5E3
+1. **I Am Weasel S05E03**
+   - URL: `https://files.catbox.moe/msoa7v.avi`
+   - Duration: 420s
+
+---
+
+### S5E4
+1. **I Am Weasel S05E04**
+   - URL: `https://files.catbox.moe/4zv3gh.avi`
+   - Duration: 420s
+
+---
+
+### S5E5
+1. **I Am Weasel S05E05**
+   - URL: `https://files.catbox.moe/agjo28.avi`
+   - Duration: 420s
+
+---
+
+### S5E6
+1. **I Am Weasel S05E06**
+   - URL: `https://files.catbox.moe/rfuhyz.avi`
+   - Duration: 420s
+
+---
+
+### S5E7
+1. **I Am Weasel S05E07**
+   - URL: `https://files.catbox.moe/5silz8.avi`
+   - Duration: 420s
+
+---
+
+### S5E8
+1. **I Am Weasel S05E08**
+   - URL: `https://files.catbox.moe/jom11z.avi`
+   - Duration: 420s
+
+---
+
+### S5E9
+1. **I Am Weasel S05E09**
+   - URL: `https://files.catbox.moe/k853j6.avi`
+   - Duration: 420s
+
+---
+
+### S5E10
+1. **I Am Weasel S05E10**
+   - URL: `https://files.catbox.moe/0ix7uq.avi`
+   - Duration: 420s
+
+---
+
+### S5E11
+1. **I Am Weasel S05E11**
+   - URL: `https://files.catbox.moe/jbwra0.avi`
+   - Duration: 420s
+
+---
+
+### S5E12
+1. **I Am Weasel S05E12**
+   - URL: `https://files.catbox.moe/us9ofm.avi`
+   - Duration: 420s
+
+---
+
+### S5E13
+1. **I Am Weasel S05E13**
+   - URL: `https://files.catbox.moe/qu0v43.avi`
+   - Duration: 420s
+
+---
+
+### S5E14
+1. **I Am Weasel S05E14**
+   - URL: `https://files.catbox.moe/3xlmpg.avi`
+   - Duration: 420s
+
+---
+
+### S5E15
+1. **I Am Weasel S05E15**
+   - URL: `https://files.catbox.moe/3yepdu.avi`
+   - Duration: 420s
+
+---
+
+### S5E16
+1. **I Am Weasel S05E16**
+   - URL: `https://files.catbox.moe/e4zrpd.avi`
+   - Duration: 420s
+
+---
+
+### S5E17
+1. **I Am Weasel S05E17**
+   - URL: `https://files.catbox.moe/23u6er.avi`
+   - Duration: 420s
+
+---
+
+### S5E18
+1. **I Am Weasel S05E18**
+   - URL: `https://files.catbox.moe/ucrnzp.avi`
+   - Duration: 420s
+
+---
+
+### S5E19
+1. **I Am Weasel S05E19**
+   - URL: `https://files.catbox.moe/ud87ff.avi`
+   - Duration: 420s
+
+---
+
+### S5E20
+1. **I Am Weasel S05E20**
+   - URL: `https://files.catbox.moe/mzvkdk.avi`
+   - Duration: 420s
+
+---
+
+### S5E21
+1. **I Am Weasel S05E21**
+   - URL: `https://files.catbox.moe/b4usk5.avi`
+   - Duration: 420s
+
+---
+
+### S5E22
+1. **I Am Weasel S05E22**
+   - URL: `https://files.catbox.moe/i08c3x.avi`
+   - Duration: 420s
+
+---
+
+### S5E23
+1. **I Am Weasel S05E23**
+   - URL: `https://files.catbox.moe/v66k8h.avi`
+   - Duration: 420s
+
+---
+
+### S5E24
+1. **I Am Weasel S05E24**
+   - URL: `https://files.catbox.moe/uwryyj.avi`
+   - Duration: 420s
+
+---
+
+### S5E25
+1. **I Am Weasel S05E25**
+   - URL: `https://files.catbox.moe/95e8f9.avi`
+   - Duration: 420s
+
+---
+
+### S5E26
+1. **I Am Weasel S05E26**
+   - URL: `https://files.catbox.moe/4u589e.avi`
+   - Duration: 420s
+
+---
+
+### S5E27
+1. **I Am Weasel S05E27**
+   - URL: `https://files.catbox.moe/qaa0sb.avi`
+   - Duration: 420s
 
 ---
 
