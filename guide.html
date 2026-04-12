@@ -301,7 +301,7 @@
         async function loadData() {
             try {
                 // Aggressive cache bust: commit hash + timestamp + random
-                const commitHash = '233a4f5';
+                const commitHash = '49d397a';
                 const timestamp = new Date().getTime();
                 const cacheBuster = `${commitHash}_${timestamp}_${Math.random().toString(36).substr(2, 9)}`;
                 console.log('Loading weekly lineup with cache buster:', cacheBuster);
@@ -309,12 +309,20 @@
                 weeklyLineup = await response.json();
                 console.log('Loaded weekly lineup, total entries:', weeklyLineup.length);
                 console.log('First few entries:', weeklyLineup.slice(0, 3));
+                console.log('Nostalgia Night entries:', weeklyLineup.filter(s => s.program === 'Nostalgia Night').map(s => s.time));
                 
                 // Load schedule.json to get startDate and check which shows have videos
                 const scheduleResponse = await fetch('schedule.json?t=' + cacheBuster);
                 scheduleData = await scheduleResponse.json();
                 scheduleStartDate = scheduleData.startDate || '2026-04-01';
                 console.log('Loaded schedule, start date:', scheduleStartDate);
+                
+                // Show cache-bust indicator briefly
+                const indicator = document.createElement('div');
+                indicator.textContent = `Cache-bust: ${cacheBuster}`;
+                indicator.style.cssText = 'position:fixed;top:0;left:0;background:#0F0;color:#000;padding:4px;z-index:9999;font-size:10px;';
+                document.body.appendChild(indicator);
+                setTimeout(() => indicator.remove(), 3000);
                 
                 renderCalendar();
                 renderLineup();
