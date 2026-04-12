@@ -510,8 +510,8 @@
                         statusText = '🎥';
                     }
                 } else if (slot.program === 'Men in Black' || slot.program === 'Back to the Future') {
-                    // Movies are special programs - show the movie name itself as the episode
-                    episodeInfo = `<div class="slot-episode">${slot.program}</div>`;
+                    // Movies are special programs - no episode description, just the name
+                    episodeInfo = '';
                     statusClass = 'special';
                     statusText = '🎥';
                 } else if (slot.program === 'TBD') {
@@ -753,25 +753,7 @@
                 const slot = daySlots[i];
                 console.log(`Processing slot: ${slot.program}`);
 
-                const slotTimeBlock = canonicalBlockForSlot(daySlots, i);
-
-                // Drive Cartoon Cartoons context from the time window, since we no longer rely on
-                // explicit 'Cartoon Cartoons' rows in weekly-lineup.
-                inCartoonCartoons = slotTimeBlock === 'CARTOON CARTOONS';
-
-                // Render a block header whenever the canonical time window changes.
-                // (We derive block headers from time windows; weekly-lineup should not contain header rows.)
-                if (slotTimeBlock &&
-                    slotTimeBlock !== currentTimeBlock &&
-                    slot.program !== CARTOON_CARTOONS_HEADER &&
-                    slot.program !== NOSTALGIA_NIGHT_PRESHOW_HEADER &&
-                    slot.program !== MOVIE_NIGHT_HEADER &&
-                    !SPECIAL_PROGRAMS.has(slot.program)) {
-                    currentTimeBlock = slotTimeBlock;
-                    renderTimeBlockHeader(currentTimeBlock, slot.time);
-                }
-
-                // Explicit block header - only render if it's within the correct time window
+                // Explicit block headers - render FIRST before time block headers
                 if (slot.program === CARTOON_CARTOONS_HEADER) {
                     const slotMins = timeToMinutes(slot.time);
                     // Only render Cartoon Cartoons header if it's between 11am-12pm (660-720 mins)
@@ -831,6 +813,24 @@
                     }
                     // Skip rendering the header slot itself
                     continue;
+                }
+
+                const slotTimeBlock = canonicalBlockForSlot(daySlots, i);
+
+                // Drive Cartoon Cartoons context from the time window, since we no longer rely on
+                // explicit 'Cartoon Cartoons' rows in weekly-lineup.
+                inCartoonCartoons = slotTimeBlock === 'CARTOON CARTOONS';
+
+                // Render a block header whenever the canonical time window changes.
+                // (We derive block headers from time windows; weekly-lineup should not contain header rows.)
+                if (slotTimeBlock &&
+                    slotTimeBlock !== currentTimeBlock &&
+                    slot.program !== CARTOON_CARTOONS_HEADER &&
+                    slot.program !== NOSTALGIA_NIGHT_PRESHOW_HEADER &&
+                    slot.program !== MOVIE_NIGHT_HEADER &&
+                    !SPECIAL_PROGRAMS.has(slot.program)) {
+                    currentTimeBlock = slotTimeBlock;
+                    renderTimeBlockHeader(currentTimeBlock, slot.time);
                 }
 
                 // Disable implicit Cartoon Cartoons block rendering
