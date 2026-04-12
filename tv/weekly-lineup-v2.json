@@ -157,11 +157,6 @@
     {
         "day":  "Sunday",
         "time":  "3:00 PM",
-        "program":  "Nostalgia Night"
-    },
-    {
-        "day":  "Sunday",
-        "time":  "3:00 PM",
         "program":  "Feature Film A"
     },
     {
@@ -192,12 +187,12 @@
     {
         "day":  "Monday",
         "time":  "12:00 AM",
-        "program":  "The Venture Bros"
+        "program":  "Tom Goes to the Mayor"
     },
     {
         "day":  "Monday",
         "time":  "12:00 AM",
-        "program":  "Tom Goes to the Mayor"
+        "program":  "The Venture Bros"
     },
     {
         "day":  "Monday",
