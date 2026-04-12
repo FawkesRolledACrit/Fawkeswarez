@@ -559,12 +559,12 @@
                 else if (totalMins >= 720 && totalMins < 900) {
                     return 'MIDDAY MADNESS';
                 }
-                // 3pm-7:30pm: Afternoon Action (900-1110 mins) - 3pm = 900, 7:30pm = 1110
-                else if (totalMins >= 900 && totalMins < 1110) {
+                // 3pm-7:30pm: Afternoon Action (900-1170 mins) - 3pm = 900, 7:30pm = 1170
+                else if (totalMins >= 900 && totalMins < 1170) {
                     return 'AFTERNOON ACTION';
                 }
-                // 7:30pm-9pm: All-Time Animes (1110-1260 mins) - 7:30pm = 1110, 9pm = 1260
-                else if (totalMins >= 1110 && totalMins < 1260) {
+                // 7:30pm-9pm: All-Time Animes (1170-1260 mins) - 7:30pm = 1170, 9pm = 1260
+                else if (totalMins >= 1170 && totalMins < 1260) {
                     return 'ALL-TIME ANIMES';
                 }
                 // 9pm-12am: Adult Swim (1260-1440 mins)
@@ -630,17 +630,16 @@
 
                 const slotTimeBlock = canonicalBlockForSlot(daySlots, i);
 
-                // Only render time block header when:
-                // 1. Not in Cartoon Cartoons
-                // 2. Not a special program
-                // 3. Not already a block header
-                // 4. The time block actually changes
-                if (!inCartoonCartoons &&
-                    slotTimeBlock &&
+                // Drive Cartoon Cartoons context from the time window, since we no longer rely on
+                // explicit 'Cartoon Cartoons' rows in weekly-lineup.
+                inCartoonCartoons = slotTimeBlock === 'CARTOON CARTOONS';
+
+                // Render a block header whenever the canonical time window changes.
+                // (We derive block headers from time windows; weekly-lineup should not contain header rows.)
+                if (slotTimeBlock &&
                     slotTimeBlock !== currentTimeBlock &&
                     slot.program !== CARTOON_CARTOONS_HEADER &&
-                    !SPECIAL_PROGRAMS.has(slot.program) &&
-                    slotTimeBlock !== 'CARTOON CARTOONS') {
+                    !SPECIAL_PROGRAMS.has(slot.program)) {
                     currentTimeBlock = slotTimeBlock;
                     renderTimeBlockHeader(currentTimeBlock, slot.time);
                 }
@@ -686,7 +685,6 @@
                     renderSlot(slot, 'block-item');
                 } else {
                     // Leaving Cartoon Cartoons context if we hit a non-member show
-                    inCartoonCartoons = false;
                     seenExplicitHeaderInCurrentBlock = false;
 
                     const blockKey = canonicalBlockForSlot(daySlots, i);
