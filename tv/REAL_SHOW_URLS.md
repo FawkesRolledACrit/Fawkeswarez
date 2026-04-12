@@ -2,8 +2,8 @@
 
 Only shows with actual (non-placeholder) video URLs
 
-**Total Shows with Real URLs:** 8
-**Total Episodes:** 268
+**Total Shows with Real URLs:** 9
+**Total Episodes:** 318
 
 ## Aqua Teen Hunger Force
 
@@ -2290,6 +2290,360 @@ Only shows with actual (non-placeholder) video URLs
 1. **I Am Weasel S05E27**
    - URL: `https://files.catbox.moe/qaa0sb.avi`
    - Duration: 420s
+
+---
+
+## Cow & Chicken
+
+**Episodes:** 50
+
+### S1E1
+1. **Cow & Chicken S01E01**
+   - URL: `https://files.catbox.moe/vtd7ml.mp4`
+   - Duration: 660s
+
+---
+
+### S1E2
+1. **Cow & Chicken S01E02**
+   - URL: `https://files.catbox.moe/0da37w.mp4`
+   - Duration: 660s
+
+---
+
+### S1E3
+1. **Cow & Chicken S01E03**
+   - URL: `https://files.catbox.moe/5j0ni0.mp4`
+   - Duration: 660s
+
+---
+
+### S1E4
+1. **Cow & Chicken S01E04**
+   - URL: `https://files.catbox.moe/mljdez.mp4`
+   - Duration: 660s
+
+---
+
+### S1E5
+1. **Cow & Chicken S01E05**
+   - URL: `https://files.catbox.moe/wv51j5.mp4`
+   - Duration: 660s
+
+---
+
+### S1E6
+1. **Cow & Chicken S01E06**
+   - URL: `https://files.catbox.moe/tdiebx.mp4`
+   - Duration: 660s
+
+---
+
+### S1E7
+1. **Cow & Chicken S01E07**
+   - URL: `https://files.catbox.moe/t81vmm.mp4`
+   - Duration: 660s
+
+---
+
+### S1E8
+1. **Cow & Chicken S01E08**
+   - URL: `https://files.catbox.moe/vf8r5f.mp4`
+   - Duration: 660s
+
+---
+
+### S1E11
+1. **Cow & Chicken S01E11**
+   - URL: `https://files.catbox.moe/4pjvab.mp4`
+   - Duration: 660s
+
+---
+
+### S1E12
+1. **Cow & Chicken S01E12**
+   - URL: `https://files.catbox.moe/bejeme.mp4`
+   - Duration: 660s
+
+---
+
+### S1E13
+1. **Cow & Chicken S01E13**
+   - URL: `https://files.catbox.moe/ax5a36.mp4`
+   - Duration: 660s
+
+---
+
+### S1E14
+1. **Cow & Chicken S01E14**
+   - URL: `https://files.catbox.moe/8sdwld.mp4`
+   - Duration: 660s
+
+---
+
+### S1E15
+1. **Cow & Chicken S01E15**
+   - URL: `https://files.catbox.moe/7mf46k.mp4`
+   - Duration: 660s
+
+---
+
+### S1E16
+1. **Cow & Chicken S01E16**
+   - URL: `https://files.catbox.moe/lkf8yw.mp4`
+   - Duration: 660s
+
+---
+
+### S1E17
+1. **Cow & Chicken S01E17**
+   - URL: `https://files.catbox.moe/yh0gvl.mp4`
+   - Duration: 660s
+
+---
+
+### S1E18
+1. **Cow & Chicken S01E18**
+   - URL: `https://files.catbox.moe/gf17fk.mp4`
+   - Duration: 660s
+
+---
+
+### S1E19
+1. **Cow & Chicken S01E19**
+   - URL: `https://files.catbox.moe/8q65ot.mp4`
+   - Duration: 660s
+
+---
+
+### S1E20
+1. **Cow & Chicken S01E20**
+   - URL: `https://files.catbox.moe/2ouvab.mp4`
+   - Duration: 660s
+
+---
+
+### S1E21
+1. **Cow & Chicken S01E21**
+   - URL: `https://files.catbox.moe/eu5e9e.mp4`
+   - Duration: 660s
+
+---
+
+### S1E22
+1. **Cow & Chicken S01E22**
+   - URL: `https://files.catbox.moe/4l5z0z.mp4`
+   - Duration: 660s
+
+---
+
+### S1E23
+1. **Cow & Chicken S01E23**
+   - URL: `https://files.catbox.moe/j09swd.mp4`
+   - Duration: 660s
+
+---
+
+### S1E24
+1. **Cow & Chicken S01E24**
+   - URL: `https://files.catbox.moe/9pjyrb.mp4`
+   - Duration: 660s
+
+---
+
+### S1E25
+1. **Cow & Chicken S01E25**
+   - URL: `https://files.catbox.moe/u7cyel.mp4`
+   - Duration: 660s
+
+---
+
+### S1E26
+1. **Cow & Chicken S01E26**
+   - URL: `https://files.catbox.moe/jrijhb.mp4`
+   - Duration: 660s
+
+---
+
+### S2E1
+1. **Cow & Chicken S02E01**
+   - URL: `https://files.catbox.moe/tkew39.mp4`
+   - Duration: 660s
+
+---
+
+### S2E2
+1. **Cow & Chicken S02E02**
+   - URL: `https://files.catbox.moe/14o5qn.mp4`
+   - Duration: 660s
+
+---
+
+### S2E3
+1. **Cow & Chicken S02E03**
+   - URL: `https://files.catbox.moe/sav1b6.mp4`
+   - Duration: 660s
+
+---
+
+### S2E4
+1. **Cow & Chicken S02E04**
+   - URL: `https://files.catbox.moe/tapy88.mp4`
+   - Duration: 660s
+
+---
+
+### S2E5
+1. **Cow & Chicken S02E05**
+   - URL: `https://files.catbox.moe/2h9t94.mp4`
+   - Duration: 660s
+
+---
+
+### S2E6
+1. **Cow & Chicken S02E06**
+   - URL: `https://files.catbox.moe/thmbkj.mp4`
+   - Duration: 660s
+
+---
+
+### S2E7
+1. **Cow & Chicken S02E07**
+   - URL: `https://files.catbox.moe/1ahov8.mp4`
+   - Duration: 660s
+
+---
+
+### S2E8
+1. **Cow & Chicken S02E08**
+   - URL: `https://files.catbox.moe/n9ntv4.mp4`
+   - Duration: 660s
+
+---
+
+### S2E9
+1. **Cow & Chicken S02E09**
+   - URL: `https://files.catbox.moe/4ig8it.mp4`
+   - Duration: 660s
+
+---
+
+### S2E10
+1. **Cow & Chicken S02E10**
+   - URL: `https://files.catbox.moe/ix0gsz.mp4`
+   - Duration: 660s
+
+---
+
+### S2E11
+1. **Cow & Chicken S02E11**
+   - URL: `https://files.catbox.moe/3pzdgf.mp4`
+   - Duration: 660s
+
+---
+
+### S2E12
+1. **Cow & Chicken S02E12**
+   - URL: `https://files.catbox.moe/lnittp.mp4`
+   - Duration: 660s
+
+---
+
+### S2E13
+1. **Cow & Chicken S02E13**
+   - URL: `https://files.catbox.moe/yo6s4f.mp4`
+   - Duration: 660s
+
+---
+
+### S2E14
+1. **Cow & Chicken S02E14**
+   - URL: `https://files.catbox.moe/ptenkq.mp4`
+   - Duration: 660s
+
+---
+
+### S2E15
+1. **Cow & Chicken S02E15**
+   - URL: `https://files.catbox.moe/4kvjht.mp4`
+   - Duration: 660s
+
+---
+
+### S2E16
+1. **Cow & Chicken S02E16**
+   - URL: `https://files.catbox.moe/7tpmip.mp4`
+   - Duration: 660s
+
+---
+
+### S2E17
+1. **Cow & Chicken S02E17**
+   - URL: `https://files.catbox.moe/byyf2w.mp4`
+   - Duration: 660s
+
+---
+
+### S2E18
+1. **Cow & Chicken S02E18**
+   - URL: `https://files.catbox.moe/2lkprc.mp4`
+   - Duration: 660s
+
+---
+
+### S2E19
+1. **Cow & Chicken S02E19**
+   - URL: `https://files.catbox.moe/mcztig.mp4`
+   - Duration: 660s
+
+---
+
+### S2E20
+1. **Cow & Chicken S02E20**
+   - URL: `https://files.catbox.moe/fzyci2.mp4`
+   - Duration: 660s
+
+---
+
+### S2E21
+1. **Cow & Chicken S02E21**
+   - URL: `https://files.catbox.moe/2j2i1y.mp4`
+   - Duration: 660s
+
+---
+
+### S2E22
+1. **Cow & Chicken S02E22**
+   - URL: `https://files.catbox.moe/k6xqh7.mp4`
+   - Duration: 660s
+
+---
+
+### S2E23
+1. **Cow & Chicken S02E23**
+   - URL: `https://files.catbox.moe/i19kw1.mp4`
+   - Duration: 660s
+
+---
+
+### S2E24
+1. **Cow & Chicken S02E24**
+   - URL: `https://files.catbox.moe/wds3gw.mp4`
+   - Duration: 660s
+
+---
+
+### S2E25
+1. **Cow & Chicken S02E25**
+   - URL: `https://files.catbox.moe/r14lzw.mp4`
+   - Duration: 660s
+
+---
+
+### S2E26
+1. **Cow & Chicken S02E26**
+   - URL: `https://files.catbox.moe/2cchso.mp4`
+   - Duration: 660s
 
 ---
 
