@@ -300,10 +300,10 @@
 
         async function loadData() {
             try {
-                // Aggressive cache bust: commit hash + timestamp + random
-                const commitHash = '4bb9d96';
+                // Aggressive cache bust: version + timestamp + random
+                const version = 'v3';
                 const timestamp = new Date().getTime();
-                const cacheBuster = `${commitHash}_${timestamp}_${Math.random().toString(36).substr(2, 9)}`;
+                const cacheBuster = `${version}_${timestamp}_${Math.random().toString(36).substr(2, 9)}`;
                 console.log('Loading weekly lineup with cache buster:', cacheBuster);
                 const response = await fetch('weekly-lineup-v2.json?t=' + cacheBuster);
                 weeklyLineup = await response.json();
