@@ -280,9 +280,17 @@
             </div>
 
             <div class="guide-container">
+                <div class="nav-buttons">
+                    <button class="nav-btn" onclick="changeDay(-1)">◀ YESTERDAY</button>
+                    <button class="nav-btn" onclick="changeDay(1)">TOMORROW ▶</button>
+                </div>
                 <h3 class="lineup-date" id="lineup-date">Select a date to view lineup</h3>
                 <div class="lineup-slots" id="lineup-slots">
                     <!-- Lineup will be displayed here -->
+                </div>
+                <div class="nav-buttons">
+                    <button class="nav-btn" onclick="changeDay(-1)">◀ YESTERDAY</button>
+                    <button class="nav-btn" onclick="changeDay(1)">TOMORROW ▶</button>
                 </div>
             </div>
         </section>
@@ -381,6 +389,14 @@
 
         function selectDate(year, month, day) {
             selectedDate = new Date(year, month, day);
+            renderCalendar();
+            renderLineup();
+        }
+
+        function changeDay(deltaDays) {
+            selectedDate = new Date(selectedDate);
+            selectedDate.setDate(selectedDate.getDate() + deltaDays);
+            currentDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), 1);
             renderCalendar();
             renderLineup();
         }
