@@ -424,7 +424,8 @@
             const SPECIAL_PROGRAMS = new Set([
                 'Paid Programming',
                 'Boondocks Marathon',
-                'Nostalgia Night'
+                'Nostalgia Night',
+                'Nostalgia Night Preshow'
             ]);
 
             const BLOCK_POOLS = {
@@ -600,7 +601,18 @@
                 console.log(`Processing slot: ${slot.program}`);
 
                 const slotTimeBlock = canonicalBlockForSlot(daySlots, i);
-                if (!inCartoonCartoons && slotTimeBlock && slotTimeBlock !== currentTimeBlock && slot.program !== CARTOON_CARTOONS_HEADER) {
+
+                // Only render time block header when:
+                // 1. Not in Cartoon Cartoons
+                // 2. Not a special program
+                // 3. Not already a block header
+                // 4. The time block actually changes
+                if (!inCartoonCartoons &&
+                    slotTimeBlock &&
+                    slotTimeBlock !== currentTimeBlock &&
+                    slot.program !== CARTOON_CARTOONS_HEADER &&
+                    !SPECIAL_PROGRAMS.has(slot.program) &&
+                    slotTimeBlock !== 'CARTOON CARTOONS') {
                     currentTimeBlock = slotTimeBlock;
                     renderTimeBlockHeader(currentTimeBlock, slot.time);
                 }
