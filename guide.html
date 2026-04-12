@@ -271,6 +271,7 @@
                     <button class="nav-btn" onclick="changeMonth(-1)">◀ PREV</button>
                     <h3 id="calendar-month">April 2026</h3>
                     <button class="nav-btn" onclick="changeMonth(1)">NEXT ▶</button>
+                    <button class="nav-btn" onclick="loadData()">RELOAD DATA</button>
                 </div>
                 
                 <div class="calendar-grid" id="calendar">
@@ -299,8 +300,10 @@
 
         async function loadData() {
             try {
+                // Aggressive cache bust: commit hash + timestamp + random
+                const commitHash = '233a4f5';
                 const timestamp = new Date().getTime();
-                const cacheBuster = timestamp + '_' + Math.random().toString(36).substr(2, 9);
+                const cacheBuster = `${commitHash}_${timestamp}_${Math.random().toString(36).substr(2, 9)}`;
                 console.log('Loading weekly lineup with cache buster:', cacheBuster);
                 const response = await fetch('weekly-lineup.json?t=' + cacheBuster);
                 weeklyLineup = await response.json();
