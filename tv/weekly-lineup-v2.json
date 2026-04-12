@@ -451,6 +451,11 @@
     },
     {
         "day":  "Tuesday",
+        "time":  "12:45 AM",
+        "program":  "The Brak Show"
+    },
+    {
+        "day":  "Tuesday",
         "time":  "1:00 AM",
         "program":  "Sealab 2021"
     },
@@ -507,6 +512,11 @@
     {
         "day":  "Tuesday",
         "time":  "5:00 AM",
+        "program":  "The Brak Show"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "5:15 AM",
         "program":  "The Brak Show"
     },
     {
@@ -726,6 +736,11 @@
     },
     {
         "day":  "Wednesday",
+        "time":  "12:45 AM",
+        "program":  "The Brak Show"
+    },
+    {
+        "day":  "Wednesday",
         "time":  "1:00 AM",
         "program":  "Sealab 2021"
     },
@@ -782,6 +797,11 @@
     {
         "day":  "Wednesday",
         "time":  "5:00 AM",
+        "program":  "The Brak Show"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "5:15 AM",
         "program":  "The Brak Show"
     },
     {
@@ -1001,6 +1021,11 @@
     },
     {
         "day":  "Thursday",
+        "time":  "12:45 AM",
+        "program":  "The Brak Show"
+    },
+    {
+        "day":  "Thursday",
         "time":  "1:00 AM",
         "program":  "Sealab 2021"
     },
@@ -1057,6 +1082,11 @@
     {
         "day":  "Thursday",
         "time":  "5:00 AM",
+        "program":  "The Brak Show"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "5:15 AM",
         "program":  "The Brak Show"
     },
     {
@@ -1276,6 +1306,11 @@
     },
     {
         "day":  "Friday",
+        "time":  "12:45 AM",
+        "program":  "The Brak Show"
+    },
+    {
+        "day":  "Friday",
         "time":  "1:00 AM",
         "program":  "Sealab 2021"
     },
@@ -1332,6 +1367,11 @@
     {
         "day":  "Friday",
         "time":  "5:00 AM",
+        "program":  "The Brak Show"
+    },
+    {
+        "day":  "Friday",
+        "time":  "5:15 AM",
         "program":  "The Brak Show"
     },
     {
@@ -1551,6 +1591,11 @@
     },
     {
         "day":  "Saturday",
+        "time":  "12:45 AM",
+        "program":  "The Brak Show"
+    },
+    {
+        "day":  "Saturday",
         "time":  "1:00 AM",
         "program":  "Sealab 2021"
     },
@@ -1607,6 +1652,11 @@
     {
         "day":  "Saturday",
         "time":  "5:00 AM",
+        "program":  "The Brak Show"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "5:15 AM",
         "program":  "The Brak Show"
     },
     {
