@@ -42,42 +42,42 @@
     {
         "day":  "Sunday",
         "time":  "3:00 AM",
-        "program":  "Tom Goes to the Mayor"
-    },
-    {
-        "day":  "Sunday",
-        "time":  "3:15 AM",
-        "program":  "Tom Goes to the Mayor"
+        "program":  "King of the Hill"
     },
     {
         "day":  "Sunday",
         "time":  "3:30 AM",
-        "program":  "The Brak Show"
+        "program":  "King of the Hill"
     },
     {
         "day":  "Sunday",
         "time":  "4:00 AM",
-        "program":  "Sealab 2021"
+        "program":  "Family Guy"
     },
     {
         "day":  "Sunday",
         "time":  "4:30 AM",
-        "program":  "King of the Hill"
+        "program":  "Family Guy"
     },
     {
         "day":  "Sunday",
         "time":  "5:00 AM",
-        "program":  "King of the Hill"
+        "program":  "Aqua Teen Hunger Force"
+    },
+    {
+        "day":  "Sunday",
+        "time":  "5:15 AM",
+        "program":  "Aqua Teen Hunger Force"
     },
     {
         "day":  "Sunday",
         "time":  "5:30 AM",
-        "program":  "Family Guy"
+        "program":  "Home Movies"
     },
     {
         "day":  "Sunday",
-        "time":  "6:00 AM",
-        "program":  "Family Guy"
+        "time":  "5:45 AM",
+        "program":  "Home Movies"
     },
     {
         "day":  "Sunday",
@@ -87,17 +87,7 @@
     {
         "day":  "Sunday",
         "time":  "6:30 AM",
-        "program":  "Aqua Teen Hunger Force"
-    },
-    {
-        "day":  "Sunday",
-        "time":  "6:30 AM",
         "program":  "Dexter\u0027s Laboratory"
-    },
-    {
-        "day":  "Sunday",
-        "time":  "6:45 AM",
-        "program":  "Aqua Teen Hunger Force"
     },
     {
         "day":  "Sunday",
@@ -197,6 +187,11 @@
     {
         "day":  "Sunday",
         "time":  "11:30 PM",
+        "program":  "King of the Hill"
+    },
+    {
+        "day":  "Monday",
+        "time":  "12:00 AM",
         "program":  "Family Guy"
     },
     {
@@ -206,18 +201,13 @@
     },
     {
         "day":  "Monday",
-        "time":  "12:00 AM",
-        "program":  "The Venture Bros"
-    },
-    {
-        "day":  "Monday",
         "time":  "12:15 AM",
         "program":  "Tom Goes to the Mayor"
     },
     {
         "day":  "Monday",
         "time":  "12:30 AM",
-        "program":  "The Venture Bros"
+        "program":  "Family Guy"
     },
     {
         "day":  "Monday",
@@ -227,7 +217,7 @@
     {
         "day":  "Monday",
         "time":  "1:00 AM",
-        "program":  "Aqua Teen Hunger Force"
+        "program":  "The Venture Bros"
     },
     {
         "day":  "Monday",
@@ -236,28 +226,18 @@
     },
     {
         "day":  "Monday",
-        "time":  "1:15 AM",
-        "program":  "Aqua Teen Hunger Force"
-    },
-    {
-        "day":  "Monday",
         "time":  "1:30 AM",
-        "program":  "Space Ghost Coast to Coast"
-    },
-    {
-        "day":  "Monday",
-        "time":  "1:45 AM",
-        "program":  "Space Ghost Coast to Coast"
+        "program":  "The Venture Bros"
     },
     {
         "day":  "Monday",
         "time":  "2:00 AM",
-        "program":  "Tom Goes to the Mayor"
+        "program":  "Aqua Teen Hunger Force"
     },
     {
         "day":  "Monday",
         "time":  "2:15 AM",
-        "program":  "Tom Goes to the Mayor"
+        "program":  "Aqua Teen Hunger Force"
     },
     {
         "day":  "Monday",
@@ -481,8 +461,28 @@
     },
     {
         "day":  "Tuesday",
+        "time":  "12:00 AM",
+        "program":  "Tom Goes to the Mayor"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "12:15 AM",
+        "program":  "Tom Goes to the Mayor"
+    },
+    {
+        "day":  "Tuesday",
         "time":  "12:30 AM",
         "program":  "King of the Hill"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "12:30 AM",
+        "program":  "The Brak Show"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "1:00 AM",
+        "program":  "Sealab 2021"
     },
     {
         "day":  "Tuesday",
@@ -562,12 +562,12 @@
     {
         "day":  "Tuesday",
         "time":  "6:30 AM",
-        "program":  "Aqua Teen Hunger Force"
+        "program":  "Dexter\u0027s Laboratory"
     },
     {
         "day":  "Tuesday",
         "time":  "6:30 AM",
-        "program":  "Dexter\u0027s Laboratory"
+        "program":  "Aqua Teen Hunger Force"
     },
     {
         "day":  "Tuesday",
@@ -750,9 +750,34 @@
         "program":  "Aqua Teen Hunger Force"
     },
     {
+        "day":  "Tuesday",
+        "time":  "11:30 PM",
+        "program":  "Home Movies"
+    },
+    {
+        "day":  "Tuesday",
+        "time":  "11:45 PM",
+        "program":  "Home Movies"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "12:00 AM",
+        "program":  "Tom Goes to the Mayor"
+    },
+    {
         "day":  "Wednesday",
         "time":  "12:00 AM",
         "program":  "King of the Hill"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "12:15 AM",
+        "program":  "Tom Goes to the Mayor"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "12:30 AM",
+        "program":  "The Brak Show"
     },
     {
         "day":  "Wednesday",
@@ -763,6 +788,11 @@
         "day":  "Wednesday",
         "time":  "1:00 AM",
         "program":  "Family Guy"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "1:00 AM",
+        "program":  "Sealab 2021"
     },
     {
         "day":  "Wednesday",
@@ -1025,14 +1055,44 @@
         "program":  "Aqua Teen Hunger Force"
     },
     {
+        "day":  "Wednesday",
+        "time":  "11:30 PM",
+        "program":  "Home Movies"
+    },
+    {
+        "day":  "Wednesday",
+        "time":  "11:45 PM",
+        "program":  "Home Movies"
+    },
+    {
         "day":  "Thursday",
         "time":  "12:00 AM",
         "program":  "King of the Hill"
     },
     {
         "day":  "Thursday",
+        "time":  "12:00 AM",
+        "program":  "Tom Goes to the Mayor"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "12:15 AM",
+        "program":  "Tom Goes to the Mayor"
+    },
+    {
+        "day":  "Thursday",
         "time":  "12:30 AM",
         "program":  "King of the Hill"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "12:30 AM",
+        "program":  "The Brak Show"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "1:00 AM",
+        "program":  "Sealab 2021"
     },
     {
         "day":  "Thursday",
@@ -1102,12 +1162,12 @@
     {
         "day":  "Thursday",
         "time":  "6:00 AM",
-        "program":  "Family Guy"
+        "program":  "Dexter\u0027s Laboratory"
     },
     {
         "day":  "Thursday",
         "time":  "6:00 AM",
-        "program":  "Dexter\u0027s Laboratory"
+        "program":  "Family Guy"
     },
     {
         "day":  "Thursday",
@@ -1300,9 +1360,29 @@
         "program":  "Aqua Teen Hunger Force"
     },
     {
+        "day":  "Thursday",
+        "time":  "11:30 PM",
+        "program":  "Home Movies"
+    },
+    {
+        "day":  "Thursday",
+        "time":  "11:45 PM",
+        "program":  "Home Movies"
+    },
+    {
+        "day":  "Friday",
+        "time":  "12:00 AM",
+        "program":  "Tom Goes to the Mayor"
+    },
+    {
         "day":  "Friday",
         "time":  "12:00 AM",
         "program":  "King of the Hill"
+    },
+    {
+        "day":  "Friday",
+        "time":  "12:15 AM",
+        "program":  "Tom Goes to the Mayor"
     },
     {
         "day":  "Friday",
@@ -1311,8 +1391,18 @@
     },
     {
         "day":  "Friday",
+        "time":  "12:30 AM",
+        "program":  "The Brak Show"
+    },
+    {
+        "day":  "Friday",
         "time":  "1:00 AM",
         "program":  "Family Guy"
+    },
+    {
+        "day":  "Friday",
+        "time":  "1:00 AM",
+        "program":  "Sealab 2021"
     },
     {
         "day":  "Friday",
@@ -1377,22 +1467,22 @@
     {
         "day":  "Friday",
         "time":  "6:00 AM",
-        "program":  "Dexter\u0027s Laboratory"
+        "program":  "Family Guy"
     },
     {
         "day":  "Friday",
         "time":  "6:00 AM",
-        "program":  "Family Guy"
+        "program":  "Dexter\u0027s Laboratory"
+    },
+    {
+        "day":  "Friday",
+        "time":  "6:30 AM",
+        "program":  "Dexter\u0027s Laboratory"
     },
     {
         "day":  "Friday",
         "time":  "6:30 AM",
         "program":  "Aqua Teen Hunger Force"
-    },
-    {
-        "day":  "Friday",
-        "time":  "6:30 AM",
-        "program":  "Dexter\u0027s Laboratory"
     },
     {
         "day":  "Friday",
@@ -1575,6 +1665,16 @@
         "program":  "Aqua Teen Hunger Force"
     },
     {
+        "day":  "Friday",
+        "time":  "11:30 PM",
+        "program":  "Home Movies"
+    },
+    {
+        "day":  "Friday",
+        "time":  "11:45 PM",
+        "program":  "Home Movies"
+    },
+    {
         "day":  "Saturday",
         "time":  "12:00 AM",
         "program":  "King of the Hill"
@@ -1633,6 +1733,21 @@
         "day":  "Saturday",
         "time":  "4:00 AM",
         "program":  "Sealab 2021"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "4:30 AM",
+        "program":  "King of the Hill"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "5:00 AM",
+        "program":  "King of the Hill"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "5:30 AM",
+        "program":  "Family Guy"
     },
     {
         "day":  "Saturday",
@@ -1643,5 +1758,20 @@
         "day":  "Saturday",
         "time":  "6:00 AM",
         "program":  "The Boondocks"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "6:00 AM",
+        "program":  "Family Guy"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "6:30 AM",
+        "program":  "Aqua Teen Hunger Force"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "6:45 AM",
+        "program":  "Aqua Teen Hunger Force"
     }
 ]
