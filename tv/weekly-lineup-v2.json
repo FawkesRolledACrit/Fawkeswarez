@@ -127,17 +127,22 @@
     {
         "day":  "Sunday",
         "time":  "12:00 PM",
+        "program":  "TBD"
+    },
+    {
+        "day":  "Sunday",
+        "time":  "12:00 PM",
         "program":  "Nostalgia Night Preshow"
     },
     {
         "day":  "Sunday",
         "time":  "3:00 PM",
-        "program":  "Movie Night"
+        "program":  "Men in Black"
     },
     {
         "day":  "Sunday",
         "time":  "3:00 PM",
-        "program":  "Men in Black"
+        "program":  "Movie Night"
     },
     {
         "day":  "Sunday",

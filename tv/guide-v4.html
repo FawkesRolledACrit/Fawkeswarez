@@ -422,7 +422,8 @@
                 'Nostalgia Night',
                 'Nostalgia Night Preshow',
                 'Men in Black',
-                'Back to the Future'
+                'Back to the Future',
+                'TBD'
             ]);
 
             const BLOCK_POOLS = {
@@ -442,7 +443,8 @@
                     'The Boondocks'
                 ]),
                 'NOSTALGIA NIGHT PRESHOW': new Set([
-                    'Nostalgia Night Preshow'
+                    'Nostalgia Night Preshow',
+                    'TBD'
                 ]),
                 'NOSTALGIA NIGHT': new Set([
                     'Men in Black',
@@ -508,17 +510,15 @@
                         statusText = '🎥';
                     }
                 } else if (slot.program === 'Men in Black' || slot.program === 'Back to the Future') {
-                    const hasMovies = scheduleData && scheduleData.blocks && scheduleData.blocks.some(block => block.blockType === 'movie');
-                    if (hasMovies) {
-                        // Show which movie is playing based on occurrence
-                        const movieBlocks = scheduleData.blocks.filter(block => block.blockType === 'movie');
-                        const occ = getProgramOccurrenceIndex(slot.program, slot.time, selectedDate);
-                        const movieIndex = occ % movieBlocks.length;
-                        const movieTitle = movieBlocks[movieIndex].title;
-                        episodeInfo = `<div class="slot-episode">${movieTitle}</div>`;
-                        statusClass = 'special';
-                        statusText = '🎥';
-                    }
+                    // Movies are special programs - show the movie name itself as the episode
+                    episodeInfo = `<div class="slot-episode">${slot.program}</div>`;
+                    statusClass = 'special';
+                    statusText = '🎥';
+                } else if (slot.program === 'TBD') {
+                    // TBD placeholder
+                    episodeInfo = '<div class="slot-episode">To be announced</div>';
+                    statusClass = 'off-air';
+                    statusText = '🔜';
                 } else {
                     // Regular shows - check if they have episodes
                     hasEpisodes = scheduleData && scheduleData.blocks && scheduleData.blocks.some(block => {
