@@ -111,7 +111,7 @@
   },
   {
     "day": "Monday",
-    "time": "8:30 AM",
+    "time": "9:00 AM",
     "program": "Sheep in the Big City"
   },
   {
@@ -156,17 +156,7 @@
   },
   {
     "day": "Monday",
-    "time": "1:00 PM",
-    "program": "Sheep in the Big City"
-  },
-  {
-    "day": "Monday",
-    "time": "1:15 PM",
-    "program": "Cartoon Cartoons"
-  },
-  {
-    "day": "Monday",
-    "time": "1:15 PM",
+    "time": "1:30 PM",
     "program": "Sheep in the Big City"
   },
   {
@@ -346,7 +336,7 @@
   },
   {
     "day": "Tuesday",
-    "time": "8:00 AM",
+    "time": "8:30 AM",
     "program": "Sheep in the Big City"
   },
   {
@@ -391,7 +381,7 @@
   },
   {
     "day": "Tuesday",
-    "time": "12:30 PM",
+    "time": "1:00 PM",
     "program": "Sheep in the Big City"
   },
   {
@@ -576,7 +566,7 @@
   },
   {
     "day": "Wednesday",
-    "time": "7:30 AM",
+    "time": "8:00 AM",
     "program": "Sheep in the Big City"
   },
   {
@@ -621,7 +611,7 @@
   },
   {
     "day": "Wednesday",
-    "time": "12:00 PM",
+    "time": "12:30 PM",
     "program": "Sheep in the Big City"
   },
   {
@@ -806,7 +796,7 @@
   },
   {
     "day": "Thursday",
-    "time": "7:00 AM",
+    "time": "7:30 AM",
     "program": "Sheep in the Big City"
   },
   {
@@ -851,7 +841,7 @@
   },
   {
     "day": "Thursday",
-    "time": "11:30 AM",
+    "time": "12:00 PM",
     "program": "Sheep in the Big City"
   },
   {
@@ -1046,7 +1036,7 @@
   },
   {
     "day": "Friday",
-    "time": "6:30 AM",
+    "time": "7:00 AM",
     "program": "Sheep in the Big City"
   },
   {
@@ -1091,7 +1081,7 @@
   },
   {
     "day": "Friday",
-    "time": "11:00 AM",
+    "time": "11:30 AM",
     "program": "Sheep in the Big City"
   },
   {
@@ -1396,7 +1386,7 @@
   },
   {
     "day": "Sunday",
-    "time": "8:00 AM",
+    "time": "8:30 AM",
     "program": "Sheep in the Big City"
   },
   {
@@ -1440,14 +1430,14 @@
     "program": "Cartoon Cartoons"
   },
   {
-    "day": "Sunday",
-    "time": "12:30 PM",
-    "program": "Sheep in the Big City"
-  },
-  {
     "time": "1:00 PM",
     "day": "Sunday",
     "program": "Nostalgia Night Preshow"
+  },
+  {
+    "day": "Sunday",
+    "time": "1:00 PM",
+    "program": "Sheep in the Big City"
   },
   {
     "time": "1:30 PM",
