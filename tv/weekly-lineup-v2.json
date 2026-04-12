@@ -131,36 +131,6 @@
     },
     {
         "day":  "Sunday",
-        "time":  "12:00 PM",
-        "program":  "Nostalgia Night Preshow"
-    },
-    {
-        "day":  "Sunday",
-        "time":  "12:30 PM",
-        "program":  "Nostalgia Night Preshow"
-    },
-    {
-        "day":  "Sunday",
-        "time":  "1:00 PM",
-        "program":  "Nostalgia Night Preshow"
-    },
-    {
-        "day":  "Sunday",
-        "time":  "1:30 PM",
-        "program":  "Nostalgia Night Preshow"
-    },
-    {
-        "day":  "Sunday",
-        "time":  "2:00 PM",
-        "program":  "Nostalgia Night Preshow"
-    },
-    {
-        "day":  "Sunday",
-        "time":  "2:30 PM",
-        "program":  "Nostalgia Night Preshow"
-    },
-    {
-        "day":  "Sunday",
         "time":  "3:00 PM",
         "program":  "Movie Night"
     },
@@ -212,12 +182,12 @@
     {
         "day":  "Monday",
         "time":  "12:30 AM",
-        "program":  "The Brak Show"
+        "program":  "The Venture Bros"
     },
     {
         "day":  "Monday",
         "time":  "12:30 AM",
-        "program":  "The Venture Bros"
+        "program":  "The Brak Show"
     },
     {
         "day":  "Monday",
