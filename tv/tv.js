@@ -328,7 +328,8 @@ class LiveStreamPlayer {
         if (this.lineupBtn) {
             this.lineupBtn.addEventListener('click', () => {
                 console.log('Lineup button clicked!');
-                window.location.href = './guide.html';
+                const cacheBust = Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+                window.location.href = './guide-v4.html?t=' + cacheBust;
             });
             console.log('Lineup button listener added');
         }
