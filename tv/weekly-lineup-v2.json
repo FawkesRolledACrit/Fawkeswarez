@@ -241,31 +241,6 @@
     },
     {
         "day":  "Monday",
-        "time":  "3:30 AM",
-        "program":  "Paid Programming"
-    },
-    {
-        "day":  "Monday",
-        "time":  "4:00 AM",
-        "program":  "Paid Programming"
-    },
-    {
-        "day":  "Monday",
-        "time":  "4:30 AM",
-        "program":  "Paid Programming"
-    },
-    {
-        "day":  "Monday",
-        "time":  "5:00 AM",
-        "program":  "Paid Programming"
-    },
-    {
-        "day":  "Monday",
-        "time":  "5:30 AM",
-        "program":  "Paid Programming"
-    },
-    {
-        "day":  "Monday",
         "time":  "6:00 AM",
         "program":  "Dexter\u0027s Laboratory"
     },
