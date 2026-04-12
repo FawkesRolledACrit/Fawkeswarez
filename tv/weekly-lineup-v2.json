@@ -1636,6 +1636,21 @@
     },
     {
         "day":  "Saturday",
+        "time":  "4:30 AM",
+        "program":  "King of the Hill"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "5:00 AM",
+        "program":  "King of the Hill"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "5:30 AM",
+        "program":  "Family Guy"
+    },
+    {
+        "day":  "Saturday",
         "time":  "5:59 AM",
         "program":  "Weekend Boon"
     },
@@ -1646,22 +1661,17 @@
     },
     {
         "day":  "Saturday",
-        "time":  "10:00 PM",
-        "program":  "King of the Hill"
-    },
-    {
-        "day":  "Saturday",
-        "time":  "10:30 PM",
-        "program":  "King of the Hill"
-    },
-    {
-        "day":  "Saturday",
-        "time":  "11:00 PM",
+        "time":  "6:00 AM",
         "program":  "Family Guy"
     },
     {
         "day":  "Saturday",
-        "time":  "11:30 PM",
-        "program":  "Family Guy"
+        "time":  "6:30 AM",
+        "program":  "Aqua Teen Hunger Force"
+    },
+    {
+        "day":  "Saturday",
+        "time":  "6:45 AM",
+        "program":  "Aqua Teen Hunger Force"
     }
 ]
