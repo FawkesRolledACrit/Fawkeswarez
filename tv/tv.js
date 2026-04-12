@@ -193,6 +193,72 @@ class LiveStreamPlayer {
         return slotStart.getTime();
     }
 
+    getDayIndexFromName(dayName) {
+        const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        return days.indexOf(dayName);
+    }
+
+    getProgramOccurrencesForDay(program, dayName) {
+        if (!this.weeklySlotsByDay || !dayName) return [];
+        const slots = this.weeklySlotsByDay[dayName] || [];
+        return slots
+            .filter(s => s?.program === program)
+            .map(s => s.startMin)
+            .sort((a, b) => a - b);
+    }
+
+    getProgramWeeklyCount(program) {
+        if (!this.weeklySlotsByDay || !program) return 0;
+        let total = 0;
+        for (const dayName of Object.keys(this.weeklySlotsByDay)) {
+            total += this.getProgramOccurrencesForDay(program, dayName).length;
+        }
+        return total;
+    }
+
+    getProgramOccurrenceIndex(program, weeklySlot, slotStartMs, scheduleStartMs) {
+        if (!program || !weeklySlot || !Number.isFinite(slotStartMs) || !Number.isFinite(scheduleStartMs)) return 0;
+        if (!this.weeklySlotsByDay) return 0;
+
+        // Count how many times this program's slot has occurred since scheduleStartMs (exclusive),
+        // up to this slot (exclusive). This makes episode progression chronological per airing.
+        const slotStart = new Date(slotStartMs);
+        const slotDayStart = new Date(slotStart);
+        slotDayStart.setHours(0, 0, 0, 0);
+
+        const scheduleStart = new Date(scheduleStartMs);
+        const scheduleDayStart = new Date(scheduleStart);
+        scheduleDayStart.setHours(0, 0, 0, 0);
+
+        const MS_PER_DAY = 24 * 60 * 60 * 1000;
+        const daysDiff = Math.floor((slotDayStart.getTime() - scheduleDayStart.getTime()) / MS_PER_DAY);
+        if (daysDiff < 0) return 0;
+
+        const weeklyCount = this.getProgramWeeklyCount(program);
+        if (weeklyCount <= 0) return 0;
+
+        // Whole weeks between the anchor day and current day.
+        const wholeWeeks = Math.floor(daysDiff / 7);
+        let total = wholeWeeks * weeklyCount;
+
+        // Remaining days in the partial week.
+        const remDays = daysDiff % 7;
+        for (let i = 0; i < remDays; i++) {
+            const d = new Date(scheduleDayStart.getTime() + ((wholeWeeks * 7 + i) * MS_PER_DAY));
+            const dayName = this.getDayName(d);
+            total += this.getProgramOccurrencesForDay(program, dayName).length;
+        }
+
+        // Current day: count occurrences strictly before this slot start.
+        const currentDayName = this.getDayName(slotStart);
+        const starts = this.getProgramOccurrencesForDay(program, currentDayName);
+        for (const sMin of starts) {
+            if (sMin < weeklySlot.startMin) total += 1;
+        }
+
+        return total;
+    }
+
     minutesToTime(minutes) {
         const hours = Math.floor(minutes / 60);
         const mins = minutes % 60;
@@ -693,16 +759,14 @@ class LiveStreamPlayer {
 
         if (!programBlocks.length) return queue;
 
-        // Date-based rotation: schedule.startDate at 00:00 maps to blocks[0].
-        // Then every *weekly slot* (15 min or 30 min, depending on lineup) advances.
-        let startBlockIndex = 0;
+        // Chronological progression: schedule.startDate at 00:00 maps to blocks[0].
+        // Then each time the program appears in the weekly lineup, advance by 1 episode.
         if (this.schedule?.startDate) {
             const startMs = Date.parse(this.schedule.startDate + 'T00:00:00');
             if (!Number.isNaN(startMs)) {
-                const slotDurationMs = this.getSlotDurationMs(weeklySlot);
                 const slotStartMs = this.getSlotStartMsForNow(weeklySlot);
-                const rel = Math.floor((slotStartMs - startMs) / slotDurationMs);
-                const episodeIndex = ((rel % programBlocks.length) + programBlocks.length) % programBlocks.length;
+                const occ = this.getProgramOccurrenceIndex(program, weeklySlot, slotStartMs, startMs);
+                const episodeIndex = ((occ % programBlocks.length) + programBlocks.length) % programBlocks.length;
                 const block = programBlocks[episodeIndex];
 
                 let usedTime = 0;

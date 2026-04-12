@@ -1,5 +1,20 @@
 [
   {
+    "time": "12:00 AM",
+    "day": "Monday",
+    "program": "Space Ghost Coast to Coast"
+  },
+  {
+    "time": "12:15 AM",
+    "day": "Monday",
+    "program": "Space Ghost Coast to Coast"
+  },
+  {
+    "time": "12:30 AM",
+    "day": "Monday",
+    "program": "The Venture Bros"
+  },
+  {
     "time": "1:00 AM",
     "day": "Monday",
     "program": "Aqua Teen Hunger Force"
@@ -27,42 +42,42 @@
   {
     "time": "3:00 AM",
     "day": "Monday",
-    "program": "Brak Show"
+    "program": "Paid Programming"
   },
   {
     "time": "3:30 AM",
     "day": "Monday",
-    "program": "Home Movies"
+    "program": "Paid Programming"
   },
   {
     "time": "4:00 AM",
     "day": "Monday",
-    "program": "Space Ghost Coast to Coast"
+    "program": "Paid Programming"
   },
   {
     "time": "4:15 AM",
     "day": "Monday",
-    "program": "Space Ghost Coast to Coast"
+    "program": "Paid Programming"
   },
   {
     "time": "4:30 AM",
     "day": "Monday",
-    "program": "The Venture Bros"
+    "program": "Paid Programming"
   },
   {
     "time": "5:00 AM",
     "day": "Monday",
-    "program": "Aqua Teen Hunger Force"
+    "program": "Paid Programming"
   },
   {
     "time": "5:15 AM",
     "day": "Monday",
-    "program": "Aqua Teen Hunger Force"
+    "program": "Paid Programming"
   },
   {
     "time": "5:30 AM",
     "day": "Monday",
-    "program": "Harvey Birdman, Attorney at Law"
+    "program": "Paid Programming"
   },
   {
     "time": "6:00 AM",
@@ -125,24 +140,9 @@
     "program": "Ed, Edd n Eddy"
   },
   {
-    "time": "12:00 AM",
-    "day": "Monday",
-    "program": "Space Ghost Coast to Coast"
-  },
-  {
     "time": "12:00 PM",
     "day": "Monday",
     "program": "Johnny Bravo"
-  },
-  {
-    "time": "12:15 AM",
-    "day": "Monday",
-    "program": "Space Ghost Coast to Coast"
-  },
-  {
-    "time": "12:30 AM",
-    "day": "Monday",
-    "program": "The Venture Bros"
   },
   {
     "time": "12:30 PM",
@@ -258,6 +258,16 @@
     "time": "11:30 PM",
     "day": "Monday",
     "program": "Home Movies"
+  },
+  {
+    "time": "12:00 AM",
+    "day": "Tuesday",
+    "program": "Home Movies"
+  },
+  {
+    "time": "12:30 AM",
+    "day": "Tuesday",
+    "program": "Brak Show"
   },
   {
     "time": "1:00 AM",
@@ -380,19 +390,9 @@
     "program": "Johnny Bravo"
   },
   {
-    "time": "12:00 AM",
-    "day": "Tuesday",
-    "program": "Home Movies"
-  },
-  {
     "time": "12:00 PM",
     "day": "Tuesday",
     "program": "Courage the Cowardly Dog"
-  },
-  {
-    "time": "12:30 AM",
-    "day": "Tuesday",
-    "program": "Brak Show"
   },
   {
     "time": "12:30 PM",
@@ -520,6 +520,21 @@
     "program": "Space Ghost Coast to Coast"
   },
   {
+    "time": "12:00 AM",
+    "day": "Wednesday",
+    "program": "Space Ghost Coast to Coast"
+  },
+  {
+    "time": "12:15 AM",
+    "day": "Wednesday",
+    "program": "Space Ghost Coast to Coast"
+  },
+  {
+    "time": "12:30 AM",
+    "day": "Wednesday",
+    "program": "The Venture Bros"
+  },
+  {
     "time": "1:00 AM",
     "day": "Wednesday",
     "program": "Aqua Teen Hunger Force"
@@ -645,24 +660,9 @@
     "program": "Courage the Cowardly Dog"
   },
   {
-    "time": "12:00 AM",
-    "day": "Wednesday",
-    "program": "Space Ghost Coast to Coast"
-  },
-  {
     "time": "12:00 PM",
     "day": "Wednesday",
     "program": "Cow & Chicken"
-  },
-  {
-    "time": "12:15 AM",
-    "day": "Wednesday",
-    "program": "Space Ghost Coast to Coast"
-  },
-  {
-    "time": "12:30 AM",
-    "day": "Wednesday",
-    "program": "The Venture Bros"
   },
   {
     "time": "12:30 PM",
@@ -783,6 +783,21 @@
     "time": "11:30 PM",
     "day": "Wednesday",
     "program": "The Venture Bros"
+  },
+  {
+    "time": "12:00 AM",
+    "day": "Thursday",
+    "program": "The Venture Bros"
+  },
+  {
+    "time": "12:30 AM",
+    "day": "Thursday",
+    "program": "Space Ghost Coast to Coast"
+  },
+  {
+    "time": "12:45 AM",
+    "day": "Thursday",
+    "program": "Space Ghost Coast to Coast"
   },
   {
     "time": "1:00 AM",
@@ -905,29 +920,14 @@
     "program": "Cow & Chicken"
   },
   {
-    "time": "12:00 AM",
-    "day": "Thursday",
-    "program": "The Venture Bros"
-  },
-  {
     "time": "12:00 PM",
     "day": "Thursday",
     "program": "I Am Weasel"
   },
   {
-    "time": "12:30 AM",
-    "day": "Thursday",
-    "program": "Space Ghost Coast to Coast"
-  },
-  {
     "time": "12:30 PM",
     "day": "Thursday",
     "program": "Billy & Mandy"
-  },
-  {
-    "time": "12:45 AM",
-    "day": "Thursday",
-    "program": "Space Ghost Coast to Coast"
   },
   {
     "time": "1:00 PM",
@@ -1043,6 +1043,21 @@
     "time": "11:30 PM",
     "day": "Thursday",
     "program": "Sealab 2021"
+  },
+  {
+    "time": "12:00 AM",
+    "day": "Friday",
+    "program": "Sealab 2021"
+  },
+  {
+    "time": "12:30 AM",
+    "day": "Friday",
+    "program": "Aqua Teen Hunger Force"
+  },
+  {
+    "time": "12:45 AM",
+    "day": "Friday",
+    "program": "Aqua Teen Hunger Force"
   },
   {
     "time": "1:00 AM",
@@ -1165,29 +1180,14 @@
     "program": "I Am Weasel"
   },
   {
-    "time": "12:00 AM",
-    "day": "Friday",
-    "program": "Sealab 2021"
-  },
-  {
     "time": "12:00 PM",
     "day": "Friday",
     "program": "Billy & Mandy"
   },
   {
-    "time": "12:30 AM",
-    "day": "Friday",
-    "program": "Aqua Teen Hunger Force"
-  },
-  {
     "time": "12:30 PM",
     "day": "Friday",
     "program": "Foster's Home"
-  },
-  {
-    "time": "12:45 AM",
-    "day": "Friday",
-    "program": "Aqua Teen Hunger Force"
   },
   {
     "time": "1:00 PM",
@@ -1377,177 +1377,7 @@
   {
     "time": "6:00 AM",
     "day": "Saturday",
-    "program": "Dexter's Laboratory"
-  },
-  {
-    "time": "6:30 AM",
-    "day": "Saturday",
-    "program": "The Powerpuff Girls"
-  },
-  {
-    "time": "7:00 AM",
-    "day": "Saturday",
-    "program": "Ed, Edd n Eddy"
-  },
-  {
-    "time": "7:30 AM",
-    "day": "Saturday",
-    "program": "Johnny Bravo"
-  },
-  {
-    "time": "8:00 AM",
-    "day": "Saturday",
-    "program": "Courage the Cowardly Dog"
-  },
-  {
-    "time": "8:30 AM",
-    "day": "Saturday",
-    "program": "Cow & Chicken"
-  },
-  {
-    "time": "9:00 AM",
-    "day": "Saturday",
-    "program": "I Am Weasel"
-  },
-  {
-    "time": "9:30 AM",
-    "day": "Saturday",
-    "program": "Billy & Mandy"
-  },
-  {
-    "time": "10:00 AM",
-    "day": "Saturday",
-    "program": "Foster's Home"
-  },
-  {
-    "time": "10:30 AM",
-    "day": "Saturday",
-    "program": "Dexter's Laboratory"
-  },
-  {
-    "time": "11:00 AM",
-    "day": "Saturday",
-    "program": "The Powerpuff Girls"
-  },
-  {
-    "time": "11:30 AM",
-    "day": "Saturday",
-    "program": "Ed, Edd n Eddy"
-  },
-  {
-    "time": "12:00 AM",
-    "day": "Saturday",
-    "program": "Harvey Birdman, Attorney at Law"
-  },
-  {
-    "time": "12:00 PM",
-    "day": "Saturday",
-    "program": "Johnny Bravo"
-  },
-  {
-    "time": "12:30 AM",
-    "day": "Saturday",
-    "program": "Aqua Teen Hunger Force"
-  },
-  {
-    "time": "12:30 PM",
-    "day": "Saturday",
-    "program": "Courage the Cowardly Dog"
-  },
-  {
-    "time": "12:45 AM",
-    "day": "Saturday",
-    "program": "Aqua Teen Hunger Force"
-  },
-  {
-    "time": "1:00 PM",
-    "day": "Saturday",
-    "program": "Cow & Chicken"
-  },
-  {
-    "time": "1:30 PM",
-    "day": "Saturday",
-    "program": "I Am Weasel"
-  },
-  {
-    "time": "2:00 PM",
-    "day": "Saturday",
-    "program": "Billy & Mandy"
-  },
-  {
-    "time": "2:30 PM",
-    "day": "Saturday",
-    "program": "Foster's Home"
-  },
-  {
-    "time": "3:00 PM",
-    "day": "Saturday",
-    "program": "Teen Titans"
-  },
-  {
-    "time": "3:30 PM",
-    "day": "Saturday",
-    "program": "Justice League"
-  },
-  {
-    "time": "4:00 PM",
-    "day": "Saturday",
-    "program": "Dragon Ball Z"
-  },
-  {
-    "time": "4:30 PM",
-    "day": "Saturday",
-    "program": "Samurai Jack"
-  },
-  {
-    "time": "5:00 PM",
-    "day": "Saturday",
-    "program": "Teen Titans"
-  },
-  {
-    "time": "5:30 PM",
-    "day": "Saturday",
-    "program": "Justice League"
-  },
-  {
-    "time": "6:00 PM",
-    "day": "Saturday",
-    "program": "Dragon Ball Z"
-  },
-  {
-    "time": "6:30 PM",
-    "day": "Saturday",
-    "program": "Samurai Jack"
-  },
-  {
-    "time": "7:00 PM",
-    "day": "Saturday",
-    "program": "Teen Titans"
-  },
-  {
-    "time": "7:30 PM",
-    "day": "Saturday",
-    "program": "Justice League"
-  },
-  {
-    "time": "8:00 PM",
-    "day": "Saturday",
-    "program": "Dragon Ball Z"
-  },
-  {
-    "time": "8:30 PM",
-    "day": "Saturday",
-    "program": "Samurai Jack"
-  },
-  {
-    "time": "9:00 PM",
-    "day": "Saturday",
-    "program": "Teen Titans"
-  },
-  {
-    "time": "9:30 PM",
-    "day": "Saturday",
-    "program": "Justice League"
+    "program": "Boondocks Marathon"
   },
   {
     "time": "10:00 PM",
@@ -1567,6 +1397,16 @@
   {
     "time": "11:30 PM",
     "day": "Saturday",
+    "program": "Sealab 2021"
+  },
+  {
+    "time": "12:00 AM",
+    "day": "Sunday",
+    "program": "Tom Goes to the Mayor"
+  },
+  {
+    "time": "12:30 AM",
+    "day": "Sunday",
     "program": "Sealab 2021"
   },
   {
@@ -1690,19 +1530,9 @@
     "program": "Johnny Bravo"
   },
   {
-    "time": "12:00 AM",
-    "day": "Sunday",
-    "program": "Tom Goes to the Mayor"
-  },
-  {
     "time": "12:00 PM",
     "day": "Sunday",
     "program": "Courage the Cowardly Dog"
-  },
-  {
-    "time": "12:30 AM",
-    "day": "Sunday",
-    "program": "Sealab 2021"
   },
   {
     "time": "12:30 PM",
@@ -1712,107 +1542,107 @@
   {
     "time": "1:00 PM",
     "day": "Sunday",
-    "program": "I Am Weasel"
+    "program": "Nostalgia Night Preshow"
   },
   {
     "time": "1:30 PM",
     "day": "Sunday",
-    "program": "Billy & Mandy"
+    "program": "Nostalgia Night Preshow"
   },
   {
     "time": "2:00 PM",
     "day": "Sunday",
-    "program": "Foster's Home"
+    "program": "Nostalgia Night Preshow"
   },
   {
     "time": "2:30 PM",
     "day": "Sunday",
-    "program": "Dexter's Laboratory"
+    "program": "Nostalgia Night Preshow"
   },
   {
     "time": "3:00 PM",
     "day": "Sunday",
-    "program": "Justice League"
+    "program": "Nostalgia Night"
   },
   {
     "time": "3:30 PM",
     "day": "Sunday",
-    "program": "Dragon Ball Z"
+    "program": "Nostalgia Night"
   },
   {
     "time": "4:00 PM",
     "day": "Sunday",
-    "program": "Samurai Jack"
+    "program": "Nostalgia Night"
   },
   {
     "time": "4:30 PM",
     "day": "Sunday",
-    "program": "Teen Titans"
+    "program": "Nostalgia Night"
   },
   {
     "time": "5:00 PM",
     "day": "Sunday",
-    "program": "Justice League"
+    "program": "Nostalgia Night"
   },
   {
     "time": "5:30 PM",
     "day": "Sunday",
-    "program": "Dragon Ball Z"
+    "program": "Nostalgia Night"
   },
   {
     "time": "6:00 PM",
     "day": "Sunday",
-    "program": "Samurai Jack"
+    "program": "Nostalgia Night"
   },
   {
     "time": "6:30 PM",
     "day": "Sunday",
-    "program": "Teen Titans"
+    "program": "Nostalgia Night"
   },
   {
     "time": "7:00 PM",
     "day": "Sunday",
-    "program": "Justice League"
+    "program": "Nostalgia Night"
   },
   {
     "time": "7:30 PM",
     "day": "Sunday",
-    "program": "Dragon Ball Z"
+    "program": "Nostalgia Night"
   },
   {
     "time": "8:00 PM",
     "day": "Sunday",
-    "program": "Samurai Jack"
+    "program": "Nostalgia Night"
   },
   {
     "time": "8:30 PM",
     "day": "Sunday",
-    "program": "Teen Titans"
+    "program": "Nostalgia Night"
   },
   {
     "time": "9:00 PM",
     "day": "Sunday",
-    "program": "Justice League"
+    "program": "Nostalgia Night"
   },
   {
     "time": "9:30 PM",
     "day": "Sunday",
-    "program": "Dragon Ball Z"
+    "program": "Nostalgia Night"
   },
   {
     "time": "10:00 PM",
     "day": "Sunday",
-    "program": "Space Ghost Coast to Coast"
+    "program": "Nostalgia Night"
   },
   {
     "time": "10:15 PM",
     "day": "Sunday",
-    "program": "Space Ghost Coast to Coast"
+    "program": "Nostalgia Night"
   },
   {
     "time": "10:30 PM",
     "day": "Sunday",
-    "program": "The Venture Bros"
+    "program": "Nostalgia Night"
   },
   {
     "time": "11:00 PM",
