@@ -3677,411 +3677,6 @@
       ]
     },
     {
-      "title": "The Venture Bros - S01E01",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "The Venture Bros S01E01 Part 1",
-          "url": "https://files.catbox.moe/placeholder_the_venture_bros_S01E01_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "The Venture Bros S01E01 Part 2",
-          "url": "https://files.catbox.moe/placeholder_the_venture_bros_S01E01_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "The Venture Bros - S01E02",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "The Venture Bros S01E02 Part 1",
-          "url": "https://files.catbox.moe/placeholder_the_venture_bros_S01E02_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "The Venture Bros S01E02 Part 2",
-          "url": "https://files.catbox.moe/placeholder_the_venture_bros_S01E02_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "The Venture Bros - S01E03",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "The Venture Bros S01E03 Part 1",
-          "url": "https://files.catbox.moe/placeholder_the_venture_bros_S01E03_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "The Venture Bros S01E03 Part 2",
-          "url": "https://files.catbox.moe/placeholder_the_venture_bros_S01E03_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "The Venture Bros - S01E04",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "The Venture Bros S01E04 Part 1",
-          "url": "https://files.catbox.moe/placeholder_the_venture_bros_S01E04_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "The Venture Bros S01E04 Part 2",
-          "url": "https://files.catbox.moe/placeholder_the_venture_bros_S01E04_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "The Venture Bros - S01E05",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "The Venture Bros S01E05 Part 1",
-          "url": "https://files.catbox.moe/placeholder_the_venture_bros_S01E05_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "The Venture Bros S01E05 Part 2",
-          "url": "https://files.catbox.moe/placeholder_the_venture_bros_S01E05_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "The Venture Bros - S01E06",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "The Venture Bros S01E06 Part 1",
-          "url": "https://files.catbox.moe/placeholder_the_venture_bros_S01E06_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "The Venture Bros S01E06 Part 2",
-          "url": "https://files.catbox.moe/placeholder_the_venture_bros_S01E06_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "The Venture Bros - S01E07",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "The Venture Bros S01E07 Part 1",
-          "url": "https://files.catbox.moe/placeholder_the_venture_bros_S01E07_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "The Venture Bros S01E07 Part 2",
-          "url": "https://files.catbox.moe/placeholder_the_venture_bros_S01E07_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "The Venture Bros - S01E08",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "The Venture Bros S01E08 Part 1",
-          "url": "https://files.catbox.moe/placeholder_the_venture_bros_S01E08_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "The Venture Bros S01E08 Part 2",
-          "url": "https://files.catbox.moe/placeholder_the_venture_bros_S01E08_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "The Venture Bros - S01E09",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "The Venture Bros S01E09 Part 1",
-          "url": "https://files.catbox.moe/placeholder_the_venture_bros_S01E09_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "The Venture Bros S01E09 Part 2",
-          "url": "https://files.catbox.moe/placeholder_the_venture_bros_S01E09_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "The Venture Bros - S01E10",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "The Venture Bros S01E10 Part 1",
-          "url": "https://files.catbox.moe/placeholder_the_venture_bros_S01E10_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "The Venture Bros S01E10 Part 2",
-          "url": "https://files.catbox.moe/placeholder_the_venture_bros_S01E10_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "The Venture Bros - S01E11",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "The Venture Bros S01E11 Part 1",
-          "url": "https://files.catbox.moe/placeholder_the_venture_bros_S01E11_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "The Venture Bros S01E11 Part 2",
-          "url": "https://files.catbox.moe/placeholder_the_venture_bros_S01E11_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "The Venture Bros - S01E12",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "The Venture Bros S01E12 Part 1",
-          "url": "https://files.catbox.moe/placeholder_the_venture_bros_S01E12_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "The Venture Bros S01E12 Part 2",
-          "url": "https://files.catbox.moe/placeholder_the_venture_bros_S01E12_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "The Venture Bros - S01E13",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "The Venture Bros S01E13 Part 1",
-          "url": "https://files.catbox.moe/placeholder_the_venture_bros_S01E13_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "The Venture Bros S01E13 Part 2",
-          "url": "https://files.catbox.moe/placeholder_the_venture_bros_S01E13_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "The Venture Bros - S01E14",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "The Venture Bros S01E14 Part 1",
-          "url": "https://files.catbox.moe/placeholder_the_venture_bros_S01E14_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "The Venture Bros S01E14 Part 2",
-          "url": "https://files.catbox.moe/placeholder_the_venture_bros_S01E14_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "The Venture Bros - S01E15",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "The Venture Bros S01E15 Part 1",
-          "url": "https://files.catbox.moe/placeholder_the_venture_bros_S01E15_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "The Venture Bros S01E15 Part 2",
-          "url": "https://files.catbox.moe/placeholder_the_venture_bros_S01E15_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
       "title": "Harvey Birdman, Attorney at Law - S01E01",
       "slotSeconds": 1800,
       "events": [
@@ -6647,762 +6242,6 @@
       ]
     },
     {
-      "title": "Cow & Chicken - S01E01",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "Cow & Chicken S01E01 Part 1",
-          "url": "https://files.catbox.moe/placeholder_cow_and_chicken_S01E01_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "Cow & Chicken S01E01 Part 2",
-          "url": "https://files.catbox.moe/placeholder_cow_and_chicken_S01E01_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "Cow & Chicken - S01E02",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "Cow & Chicken S01E02 Part 1",
-          "url": "https://files.catbox.moe/placeholder_cow_and_chicken_S01E02_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "Cow & Chicken S01E02 Part 2",
-          "url": "https://files.catbox.moe/placeholder_cow_and_chicken_S01E02_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "Cow & Chicken - S01E03",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "Cow & Chicken S01E03 Part 1",
-          "url": "https://files.catbox.moe/placeholder_cow_and_chicken_S01E03_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "Cow & Chicken S01E03 Part 2",
-          "url": "https://files.catbox.moe/placeholder_cow_and_chicken_S01E03_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "Cow & Chicken - S01E04",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "Cow & Chicken S01E04 Part 1",
-          "url": "https://files.catbox.moe/placeholder_cow_and_chicken_S01E04_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "Cow & Chicken S01E04 Part 2",
-          "url": "https://files.catbox.moe/placeholder_cow_and_chicken_S01E04_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "Cow & Chicken - S01E05",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "Cow & Chicken S01E05 Part 1",
-          "url": "https://files.catbox.moe/placeholder_cow_and_chicken_S01E05_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "Cow & Chicken S01E05 Part 2",
-          "url": "https://files.catbox.moe/placeholder_cow_and_chicken_S01E05_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "Cow & Chicken - S01E06",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "Cow & Chicken S01E06 Part 1",
-          "url": "https://files.catbox.moe/placeholder_cow_and_chicken_S01E06_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "Cow & Chicken S01E06 Part 2",
-          "url": "https://files.catbox.moe/placeholder_cow_and_chicken_S01E06_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "Cow & Chicken - S01E07",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "Cow & Chicken S01E07 Part 1",
-          "url": "https://files.catbox.moe/placeholder_cow_and_chicken_S01E07_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "Cow & Chicken S01E07 Part 2",
-          "url": "https://files.catbox.moe/placeholder_cow_and_chicken_S01E07_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "Cow & Chicken - S01E08",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "Cow & Chicken S01E08 Part 1",
-          "url": "https://files.catbox.moe/placeholder_cow_and_chicken_S01E08_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "Cow & Chicken S01E08 Part 2",
-          "url": "https://files.catbox.moe/placeholder_cow_and_chicken_S01E08_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "Cow & Chicken - S01E09",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "Cow & Chicken S01E09 Part 1",
-          "url": "https://files.catbox.moe/placeholder_cow_and_chicken_S01E09_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "Cow & Chicken S01E09 Part 2",
-          "url": "https://files.catbox.moe/placeholder_cow_and_chicken_S01E09_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "Cow & Chicken - S01E10",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "Cow & Chicken S01E10 Part 1",
-          "url": "https://files.catbox.moe/placeholder_cow_and_chicken_S01E10_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "Cow & Chicken S01E10 Part 2",
-          "url": "https://files.catbox.moe/placeholder_cow_and_chicken_S01E10_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "Cow & Chicken - S01E11",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "Cow & Chicken S01E11 Part 1",
-          "url": "https://files.catbox.moe/placeholder_cow_and_chicken_S01E11_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "Cow & Chicken S01E11 Part 2",
-          "url": "https://files.catbox.moe/placeholder_cow_and_chicken_S01E11_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "Cow & Chicken - S01E12",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "Cow & Chicken S01E12 Part 1",
-          "url": "https://files.catbox.moe/placeholder_cow_and_chicken_S01E12_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "Cow & Chicken S01E12 Part 2",
-          "url": "https://files.catbox.moe/placeholder_cow_and_chicken_S01E12_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "Cow & Chicken - S01E13",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "Cow & Chicken S01E13 Part 1",
-          "url": "https://files.catbox.moe/placeholder_cow_and_chicken_S01E13_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "Cow & Chicken S01E13 Part 2",
-          "url": "https://files.catbox.moe/placeholder_cow_and_chicken_S01E13_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "Cow & Chicken - S01E14",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "Cow & Chicken S01E14 Part 1",
-          "url": "https://files.catbox.moe/placeholder_cow_and_chicken_S01E14_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "Cow & Chicken S01E14 Part 2",
-          "url": "https://files.catbox.moe/placeholder_cow_and_chicken_S01E14_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "I Am Weasel - S01E01",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "I Am Weasel S01E01 Part 1",
-          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S01E01_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "I Am Weasel S01E01 Part 2",
-          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S01E01_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "I Am Weasel - S01E02",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "I Am Weasel S01E02 Part 1",
-          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S01E02_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "I Am Weasel S01E02 Part 2",
-          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S01E02_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "I Am Weasel - S01E03",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "I Am Weasel S01E03 Part 1",
-          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S01E03_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "I Am Weasel S01E03 Part 2",
-          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S01E03_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "I Am Weasel - S01E04",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "I Am Weasel S01E04 Part 1",
-          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S01E04_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "I Am Weasel S01E04 Part 2",
-          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S01E04_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "I Am Weasel - S01E05",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "I Am Weasel S01E05 Part 1",
-          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S01E05_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "I Am Weasel S01E05 Part 2",
-          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S01E05_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "I Am Weasel - S01E06",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "I Am Weasel S01E06 Part 1",
-          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S01E06_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "I Am Weasel S01E06 Part 2",
-          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S01E06_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "I Am Weasel - S01E07",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "I Am Weasel S01E07 Part 1",
-          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S01E07_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "I Am Weasel S01E07 Part 2",
-          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S01E07_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "I Am Weasel - S01E08",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "I Am Weasel S01E08 Part 1",
-          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S01E08_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "I Am Weasel S01E08 Part 2",
-          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S01E08_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "I Am Weasel - S01E09",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "I Am Weasel S01E09 Part 1",
-          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S01E09_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "I Am Weasel S01E09 Part 2",
-          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S01E09_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "I Am Weasel - S01E10",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "I Am Weasel S01E10 Part 1",
-          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S01E10_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "I Am Weasel S01E10 Part 2",
-          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S01E10_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "I Am Weasel - S01E11",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "I Am Weasel S01E11 Part 1",
-          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S01E11_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "I Am Weasel S01E11 Part 2",
-          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S01E11_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "I Am Weasel - S01E12",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "I Am Weasel S01E12 Part 1",
-          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S01E12_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "I Am Weasel S01E12 Part 2",
-          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S01E12_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "I Am Weasel - S01E13",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "I Am Weasel S01E13 Part 1",
-          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S01E13_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "I Am Weasel S01E13 Part 2",
-          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S01E13_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "I Am Weasel - S01E14",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "I Am Weasel S01E14 Part 1",
-          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S01E14_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "I Am Weasel S01E14 Part 2",
-          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S01E14_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
       "title": "Billy & Mandy - S01E01",
       "slotSeconds": 1800,
       "events": [
@@ -9455,681 +8294,6 @@
       ]
     },
     {
-      "title": "Justice League - S01E01",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "Justice League S01E01 Part 1",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E01_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "Justice League S01E01 Part 2",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E01_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "Justice League - S01E02",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "Justice League S01E02 Part 1",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E02_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "Justice League S01E02 Part 2",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E02_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "Justice League - S01E03",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "Justice League S01E03 Part 1",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E03_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "Justice League S01E03 Part 2",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E03_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "Justice League - S01E04",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "Justice League S01E04 Part 1",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E04_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "Justice League S01E04 Part 2",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E04_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "Justice League - S01E05",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "Justice League S01E05 Part 1",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E05_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "Justice League S01E05 Part 2",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E05_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "Justice League - S01E06",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "Justice League S01E06 Part 1",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E06_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "Justice League S01E06 Part 2",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E06_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "Justice League - S01E07",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "Justice League S01E07 Part 1",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E07_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "Justice League S01E07 Part 2",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E07_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "Justice League - S01E08",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "Justice League S01E08 Part 1",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E08_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "Justice League S01E08 Part 2",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E08_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "Justice League - S01E09",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "Justice League S01E09 Part 1",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E09_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "Justice League S01E09 Part 2",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E09_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "Justice League - S01E10",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "Justice League S01E10 Part 1",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E10_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "Justice League S01E10 Part 2",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E10_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "Justice League - S01E11",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "Justice League S01E11 Part 1",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E11_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "Justice League S01E11 Part 2",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E11_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "Justice League - S01E12",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "Justice League S01E12 Part 1",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E12_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "Justice League S01E12 Part 2",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E12_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "Justice League - S01E13",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "Justice League S01E13 Part 1",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E13_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "Justice League S01E13 Part 2",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E13_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "Justice League - S01E14",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "Justice League S01E14 Part 1",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E14_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "Justice League S01E14 Part 2",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E14_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "Justice League - S01E15",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "Justice League S01E15 Part 1",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E15_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "Justice League S01E15 Part 2",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E15_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "Justice League - S01E16",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "Justice League S01E16 Part 1",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E16_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "Justice League S01E16 Part 2",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E16_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "Justice League - S01E17",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "Justice League S01E17 Part 1",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E17_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "Justice League S01E17 Part 2",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E17_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "Justice League - S01E18",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "Justice League S01E18 Part 1",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E18_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "Justice League S01E18 Part 2",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E18_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "Justice League - S01E19",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "Justice League S01E19 Part 1",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E19_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "Justice League S01E19 Part 2",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E19_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "Justice League - S01E20",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "Justice League S01E20 Part 1",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E20_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "Justice League S01E20 Part 2",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E20_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "Justice League - S01E21",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "Justice League S01E21 Part 1",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E21_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "Justice League S01E21 Part 2",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E21_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "Justice League - S01E22",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "Justice League S01E22 Part 1",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E22_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "Justice League S01E22 Part 2",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E22_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "Justice League - S01E23",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "Justice League S01E23 Part 1",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E23_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "Justice League S01E23 Part 2",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E23_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "Justice League - S01E24",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "Justice League S01E24 Part 1",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E24_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "Justice League S01E24 Part 2",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E24_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
-      "title": "Justice League - S01E25",
-      "slotSeconds": 1800,
-      "events": [
-        {
-          "type": "segment",
-          "title": "Justice League S01E25 Part 1",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E25_part_1.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": 180,
-          "toleranceSeconds": 3
-        },
-        {
-          "type": "segment",
-          "title": "Justice League S01E25 Part 2",
-          "url": "https://files.catbox.moe/placeholder_justice_league_S01E25_part_2.mp4",
-          "durationSeconds": 660
-        },
-        {
-          "type": "adbreak",
-          "targetSeconds": "auto"
-        }
-      ]
-    },
-    {
       "title": "Teen Titans - S01E01",
       "slotSeconds": 1800,
       "events": [
@@ -11171,6 +9335,2441 @@
         }
       ],
       "blockType": "paid"
+    },
+    {
+      "title": "The Venture Bros - S01E01",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "The Venture Bros S01E01 Part 1",
+          "url": "https://files.catbox.moe/s9y8lv.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "The Venture Bros S01E01 Part 2",
+          "url": "https://files.catbox.moe/phjrf4.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "The Venture Bros - S01E02",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "The Venture Bros S01E02 Part 1",
+          "url": "https://files.catbox.moe/r7g188.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "The Venture Bros S01E02 Part 2",
+          "url": "https://files.catbox.moe/itit29.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "The Venture Bros - S01E03",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "The Venture Bros S01E03 Part 1",
+          "url": "https://files.catbox.moe/0kc4py.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "The Venture Bros S01E03 Part 2",
+          "url": "https://files.catbox.moe/6r5rel.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "The Venture Bros - S01E04",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "The Venture Bros S01E04 Part 1",
+          "url": "https://files.catbox.moe/mui25c.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "The Venture Bros S01E04 Part 2",
+          "url": "https://files.catbox.moe/6z51r9.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "The Venture Bros - S01E05",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "The Venture Bros S01E05 Part 1",
+          "url": "https://files.catbox.moe/fymcft.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "The Venture Bros S01E05 Part 2",
+          "url": "https://files.catbox.moe/1gy5wg.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "The Venture Bros - S01E06",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "The Venture Bros S01E06 Part 1",
+          "url": "https://files.catbox.moe/iqei8l.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "The Venture Bros S01E06 Part 2",
+          "url": "https://files.catbox.moe/mmaag0.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "The Venture Bros - S01E07",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "The Venture Bros S01E07 Part 1",
+          "url": "https://files.catbox.moe/nguinr.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "The Venture Bros S01E07 Part 2",
+          "url": "https://files.catbox.moe/c0p66d.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "The Venture Bros - S01E08",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "The Venture Bros S01E08 Part 1",
+          "url": "https://files.catbox.moe/jgf27g.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "The Venture Bros S01E08 Part 2",
+          "url": "https://files.catbox.moe/6m3z89.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "The Venture Bros - S01E09",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "The Venture Bros S01E09 Part 1",
+          "url": "https://files.catbox.moe/8kfuz1.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "The Venture Bros S01E09 Part 2",
+          "url": "https://files.catbox.moe/99u2sr.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "The Venture Bros - S01E10",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "The Venture Bros S01E10 Part 1",
+          "url": "https://files.catbox.moe/6p4fgw.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "The Venture Bros S01E10 Part 2",
+          "url": "https://files.catbox.moe/4fjn31.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "The Venture Bros - S01E11",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "The Venture Bros S01E11 Part 1",
+          "url": "https://files.catbox.moe/k544cb.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "The Venture Bros S01E11 Part 2",
+          "url": "https://files.catbox.moe/9gvwha.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "The Venture Bros - S01E12",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "The Venture Bros S01E12 Part 1",
+          "url": "https://files.catbox.moe/9oy7zx.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "The Venture Bros S01E12 Part 2",
+          "url": "https://files.catbox.moe/mmdfd4.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "The Venture Bros - S01E13",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "The Venture Bros S01E13 Part 1",
+          "url": "https://files.catbox.moe/fn4ony.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "The Venture Bros S01E13 Part 2",
+          "url": "https://files.catbox.moe/s5as87.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "The Venture Bros - S02E01",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "The Venture Bros S02E01 Part 1",
+          "url": "https://files.catbox.moe/z0l51p.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "The Venture Bros S02E01 Part 2",
+          "url": "https://files.catbox.moe/2m93n2.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "The Venture Bros - S02E02",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "The Venture Bros S02E02 Part 1",
+          "url": "https://files.catbox.moe/6and60.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "The Venture Bros S02E02 Part 2",
+          "url": "https://files.catbox.moe/rffga7.mp4",
+          "durationSeconds": 660
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Cartoon Cartoons - Block 1",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S01E01",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S01E01.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S01E02",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S01E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S01E01",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S01E01.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S01E02",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S01E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Cartoon Cartoons - Block 2",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S01E02",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S01E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S01E03",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S01E03.mp4",
+          "durationSeconds": 900
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S02E02",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S02E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S02E03",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S02E03.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Cartoon Cartoons - Block 3",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S02E01",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S02E01.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S02E02",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S02E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S03E01",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S03E01.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S03E02",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S03E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Cartoon Cartoons - Block 4",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S02E02",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S02E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S02E03",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S02E03.mp4",
+          "durationSeconds": 900
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S04E02",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S04E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S04E03",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S04E03.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Cartoon Cartoons - Block 5",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S03E01",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S03E01.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S03E02",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S03E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S05E01",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S05E01.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S05E02",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S05E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Cartoon Cartoons - Block 6",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S03E02",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S03E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S03E03",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S03E03.mp4",
+          "durationSeconds": 900
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S06E02",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S06E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S06E03",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S06E03.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Cartoon Cartoons - Block 7",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S04E01",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S04E01.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S04E02",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S04E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S07E01",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S07E01.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S07E02",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S07E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Cartoon Cartoons - Block 8",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S04E02",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S04E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S04E03",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S04E03.mp4",
+          "durationSeconds": 900
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S08E02",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S08E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S08E03",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S08E03.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Cartoon Cartoons - Block 9",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S05E01",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S05E01.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S05E02",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S05E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S09E01",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S09E01.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S09E02",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S09E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Cartoon Cartoons - Block 10",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S05E02",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S05E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S05E03",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S05E03.mp4",
+          "durationSeconds": 900
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S10E02",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S10E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S10E03",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S10E03.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Cartoon Cartoons - Block 11",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S06E01",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S06E01.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S06E02",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S06E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S11E01",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S11E01.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S11E02",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S11E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Cartoon Cartoons - Block 12",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S06E02",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S06E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S06E03",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S06E03.mp4",
+          "durationSeconds": 900
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S12E02",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S12E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S12E03",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S12E03.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Cartoon Cartoons - Block 13",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S07E01",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S07E01.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S07E02",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S07E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S13E01",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S13E01.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S13E02",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S13E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Cartoon Cartoons - Block 14",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S07E02",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S07E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S07E03",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S07E03.mp4",
+          "durationSeconds": 900
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S01E02",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S01E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S01E03",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S01E03.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Cartoon Cartoons - Block 15",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S08E01",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S08E01.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S08E02",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S08E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S02E01",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S02E01.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S02E02",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S02E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Cartoon Cartoons - Block 16",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S08E02",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S08E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S08E03",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S08E03.mp4",
+          "durationSeconds": 900
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S03E02",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S03E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S03E03",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S03E03.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Cartoon Cartoons - Block 17",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S09E01",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S09E01.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S09E02",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S09E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S04E01",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S04E01.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S04E02",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S04E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Cartoon Cartoons - Block 18",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S09E02",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S09E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S09E03",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S09E03.mp4",
+          "durationSeconds": 900
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S05E02",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S05E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S05E03",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S05E03.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Cartoon Cartoons - Block 19",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S10E01",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S10E01.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S10E02",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S10E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S06E01",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S06E01.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S06E02",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S06E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Cartoon Cartoons - Block 20",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S10E02",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S10E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S10E03",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S10E03.mp4",
+          "durationSeconds": 900
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S07E02",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S07E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S07E03",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S07E03.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Cartoon Cartoons - Block 21",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S11E01",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S11E01.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S11E02",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S11E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S08E01",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S08E01.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S08E02",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S08E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Cartoon Cartoons - Block 22",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S11E02",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S11E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S11E03",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S11E03.mp4",
+          "durationSeconds": 900
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S09E02",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S09E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S09E03",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S09E03.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Cartoon Cartoons - Block 23",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S12E01",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S12E01.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S12E02",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S12E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S10E01",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S10E01.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S10E02",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S10E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Cartoon Cartoons - Block 24",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S12E02",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S12E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S12E03",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S12E03.mp4",
+          "durationSeconds": 900
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S11E02",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S11E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S11E03",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S11E03.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Cartoon Cartoons - Block 25",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S13E01",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S13E01.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S13E02",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S13E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S12E01",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S12E01.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S12E02",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S12E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Cartoon Cartoons - Block 26",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S13E02",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S13E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S13E03",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S13E03.mp4",
+          "durationSeconds": 900
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S13E02",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S13E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S13E03",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S13E03.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Cartoon Cartoons - Block 27",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S14E01",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S14E01.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S14E02",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S14E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S01E01",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S01E01.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S01E02",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S01E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Cartoon Cartoons - Block 28",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S14E02",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S14E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S14E03",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S14E03.mp4",
+          "durationSeconds": 900
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S02E02",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S02E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S02E03",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S02E03.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Cartoon Cartoons - Block 29",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S15E01",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S15E01.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S15E02",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S15E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S03E01",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S03E01.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S03E02",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S03E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Cartoon Cartoons - Block 30",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S15E02",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S15E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "Cow & Chicken S15E03",
+          "url": "https://files.catbox.moe/placeholder_cow_chicken_S15E03.mp4",
+          "durationSeconds": 900
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S04E02",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S04E02.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "segment",
+          "title": "I Am Weasel S04E03",
+          "url": "https://files.catbox.moe/placeholder_i_am_weasel_S04E03.mp4",
+          "durationSeconds": 420
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Sheep in the Big City - S01E01",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Sheep in the Big City S01E01",
+          "url": "https://files.catbox.moe/placeholder_sheep_in_the_big_city_S01E01.mp4",
+          "durationSeconds": 1320
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Sheep in the Big City - S02E02",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Sheep in the Big City S02E02",
+          "url": "https://files.catbox.moe/placeholder_sheep_in_the_big_city_S02E02.mp4",
+          "durationSeconds": 1320
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Sheep in the Big City - S01E03",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Sheep in the Big City S01E03",
+          "url": "https://files.catbox.moe/placeholder_sheep_in_the_big_city_S01E03.mp4",
+          "durationSeconds": 1320
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Sheep in the Big City - S02E04",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Sheep in the Big City S02E04",
+          "url": "https://files.catbox.moe/placeholder_sheep_in_the_big_city_S02E04.mp4",
+          "durationSeconds": 1320
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Sheep in the Big City - S01E05",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Sheep in the Big City S01E05",
+          "url": "https://files.catbox.moe/placeholder_sheep_in_the_big_city_S01E05.mp4",
+          "durationSeconds": 1320
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Sheep in the Big City - S02E06",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Sheep in the Big City S02E06",
+          "url": "https://files.catbox.moe/placeholder_sheep_in_the_big_city_S02E06.mp4",
+          "durationSeconds": 1320
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Sheep in the Big City - S01E07",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Sheep in the Big City S01E07",
+          "url": "https://files.catbox.moe/placeholder_sheep_in_the_big_city_S01E07.mp4",
+          "durationSeconds": 1320
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Sheep in the Big City - S02E08",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Sheep in the Big City S02E08",
+          "url": "https://files.catbox.moe/placeholder_sheep_in_the_big_city_S02E08.mp4",
+          "durationSeconds": 1320
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Sheep in the Big City - S01E09",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Sheep in the Big City S01E09",
+          "url": "https://files.catbox.moe/placeholder_sheep_in_the_big_city_S01E09.mp4",
+          "durationSeconds": 1320
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Sheep in the Big City - S02E10",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Sheep in the Big City S02E10",
+          "url": "https://files.catbox.moe/placeholder_sheep_in_the_big_city_S02E10.mp4",
+          "durationSeconds": 1320
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Sheep in the Big City - S01E01",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Sheep in the Big City S01E01",
+          "url": "https://files.catbox.moe/placeholder_sheep_in_the_big_city_S01E01.mp4",
+          "durationSeconds": 1320
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Sheep in the Big City - S02E02",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Sheep in the Big City S02E02",
+          "url": "https://files.catbox.moe/placeholder_sheep_in_the_big_city_S02E02.mp4",
+          "durationSeconds": 1320
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Sheep in the Big City - S01E03",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Sheep in the Big City S01E03",
+          "url": "https://files.catbox.moe/placeholder_sheep_in_the_big_city_S01E03.mp4",
+          "durationSeconds": 1320
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Sheep in the Big City - S02E04",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Sheep in the Big City S02E04",
+          "url": "https://files.catbox.moe/placeholder_sheep_in_the_big_city_S02E04.mp4",
+          "durationSeconds": 1320
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Sheep in the Big City - S01E05",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Sheep in the Big City S01E05",
+          "url": "https://files.catbox.moe/placeholder_sheep_in_the_big_city_S01E05.mp4",
+          "durationSeconds": 1320
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Sheep in the Big City - S02E06",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Sheep in the Big City S02E06",
+          "url": "https://files.catbox.moe/placeholder_sheep_in_the_big_city_S02E06.mp4",
+          "durationSeconds": 1320
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Sheep in the Big City - S01E07",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Sheep in the Big City S01E07",
+          "url": "https://files.catbox.moe/placeholder_sheep_in_the_big_city_S01E07.mp4",
+          "durationSeconds": 1320
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Sheep in the Big City - S02E08",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Sheep in the Big City S02E08",
+          "url": "https://files.catbox.moe/placeholder_sheep_in_the_big_city_S02E08.mp4",
+          "durationSeconds": 1320
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Sheep in the Big City - S01E09",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Sheep in the Big City S01E09",
+          "url": "https://files.catbox.moe/placeholder_sheep_in_the_big_city_S01E09.mp4",
+          "durationSeconds": 1320
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
+    },
+    {
+      "title": "Sheep in the Big City - S02E10",
+      "slotSeconds": 1800,
+      "events": [
+        {
+          "type": "segment",
+          "title": "Sheep in the Big City S02E10",
+          "url": "https://files.catbox.moe/placeholder_sheep_in_the_big_city_S02E10.mp4",
+          "durationSeconds": 1320
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": 180,
+          "toleranceSeconds": 3
+        },
+        {
+          "type": "adbreak",
+          "targetSeconds": "auto",
+          "toleranceSeconds": 3
+        }
+      ]
     }
   ]
 }
