@@ -409,16 +409,9 @@
 
             const CARTOON_CARTOONS_HEADER = 'Cartoon Cartoons';
             const CARTOON_CARTOONS_SHOWS = new Set([
-                'Sheep in the Big City',
-                'Billy & Mandy',
-                "Foster's Home",
-                "Dexter's Laboratory",
-                'The Powerpuff Girls',
-                'Ed, Edd n Eddy',
-                'Johnny Bravo',
-                'Courage the Cowardly Dog',
                 'Cow & Chicken',
-                'I Am Weasel'
+                'I Am Weasel',
+                'Sheep in the Big City'
             ]);
 
             const SPECIAL_PROGRAMS = new Set([
@@ -454,7 +447,7 @@
                 'AFTERNOON ACTION': new Set([
                     'Samurai Jack',
                     'Teen Titans',
-                    'Codename: Kids Next Door'
+                    'Kids Next Door'
                 ]),
                 'ALL-TIME ANIMES': new Set([
                     'Dragon Ball',
@@ -566,11 +559,11 @@
                 else if (totalMins >= 720 && totalMins < 900) {
                     return 'MIDDAY MADNESS';
                 }
-                // 3pm-7:30pm: Afternoon Action (900-1110 mins)
+                // 3pm-7:30pm: Afternoon Action (900-1110 mins) - 3pm = 900, 7:30pm = 1110
                 else if (totalMins >= 900 && totalMins < 1110) {
                     return 'AFTERNOON ACTION';
                 }
-                // 7:30pm-9pm: All-Time Animes (1110-1260 mins)
+                // 7:30pm-9pm: All-Time Animes (1110-1260 mins) - 7:30pm = 1110, 9pm = 1260
                 else if (totalMins >= 1110 && totalMins < 1260) {
                     return 'ALL-TIME ANIMES';
                 }
@@ -652,20 +645,25 @@
                     renderTimeBlockHeader(currentTimeBlock, slot.time);
                 }
 
-                // Explicit block header
+                // Explicit block header - only render if it's within the correct time window
                 if (slot.program === CARTOON_CARTOONS_HEADER) {
-                    inCartoonCartoons = true;
-                    seenExplicitHeaderInCurrentBlock = true;
-                    currentTimeBlock = 'CARTOON CARTOONS';
-                    const programHtml = `${CARTOON_CARTOONS_HEADER}<span class="block-subtitle">Classic shorts & CN originals</span>`;
-                    // Render header without time
-                    html += `
-                        <div class="slot block-header">
-                            <div class="slot-time"></div>
-                            <div class="slot-program">${programHtml}</div>
-                            <div class="slot-status"></div>
-                        </div>
-                    `;
+                    const slotMins = timeToMinutes(slot.time);
+                    // Only render Cartoon Cartoons header if it's between 11am-12pm (660-720 mins)
+                    if (slotMins >= 660 && slotMins < 720) {
+                        inCartoonCartoons = true;
+                        seenExplicitHeaderInCurrentBlock = true;
+                        currentTimeBlock = 'CARTOON CARTOONS';
+                        const programHtml = `${CARTOON_CARTOONS_HEADER}<span class="block-subtitle">Classic shorts & CN originals</span>`;
+                        // Render header without time
+                        html += `
+                            <div class="slot block-header">
+                                <div class="slot-time"></div>
+                                <div class="slot-program">${programHtml}</div>
+                                <div class="slot-status"></div>
+                            </div>
+                        `;
+                    }
+                    // Skip rendering the header slot itself
                     continue;
                 }
 
