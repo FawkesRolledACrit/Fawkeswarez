@@ -264,6 +264,8 @@
         let currentDate = new Date();
         let selectedDate = new Date();
         let weeklyLineup = null;
+        let scheduleData = null;
+        let scheduleStartDate = null;
 
         const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
         const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
@@ -277,10 +279,17 @@
                 weeklyLineup = await response.json();
                 console.log('Loaded weekly lineup, total entries:', weeklyLineup.length);
                 console.log('First few entries:', weeklyLineup.slice(0, 3));
+                
+                // Load schedule.json to get startDate and check which shows have videos
+                const scheduleResponse = await fetch('schedule.json?t=' + cacheBuster);
+                scheduleData = await scheduleResponse.json();
+                scheduleStartDate = scheduleData.startDate || '2026-04-01';
+                console.log('Loaded schedule, start date:', scheduleStartDate);
+                
                 renderCalendar();
                 renderLineup();
             } catch (error) {
-                console.error('Failed to load weekly lineup:', error);
+                console.error('Failed to load data:', error);
             }
         }
 
@@ -361,18 +370,13 @@
             daySlots.forEach(slot => {
                 console.log(`Processing slot: ${slot.program}`);
                 
-                // Check if this is any show that should have episodes
-                const allShows = [
-                    "Dexter's Laboratory", "The Powerpuff Girls", "Ed, Edd n Eddy", 
-                    "Johnny Bravo", "Courage the Cowardly Dog", "Cow & Chicken", 
-                    "I Am Weasel", "Billy & Mandy", "Foster's Home",
-                    "Samurai Jack", "Teen Titans", "Justice League", "Dragon Ball Z",
-                    "Space Ghost Coast to Coast", "Aqua Teen Hunger Force", "Sealab 2021", 
-                    "Brak Show", "Home Movies", "The Venture Bros", 
-                    "Harvey Birdman, Attorney at Law", "Tom Goes to the Mayor"
-                ];
-                
-                const hasEpisodes = allShows.includes(slot.program);
+                // Only show episode info for shows that actually have videos in schedule.json
+                const hasEpisodes = scheduleData && scheduleData.blocks && scheduleData.blocks.some(block => {
+                    const title = block.title.toLowerCase();
+                    const programLower = slot.program.toLowerCase();
+                    // Exact match or contains match for common variations
+                    return title === programLower || title.includes(programLower) || programLower.includes(title);
+                });
                 console.log(`Show ${slot.program} has episodes: ${hasEpisodes}`);
                 
                 let episodeInfo = '';
@@ -409,109 +413,125 @@
             document.getElementById('lineup-slots').innerHTML = html;
         }
 
-        function getEpisodeForDate(date, timeStr, program) {
-            // Calculate total 30-minute slots since April 1, 2026 at 00:00
-            const april1 = new Date(2026, 3, 1, 0, 0, 0); // Month is 0-indexed
-            
-            // Parse the time string to get minutes since midnight
-            const timeMatch = timeStr.match(/(\d{1,2}):(\d{2})\s*(AM|PM)/i);
-            if (!timeMatch) return { episode: 1, season: 1 };
-            
-            let hour = parseInt(timeMatch[1], 10);
-            const minute = parseInt(timeMatch[2], 10);
-            const ampm = timeMatch[3].toUpperCase();
-            
+        function getDayIndexFromName(dayName) {
+            const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            return days.indexOf(dayName);
+        }
+
+        function getDayName(date) {
+            const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            return days[date.getDay()];
+        }
+
+        function timeToMinutes(timeStr) {
+            const m = String(timeStr || '').trim().match(/^(\d{1,2}):(\d{2})\s*(AM|PM)$/i);
+            if (!m) return null;
+            let hour = parseInt(m[1], 10);
+            const minute = parseInt(m[2], 10);
+            const ampm = m[3].toUpperCase();
             if (hour === 12) hour = 0;
             if (ampm === 'PM') hour += 12;
-            
-            // Create date at the given time
-            const slotDate = new Date(date.getFullYear(), date.getMonth(), date.getDate(), hour, minute, 0);
-            
-            // Calculate total slots since April 1, 2026 00:00.
-            // Space Ghost + Aqua Teen are 15-minute shows, so 1:30 and 1:45 must advance.
-            const msDiff = slotDate - april1;
-            const slotMinutes = (program === 'Space Ghost Coast to Coast' || program === 'Aqua Teen Hunger Force') ? 15 : 30;
-            const totalSlots = Math.floor(msDiff / (1000 * 60 * slotMinutes));
-            
-            // Special handling for Dexter's Laboratory
-            if (program === "Dexter's Laboratory") {
-                const episodeCount = 20; // 20 episodes total
-                const offset = 0;
-                const adjustedSlots = totalSlots + offset;
-                const episodeIndex = adjustedSlots % episodeCount;
-                const episodeNum = episodeIndex + 1; // 1-indexed
+            return hour * 60 + minute;
+        }
+
+        function getProgramOccurrencesForDay(program, dayName) {
+            if (!weeklyLineup || !dayName) return [];
+            const slots = weeklyLineup.filter(s => s.day === dayName && s.program === program);
+            return slots
+                .map(s => timeToMinutes(s.time))
+                .filter(m => m !== null)
+                .sort((a, b) => a - b);
+        }
+
+        function getProgramWeeklyCount(program) {
+            if (!weeklyLineup || !program) return 0;
+            let total = 0;
+            const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            for (const dayName of days) {
+                total += getProgramOccurrencesForDay(program, dayName).length;
+            }
+            return total;
+        }
+
+        function getProgramOccurrenceIndex(program, timeStr, date) {
+            if (!program || !timeStr || !date || !weeklyLineup || !scheduleStartDate) return 0;
+
+            const slotStartMin = timeToMinutes(timeStr);
+            if (slotStartMin === null) return 0;
+
+            const slotStart = new Date(date);
+            slotStart.setHours(0, 0, 0, 0);
+            slotStart.setMinutes(slotStartMin);
+
+            const scheduleStart = new Date(scheduleStartDate + 'T00:00:00');
+            const scheduleDayStart = new Date(scheduleStart);
+            scheduleDayStart.setHours(0, 0, 0, 0);
+
+            const MS_PER_DAY = 24 * 60 * 60 * 1000;
+            const daysDiff = Math.floor((slotStart - scheduleDayStart) / MS_PER_DAY);
+            if (daysDiff < 0) return 0;
+
+            const weeklyCount = getProgramWeeklyCount(program);
+            if (weeklyCount <= 0) return 0;
+
+            // Whole weeks between anchor and current
+            const wholeWeeks = Math.floor(daysDiff / 7);
+            let total = wholeWeeks * weeklyCount;
+
+            // Partial week days
+            const remDays = daysDiff % 7;
+            for (let i = 0; i < remDays; i++) {
+                const d = new Date(scheduleDayStart.getTime() + ((wholeWeeks * 7 + i) * MS_PER_DAY));
+                const dayName = getDayName(d);
+                total += getProgramOccurrencesForDay(program, dayName).length;
+            }
+
+            // Current day: count slots strictly before this one
+            const currentDayName = getDayName(slotStart);
+            const starts = getProgramOccurrencesForDay(program, currentDayName);
+            for (const sMin of starts) {
+                if (sMin < slotStartMin) total += 1;
+            }
+
+            return total;
+        }
+
+        function getEpisodeForDate(date, timeStr, program) {
+            // Use occurrence counting if we have the data
+            if (typeof weeklyLineup !== 'undefined' && typeof scheduleStartDate !== 'undefined') {
+                const occ = getProgramOccurrenceIndex(program, timeStr, date);
                 
-                // Determine season and episode
-                let season, episode;
-                if (episodeNum <= 13) {
-                    season = 1;
-                    episode = episodeNum;
-                } else {
-                    season = 2;
-                    episode = episodeNum - 13;
+                // Episode counts reflecting what's actually in schedule.json
+                const knownCounts = {
+                    "Dexter's Laboratory": { episodes: 20, seasons: 2 },
+                    "The Powerpuff Girls": { episodes: 20, seasons: 2 },
+                    "Ed, Edd n Eddy": { episodes: 20, seasons: 1 },
+                    "Space Ghost Coast to Coast": { episodes: 18, seasons: 1 },
+                    "Aqua Teen Hunger Force": { episodes: 18, seasons: 1 }
+                };
+                
+                let episodeCount = 15; // Default fallback
+                let seasonCount = 1;
+                
+                if (knownCounts[program]) {
+                    episodeCount = knownCounts[program].episodes;
+                    seasonCount = knownCounts[program].seasons;
                 }
                 
-                return { episode, season };
-            }
-            
-            // Special handling for Powerpuff Girls
-            if (program === "The Powerpuff Girls") {
-                const episodeCount = 20; // 20 episodes total
-                const offset = 100;
-                const adjustedSlots = totalSlots + offset;
-                const episodeIndex = adjustedSlots % episodeCount;
-                const episodeNum = episodeIndex + 1; // 1-indexed
+                const episodeIndex = ((occ % episodeCount) + episodeCount) % episodeCount;
+                const episodeNum = episodeIndex + 1;
                 
-                // Determine season and episode
-                let season, episode;
-                if (episodeNum <= 13) {
-                    season = 1;
-                    episode = episodeNum;
-                } else {
-                    season = 2;
-                    episode = episodeNum - 13;
+                // Determine season for multi-season shows
+                let season = 1;
+                if (program === "Dexter's Laboratory" || program === "The Powerpuff Girls") {
+                    season = (episodeNum <= 13) ? 1 : 2;
                 }
                 
-                return { episode, season };
+                return { episode: episodeNum, season };
             }
             
-            // Different episode counts for other shows
-            let episodeCount;
-            if (["The Powerpuff Girls", "Ed, Edd n Eddy", "Johnny Bravo"].includes(program)) {
-                episodeCount = 20; // Frequent shows have 20 episodes
-            } else {
-                episodeCount = 15; // Regular shows have 15 episodes
-            }
-            
-            // Add program-specific offset to prevent all shows showing same episode number
-            const programOffsets = {
-                "The Powerpuff Girls": 100,
-                "Ed, Edd n Eddy": 200,
-                "Johnny Bravo": 300,
-                "Courage the Cowardly Dog": 400,
-                "Cow & Chicken": 500,
-                "I Am Weasel": 600,
-                "Billy & Mandy": 700,
-                "Foster's Home": 800,
-                "Samurai Jack": 900,
-                "Teen Titans": 1000,
-                "Justice League": 1100,
-                "Dragon Ball Z": 1200,
-                "Space Ghost Coast to Coast": 1300,
-                "Aqua Teen Hunger Force": 1400,
-                "Sealab 2021": 1500,
-                "Brak Show": 1600,
-                "Home Movies": 1700,
-                "The Venture Bros": 1800,
-                "Harvey Birdman, Attorney at Law": 1900,
-                "Tom Goes to the Mayor": 2000
-            };
-            
-            const offset = programOffsets[program] || 0;
-            const adjustedSlots = totalSlots + offset;
-            const episodeIndex = adjustedSlots % episodeCount;
-            
-            return { episode: episodeIndex + 1, season: 1 }; // Episodes are 1-indexed, default to season 1
+            // Fallback if data not available
+            return { episode: 1, season: 1 };
         }
 
         function getDexterEpisodeForDate(date, timeStr) {
