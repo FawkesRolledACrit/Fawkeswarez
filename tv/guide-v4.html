@@ -408,7 +408,7 @@
             let html = '';
 
             const CARTOON_CARTOONS_HEADER = 'Cartoon Cartoons';
-            const NOSTALGIA_NIGHT_PRESHOW_HEADER = 'Nostalgia Night Preshow';
+            const MOVIE_PRESHOW_HEADER = 'Movie Preshow';
             const MOVIE_NIGHT_HEADER = 'Movie Night';
             const WEEKEND_BOON_HEADER = 'Weekend Boon';
             const PAID_PROGRAMMING_HEADER = 'Paid Programming';
@@ -422,7 +422,7 @@
                 'Paid Programming',
                 'The Boondocks',
                 'Nostalgia Night',
-                'Nostalgia Night Preshow',
+                'Movie Preshow',
                 'Men in Black',
                 'Back to the Future',
                 'TBD'
@@ -444,8 +444,8 @@
                 'WEEKEND BOON': new Set([
                     'The Boondocks'
                 ]),
-                'NOSTALGIA NIGHT PRESHOW': new Set([
-                    'Nostalgia Night Preshow',
+                'MOVIE PRESHOW': new Set([
+                    'Movie Preshow',
                     'TBD'
                 ]),
                 'NOSTALGIA NIGHT': new Set([
@@ -601,9 +601,9 @@
                     else if (totalMins >= 660 && totalMins < 720) {
                         return 'CARTOON CARTOONS';
                     }
-                    // 12pm-3pm: Nostalgia Night Preshow
+                    // 12pm-3pm: Movie Preshow
                     else if (totalMins >= 720 && totalMins < 900) {
-                        return 'NOSTALGIA NIGHT PRESHOW';
+                        return 'MOVIE PRESHOW';
                     }
                     // 3pm-11pm: Nostalgia Night
                     else if (totalMins >= 900 && totalMins < 1380) {
@@ -686,7 +686,7 @@
                 const slot = daySlots[idx];
                 if (!slot) return null;
                 if (slot.program === CARTOON_CARTOONS_HEADER) return 'CARTOON CARTOONS';
-                if (slot.program === NOSTALGIA_NIGHT_PRESHOW_HEADER) return 'NOSTALGIA NIGHT PRESHOW';
+                if (slot.program === MOVIE_PRESHOW_HEADER) return 'MOVIE PRESHOW';
                 if (slot.program === MOVIE_NIGHT_HEADER) return 'NOSTALGIA NIGHT';
                 if (slot.program === WEEKEND_BOON_HEADER) return 'WEEKEND BOON';
                 if (slot.program === PAID_PROGRAMMING_HEADER) return 'PAID PROGRAMMING';
@@ -696,7 +696,7 @@
                 // }
                 const mins = timeToMinutes(slot.time);
                 // Map offset header times to their actual block times
-                if (mins === 719) return 'NOSTALGIA NIGHT PRESHOW'; // 11:59 AM -> 12:00 PM block
+                if (mins === 719) return 'MOVIE PRESHOW'; // 11:59 AM -> 12:00 PM block
                 if (mins === 899) return 'NOSTALGIA NIGHT'; // 2:59 PM -> 3:00 PM block
                 if (mins === 359) return 'WEEKEND BOON'; // 5:59 AM -> 6:00 AM block
                 if (mins === 179) return 'PAID PROGRAMMING'; // 2:59 AM -> 3:00 AM block
@@ -727,7 +727,7 @@
                     case 'WEEKEND BOON':
                         subtitle = 'All-day Boondocks marathon';
                         break;
-                    case 'NOSTALGIA NIGHT PRESHOW':
+                    case 'MOVIE PRESHOW':
                         subtitle = 'Pre-show buildup';
                         break;
                     case 'NOSTALGIA NIGHT':
@@ -780,13 +780,13 @@
                     continue;
                 }
 
-                // Explicit Nostalgia Night Preshow header - render if it's within the correct time window
-                if (slot.program === NOSTALGIA_NIGHT_PRESHOW_HEADER) {
+                // Explicit Movie Preshow header - render if it's within the correct time window
+                if (slot.program === MOVIE_PRESHOW_HEADER) {
                     const slotMins = timeToMinutes(slot.time);
-                    // Only render Nostalgia Night Preshow header if it's at 11:59 AM (719 mins)
+                    // Only render Movie Preshow header if it's at 11:59 AM (719 mins)
                     if (slotMins >= 719 && slotMins < 720) {
-                        currentTimeBlock = 'NOSTALGIA NIGHT PRESHOW';
-                        const programHtml = `${NOSTALGIA_NIGHT_PRESHOW_HEADER}<span class="block-subtitle">Pre-show buildup</span>`;
+                        currentTimeBlock = 'MOVIE PRESHOW';
+                        const programHtml = `${MOVIE_PRESHOW_HEADER}<span class="block-subtitle">Pre-show buildup</span>`;
                         // Render header without time
                         html += `
                             <div class="slot block-header">
@@ -873,7 +873,7 @@
                 if (slotTimeBlock &&
                     slotTimeBlock !== currentTimeBlock &&
                     slot.program !== CARTOON_CARTOONS_HEADER &&
-                    slot.program !== NOSTALGIA_NIGHT_PRESHOW_HEADER &&
+                    slot.program !== MOVIE_PRESHOW_HEADER &&
                     slot.program !== MOVIE_NIGHT_HEADER &&
                     slot.program !== WEEKEND_BOON_HEADER &&
                     slot.program !== PAID_PROGRAMMING_HEADER &&
