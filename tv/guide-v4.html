@@ -695,6 +695,9 @@
                 //     return 'CARTOON CARTOONS';
                 // }
                 const mins = timeToMinutes(slot.time);
+                // Map offset header times to their actual block times
+                if (mins === 719) return 'NOSTALGIA NIGHT PRESHOW'; // 11:59 AM -> 12:00 PM block
+                if (mins === 899) return 'NOSTALGIA NIGHT'; // 2:59 PM -> 3:00 PM block
                 return getTimeBlockNameForMinutes(mins, slot.day);
             }
 
@@ -778,8 +781,8 @@
                 // Explicit Nostalgia Night Preshow header - render if it's within the correct time window
                 if (slot.program === NOSTALGIA_NIGHT_PRESHOW_HEADER) {
                     const slotMins = timeToMinutes(slot.time);
-                    // Only render Nostalgia Night Preshow header if it's between 12pm-3pm (720-900 mins)
-                    if (slotMins >= 720 && slotMins < 900) {
+                    // Only render Nostalgia Night Preshow header if it's at 11:59 AM (719 mins)
+                    if (slotMins >= 719 && slotMins < 720) {
                         currentTimeBlock = 'NOSTALGIA NIGHT PRESHOW';
                         const programHtml = `${NOSTALGIA_NIGHT_PRESHOW_HEADER}<span class="block-subtitle">Pre-show buildup</span>`;
                         // Render header without time
@@ -798,8 +801,8 @@
                 // Explicit Movie Night header - render if it's within the correct time window
                 if (slot.program === MOVIE_NIGHT_HEADER) {
                     const slotMins = timeToMinutes(slot.time);
-                    // Only render Movie Night header if it's between 3pm-11pm (900-1380 mins)
-                    if (slotMins >= 900 && slotMins < 1380) {
+                    // Only render Movie Night header if it's at 2:59 PM (899 mins)
+                    if (slotMins >= 899 && slotMins < 900) {
                         currentTimeBlock = 'NOSTALGIA NIGHT';
                         const programHtml = `${MOVIE_NIGHT_HEADER}<span class="block-subtitle">Double feature movie night</span>`;
                         // Render header without time
@@ -823,11 +826,15 @@
 
                 // Render a block header whenever the canonical time window changes.
                 // (We derive block headers from time windows; weekly-lineup should not contain header rows.)
+                const slotMins = timeToMinutes(slot.time);
+                // Skip rendering time block headers at offset times (719 and 899 mins) - those are for explicit headers only
                 if (slotTimeBlock &&
                     slotTimeBlock !== currentTimeBlock &&
                     slot.program !== CARTOON_CARTOONS_HEADER &&
                     slot.program !== NOSTALGIA_NIGHT_PRESHOW_HEADER &&
                     slot.program !== MOVIE_NIGHT_HEADER &&
+                    slotMins !== 719 &&
+                    slotMins !== 899 &&
                     !SPECIAL_PROGRAMS.has(slot.program)) {
                     currentTimeBlock = slotTimeBlock;
                     renderTimeBlockHeader(currentTimeBlock, slot.time);
