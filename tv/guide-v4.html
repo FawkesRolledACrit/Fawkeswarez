@@ -410,6 +410,8 @@
             const CARTOON_CARTOONS_HEADER = 'Cartoon Cartoons';
             const NOSTALGIA_NIGHT_PRESHOW_HEADER = 'Nostalgia Night Preshow';
             const MOVIE_NIGHT_HEADER = 'Movie Night';
+            const WEEKEND_BOON_HEADER = 'Weekend Boon';
+            const PAID_PROGRAMMING_HEADER = 'Paid Programming';
             const CARTOON_CARTOONS_SHOWS = new Set([
                 'Cow & Chicken',
                 'I Am Weasel',
@@ -484,19 +486,15 @@
                 let statusText = 'OFF AIR';
 
                 if (slot.program === 'Paid Programming') {
-                    hasEpisodes = scheduleData && scheduleData.blocks && scheduleData.blocks.some(block => block.blockType === 'paid');
-                    if (hasEpisodes) {
-                        episodeInfo = '<div class="slot-episode">Paid Content</div>';
-                        statusClass = 'special';
-                        statusText = '📺';
-                    }
+                    // Paid Programming is a special program - no episode description
+                    episodeInfo = '';
+                    statusClass = 'special';
+                    statusText = '📺';
                 } else if (slot.program === 'The Boondocks') {
-                    hasEpisodes = scheduleData && scheduleData.blocks && scheduleData.blocks.some(block => block.blockType === 'marathon');
-                    if (hasEpisodes) {
-                        episodeInfo = '<div class="slot-episode">Weekend Marathon</div>';
-                        statusClass = 'special';
-                        statusText = '🎬';
-                    }
+                    // Boondocks is a special program - no episode description
+                    episodeInfo = '';
+                    statusClass = 'special';
+                    statusText = '🎬';
                 } else if (slot.program === 'Nostalgia Night') {
                     const hasMovies = scheduleData && scheduleData.blocks && scheduleData.blocks.some(block => block.blockType === 'movie');
                     if (hasMovies) {
@@ -690,6 +688,8 @@
                 if (slot.program === CARTOON_CARTOONS_HEADER) return 'CARTOON CARTOONS';
                 if (slot.program === NOSTALGIA_NIGHT_PRESHOW_HEADER) return 'NOSTALGIA NIGHT PRESHOW';
                 if (slot.program === MOVIE_NIGHT_HEADER) return 'NOSTALGIA NIGHT';
+                if (slot.program === WEEKEND_BOON_HEADER) return 'WEEKEND BOON';
+                if (slot.program === PAID_PROGRAMMING_HEADER) return 'PAID PROGRAMMING';
                 // Disable implicit Cartoon Cartoons inference - only use explicit headers
                 // if (CARTOON_CARTOONS_SHOWS.has(slot.program) && shouldStartImplicitCartoonCartoonsBlock(daySlots, idx)) {
                 //     return 'CARTOON CARTOONS';
@@ -698,6 +698,8 @@
                 // Map offset header times to their actual block times
                 if (mins === 719) return 'NOSTALGIA NIGHT PRESHOW'; // 11:59 AM -> 12:00 PM block
                 if (mins === 899) return 'NOSTALGIA NIGHT'; // 2:59 PM -> 3:00 PM block
+                if (mins === 359) return 'WEEKEND BOON'; // 5:59 AM -> 6:00 AM block
+                if (mins === 179) return 'PAID PROGRAMMING'; // 2:59 AM -> 3:00 AM block
                 return getTimeBlockNameForMinutes(mins, slot.day);
             }
 
@@ -818,6 +820,46 @@
                     continue;
                 }
 
+                // Explicit Weekend Boon header - render if it's within the correct time window
+                if (slot.program === WEEKEND_BOON_HEADER) {
+                    const slotMins = timeToMinutes(slot.time);
+                    // Only render Weekend Boon header if it's at 5:59 AM (359 mins)
+                    if (slotMins >= 359 && slotMins < 360) {
+                        currentTimeBlock = 'WEEKEND BOON';
+                        const programHtml = `${WEEKEND_BOON_HEADER}<span class="block-subtitle">All-day Boondocks marathon</span>`;
+                        // Render header without time
+                        html += `
+                            <div class="slot block-header">
+                                <div class="slot-time"></div>
+                                <div class="slot-program">${programHtml}</div>
+                                <div class="slot-status"></div>
+                            </div>
+                        `;
+                    }
+                    // Skip rendering the header slot itself
+                    continue;
+                }
+
+                // Explicit Paid Programming header - render if it's within the correct time window
+                if (slot.program === PAID_PROGRAMMING_HEADER) {
+                    const slotMins = timeToMinutes(slot.time);
+                    // Only render Paid Programming header if it's at 2:59 AM (179 mins)
+                    if (slotMins >= 179 && slotMins < 180) {
+                        currentTimeBlock = 'PAID PROGRAMMING';
+                        const programHtml = `${PAID_PROGRAMMING_HEADER}<span class="block-subtitle">Paid content</span>`;
+                        // Render header without time
+                        html += `
+                            <div class="slot block-header">
+                                <div class="slot-time"></div>
+                                <div class="slot-program">${programHtml}</div>
+                                <div class="slot-status"></div>
+                            </div>
+                        `;
+                    }
+                    // Skip rendering the header slot itself
+                    continue;
+                }
+
                 const slotTimeBlock = canonicalBlockForSlot(daySlots, i);
 
                 // Drive Cartoon Cartoons context from the time window, since we no longer rely on
@@ -827,14 +869,18 @@
                 // Render a block header whenever the canonical time window changes.
                 // (We derive block headers from time windows; weekly-lineup should not contain header rows.)
                 const slotMins = timeToMinutes(slot.time);
-                // Skip rendering time block headers at offset times (719 and 899 mins) - those are for explicit headers only
+                // Skip rendering time block headers at offset times - those are for explicit headers only
                 if (slotTimeBlock &&
                     slotTimeBlock !== currentTimeBlock &&
                     slot.program !== CARTOON_CARTOONS_HEADER &&
                     slot.program !== NOSTALGIA_NIGHT_PRESHOW_HEADER &&
                     slot.program !== MOVIE_NIGHT_HEADER &&
+                    slot.program !== WEEKEND_BOON_HEADER &&
+                    slot.program !== PAID_PROGRAMMING_HEADER &&
                     slotMins !== 719 &&
                     slotMins !== 899 &&
+                    slotMins !== 359 &&
+                    slotMins !== 179 &&
                     !SPECIAL_PROGRAMS.has(slot.program)) {
                     currentTimeBlock = slotTimeBlock;
                     renderTimeBlockHeader(currentTimeBlock, slot.time);
