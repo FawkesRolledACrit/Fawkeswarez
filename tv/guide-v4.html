@@ -408,6 +408,8 @@
             let html = '';
 
             const CARTOON_CARTOONS_HEADER = 'Cartoon Cartoons';
+            const NOSTALGIA_NIGHT_HEADER = 'Nostalgia Night';
+            const NOSTALGIA_NIGHT_PRESHOW_HEADER = 'Nostalgia Night Preshow';
             const CARTOON_CARTOONS_SHOWS = new Set([
                 'Cow & Chicken',
                 'I Am Weasel',
@@ -419,8 +421,8 @@
                 'The Boondocks',
                 'Nostalgia Night',
                 'Nostalgia Night Preshow',
-                'Movie A',
-                'Movie B'
+                'Feature Film A',
+                'Feature Film B'
             ]);
 
             const BLOCK_POOLS = {
@@ -443,8 +445,8 @@
                     'Nostalgia Night Preshow'
                 ]),
                 'NOSTALGIA NIGHT': new Set([
-                    'Movie A',
-                    'Movie B'
+                    'Feature Film A',
+                    'Feature Film B'
                 ]),
                 'PAID PROGRAMMING': new Set([
                     'Paid Programming'
@@ -505,7 +507,7 @@
                         statusClass = 'special';
                         statusText = '🎥';
                     }
-                } else if (slot.program === 'Movie A' || slot.program === 'Movie B') {
+                } else if (slot.program === 'Feature Film A' || slot.program === 'Feature Film B') {
                     const hasMovies = scheduleData && scheduleData.blocks && scheduleData.blocks.some(block => block.blockType === 'movie');
                     if (hasMovies) {
                         // Show which movie is playing based on occurrence
@@ -686,6 +688,8 @@
                 const slot = daySlots[idx];
                 if (!slot) return null;
                 if (slot.program === CARTOON_CARTOONS_HEADER) return 'CARTOON CARTOONS';
+                if (slot.program === NOSTALGIA_NIGHT_HEADER) return 'NOSTALGIA NIGHT';
+                if (slot.program === NOSTALGIA_NIGHT_PRESHOW_HEADER) return 'NOSTALGIA NIGHT PRESHOW';
                 // Disable implicit Cartoon Cartoons inference - only use explicit headers
                 // if (CARTOON_CARTOONS_SHOWS.has(slot.program) && shouldStartImplicitCartoonCartoonsBlock(daySlots, idx)) {
                 //     return 'CARTOON CARTOONS';
@@ -760,6 +764,8 @@
                 if (slotTimeBlock &&
                     slotTimeBlock !== currentTimeBlock &&
                     slot.program !== CARTOON_CARTOONS_HEADER &&
+                    slot.program !== NOSTALGIA_NIGHT_HEADER &&
+                    slot.program !== NOSTALGIA_NIGHT_PRESHOW_HEADER &&
                     !SPECIAL_PROGRAMS.has(slot.program)) {
                     currentTimeBlock = slotTimeBlock;
                     renderTimeBlockHeader(currentTimeBlock, slot.time);
@@ -774,6 +780,46 @@
                         seenExplicitHeaderInCurrentBlock = true;
                         currentTimeBlock = 'CARTOON CARTOONS';
                         const programHtml = `${CARTOON_CARTOONS_HEADER}<span class="block-subtitle">Classic shorts & CN originals</span>`;
+                        // Render header without time
+                        html += `
+                            <div class="slot block-header">
+                                <div class="slot-time"></div>
+                                <div class="slot-program">${programHtml}</div>
+                                <div class="slot-status"></div>
+                            </div>
+                        `;
+                    }
+                    // Skip rendering the header slot itself
+                    continue;
+                }
+
+                // Explicit Nostalgia Night header - render if it's within the correct time window
+                if (slot.program === NOSTALGIA_NIGHT_HEADER) {
+                    const slotMins = timeToMinutes(slot.time);
+                    // Only render Nostalgia Night header if it's between 3pm-11pm (900-1380 mins)
+                    if (slotMins >= 900 && slotMins < 1380) {
+                        currentTimeBlock = 'NOSTALGIA NIGHT';
+                        const programHtml = `${NOSTALGIA_NIGHT_HEADER}<span class="block-subtitle">Double feature movie night</span>`;
+                        // Render header without time
+                        html += `
+                            <div class="slot block-header">
+                                <div class="slot-time"></div>
+                                <div class="slot-program">${programHtml}</div>
+                                <div class="slot-status"></div>
+                            </div>
+                        `;
+                    }
+                    // Skip rendering the header slot itself
+                    continue;
+                }
+
+                // Explicit Nostalgia Night Preshow header - render if it's within the correct time window
+                if (slot.program === NOSTALGIA_NIGHT_PRESHOW_HEADER) {
+                    const slotMins = timeToMinutes(slot.time);
+                    // Only render Nostalgia Night Preshow header if it's between 12pm-3pm (720-900 mins)
+                    if (slotMins >= 720 && slotMins < 900) {
+                        currentTimeBlock = 'NOSTALGIA NIGHT PRESHOW';
+                        const programHtml = `${NOSTALGIA_NIGHT_PRESHOW_HEADER}<span class="block-subtitle">Pre-show buildup</span>`;
                         // Render header without time
                         html += `
                             <div class="slot block-header">
