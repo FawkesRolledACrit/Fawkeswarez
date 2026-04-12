@@ -732,10 +732,12 @@ class LiveStreamPlayer {
 
         const queue = this.buildQueue(weeklySlot);
         const position = this.getQueuePosition(blockElapsed, queue);
+        const currentItem = queue[position.index] || null;
         return {
-            currentUrl: queue[position.index]?.url || null,
+            currentUrl: currentItem?.url || null,
             currentTime: position.time,
-            currentTitle: queue[position.index]?.title || program,
+            currentTitle: currentItem?.title || program,
+            currentItem,
             queue
         };
     }
@@ -1182,7 +1184,7 @@ class LiveStreamPlayer {
     syncWithSchedule() {
         if (!this.hasTunedIn || !this.video) return;
         
-        const { currentUrl, currentTime, currentTitle } = this.getCurrentSchedulePosition();
+        const { currentUrl, currentTime, currentTitle, currentItem } = this.getCurrentSchedulePosition();
         const expectedTime = currentTime;
         const actualTime = this.video.currentTime;
 
@@ -1214,8 +1216,18 @@ class LiveStreamPlayer {
 
         // Check if we need to switch videos
         if (currentUrl !== this.currentItemUrl) {
+            // If something is already playing and hasn't ended, don't cut it off early.
+            // We'll naturally resync on the next interval after it ends (or if we fall OFF AIR).
+            if (this.currentItemUrl && !this.video.paused && !this.video.ended) {
+                const remaining = (Number.isFinite(this.video.duration) ? (this.video.duration - actualTime) : null);
+                if (remaining === null || remaining > 0.25) {
+                    return;
+                }
+            }
             console.log('Switching to new video:', currentUrl);
             this.currentItemUrl = currentUrl;
+            this.currentItemType = currentItem?.type || null;
+            this.currentItemPlannedDuration = currentItem?.duration || null;
             this.loadVideo(currentUrl, expectedTime, currentTitle).then(() => {
                 this.startPlayback();
             });
@@ -1224,7 +1236,8 @@ class LiveStreamPlayer {
 
         // Correct drift if significant (but not during playback)
         const drift = Math.abs(actualTime - expectedTime);
-        if (drift > 5 && !this.video.paused) {
+        // Avoid seeking during ads; it can cause the player to jump within/over commercials.
+        if (drift > 5 && !this.video.paused && this.currentItemType !== 'ad') {
             console.log('Correcting drift:', { actualTime, expectedTime, drift });
             try {
                 this.video.currentTime = expectedTime;
