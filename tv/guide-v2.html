@@ -584,12 +584,18 @@
             }
 
             function renderTimeBlockHeader(blockName, timeStr) {
-                const headerSlot = { time: timeStr, program: blockName };
                 const subtitle = blockName === 'ADULT SWIM'
                     ? 'Late night weirdness'
                     : 'Programming block';
                 const programHtml = `${blockName}<span class="block-subtitle">${subtitle}</span>`;
-                renderSlot(headerSlot, 'block-header', programHtml);
+                // Render header without a time - it's a separator, not a time slot
+                html += `
+                    <div class="slot block-header">
+                        <div class="slot-time"></div>
+                        <div class="slot-program">${programHtml}</div>
+                        <div class="slot-status"></div>
+                    </div>
+                `;
             }
 
             let inCartoonCartoons = false;
@@ -623,7 +629,14 @@
                     seenExplicitHeaderInCurrentBlock = true;
                     currentTimeBlock = 'CARTOON CARTOONS';
                     const programHtml = `${CARTOON_CARTOONS_HEADER}<span class="block-subtitle">Classic shorts & CN originals</span>`;
-                    renderSlot(slot, 'block-header', programHtml);
+                    // Render header without time
+                    html += `
+                        <div class="slot block-header">
+                            <div class="slot-time"></div>
+                            <div class="slot-program">${programHtml}</div>
+                            <div class="slot-status"></div>
+                        </div>
+                    `;
                     continue;
                 }
 
@@ -632,10 +645,15 @@
                     inCartoonCartoons = true;
                     seenExplicitHeaderInCurrentBlock = false;
                     currentTimeBlock = 'CARTOON CARTOONS';
-
-                    const implicitHeaderSlot = { ...slot, program: CARTOON_CARTOONS_HEADER };
                     const programHtml = `${CARTOON_CARTOONS_HEADER}<span class="block-subtitle">(inferred block)</span>`;
-                    renderSlot(implicitHeaderSlot, 'block-header', programHtml);
+                    // Render header without time
+                    html += `
+                        <div class="slot block-header">
+                            <div class="slot-time"></div>
+                            <div class="slot-program">${programHtml}</div>
+                            <div class="slot-status"></div>
+                        </div>
+                    `;
                 }
 
                 if (inCartoonCartoons && CARTOON_CARTOONS_SHOWS.has(slot.program)) {
