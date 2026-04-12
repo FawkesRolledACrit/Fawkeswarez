@@ -131,6 +131,11 @@
     },
     {
         "day":  "Sunday",
+        "time":  "12:00 PM",
+        "program":  "Nostalgia Night Preshow"
+    },
+    {
+        "day":  "Sunday",
         "time":  "12:30 PM",
         "program":  "Nostalgia Night Preshow"
     },
@@ -157,22 +162,27 @@
     {
         "day":  "Sunday",
         "time":  "3:00 PM",
-        "program":  "Feature Film A"
+        "program":  "Movie Night"
+    },
+    {
+        "day":  "Sunday",
+        "time":  "3:00 PM",
+        "program":  "Men in Black"
     },
     {
         "day":  "Sunday",
         "time":  "5:00 PM",
-        "program":  "Feature Film B"
+        "program":  "Back to the Future"
     },
     {
         "day":  "Sunday",
         "time":  "7:00 PM",
-        "program":  "Feature Film A"
+        "program":  "Men in Black"
     },
     {
         "day":  "Sunday",
         "time":  "9:00 PM",
-        "program":  "Feature Film B"
+        "program":  "Back to the Future"
     },
     {
         "day":  "Sunday",
@@ -187,12 +197,12 @@
     {
         "day":  "Monday",
         "time":  "12:00 AM",
-        "program":  "Tom Goes to the Mayor"
+        "program":  "The Venture Bros"
     },
     {
         "day":  "Monday",
         "time":  "12:00 AM",
-        "program":  "The Venture Bros"
+        "program":  "Tom Goes to the Mayor"
     },
     {
         "day":  "Monday",
