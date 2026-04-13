@@ -322,6 +322,46 @@
             return `${hours12}:${minuteStr} ${isPM ? 'PM' : 'AM'}`;
         }
 
+        function getTimeBlockNameForMinutes(mins, day) {
+            const hour = Math.floor((mins || 0) / 60);
+            const minute = (mins || 0) % 60;
+            const totalMins = hour * 60 + minute;
+
+            if (day === 'Saturday') {
+                if (totalMins >= 0 && totalMins < 360) return 'ADULT SWIM';
+                if (totalMins >= 360 && totalMins < 1320) return 'WEEKEND BOON';
+                return 'ADULT SWIM';
+            }
+
+            if (day === 'Sunday') {
+                if (totalMins >= 0 && totalMins < 360) return 'ADULT SWIM';
+                if (totalMins >= 360 && totalMins < 660) return 'MORNING MILK';
+                if (totalMins >= 660 && totalMins < 720) return 'CARTOON CARTOONS';
+                if (totalMins >= 720 && totalMins < 900) return 'MOVIE PRESHOW';
+                if (totalMins >= 900 && totalMins < 1380) return 'NOSTALGIA NIGHT';
+                return 'ADULT SWIM';
+            }
+
+            if (day === 'Monday') {
+                if (totalMins >= 0 && totalMins < 180) return 'ADULT SWIM';
+                if (totalMins >= 180 && totalMins < 360) return 'PAID PROGRAMMING';
+                if (totalMins >= 360 && totalMins < 660) return 'MORNING MILK';
+                if (totalMins >= 660 && totalMins < 720) return 'CARTOON CARTOONS';
+                if (totalMins >= 720 && totalMins < 900) return 'MIDDAY MADNESS';
+                if (totalMins >= 900 && totalMins < 1170) return 'AFTERNOON ACTION';
+                if (totalMins >= 1170 && totalMins < 1260) return 'ALL-TIME ANIMES';
+                return 'ADULT SWIM';
+            }
+
+            if (totalMins >= 0 && totalMins < 360) return 'ADULT SWIM';
+            if (totalMins >= 360 && totalMins < 660) return 'MORNING MILK';
+            if (totalMins >= 660 && totalMins < 720) return 'CARTOON CARTOONS';
+            if (totalMins >= 720 && totalMins < 900) return 'MIDDAY MADNESS';
+            if (totalMins >= 900 && totalMins < 1170) return 'AFTERNOON ACTION';
+            if (totalMins >= 1170 && totalMins < 1260) return 'ALL-TIME ANIMES';
+            return 'ADULT SWIM';
+        }
+
         function getEpisodePoolForProgram(program) {
             if (!scheduleData || !Array.isArray(scheduleData.blocks)) return [];
 
@@ -384,7 +424,7 @@
         async function loadData() {
             try {
                 // Aggressive cache bust: commit hash + timestamp + random
-                const commitHash = '0369ee6';
+                const commitHash = 'bcaf9fe';
                 const timestamp = new Date().getTime();
                 const cacheBuster = `${commitHash}_${timestamp}_${Math.random().toString(36).substr(2, 9)}`;
                 console.log('Loading weekly lineup with cache buster:', cacheBuster);
