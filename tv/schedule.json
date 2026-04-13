@@ -740,6 +740,518 @@
                                   ]
                    },
                    {
+                       "title":  "12 Oz. Mouse - S01E01",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "12 Oz. Mouse S01E01",
+                                          "url":  "https://files.catbox.moe/wfm7ed.mkv",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "12 Oz. Mouse - S01E02",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "12 Oz. Mouse S01E02",
+                                          "url":  "https://files.catbox.moe/18gzl0.mkv",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "12 Oz. Mouse - S01E03",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "12 Oz. Mouse S01E03",
+                                          "url":  "https://files.catbox.moe/mz1frr.mkv",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "12 Oz. Mouse - S01E04",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "12 Oz. Mouse S01E04",
+                                          "url":  "https://files.catbox.moe/wrjd5j.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "12 Oz. Mouse - S01E05",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "12 Oz. Mouse S01E05",
+                                          "url":  "https://files.catbox.moe/o9jhe5.mkv",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "12 Oz. Mouse - S01E06",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "12 Oz. Mouse S01E06",
+                                          "url":  "https://files.catbox.moe/k3t4ht.mkv",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "12 Oz. Mouse - S01E07",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "12 Oz. Mouse S01E07",
+                                          "url":  "https://files.catbox.moe/d98kkc.mkv",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "12 Oz. Mouse - S01Special",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "12 Oz. Mouse Special",
+                                          "url":  "https://files.catbox.moe/779uo9.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "12 Oz. Mouse - S02E01",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "12 Oz. Mouse S02E01",
+                                          "url":  "https://files.catbox.moe/unnvw0.mkv",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "12 Oz. Mouse - S02E02",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "12 Oz. Mouse S02E02",
+                                          "url":  "https://files.catbox.moe/4599z1.mkv",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "12 Oz. Mouse - S02E03",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "12 Oz. Mouse S02E03",
+                                          "url":  "https://files.catbox.moe/902cgh.mkv",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "12 Oz. Mouse - S02E04",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "12 Oz. Mouse S02E04",
+                                          "url":  "https://files.catbox.moe/8x4pv8.mkv",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "12 Oz. Mouse - S02E05",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "12 Oz. Mouse S02E05",
+                                          "url":  "https://files.catbox.moe/py0mso.mkv",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "12 Oz. Mouse - S02E06",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "12 Oz. Mouse S02E06",
+                                          "url":  "https://files.catbox.moe/6awqcn.mkv",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "12 Oz. Mouse - S02E07",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "12 Oz. Mouse S02E07",
+                                          "url":  "https://files.catbox.moe/ghfc0t.mkv",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "12 Oz. Mouse - S02E08",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "12 Oz. Mouse S02E08",
+                                          "url":  "https://files.catbox.moe/ae32n2.mkv",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "12 Oz. Mouse - S02E09",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "12 Oz. Mouse S02E09",
+                                          "url":  "https://files.catbox.moe/co31z2.mkv",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "12 Oz. Mouse - S02E10",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "12 Oz. Mouse S02E10",
+                                          "url":  "https://files.catbox.moe/qcyir5.mkv",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "12 Oz. Mouse - S02E11",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "12 Oz. Mouse S02E11",
+                                          "url":  "https://files.catbox.moe/0789hu.mkv",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "12 Oz. Mouse - S02E12",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "12 Oz. Mouse S02E12",
+                                          "url":  "https://files.catbox.moe/ws5rpx.mkv",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "12 Oz. Mouse - S02E13",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "12 Oz. Mouse S02E13",
+                                          "url":  "https://files.catbox.moe/7pfpg7.mkv",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "12 Oz. Mouse - S03E01",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "12 Oz. Mouse S03E01",
+                                          "url":  "https://files.catbox.moe/5ntf3n.mkv",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "12 Oz. Mouse - S03E02",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "12 Oz. Mouse S03E02",
+                                          "url":  "https://files.catbox.moe/8iz33i.mkv",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "12 Oz. Mouse - S03E03",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "12 Oz. Mouse S03E03",
+                                          "url":  "https://files.catbox.moe/teslr6.mkv",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "12 Oz. Mouse - S03E04",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "12 Oz. Mouse S03E04",
+                                          "url":  "https://files.catbox.moe/09i7ra.mkv",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "12 Oz. Mouse - S03E05",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "12 Oz. Mouse S03E05",
+                                          "url":  "https://files.catbox.moe/fhxzwj.mkv",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "12 Oz. Mouse - S03E06",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "12 Oz. Mouse S03E06",
+                                          "url":  "https://files.catbox.moe/4y6rik.mkv",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "12 Oz. Mouse - S03E07",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "12 Oz. Mouse S03E07",
+                                          "url":  "https://files.catbox.moe/gmo7wz.mkv",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "12 Oz. Mouse - S03E08",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "12 Oz. Mouse S03E08",
+                                          "url":  "https://files.catbox.moe/z6it9l.mkv",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "12 Oz. Mouse - S03E09",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "12 Oz. Mouse S03E09",
+                                          "url":  "https://files.catbox.moe/66w96a.mkv",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "12 Oz. Mouse - S03E10",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "12 Oz. Mouse S03E10",
+                                          "url":  "https://files.catbox.moe/qz8rpu.mkv",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "12 Oz. Mouse - S03E11",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "12 Oz. Mouse S03E11",
+                                          "url":  "https://files.catbox.moe/1apw3l.mkv",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
                        "title":  "The Powerpuff Girls - S01E01",
                        "slotSeconds":  1800,
                        "events":  [
