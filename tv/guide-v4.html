@@ -310,6 +310,18 @@
             return String(str).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
         }
 
+        function minutesToTimeString(totalMins) {
+            let mins = Math.floor(totalMins || 0);
+            mins = ((mins % 1440) + 1440) % 1440;
+            const hours24 = Math.floor(mins / 60);
+            const minutes = mins % 60;
+            const isPM = hours24 >= 12;
+            let hours12 = hours24 % 12;
+            if (hours12 === 0) hours12 = 12;
+            const minuteStr = String(minutes).padStart(2, '0');
+            return `${hours12}:${minuteStr} ${isPM ? 'PM' : 'AM'}`;
+        }
+
         function getEpisodePoolForProgram(program) {
             if (!scheduleData || !Array.isArray(scheduleData.blocks)) return [];
 
@@ -372,7 +384,7 @@
         async function loadData() {
             try {
                 // Aggressive cache bust: commit hash + timestamp + random
-                const commitHash = '233be67';
+                const commitHash = '0369ee6';
                 const timestamp = new Date().getTime();
                 const cacheBuster = `${commitHash}_${timestamp}_${Math.random().toString(36).substr(2, 9)}`;
                 console.log('Loading weekly lineup with cache buster:', cacheBuster);
@@ -1100,7 +1112,26 @@
             if (!pool.length) return null;
 
             if (typeof weeklyLineup !== 'undefined' && typeof scheduleStartDate !== 'undefined') {
-                const occ = getProgramOccurrenceIndex(program, timeStr, date);
+                let occDate = date;
+                let occTimeStr = timeStr;
+
+                // Adult Swim reruns: the block from ~9:00 PM to 1:30 AM repeats from 1:30 AM to 6:00 AM.
+                // We map the rerun slot back by 4.5 hours (270 mins) to reuse the same episode selection.
+                const slotMins = timeToMinutes(timeStr);
+                const dayName = getDayName(date);
+                const isAdultSwimWindow = (slotMins >= 90 && slotMins < 360) && (getTimeBlockNameForMinutes(slotMins, dayName) === 'ADULT SWIM');
+                if (isAdultSwimWindow) {
+                    let mappedMins = slotMins - 270;
+                    let mappedDate = new Date(date);
+                    if (mappedMins < 0) {
+                        mappedMins += 1440;
+                        mappedDate.setDate(mappedDate.getDate() - 1);
+                    }
+                    occDate = mappedDate;
+                    occTimeStr = minutesToTimeString(mappedMins);
+                }
+
+                const occ = getProgramOccurrenceIndex(program, occTimeStr, occDate);
                 const idx = ((occ % pool.length) + pool.length) % pool.length;
                 return pool[idx];
             }
