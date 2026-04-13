@@ -1814,6 +1814,519 @@
                                   ]
                    },
                    {
+                       "title":  "The Powerpuff Girls - S02E08",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "The Powerpuff Girls S02E08 Part 1",
+                                          "url":  "https://files.catbox.moe/u0t1x3.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "The Powerpuff Girls S02E08 Part 2",
+                                          "url":  "https://files.catbox.moe/fpn3i7.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "The Powerpuff Girls - S02E09",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "The Powerpuff Girls S02E09 Part 1",
+                                          "url":  "https://files.catbox.moe/yw45s8.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "The Powerpuff Girls S02E09 Part 2",
+                                          "url":  "https://files.catbox.moe/8jk361.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "The Powerpuff Girls - S02E10",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "The Powerpuff Girls S02E10 Part 1",
+                                          "url":  "https://files.catbox.moe/5yaf29.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "The Powerpuff Girls S02E10 Part 2",
+                                          "url":  "https://files.catbox.moe/njsd04.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "The Powerpuff Girls - S02E11",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "The Powerpuff Girls S02E11 Part 1",
+                                          "url":  "https://files.catbox.moe/lbdtax.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "The Powerpuff Girls S02E11 Part 2",
+                                          "url":  "https://files.catbox.moe/uqjk09.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "The Powerpuff Girls - S02E12",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "The Powerpuff Girls S02E12 Part 1",
+                                          "url":  "https://files.catbox.moe/iwquc0.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "The Powerpuff Girls S02E12 Part 2",
+                                          "url":  "https://files.catbox.moe/oet9g7.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "The Powerpuff Girls - S02E13",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "The Powerpuff Girls S02E13 Part 1",
+                                          "url":  "https://files.catbox.moe/dpe0fl.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "The Powerpuff Girls S02E13 Part 2",
+                                          "url":  "https://files.catbox.moe/7rz19k.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "The Powerpuff Girls - S03E01",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "The Powerpuff Girls S03E01 Part 1",
+                                          "url":  "https://files.catbox.moe/ropsgo.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "The Powerpuff Girls S03E01 Part 2",
+                                          "url":  "https://files.catbox.moe/smc6j9.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "The Powerpuff Girls - S03E02",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "The Powerpuff Girls S03E02 Part 1",
+                                          "url":  "https://files.catbox.moe/8sdeaw.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "The Powerpuff Girls S03E02 Part 2",
+                                          "url":  "https://files.catbox.moe/ow8ujn.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "The Powerpuff Girls - S03E03",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "The Powerpuff Girls S03E03 Part 1",
+                                          "url":  "https://files.catbox.moe/85ix61.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "The Powerpuff Girls S03E03 Part 2",
+                                          "url":  "https://files.catbox.moe/ftpm0r.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "The Powerpuff Girls - S03E04",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "The Powerpuff Girls S03E04 Part 1",
+                                          "url":  "https://files.catbox.moe/n5b0gd.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "The Powerpuff Girls S03E04 Part 2",
+                                          "url":  "https://files.catbox.moe/8k8sjk.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "The Powerpuff Girls - S03E05",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "The Powerpuff Girls S03E05 Part 1",
+                                          "url":  "https://files.catbox.moe/tku4o9.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "The Powerpuff Girls S03E05 Part 2",
+                                          "url":  "https://files.catbox.moe/wdki3t.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "The Powerpuff Girls - S03E06",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "The Powerpuff Girls S03E06 Part 1",
+                                          "url":  "https://files.catbox.moe/ns72ne.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "The Powerpuff Girls S03E06 Part 2",
+                                          "url":  "https://files.catbox.moe/axj0o2.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "The Powerpuff Girls - S03E07",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "The Powerpuff Girls S03E07 Part 1",
+                                          "url":  "https://files.catbox.moe/yrqovz.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "The Powerpuff Girls S03E07 Part 2",
+                                          "url":  "https://files.catbox.moe/vbmbdt.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "The Powerpuff Girls - S03E08",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "The Powerpuff Girls S03E08 Part 1",
+                                          "url":  "https://files.catbox.moe/l4ape6.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "The Powerpuff Girls S03E08 Part 2",
+                                          "url":  "https://files.catbox.moe/d6pqut.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "The Powerpuff Girls - S03E09",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "The Powerpuff Girls S03E09 Part 1",
+                                          "url":  "https://files.catbox.moe/q16mxn.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "The Powerpuff Girls S03E09 Part 2",
+                                          "url":  "https://files.catbox.moe/70qx33.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "The Powerpuff Girls - S03E10",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "The Powerpuff Girls S03E10 Part 1",
+                                          "url":  "https://files.catbox.moe/f4qu2q.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "The Powerpuff Girls S03E10 Part 2",
+                                          "url":  "https://files.catbox.moe/a6o5sr.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "The Powerpuff Girls - S03E11",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "The Powerpuff Girls S03E11 Part 1",
+                                          "url":  "https://files.catbox.moe/1sppog.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "The Powerpuff Girls S03E11 Part 2",
+                                          "url":  "https://files.catbox.moe/iq78cl.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "The Powerpuff Girls - S03E12",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "The Powerpuff Girls S03E12 Part 1",
+                                          "url":  "https://files.catbox.moe/j1h1qb.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "The Powerpuff Girls S03E12 Part 2",
+                                          "url":  "https://files.catbox.moe/g6krb2.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "The Powerpuff Girls - S03E13",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "The Powerpuff Girls S03E13 Part 1",
+                                          "url":  "https://files.catbox.moe/lqtktu.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "The Powerpuff Girls S03E13 Part 2",
+                                          "url":  "https://files.catbox.moe/27vouh.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
                        "title":  "Ed, Edd n Eddy - S01E01",
                        "slotSeconds":  1800,
                        "events":  [
@@ -2518,6 +3031,357 @@
                                           "type":  "segment",
                                           "title":  "Ed, Edd n Eddy S02E13 Part 2",
                                           "url":  "https://files.catbox.moe/45vzv1.mp4",
+                                          "durationSeconds":  600
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Ed, Edd n Eddy - S03E01",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Ed, Edd n Eddy S03E01 Part 1",
+                                          "url":  "https://files.catbox.moe/m3xenz.mp4",
+                                          "durationSeconds":  600
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Ed, Edd n Eddy S03E01 Part 2",
+                                          "url":  "https://files.catbox.moe/g82cha.mp4",
+                                          "durationSeconds":  600
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Ed, Edd n Eddy - S03E02",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Ed, Edd n Eddy S03E02 Part 1",
+                                          "url":  "https://files.catbox.moe/xef4nf.mp4",
+                                          "durationSeconds":  600
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Ed, Edd n Eddy S03E02 Part 2",
+                                          "url":  "https://files.catbox.moe/ilwdtv.mp4",
+                                          "durationSeconds":  600
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Ed, Edd n Eddy - S03E03",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Ed, Edd n Eddy S03E03 Part 1",
+                                          "url":  "https://files.catbox.moe/g4w3lh.mp4",
+                                          "durationSeconds":  600
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Ed, Edd n Eddy S03E03 Part 2",
+                                          "url":  "https://files.catbox.moe/ghsco5.mp4",
+                                          "durationSeconds":  600
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Ed, Edd n Eddy - S03E04",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Ed, Edd n Eddy S03E04 Part 1",
+                                          "url":  "https://files.catbox.moe/b5h725.mp4",
+                                          "durationSeconds":  600
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Ed, Edd n Eddy S03E04 Part 2",
+                                          "url":  "https://files.catbox.moe/4m8is0.mp4",
+                                          "durationSeconds":  600
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Ed, Edd n Eddy - S03E05",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Ed, Edd n Eddy S03E05 Part 1",
+                                          "url":  "https://files.catbox.moe/tbiohx.mp4",
+                                          "durationSeconds":  600
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Ed, Edd n Eddy S03E05 Part 2",
+                                          "url":  "https://files.catbox.moe/9u4y0s.mp4",
+                                          "durationSeconds":  600
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Ed, Edd n Eddy - S03E06",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Ed, Edd n Eddy S03E06 Part 1",
+                                          "url":  "https://files.catbox.moe/77nwbk.mp4",
+                                          "durationSeconds":  600
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Ed, Edd n Eddy S03E06 Part 2",
+                                          "url":  "https://files.catbox.moe/47hnh6.mp4",
+                                          "durationSeconds":  600
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Ed, Edd n Eddy - S03E07",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Ed, Edd n Eddy S03E07 Part 1",
+                                          "url":  "https://files.catbox.moe/gxerkq.mp4",
+                                          "durationSeconds":  600
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Ed, Edd n Eddy S03E07 Part 2",
+                                          "url":  "https://files.catbox.moe/4gid97.mp4",
+                                          "durationSeconds":  600
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Ed, Edd n Eddy - S03E08",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Ed, Edd n Eddy S03E08 Part 1",
+                                          "url":  "https://files.catbox.moe/kzzpyg.mp4",
+                                          "durationSeconds":  600
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Ed, Edd n Eddy S03E08 Part 2",
+                                          "url":  "https://files.catbox.moe/fjhtjr.mp4",
+                                          "durationSeconds":  600
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Ed, Edd n Eddy - S03E09",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Ed, Edd n Eddy S03E09 Part 1",
+                                          "url":  "https://files.catbox.moe/0as4sk.mp4",
+                                          "durationSeconds":  600
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Ed, Edd n Eddy S03E09 Part 2",
+                                          "url":  "https://files.catbox.moe/v2h1g0.mp4",
+                                          "durationSeconds":  600
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Ed, Edd n Eddy - S03E10",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Ed, Edd n Eddy S03E10 Part 1",
+                                          "url":  "https://files.catbox.moe/of30sy.mp4",
+                                          "durationSeconds":  600
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Ed, Edd n Eddy S03E10 Part 2",
+                                          "url":  "https://files.catbox.moe/csw5xg.mp4",
+                                          "durationSeconds":  600
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Ed, Edd n Eddy - S03E11",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Ed, Edd n Eddy S03E11 Part 1",
+                                          "url":  "https://files.catbox.moe/xel2vr.mp4",
+                                          "durationSeconds":  600
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Ed, Edd n Eddy S03E11 Part 2",
+                                          "url":  "https://files.catbox.moe/6hx3tn.mp4",
+                                          "durationSeconds":  600
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Ed, Edd n Eddy - S03E12",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Ed, Edd n Eddy S03E12 Part 1",
+                                          "url":  "https://files.catbox.moe/rhqlhm.mp4",
+                                          "durationSeconds":  600
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Ed, Edd n Eddy S03E12 Part 2",
+                                          "url":  "https://files.catbox.moe/ktqi5u.mp4",
+                                          "durationSeconds":  600
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Ed, Edd n Eddy - S03E13",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Ed, Edd n Eddy S03E13 Part 1",
+                                          "url":  "https://files.catbox.moe/kspdt1.mp4",
+                                          "durationSeconds":  600
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Ed, Edd n Eddy S03E13 Part 2",
+                                          "url":  "https://files.catbox.moe/jvlfgm.mp4",
                                           "durationSeconds":  600
                                       },
                                       {
