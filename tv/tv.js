@@ -207,16 +207,43 @@ class LiveStreamPlayer {
         if (!this.weeklySlotsByDay || !dayName) return [];
         const slots = this.weeklySlotsByDay[dayName] || [];
         return slots
-            .filter(s => s?.program === program)
+            .filter(s => s.program === program)
             .map(s => s.startMin)
             .sort((a, b) => a - b);
+    }
+
+    getRerunMappedIndexForDay(starts, startMin) {
+        if (!Array.isArray(starts) || starts.length <= 1) return null;
+        const i = starts.indexOf(startMin);
+        if (i < 0) return null;
+
+        // If the program airs in two clusters far apart in the same day (original + rerun),
+        // map the later cluster back onto the earlier cluster so reruns don't advance.
+        const span = starts[starts.length - 1] - starts[0];
+        if (span < 180) return i;
+
+        if (starts.length % 2 !== 0) return i;
+        const half = starts.length / 2;
+        return i >= half ? (i - half) : i;
+    }
+
+    getEffectiveProgramOccurrencesForDay(program, dayName) {
+        const starts = this.getProgramOccurrencesForDay(program, dayName);
+        if (!starts.length) return 0;
+
+        const span = starts[starts.length - 1] - starts[0];
+        if (span >= 180 && starts.length % 2 === 0) {
+            return starts.length / 2;
+        }
+
+        return starts.length;
     }
 
     getProgramWeeklyCount(program) {
         if (!this.weeklySlotsByDay || !program) return 0;
         let total = 0;
         for (const dayName of Object.keys(this.weeklySlotsByDay)) {
-            total += this.getProgramOccurrencesForDay(program, dayName).length;
+            total += this.getEffectiveProgramOccurrencesForDay(program, dayName);
         }
         return total;
     }
@@ -251,14 +278,20 @@ class LiveStreamPlayer {
         for (let i = 0; i < remDays; i++) {
             const d = new Date(scheduleDayStart.getTime() + ((wholeWeeks * 7 + i) * MS_PER_DAY));
             const dayName = this.getDayName(d);
-            total += this.getProgramOccurrencesForDay(program, dayName).length;
+            total += this.getEffectiveProgramOccurrencesForDay(program, dayName);
         }
 
         // Current day: count occurrences strictly before this slot start.
         const currentDayName = this.getDayName(slotStart);
         const starts = this.getProgramOccurrencesForDay(program, currentDayName);
-        for (const sMin of starts) {
-            if (sMin < weeklySlot.startMin) total += 1;
+
+        const mappedIdx = this.getRerunMappedIndexForDay(starts, weeklySlot.startMin);
+        if (typeof mappedIdx === 'number') {
+            total += Math.max(0, mappedIdx);
+        } else {
+            for (const sMin of starts) {
+                if (sMin < weeklySlot.startMin) total += 1;
+            }
         }
 
         return total;
