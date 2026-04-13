@@ -1009,6 +1009,7 @@ class LiveStreamPlayer {
             "Home Movies": ["home", "home movies"],
             "Aqua Teen Hunger Force": ["aqua", "aqua teen", "athf"],
             "Sealab 2021": ["sealab", "sealab 2021"],
+            "Space Ghost Coast to Coast": ["space ghost", "space ghost coast to coast", "sgc2c"],
             "Boondocks Marathon": ["boondocks", "the boondocks", "boondocks marathon"],
             "King of the Hill": ["king", "king of the hill", "koth"],
             "Family Guy": ["family", "family guy", "fg"],
