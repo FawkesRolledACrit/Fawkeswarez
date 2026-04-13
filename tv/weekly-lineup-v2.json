@@ -177,37 +177,47 @@
     {
         "day":  "Sunday",
         "time":  "11:30 PM",
-        "program":  "Harvey Birdman, Attorney at Law"
-    },
-    {
-        "day":  "Monday",
-        "time":  "12:00 AM",
         "program":  "Family Guy"
     },
     {
         "day":  "Monday",
+        "time":  "12:00 AM",
+        "program":  "The Venture Bros"
+    },
+    {
+        "day":  "Monday",
         "time":  "12:30 AM",
-        "program":  "12 Oz. Mouse"
+        "program":  "The Venture Bros"
     },
     {
         "day":  "Monday",
         "time":  "1:00 AM",
-        "program":  "The Venture Bros"
+        "program":  "Aqua Teen Hunger Force"
+    },
+    {
+        "day":  "Monday",
+        "time":  "1:15 AM",
+        "program":  "Aqua Teen Hunger Force"
     },
     {
         "day":  "Monday",
         "time":  "1:30 AM",
-        "program":  "The Venture Bros"
+        "program":  "Harvey Birdman, Attorney at Law"
+    },
+    {
+        "day":  "Monday",
+        "time":  "1:45 AM",
+        "program":  "Harvey Birdman, Attorney at Law"
     },
     {
         "day":  "Monday",
         "time":  "2:00 AM",
-        "program":  "Aqua Teen Hunger Force"
+        "program":  "12 Oz. Mouse"
     },
     {
         "day":  "Monday",
         "time":  "2:15 AM",
-        "program":  "Aqua Teen Hunger Force"
+        "program":  "12 Oz. Mouse"
     },
     {
         "day":  "Monday",
