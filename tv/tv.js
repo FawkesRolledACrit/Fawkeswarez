@@ -1009,7 +1009,16 @@ class LiveStreamPlayer {
             "Home Movies": ["home", "home movies"],
             "Aqua Teen Hunger Force": ["aqua", "aqua teen", "athf"],
             "Sealab 2021": ["sealab", "sealab 2021"],
-            "Boondocks Marathon": ["boondocks", "the boondocks", "boondocks marathon"]
+            "Boondocks Marathon": ["boondocks", "the boondocks", "boondocks marathon"],
+            "King of the Hill": ["king", "king of the hill", "koth"],
+            "Family Guy": ["family", "family guy", "fg"],
+            "12 Oz. Mouse": ["12 oz", "12 oz mouse", "oz mouse"],
+            "Codename: Kids Next Door": ["codename", "kids next door", "knd", "codename kids next door"],
+            "Cowboy Bebop": ["cowboy", "cowboy bebop", "bebop"],
+            "Movie Night": ["movie night"],
+            "Movie Preshow": ["movie preshow"],
+            "TBD": ["tbd"],
+            "Weekend Boon": ["weekend boon"]
         };
         
         return searchTerms[program] || [program.toLowerCase()];

@@ -1,23 +1,23 @@
-[
+﻿[
     {
         "day":  "Sunday",
         "time":  "12:00 AM",
-        "program": "Sealab 2021"
+        "program":  "Family Guy"
     },
     {
         "day":  "Sunday",
         "time":  "12:30 AM",
-        "program": "Sealab 2021"
+        "program":  "Family Guy"
     },
     {
         "day":  "Sunday",
         "time":  "1:00 AM",
-        "program": "The Venture Bros"
+        "program":  "King of the Hill"
     },
     {
         "day":  "Sunday",
         "time":  "1:30 AM",
-        "program": "The Venture Bros"
+        "program":  "King of the Hill"
     },
     {
         "day":  "Sunday",
@@ -37,22 +37,22 @@
     {
         "day":  "Sunday",
         "time":  "3:00 AM",
-        "program": "Sealab 2021"
+        "program":  "Family Guy"
     },
     {
         "day":  "Sunday",
         "time":  "3:30 AM",
-        "program": "Sealab 2021"
+        "program":  "Family Guy"
     },
     {
         "day":  "Sunday",
         "time":  "4:00 AM",
-        "program": "The Venture Bros"
+        "program":  "King of the Hill"
     },
     {
         "day":  "Sunday",
         "time":  "4:30 AM",
-        "program": "The Venture Bros"
+        "program":  "King of the Hill"
     },
     {
         "day":  "Sunday",
@@ -137,17 +137,17 @@
     {
         "day":  "Sunday",
         "time":  "11:59 AM",
-        "program": "Paid Programming"
+        "program":  "Movie Preshow"
     },
     {
         "day":  "Sunday",
         "time":  "12:00 PM",
-        "program": "Paid Programming"
+        "program":  "TBD"
     },
     {
         "day":  "Sunday",
         "time":  "2:59 PM",
-        "program": "Paid Programming"
+        "program":  "Movie Night"
     },
     {
         "day":  "Sunday",
@@ -172,12 +172,12 @@
     {
         "day":  "Sunday",
         "time":  "11:00 PM",
-        "program": "The Venture Bros"
+        "program":  "King of the Hill"
     },
     {
         "day":  "Sunday",
         "time":  "11:30 PM",
-        "program": "Sealab 2021"
+        "program":  "Family Guy"
     },
     {
         "day":  "Monday",
@@ -212,12 +212,12 @@
     {
         "day":  "Monday",
         "time":  "2:00 AM",
-        "program": "The Brak Show"
+        "program":  "12 Oz. Mouse"
     },
     {
         "day":  "Monday",
         "time":  "2:15 AM",
-        "program": "The Brak Show"
+        "program":  "12 Oz. Mouse"
     },
     {
         "day":  "Monday",
@@ -362,17 +362,17 @@
     {
         "day":  "Monday",
         "time":  "6:00 PM",
-        "program": "Teen Titans"
+        "program":  "Codename: Kids Next Door"
     },
     {
         "day":  "Monday",
         "time":  "6:30 PM",
-        "program": "Teen Titans"
+        "program":  "Codename: Kids Next Door"
     },
     {
         "day":  "Monday",
         "time":  "7:00 PM",
-        "program": "Teen Titans"
+        "program":  "Codename: Kids Next Door"
     },
     {
         "day":  "Monday",
@@ -387,17 +387,17 @@
     {
         "day":  "Monday",
         "time":  "8:30 PM",
-        "program": "Samurai Jack"
+        "program":  "Cowboy Bebop"
     },
     {
         "day":  "Monday",
         "time":  "9:00 PM",
-        "program": "The Venture Bros"
+        "program":  "King of the Hill"
     },
     {
         "day":  "Monday",
         "time":  "9:30 PM",
-        "program": "Sealab 2021"
+        "program":  "Family Guy"
     },
     {
         "day":  "Monday",
@@ -447,12 +447,12 @@
     {
         "day":  "Tuesday",
         "time":  "12:30 AM",
-        "program": "The Brak Show"
+        "program":  "12 Oz. Mouse"
     },
     {
         "day":  "Tuesday",
         "time":  "12:45 AM",
-        "program": "The Brak Show"
+        "program":  "12 Oz. Mouse"
     },
     {
         "day":  "Tuesday",
@@ -462,12 +462,12 @@
     {
         "day":  "Tuesday",
         "time":  "1:30 AM",
-        "program": "The Venture Bros"
+        "program":  "King of the Hill"
     },
     {
         "day":  "Tuesday",
         "time":  "2:00 AM",
-        "program": "Sealab 2021"
+        "program":  "Family Guy"
     },
     {
         "day":  "Tuesday",
@@ -517,12 +517,12 @@
     {
         "day":  "Tuesday",
         "time":  "5:00 AM",
-        "program": "The Brak Show"
+        "program":  "12 Oz. Mouse"
     },
     {
         "day":  "Tuesday",
         "time":  "5:15 AM",
-        "program": "The Brak Show"
+        "program":  "12 Oz. Mouse"
     },
     {
         "day":  "Tuesday",
@@ -657,17 +657,17 @@
     {
         "day":  "Tuesday",
         "time":  "6:00 PM",
-        "program": "Teen Titans"
+        "program":  "Codename: Kids Next Door"
     },
     {
         "day":  "Tuesday",
         "time":  "6:30 PM",
-        "program": "Teen Titans"
+        "program":  "Codename: Kids Next Door"
     },
     {
         "day":  "Tuesday",
         "time":  "7:00 PM",
-        "program": "Teen Titans"
+        "program":  "Codename: Kids Next Door"
     },
     {
         "day":  "Tuesday",
@@ -682,17 +682,17 @@
     {
         "day":  "Tuesday",
         "time":  "8:30 PM",
-        "program": "Samurai Jack"
+        "program":  "Cowboy Bebop"
     },
     {
         "day":  "Tuesday",
         "time":  "9:00 PM",
-        "program": "The Venture Bros"
+        "program":  "King of the Hill"
     },
     {
         "day":  "Tuesday",
         "time":  "9:30 PM",
-        "program": "Sealab 2021"
+        "program":  "Family Guy"
     },
     {
         "day":  "Tuesday",
@@ -742,12 +742,12 @@
     {
         "day":  "Wednesday",
         "time":  "12:30 AM",
-        "program": "The Brak Show"
+        "program":  "12 Oz. Mouse"
     },
     {
         "day":  "Wednesday",
         "time":  "12:45 AM",
-        "program": "The Brak Show"
+        "program":  "12 Oz. Mouse"
     },
     {
         "day":  "Wednesday",
@@ -757,12 +757,12 @@
     {
         "day":  "Wednesday",
         "time":  "1:30 AM",
-        "program": "The Venture Bros"
+        "program":  "King of the Hill"
     },
     {
         "day":  "Wednesday",
         "time":  "2:00 AM",
-        "program": "Sealab 2021"
+        "program":  "Family Guy"
     },
     {
         "day":  "Wednesday",
@@ -812,12 +812,12 @@
     {
         "day":  "Wednesday",
         "time":  "5:00 AM",
-        "program": "The Brak Show"
+        "program":  "12 Oz. Mouse"
     },
     {
         "day":  "Wednesday",
         "time":  "5:15 AM",
-        "program": "The Brak Show"
+        "program":  "12 Oz. Mouse"
     },
     {
         "day":  "Wednesday",
@@ -952,17 +952,17 @@
     {
         "day":  "Wednesday",
         "time":  "6:00 PM",
-        "program": "Teen Titans"
+        "program":  "Codename: Kids Next Door"
     },
     {
         "day":  "Wednesday",
         "time":  "6:30 PM",
-        "program": "Teen Titans"
+        "program":  "Codename: Kids Next Door"
     },
     {
         "day":  "Wednesday",
         "time":  "7:00 PM",
-        "program": "Teen Titans"
+        "program":  "Codename: Kids Next Door"
     },
     {
         "day":  "Wednesday",
@@ -977,17 +977,17 @@
     {
         "day":  "Wednesday",
         "time":  "8:30 PM",
-        "program": "Samurai Jack"
+        "program":  "Cowboy Bebop"
     },
     {
         "day":  "Wednesday",
         "time":  "9:00 PM",
-        "program": "The Venture Bros"
+        "program":  "King of the Hill"
     },
     {
         "day":  "Wednesday",
         "time":  "9:30 PM",
-        "program": "Sealab 2021"
+        "program":  "Family Guy"
     },
     {
         "day":  "Wednesday",
@@ -1037,12 +1037,12 @@
     {
         "day":  "Thursday",
         "time":  "12:30 AM",
-        "program": "The Brak Show"
+        "program":  "12 Oz. Mouse"
     },
     {
         "day":  "Thursday",
         "time":  "12:45 AM",
-        "program": "The Brak Show"
+        "program":  "12 Oz. Mouse"
     },
     {
         "day":  "Thursday",
@@ -1052,12 +1052,12 @@
     {
         "day":  "Thursday",
         "time":  "1:30 AM",
-        "program": "The Venture Bros"
+        "program":  "King of the Hill"
     },
     {
         "day":  "Thursday",
         "time":  "2:00 AM",
-        "program": "Sealab 2021"
+        "program":  "Family Guy"
     },
     {
         "day":  "Thursday",
@@ -1107,12 +1107,12 @@
     {
         "day":  "Thursday",
         "time":  "5:00 AM",
-        "program": "The Brak Show"
+        "program":  "12 Oz. Mouse"
     },
     {
         "day":  "Thursday",
         "time":  "5:15 AM",
-        "program": "The Brak Show"
+        "program":  "12 Oz. Mouse"
     },
     {
         "day":  "Thursday",
@@ -1247,17 +1247,17 @@
     {
         "day":  "Thursday",
         "time":  "6:00 PM",
-        "program": "Teen Titans"
+        "program":  "Codename: Kids Next Door"
     },
     {
         "day":  "Thursday",
         "time":  "6:30 PM",
-        "program": "Teen Titans"
+        "program":  "Codename: Kids Next Door"
     },
     {
         "day":  "Thursday",
         "time":  "7:00 PM",
-        "program": "Teen Titans"
+        "program":  "Codename: Kids Next Door"
     },
     {
         "day":  "Thursday",
@@ -1272,17 +1272,17 @@
     {
         "day":  "Thursday",
         "time":  "8:30 PM",
-        "program": "Samurai Jack"
+        "program":  "Cowboy Bebop"
     },
     {
         "day":  "Thursday",
         "time":  "9:00 PM",
-        "program": "The Venture Bros"
+        "program":  "King of the Hill"
     },
     {
         "day":  "Thursday",
         "time":  "9:30 PM",
-        "program": "Sealab 2021"
+        "program":  "Family Guy"
     },
     {
         "day":  "Thursday",
@@ -1332,12 +1332,12 @@
     {
         "day":  "Friday",
         "time":  "12:30 AM",
-        "program": "The Brak Show"
+        "program":  "12 Oz. Mouse"
     },
     {
         "day":  "Friday",
         "time":  "12:45 AM",
-        "program": "The Brak Show"
+        "program":  "12 Oz. Mouse"
     },
     {
         "day":  "Friday",
@@ -1347,12 +1347,12 @@
     {
         "day":  "Friday",
         "time":  "1:30 AM",
-        "program": "The Venture Bros"
+        "program":  "King of the Hill"
     },
     {
         "day":  "Friday",
         "time":  "2:00 AM",
-        "program": "Sealab 2021"
+        "program":  "Family Guy"
     },
     {
         "day":  "Friday",
@@ -1402,12 +1402,12 @@
     {
         "day":  "Friday",
         "time":  "5:00 AM",
-        "program": "The Brak Show"
+        "program":  "12 Oz. Mouse"
     },
     {
         "day":  "Friday",
         "time":  "5:15 AM",
-        "program": "The Brak Show"
+        "program":  "12 Oz. Mouse"
     },
     {
         "day":  "Friday",
@@ -1542,17 +1542,17 @@
     {
         "day":  "Friday",
         "time":  "6:00 PM",
-        "program": "Teen Titans"
+        "program":  "Codename: Kids Next Door"
     },
     {
         "day":  "Friday",
         "time":  "6:30 PM",
-        "program": "Teen Titans"
+        "program":  "Codename: Kids Next Door"
     },
     {
         "day":  "Friday",
         "time":  "7:00 PM",
-        "program": "Teen Titans"
+        "program":  "Codename: Kids Next Door"
     },
     {
         "day":  "Friday",
@@ -1567,17 +1567,17 @@
     {
         "day":  "Friday",
         "time":  "8:30 PM",
-        "program": "Samurai Jack"
+        "program":  "Cowboy Bebop"
     },
     {
         "day":  "Friday",
         "time":  "9:00 PM",
-        "program": "The Venture Bros"
+        "program":  "King of the Hill"
     },
     {
         "day":  "Friday",
         "time":  "9:30 PM",
-        "program": "Sealab 2021"
+        "program":  "Family Guy"
     },
     {
         "day":  "Friday",
@@ -1627,12 +1627,12 @@
     {
         "day":  "Saturday",
         "time":  "12:30 AM",
-        "program": "The Brak Show"
+        "program":  "12 Oz. Mouse"
     },
     {
         "day":  "Saturday",
         "time":  "12:45 AM",
-        "program": "The Brak Show"
+        "program":  "12 Oz. Mouse"
     },
     {
         "day":  "Saturday",
@@ -1642,12 +1642,12 @@
     {
         "day":  "Saturday",
         "time":  "1:30 AM",
-        "program": "The Venture Bros"
+        "program":  "King of the Hill"
     },
     {
         "day":  "Saturday",
         "time":  "2:00 AM",
-        "program": "Sealab 2021"
+        "program":  "Family Guy"
     },
     {
         "day":  "Saturday",
@@ -1697,12 +1697,12 @@
     {
         "day":  "Saturday",
         "time":  "5:00 AM",
-        "program": "The Brak Show"
+        "program":  "12 Oz. Mouse"
     },
     {
         "day":  "Saturday",
         "time":  "5:15 AM",
-        "program": "The Brak Show"
+        "program":  "12 Oz. Mouse"
     },
     {
         "day":  "Saturday",
@@ -1712,14 +1712,11 @@
     {
         "day":  "Saturday",
         "time":  "5:59 AM",
-        "program": "Cartoon Cartoons"
+        "program":  "Weekend Boon"
     },
     {
         "day":  "Saturday",
         "time":  "6:00 AM",
-        "program": "Boondocks Marathon"
+        "program":  "The Boondocks"
     }
 ]
-
-
-
