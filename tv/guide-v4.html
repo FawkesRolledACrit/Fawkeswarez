@@ -306,10 +306,73 @@
         const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
         const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
+        function escapeRegExp(str) {
+            return String(str).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        }
+
+        function getEpisodePoolForProgram(program) {
+            if (!scheduleData || !Array.isArray(scheduleData.blocks)) return [];
+
+            const programLower = String(program || '').toLowerCase();
+            const pool = [];
+
+            for (const block of scheduleData.blocks) {
+                if (!block || block.blockType) continue;
+                const blockTitle = String(block.title || '');
+                const blockLower = blockTitle.toLowerCase();
+
+                // Match common naming patterns: "Show - S01E01" etc.
+                // We consider it a match if either string contains the other (mirrors previous hasEpisodes heuristic)
+                if (!(blockLower.includes(programLower) || programLower.includes(blockLower))) continue;
+
+                // Extract SxxExx from block title or from the first segment title
+                let codeMatch = blockTitle.match(/\bS(\d+)E(\d+)\b/i);
+                if (!codeMatch && Array.isArray(block.events)) {
+                    for (const evt of block.events) {
+                        if (evt && evt.type === 'segment' && evt.title) {
+                            codeMatch = String(evt.title).match(/\bS(\d+)E(\d+)\b/i);
+                            if (codeMatch) break;
+                        }
+                    }
+                }
+                if (!codeMatch) continue;
+
+                // Only include blocks that contain at least one real (non-placeholder) catbox URL
+                let hasRealUrl = false;
+                if (Array.isArray(block.events)) {
+                    for (const evt of block.events) {
+                        if (evt && evt.type === 'segment' && typeof evt.url === 'string') {
+                            const url = evt.url;
+                            if (url.startsWith('https://files.catbox.moe/') && !url.includes('placeholder')) {
+                                hasRealUrl = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+                if (!hasRealUrl) continue;
+
+                const season = parseInt(codeMatch[1], 10);
+                const episode = parseInt(codeMatch[2], 10);
+                if (!Number.isFinite(season) || !Number.isFinite(episode)) continue;
+
+                pool.push({
+                    season,
+                    episode,
+                    episodeDisplay: `S${String(season).padStart(2, '0')}E${String(episode).padStart(2, '0')}`,
+                    title: blockTitle
+                });
+            }
+
+            // Sort chronologically for stable rotation
+            pool.sort((a, b) => (a.season - b.season) || (a.episode - b.episode));
+            return pool;
+        }
+
         async function loadData() {
             try {
                 // Aggressive cache bust: commit hash + timestamp + random
-                const commitHash = '4bb9d96';
+                const commitHash = '233be67';
                 const timestamp = new Date().getTime();
                 const cacheBuster = `${commitHash}_${timestamp}_${Math.random().toString(36).substr(2, 9)}`;
                 console.log('Loading weekly lineup with cache buster:', cacheBuster);
@@ -535,16 +598,14 @@
                     statusText = '🔜';
                 } else {
                     // Regular shows - check if they have episodes
-                    hasEpisodes = scheduleData && scheduleData.blocks && scheduleData.blocks.some(block => {
-                        const title = block.title.toLowerCase();
-                        const programLower = slot.program.toLowerCase();
-                        return !block.blockType && (title === programLower || title.includes(programLower) || programLower.includes(title));
-                    });
+                    const pool = getEpisodePoolForProgram(slot.program);
+                    hasEpisodes = pool.length > 0;
 
                     if (hasEpisodes) {
-                        const episodeData = getEpisodeForDate(selectedDate, slot.time, slot.program);
-                        const episodeDisplay = `S${episodeData.season.toString().padStart(2, '0')}E${episodeData.episode.toString().padStart(2, '0')}`;
-                        episodeInfo = `<div class="slot-episode">${episodeDisplay}</div>`;
+                        const episodeData = getEpisodeForDate(selectedDate, slot.time, slot.program, pool);
+                        if (episodeData && episodeData.episodeDisplay) {
+                            episodeInfo = `<div class="slot-episode">${episodeData.episodeDisplay}</div>`;
+                        }
                         statusClass = 'on-air';
                         statusText = '▶';
                     }
@@ -1033,42 +1094,19 @@
             return total;
         }
 
-        function getEpisodeForDate(date, timeStr, program) {
-            // Use occurrence counting if we have the data
+        function getEpisodeForDate(date, timeStr, program, episodePoolOverride) {
+            // Use occurrence counting to pick a deterministic episode from the *real* episode pool.
+            const pool = Array.isArray(episodePoolOverride) ? episodePoolOverride : [];
+            if (!pool.length) return null;
+
             if (typeof weeklyLineup !== 'undefined' && typeof scheduleStartDate !== 'undefined') {
                 const occ = getProgramOccurrenceIndex(program, timeStr, date);
-                
-                // Episode counts reflecting what's actually in schedule.json
-                const knownCounts = {
-                    "Dexter's Laboratory": { episodes: 20, seasons: 2 },
-                    "The Powerpuff Girls": { episodes: 20, seasons: 2 },
-                    "Ed, Edd n Eddy": { episodes: 20, seasons: 1 },
-                    "Space Ghost Coast to Coast": { episodes: 18, seasons: 1 },
-                    "Aqua Teen Hunger Force": { episodes: 18, seasons: 1 }
-                };
-                
-                let episodeCount = 15; // Default fallback
-                let seasonCount = 1;
-                
-                if (knownCounts[program]) {
-                    episodeCount = knownCounts[program].episodes;
-                    seasonCount = knownCounts[program].seasons;
-                }
-                
-                const episodeIndex = ((occ % episodeCount) + episodeCount) % episodeCount;
-                const episodeNum = episodeIndex + 1;
-                
-                // Determine season for multi-season shows
-                let season = 1;
-                if (program === "Dexter's Laboratory" || program === "The Powerpuff Girls") {
-                    season = (episodeNum <= 13) ? 1 : 2;
-                }
-                
-                return { episode: episodeNum, season };
+                const idx = ((occ % pool.length) + pool.length) % pool.length;
+                return pool[idx];
             }
-            
+
             // Fallback if data not available
-            return { episode: 1, season: 1 };
+            return pool[0];
         }
 
         function getDexterEpisodeForDate(date, timeStr) {
