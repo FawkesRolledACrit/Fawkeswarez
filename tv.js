@@ -49,6 +49,9 @@ class LiveStreamPlayer {
         this.desiredMuted = true;
         this.loadSeq = 0;
 
+        this.recentAdUrls = [];
+        this.RECENT_AD_MEMORY = 30;
+
         this.weeklyLineup = null;
         this.weeklySlotsByDay = null;
 
@@ -601,6 +604,7 @@ class LiveStreamPlayer {
         this.video.addEventListener('pause', () => {
             console.log('Video paused');
             if (this.hasTunedIn) {
+                if (this.video.ended) return;
                 // Auto-resume if user hasn't explicitly paused
                 setTimeout(() => {
                     if (this.hasTunedIn && this.video.paused) {
@@ -1017,13 +1021,27 @@ class LiveStreamPlayer {
         
         const validAds = this.ads.items.filter(ad => ad.durationSeconds > 0);
         const selected = [];
+        const usedUrls = new Set();
         let total = 0;
         
         // Simple seeded random for consistency
         const rng = this.seededRandom(seed);
-        const shuffled = [...validAds].sort(() => rng() - 0.5);
+
+        const recentSet = new Set(this.recentAdUrls);
+        const fresh = validAds.filter(ad => !recentSet.has(ad.url));
+        const stale = validAds.filter(ad => recentSet.has(ad.url));
+
+        const shuffleWithSeed = (arr) => {
+            const withScore = arr.map(ad => ({ ad, score: rng() }));
+            withScore.sort((a, b) => a.score - b.score);
+            return withScore.map(x => x.ad);
+        };
+
+        const shuffled = [...shuffleWithSeed(fresh), ...shuffleWithSeed(stale)];
         
         for (const ad of shuffled) {
+            if (!ad?.url) continue;
+            if (usedUrls.has(ad.url)) continue;
             if (total + ad.durationSeconds <= targetSeconds + tolerance) {
                 selected.push({
                     type: 'ad',
@@ -1031,9 +1049,18 @@ class LiveStreamPlayer {
                     title: 'Commercial',
                     duration: ad.durationSeconds
                 });
+                usedUrls.add(ad.url);
                 total += ad.durationSeconds;
                 
                 if (total >= targetSeconds - tolerance) break;
+            }
+        }
+
+        // Remember the ads we just used to encourage variety across breaks.
+        if (selected.length) {
+            this.recentAdUrls.push(...selected.map(x => x.url));
+            if (this.recentAdUrls.length > this.RECENT_AD_MEMORY) {
+                this.recentAdUrls = this.recentAdUrls.slice(-this.RECENT_AD_MEMORY);
             }
         }
         
