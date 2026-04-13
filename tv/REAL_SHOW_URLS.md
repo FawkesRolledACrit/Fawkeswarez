@@ -2,8 +2,8 @@
 
 Only shows with actual (non-placeholder) video URLs
 
-**Total Shows with Real URLs:** 10
-**Total Episodes:** 346
+**Total Shows with Real URLs:** 11
+**Total Episodes:** 377
 
 ## Aqua Teen Hunger Force
 
@@ -2647,4 +2647,226 @@ Only shows with actual (non-placeholder) video URLs
 
 ---
 
+
+
+## Tom Goes to the Mayor
+
+**Episodes:** 31
+
+### S1E1
+1. **Tom Goes to the Mayor S01E01**
+   - URL: `https://files.catbox.moe/ixjk6j.mp4`
+   - Duration: 660s
+
+---
+
+### S1E2
+1. **Tom Goes to the Mayor S01E02**
+   - URL: `https://files.catbox.moe/21u76u.mp4`
+   - Duration: 660s
+
+---
+
+### S1E3
+1. **Tom Goes to the Mayor S01E03**
+   - URL: `https://files.catbox.moe/nf1olb.mp4`
+   - Duration: 660s
+
+---
+
+### S1E4
+1. **Tom Goes to the Mayor S01E04**
+   - URL: `https://files.catbox.moe/5ke268.mp4`
+   - Duration: 660s
+
+---
+
+### S1E5
+1. **Tom Goes to the Mayor S01E05**
+   - URL: `https://files.catbox.moe/m9ws1u.mp4`
+   - Duration: 660s
+
+---
+
+### S1E6
+1. **Tom Goes to the Mayor S01E06**
+   - URL: `https://files.catbox.moe/7agulc.mp4`
+   - Duration: 660s
+
+---
+
+### S1E7
+1. **Tom Goes to the Mayor S01E07**
+   - URL: `https://files.catbox.moe/xy97p3.mp4`
+   - Duration: 660s
+
+---
+
+### S1E8
+1. **Tom Goes to the Mayor S01E08**
+   - URL: `https://files.catbox.moe/7pnaab.mp4`
+   - Duration: 660s
+
+---
+
+### S1E9
+1. **Tom Goes to the Mayor S01E09**
+   - URL: `https://files.catbox.moe/dq4zz2.mp4`
+   - Duration: 660s
+
+---
+
+### S1E10
+1. **Tom Goes to the Mayor S01E10**
+   - URL: `https://files.catbox.moe/dpaipr.mp4`
+   - Duration: 660s
+
+---
+
+### S1E11
+1. **Tom Goes to the Mayor S01E11**
+   - URL: `https://files.catbox.moe/f7y9ix.mp4`
+   - Duration: 660s
+
+---
+
+### S1E12
+1. **Tom Goes to the Mayor S01E12**
+   - URL: `https://files.catbox.moe/4lmflb.mp4`
+   - Duration: 660s
+
+---
+
+### S1E13
+1. **Tom Goes to the Mayor S01E13**
+   - URL: `https://files.catbox.moe/l7465c.mp4`
+   - Duration: 660s
+
+---
+
+### S1E14
+1. **Tom Goes to the Mayor S01E14**
+   - URL: `https://files.catbox.moe/sojfby.mp4`
+   - Duration: 660s
+
+---
+
+### S2E1
+1. **Tom Goes to the Mayor S02E01**
+   - URL: `https://files.catbox.moe/h0iwad.mp4`
+   - Duration: 660s
+
+---
+
+### S2E2
+1. **Tom Goes to the Mayor S02E02**
+   - URL: `https://files.catbox.moe/7m3b72.mp4`
+   - Duration: 660s
+
+---
+
+### S2E3
+1. **Tom Goes to the Mayor S02E03**
+   - URL: `https://files.catbox.moe/nzlxa1.mp4`
+   - Duration: 660s
+
+---
+
+### S2E4
+1. **Tom Goes to the Mayor S02E04**
+   - URL: `https://files.catbox.moe/t93i49.mp4`
+   - Duration: 660s
+
+---
+
+### S2E5
+1. **Tom Goes to the Mayor S02E05**
+   - URL: `https://files.catbox.moe/as81rz.mp4`
+   - Duration: 660s
+
+---
+
+### S2E6
+1. **Tom Goes to the Mayor S02E06**
+   - URL: `https://files.catbox.moe/p0x7yp.mp4`
+   - Duration: 660s
+
+---
+
+### S2E7
+1. **Tom Goes to the Mayor S02E07**
+   - URL: `https://files.catbox.moe/scv866.mp4`
+   - Duration: 660s
+
+---
+
+### S2E8
+1. **Tom Goes to the Mayor S02E08**
+   - URL: `https://files.catbox.moe/v3y0g2.mp4`
+   - Duration: 660s
+
+---
+
+### S2E9
+1. **Tom Goes to the Mayor S02E09**
+   - URL: `https://files.catbox.moe/5333cs.mp4`
+   - Duration: 660s
+
+---
+
+### S2E10
+1. **Tom Goes to the Mayor S02E10**
+   - URL: `https://files.catbox.moe/o3sa2n.mp4`
+   - Duration: 660s
+
+---
+
+### S2E11
+1. **Tom Goes to the Mayor S02E11**
+   - URL: `https://files.catbox.moe/3v6xnk.mp4`
+   - Duration: 660s
+
+---
+
+### S2E12
+1. **Tom Goes to the Mayor S02E12**
+   - URL: `https://files.catbox.moe/bm470q.mp4`
+   - Duration: 660s
+
+---
+
+### S2E13
+1. **Tom Goes to the Mayor S02E13**
+   - URL: `https://files.catbox.moe/nat8qw.mp4`
+   - Duration: 660s
+
+---
+
+### S2E14
+1. **Tom Goes to the Mayor S02E14**
+   - URL: `https://files.catbox.moe/980fdh.mp4`
+   - Duration: 660s
+
+---
+
+### S2E15
+1. **Tom Goes to the Mayor S02E15**
+   - URL: `https://files.catbox.moe/ft02fz.mp4`
+   - Duration: 660s
+
+---
+
+### S2E16
+1. **Tom Goes to the Mayor S02E16**
+   - URL: `https://files.catbox.moe/ndf5zr.mp4`
+   - Duration: 660s
+
+---
+
+### S2E17
+1. **Tom Goes to the Mayor S02E17**
+   - URL: `https://files.catbox.moe/50v09i.mp4`
+   - Duration: 660s
+
+---
 

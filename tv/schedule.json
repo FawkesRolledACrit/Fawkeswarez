@@ -4406,214 +4406,6 @@
                                   ]
                    },
                    {
-                       "title":  "Tom Goes to the Mayor - S01E01",
-                       "slotSeconds":  900,
-                       "events":  [
-                                      {
-                                          "type":  "segment",
-                                          "title":  "Tom Goes to the Mayor S01E01",
-                                          "url":  "https://files.catbox.moe/placeholder_tom_goes_to_the_mayor_S01E01_part_1.mp4",
-                                          "durationSeconds":  660
-                                      },
-                                      {
-                                          "type":  "adbreak",
-                                          "targetSeconds":  "auto"
-                                      }
-                                  ]
-                   },
-                   {
-                       "title":  "Tom Goes to the Mayor - S01E02",
-                       "slotSeconds":  900,
-                       "events":  [
-                                      {
-                                          "type":  "segment",
-                                          "title":  "Tom Goes to the Mayor S01E02",
-                                          "url":  "https://files.catbox.moe/placeholder_tom_goes_to_the_mayor_S01E02_part_1.mp4",
-                                          "durationSeconds":  660
-                                      },
-                                      {
-                                          "type":  "adbreak",
-                                          "targetSeconds":  "auto"
-                                      }
-                                  ]
-                   },
-                   {
-                       "title":  "Tom Goes to the Mayor - S01E03",
-                       "slotSeconds":  900,
-                       "events":  [
-                                      {
-                                          "type":  "segment",
-                                          "title":  "Tom Goes to the Mayor S01E03",
-                                          "url":  "https://files.catbox.moe/placeholder_tom_goes_to_the_mayor_S01E03_part_1.mp4",
-                                          "durationSeconds":  660
-                                      },
-                                      {
-                                          "type":  "adbreak",
-                                          "targetSeconds":  "auto"
-                                      }
-                                  ]
-                   },
-                   {
-                       "title":  "Tom Goes to the Mayor - S01E04",
-                       "slotSeconds":  900,
-                       "events":  [
-                                      {
-                                          "type":  "segment",
-                                          "title":  "Tom Goes to the Mayor S01E04",
-                                          "url":  "https://files.catbox.moe/placeholder_tom_goes_to_the_mayor_S01E04_part_1.mp4",
-                                          "durationSeconds":  660
-                                      },
-                                      {
-                                          "type":  "adbreak",
-                                          "targetSeconds":  "auto"
-                                      }
-                                  ]
-                   },
-                   {
-                       "title":  "Tom Goes to the Mayor - S01E05",
-                       "slotSeconds":  900,
-                       "events":  [
-                                      {
-                                          "type":  "segment",
-                                          "title":  "Tom Goes to the Mayor S01E05",
-                                          "url":  "https://files.catbox.moe/placeholder_tom_goes_to_the_mayor_S01E05_part_1.mp4",
-                                          "durationSeconds":  660
-                                      },
-                                      {
-                                          "type":  "adbreak",
-                                          "targetSeconds":  "auto"
-                                      }
-                                  ]
-                   },
-                   {
-                       "title":  "Tom Goes to the Mayor - S01E06",
-                       "slotSeconds":  900,
-                       "events":  [
-                                      {
-                                          "type":  "segment",
-                                          "title":  "Tom Goes to the Mayor S01E06",
-                                          "url":  "https://files.catbox.moe/placeholder_tom_goes_to_the_mayor_S01E06_part_1.mp4",
-                                          "durationSeconds":  660
-                                      },
-                                      {
-                                          "type":  "adbreak",
-                                          "targetSeconds":  "auto"
-                                      }
-                                  ]
-                   },
-                   {
-                       "title":  "Tom Goes to the Mayor - S01E07",
-                       "slotSeconds":  900,
-                       "events":  [
-                                      {
-                                          "type":  "segment",
-                                          "title":  "Tom Goes to the Mayor S01E07",
-                                          "url":  "https://files.catbox.moe/placeholder_tom_goes_to_the_mayor_S01E07_part_1.mp4",
-                                          "durationSeconds":  660
-                                      },
-                                      {
-                                          "type":  "adbreak",
-                                          "targetSeconds":  "auto"
-                                      }
-                                  ]
-                   },
-                   {
-                       "title":  "Tom Goes to the Mayor - S01E08",
-                       "slotSeconds":  900,
-                       "events":  [
-                                      {
-                                          "type":  "segment",
-                                          "title":  "Tom Goes to the Mayor S01E08",
-                                          "url":  "https://files.catbox.moe/placeholder_tom_goes_to_the_mayor_S01E08_part_1.mp4",
-                                          "durationSeconds":  660
-                                      },
-                                      {
-                                          "type":  "adbreak",
-                                          "targetSeconds":  "auto"
-                                      }
-                                  ]
-                   },
-                   {
-                       "title":  "Tom Goes to the Mayor - S01E09",
-                       "slotSeconds":  900,
-                       "events":  [
-                                      {
-                                          "type":  "segment",
-                                          "title":  "Tom Goes to the Mayor S01E09",
-                                          "url":  "https://files.catbox.moe/placeholder_tom_goes_to_the_mayor_S01E09_part_1.mp4",
-                                          "durationSeconds":  660
-                                      },
-                                      {
-                                          "type":  "adbreak",
-                                          "targetSeconds":  "auto"
-                                      }
-                                  ]
-                   },
-                   {
-                       "title":  "Tom Goes to the Mayor - S01E10",
-                       "slotSeconds":  900,
-                       "events":  [
-                                      {
-                                          "type":  "segment",
-                                          "title":  "Tom Goes to the Mayor S01E10",
-                                          "url":  "https://files.catbox.moe/placeholder_tom_goes_to_the_mayor_S01E10_part_1.mp4",
-                                          "durationSeconds":  660
-                                      },
-                                      {
-                                          "type":  "adbreak",
-                                          "targetSeconds":  "auto"
-                                      }
-                                  ]
-                   },
-                   {
-                       "title":  "Tom Goes to the Mayor - S01E11",
-                       "slotSeconds":  900,
-                       "events":  [
-                                      {
-                                          "type":  "segment",
-                                          "title":  "Tom Goes to the Mayor S01E11",
-                                          "url":  "https://files.catbox.moe/placeholder_tom_goes_to_the_mayor_S01E11_part_1.mp4",
-                                          "durationSeconds":  660
-                                      },
-                                      {
-                                          "type":  "adbreak",
-                                          "targetSeconds":  "auto"
-                                      }
-                                  ]
-                   },
-                   {
-                       "title":  "Tom Goes to the Mayor - S01E12",
-                       "slotSeconds":  900,
-                       "events":  [
-                                      {
-                                          "type":  "segment",
-                                          "title":  "Tom Goes to the Mayor S01E12",
-                                          "url":  "https://files.catbox.moe/placeholder_tom_goes_to_the_mayor_S01E12_part_1.mp4",
-                                          "durationSeconds":  660
-                                      },
-                                      {
-                                          "type":  "adbreak",
-                                          "targetSeconds":  "auto"
-                                      }
-                                  ]
-                   },
-                   {
-                       "title":  "Tom Goes to the Mayor - S01E13",
-                       "slotSeconds":  900,
-                       "events":  [
-                                      {
-                                          "type":  "segment",
-                                          "title":  "Tom Goes to the Mayor S01E13",
-                                          "url":  "https://files.catbox.moe/placeholder_tom_goes_to_the_mayor_S01E13_part_1.mp4",
-                                          "durationSeconds":  660
-                                      },
-                                      {
-                                          "type":  "adbreak",
-                                          "targetSeconds":  "auto"
-                                      }
-                                  ]
-                   },
-                   {
                        "title":  "Home Movies - S01E01",
                        "slotSeconds":  900,
                        "events":  [
@@ -12956,6 +12748,502 @@
                                           "title":  "I Am Weasel S05E27",
                                           "url":  "https://files.catbox.moe/qaa0sb.avi",
                                           "durationSeconds":  420
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Tom Goes to the Mayor - S01E01",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Tom Goes to the Mayor S01E01",
+                                          "url":  "https://files.catbox.moe/ixjk6j.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Tom Goes to the Mayor - S01E02",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Tom Goes to the Mayor S01E02",
+                                          "url":  "https://files.catbox.moe/21u76u.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Tom Goes to the Mayor - S01E03",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Tom Goes to the Mayor S01E03",
+                                          "url":  "https://files.catbox.moe/nf1olb.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Tom Goes to the Mayor - S01E04",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Tom Goes to the Mayor S01E04",
+                                          "url":  "https://files.catbox.moe/5ke268.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Tom Goes to the Mayor - S01E05",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Tom Goes to the Mayor S01E05",
+                                          "url":  "https://files.catbox.moe/m9ws1u.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Tom Goes to the Mayor - S01E06",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Tom Goes to the Mayor S01E06",
+                                          "url":  "https://files.catbox.moe/7agulc.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Tom Goes to the Mayor - S01E07",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Tom Goes to the Mayor S01E07",
+                                          "url":  "https://files.catbox.moe/xy97p3.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Tom Goes to the Mayor - S01E08",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Tom Goes to the Mayor S01E08",
+                                          "url":  "https://files.catbox.moe/7pnaab.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Tom Goes to the Mayor - S01E09",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Tom Goes to the Mayor S01E09",
+                                          "url":  "https://files.catbox.moe/dq4zz2.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Tom Goes to the Mayor - S01E10",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Tom Goes to the Mayor S01E10",
+                                          "url":  "https://files.catbox.moe/dpaipr.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Tom Goes to the Mayor - S01E11",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Tom Goes to the Mayor S01E11",
+                                          "url":  "https://files.catbox.moe/f7y9ix.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Tom Goes to the Mayor - S01E12",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Tom Goes to the Mayor S01E12",
+                                          "url":  "https://files.catbox.moe/4lmflb.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Tom Goes to the Mayor - S01E13",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Tom Goes to the Mayor S01E13",
+                                          "url":  "https://files.catbox.moe/l7465c.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Tom Goes to the Mayor - S01E14",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Tom Goes to the Mayor S01E14",
+                                          "url":  "https://files.catbox.moe/sojfby.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Tom Goes to the Mayor - S02E01",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Tom Goes to the Mayor S02E01",
+                                          "url":  "https://files.catbox.moe/h0iwad.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Tom Goes to the Mayor - S02E02",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Tom Goes to the Mayor S02E02",
+                                          "url":  "https://files.catbox.moe/7m3b72.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Tom Goes to the Mayor - S02E03",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Tom Goes to the Mayor S02E03",
+                                          "url":  "https://files.catbox.moe/nzlxa1.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Tom Goes to the Mayor - S02E04",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Tom Goes to the Mayor S02E04",
+                                          "url":  "https://files.catbox.moe/t93i49.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Tom Goes to the Mayor - S02E05",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Tom Goes to the Mayor S02E05",
+                                          "url":  "https://files.catbox.moe/as81rz.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Tom Goes to the Mayor - S02E06",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Tom Goes to the Mayor S02E06",
+                                          "url":  "https://files.catbox.moe/p0x7yp.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Tom Goes to the Mayor - S02E07",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Tom Goes to the Mayor S02E07",
+                                          "url":  "https://files.catbox.moe/scv866.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Tom Goes to the Mayor - S02E08",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Tom Goes to the Mayor S02E08",
+                                          "url":  "https://files.catbox.moe/v3y0g2.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Tom Goes to the Mayor - S02E09",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Tom Goes to the Mayor S02E09",
+                                          "url":  "https://files.catbox.moe/5333cs.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Tom Goes to the Mayor - S02E10",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Tom Goes to the Mayor S02E10",
+                                          "url":  "https://files.catbox.moe/o3sa2n.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Tom Goes to the Mayor - S02E11",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Tom Goes to the Mayor S02E11",
+                                          "url":  "https://files.catbox.moe/3v6xnk.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Tom Goes to the Mayor - S02E12",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Tom Goes to the Mayor S02E12",
+                                          "url":  "https://files.catbox.moe/bm470q.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Tom Goes to the Mayor - S02E13",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Tom Goes to the Mayor S02E13",
+                                          "url":  "https://files.catbox.moe/nat8qw.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Tom Goes to the Mayor - S02E14",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Tom Goes to the Mayor S02E14",
+                                          "url":  "https://files.catbox.moe/980fdh.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Tom Goes to the Mayor - S02E15",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Tom Goes to the Mayor S02E15",
+                                          "url":  "https://files.catbox.moe/ft02fz.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Tom Goes to the Mayor - S02E16",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Tom Goes to the Mayor S02E16",
+                                          "url":  "https://files.catbox.moe/ndf5zr.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Tom Goes to the Mayor - S02E17",
+                       "slotSeconds":  900,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Tom Goes to the Mayor S02E17",
+                                          "url":  "https://files.catbox.moe/50v09i.mp4",
+                                          "durationSeconds":  660
                                       },
                                       {
                                           "type":  "adbreak",
