@@ -377,12 +377,12 @@
                 // We consider it a match if either string contains the other (mirrors previous hasEpisodes heuristic)
                 if (!(blockLower.includes(programLower) || programLower.includes(blockLower))) continue;
 
-                // Extract SxxExx from block title or from the first segment title
-                let codeMatch = blockTitle.match(/\bS(\d+)E(\d+)\b/i);
+                // Extract SxxExx from block title or from the first segment title (supports ranges like S02E43-45)
+                let codeMatch = blockTitle.match(/\bS(\d+)E(\d+)(?:-(\d+))?\b/i);
                 if (!codeMatch && Array.isArray(block.events)) {
                     for (const evt of block.events) {
                         if (evt && evt.type === 'segment' && evt.title) {
-                            codeMatch = String(evt.title).match(/\bS(\d+)E(\d+)\b/i);
+                            codeMatch = String(evt.title).match(/\bS(\d+)E(\d+)(?:-(\d+))?\b/i);
                             if (codeMatch) break;
                         }
                     }
@@ -406,12 +406,21 @@
 
                 const season = parseInt(codeMatch[1], 10);
                 const episode = parseInt(codeMatch[2], 10);
+                const lastEpisode = codeMatch[3] ? parseInt(codeMatch[3], 10) : null;
                 if (!Number.isFinite(season) || !Number.isFinite(episode)) continue;
+
+                // Build episode display - show range if present (e.g., S02E43-45)
+                let episodeDisplay;
+                if (lastEpisode) {
+                    episodeDisplay = `S${String(season).padStart(2, '0')}E${String(episode).padStart(2, '0')}-${String(lastEpisode).padStart(2, '0')}`;
+                } else {
+                    episodeDisplay = `S${String(season).padStart(2, '0')}E${String(episode).padStart(2, '0')}`;
+                }
 
                 pool.push({
                     season,
                     episode,
-                    episodeDisplay: `S${String(season).padStart(2, '0')}E${String(episode).padStart(2, '0')}`,
+                    episodeDisplay,
                     title: blockTitle
                 });
             }
