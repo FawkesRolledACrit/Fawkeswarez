@@ -12703,759 +12703,1336 @@
                    },
 
                    {
-
-                       "title":  "Johnny Bravo - S01E01",
-
+                       "title":  "Johnny Bravo - S01E1-3",
                        "slotSeconds":  1800,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Johnny Bravo S01E01 Part 1",
-
-                                          "url":  "https://files.catbox.moe/placeholder_johnny_bravo_S01E01_part_1.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "title":  "Johnny Bravo S01E1-3 Part 1",
+                                          "url":  "https://files.catbox.moe/04gqyy.mkv",
+                                          "durationSeconds":  480
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  180,
-
                                           "toleranceSeconds":  3
-
                                       },
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Johnny Bravo S01E01 Part 2",
-
-                                          "url":  "https://files.catbox.moe/placeholder_johnny_bravo_S01E01_part_2.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "title":  "Johnny Bravo S01E1-3 Part 2",
+                                          "url":  "https://files.catbox.moe/z4isqr.mkv",
+                                          "durationSeconds":  480
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S01E1-3 Part 3",
+                                          "url":  "https://files.catbox.moe/54dn01.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
                                           "targetSeconds":  "auto"
-
                                       }
-
                                   ]
-
+                   },
+                   {
+                       "title":  "Johnny Bravo - S01E4-6",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S01E4-6 Part 1",
+                                          "url":  "https://files.catbox.moe/41w0pt.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S01E4-6 Part 2",
+                                          "url":  "https://files.catbox.moe/dzi6bp.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S01E4-6 Part 3",
+                                          "url":  "https://files.catbox.moe/lcg7ay.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Johnny Bravo - S01E7-9",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S01E7-9 Part 1",
+                                          "url":  "https://files.catbox.moe/8rc054.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S01E7-9 Part 2",
+                                          "url":  "https://files.catbox.moe/gwjkn6.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S01E7-9 Part 3",
+                                          "url":  "https://files.catbox.moe/x6vnon.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Johnny Bravo - S01E10-12",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S01E10-12 Part 1",
+                                          "url":  "https://files.catbox.moe/etaftk.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S01E10-12 Part 2",
+                                          "url":  "https://files.catbox.moe/w6lvrj.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S01E10-12 Part 3",
+                                          "url":  "https://files.catbox.moe/xmhyb1.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Johnny Bravo - S01E13-15",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S01E13-15 Part 1",
+                                          "url":  "https://files.catbox.moe/nzk1cv.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S01E13-15 Part 2",
+                                          "url":  "https://files.catbox.moe/r3ixic.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S01E13-15 Part 3",
+                                          "url":  "https://files.catbox.moe/xc026a.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
                    },
 
                    {
-
-                       "title":  "Johnny Bravo - S01E02",
-
+                       "title":  "Johnny Bravo - S01E16-18",
                        "slotSeconds":  1800,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Johnny Bravo S01E02 Part 1",
-
-                                          "url":  "https://files.catbox.moe/placeholder_johnny_bravo_S01E02_part_1.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "title":  "Johnny Bravo S01E16-18 Part 1",
+                                          "url":  "https://files.catbox.moe/3qmj77.mkv",
+                                          "durationSeconds":  480
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  180,
-
                                           "toleranceSeconds":  3
-
                                       },
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Johnny Bravo S01E02 Part 2",
-
-                                          "url":  "https://files.catbox.moe/placeholder_johnny_bravo_S01E02_part_2.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "title":  "Johnny Bravo S01E16-18 Part 2",
+                                          "url":  "https://files.catbox.moe/8xvnwn.mkv",
+                                          "durationSeconds":  480
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S01E16-18 Part 3",
+                                          "url":  "https://files.catbox.moe/jn8txf.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
                                           "targetSeconds":  "auto"
-
                                       }
-
                                   ]
-
+                   },
+                   {
+                       "title":  "Johnny Bravo - S01E19-21",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S01E19-21 Part 1",
+                                          "url":  "https://files.catbox.moe/g6f8re.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S01E19-21 Part 2",
+                                          "url":  "https://files.catbox.moe/v0amu7.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S01E19-21 Part 3",
+                                          "url":  "https://files.catbox.moe/9egyrd.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Johnny Bravo - S01E22-24",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S01E22-24 Part 1",
+                                          "url":  "https://files.catbox.moe/9ep4bp.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S01E22-24 Part 2",
+                                          "url":  "https://files.catbox.moe/qjud5l.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S01E22-24 Part 3",
+                                          "url":  "https://files.catbox.moe/3chnn1.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Johnny Bravo - S01E25-27",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S01E25-27 Part 1",
+                                          "url":  "https://files.catbox.moe/9y1858.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S01E25-27 Part 2",
+                                          "url":  "https://files.catbox.moe/de5vwm.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S01E25-27 Part 3",
+                                          "url":  "https://files.catbox.moe/7oih8s.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Johnny Bravo - S01E28-30",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S01E28-30 Part 1",
+                                          "url":  "https://files.catbox.moe/fvyhl2.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S01E28-30 Part 2",
+                                          "url":  "https://files.catbox.moe/uo2cgw.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S01E28-30 Part 3",
+                                          "url":  "https://files.catbox.moe/k9t3dp.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
                    },
 
                    {
-
-                       "title":  "Johnny Bravo - S01E03",
-
+                       "title":  "Johnny Bravo - S01E31-33",
                        "slotSeconds":  1800,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Johnny Bravo S01E03 Part 1",
-
-                                          "url":  "https://files.catbox.moe/placeholder_johnny_bravo_S01E03_part_1.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "title":  "Johnny Bravo S01E31-33 Part 1",
+                                          "url":  "https://files.catbox.moe/dfnt5b.mkv",
+                                          "durationSeconds":  480
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  180,
-
                                           "toleranceSeconds":  3
-
                                       },
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Johnny Bravo S01E03 Part 2",
-
-                                          "url":  "https://files.catbox.moe/placeholder_johnny_bravo_S01E03_part_2.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "title":  "Johnny Bravo S01E31-33 Part 2",
+                                          "url":  "https://files.catbox.moe/wkzd44.mkv",
+                                          "durationSeconds":  480
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S01E31-33 Part 3",
+                                          "url":  "https://files.catbox.moe/zujpto.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
                                           "targetSeconds":  "auto"
-
                                       }
-
                                   ]
-
                    },
-
                    {
-
-                       "title":  "Johnny Bravo - S01E04",
-
+                       "title":  "Johnny Bravo - S01E34-36",
                        "slotSeconds":  1800,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Johnny Bravo S01E04 Part 1",
-
-                                          "url":  "https://files.catbox.moe/placeholder_johnny_bravo_S01E04_part_1.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "title":  "Johnny Bravo S01E34-36 Part 1",
+                                          "url":  "https://files.catbox.moe/6zhuka.mkv",
+                                          "durationSeconds":  480
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  180,
-
                                           "toleranceSeconds":  3
-
                                       },
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Johnny Bravo S01E04 Part 2",
-
-                                          "url":  "https://files.catbox.moe/placeholder_johnny_bravo_S01E04_part_2.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "title":  "Johnny Bravo S01E34-36 Part 2",
+                                          "url":  "https://files.catbox.moe/s0r1x4.mkv",
+                                          "durationSeconds":  480
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S01E34-36 Part 3",
+                                          "url":  "https://files.catbox.moe/3rs6r9.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
                                           "targetSeconds":  "auto"
-
                                       }
-
                                   ]
-
                    },
-
                    {
-
-                       "title":  "Johnny Bravo - S01E05",
-
+                       "title":  "Johnny Bravo - S01E37-38+S02E1",
                        "slotSeconds":  1800,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Johnny Bravo S01E05 Part 1",
-
-                                          "url":  "https://files.catbox.moe/placeholder_johnny_bravo_S01E05_part_1.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "title":  "Johnny Bravo S01E37-38+S02E1 Part 1",
+                                          "url":  "https://files.catbox.moe/bxx3j0.mkv",
+                                          "durationSeconds":  480
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  180,
-
                                           "toleranceSeconds":  3
-
                                       },
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Johnny Bravo S01E05 Part 2",
-
-                                          "url":  "https://files.catbox.moe/placeholder_johnny_bravo_S01E05_part_2.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "title":  "Johnny Bravo S01E37-38+S02E1 Part 2",
+                                          "url":  "https://files.catbox.moe/wkobgl.mkv",
+                                          "durationSeconds":  480
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S01E37-38+S02E1 Part 3",
+                                          "url":  "https://files.catbox.moe/dn3huv.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
                                           "targetSeconds":  "auto"
-
                                       }
-
                                   ]
-
                    },
-
                    {
-
-                       "title":  "Johnny Bravo - S01E06",
-
+                       "title":  "Johnny Bravo - S02E2-4",
                        "slotSeconds":  1800,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Johnny Bravo S01E06 Part 1",
-
-                                          "url":  "https://files.catbox.moe/placeholder_johnny_bravo_S01E06_part_1.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "title":  "Johnny Bravo S02E2-4 Part 1",
+                                          "url":  "https://files.catbox.moe/hbzcbk.mkv",
+                                          "durationSeconds":  480
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  180,
-
                                           "toleranceSeconds":  3
-
                                       },
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Johnny Bravo S01E06 Part 2",
-
-                                          "url":  "https://files.catbox.moe/placeholder_johnny_bravo_S01E06_part_2.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "title":  "Johnny Bravo S02E2-4 Part 2",
+                                          "url":  "https://files.catbox.moe/1liatx.mkv",
+                                          "durationSeconds":  480
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E2-4 Part 3",
+                                          "url":  "https://files.catbox.moe/d6quwz.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
                                           "targetSeconds":  "auto"
-
                                       }
-
                                   ]
-
                    },
-
                    {
-
-                       "title":  "Johnny Bravo - S01E07",
-
+                       "title":  "Johnny Bravo - S02E5-7",
                        "slotSeconds":  1800,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Johnny Bravo S01E07 Part 1",
-
-                                          "url":  "https://files.catbox.moe/placeholder_johnny_bravo_S01E07_part_1.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "title":  "Johnny Bravo S02E5-7 Part 1",
+                                          "url":  "https://files.catbox.moe/5ha3v5.mkv",
+                                          "durationSeconds":  480
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  180,
-
                                           "toleranceSeconds":  3
-
                                       },
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Johnny Bravo S01E07 Part 2",
-
-                                          "url":  "https://files.catbox.moe/placeholder_johnny_bravo_S01E07_part_2.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "title":  "Johnny Bravo S02E5-7 Part 2",
+                                          "url":  "https://files.catbox.moe/ugb55r.mkv",
+                                          "durationSeconds":  480
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E5-7 Part 3",
+                                          "url":  "https://files.catbox.moe/ofj6t9.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
                                           "targetSeconds":  "auto"
-
                                       }
-
                                   ]
-
                    },
-
                    {
-
-                       "title":  "Johnny Bravo - S01E08",
-
+                       "title":  "Johnny Bravo - S02E8-10",
                        "slotSeconds":  1800,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Johnny Bravo S01E08 Part 1",
-
-                                          "url":  "https://files.catbox.moe/placeholder_johnny_bravo_S01E08_part_1.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "title":  "Johnny Bravo S02E8-10 Part 1",
+                                          "url":  "https://files.catbox.moe/f2d18a.mkv",
+                                          "durationSeconds":  480
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  180,
-
                                           "toleranceSeconds":  3
-
                                       },
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Johnny Bravo S01E08 Part 2",
-
-                                          "url":  "https://files.catbox.moe/placeholder_johnny_bravo_S01E08_part_2.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "title":  "Johnny Bravo S02E8-10 Part 2",
+                                          "url":  "https://files.catbox.moe/q87rfv.mkv",
+                                          "durationSeconds":  480
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E8-10 Part 3",
+                                          "url":  "https://files.catbox.moe/x8csx6.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
                                           "targetSeconds":  "auto"
-
                                       }
-
                                   ]
-
                    },
-
                    {
-
-                       "title":  "Johnny Bravo - S01E09",
-
+                       "title":  "Johnny Bravo - S02E11-13",
                        "slotSeconds":  1800,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Johnny Bravo S01E09 Part 1",
-
-                                          "url":  "https://files.catbox.moe/placeholder_johnny_bravo_S01E09_part_1.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "title":  "Johnny Bravo S02E11-13 Part 1",
+                                          "url":  "https://files.catbox.moe/n98d8s.mkv",
+                                          "durationSeconds":  480
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  180,
-
                                           "toleranceSeconds":  3
-
                                       },
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Johnny Bravo S01E09 Part 2",
-
-                                          "url":  "https://files.catbox.moe/placeholder_johnny_bravo_S01E09_part_2.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "title":  "Johnny Bravo S02E11-13 Part 2",
+                                          "url":  "https://files.catbox.moe/atui72.mkv",
+                                          "durationSeconds":  480
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E11-13 Part 3",
+                                          "url":  "https://files.catbox.moe/9gcfxe.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
                                           "targetSeconds":  "auto"
-
                                       }
-
                                   ]
-
                    },
-
                    {
-
-                       "title":  "Johnny Bravo - S01E10",
-
+                       "title":  "Johnny Bravo - S02E14-16",
                        "slotSeconds":  1800,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Johnny Bravo S01E10 Part 1",
-
-                                          "url":  "https://files.catbox.moe/placeholder_johnny_bravo_S01E10_part_1.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "title":  "Johnny Bravo S02E14-16 Part 1",
+                                          "url":  "https://files.catbox.moe/jjyl3f.mkv",
+                                          "durationSeconds":  480
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  180,
-
                                           "toleranceSeconds":  3
-
                                       },
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Johnny Bravo S01E10 Part 2",
-
-                                          "url":  "https://files.catbox.moe/placeholder_johnny_bravo_S01E10_part_2.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "title":  "Johnny Bravo S02E14-16 Part 2",
+                                          "url":  "https://files.catbox.moe/hqr5xt.mkv",
+                                          "durationSeconds":  480
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E14-16 Part 3",
+                                          "url":  "https://files.catbox.moe/akpttp.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
                                           "targetSeconds":  "auto"
-
                                       }
-
                                   ]
-
                    },
-
                    {
-
-                       "title":  "Johnny Bravo - S01E11",
-
+                       "title":  "Johnny Bravo - S02E17-19",
                        "slotSeconds":  1800,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Johnny Bravo S01E11 Part 1",
-
-                                          "url":  "https://files.catbox.moe/placeholder_johnny_bravo_S01E11_part_1.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "title":  "Johnny Bravo S02E17-19 Part 1",
+                                          "url":  "https://files.catbox.moe/iopj9u.mkv",
+                                          "durationSeconds":  480
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  180,
-
                                           "toleranceSeconds":  3
-
                                       },
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Johnny Bravo S01E11 Part 2",
-
-                                          "url":  "https://files.catbox.moe/placeholder_johnny_bravo_S01E11_part_2.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "title":  "Johnny Bravo S02E17-19 Part 2",
+                                          "url":  "https://files.catbox.moe/x34dqt.mkv",
+                                          "durationSeconds":  480
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E17-19 Part 3",
+                                          "url":  "https://files.catbox.moe/05782i.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
                                           "targetSeconds":  "auto"
-
                                       }
-
                                   ]
-
                    },
-
                    {
-
-                       "title":  "Johnny Bravo - S01E12",
-
+                       "title":  "Johnny Bravo - S02E19-21",
                        "slotSeconds":  1800,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Johnny Bravo S01E12 Part 1",
-
-                                          "url":  "https://files.catbox.moe/placeholder_johnny_bravo_S01E12_part_1.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "title":  "Johnny Bravo S02E19-21 Part 1",
+                                          "url":  "https://files.catbox.moe/05782i.mkv",
+                                          "durationSeconds":  480
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  180,
-
                                           "toleranceSeconds":  3
-
                                       },
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Johnny Bravo S01E12 Part 2",
-
-                                          "url":  "https://files.catbox.moe/placeholder_johnny_bravo_S01E12_part_2.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "title":  "Johnny Bravo S02E19-21 Part 2",
+                                          "url":  "https://files.catbox.moe/ie74n7.mkv",
+                                          "durationSeconds":  480
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E19-21 Part 3",
+                                          "url":  "https://files.catbox.moe/uxlbm1.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
                                           "targetSeconds":  "auto"
-
                                       }
-
                                   ]
-
                    },
-
                    {
-
-                       "title":  "Johnny Bravo - S01E13",
-
+                       "title":  "Johnny Bravo - S02E22-24",
                        "slotSeconds":  1800,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Johnny Bravo S01E13 Part 1",
-
-                                          "url":  "https://files.catbox.moe/placeholder_johnny_bravo_S01E13_part_1.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "title":  "Johnny Bravo S02E22-24 Part 1",
+                                          "url":  "https://files.catbox.moe/0rjpug.mkv",
+                                          "durationSeconds":  480
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  180,
-
                                           "toleranceSeconds":  3
-
                                       },
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Johnny Bravo S01E13 Part 2",
-
-                                          "url":  "https://files.catbox.moe/placeholder_johnny_bravo_S01E13_part_2.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "title":  "Johnny Bravo S02E22-24 Part 2",
+                                          "url":  "https://files.catbox.moe/im1e20.mkv",
+                                          "durationSeconds":  480
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E22-24 Part 3",
+                                          "url":  "https://files.catbox.moe/e513ct.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
                                           "targetSeconds":  "auto"
-
                                       }
-
                                   ]
-
                    },
-
                    {
-
-                       "title":  "Johnny Bravo - S01E14",
-
+                       "title":  "Johnny Bravo - S02E25-27",
                        "slotSeconds":  1800,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Johnny Bravo S01E14 Part 1",
-
-                                          "url":  "https://files.catbox.moe/placeholder_johnny_bravo_S01E14_part_1.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "title":  "Johnny Bravo S02E25-27 Part 1",
+                                          "url":  "https://files.catbox.moe/18ihhn.mkv",
+                                          "durationSeconds":  480
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  180,
-
                                           "toleranceSeconds":  3
-
                                       },
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Johnny Bravo S01E14 Part 2",
-
-                                          "url":  "https://files.catbox.moe/placeholder_johnny_bravo_S01E14_part_2.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "title":  "Johnny Bravo S02E25-27 Part 2",
+                                          "url":  "https://files.catbox.moe/295fod.mkv",
+                                          "durationSeconds":  480
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E25-27 Part 3",
+                                          "url":  "https://files.catbox.moe/jw1k3h.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
                                           "targetSeconds":  "auto"
-
                                       }
-
                                   ]
-
+                   },
+                   {
+                       "title":  "Johnny Bravo - S02E28-30",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E28-30 Part 1",
+                                          "url":  "https://files.catbox.moe/cbbgx3.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E28-30 Part 2",
+                                          "url":  "https://files.catbox.moe/iqy9xf.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E28-30 Part 3",
+                                          "url":  "https://files.catbox.moe/5cbraa.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Johnny Bravo - S02E31-33",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E31-33 Part 1",
+                                          "url":  "https://files.catbox.moe/kti0rr.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E31-33 Part 2",
+                                          "url":  "https://files.catbox.moe/tvqd5s.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E31-33 Part 3",
+                                          "url":  "https://files.catbox.moe/dll983.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Johnny Bravo - S02E34-36",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E34-36 Part 1",
+                                          "url":  "https://files.catbox.moe/k4rysz.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E34-36 Part 2",
+                                          "url":  "https://files.catbox.moe/7ns561.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E34-36 Part 3",
+                                          "url":  "https://files.catbox.moe/9gipe4.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Johnny Bravo - S02E37-39",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E37-39 Part 1",
+                                          "url":  "https://files.catbox.moe/iw2sf3.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E37-39 Part 2",
+                                          "url":  "https://files.catbox.moe/19pkba.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E37-39 Part 3",
+                                          "url":  "https://files.catbox.moe/e3okvb.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Johnny Bravo - S02E40-42",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E40-42 Part 1",
+                                          "url":  "https://files.catbox.moe/7xj4sk.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E40-42 Part 2",
+                                          "url":  "https://files.catbox.moe/aqlbs7.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E40-42 Part 3",
+                                          "url":  "https://files.catbox.moe/0sw0a2.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Johnny Bravo - S02E43-45",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E43-45 Part 1",
+                                          "url":  "https://files.catbox.moe/6kwoec.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E43-45 Part 2",
+                                          "url":  "https://files.catbox.moe/9fc9hf.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E43-45 Part 3",
+                                          "url":  "https://files.catbox.moe/sn0d9r.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Johnny Bravo - S02E46-48",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E46-48 Part 1",
+                                          "url":  "https://files.catbox.moe/ofymd6.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E46-48 Part 2",
+                                          "url":  "https://files.catbox.moe/hpms2s.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E46-48 Part 3",
+                                          "url":  "https://files.catbox.moe/occdub.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Johnny Bravo - S02E49-51",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E49-51 Part 1",
+                                          "url":  "https://files.catbox.moe/l20va9.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E49-51 Part 2",
+                                          "url":  "https://files.catbox.moe/t0nmcg.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E49-51 Part 3",
+                                          "url":  "https://files.catbox.moe/bos81e.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Johnny Bravo - S02E52-54",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E52-54 Part 1",
+                                          "url":  "https://files.catbox.moe/gm6lnu.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E52-54 Part 2",
+                                          "url":  "https://files.catbox.moe/2liohw.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E52-54 Part 3",
+                                          "url":  "https://files.catbox.moe/skxmsl.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Johnny Bravo - S02E55-57",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E55-57 Part 1",
+                                          "url":  "https://files.catbox.moe/tbg151.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E55-57 Part 2",
+                                          "url":  "https://files.catbox.moe/yfpiq0.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E55-57 Part 3",
+                                          "url":  "https://files.catbox.moe/sd9s3d.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Johnny Bravo - S02E58-60",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E58-60 Part 1",
+                                          "url":  "https://files.catbox.moe/majzkq.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E58-60 Part 2",
+                                          "url":  "https://files.catbox.moe/kptjcs.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E58-60 Part 3",
+                                          "url":  "https://files.catbox.moe/tmxs59.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Johnny Bravo - S02E61-63",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E61-63 Part 1",
+                                          "url":  "https://files.catbox.moe/lepldr.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E61-63 Part 2",
+                                          "url":  "https://files.catbox.moe/g7odgu.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E61-63 Part 3",
+                                          "url":  "https://files.catbox.moe/o1z3db.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Johnny Bravo - S02E64-66",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E64-66 Part 1",
+                                          "url":  "https://files.catbox.moe/mb8ysr.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E64-66 Part 2",
+                                          "url":  "https://files.catbox.moe/px5yjd.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Johnny Bravo S02E64-66 Part 3",
+                                          "url":  "https://files.catbox.moe/3rqzg9.mkv",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
                    },
 
                    {
