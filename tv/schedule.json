@@ -15241,759 +15241,615 @@
                    },
 
                    {
-
                        "title":  "Foster\u0027s Home - S01E01",
-
                        "slotSeconds":  1800,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Foster\u0027s Home S01E01 Part 1",
-
-                                          "url":  "https://files.catbox.moe/placeholder_fosters_home_S01E01_part_1.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "url":  "https://files.catbox.moe/hwe4e4.mp4",
+                                          "durationSeconds":  480
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  180,
-
                                           "toleranceSeconds":  3
-
                                       },
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Foster\u0027s Home S01E01 Part 2",
-
-                                          "url":  "https://files.catbox.moe/placeholder_fosters_home_S01E01_part_2.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "url":  "https://files.catbox.moe/d1t590.mp4",
+                                          "durationSeconds":  480
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Foster\u0027s Home S01E01 Part 3",
+                                          "url":  "https://files.catbox.moe/ol4lw1.mp4",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
                                           "targetSeconds":  "auto"
-
                                       }
-
                                   ]
-
                    },
-
                    {
-
                        "title":  "Foster\u0027s Home - S01E02",
-
                        "slotSeconds":  1800,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Foster\u0027s Home S01E02 Part 1",
-
-                                          "url":  "https://files.catbox.moe/placeholder_fosters_home_S01E02_part_1.mp4",
-
+                                          "url":  "https://files.catbox.moe/5yev84.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  180,
-
                                           "toleranceSeconds":  3
-
                                       },
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Foster\u0027s Home S01E02 Part 2",
-
-                                          "url":  "https://files.catbox.moe/placeholder_fosters_home_S01E02_part_2.mp4",
-
+                                          "url":  "https://files.catbox.moe/6sncm1.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  "auto"
-
                                       }
-
                                   ]
-
                    },
-
                    {
-
                        "title":  "Foster\u0027s Home - S01E03",
-
                        "slotSeconds":  1800,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Foster\u0027s Home S01E03 Part 1",
-
-                                          "url":  "https://files.catbox.moe/placeholder_fosters_home_S01E03_part_1.mp4",
-
+                                          "url":  "https://files.catbox.moe/k9fn13.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  180,
-
                                           "toleranceSeconds":  3
-
                                       },
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Foster\u0027s Home S01E03 Part 2",
-
-                                          "url":  "https://files.catbox.moe/placeholder_fosters_home_S01E03_part_2.mp4",
-
+                                          "url":  "https://files.catbox.moe/rhdczz.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  "auto"
-
                                       }
-
                                   ]
-
                    },
-
                    {
-
                        "title":  "Foster\u0027s Home - S01E04",
-
                        "slotSeconds":  1800,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Foster\u0027s Home S01E04 Part 1",
-
-                                          "url":  "https://files.catbox.moe/placeholder_fosters_home_S01E04_part_1.mp4",
-
+                                          "url":  "https://files.catbox.moe/fneur4.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  180,
-
                                           "toleranceSeconds":  3
-
                                       },
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Foster\u0027s Home S01E04 Part 2",
-
-                                          "url":  "https://files.catbox.moe/placeholder_fosters_home_S01E04_part_2.mp4",
-
+                                          "url":  "https://files.catbox.moe/vv0md9.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  "auto"
-
                                       }
-
                                   ]
-
                    },
-
                    {
-
                        "title":  "Foster\u0027s Home - S01E05",
-
                        "slotSeconds":  1800,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Foster\u0027s Home S01E05 Part 1",
-
-                                          "url":  "https://files.catbox.moe/placeholder_fosters_home_S01E05_part_1.mp4",
-
+                                          "url":  "https://files.catbox.moe/j612l8.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  180,
-
                                           "toleranceSeconds":  3
-
                                       },
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Foster\u0027s Home S01E05 Part 2",
-
-                                          "url":  "https://files.catbox.moe/placeholder_fosters_home_S01E05_part_2.mp4",
-
+                                          "url":  "https://files.catbox.moe/sta960.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  "auto"
-
                                       }
-
                                   ]
-
                    },
-
                    {
-
                        "title":  "Foster\u0027s Home - S01E06",
-
                        "slotSeconds":  1800,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Foster\u0027s Home S01E06 Part 1",
-
-                                          "url":  "https://files.catbox.moe/placeholder_fosters_home_S01E06_part_1.mp4",
-
+                                          "url":  "https://files.catbox.moe/ru9wxw.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  180,
-
                                           "toleranceSeconds":  3
-
                                       },
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Foster\u0027s Home S01E06 Part 2",
-
-                                          "url":  "https://files.catbox.moe/placeholder_fosters_home_S01E06_part_2.mp4",
-
+                                          "url":  "https://files.catbox.moe/jn36vs.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  "auto"
-
                                       }
-
                                   ]
-
                    },
-
                    {
-
                        "title":  "Foster\u0027s Home - S01E07",
-
                        "slotSeconds":  1800,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Foster\u0027s Home S01E07 Part 1",
-
-                                          "url":  "https://files.catbox.moe/placeholder_fosters_home_S01E07_part_1.mp4",
-
+                                          "url":  "https://files.catbox.moe/k3t79q.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  180,
-
                                           "toleranceSeconds":  3
-
                                       },
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Foster\u0027s Home S01E07 Part 2",
-
-                                          "url":  "https://files.catbox.moe/placeholder_fosters_home_S01E07_part_2.mp4",
-
+                                          "url":  "https://files.catbox.moe/dc0htf.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  "auto"
-
                                       }
-
                                   ]
-
                    },
-
                    {
-
                        "title":  "Foster\u0027s Home - S01E08",
-
                        "slotSeconds":  1800,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Foster\u0027s Home S01E08 Part 1",
-
-                                          "url":  "https://files.catbox.moe/placeholder_fosters_home_S01E08_part_1.mp4",
-
+                                          "url":  "https://files.catbox.moe/uxs3c4.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  180,
-
                                           "toleranceSeconds":  3
-
                                       },
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Foster\u0027s Home S01E08 Part 2",
-
-                                          "url":  "https://files.catbox.moe/placeholder_fosters_home_S01E08_part_2.mp4",
-
+                                          "url":  "https://files.catbox.moe/ym6t12.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  "auto"
-
                                       }
-
                                   ]
-
                    },
-
                    {
-
                        "title":  "Foster\u0027s Home - S01E09",
-
                        "slotSeconds":  1800,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Foster\u0027s Home S01E09 Part 1",
-
-                                          "url":  "https://files.catbox.moe/placeholder_fosters_home_S01E09_part_1.mp4",
-
+                                          "url":  "https://files.catbox.moe/pk01t7.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  180,
-
                                           "toleranceSeconds":  3
-
                                       },
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Foster\u0027s Home S01E09 Part 2",
-
-                                          "url":  "https://files.catbox.moe/placeholder_fosters_home_S01E09_part_2.mp4",
-
+                                          "url":  "https://files.catbox.moe/b14zgy.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  "auto"
-
                                       }
-
                                   ]
-
                    },
-
                    {
-
                        "title":  "Foster\u0027s Home - S01E10",
-
                        "slotSeconds":  1800,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Foster\u0027s Home S01E10 Part 1",
-
-                                          "url":  "https://files.catbox.moe/placeholder_fosters_home_S01E10_part_1.mp4",
-
+                                          "url":  "https://files.catbox.moe/35kmc2.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  180,
-
                                           "toleranceSeconds":  3
-
                                       },
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Foster\u0027s Home S01E10 Part 2",
-
-                                          "url":  "https://files.catbox.moe/placeholder_fosters_home_S01E10_part_2.mp4",
-
+                                          "url":  "https://files.catbox.moe/dd18kj.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  "auto"
-
                                       }
-
                                   ]
-
                    },
-
                    {
-
                        "title":  "Foster\u0027s Home - S01E11",
-
                        "slotSeconds":  1800,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Foster\u0027s Home S01E11 Part 1",
-
-                                          "url":  "https://files.catbox.moe/placeholder_fosters_home_S01E11_part_1.mp4",
-
+                                          "url":  "https://files.catbox.moe/qnhkaj.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  180,
-
                                           "toleranceSeconds":  3
-
                                       },
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Foster\u0027s Home S01E11 Part 2",
-
-                                          "url":  "https://files.catbox.moe/placeholder_fosters_home_S01E11_part_2.mp4",
-
+                                          "url":  "https://files.catbox.moe/a90la2.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  "auto"
-
                                       }
-
                                   ]
-
                    },
-
                    {
-
                        "title":  "Foster\u0027s Home - S01E12",
-
                        "slotSeconds":  1800,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Foster\u0027s Home S01E12 Part 1",
-
-                                          "url":  "https://files.catbox.moe/placeholder_fosters_home_S01E12_part_1.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "url":  "https://files.catbox.moe/nfc72c.mp4",
+                                          "durationSeconds":  480
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  180,
-
                                           "toleranceSeconds":  3
-
                                       },
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Foster\u0027s Home S01E12 Part 2",
-
-                                          "url":  "https://files.catbox.moe/placeholder_fosters_home_S01E12_part_2.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "url":  "https://files.catbox.moe/w0jwy8.mp4",
+                                          "durationSeconds":  480
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Foster\u0027s Home S01E12 Part 3",
+                                          "url":  "https://files.catbox.moe/jdry4b.mp4",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
                                           "targetSeconds":  "auto"
-
                                       }
-
                                   ]
-
                    },
-
                    {
-
                        "title":  "Foster\u0027s Home - S01E13",
-
                        "slotSeconds":  1800,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Foster\u0027s Home S01E13 Part 1",
-
-                                          "url":  "https://files.catbox.moe/placeholder_fosters_home_S01E13_part_1.mp4",
-
+                                          "url":  "https://files.catbox.moe/ivkack.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  180,
-
                                           "toleranceSeconds":  3
-
                                       },
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Foster\u0027s Home S01E13 Part 2",
-
-                                          "url":  "https://files.catbox.moe/placeholder_fosters_home_S01E13_part_2.mp4",
-
+                                          "url":  "https://files.catbox.moe/b6pv7s.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  "auto"
-
                                       }
-
                                   ]
-
                    },
-
                    {
-
-                       "title":  "Foster\u0027s Home - S01E14",
-
+                       "title":  "Foster\u0027s Home - S02E01",
                        "slotSeconds":  1800,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Foster\u0027s Home S01E14 Part 1",
-
-                                          "url":  "https://files.catbox.moe/placeholder_fosters_home_S01E14_part_1.mp4",
-
+                                          "title":  "Foster\u0027s Home S02E01 Part 1",
+                                          "url":  "https://files.catbox.moe/9un8kr.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  180,
-
                                           "toleranceSeconds":  3
-
                                       },
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Foster\u0027s Home S01E14 Part 2",
-
-                                          "url":  "https://files.catbox.moe/placeholder_fosters_home_S01E14_part_2.mp4",
-
+                                          "title":  "Foster\u0027s Home S02E01 Part 2",
+                                          "url":  "https://files.catbox.moe/9aw4nr.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  "auto"
-
                                       }
-
                                   ]
-
+                   },
+                   {
+                       "title":  "Foster\u0027s Home - S02E02",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Foster\u0027s Home S02E02 Part 1",
+                                          "url":  "https://files.catbox.moe/k8ria0.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Foster\u0027s Home S02E02 Part 2",
+                                          "url":  "https://files.catbox.moe/ur6sll.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Foster\u0027s Home - S02E03",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Foster\u0027s Home S02E03 Part 1",
+                                          "url":  "https://files.catbox.moe/iwuu8a.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Foster\u0027s Home S02E03 Part 2",
+                                          "url":  "https://files.catbox.moe/fwk7r0.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Foster\u0027s Home - S02E04",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Foster\u0027s Home S02E04 Part 1",
+                                          "url":  "https://files.catbox.moe/ypzf8p.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Foster\u0027s Home S02E04 Part 2",
+                                          "url":  "https://files.catbox.moe/3tun5a.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Foster\u0027s Home - S02E05",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Foster\u0027s Home S02E05 Part 1",
+                                          "url":  "https://files.catbox.moe/bh7q9p.mp4",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Foster\u0027s Home S02E05 Part 2",
+                                          "url":  "https://files.catbox.moe/nb18rv.mp4",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Foster\u0027s Home S02E05 Part 3",
+                                          "url":  "https://files.catbox.moe/ag6cj0.mp4",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Foster\u0027s Home - S02E06",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Foster\u0027s Home S02E06 Part 1",
+                                          "url":  "https://files.catbox.moe/m4gbw2.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Foster\u0027s Home S02E06 Part 2",
+                                          "url":  "https://files.catbox.moe/z2vouq.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Foster\u0027s Home - S02E07",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Foster\u0027s Home S02E07 Part 1",
+                                          "url":  "https://files.catbox.moe/87ukf4.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Foster\u0027s Home S02E07 Part 2",
+                                          "url":  "https://files.catbox.moe/98x98s.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Foster\u0027s Home - S02E08",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Foster\u0027s Home S02E08 Part 1",
+                                          "url":  "https://files.catbox.moe/ooz8mc.mp4",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Foster\u0027s Home S02E08 Part 2",
+                                          "url":  "https://files.catbox.moe/9drpt0.mp4",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Foster\u0027s Home S02E08 Part 3",
+                                          "url":  "https://files.catbox.moe/9c6wfj.mp4",
+                                          "durationSeconds":  480
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
                    },
 
                    {
