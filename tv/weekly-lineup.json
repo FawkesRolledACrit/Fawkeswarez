@@ -1,4 +1,4 @@
-[
+﻿[
   {
     "time": "12:00 AM",
     "day": "Monday",
@@ -170,49 +170,64 @@
     "program": "Foster's Home"
   },
   {
+    "day": "Monday",
     "time": "3:00 PM",
-    "day": "Monday",
     "program": "Samurai Jack"
   },
   {
+    "day": "Monday",
     "time": "3:30 PM",
-    "day": "Monday",
-    "program": "Teen Titans"
+    "program": "Samurai Jack"
   },
   {
+    "day": "Monday",
+    "time": "4:00 PM",
+    "program": "Megas XLR"
+  },
+  {
+    "day": "Monday",
     "time": "4:30 PM",
-    "day": "Monday",
-    "program": "Dragon Ball Z"
+    "program": "Megas XLR"
   },
   {
+    "day": "Monday",
     "time": "5:00 PM",
-    "day": "Monday",
-    "program": "Samurai Jack"
+    "program": "Codename Kids Next Door"
   },
   {
+    "day": "Monday",
     "time": "5:30 PM",
-    "day": "Monday",
-    "program": "Teen Titans"
+    "program": "Codename Kids Next Door"
   },
   {
+    "day": "Monday",
+    "time": "6:00 PM",
+    "program": "Mucha Lucha"
+  },
+  {
+    "day": "Monday",
     "time": "6:30 PM",
-    "day": "Monday",
-    "program": "Dragon Ball Z"
+    "program": "Hamtaro"
   },
   {
+    "day": "Monday",
     "time": "7:00 PM",
-    "day": "Monday",
-    "program": "Samurai Jack"
+    "program": "Hamtaro"
   },
   {
+    "day": "Monday",
     "time": "7:30 PM",
-    "day": "Monday",
-    "program": "Teen Titans"
+    "program": "InuYasha"
   },
   {
-    "time": "8:30 PM",
     "day": "Monday",
-    "program": "Dragon Ball Z"
+    "time": "8:00 PM",
+    "program": "Dragon Ball"
+  },
+  {
+    "day": "Monday",
+    "time": "8:30 PM",
+    "program": "Dragon Ball"
   },
   {
     "time": "9:00 PM",
@@ -400,49 +415,64 @@
     "program": "Dexter's Laboratory"
   },
   {
+    "day": "Tuesday",
     "time": "3:00 PM",
-    "day": "Tuesday",
     "program": "Teen Titans"
   },
   {
+    "day": "Tuesday",
+    "time": "3:30 PM",
+    "program": "Teen Titans"
+  },
+  {
+    "day": "Tuesday",
     "time": "4:00 PM",
-    "day": "Tuesday",
-    "program": "Dragon Ball Z"
+    "program": "Batman Beyond"
   },
   {
+    "day": "Tuesday",
     "time": "4:30 PM",
-    "day": "Tuesday",
-    "program": "Samurai Jack"
+    "program": "Batman Beyond"
   },
   {
+    "day": "Tuesday",
     "time": "5:00 PM",
-    "day": "Tuesday",
-    "program": "Teen Titans"
+    "program": "Codename Kids Next Door"
   },
   {
+    "day": "Tuesday",
+    "time": "5:30 PM",
+    "program": "Codename Kids Next Door"
+  },
+  {
+    "day": "Tuesday",
     "time": "6:00 PM",
-    "day": "Tuesday",
-    "program": "Dragon Ball Z"
+    "program": "Mucha Lucha"
   },
   {
+    "day": "Tuesday",
     "time": "6:30 PM",
-    "day": "Tuesday",
-    "program": "Samurai Jack"
+    "program": "Hamtaro"
   },
   {
+    "day": "Tuesday",
     "time": "7:00 PM",
-    "day": "Tuesday",
-    "program": "Teen Titans"
+    "program": "Hamtaro"
   },
   {
+    "day": "Tuesday",
+    "time": "7:30 PM",
+    "program": "InuYasha"
+  },
+  {
+    "day": "Tuesday",
     "time": "8:00 PM",
-    "day": "Tuesday",
-    "program": "Dragon Ball Z"
+    "program": "Dragon Ball"
   },
   {
-    "time": "8:30 PM",
     "day": "Tuesday",
-    "program": "Samurai Jack"
+    "time": "8:30 PM",
+    "program": "Dragon Ball"
   },
   {
     "time": "9:00 PM",
@@ -635,54 +665,64 @@
     "program": "The Powerpuff Girls"
   },
   {
+    "day": "Wednesday",
+    "time": "3:00 PM",
+    "program": "Samurai Jack"
+  },
+  {
+    "day": "Wednesday",
     "time": "3:30 PM",
-    "day": "Wednesday",
-    "program": "Dragon Ball Z"
+    "program": "Samurai Jack"
   },
   {
+    "day": "Wednesday",
     "time": "4:00 PM",
-    "day": "Wednesday",
-    "program": "Samurai Jack"
+    "program": "Megas XLR"
   },
   {
+    "day": "Wednesday",
     "time": "4:30 PM",
-    "day": "Wednesday",
-    "program": "Teen Titans"
+    "program": "Megas XLR"
   },
   {
+    "day": "Wednesday",
+    "time": "5:00 PM",
+    "program": "Codename Kids Next Door"
+  },
+  {
+    "day": "Wednesday",
     "time": "5:30 PM",
-    "day": "Wednesday",
-    "program": "Dragon Ball Z"
+    "program": "Codename Kids Next Door"
   },
   {
+    "day": "Wednesday",
     "time": "6:00 PM",
-    "day": "Wednesday",
-    "program": "Samurai Jack"
+    "program": "Mucha Lucha"
   },
   {
+    "day": "Wednesday",
     "time": "6:30 PM",
-    "day": "Wednesday",
-    "program": "Teen Titans"
+    "program": "Hamtaro"
   },
   {
+    "day": "Wednesday",
+    "time": "7:00 PM",
+    "program": "Hamtaro"
+  },
+  {
+    "day": "Wednesday",
     "time": "7:30 PM",
-    "day": "Wednesday",
-    "program": "Dragon Ball Z"
+    "program": "InuYasha"
   },
   {
+    "day": "Wednesday",
     "time": "8:00 PM",
-    "day": "Wednesday",
-    "program": "Samurai Jack"
+    "program": "Dragon Ball"
   },
   {
+    "day": "Wednesday",
     "time": "8:30 PM",
-    "day": "Wednesday",
-    "program": "Teen Titans"
-  },
-  {
-    "time": "9:30 PM",
-    "day": "Wednesday",
-    "program": "Dragon Ball Z"
+    "program": "Dragon Ball"
   },
   {
     "time": "10:00 PM",
@@ -870,54 +910,64 @@
     "program": "Ed, Edd n Eddy"
   },
   {
+    "day": "Thursday",
     "time": "3:00 PM",
-    "day": "Thursday",
-    "program": "Dragon Ball Z"
+    "program": "Teen Titans"
   },
   {
+    "day": "Thursday",
     "time": "3:30 PM",
-    "day": "Thursday",
-    "program": "Samurai Jack"
+    "program": "Teen Titans"
   },
   {
+    "day": "Thursday",
     "time": "4:00 PM",
-    "day": "Thursday",
-    "program": "Teen Titans"
+    "program": "Batman Beyond"
   },
   {
+    "day": "Thursday",
+    "time": "4:30 PM",
+    "program": "Batman Beyond"
+  },
+  {
+    "day": "Thursday",
     "time": "5:00 PM",
-    "day": "Thursday",
-    "program": "Dragon Ball Z"
+    "program": "Codename Kids Next Door"
   },
   {
+    "day": "Thursday",
     "time": "5:30 PM",
-    "day": "Thursday",
-    "program": "Samurai Jack"
+    "program": "Codename Kids Next Door"
   },
   {
+    "day": "Thursday",
     "time": "6:00 PM",
-    "day": "Thursday",
-    "program": "Teen Titans"
+    "program": "Mucha Lucha"
   },
   {
+    "day": "Thursday",
+    "time": "6:30 PM",
+    "program": "Hamtaro"
+  },
+  {
+    "day": "Thursday",
     "time": "7:00 PM",
-    "day": "Thursday",
-    "program": "Dragon Ball Z"
+    "program": "Hamtaro"
   },
   {
+    "day": "Thursday",
     "time": "7:30 PM",
-    "day": "Thursday",
-    "program": "Samurai Jack"
+    "program": "InuYasha"
   },
   {
+    "day": "Thursday",
     "time": "8:00 PM",
-    "day": "Thursday",
-    "program": "Teen Titans"
+    "program": "Dragon Ball"
   },
   {
-    "time": "9:00 PM",
     "day": "Thursday",
-    "program": "Dragon Ball Z"
+    "time": "8:30 PM",
+    "program": "Dragon Ball"
   },
   {
     "time": "9:30 PM",
@@ -1115,49 +1165,64 @@
     "program": "Johnny Bravo"
   },
   {
+    "day": "Friday",
     "time": "3:00 PM",
-    "day": "Friday",
     "program": "Samurai Jack"
   },
   {
+    "day": "Friday",
     "time": "3:30 PM",
-    "day": "Friday",
-    "program": "Teen Titans"
+    "program": "Samurai Jack"
   },
   {
+    "day": "Friday",
+    "time": "4:00 PM",
+    "program": "Megas XLR"
+  },
+  {
+    "day": "Friday",
     "time": "4:30 PM",
-    "day": "Friday",
-    "program": "Dragon Ball Z"
+    "program": "Megas XLR"
   },
   {
+    "day": "Friday",
     "time": "5:00 PM",
-    "day": "Friday",
-    "program": "Samurai Jack"
+    "program": "Codename Kids Next Door"
   },
   {
+    "day": "Friday",
     "time": "5:30 PM",
-    "day": "Friday",
-    "program": "Teen Titans"
+    "program": "Codename Kids Next Door"
   },
   {
+    "day": "Friday",
+    "time": "6:00 PM",
+    "program": "Mucha Lucha"
+  },
+  {
+    "day": "Friday",
     "time": "6:30 PM",
-    "day": "Friday",
-    "program": "Dragon Ball Z"
+    "program": "Hamtaro"
   },
   {
+    "day": "Friday",
     "time": "7:00 PM",
-    "day": "Friday",
-    "program": "Samurai Jack"
+    "program": "Hamtaro"
   },
   {
+    "day": "Friday",
     "time": "7:30 PM",
-    "day": "Friday",
-    "program": "Teen Titans"
+    "program": "InuYasha"
   },
   {
-    "time": "8:30 PM",
     "day": "Friday",
-    "program": "Dragon Ball Z"
+    "time": "8:00 PM",
+    "program": "Dragon Ball"
+  },
+  {
+    "day": "Friday",
+    "time": "8:30 PM",
+    "program": "Dragon Ball"
   },
   {
     "time": "9:00 PM",
@@ -1435,11 +1500,6 @@
     "program": "Nostalgia Night Preshow"
   },
   {
-    "day": "Sunday",
-    "time": "1:00 PM",
-    "program": "Sheep in the Big City"
-  },
-  {
     "time": "1:30 PM",
     "day": "Sunday",
     "program": "Nostalgia Night Preshow"
@@ -1460,37 +1520,7 @@
     "program": "Nostalgia Night"
   },
   {
-    "time": "3:30 PM",
-    "day": "Sunday",
-    "program": "Nostalgia Night"
-  },
-  {
-    "time": "4:00 PM",
-    "day": "Sunday",
-    "program": "Nostalgia Night"
-  },
-  {
-    "time": "4:30 PM",
-    "day": "Sunday",
-    "program": "Nostalgia Night"
-  },
-  {
     "time": "5:00 PM",
-    "day": "Sunday",
-    "program": "Nostalgia Night"
-  },
-  {
-    "time": "5:30 PM",
-    "day": "Sunday",
-    "program": "Nostalgia Night"
-  },
-  {
-    "time": "6:00 PM",
-    "day": "Sunday",
-    "program": "Nostalgia Night"
-  },
-  {
-    "time": "6:30 PM",
     "day": "Sunday",
     "program": "Nostalgia Night"
   },
@@ -1500,42 +1530,7 @@
     "program": "Nostalgia Night"
   },
   {
-    "time": "7:30 PM",
-    "day": "Sunday",
-    "program": "Nostalgia Night"
-  },
-  {
-    "time": "8:00 PM",
-    "day": "Sunday",
-    "program": "Nostalgia Night"
-  },
-  {
-    "time": "8:30 PM",
-    "day": "Sunday",
-    "program": "Nostalgia Night"
-  },
-  {
     "time": "9:00 PM",
-    "day": "Sunday",
-    "program": "Nostalgia Night"
-  },
-  {
-    "time": "9:30 PM",
-    "day": "Sunday",
-    "program": "Nostalgia Night"
-  },
-  {
-    "time": "10:00 PM",
-    "day": "Sunday",
-    "program": "Nostalgia Night"
-  },
-  {
-    "time": "10:15 PM",
-    "day": "Sunday",
-    "program": "Nostalgia Night"
-  },
-  {
-    "time": "10:30 PM",
     "day": "Sunday",
     "program": "Nostalgia Night"
   },
