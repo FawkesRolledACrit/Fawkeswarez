@@ -11647,419 +11647,303 @@
                    },
 
                    {
-
                        "title":  "Home Movies - S01E01",
-
                        "slotSeconds":  900,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Home Movies S01E01",
-
-                                          "url":  "https://files.catbox.moe/placeholder_home_movies_S01E01_part_1.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "title":  "Home Movies S01E01 Part 1",
+                                          "url":  "https://files.catbox.moe/z8qc28.mp4",
+                                          "durationSeconds":  360
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
-                                          "targetSeconds":  "auto"
-
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Home Movies S01E01 Part 2",
+                                          "url":  "https://files.catbox.moe/0a2w36.mp4",
+                                          "durationSeconds":  360
                                       }
-
                                   ]
-
                    },
-
                    {
-
                        "title":  "Home Movies - S01E02",
-
                        "slotSeconds":  900,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Home Movies S01E02",
-
-                                          "url":  "https://files.catbox.moe/placeholder_home_movies_S01E02_part_1.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "title":  "Home Movies S01E02 Part 1",
+                                          "url":  "https://files.catbox.moe/319g0d.mp4",
+                                          "durationSeconds":  360
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
-                                          "targetSeconds":  "auto"
-
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Home Movies S01E02 Part 2",
+                                          "url":  "https://files.catbox.moe/bgghvv.mp4",
+                                          "durationSeconds":  360
                                       }
-
                                   ]
-
                    },
-
                    {
-
                        "title":  "Home Movies - S01E03",
-
                        "slotSeconds":  900,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Home Movies S01E03",
-
-                                          "url":  "https://files.catbox.moe/placeholder_home_movies_S01E03_part_1.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "title":  "Home Movies S01E03 Part 1",
+                                          "url":  "https://files.catbox.moe/0ztiug.mp4",
+                                          "durationSeconds":  360
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
-                                          "targetSeconds":  "auto"
-
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Home Movies S01E03 Part 2",
+                                          "url":  "https://files.catbox.moe/sq2sme.mp4",
+                                          "durationSeconds":  360
                                       }
-
                                   ]
-
                    },
-
                    {
-
                        "title":  "Home Movies - S01E04",
-
                        "slotSeconds":  900,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Home Movies S01E04",
-
-                                          "url":  "https://files.catbox.moe/placeholder_home_movies_S01E04_part_1.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "title":  "Home Movies S01E04 Part 1",
+                                          "url":  "https://files.catbox.moe/qwonb5.mp4",
+                                          "durationSeconds":  360
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
-                                          "targetSeconds":  "auto"
-
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Home Movies S01E04 Part 2",
+                                          "url":  "https://files.catbox.moe/uw76zw.mp4",
+                                          "durationSeconds":  360
                                       }
-
                                   ]
-
                    },
-
                    {
-
                        "title":  "Home Movies - S01E05",
-
                        "slotSeconds":  900,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Home Movies S01E05",
-
-                                          "url":  "https://files.catbox.moe/placeholder_home_movies_S01E05_part_1.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "title":  "Home Movies S01E05 Part 1",
+                                          "url":  "https://files.catbox.moe/yrnpr6.mp4",
+                                          "durationSeconds":  360
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
-                                          "targetSeconds":  "auto"
-
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Home Movies S01E05 Part 2",
+                                          "url":  "https://files.catbox.moe/smvxnk.mp4",
+                                          "durationSeconds":  360
                                       }
-
                                   ]
-
                    },
-
                    {
-
                        "title":  "Home Movies - S01E06",
-
                        "slotSeconds":  900,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Home Movies S01E06",
-
-                                          "url":  "https://files.catbox.moe/placeholder_home_movies_S01E06_part_1.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "title":  "Home Movies S01E06 Part 1",
+                                          "url":  "https://files.catbox.moe/wugtja.mp4",
+                                          "durationSeconds":  360
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
-                                          "targetSeconds":  "auto"
-
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Home Movies S01E06 Part 2",
+                                          "url":  "https://files.catbox.moe/uyy9wv.mp4",
+                                          "durationSeconds":  360
                                       }
-
                                   ]
-
                    },
-
                    {
-
                        "title":  "Home Movies - S01E07",
-
                        "slotSeconds":  900,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Home Movies S01E07",
-
-                                          "url":  "https://files.catbox.moe/placeholder_home_movies_S01E07_part_1.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "title":  "Home Movies S01E07 Part 1",
+                                          "url":  "https://files.catbox.moe/qavn1l.mp4",
+                                          "durationSeconds":  360
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
-                                          "targetSeconds":  "auto"
-
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Home Movies S01E07 Part 2",
+                                          "url":  "https://files.catbox.moe/5s62cg.mp4",
+                                          "durationSeconds":  360
                                       }
-
                                   ]
-
                    },
-
                    {
-
                        "title":  "Home Movies - S01E08",
-
                        "slotSeconds":  900,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Home Movies S01E08",
-
-                                          "url":  "https://files.catbox.moe/placeholder_home_movies_S01E08_part_1.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "title":  "Home Movies S01E08 Part 1",
+                                          "url":  "https://files.catbox.moe/ujp1v3.mp4",
+                                          "durationSeconds":  360
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
-                                          "targetSeconds":  "auto"
-
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Home Movies S01E08 Part 2",
+                                          "url":  "https://files.catbox.moe/7932cj.mp4",
+                                          "durationSeconds":  360
                                       }
-
                                   ]
-
                    },
-
                    {
-
                        "title":  "Home Movies - S01E09",
-
                        "slotSeconds":  900,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Home Movies S01E09",
-
-                                          "url":  "https://files.catbox.moe/placeholder_home_movies_S01E09_part_1.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "title":  "Home Movies S01E09 Part 1",
+                                          "url":  "https://files.catbox.moe/s7mxog.mp4",
+                                          "durationSeconds":  360
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
-                                          "targetSeconds":  "auto"
-
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Home Movies S01E09 Part 2",
+                                          "url":  "https://files.catbox.moe/gj8e7v.mp4",
+                                          "durationSeconds":  360
                                       }
-
                                   ]
-
                    },
-
                    {
-
                        "title":  "Home Movies - S01E10",
-
                        "slotSeconds":  900,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Home Movies S01E10",
-
-                                          "url":  "https://files.catbox.moe/placeholder_home_movies_S01E10_part_1.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "title":  "Home Movies S01E10 Part 1",
+                                          "url":  "https://files.catbox.moe/wcfeui.mp4",
+                                          "durationSeconds":  360
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
-                                          "targetSeconds":  "auto"
-
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Home Movies S01E10 Part 2",
+                                          "url":  "https://files.catbox.moe/8mksl7.mp4",
+                                          "durationSeconds":  360
                                       }
-
                                   ]
-
                    },
-
                    {
-
                        "title":  "Home Movies - S01E11",
-
                        "slotSeconds":  900,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Home Movies S01E11",
-
-                                          "url":  "https://files.catbox.moe/placeholder_home_movies_S01E11_part_1.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "title":  "Home Movies S01E11 Part 1",
+                                          "url":  "https://files.catbox.moe/r0gt09.mp4",
+                                          "durationSeconds":  360
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
-                                          "targetSeconds":  "auto"
-
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Home Movies S01E11 Part 2",
+                                          "url":  "https://files.catbox.moe/ahha10.mp4",
+                                          "durationSeconds":  360
                                       }
-
                                   ]
-
                    },
-
                    {
-
                        "title":  "Home Movies - S01E12",
-
                        "slotSeconds":  900,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Home Movies S01E12",
-
-                                          "url":  "https://files.catbox.moe/placeholder_home_movies_S01E12_part_1.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "title":  "Home Movies S01E12 Part 1",
+                                          "url":  "https://files.catbox.moe/n8fuqi.mp4",
+                                          "durationSeconds":  360
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
-                                          "targetSeconds":  "auto"
-
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Home Movies S01E12 Part 2",
+                                          "url":  "https://files.catbox.moe/xg4env.mp4",
+                                          "durationSeconds":  360
                                       }
-
                                   ]
-
                    },
-
                    {
-
                        "title":  "Home Movies - S01E13",
-
                        "slotSeconds":  900,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Home Movies S01E13",
-
-                                          "url":  "https://files.catbox.moe/placeholder_home_movies_S01E13_part_1.mp4",
-
-                                          "durationSeconds":  660
-
+                                          "title":  "Home Movies S01E13 Part 1",
+                                          "url":  "https://files.catbox.moe/b9e8c2.mp4",
+                                          "durationSeconds":  360
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
-                                          "targetSeconds":  "auto"
-
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Home Movies S01E13 Part 2",
+                                          "url":  "https://files.catbox.moe/ds7r1s.mp4",
+                                          "durationSeconds":  360
                                       }
-
                                   ]
-
                    },
 
                    {
