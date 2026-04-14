@@ -11947,759 +11947,708 @@
                    },
 
                    {
-
                        "title":  "Courage the Cowardly Dog - S01E01",
-
                        "slotSeconds":  1800,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Courage the Cowardly Dog S01E01 Part 1",
-
-                                          "url":  "https://files.catbox.moe/placeholder_courage_the_cowardly_dog_S01E01_part_1.mp4",
-
+                                          "url":  "https://files.catbox.moe/m6sks4.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  180,
-
                                           "toleranceSeconds":  3
-
                                       },
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Courage the Cowardly Dog S01E01 Part 2",
-
-                                          "url":  "https://files.catbox.moe/placeholder_courage_the_cowardly_dog_S01E01_part_2.mp4",
-
+                                          "url":  "https://files.catbox.moe/rugqxn.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  "auto"
-
                                       }
-
                                   ]
-
                    },
-
                    {
-
                        "title":  "Courage the Cowardly Dog - S01E02",
-
                        "slotSeconds":  1800,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Courage the Cowardly Dog S01E02 Part 1",
-
-                                          "url":  "https://files.catbox.moe/placeholder_courage_the_cowardly_dog_S01E02_part_1.mp4",
-
+                                          "url":  "https://files.catbox.moe/wfykbz.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  180,
-
                                           "toleranceSeconds":  3
-
                                       },
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Courage the Cowardly Dog S01E02 Part 2",
-
-                                          "url":  "https://files.catbox.moe/placeholder_courage_the_cowardly_dog_S01E02_part_2.mp4",
-
+                                          "url":  "https://files.catbox.moe/smu9av.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  "auto"
-
                                       }
-
                                   ]
-
                    },
-
                    {
-
                        "title":  "Courage the Cowardly Dog - S01E03",
-
                        "slotSeconds":  1800,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Courage the Cowardly Dog S01E03 Part 1",
-
-                                          "url":  "https://files.catbox.moe/placeholder_courage_the_cowardly_dog_S01E03_part_1.mp4",
-
+                                          "url":  "https://files.catbox.moe/4630xv.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  180,
-
                                           "toleranceSeconds":  3
-
                                       },
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Courage the Cowardly Dog S01E03 Part 2",
-
-                                          "url":  "https://files.catbox.moe/placeholder_courage_the_cowardly_dog_S01E03_part_2.mp4",
-
+                                          "url":  "https://files.catbox.moe/9q976g.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  "auto"
-
                                       }
-
                                   ]
-
                    },
-
                    {
-
                        "title":  "Courage the Cowardly Dog - S01E04",
-
                        "slotSeconds":  1800,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Courage the Cowardly Dog S01E04 Part 1",
-
-                                          "url":  "https://files.catbox.moe/placeholder_courage_the_cowardly_dog_S01E04_part_1.mp4",
-
+                                          "url":  "https://files.catbox.moe/zml2wo.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  180,
-
                                           "toleranceSeconds":  3
-
                                       },
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Courage the Cowardly Dog S01E04 Part 2",
-
-                                          "url":  "https://files.catbox.moe/placeholder_courage_the_cowardly_dog_S01E04_part_2.mp4",
-
+                                          "url":  "https://files.catbox.moe/5m81qo.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  "auto"
-
                                       }
-
                                   ]
-
                    },
-
                    {
-
                        "title":  "Courage the Cowardly Dog - S01E05",
-
                        "slotSeconds":  1800,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Courage the Cowardly Dog S01E05 Part 1",
-
-                                          "url":  "https://files.catbox.moe/placeholder_courage_the_cowardly_dog_S01E05_part_1.mp4",
-
+                                          "url":  "https://files.catbox.moe/dxszc0.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  180,
-
                                           "toleranceSeconds":  3
-
                                       },
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Courage the Cowardly Dog S01E05 Part 2",
-
-                                          "url":  "https://files.catbox.moe/placeholder_courage_the_cowardly_dog_S01E05_part_2.mp4",
-
+                                          "url":  "https://files.catbox.moe/9ctfax.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  "auto"
-
                                       }
-
                                   ]
-
                    },
 
                    {
-
                        "title":  "Courage the Cowardly Dog - S01E06",
-
                        "slotSeconds":  1800,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Courage the Cowardly Dog S01E06 Part 1",
-
-                                          "url":  "https://files.catbox.moe/placeholder_courage_the_cowardly_dog_S01E06_part_1.mp4",
-
+                                          "url":  "https://files.catbox.moe/es31hg.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  180,
-
                                           "toleranceSeconds":  3
-
                                       },
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Courage the Cowardly Dog S01E06 Part 2",
-
-                                          "url":  "https://files.catbox.moe/placeholder_courage_the_cowardly_dog_S01E06_part_2.mp4",
-
+                                          "url":  "https://files.catbox.moe/c0zqaq.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  "auto"
-
                                       }
-
                                   ]
-
                    },
-
                    {
-
                        "title":  "Courage the Cowardly Dog - S01E07",
-
                        "slotSeconds":  1800,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Courage the Cowardly Dog S01E07 Part 1",
-
-                                          "url":  "https://files.catbox.moe/placeholder_courage_the_cowardly_dog_S01E07_part_1.mp4",
-
+                                          "url":  "https://files.catbox.moe/n5qzjo.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  180,
-
                                           "toleranceSeconds":  3
-
                                       },
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Courage the Cowardly Dog S01E07 Part 2",
-
-                                          "url":  "https://files.catbox.moe/placeholder_courage_the_cowardly_dog_S01E07_part_2.mp4",
-
+                                          "url":  "https://files.catbox.moe/5l05zn.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  "auto"
-
                                       }
-
                                   ]
-
                    },
-
                    {
-
                        "title":  "Courage the Cowardly Dog - S01E08",
-
                        "slotSeconds":  1800,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Courage the Cowardly Dog S01E08 Part 1",
-
-                                          "url":  "https://files.catbox.moe/placeholder_courage_the_cowardly_dog_S01E08_part_1.mp4",
-
+                                          "url":  "https://files.catbox.moe/zo7r2u.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  180,
-
                                           "toleranceSeconds":  3
-
                                       },
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Courage the Cowardly Dog S01E08 Part 2",
-
-                                          "url":  "https://files.catbox.moe/placeholder_courage_the_cowardly_dog_S01E08_part_2.mp4",
-
+                                          "url":  "https://files.catbox.moe/xg4iam.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  "auto"
-
                                       }
-
                                   ]
-
                    },
-
                    {
-
                        "title":  "Courage the Cowardly Dog - S01E09",
-
                        "slotSeconds":  1800,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Courage the Cowardly Dog S01E09 Part 1",
-
-                                          "url":  "https://files.catbox.moe/placeholder_courage_the_cowardly_dog_S01E09_part_1.mp4",
-
+                                          "url":  "https://files.catbox.moe/4fjgbl.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  180,
-
                                           "toleranceSeconds":  3
-
                                       },
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Courage the Cowardly Dog S01E09 Part 2",
-
-                                          "url":  "https://files.catbox.moe/placeholder_courage_the_cowardly_dog_S01E09_part_2.mp4",
-
+                                          "url":  "https://files.catbox.moe/4opl1a.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  "auto"
-
                                       }
-
                                   ]
-
                    },
-
                    {
-
                        "title":  "Courage the Cowardly Dog - S01E10",
-
                        "slotSeconds":  1800,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Courage the Cowardly Dog S01E10 Part 1",
-
-                                          "url":  "https://files.catbox.moe/placeholder_courage_the_cowardly_dog_S01E10_part_1.mp4",
-
+                                          "url":  "https://files.catbox.moe/speupd.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  180,
-
                                           "toleranceSeconds":  3
-
                                       },
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Courage the Cowardly Dog S01E10 Part 2",
-
-                                          "url":  "https://files.catbox.moe/placeholder_courage_the_cowardly_dog_S01E10_part_2.mp4",
-
+                                          "url":  "https://files.catbox.moe/5tbnwm.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  "auto"
-
                                       }
-
                                   ]
-
                    },
 
                    {
-
                        "title":  "Courage the Cowardly Dog - S01E11",
-
                        "slotSeconds":  1800,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Courage the Cowardly Dog S01E11 Part 1",
-
-                                          "url":  "https://files.catbox.moe/placeholder_courage_the_cowardly_dog_S01E11_part_1.mp4",
-
+                                          "url":  "https://files.catbox.moe/hzfj21.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  180,
-
                                           "toleranceSeconds":  3
-
                                       },
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Courage the Cowardly Dog S01E11 Part 2",
-
-                                          "url":  "https://files.catbox.moe/placeholder_courage_the_cowardly_dog_S01E11_part_2.mp4",
-
+                                          "url":  "https://files.catbox.moe/bsm7gb.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  "auto"
-
                                       }
-
                                   ]
-
                    },
-
                    {
-
                        "title":  "Courage the Cowardly Dog - S01E12",
-
                        "slotSeconds":  1800,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Courage the Cowardly Dog S01E12 Part 1",
-
-                                          "url":  "https://files.catbox.moe/placeholder_courage_the_cowardly_dog_S01E12_part_1.mp4",
-
+                                          "url":  "https://files.catbox.moe/82aptq.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  180,
-
                                           "toleranceSeconds":  3
-
                                       },
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Courage the Cowardly Dog S01E12 Part 2",
-
-                                          "url":  "https://files.catbox.moe/placeholder_courage_the_cowardly_dog_S01E12_part_2.mp4",
-
+                                          "url":  "https://files.catbox.moe/1i7we1.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  "auto"
-
                                       }
-
                                   ]
-
                    },
-
                    {
-
                        "title":  "Courage the Cowardly Dog - S01E13",
-
                        "slotSeconds":  1800,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Courage the Cowardly Dog S01E13 Part 1",
-
-                                          "url":  "https://files.catbox.moe/placeholder_courage_the_cowardly_dog_S01E13_part_1.mp4",
-
+                                          "url":  "https://files.catbox.moe/nmips1.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  180,
-
                                           "toleranceSeconds":  3
-
                                       },
-
                                       {
-
                                           "type":  "segment",
-
                                           "title":  "Courage the Cowardly Dog S01E13 Part 2",
-
-                                          "url":  "https://files.catbox.moe/placeholder_courage_the_cowardly_dog_S01E13_part_2.mp4",
-
+                                          "url":  "https://files.catbox.moe/q6wqeq.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  "auto"
-
                                       }
-
                                   ]
-
                    },
-
                    {
-
-                       "title":  "Courage the Cowardly Dog - S01E14",
-
+                       "title":  "Courage the Cowardly Dog - S02E01",
                        "slotSeconds":  1800,
-
                        "events":  [
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Courage the Cowardly Dog S01E14 Part 1",
-
-                                          "url":  "https://files.catbox.moe/placeholder_courage_the_cowardly_dog_S01E14_part_1.mp4",
-
+                                          "title":  "Courage the Cowardly Dog S02E01 Part 1",
+                                          "url":  "https://files.catbox.moe/s2x85m.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  180,
-
                                           "toleranceSeconds":  3
-
                                       },
-
                                       {
-
                                           "type":  "segment",
-
-                                          "title":  "Courage the Cowardly Dog S01E14 Part 2",
-
-                                          "url":  "https://files.catbox.moe/placeholder_courage_the_cowardly_dog_S01E14_part_2.mp4",
-
+                                          "title":  "Courage the Cowardly Dog S02E01 Part 2",
+                                          "url":  "https://files.catbox.moe/4d7wqq.mp4",
                                           "durationSeconds":  660
-
                                       },
-
                                       {
-
                                           "type":  "adbreak",
-
                                           "targetSeconds":  "auto"
-
                                       }
-
                                   ]
-
+                   },
+                   {
+                       "title":  "Courage the Cowardly Dog - S02E02",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Courage the Cowardly Dog S02E02 Part 1",
+                                          "url":  "https://files.catbox.moe/iqfpof.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Courage the Cowardly Dog S02E02 Part 2",
+                                          "url":  "https://files.catbox.moe/1avwd7.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Courage the Cowardly Dog - S02E03",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Courage the Cowardly Dog S02E03 Part 1",
+                                          "url":  "https://files.catbox.moe/gqq6p8.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Courage the Cowardly Dog S02E03 Part 2",
+                                          "url":  "https://files.catbox.moe/jawavi.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Courage the Cowardly Dog - S02E04",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Courage the Cowardly Dog S02E04 Part 1",
+                                          "url":  "https://files.catbox.moe/gqq6p8.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Courage the Cowardly Dog S02E04 Part 2",
+                                          "url":  "https://files.catbox.moe/jawavi.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Courage the Cowardly Dog - S02E05",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Courage the Cowardly Dog S02E05 Part 1",
+                                          "url":  "https://files.catbox.moe/zwo9k3.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Courage the Cowardly Dog S02E05 Part 2",
+                                          "url":  "https://files.catbox.moe/opnihy.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Courage the Cowardly Dog - S02E06",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Courage the Cowardly Dog S02E06 Part 1",
+                                          "url":  "https://files.catbox.moe/obfjl2.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Courage the Cowardly Dog S02E06 Part 2",
+                                          "url":  "https://files.catbox.moe/1ga58d.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Courage the Cowardly Dog - S02E07",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Courage the Cowardly Dog S02E07 Part 1",
+                                          "url":  "https://files.catbox.moe/6ea0j9.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Courage the Cowardly Dog S02E07 Part 2",
+                                          "url":  "https://files.catbox.moe/uyyams.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Courage the Cowardly Dog - S02E08",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Courage the Cowardly Dog S02E08 Part 1",
+                                          "url":  "https://files.catbox.moe/8ci959.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Courage the Cowardly Dog S02E08 Part 2",
+                                          "url":  "https://files.catbox.moe/nmipor.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Courage the Cowardly Dog - S02E09",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Courage the Cowardly Dog S02E09 Part 1",
+                                          "url":  "https://files.catbox.moe/g3omda.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Courage the Cowardly Dog S02E09 Part 2",
+                                          "url":  "https://files.catbox.moe/pj2rkw.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Courage the Cowardly Dog - S02E10",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Courage the Cowardly Dog S02E10 Part 1",
+                                          "url":  "https://files.catbox.moe/wme8kc.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Courage the Cowardly Dog S02E10 Part 2",
+                                          "url":  "https://files.catbox.moe/m0l4xo.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Courage the Cowardly Dog - S02E11",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Courage the Cowardly Dog S02E11 Part 1",
+                                          "url":  "https://files.catbox.moe/9v6dez.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Courage the Cowardly Dog S02E11 Part 2",
+                                          "url":  "https://files.catbox.moe/zf0tu6.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Courage the Cowardly Dog - S02E12",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Courage the Cowardly Dog S02E12 Part 1",
+                                          "url":  "https://files.catbox.moe/tgoxyh.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Courage the Cowardly Dog S02E12 Part 2",
+                                          "url":  "https://files.catbox.moe/qwguwc.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
+                   },
+                   {
+                       "title":  "Courage the Cowardly Dog - S02E13",
+                       "slotSeconds":  1800,
+                       "events":  [
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Courage the Cowardly Dog S02E13 Part 1",
+                                          "url":  "https://files.catbox.moe/d6g5oi.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  180,
+                                          "toleranceSeconds":  3
+                                      },
+                                      {
+                                          "type":  "segment",
+                                          "title":  "Courage the Cowardly Dog S02E13 Part 2",
+                                          "url":  "https://files.catbox.moe/l58lnp.mp4",
+                                          "durationSeconds":  660
+                                      },
+                                      {
+                                          "type":  "adbreak",
+                                          "targetSeconds":  "auto"
+                                      }
+                                  ]
                    },
 
                    {
