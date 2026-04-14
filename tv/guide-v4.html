@@ -389,13 +389,13 @@
                 }
                 if (!codeMatch) continue;
 
-                // Only include blocks that contain at least one real (non-placeholder) catbox URL
+                // Include blocks that contain at least one catbox URL (including placeholders)
                 let hasRealUrl = false;
                 if (Array.isArray(block.events)) {
                     for (const evt of block.events) {
                         if (evt && evt.type === 'segment' && typeof evt.url === 'string') {
                             const url = evt.url;
-                            if (url.startsWith('https://files.catbox.moe/') && !url.includes('placeholder')) {
+                            if (url.startsWith('https://files.catbox.moe/')) {
                                 hasRealUrl = true;
                                 break;
                             }
