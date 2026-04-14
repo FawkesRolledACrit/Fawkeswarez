@@ -725,11 +725,6 @@
     "program": "Dragon Ball"
   },
   {
-    "time": "9:30 PM",
-    "day": "Wednesday",
-    "program": "Dragon Ball Z"
-  },
-  {
     "time": "10:00 PM",
     "day": "Wednesday",
     "program": "Brak Show"
@@ -973,11 +968,6 @@
     "day": "Thursday",
     "time": "8:30 PM",
     "program": "Dragon Ball"
-  },
-  {
-    "time": "9:00 PM",
-    "day": "Thursday",
-    "program": "Dragon Ball Z"
   },
   {
     "time": "9:30 PM",
