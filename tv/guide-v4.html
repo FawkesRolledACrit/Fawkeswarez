@@ -348,8 +348,8 @@
                 if (totalMins >= 360 && totalMins < 660) return 'MORNING MILK';
                 if (totalMins >= 660 && totalMins < 720) return 'CARTOON CARTOONS';
                 if (totalMins >= 720 && totalMins < 900) return 'MIDDAY MADNESS';
-                if (totalMins >= 900 && totalMins < 1170) return 'AFTERNOON ACTION';
-                if (totalMins >= 1170 && totalMins < 1260) return 'ALL-TIME ANIMES';
+                if (totalMins >= 900 && totalMins < 1110) return 'AFTERNOON ACTION';
+                if (totalMins >= 1110 && totalMins < 1260) return 'ALL-TIME ANIMES';
                 return 'ADULT SWIM';
             }
 
@@ -357,8 +357,8 @@
             if (totalMins >= 360 && totalMins < 660) return 'MORNING MILK';
             if (totalMins >= 660 && totalMins < 720) return 'CARTOON CARTOONS';
             if (totalMins >= 720 && totalMins < 900) return 'MIDDAY MADNESS';
-            if (totalMins >= 900 && totalMins < 1170) return 'AFTERNOON ACTION';
-            if (totalMins >= 1170 && totalMins < 1260) return 'ALL-TIME ANIMES';
+            if (totalMins >= 900 && totalMins < 1110) return 'AFTERNOON ACTION';
+            if (totalMins >= 1110 && totalMins < 1260) return 'ALL-TIME ANIMES';
             return 'ADULT SWIM';
         }
 
@@ -774,12 +774,12 @@
                     else if (totalMins >= 720 && totalMins < 900) {
                         return 'MIDDAY MADNESS';
                     }
-                    // 3pm-7:30pm: Afternoon Action
-                    else if (totalMins >= 900 && totalMins < 1170) {
+                    // 3pm-6:30pm: Afternoon Action
+                    else if (totalMins >= 900 && totalMins < 1110) {
                         return 'AFTERNOON ACTION';
                     }
-                    // 7:30pm-9pm: All-Time Animes
-                    else if (totalMins >= 1170 && totalMins < 1260) {
+                    // 6:30pm-9pm: All-Time Animes
+                    else if (totalMins >= 1110 && totalMins < 1260) {
                         return 'ALL-TIME ANIMES';
                     }
                     // 9pm-12am: Adult Swim
@@ -805,12 +805,12 @@
                     else if (totalMins >= 720 && totalMins < 900) {
                         return 'MIDDAY MADNESS';
                     }
-                    // 3pm-7:30pm: Afternoon Action
-                    else if (totalMins >= 900 && totalMins < 1170) {
+                    // 3pm-6:30pm: Afternoon Action
+                    else if (totalMins >= 900 && totalMins < 1110) {
                         return 'AFTERNOON ACTION';
                     }
-                    // 7:30pm-9pm: All-Time Animes
-                    else if (totalMins >= 1170 && totalMins < 1260) {
+                    // 6:30pm-9pm: All-Time Animes
+                    else if (totalMins >= 1110 && totalMins < 1260) {
                         return 'ALL-TIME ANIMES';
                     }
                     // 9pm-12am: Adult Swim

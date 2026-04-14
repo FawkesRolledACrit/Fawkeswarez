@@ -10304,654 +10304,6 @@
             ]
         },
         {
-            "title": "Dragon Ball Z - S01E01",
-            "slotSeconds": 1800,
-            "events": [
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E01 Part 1",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E01_part_1.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": 180,
-                    "toleranceSeconds": 3
-                },
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E01 Part 2",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E01_part_2.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": "auto"
-                }
-            ]
-        },
-        {
-            "title": "Dragon Ball Z - S01E02",
-            "slotSeconds": 1800,
-            "events": [
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E02 Part 1",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E02_part_1.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": 180,
-                    "toleranceSeconds": 3
-                },
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E02 Part 2",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E02_part_2.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": "auto"
-                }
-            ]
-        },
-        {
-            "title": "Dragon Ball Z - S01E03",
-            "slotSeconds": 1800,
-            "events": [
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E03 Part 1",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E03_part_1.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": 180,
-                    "toleranceSeconds": 3
-                },
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E03 Part 2",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E03_part_2.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": "auto"
-                }
-            ]
-        },
-        {
-            "title": "Dragon Ball Z - S01E04",
-            "slotSeconds": 1800,
-            "events": [
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E04 Part 1",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E04_part_1.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": 180,
-                    "toleranceSeconds": 3
-                },
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E04 Part 2",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E04_part_2.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": "auto"
-                }
-            ]
-        },
-        {
-            "title": "Dragon Ball Z - S01E05",
-            "slotSeconds": 1800,
-            "events": [
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E05 Part 1",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E05_part_1.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": 180,
-                    "toleranceSeconds": 3
-                },
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E05 Part 2",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E05_part_2.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": "auto"
-                }
-            ]
-        },
-        {
-            "title": "Dragon Ball Z - S01E06",
-            "slotSeconds": 1800,
-            "events": [
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E06 Part 1",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E06_part_1.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": 180,
-                    "toleranceSeconds": 3
-                },
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E06 Part 2",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E06_part_2.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": "auto"
-                }
-            ]
-        },
-        {
-            "title": "Dragon Ball Z - S01E07",
-            "slotSeconds": 1800,
-            "events": [
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E07 Part 1",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E07_part_1.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": 180,
-                    "toleranceSeconds": 3
-                },
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E07 Part 2",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E07_part_2.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": "auto"
-                }
-            ]
-        },
-        {
-            "title": "Dragon Ball Z - S01E08",
-            "slotSeconds": 1800,
-            "events": [
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E08 Part 1",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E08_part_1.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": 180,
-                    "toleranceSeconds": 3
-                },
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E08 Part 2",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E08_part_2.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": "auto"
-                }
-            ]
-        },
-        {
-            "title": "Dragon Ball Z - S01E09",
-            "slotSeconds": 1800,
-            "events": [
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E09 Part 1",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E09_part_1.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": 180,
-                    "toleranceSeconds": 3
-                },
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E09 Part 2",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E09_part_2.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": "auto"
-                }
-            ]
-        },
-        {
-            "title": "Dragon Ball Z - S01E10",
-            "slotSeconds": 1800,
-            "events": [
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E10 Part 1",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E10_part_1.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": 180,
-                    "toleranceSeconds": 3
-                },
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E10 Part 2",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E10_part_2.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": "auto"
-                }
-            ]
-        },
-        {
-            "title": "Dragon Ball Z - S01E11",
-            "slotSeconds": 1800,
-            "events": [
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E11 Part 1",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E11_part_1.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": 180,
-                    "toleranceSeconds": 3
-                },
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E11 Part 2",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E11_part_2.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": "auto"
-                }
-            ]
-        },
-        {
-            "title": "Dragon Ball Z - S01E12",
-            "slotSeconds": 1800,
-            "events": [
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E12 Part 1",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E12_part_1.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": 180,
-                    "toleranceSeconds": 3
-                },
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E12 Part 2",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E12_part_2.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": "auto"
-                }
-            ]
-        },
-        {
-            "title": "Dragon Ball Z - S01E13",
-            "slotSeconds": 1800,
-            "events": [
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E13 Part 1",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E13_part_1.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": 180,
-                    "toleranceSeconds": 3
-                },
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E13 Part 2",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E13_part_2.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": "auto"
-                }
-            ]
-        },
-        {
-            "title": "Dragon Ball Z - S01E14",
-            "slotSeconds": 1800,
-            "events": [
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E14 Part 1",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E14_part_1.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": 180,
-                    "toleranceSeconds": 3
-                },
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E14 Part 2",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E14_part_2.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": "auto"
-                }
-            ]
-        },
-        {
-            "title": "Dragon Ball Z - S01E15",
-            "slotSeconds": 1800,
-            "events": [
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E15 Part 1",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E15_part_1.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": 180,
-                    "toleranceSeconds": 3
-                },
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E15 Part 2",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E15_part_2.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": "auto"
-                }
-            ]
-        },
-        {
-            "title": "Dragon Ball Z - S01E16",
-            "slotSeconds": 1800,
-            "events": [
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E16 Part 1",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E16_part_1.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": 180,
-                    "toleranceSeconds": 3
-                },
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E16 Part 2",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E16_part_2.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": "auto"
-                }
-            ]
-        },
-        {
-            "title": "Dragon Ball Z - S01E17",
-            "slotSeconds": 1800,
-            "events": [
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E17 Part 1",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E17_part_1.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": 180,
-                    "toleranceSeconds": 3
-                },
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E17 Part 2",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E17_part_2.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": "auto"
-                }
-            ]
-        },
-        {
-            "title": "Dragon Ball Z - S01E18",
-            "slotSeconds": 1800,
-            "events": [
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E18 Part 1",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E18_part_1.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": 180,
-                    "toleranceSeconds": 3
-                },
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E18 Part 2",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E18_part_2.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": "auto"
-                }
-            ]
-        },
-        {
-            "title": "Dragon Ball Z - S01E19",
-            "slotSeconds": 1800,
-            "events": [
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E19 Part 1",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E19_part_1.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": 180,
-                    "toleranceSeconds": 3
-                },
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E19 Part 2",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E19_part_2.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": "auto"
-                }
-            ]
-        },
-        {
-            "title": "Dragon Ball Z - S01E20",
-            "slotSeconds": 1800,
-            "events": [
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E20 Part 1",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E20_part_1.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": 180,
-                    "toleranceSeconds": 3
-                },
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E20 Part 2",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E20_part_2.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": "auto"
-                }
-            ]
-        },
-        {
-            "title": "Dragon Ball Z - S01E21",
-            "slotSeconds": 1800,
-            "events": [
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E21 Part 1",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E21_part_1.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": 180,
-                    "toleranceSeconds": 3
-                },
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E21 Part 2",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E21_part_2.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": "auto"
-                }
-            ]
-        },
-        {
-            "title": "Dragon Ball Z - S01E22",
-            "slotSeconds": 1800,
-            "events": [
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E22 Part 1",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E22_part_1.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": 180,
-                    "toleranceSeconds": 3
-                },
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E22 Part 2",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E22_part_2.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": "auto"
-                }
-            ]
-        },
-        {
-            "title": "Dragon Ball Z - S01E23",
-            "slotSeconds": 1800,
-            "events": [
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E23 Part 1",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E23_part_1.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": 180,
-                    "toleranceSeconds": 3
-                },
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E23 Part 2",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E23_part_2.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": "auto"
-                }
-            ]
-        },
-        {
-            "title": "Dragon Ball Z - S01E24",
-            "slotSeconds": 1800,
-            "events": [
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E24 Part 1",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E24_part_1.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": 180,
-                    "toleranceSeconds": 3
-                },
-                {
-                    "type": "segment",
-                    "title": "Dragon Ball Z S01E24 Part 2",
-                    "url": "https://files.catbox.moe/placeholder_dragon_ball_z_S01E24_part_2.mp4",
-                    "durationSeconds": 660
-                },
-                {
-                    "type": "adbreak",
-                    "targetSeconds": "auto"
-                }
-            ]
-        },
-        {
             "title": "Teen Titans - S01E01",
             "slotSeconds": 1800,
             "events": [
@@ -17343,6 +16695,2112 @@
                     "type": "segment",
                     "title": "Tom Goes to the Mayor S02E17",
                     "url": "https://files.catbox.moe/50v09i.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Megas XLR - S01E01",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Megas XLR S01E01 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_megas_xlr_S01E01_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Megas XLR S01E01 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_megas_xlr_S01E01_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Megas XLR - S01E02",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Megas XLR S01E02 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_megas_xlr_S01E02_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Megas XLR S01E02 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_megas_xlr_S01E02_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Megas XLR - S01E03",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Megas XLR S01E03 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_megas_xlr_S01E03_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Megas XLR S01E03 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_megas_xlr_S01E03_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Megas XLR - S01E04",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Megas XLR S01E04 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_megas_xlr_S01E04_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Megas XLR S01E04 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_megas_xlr_S01E04_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Megas XLR - S01E05",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Megas XLR S01E05 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_megas_xlr_S01E05_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Megas XLR S01E05 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_megas_xlr_S01E05_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Megas XLR - S01E06",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Megas XLR S01E06 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_megas_xlr_S01E06_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Megas XLR S01E06 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_megas_xlr_S01E06_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Megas XLR - S01E07",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Megas XLR S01E07 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_megas_xlr_S01E07_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Megas XLR S01E07 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_megas_xlr_S01E07_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Megas XLR - S01E08",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Megas XLR S01E08 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_megas_xlr_S01E08_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Megas XLR S01E08 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_megas_xlr_S01E08_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Megas XLR - S01E09",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Megas XLR S01E09 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_megas_xlr_S01E09_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Megas XLR S01E09 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_megas_xlr_S01E09_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Megas XLR - S01E10",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Megas XLR S01E10 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_megas_xlr_S01E10_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Megas XLR S01E10 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_megas_xlr_S01E10_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Megas XLR - S01E11",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Megas XLR S01E11 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_megas_xlr_S01E11_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Megas XLR S01E11 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_megas_xlr_S01E11_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Megas XLR - S01E12",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Megas XLR S01E12 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_megas_xlr_S01E12_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Megas XLR S01E12 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_megas_xlr_S01E12_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Megas XLR - S01E13",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Megas XLR S01E13 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_megas_xlr_S01E13_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Megas XLR S01E13 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_megas_xlr_S01E13_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Batman Beyond - S01E01",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Batman Beyond S01E01 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_batman_beyond_S01E01_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Batman Beyond S01E01 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_batman_beyond_S01E01_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Batman Beyond - S01E02",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Batman Beyond S01E02 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_batman_beyond_S01E02_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Batman Beyond S01E02 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_batman_beyond_S01E02_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Batman Beyond - S01E03",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Batman Beyond S01E03 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_batman_beyond_S01E03_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Batman Beyond S01E03 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_batman_beyond_S01E03_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Batman Beyond - S01E04",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Batman Beyond S01E04 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_batman_beyond_S01E04_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Batman Beyond S01E04 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_batman_beyond_S01E04_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Batman Beyond - S01E05",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Batman Beyond S01E05 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_batman_beyond_S01E05_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Batman Beyond S01E05 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_batman_beyond_S01E05_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Batman Beyond - S01E06",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Batman Beyond S01E06 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_batman_beyond_S01E06_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Batman Beyond S01E06 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_batman_beyond_S01E06_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Batman Beyond - S01E07",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Batman Beyond S01E07 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_batman_beyond_S01E07_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Batman Beyond S01E07 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_batman_beyond_S01E07_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Batman Beyond - S01E08",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Batman Beyond S01E08 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_batman_beyond_S01E08_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Batman Beyond S01E08 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_batman_beyond_S01E08_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Batman Beyond - S01E09",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Batman Beyond S01E09 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_batman_beyond_S01E09_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Batman Beyond S01E09 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_batman_beyond_S01E09_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Batman Beyond - S01E10",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Batman Beyond S01E10 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_batman_beyond_S01E10_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Batman Beyond S01E10 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_batman_beyond_S01E10_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Batman Beyond - S01E11",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Batman Beyond S01E11 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_batman_beyond_S01E11_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Batman Beyond S01E11 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_batman_beyond_S01E11_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Batman Beyond - S01E12",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Batman Beyond S01E12 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_batman_beyond_S01E12_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Batman Beyond S01E12 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_batman_beyond_S01E12_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Batman Beyond - S01E13",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Batman Beyond S01E13 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_batman_beyond_S01E13_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Batman Beyond S01E13 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_batman_beyond_S01E13_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Mucha Lucha - S01E01",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Mucha Lucha S01E01 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_mucha_lucha_S01E01_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Mucha Lucha S01E01 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_mucha_lucha_S01E01_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Mucha Lucha - S01E02",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Mucha Lucha S01E02 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_mucha_lucha_S01E02_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Mucha Lucha S01E02 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_mucha_lucha_S01E02_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Mucha Lucha - S01E03",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Mucha Lucha S01E03 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_mucha_lucha_S01E03_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Mucha Lucha S01E03 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_mucha_lucha_S01E03_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Mucha Lucha - S01E04",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Mucha Lucha S01E04 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_mucha_lucha_S01E04_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Mucha Lucha S01E04 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_mucha_lucha_S01E04_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Mucha Lucha - S01E05",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Mucha Lucha S01E05 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_mucha_lucha_S01E05_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Mucha Lucha S01E05 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_mucha_lucha_S01E05_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Mucha Lucha - S01E06",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Mucha Lucha S01E06 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_mucha_lucha_S01E06_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Mucha Lucha S01E06 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_mucha_lucha_S01E06_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Mucha Lucha - S01E07",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Mucha Lucha S01E07 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_mucha_lucha_S01E07_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Mucha Lucha S01E07 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_mucha_lucha_S01E07_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Mucha Lucha - S01E08",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Mucha Lucha S01E08 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_mucha_lucha_S01E08_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Mucha Lucha S01E08 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_mucha_lucha_S01E08_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Mucha Lucha - S01E09",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Mucha Lucha S01E09 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_mucha_lucha_S01E09_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Mucha Lucha S01E09 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_mucha_lucha_S01E09_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Mucha Lucha - S01E10",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Mucha Lucha S01E10 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_mucha_lucha_S01E10_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Mucha Lucha S01E10 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_mucha_lucha_S01E10_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Mucha Lucha - S01E11",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Mucha Lucha S01E11 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_mucha_lucha_S01E11_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Mucha Lucha S01E11 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_mucha_lucha_S01E11_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Mucha Lucha - S01E12",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Mucha Lucha S01E12 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_mucha_lucha_S01E12_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Mucha Lucha S01E12 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_mucha_lucha_S01E12_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Mucha Lucha - S01E13",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Mucha Lucha S01E13 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_mucha_lucha_S01E13_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Mucha Lucha S01E13 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_mucha_lucha_S01E13_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Hamtaro - S01E01",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Hamtaro S01E01 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_hamtaro_S01E01_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Hamtaro S01E01 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_hamtaro_S01E01_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Hamtaro - S01E02",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Hamtaro S01E02 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_hamtaro_S01E02_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Hamtaro S01E02 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_hamtaro_S01E02_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Hamtaro - S01E03",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Hamtaro S01E03 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_hamtaro_S01E03_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Hamtaro S01E03 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_hamtaro_S01E03_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Hamtaro - S01E04",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Hamtaro S01E04 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_hamtaro_S01E04_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Hamtaro S01E04 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_hamtaro_S01E04_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Hamtaro - S01E05",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Hamtaro S01E05 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_hamtaro_S01E05_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Hamtaro S01E05 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_hamtaro_S01E05_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Hamtaro - S01E06",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Hamtaro S01E06 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_hamtaro_S01E06_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Hamtaro S01E06 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_hamtaro_S01E06_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Hamtaro - S01E07",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Hamtaro S01E07 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_hamtaro_S01E07_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Hamtaro S01E07 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_hamtaro_S01E07_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Hamtaro - S01E08",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Hamtaro S01E08 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_hamtaro_S01E08_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Hamtaro S01E08 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_hamtaro_S01E08_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Hamtaro - S01E09",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Hamtaro S01E09 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_hamtaro_S01E09_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Hamtaro S01E09 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_hamtaro_S01E09_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Hamtaro - S01E10",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Hamtaro S01E10 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_hamtaro_S01E10_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Hamtaro S01E10 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_hamtaro_S01E10_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Hamtaro - S01E11",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Hamtaro S01E11 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_hamtaro_S01E11_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Hamtaro S01E11 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_hamtaro_S01E11_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Hamtaro - S01E12",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Hamtaro S01E12 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_hamtaro_S01E12_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Hamtaro S01E12 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_hamtaro_S01E12_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Hamtaro - S01E13",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Hamtaro S01E13 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_hamtaro_S01E13_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Hamtaro S01E13 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_hamtaro_S01E13_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "InuYasha - S01E01",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "InuYasha S01E01 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_inuyasha_S01E01_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "InuYasha S01E01 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_inuyasha_S01E01_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "InuYasha - S01E02",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "InuYasha S01E02 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_inuyasha_S01E02_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "InuYasha S01E02 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_inuyasha_S01E02_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "InuYasha - S01E03",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "InuYasha S01E03 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_inuyasha_S01E03_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "InuYasha S01E03 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_inuyasha_S01E03_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "InuYasha - S01E04",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "InuYasha S01E04 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_inuyasha_S01E04_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "InuYasha S01E04 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_inuyasha_S01E04_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "InuYasha - S01E05",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "InuYasha S01E05 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_inuyasha_S01E05_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "InuYasha S01E05 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_inuyasha_S01E05_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "InuYasha - S01E06",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "InuYasha S01E06 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_inuyasha_S01E06_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "InuYasha S01E06 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_inuyasha_S01E06_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "InuYasha - S01E07",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "InuYasha S01E07 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_inuyasha_S01E07_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "InuYasha S01E07 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_inuyasha_S01E07_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "InuYasha - S01E08",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "InuYasha S01E08 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_inuyasha_S01E08_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "InuYasha S01E08 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_inuyasha_S01E08_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "InuYasha - S01E09",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "InuYasha S01E09 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_inuyasha_S01E09_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "InuYasha S01E09 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_inuyasha_S01E09_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "InuYasha - S01E10",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "InuYasha S01E10 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_inuyasha_S01E10_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "InuYasha S01E10 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_inuyasha_S01E10_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "InuYasha - S01E11",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "InuYasha S01E11 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_inuyasha_S01E11_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "InuYasha S01E11 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_inuyasha_S01E11_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "InuYasha - S01E12",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "InuYasha S01E12 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_inuyasha_S01E12_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "InuYasha S01E12 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_inuyasha_S01E12_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "InuYasha - S01E13",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "InuYasha S01E13 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_inuyasha_S01E13_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "InuYasha S01E13 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_inuyasha_S01E13_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Dragon Ball - S01E01",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Dragon Ball S01E01 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_dragon_ball_S01E01_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Dragon Ball S01E01 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_dragon_ball_S01E01_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Dragon Ball - S01E02",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Dragon Ball S01E02 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_dragon_ball_S01E02_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Dragon Ball S01E02 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_dragon_ball_S01E02_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Dragon Ball - S01E03",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Dragon Ball S01E03 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_dragon_ball_S01E03_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Dragon Ball S01E03 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_dragon_ball_S01E03_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Dragon Ball - S01E04",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Dragon Ball S01E04 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_dragon_ball_S01E04_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Dragon Ball S01E04 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_dragon_ball_S01E04_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Dragon Ball - S01E05",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Dragon Ball S01E05 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_dragon_ball_S01E05_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Dragon Ball S01E05 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_dragon_ball_S01E05_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Dragon Ball - S01E06",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Dragon Ball S01E06 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_dragon_ball_S01E06_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Dragon Ball S01E06 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_dragon_ball_S01E06_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Dragon Ball - S01E07",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Dragon Ball S01E07 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_dragon_ball_S01E07_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Dragon Ball S01E07 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_dragon_ball_S01E07_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Dragon Ball - S01E08",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Dragon Ball S01E08 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_dragon_ball_S01E08_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Dragon Ball S01E08 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_dragon_ball_S01E08_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Dragon Ball - S01E09",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Dragon Ball S01E09 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_dragon_ball_S01E09_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Dragon Ball S01E09 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_dragon_ball_S01E09_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Dragon Ball - S01E10",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Dragon Ball S01E10 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_dragon_ball_S01E10_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Dragon Ball S01E10 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_dragon_ball_S01E10_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Dragon Ball - S01E11",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Dragon Ball S01E11 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_dragon_ball_S01E11_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Dragon Ball S01E11 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_dragon_ball_S01E11_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Dragon Ball - S01E12",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Dragon Ball S01E12 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_dragon_ball_S01E12_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Dragon Ball S01E12 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_dragon_ball_S01E12_part_2.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": "auto"
+                }
+            ]
+        },
+        {
+            "title": "Dragon Ball - S01E13",
+            "slotSeconds": 1800,
+            "events": [
+                {
+                    "type": "segment",
+                    "title": "Dragon Ball S01E13 Part 1",
+                    "url": "https://files.catbox.moe/placeholder_dragon_ball_S01E13_part_1.mp4",
+                    "durationSeconds": 660
+                },
+                {
+                    "type": "adbreak",
+                    "targetSeconds": 180,
+                    "toleranceSeconds": 3
+                },
+                {
+                    "type": "segment",
+                    "title": "Dragon Ball S01E13 Part 2",
+                    "url": "https://files.catbox.moe/placeholder_dragon_ball_S01E13_part_2.mp4",
                     "durationSeconds": 660
                 },
                 {
