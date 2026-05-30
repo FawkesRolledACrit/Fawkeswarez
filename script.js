@@ -87,10 +87,17 @@ let modelData = {
     featured: [
         {
             id: 'model-1',
-            url: 'https://drive.google.com/uc?export=download&id=1ntHL_XDh7G-g8TNqxh2RZFlprLILCz9i',
-            title: 'Test Model 1',
+            url: 'models/ciggie.glb',
+            title: 'Ciggie',
             description: 'Description from markdown file',
-            thumbnail: 'https://i.imgur.com/QxOLXyQ.jpg'
+            thumbnail: ''
+        },
+        {
+            id: 'model-2',
+            url: 'models/jerry_can.glb',
+            title: 'Jerry Can',
+            description: 'Description from markdown file',
+            thumbnail: ''
         }
     ]
 };

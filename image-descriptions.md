@@ -290,7 +290,31 @@ Each image entry should follow this format:
 
 
 
-**Title:** Model 1
+**Title:** Ciggie
+
+
+
+**Description:** Description from markdown file
+
+
+
+**Date:** [Date]
+
+
+
+**Tools:** [Tools]
+
+
+
+---
+
+
+
+### model-2
+
+
+
+**Title:** Jerry Can
 
 
 
