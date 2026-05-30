@@ -337,6 +337,8 @@ function initializeSection(sectionId) {
             animateProgressBars();
             break;
         case 'art-assets':
+            // Show Art & 3D Renders by default
+            showArtSection('art-3d-renders');
             loadImages();
             break;
         case 'about':
@@ -535,8 +537,11 @@ function showArtSection(sectionId) {
         const navButtons = document.querySelectorAll('.art-nav-btn');
         navButtons.forEach(btn => {
             btn.classList.remove('active');
+            // Check if button's onclick contains the sectionId
+            if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(sectionId)) {
+                btn.classList.add('active');
+            }
         });
-        event.target.classList.add('active');
 
         // Update URL for linkability
         updateURL();
@@ -563,8 +568,11 @@ function showArtContent(contentId) {
         const submenuButtons = document.querySelectorAll('.art-submenu-btn');
         submenuButtons.forEach(btn => {
             btn.classList.remove('active');
+            // Check if button's onclick contains the contentId
+            if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(contentId)) {
+                btn.classList.add('active');
+            }
         });
-        event.target.classList.add('active');
 
         // Update URL for linkability
         updateURL();
@@ -575,27 +583,46 @@ function showArtContent(contentId) {
 
 // Load images into the grid
 function loadImages() {
+    console.log('Loading images...');
     const featuredContainer = document.getElementById('featured-images');
     const archiveContainer = document.getElementById('archive-gallery');
 
-    if (!featuredContainer || !archiveContainer) return;
+    if (!featuredContainer) {
+        console.error('Featured images container not found');
+        return;
+    }
+    if (!archiveContainer) {
+        console.error('Archive container not found');
+        return;
+    }
+
+    console.log('Image data:', imageData);
+    console.log('Featured images count:', imageData.featured.length);
 
     // Load featured images
-    featuredContainer.innerHTML = imageData.featured.map((image, index) => `
-        <div class="image-card">
-            <div class="image-preview">
-                <img src="${image.url}" alt="${image.title}" loading="lazy" decoding="async">
+    if (imageData.featured.length > 0) {
+        featuredContainer.innerHTML = imageData.featured.map((image, index) => `
+            <div class="image-card">
+                <div class="image-preview">
+                    <img src="${image.url}" alt="${image.title}" loading="lazy" decoding="async">
+                </div>
+                <button class="y2k-button" onclick="viewImageDetails('${image.id}')">VIEW DETAILS</button>
             </div>
-            <button class="y2k-button" onclick="viewImageDetails('${image.id}')">VIEW DETAILS</button>
-        </div>
-    `).join('');
+        `).join('');
+    } else {
+        featuredContainer.innerHTML = '<p style="text-align: center; color: #0F0;">No images added yet. Add image URLs to the imageData structure in script.js</p>';
+    }
 
     // Load archive images
-    archiveContainer.innerHTML = imageData.archive.map(image => `
-        <div class="archive-image">
-            <img src="${image.url}" alt="Archive image" loading="lazy" decoding="async">
-        </div>
-    `).join('');
+    if (imageData.archive.length > 0) {
+        archiveContainer.innerHTML = imageData.archive.map(image => `
+            <div class="archive-image">
+                <img src="${image.url}" alt="Archive image" loading="lazy" decoding="async">
+            </div>
+        `).join('');
+    } else {
+        archiveContainer.innerHTML = '<p style="text-align: center; color: #0F0;">No archive images yet.</p>';
+    }
 
     // Animate image cards
     animateImageCards();
