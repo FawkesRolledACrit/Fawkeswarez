@@ -373,6 +373,25 @@ function initializeWebsite() {
 
     // Parse URL for deep linking
     parseURL();
+
+    // Disable right-click globally to make it harder to inspect/download
+    document.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+        return false;
+    });
+
+    // Disable common keyboard shortcuts for saving
+    document.addEventListener('keydown', (e) => {
+        // Ctrl+S, Ctrl+D, Ctrl+U, F12
+        if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'S' || e.key === 'd' || e.key === 'D' || e.key === 'u' || e.key === 'U')) {
+            e.preventDefault();
+            return false;
+        }
+        if (e.key === 'F12') {
+            e.preventDefault();
+            return false;
+        }
+    });
 }
 
 // Section navigation
@@ -771,18 +790,34 @@ function loadVideos() {
         videosContainer.innerHTML = videoData.featured.map((video, index) => `
             <div class="video-card">
                 <div class="video-preview">
-                    <video controls preload="metadata" style="width: 100%; border: 2px solid #0F0;">
+                    <video preload="metadata" style="width: 100%; border: 2px solid #0F0;" disablePictureInPicture controlsList="nodownload">
                         <source src="${video.url}" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
+                    <div class="video-overlay"></div>
                 </div>
                 <button class="y2k-button" onclick="viewVideoDetails('${video.id}')">VIEW DETAILS</button>
             </div>
         `).join('');
 
-        // Add click handlers to videos for fullscreen
+        // Add protection to all videos
         const videoElements = videosContainer.querySelectorAll('video');
         videoElements.forEach((video, index) => {
+            // Disable right-click
+            video.addEventListener('contextmenu', (e) => {
+                e.preventDefault();
+                return false;
+            });
+
+            // Disable keyboard shortcuts that could lead to download
+            video.addEventListener('keydown', (e) => {
+                if (e.key === 's' || e.key === 'S' || e.key === 'd' || e.key === 'D') {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+
+            // Add click handler for fullscreen
             video.addEventListener('click', () => {
                 const videoUrl = videoData.featured[index].url;
                 console.log('Video clicked, opening fullscreen for:', videoUrl);
@@ -871,10 +906,11 @@ function viewVideoDetails(videoId) {
     modalBody.innerHTML = `
         <div class="image-details">
             <div class="image-detail-preview">
-                <video controls autoplay style="max-width: 100%; border: 2px solid #0F0;">
+                <video id="modal-video" controls autoplay style="max-width: 100%; border: 2px solid #0F0;" disablePictureInPicture controlsList="nodownload">
                     <source src="${video.url}" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
+                <div class="video-overlay"></div>
             </div>
             <div class="image-detail-info">
                 <h4>Description</h4>
@@ -884,6 +920,24 @@ function viewVideoDetails(videoId) {
     `;
 
     modal.style.display = 'block';
+
+    // Add protection to modal video
+    setTimeout(() => {
+        const modalVideo = document.getElementById('modal-video');
+        if (modalVideo) {
+            modalVideo.addEventListener('contextmenu', (e) => {
+                e.preventDefault();
+                return false;
+            });
+            modalVideo.addEventListener('keydown', (e) => {
+                if (e.key === 's' || e.key === 'S' || e.key === 'd' || e.key === 'D') {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+        }
+    }, 100);
+
     playSound('open');
 }
 
@@ -913,6 +967,21 @@ function openVideoFullscreen(videoUrl) {
     fullscreenVideo.style.display = 'block';
     fullscreenVideo.autoplay = true;
     fullscreenVideo.controls = true;
+    fullscreenVideo.disablePictureInPicture = true;
+    fullscreenVideo.controlsList = 'nodownload';
+
+    // Add protection to fullscreen video
+    fullscreenVideo.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+        return false;
+    });
+
+    fullscreenVideo.addEventListener('keydown', (e) => {
+        if (e.key === 's' || e.key === 'S' || e.key === 'd' || e.key === 'D') {
+            e.preventDefault();
+            return false;
+        }
+    });
 
     viewer.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
