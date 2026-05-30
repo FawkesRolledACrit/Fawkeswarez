@@ -2101,25 +2101,20 @@ function initModelViewer(modelUrl) {
             currentModel.traverse((child) => {
                 if (child.isMesh) {
                     if (child.material) {
-                        // Force opacity to 1 and disable transparency
-                        child.material.transparent = false;
-                        child.material.opacity = 1.0;
-                        child.material.alphaTest = 0;
                         // Enable double-sided rendering
                         child.material.side = THREE.DoubleSide;
-                        // Disable alpha maps if present
-                        if (child.material.alphaMap) {
-                            child.material.alphaMap = null;
+                        // Only force opacity if there's no alpha map
+                        if (!child.material.alphaMap) {
+                            child.material.transparent = false;
+                            child.material.opacity = 1.0;
                         }
                         // Handle array of materials
                         if (Array.isArray(child.material)) {
                             child.material.forEach(mat => {
-                                mat.transparent = false;
-                                mat.opacity = 1.0;
-                                mat.alphaTest = 0;
                                 mat.side = THREE.DoubleSide;
-                                if (mat.alphaMap) {
-                                    mat.alphaMap = null;
+                                if (!mat.alphaMap) {
+                                    mat.transparent = false;
+                                    mat.opacity = 1.0;
                                 }
                                 mat.needsUpdate = true;
                             });
