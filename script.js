@@ -82,6 +82,21 @@ let videoData = {
 
 
 
+// 3D Model data structure
+let modelData = {
+    featured: [
+        {
+            id: 'model-1',
+            url: '',
+            title: 'Model 1',
+            description: 'Description from markdown file',
+            thumbnail: ''
+        }
+    ]
+};
+
+
+
 // Drag functions (defined early to ensure they're available)
 
 function startDrag(e) {
@@ -1278,7 +1293,10 @@ function showArtSection(sectionId) {
 
     }
 
-
+    // Load models if 3d-assets section is shown
+    if (sectionId === '3d-assets') {
+        loadModels();
+    }
 
     playSound('navigate');
 
@@ -1606,6 +1624,40 @@ function loadVideos() {
 
 
 
+// Load 3D models into the grid
+function loadModels() {
+    console.log('Loading 3D models...');
+    const modelsContainer = document.getElementById('models-container');
+
+    if (!modelsContainer) {
+        console.error('Models container not found');
+        return;
+    }
+
+    console.log('Model data:', modelData);
+    console.log('Featured models count:', modelData.featured.length);
+
+    // Load featured models
+    if (modelData.featured.length > 0) {
+        modelsContainer.innerHTML = modelData.featured.map((model, index) => `
+            <div class="model-card">
+                <div class="model-preview">
+                    ${model.thumbnail ? `<img src="${model.thumbnail}" alt="${model.title}" style="width: 100%; height: 200px; object-fit: cover; border: 2px solid #0F0;">` : '<div style="width: 100%; height: 200px; background: #050505; border: 2px solid #0F0; display: flex; align-items: center; justify-content: center; color: #0F0;">🧊 3D MODEL</div>'}
+                    <div class="model-overlay"></div>
+                </div>
+                <button class="y2k-button" onclick="viewModelDetails('${model.id}')">VIEW 3D MODEL</button>
+            </div>
+        `).join('');
+    } else {
+        modelsContainer.innerHTML = '<p style="text-align: center; color: #0F0;">No 3D models added yet. Add GLB file URLs to the modelData structure in script.js</p>';
+    }
+
+    // Animate model cards
+    animateModelCards();
+}
+
+
+
 // View image details in modal
 
 function viewImageDetails(imageId) {
@@ -1926,6 +1978,143 @@ function openVideoFullscreen(videoUrl, thumbnailUrl = '') {
 
 
 
+// View 3D model details in modal
+function viewModelDetails(modelId) {
+    const model = modelData.featured.find(m => m.id === modelId);
+    if (!model) return;
+
+    const modal = document.getElementById('model-modal');
+    const modalTitle = document.getElementById('model-modal-title');
+    const downloadLink = document.getElementById('model-download-link');
+
+    modalTitle.textContent = model.title;
+    downloadLink.href = model.url;
+
+    modal.style.display = 'block';
+
+    // Initialize 3D viewer
+    setTimeout(() => {
+        initModelViewer(model.url);
+    }, 100);
+
+    playSound('open');
+}
+
+
+
+// Close model modal
+function closeModelModal() {
+    const modal = document.getElementById('model-modal');
+    modal.style.display = 'none';
+
+    // Cleanup 3D viewer
+    const container = document.getElementById('model-viewer-container');
+    if (container) {
+        container.innerHTML = '';
+    }
+
+    playSound('close');
+}
+
+
+
+// Initialize 3D model viewer
+let modelViewerScene, modelViewerCamera, modelViewerRenderer, modelViewerControls, currentModel;
+
+function initModelViewer(modelUrl) {
+    const container = document.getElementById('model-viewer-container');
+    if (!container) {
+        console.error('Model viewer container not found');
+        return;
+    }
+
+    // Clear previous viewer
+    container.innerHTML = '';
+
+    // Create scene
+    modelViewerScene = new THREE.Scene();
+    modelViewerScene.background = new THREE.Color(0x050505);
+
+    // Create camera
+    modelViewerCamera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+    modelViewerCamera.position.set(0, 0, 5);
+
+    // Create renderer
+    modelViewerRenderer = new THREE.WebGLRenderer({ antialias: true });
+    modelViewerRenderer.setSize(container.clientWidth, container.clientHeight);
+    modelViewerRenderer.setPixelRatio(window.devicePixelRatio);
+    container.appendChild(modelViewerRenderer.domElement);
+
+    // Add lights
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    modelViewerScene.add(ambientLight);
+
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+    directionalLight.position.set(5, 5, 5);
+    modelViewerScene.add(directionalLight);
+
+    const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.5);
+    directionalLight2.position.set(-5, -5, -5);
+    modelViewerScene.add(directionalLight2);
+
+    // Add orbit controls
+    modelViewerControls = new THREE.OrbitControls(modelViewerCamera, modelViewerRenderer.domElement);
+    modelViewerControls.enableDamping = true;
+    modelViewerControls.dampingFactor = 0.05;
+
+    // Load model
+    const loader = new THREE.GLTFLoader();
+    loader.load(
+        modelUrl,
+        function (gltf) {
+            currentModel = gltf.scene;
+            modelViewerScene.add(currentModel);
+
+            // Auto-center and scale model
+            const box = new THREE.Box3().setFromObject(currentModel);
+            const center = box.getCenter(new THREE.Vector3());
+            const size = box.getSize(new THREE.Vector3());
+
+            const maxDim = Math.max(size.x, size.y, size.z);
+            const scale = 3 / maxDim;
+            currentModel.scale.set(scale, scale, scale);
+
+            currentModel.position.sub(center.multiplyScalar(scale));
+        },
+        function (xhr) {
+            console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+        },
+        function (error) {
+            console.error('Error loading model:', error);
+            container.innerHTML = '<p style="color: #0F0; text-align: center; padding: 20px;">Error loading 3D model. Please check the URL.</p>';
+        }
+    );
+
+    // Animation loop
+    function animate() {
+        requestAnimationFrame(animate);
+        modelViewerControls.update();
+        modelViewerRenderer.render(modelViewerScene, modelViewerCamera);
+    }
+    animate();
+
+    // Handle window resize
+    window.addEventListener('resize', onWindowResize);
+}
+
+function onWindowResize() {
+    const container = document.getElementById('model-viewer-container');
+    if (container && modelViewerCamera && modelViewerRenderer) {
+        modelViewerCamera.aspect = container.clientWidth / container.clientHeight;
+        modelViewerCamera.updateProjectionMatrix();
+        modelViewerRenderer.setSize(container.clientWidth, container.clientHeight);
+    }
+}
+
+
+
+
+
 // Toggle project archive
 
 function toggleArchive() {
@@ -2127,6 +2316,36 @@ function animateImageCards() {
 function animateVideoCards() {
 
     const cards = document.querySelectorAll('.video-card');
+
+    cards.forEach((card, index) => {
+
+        card.style.opacity = '0';
+
+        card.style.transform = 'translateY(50px)';
+
+
+
+        setTimeout(() => {
+
+            card.style.transition = 'all 0.5s';
+
+            card.style.opacity = '1';
+
+            card.style.transform = 'translateY(0)';
+
+        }, 200 + (index * 150));
+
+    });
+
+}
+
+
+
+// Animate model cards
+
+function animateModelCards() {
+
+    const cards = document.querySelectorAll('.model-card');
 
     cards.forEach((card, index) => {
 

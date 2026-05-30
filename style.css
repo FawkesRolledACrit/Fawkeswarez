@@ -1528,6 +1528,124 @@ marquee {
 
 
 
+/* MODELS GRID */
+
+.models-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+    gap: 20px;
+
+    padding: 20px;
+
+}
+
+
+
+.model-card {
+
+    background: rgba(0, 0, 0, 0.8);
+
+    border: 2px solid #0F0;
+
+    padding: 15px;
+
+    transition: all 0.3s;
+
+}
+
+
+
+.model-card:hover {
+
+    border-color: #00FFFF;
+
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+
+}
+
+
+
+.model-preview {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 200px;
+
+    overflow: hidden;
+
+    background: #050505;
+
+}
+
+
+
+.model-preview img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+}
+
+
+
+.model-overlay {
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    background: transparent;
+
+    pointer-events: none;
+
+    z-index: 10;
+
+}
+
+
+
+/* Model modal styling */
+
+.model-modal-content {
+
+    max-width: 800px;
+
+    background: rgba(0, 0, 0, 0.95);
+
+    border: 3px solid #0F0;
+
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
+
+}
+
+
+
+.model-controls {
+
+    text-align: center;
+
+    padding: 15px;
+
+}
+
+
+
 .coming-soon {
 
     text-align: center;
