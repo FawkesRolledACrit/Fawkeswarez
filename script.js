@@ -823,6 +823,9 @@ function openFullscreen(imageUrl) {
     const viewer = document.getElementById('fullscreen-viewer');
     const fullscreenImage = document.getElementById('fullscreen-image');
 
+    console.log('Viewer element:', viewer);
+    console.log('Fullscreen image element:', fullscreenImage);
+
     if (!viewer || !fullscreenImage) {
         console.error('Fullscreen viewer elements not found');
         return;
@@ -839,6 +842,7 @@ function openFullscreen(imageUrl) {
     viewer.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
 
+    console.log('About to call setupDragListeners');
     // Add drag event listeners
     setupDragListeners(fullscreenImage);
 
