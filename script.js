@@ -27,27 +27,31 @@ let videoData = {
     featured: [
         {
             id: 'video-1',
-            url: 'https://i.imgur.com/cgaM2wB.mp4',
+            url: 'https://i.imgur.com/wJjG2fU.mp4',
             title: 'Video 1',
-            description: 'Description from markdown file'
+            description: 'Description from markdown file',
+            thumbnail: ''
         },
         {
             id: 'video-2',
-            url: 'https://i.imgur.com/pKXdBoa.mp4',
+            url: 'https://i.imgur.com/8QOoLqL.mp4',
             title: 'Video 2',
-            description: 'Description from markdown file'
+            description: 'Description from markdown file',
+            thumbnail: ''
         },
         {
             id: 'video-3',
             url: 'https://i.imgur.com/8mOdjqn.mp4',
             title: 'Video 3',
-            description: 'Description from markdown file'
+            description: 'Description from markdown file',
+            thumbnail: ''
         },
         {
             id: 'video-4',
             url: 'https://i.imgur.com/TK0sH5l.mp4',
             title: 'Video 4',
-            description: 'Description from markdown file'
+            description: 'Description from markdown file',
+            thumbnail: ''
         }
     ]
 };
@@ -790,7 +794,7 @@ function loadVideos() {
         videosContainer.innerHTML = videoData.featured.map((video, index) => `
             <div class="video-card">
                 <div class="video-preview">
-                    <video preload="metadata" style="width: 100%; border: 2px solid #0F0;" disablePictureInPicture controlsList="nodownload">
+                    <video preload="metadata" style="width: 100%; border: 2px solid #0F0;" disablePictureInPicture controlsList="nodownload" poster="${video.thumbnail || ''}">
                         <source src="${video.url}" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
@@ -820,8 +824,9 @@ function loadVideos() {
             // Add click handler for fullscreen
             video.addEventListener('click', () => {
                 const videoUrl = videoData.featured[index].url;
+                const thumbnailUrl = videoData.featured[index].thumbnail || '';
                 console.log('Video clicked, opening fullscreen for:', videoUrl);
-                openVideoFullscreen(videoUrl);
+                openVideoFullscreen(videoUrl, thumbnailUrl);
             });
         });
     } else {
@@ -906,7 +911,7 @@ function viewVideoDetails(videoId) {
     modalBody.innerHTML = `
         <div class="image-details">
             <div class="image-detail-preview">
-                <video id="modal-video" controls autoplay style="max-width: 100%; border: 2px solid #0F0;" disablePictureInPicture controlsList="nodownload">
+                <video id="modal-video" controls autoplay style="max-width: 100%; border: 2px solid #0F0;" disablePictureInPicture controlsList="nodownload" poster="${video.thumbnail || ''}">
                     <source src="${video.url}" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
@@ -942,7 +947,7 @@ function viewVideoDetails(videoId) {
 }
 
 // Open video fullscreen
-function openVideoFullscreen(videoUrl) {
+function openVideoFullscreen(videoUrl, thumbnailUrl = '') {
     const viewer = document.getElementById('fullscreen-viewer');
     const fullscreenImage = document.getElementById('fullscreen-image');
 
@@ -969,6 +974,9 @@ function openVideoFullscreen(videoUrl) {
     fullscreenVideo.controls = true;
     fullscreenVideo.disablePictureInPicture = true;
     fullscreenVideo.controlsList = 'nodownload';
+    if (thumbnailUrl) {
+        fullscreenVideo.poster = thumbnailUrl;
+    }
 
     // Add protection to fullscreen video
     fullscreenVideo.addEventListener('contextmenu', (e) => {
