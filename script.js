@@ -618,16 +618,13 @@ function loadImages() {
             </div>
         `).join('');
 
-        // Add click handlers to gallery images for fullscreen
-        const galleryImages = document.querySelectorAll('.gallery-image');
-        console.log('Found gallery images:', galleryImages.length);
-        galleryImages.forEach((img, index) => {
-            const imageUrl = img.getAttribute('data-url');
-            console.log(`Adding click handler to gallery image ${index}:`, imageUrl);
-            img.addEventListener('click', () => {
-                console.log('Gallery image clicked, opening fullscreen for:', imageUrl);
+        // Use event delegation on the container instead of individual handlers
+        featuredContainer.addEventListener('click', (e) => {
+            if (e.target.classList.contains('gallery-image')) {
+                const imageUrl = e.target.getAttribute('data-url');
+                console.log('Gallery image clicked via delegation, opening fullscreen for:', imageUrl);
                 openFullscreen(imageUrl);
-            });
+            }
         });
     } else {
         featuredContainer.innerHTML = '<p style="text-align: center; color: #0F0;">No images added yet. Add image URLs to the imageData structure in script.js</p>';
@@ -641,14 +638,13 @@ function loadImages() {
             </div>
         `).join('');
 
-        // Add click handlers to archive images for fullscreen
-        const archiveImages = document.querySelectorAll('.archive-image-img');
-        archiveImages.forEach(img => {
-            img.addEventListener('click', () => {
-                const imageUrl = img.getAttribute('data-url');
-                console.log('Archive image clicked, opening fullscreen for:', imageUrl);
+        // Use event delegation on the container instead of individual handlers
+        archiveContainer.addEventListener('click', (e) => {
+            if (e.target.classList.contains('archive-image-img')) {
+                const imageUrl = e.target.getAttribute('data-url');
+                console.log('Archive image clicked via delegation, opening fullscreen for:', imageUrl);
                 openFullscreen(imageUrl);
-            });
+            }
         });
     } else {
         archiveContainer.innerHTML = '<p style="text-align: center; color: #0F0;">No archive images yet.</p>';
