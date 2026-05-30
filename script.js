@@ -87,10 +87,10 @@ let modelData = {
     featured: [
         {
             id: 'model-1',
-            url: '',
-            title: 'Model 1',
+            url: 'https://drive.google.com/uc?export=download&id=1ntHL_XDh7G-g8TNqxh2RZFlprLILCz9i',
+            title: 'Test Model 1',
             description: 'Description from markdown file',
-            thumbnail: ''
+            thumbnail: 'https://i.imgur.com/QxOLXyQ.jpg'
         }
     ]
 };
