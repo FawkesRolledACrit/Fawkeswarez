@@ -16,6 +16,11 @@ let currentArtContent = 'images';
 let archiveVisible = false;
 let currentZoom = 1;
 let currentFullscreenImage = '';
+let isDragging = false;
+let dragStartX = 0;
+let dragStartY = 0;
+let imagePositionX = 0;
+let imagePositionY = 0;
 
 // Image data structure
 let imageData = {
@@ -825,22 +830,36 @@ function openFullscreen(imageUrl) {
 
     currentFullscreenImage = imageUrl;
     currentZoom = 1;
+    imagePositionX = 0;
+    imagePositionY = 0;
 
     fullscreenImage.src = imageUrl;
-    fullscreenImage.style.transform = `scale(${currentZoom})`;
+    updateImageTransform();
 
     viewer.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
+
+    // Add drag event listeners
+    setupDragListeners(fullscreenImage);
 
     playSound('open');
 }
 
 function closeFullscreen() {
     const viewer = document.getElementById('fullscreen-viewer');
+    const fullscreenImage = document.getElementById('fullscreen-image');
+
     viewer.classList.add('hidden');
     document.body.style.overflow = '';
 
     currentZoom = 1;
+    imagePositionX = 0;
+    imagePositionY = 0;
+    isDragging = false;
+
+    // Remove drag event listeners
+    removeDragListeners(fullscreenImage);
+
     playSound('close');
 }
 
@@ -860,12 +879,87 @@ function zoomOut() {
 
 function resetZoom() {
     currentZoom = 1;
-    updateZoom();
+    imagePositionX = 0;
+    imagePositionY = 0;
+    updateImageTransform();
 }
 
 function updateZoom() {
+    updateImageTransform();
+}
+
+function updateImageTransform() {
     const fullscreenImage = document.getElementById('fullscreen-image');
-    fullscreenImage.style.transform = `scale(${currentZoom})`;
+    if (fullscreenImage) {
+        fullscreenImage.style.transform = `translate(${imagePositionX}px, ${imagePositionY}px) scale(${currentZoom})`;
+    }
+}
+
+// Drag functionality for fullscreen image
+function setupDragListeners(image) {
+    if (!image) return;
+
+    // Mouse events
+    image.addEventListener('mousedown', startDrag);
+    image.addEventListener('mousemove', drag);
+    image.addEventListener('mouseup', endDrag);
+    image.addEventListener('mouseleave', endDrag);
+
+    // Touch events
+    image.addEventListener('touchstart', startDragTouch);
+    image.addEventListener('touchmove', dragTouch);
+    image.addEventListener('touchend', endDrag);
+}
+
+function removeDragListeners(image) {
+    if (!image) return;
+
+    image.removeEventListener('mousedown', startDrag);
+    image.removeEventListener('mousemove', drag);
+    image.removeEventListener('mouseup', endDrag);
+    image.removeEventListener('mouseleave', endDrag);
+
+    image.removeEventListener('touchstart', startDragTouch);
+    image.removeEventListener('touchmove', dragTouch);
+    image.removeEventListener('touchend', endDrag);
+}
+
+function startDrag(e) {
+    if (currentZoom <= 1) return; // Only allow drag when zoomed in
+    isDragging = true;
+    dragStartX = e.clientX - imagePositionX;
+    dragStartY = e.clientY - imagePositionY;
+    e.preventDefault();
+}
+
+function drag(e) {
+    if (!isDragging) return;
+    e.preventDefault();
+    imagePositionX = e.clientX - dragStartX;
+    imagePositionY = e.clientY - dragStartY;
+    updateImageTransform();
+}
+
+function endDrag() {
+    isDragging = false;
+}
+
+function startDragTouch(e) {
+    if (currentZoom <= 1) return;
+    isDragging = true;
+    const touch = e.touches[0];
+    dragStartX = touch.clientX - imagePositionX;
+    dragStartY = touch.clientY - imagePositionY;
+    e.preventDefault();
+}
+
+function dragTouch(e) {
+    if (!isDragging) return;
+    e.preventDefault();
+    const touch = e.touches[0];
+    imagePositionX = touch.clientX - dragStartX;
+    imagePositionY = touch.clientY - dragStartY;
+    updateImageTransform();
 }
 
 // Keyboard controls for fullscreen viewer
