@@ -607,11 +607,21 @@ function loadImages() {
         featuredContainer.innerHTML = imageData.featured.map((image, index) => `
             <div class="image-card">
                 <div class="image-preview">
-                    <img src="${image.url}" alt="${image.title}" loading="lazy" decoding="async">
+                    <img class="gallery-image" data-url="${image.url}" src="${image.url}" alt="${image.title}" loading="lazy" decoding="async" style="cursor: pointer;">
                 </div>
                 <button class="y2k-button" onclick="viewImageDetails('${image.id}')">VIEW DETAILS</button>
             </div>
         `).join('');
+
+        // Add click handlers to gallery images for fullscreen
+        const galleryImages = document.querySelectorAll('.gallery-image');
+        galleryImages.forEach(img => {
+            img.addEventListener('click', () => {
+                const imageUrl = img.getAttribute('data-url');
+                console.log('Gallery image clicked, opening fullscreen for:', imageUrl);
+                openFullscreen(imageUrl);
+            });
+        });
     } else {
         featuredContainer.innerHTML = '<p style="text-align: center; color: #0F0;">No images added yet. Add image URLs to the imageData structure in script.js</p>';
     }
@@ -620,9 +630,19 @@ function loadImages() {
     if (imageData.archive.length > 0) {
         archiveContainer.innerHTML = imageData.archive.map(image => `
             <div class="archive-image">
-                <img src="${image.url}" alt="Archive image" loading="lazy" decoding="async">
+                <img class="archive-image-img" data-url="${image.url}" src="${image.url}" alt="Archive image" loading="lazy" decoding="async" style="cursor: pointer;">
             </div>
         `).join('');
+
+        // Add click handlers to archive images for fullscreen
+        const archiveImages = document.querySelectorAll('.archive-image-img');
+        archiveImages.forEach(img => {
+            img.addEventListener('click', () => {
+                const imageUrl = img.getAttribute('data-url');
+                console.log('Archive image clicked, opening fullscreen for:', imageUrl);
+                openFullscreen(imageUrl);
+            });
+        });
     } else {
         archiveContainer.innerHTML = '<p style="text-align: center; color: #0F0;">No archive images yet.</p>';
     }

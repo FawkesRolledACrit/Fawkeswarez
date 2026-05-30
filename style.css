@@ -645,6 +645,7 @@ marquee {
     display: block;
     cursor: pointer;
     transition: transform 0.2s ease;
+    pointer-events: auto;
 }
 
 .image-preview img:hover {
@@ -696,6 +697,8 @@ marquee {
     object-fit: cover;
     display: block;
     transition: transform 0.2s ease;
+    cursor: pointer;
+    pointer-events: auto;
 }
 
 .archive-image img:hover {
