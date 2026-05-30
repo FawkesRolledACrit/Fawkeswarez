@@ -1,0 +1,12 @@
+{
+  "mode": "playlist",
+  "autoplay": true,
+  "startIndex": 0,
+  "items": [
+    {
+      "title": "TEST CLIP (replace me)",
+      "url": "https://files.catbox.moe/REPLACE_ME.mp4",
+      "type": "mp4"
+    }
+  ]
+}

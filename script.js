@@ -11,6 +11,83 @@ const UNIQUE_VISITOR_PENDING_KEY = 'uniqueVisitorPending';
 let currentSection = 'home';
 let hitCounter = 0;
 let connectedDrives = [];
+let currentArtSection = 'art-3d-renders';
+let currentArtContent = 'images';
+let archiveVisible = false;
+
+// Image data structure
+let imageData = {
+    featured: [
+        {
+            id: 'image-1',
+            url: 'https://drive.google.com/uc?export=view&id=10waoqTifpzrNyo2LJtEPFI8ZjXS7VwEU',
+            title: 'Image 1',
+            description: 'Description from markdown file'
+        },
+        {
+            id: 'image-2',
+            url: 'https://drive.google.com/uc?export=view&id=16mH5ObthiL4lzBbizueJ17imk980Wr6O',
+            title: 'Image 2',
+            description: 'Description from markdown file'
+        },
+        {
+            id: 'image-3',
+            url: 'https://drive.google.com/uc?export=view&id=1AzpLBTwR0KP3OtN-1CUcb1O3iHDXrQsd',
+            title: 'Image 3',
+            description: 'Description from markdown file'
+        },
+        {
+            id: 'image-4',
+            url: 'https://drive.google.com/uc?export=view&id=1BMr0G7uVoQPF82IKDAq4nP5lOgrex7Xp',
+            title: 'Image 4',
+            description: 'Description from markdown file'
+        },
+        {
+            id: 'image-5',
+            url: 'https://drive.google.com/uc?export=view&id=1Du2ptqrnrOax0M-QvmV6lhhWRstfa-az',
+            title: 'Image 5',
+            description: 'Description from markdown file'
+        },
+        {
+            id: 'image-6',
+            url: 'https://drive.google.com/uc?export=view&id=1WHoRWHYxtkuw1a2kxo4sh1tE1dn6n-c1',
+            title: 'Image 6',
+            description: 'Description from markdown file'
+        },
+        {
+            id: 'image-7',
+            url: 'https://drive.google.com/uc?export=view&id=1X1tJCcJNmHcefTPNAmmK8z88_PF1uktn',
+            title: 'Image 7',
+            description: 'Description from markdown file'
+        },
+        {
+            id: 'image-8',
+            url: 'https://drive.google.com/uc?export=view&id=1YJvXDq8HeK40sVHt6p5XE8A2p3nkFcRg',
+            title: 'Image 8',
+            description: 'Description from markdown file'
+        },
+        {
+            id: 'image-9',
+            url: 'https://drive.google.com/uc?export=view&id=1o9ZLimMW5jG3KCFxsBUZINoVKadJRbGd',
+            title: 'Image 9',
+            description: 'Description from markdown file'
+        },
+        {
+            id: 'image-10',
+            url: 'https://drive.google.com/uc?export=view&id=1sS3BgJiKkwP9h56catIK3Rz7wj00lJJU',
+            title: 'Image 10',
+            description: 'Description from markdown file'
+        }
+    ],
+    archive: [
+        // Add your archive images here
+        // Example:
+        // {
+        //     url: 'https://i.ibb.co/your-image-url.jpg'
+        // }
+    ]
+};
+
 let gameData = {
     alpha: {
         title: 'Esoteric Order of Delivery',
@@ -181,18 +258,21 @@ if (document.readyState === 'loading') {
 // Website initialization
 function initializeWebsite() {
     console.log('🎮 GAME DEV PORTFOLIO INITIALIZED 🎮');
-    
+
     // Add keyboard navigation
     document.addEventListener('keydown', handleKeyPress);
-    
+
     // Add mouse trail effect
     createMouseTrail();
-    
+
     // Initialize progress bars
     animateProgressBars();
-    
+
     // Add sound effects (if needed)
     initializeSoundEffects();
+
+    // Parse URL for deep linking
+    parseURL();
 }
 
 // Section navigation
@@ -256,8 +336,8 @@ function initializeSection(sectionId) {
         case 'progress':
             animateProgressBars();
             break;
-        case 'storage':
-            updateStorageStats();
+        case 'art-assets':
+            loadImages();
             break;
         case 'about':
             animateProfileCard();
@@ -271,31 +351,32 @@ function handleKeyPress(event) {
     
     // Number keys for navigation
     if (key >= '1' && key <= '5') {
-        const sections = ['home', 'games', 'progress', 'storage', 'about'];
+        const sections = ['home', 'games', 'progress', 'art-assets', 'about'];
         const index = parseInt(key) - 1;
         if (sections[index]) {
             showSection(sections[index]);
         }
     }
-    
+
     // Arrow key navigation
     if (key === 'arrowleft' || key === 'arrowright') {
-        const sections = ['home', 'games', 'progress', 'storage', 'about'];
+        const sections = ['home', 'games', 'progress', 'art-assets', 'about'];
         const currentIndex = sections.indexOf(currentSection);
         let newIndex;
-        
+
         if (key === 'arrowleft') {
             newIndex = currentIndex > 0 ? currentIndex - 1 : sections.length - 1;
         } else {
             newIndex = currentIndex < sections.length - 1 ? currentIndex + 1 : 0;
         }
-        
+
         showSection(sections[newIndex]);
     }
     
     // ESC to close modal
     if (key === 'escape') {
         closeModal();
+        closeImageModal();
     }
 }
 
@@ -434,6 +515,224 @@ function closeModal() {
     const modal = document.getElementById('game-modal');
     modal.style.display = 'none';
     playSound('close');
+}
+
+// Art/Assets section navigation
+function showArtSection(sectionId) {
+    // Hide all art subsections
+    const subsections = document.querySelectorAll('.art-subsection');
+    subsections.forEach(section => {
+        section.classList.add('hidden');
+    });
+
+    // Show selected subsection
+    const targetSection = document.getElementById(sectionId);
+    if (targetSection) {
+        targetSection.classList.remove('hidden');
+        currentArtSection = sectionId;
+
+        // Update nav buttons
+        const navButtons = document.querySelectorAll('.art-nav-btn');
+        navButtons.forEach(btn => {
+            btn.classList.remove('active');
+        });
+        event.target.classList.add('active');
+
+        // Update URL for linkability
+        updateURL();
+    }
+
+    playSound('navigate');
+}
+
+// Art content navigation (Images/Videos)
+function showArtContent(contentId) {
+    // Hide all art content
+    const contentSections = document.querySelectorAll('.art-content');
+    contentSections.forEach(content => {
+        content.classList.remove('active');
+    });
+
+    // Show selected content
+    const targetContent = document.getElementById(contentId + '-content');
+    if (targetContent) {
+        targetContent.classList.add('active');
+        currentArtContent = contentId;
+
+        // Update submenu buttons
+        const submenuButtons = document.querySelectorAll('.art-submenu-btn');
+        submenuButtons.forEach(btn => {
+            btn.classList.remove('active');
+        });
+        event.target.classList.add('active');
+
+        // Update URL for linkability
+        updateURL();
+    }
+
+    playSound('navigate');
+}
+
+// Load images into the grid
+function loadImages() {
+    const featuredContainer = document.getElementById('featured-images');
+    const archiveContainer = document.getElementById('archive-gallery');
+
+    if (!featuredContainer || !archiveContainer) return;
+
+    // Load featured images
+    featuredContainer.innerHTML = imageData.featured.map((image, index) => `
+        <div class="image-card">
+            <div class="image-preview">
+                <img src="${image.url}" alt="${image.title}" loading="lazy" decoding="async">
+            </div>
+            <button class="y2k-button" onclick="viewImageDetails('${image.id}')">VIEW DETAILS</button>
+        </div>
+    `).join('');
+
+    // Load archive images
+    archiveContainer.innerHTML = imageData.archive.map(image => `
+        <div class="archive-image">
+            <img src="${image.url}" alt="Archive image" loading="lazy" decoding="async">
+        </div>
+    `).join('');
+
+    // Animate image cards
+    animateImageCards();
+}
+
+// View image details in modal
+function viewImageDetails(imageId) {
+    const image = imageData.featured.find(img => img.id === imageId);
+    if (!image) return;
+
+    const modal = document.getElementById('image-modal');
+    const modalTitle = document.getElementById('image-modal-title');
+    const modalBody = document.getElementById('image-modal-body');
+
+    modalTitle.textContent = image.title;
+
+    modalBody.innerHTML = `
+        <div class="image-details">
+            <div class="image-detail-preview">
+                <img src="${image.url}" alt="${image.title}" style="max-width: 100%; border: 2px solid #0F0;">
+            </div>
+            <div class="image-detail-info">
+                <h4>Description</h4>
+                <p>${image.description}</p>
+                ${image.date ? `<p><strong>Date:</strong> ${image.date}</p>` : ''}
+                ${image.tools ? `<p><strong>Tools:</strong> ${image.tools}</p>` : ''}
+            </div>
+        </div>
+    `;
+
+    modal.style.display = 'block';
+    playSound('open');
+}
+
+// Close image modal
+function closeImageModal() {
+    const modal = document.getElementById('image-modal');
+    modal.style.display = 'none';
+    playSound('close');
+}
+
+// Toggle project archive
+function toggleArchive() {
+    const archiveSection = document.getElementById('project-archive');
+    const archiveBtn = document.querySelector('.archive-btn');
+
+    if (archiveSection) {
+        archiveVisible = !archiveVisible;
+        archiveSection.classList.toggle('hidden');
+        archiveBtn.textContent = archiveVisible ? '📁 CLOSE ARCHIVE' : '📁 PROJECT ARCHIVE';
+        playSound('navigate');
+    }
+}
+
+// Update URL for linkability
+function updateURL() {
+    const url = new URL(window.location);
+    url.hash = `art-assets/${currentArtSection}/${currentArtContent}`;
+    window.history.pushState({}, '', url);
+}
+
+// Parse URL on page load
+function parseURL() {
+    const hash = window.location.hash;
+    if (hash.startsWith('#art-assets/')) {
+        const parts = hash.replace('#art-assets/', '').split('/');
+        if (parts.length >= 1) {
+            showSection('art-assets');
+            setTimeout(() => {
+                if (parts[0]) {
+                    showArtSectionById(parts[0]);
+                }
+                if (parts.length >= 2 && parts[1]) {
+                    showArtContentById(parts[1]);
+                }
+            }, 100);
+        }
+    }
+}
+
+// Show art section by ID (for URL parsing)
+function showArtSectionById(sectionId) {
+    const subsections = document.querySelectorAll('.art-subsection');
+    subsections.forEach(section => {
+        section.classList.add('hidden');
+    });
+
+    const targetSection = document.getElementById(sectionId);
+    if (targetSection) {
+        targetSection.classList.remove('hidden');
+        currentArtSection = sectionId;
+
+        const navButtons = document.querySelectorAll('.art-nav-btn');
+        navButtons.forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.textContent.toLowerCase().includes(sectionId.replace('-', ' '))) {
+                btn.classList.add('active');
+            }
+        });
+    }
+}
+
+// Show art content by ID (for URL parsing)
+function showArtContentById(contentId) {
+    const contentSections = document.querySelectorAll('.art-content');
+    contentSections.forEach(content => {
+        content.classList.remove('active');
+    });
+
+    const targetContent = document.getElementById(contentId + '-content');
+    if (targetContent) {
+        targetContent.classList.add('active');
+        currentArtContent = contentId;
+
+        const submenuButtons = document.querySelectorAll('.art-submenu-btn');
+        submenuButtons.forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.textContent.toLowerCase().includes(contentId)) {
+                btn.classList.add('active');
+            }
+        });
+    }
+}
+
+// Animate image cards
+function animateImageCards() {
+    const cards = document.querySelectorAll('.image-card');
+    cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(50px)';
+
+        setTimeout(() => {
+            card.style.transition = 'all 0.5s';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        }, 200 + (index * 150));
+    });
 }
 
 // Hit counter fetch + animation

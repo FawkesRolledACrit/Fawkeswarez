@@ -172,6 +172,29 @@
             background: rgba(0,0,0,0.5);
             border-left: 3px solid #0F0;
         }
+
+        .slot.block-header {
+            background: linear-gradient(135deg, rgba(255, 0, 255, 0.22), rgba(0, 255, 255, 0.22));
+            border-left: 3px solid #0FF;
+            font-weight: bold;
+        }
+
+        .slot.block-item {
+            border-left: 3px solid rgba(0, 255, 255, 0.8);
+            padding-left: 22px;
+        }
+
+        .slot.timeblock-item {
+            border-left: 3px solid rgba(0, 255, 0, 0.65);
+            padding-left: 22px;
+        }
+
+        .slot-program .block-subtitle {
+            display: block;
+            font-size: 0.9em;
+            opacity: 0.9;
+            margin-top: 4px;
+        }
         
         .slot-time {
             font-weight: bold;
@@ -248,6 +271,7 @@
                     <button class="nav-btn" onclick="changeMonth(-1)">◀ PREV</button>
                     <h3 id="calendar-month">April 2026</h3>
                     <button class="nav-btn" onclick="changeMonth(1)">NEXT ▶</button>
+                    <button class="nav-btn" onclick="loadData()">RELOAD DATA</button>
                 </div>
                 
                 <div class="calendar-grid" id="calendar">
@@ -276,19 +300,29 @@
 
         async function loadData() {
             try {
+                // Aggressive cache bust: commit hash + timestamp + random
+                const commitHash = '49d397a';
                 const timestamp = new Date().getTime();
-                const cacheBuster = timestamp + '_' + Math.random().toString(36).substr(2, 9);
+                const cacheBuster = `${commitHash}_${timestamp}_${Math.random().toString(36).substr(2, 9)}`;
                 console.log('Loading weekly lineup with cache buster:', cacheBuster);
-                const response = await fetch('weekly-lineup.json?t=' + cacheBuster);
+                const response = await fetch('weekly-lineup-v2.json?t=' + cacheBuster);
                 weeklyLineup = await response.json();
                 console.log('Loaded weekly lineup, total entries:', weeklyLineup.length);
                 console.log('First few entries:', weeklyLineup.slice(0, 3));
+                console.log('Nostalgia Night entries:', weeklyLineup.filter(s => s.program === 'Nostalgia Night').map(s => s.time));
                 
                 // Load schedule.json to get startDate and check which shows have videos
                 const scheduleResponse = await fetch('schedule.json?t=' + cacheBuster);
                 scheduleData = await scheduleResponse.json();
                 scheduleStartDate = scheduleData.startDate || '2026-04-01';
                 console.log('Loaded schedule, start date:', scheduleStartDate);
+                
+                // Show cache-bust indicator briefly
+                const indicator = document.createElement('div');
+                indicator.textContent = `Cache-bust: ${cacheBuster}`;
+                indicator.style.cssText = 'position:fixed;top:0;left:0;background:#0F0;color:#000;padding:4px;z-index:9999;font-size:10px;';
+                document.body.appendChild(indicator);
+                setTimeout(() => indicator.remove(), 3000);
                 
                 renderCalendar();
                 renderLineup();
@@ -361,7 +395,10 @@
             
             const dayName = dayNames[selectedDate.getDay()];
             console.log('Rendering lineup for day:', dayName);
-            const daySlots = weeklyLineup.filter(slot => slot.day === dayName);
+            const daySlots = weeklyLineup
+                .filter(slot => slot.day === dayName)
+                .slice()
+                .sort((a, b) => timeToMinutes(a.time) - timeToMinutes(b.time));
             console.log('Found slots for', dayName, ':', daySlots.length);
             console.log('Day slots:', daySlots);
             
@@ -369,17 +406,80 @@
                 `${dayName}, ${monthNames[selectedDate.getMonth()]} ${selectedDate.getDate()}, ${selectedDate.getFullYear()}`;
             
             let html = '';
-            let dexterSlotCount = 0;
-            
-            daySlots.forEach(slot => {
-                console.log(`Processing slot: ${slot.program}`);
-                
+
+            const CARTOON_CARTOONS_HEADER = 'Cartoon Cartoons';
+            const CARTOON_CARTOONS_SHOWS = new Set([
+                'Sheep in the Big City',
+                'Billy & Mandy',
+                "Foster's Home",
+                "Dexter's Laboratory",
+                'The Powerpuff Girls',
+                'Ed, Edd n Eddy',
+                'Johnny Bravo',
+                'Courage the Cowardly Dog',
+                'Cow & Chicken',
+                'I Am Weasel'
+            ]);
+
+            const SPECIAL_PROGRAMS = new Set([
+                'Paid Programming',
+                'Boondocks Marathon',
+                'Nostalgia Night'
+            ]);
+
+            const BLOCK_POOLS = {
+                'MORNING MAYHEM': new Set([
+                    "Dexter's Laboratory",
+                    'The Powerpuff Girls',
+                    'Ed, Edd n Eddy',
+                    'Johnny Bravo',
+                    'Courage the Cowardly Dog',
+                    'Tom and Jerry'
+                ]),
+                'CARTOON CARTOONS': CARTOON_CARTOONS_SHOWS,
+                'MIDDAY MADNESS': new Set([
+                    "Dexter's Laboratory",
+                    'The Powerpuff Girls',
+                    'Ed, Edd n Eddy',
+                    'Johnny Bravo',
+                    'Courage the Cowardly Dog',
+                    'Teen Titans',
+                    'Dragon Ball Z',
+                    'Samurai Jack'
+                ]),
+                'AFTERNOON ACTION': new Set([
+                    'Teen Titans',
+                    'Dragon Ball Z',
+                    'Samurai Jack',
+                    'Ben 10',
+                    'Codename: Kids Next Door'
+                ]),
+                'PRIME TIME POWER': new Set([
+                    'Teen Titans',
+                    'Dragon Ball Z',
+                    'Samurai Jack',
+                    'Justice League',
+                    'Avatar: The Last Airbender'
+                ]),
+                'ADULT SWIM': new Set([
+                    'Aqua Teen Hunger Force',
+                    'Space Ghost Coast to Coast',
+                    'Sealab 2021',
+                    'Home Movies',
+                    'The Venture Bros',
+                    'Harvey Birdman, Attorney at Law',
+                    'Tom Goes to the Mayor',
+                    'Brak Show'
+                ])
+            };
+
+            function getSlotDisplayData(slot) {
                 // Handle special block types and check for regular shows
                 let hasEpisodes = false;
                 let episodeInfo = '';
                 let statusClass = 'off-air';
                 let statusText = 'OFF AIR';
-                
+
                 if (slot.program === 'Paid Programming') {
                     hasEpisodes = scheduleData && scheduleData.blocks && scheduleData.blocks.some(block => block.blockType === 'paid');
                     if (hasEpisodes) {
@@ -413,7 +513,7 @@
                         const programLower = slot.program.toLowerCase();
                         return !block.blockType && (title === programLower || title.includes(programLower) || programLower.includes(title));
                     });
-                    
+
                     if (hasEpisodes) {
                         const episodeData = getEpisodeForDate(selectedDate, slot.time, slot.program);
                         const episodeDisplay = `S${episodeData.season.toString().padStart(2, '0')}E${episodeData.episode.toString().padStart(2, '0')}`;
@@ -422,20 +522,136 @@
                         statusText = '▶';
                     }
                 }
-                
+
                 console.log(`Show ${slot.program} has episodes: ${hasEpisodes}`);
-                
+                return { episodeInfo, statusClass, statusText };
+            }
+
+            function renderSlot(slot, extraSlotClass, programHtmlOverride) {
+                const { episodeInfo, statusClass, statusText } = getSlotDisplayData(slot);
+                const programHtml = (programHtmlOverride != null)
+                    ? programHtmlOverride
+                    : `${slot.program}${episodeInfo}`;
+
                 html += `
-                    <div class="slot">
+                    <div class="slot${extraSlotClass ? ' ' + extraSlotClass : ''}">
                         <div class="slot-time">${slot.time}</div>
-                        <div class="slot-program">
-                            ${slot.program}
-                            ${episodeInfo}
-                        </div>
+                        <div class="slot-program">${programHtml}</div>
                         <div class="slot-status ${statusClass}">${statusText}</div>
                     </div>
                 `;
-            });
+            }
+
+            function slotLooksLikeCartoonCartoonsContext(slot) {
+                if (!slot?.program) return false;
+                if (slot.program === CARTOON_CARTOONS_HEADER) return true;
+                return CARTOON_CARTOONS_SHOWS.has(slot.program);
+            }
+
+            function shouldStartImplicitCartoonCartoonsBlock(daySlots, idx) {
+                const slot = daySlots[idx];
+                if (!slot || !CARTOON_CARTOONS_SHOWS.has(slot.program)) return false;
+                const prev = idx > 0 ? daySlots[idx - 1] : null;
+                const next = idx + 1 < daySlots.length ? daySlots[idx + 1] : null;
+                return (prev && slotLooksLikeCartoonCartoonsContext(prev)) || (next && slotLooksLikeCartoonCartoonsContext(next));
+            }
+
+            function getTimeBlockNameForMinutes(mins) {
+                const hour = Math.floor((mins || 0) / 60);
+                if (hour >= 6 && hour < 10) {
+                    return 'MORNING MAYHEM';
+                } else if (hour >= 10 && hour < 14) {
+                    return 'MIDDAY MADNESS';
+                } else if (hour >= 14 && hour < 18) {
+                    return 'AFTERNOON ACTION';
+                } else if (hour >= 18 && hour < 22) {
+                    return 'PRIME TIME POWER';
+                } else {
+                    return 'ADULT SWIM';
+                }
+            }
+
+            function canonicalBlockForSlot(daySlots, idx) {
+                const slot = daySlots[idx];
+                if (!slot) return null;
+                if (slot.program === CARTOON_CARTOONS_HEADER) return 'CARTOON CARTOONS';
+                if (CARTOON_CARTOONS_SHOWS.has(slot.program) && shouldStartImplicitCartoonCartoonsBlock(daySlots, idx)) {
+                    return 'CARTOON CARTOONS';
+                }
+                const mins = timeToMinutes(slot.time);
+                return getTimeBlockNameForMinutes(mins);
+            }
+
+            function renderTimeBlockHeader(blockName, timeStr) {
+                const headerSlot = { time: timeStr, program: blockName };
+                const subtitle = blockName === 'ADULT SWIM'
+                    ? 'Late night weirdness'
+                    : 'Programming block';
+                const programHtml = `${blockName}<span class="block-subtitle">${subtitle}</span>`;
+                renderSlot(headerSlot, 'block-header', programHtml);
+            }
+
+            let inCartoonCartoons = false;
+            let seenExplicitHeaderInCurrentBlock = false;
+            let currentTimeBlock = null;
+
+            for (let i = 0; i < daySlots.length; i++) {
+                const slot = daySlots[i];
+                console.log(`Processing slot: ${slot.program}`);
+
+                const slotTimeBlock = canonicalBlockForSlot(daySlots, i);
+                if (!inCartoonCartoons && slotTimeBlock && slotTimeBlock !== currentTimeBlock && slot.program !== CARTOON_CARTOONS_HEADER) {
+                    currentTimeBlock = slotTimeBlock;
+                    renderTimeBlockHeader(currentTimeBlock, slot.time);
+                }
+
+                // Explicit block header
+                if (slot.program === CARTOON_CARTOONS_HEADER) {
+                    inCartoonCartoons = true;
+                    seenExplicitHeaderInCurrentBlock = true;
+                    currentTimeBlock = 'CARTOON CARTOONS';
+                    const programHtml = `${CARTOON_CARTOONS_HEADER}<span class="block-subtitle">Classic shorts & CN originals</span>`;
+                    renderSlot(slot, 'block-header', programHtml);
+                    continue;
+                }
+
+                // Implicit block start (fix for days where the header slot is missing/shifted)
+                if (!inCartoonCartoons && shouldStartImplicitCartoonCartoonsBlock(daySlots, i)) {
+                    inCartoonCartoons = true;
+                    seenExplicitHeaderInCurrentBlock = false;
+                    currentTimeBlock = 'CARTOON CARTOONS';
+
+                    const implicitHeaderSlot = { ...slot, program: CARTOON_CARTOONS_HEADER };
+                    const programHtml = `${CARTOON_CARTOONS_HEADER}<span class="block-subtitle">(inferred block)</span>`;
+                    renderSlot(implicitHeaderSlot, 'block-header', programHtml);
+                }
+
+                if (inCartoonCartoons && CARTOON_CARTOONS_SHOWS.has(slot.program)) {
+                    renderSlot(slot, 'block-item');
+                } else {
+                    // Leaving Cartoon Cartoons context if we hit a non-member show
+                    inCartoonCartoons = false;
+                    seenExplicitHeaderInCurrentBlock = false;
+
+                    const blockKey = canonicalBlockForSlot(daySlots, i);
+                    const pool = BLOCK_POOLS[blockKey];
+                    if (slot.program && !SPECIAL_PROGRAMS.has(slot.program) && pool && !pool.has(slot.program)) {
+                        console.warn('Program out of pool for time block:', { blockKey, slot, dayName });
+                    }
+
+                    renderSlot(slot, currentTimeBlock ? 'timeblock-item' : '');
+                }
+
+                // Regression warning: Sheep should not be alone when surrounded by block context
+                if (slot.program === 'Sheep in the Big City') {
+                    const prev = i > 0 ? daySlots[i - 1] : null;
+                    const next = i + 1 < daySlots.length ? daySlots[i + 1] : null;
+                    const shouldBeGrouped = (prev && slotLooksLikeCartoonCartoonsContext(prev)) || (next && slotLooksLikeCartoonCartoonsContext(next));
+                    if (shouldBeGrouped && !inCartoonCartoons) {
+                        console.warn('Sheep slot rendered outside Cartoon Cartoons block context:', { dayName, slot, prev, next, seenExplicitHeaderInCurrentBlock });
+                    }
+                }
+            }
             
             if (html === '') {
                 html = '<div style="text-align: center; padding: 40px; color: #0F0;">No programming scheduled for this day</div>';

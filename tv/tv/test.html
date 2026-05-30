@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test CSS Loading</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Testing CSS</h1>
+    <p>If you see green borders and retro styling, CSS is loading.</p>
+    <button class="nav-btn">Test Button</button>
+    
+    <script>
+        console.log('Test page loaded');
+        // Test if we can fetch the CSS
+        fetch('style.css')
+            .then(response => {
+                console.log('CSS fetch status:', response.status);
+                if (!response.ok) {
+                    console.error('CSS not found:', response.url);
+                }
+            })
+            .catch(error => console.error('CSS fetch error:', error));
+    </script>
+</body>
+</html>

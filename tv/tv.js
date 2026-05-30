@@ -49,9 +49,76 @@ class LiveStreamPlayer {
         this.desiredMuted = true;
         this.loadSeq = 0;
 
+        this.recentAdUrls = [];
+        this.RECENT_AD_MEMORY = 30;
+
         this.weeklyLineup = null;
         this.weeklySlotsByDay = null;
-        
+
+        this.SPECIAL_PROGRAMS = new Set([
+            'Paid Programming',
+            'Boondocks Marathon',
+            'Nostalgia Night',
+            'Nostalgia Night Preshow'
+        ]);
+
+        this.BLOCK_POOLS = {
+            'MORNING MAYHEM': new Set([
+                "Dexter's Laboratory",
+                'The Powerpuff Girls',
+                'Ed, Edd n Eddy',
+                'Johnny Bravo',
+                'Courage the Cowardly Dog',
+                'Tom and Jerry'
+            ]),
+            'CARTOON CARTOONS': new Set([
+                'Sheep in the Big City',
+                'Billy & Mandy',
+                "Foster's Home",
+                "Dexter's Laboratory",
+                'The Powerpuff Girls',
+                'Ed, Edd n Eddy',
+                'Johnny Bravo',
+                'Courage the Cowardly Dog',
+                'Cow & Chicken',
+                'I Am Weasel'
+            ]),
+            'MIDDAY MADNESS': new Set([
+                "Dexter's Laboratory",
+                'The Powerpuff Girls',
+                'Ed, Edd n Eddy',
+                'Johnny Bravo',
+                'Courage the Cowardly Dog',
+                'Teen Titans',
+                'Dragon Ball Z',
+                'Samurai Jack'
+            ]),
+            'AFTERNOON ACTION': new Set([
+                'Teen Titans',
+                'Dragon Ball Z',
+                'Samurai Jack',
+                'Ben 10',
+                'Codename: Kids Next Door'
+            ]),
+            'PRIME TIME POWER': new Set([
+                'Teen Titans',
+                'Dragon Ball Z',
+                'Samurai Jack',
+                'Justice League',
+                'Avatar: The Last Airbender'
+            ]),
+            'ADULT SWIM': new Set([
+                'Aqua Teen Hunger Force',
+                'Space Ghost Coast to Coast',
+                'Sealab 2021',
+                'Home Movies',
+                'The Venture Bros',
+                'Harvey Birdman, Attorney at Law',
+                'Tom Goes to the Mayor',
+                'Brak Show'
+            ])
+        };
+
         // Schedule constants
         this.BLOCK_DURATION = 30 * 60 * 1000; // 30 minutes
         
@@ -138,6 +205,50 @@ class LiveStreamPlayer {
         if (hh === 12) hh = 0;
         if (ampm === 'PM') hh += 12;
         return hh * 60 + mm;
+    }
+
+    getBlockNameForMinutes(totalMinutes) {
+        const m = Number.isFinite(totalMinutes) ? totalMinutes : 0;
+        const hour = Math.floor(m / 60);
+        return this.getBlockName(hour);
+    }
+
+    getCanonicalBlockKeyForSlot(weeklySlot) {
+        if (!weeklySlot) return null;
+        if (weeklySlot.program === 'Cartoon Cartoons') return 'CARTOON CARTOONS';
+        return this.getBlockNameForMinutes(weeklySlot.startMin);
+    }
+
+    seededPickFromSet(set, seed) {
+        const arr = Array.from(set || []);
+        if (!arr.length) return null;
+        const rng = this.seededRandom(seed);
+        const idx = Math.floor(rng() * arr.length);
+        return arr[Math.max(0, Math.min(arr.length - 1, idx))];
+    }
+
+    normalizeProgramForSlot(weeklySlot) {
+        const program = weeklySlot?.program;
+        if (!program) return null;
+        if (this.SPECIAL_PROGRAMS.has(program)) return program;
+
+        const blockKey = this.getCanonicalBlockKeyForSlot(weeklySlot);
+        if (!blockKey) return program;
+
+        const pool = this.BLOCK_POOLS[blockKey];
+        if (!pool || !pool.size) return program;
+
+        if (blockKey === 'CARTOON CARTOONS') {
+            if (program === 'Cartoon Cartoons' || pool.has(program)) return program;
+        } else {
+            if (pool.has(program)) return program;
+        }
+
+        const daySeed = (weeklySlot?.day ? this.getDayIndexFromName(weeklySlot.day) : 0);
+        const seed = (daySeed + 1) * 100000 + (weeklySlot.startMin || 0);
+        const picked = this.seededPickFromSet(pool, seed);
+        console.warn('Program out of pool for block; substituting from pool:', { blockKey, authored: program, picked, weeklySlot });
+        return picked || program;
     }
 
     getDayName(dateObj) {
@@ -276,11 +387,11 @@ class LiveStreamPlayer {
         // Find the slot where mins is within [start,end)
         for (const s of slots) {
             if (mins >= s.startMin && mins < s.endMin) {
-                return { ...s, dayName, mins, time: this.minutesToTime(s.startMin) };
+                return { ...s, day: dayName };
             }
         }
         const slotStartMin = Math.floor(mins / 30) * 30;
-        return { program: null, startMin: slotStartMin, endMin: slotStartMin + 30, dayName, mins, time: this.minutesToTime(slotStartMin) };
+        return { program: null, startMin: slotStartMin, endMin: slotStartMin + 30, day: dayName, mins, time: this.minutesToTime(slotStartMin) };
     }
 
     goOffAir(title) {
@@ -493,6 +604,7 @@ class LiveStreamPlayer {
         this.video.addEventListener('pause', () => {
             console.log('Video paused');
             if (this.hasTunedIn) {
+                if (this.video.ended) return;
                 // Auto-resume if user hasn't explicitly paused
                 setTimeout(() => {
                     if (this.hasTunedIn && this.video.paused) {
@@ -711,7 +823,7 @@ class LiveStreamPlayer {
 
         // Weekly lineup mode: determine what show is supposed to be on NOW.
         const weeklySlot = this.getWeeklySlotForNow();
-        const program = weeklySlot?.program;
+        const program = this.normalizeProgramForSlot(weeklySlot);
 
         if (!program) {
             return { currentUrl: null, currentTime: 0, currentTitle: 'OFF AIR', queue: [] };
@@ -749,7 +861,7 @@ class LiveStreamPlayer {
 
         // Get current program from weekly lineup
         const weeklySlot = weeklySlotOverride || this.getWeeklySlotForNow();
-        const program = weeklySlot?.program;
+        const program = this.normalizeProgramForSlot(weeklySlot);
         if (!program) return queue;
 
         // Handle special block types first
@@ -909,13 +1021,27 @@ class LiveStreamPlayer {
         
         const validAds = this.ads.items.filter(ad => ad.durationSeconds > 0);
         const selected = [];
+        const usedUrls = new Set();
         let total = 0;
         
         // Simple seeded random for consistency
         const rng = this.seededRandom(seed);
-        const shuffled = [...validAds].sort(() => rng() - 0.5);
+
+        const recentSet = new Set(this.recentAdUrls);
+        const fresh = validAds.filter(ad => !recentSet.has(ad.url));
+        const stale = validAds.filter(ad => recentSet.has(ad.url));
+
+        const shuffleWithSeed = (arr) => {
+            const withScore = arr.map(ad => ({ ad, score: rng() }));
+            withScore.sort((a, b) => a.score - b.score);
+            return withScore.map(x => x.ad);
+        };
+
+        const shuffled = [...shuffleWithSeed(fresh), ...shuffleWithSeed(stale)];
         
         for (const ad of shuffled) {
+            if (!ad?.url) continue;
+            if (usedUrls.has(ad.url)) continue;
             if (total + ad.durationSeconds <= targetSeconds + tolerance) {
                 selected.push({
                     type: 'ad',
@@ -923,9 +1049,18 @@ class LiveStreamPlayer {
                     title: 'Commercial',
                     duration: ad.durationSeconds
                 });
+                usedUrls.add(ad.url);
                 total += ad.durationSeconds;
                 
                 if (total >= targetSeconds - tolerance) break;
+            }
+        }
+
+        // Remember the ads we just used to encourage variety across breaks.
+        if (selected.length) {
+            this.recentAdUrls.push(...selected.map(x => x.url));
+            if (this.recentAdUrls.length > this.RECENT_AD_MEMORY) {
+                this.recentAdUrls = this.recentAdUrls.slice(-this.RECENT_AD_MEMORY);
             }
         }
         
@@ -976,13 +1111,11 @@ class LiveStreamPlayer {
         const weeklySlot = this.getWeeklySlotForNow();
         if (!weeklySlot) return null;
         
-        // Get current hour for block naming
-        const now = new Date();
-        const currentHour = now.getHours();
-        const blockName = this.getBlockName(currentHour);
+        const canonicalBlock = this.getCanonicalBlockKeyForSlot(weeklySlot);
+        const blockName = canonicalBlock === 'CARTOON CARTOONS' ? 'CARTOON CARTOONS' : this.getBlockNameForMinutes(weeklySlot.startMin);
         
         // Get episode information for shows that have it
-        const program = weeklySlot.program;
+        const program = this.normalizeProgramForSlot(weeklySlot);
         if (["Dexter's Laboratory", "The Powerpuff Girls", "Ed, Edd n Eddy", "Space Ghost Coast to Coast", "Aqua Teen Hunger Force"].includes(program)) {
             const now = new Date();
             const timeStr = weeklySlot.time;
@@ -1114,64 +1247,39 @@ class LiveStreamPlayer {
     }
     
     getNextUp() {
-        // Get the next show in the schedule
-        const now = new Date();
-        const currentDay = now.getDay(); // 0 = Sunday, 6 = Saturday
-        const currentHour = now.getHours();
-        const currentMinute = now.getMinutes();
-        
-        // Find current time slot
-        const timeSlots = ['12:00 AM', '12:30 AM', '1:00 AM', '1:30 AM', '2:00 AM', '2:30 AM', '3:00 AM', '3:30 AM',
-                          '4:00 AM', '4:30 AM', '5:00 AM', '5:30 AM', '6:00 AM', '6:30 AM', '7:00 AM', '7:30 AM',
-                          '8:00 AM', '8:30 AM', '9:00 AM', '9:30 AM', '10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM',
-                          '12:00 PM', '12:30 PM', '1:00 PM', '1:30 PM', '2:00 PM', '2:30 PM', '3:00 PM', '3:30 PM',
-                          '4:00 PM', '4:30 PM', '5:00 PM', '5:30 PM', '6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM',
-                          '8:00 PM', '8:30 PM', '9:00 PM', '9:30 PM', '10:00 PM', '10:30 PM', '11:00 PM', '11:30 PM'];
-        
-        // Find current slot index
-        const currentTimeStr = `${currentHour % 12 || 12}:${currentMinute.toString().padStart(2, '0')} ${currentHour >= 12 ? 'PM' : 'AM'}`;
-        let currentSlotIndex = timeSlots.findIndex(slot => slot === currentTimeStr);
-        
-        if (currentSlotIndex === -1) {
-            // Find the next slot
-            currentSlotIndex = timeSlots.findIndex((slot, index) => {
-                const [slotTime, period] = slot.split(' ');
-                const [slotHour, slotMin] = slotTime.split(':').map(Number);
-                const slotHour24 = period === 'PM' && slotHour !== 12 ? slotHour + 12 : (period === 'AM' && slotHour === 12 ? 0 : slotHour);
-                const currentSlotTime = new Date(now);
-                currentSlotTime.setHours(slotHour24, slotMin, 0, 0);
-                return currentSlotTime > now;
-            });
-        }
-        
-        // Get next slot
-        const nextSlotIndex = (currentSlotIndex + 1) % timeSlots.length;
-        const nextTime = timeSlots[nextSlotIndex];
-        
-        // Get the lineup for the current day (or next day if we've wrapped around)
-        let targetDay = currentDay;
-        if (nextSlotIndex === 0) {
-            targetDay = (currentDay + 1) % 7;
-        }
-        
-        const dayName = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][targetDay];
-        
-        if (this.weeklySlotsByDay && this.weeklySlotsByDay[dayName]) {
-            const nextSlot = this.weeklySlotsByDay[dayName].find(slot => slot.time === nextTime);
-            if (nextSlot) {
-                let nextUpText = `${nextSlot.time} - ${nextSlot.program}`;
-                
-                // Add episode info if available
-                if (["Dexter's Laboratory", "The Powerpuff Girls", "Ed, Edd n Eddy", "Space Ghost Coast to Coast", "Aqua Teen Hunger Force"].includes(nextSlot.program)) {
-                    const episodeData = this.getEpisodeForDate(now, nextSlot.time, nextSlot.program);
-                    nextUpText += ` (S${episodeData.season.toString().padStart(2, '0')}E${episodeData.episode.toString().padStart(2, '0')})`;
-                }
-                
-                return nextUpText;
+        // Get the next show in the schedule using the actual weekly slot boundaries.
+        const now = new Date(this.nowMs());
+        const currentDayName = this.getDayName(now);
+        const nowMin = now.getHours() * 60 + now.getMinutes();
+
+        const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+        const startDayIdx = days.indexOf(currentDayName);
+        if (!this.weeklySlotsByDay || startDayIdx < 0) return 'TBD';
+
+        for (let dayOffset = 0; dayOffset < 7; dayOffset++) {
+            const dayIdx = (startDayIdx + dayOffset) % 7;
+            const dayName = days[dayIdx];
+            const slots = (this.weeklySlotsByDay[dayName] || []).slice().sort((a, b) => a.startMin - b.startMin);
+            if (!slots.length) continue;
+
+            const candidate = dayOffset === 0
+                ? slots.find(s => s.startMin > nowMin)
+                : slots[0];
+
+            if (!candidate) continue;
+
+            const normalized = this.normalizeProgramForSlot({ ...candidate, day: dayName });
+            let nextUpText = `${candidate.time} - ${normalized || candidate.program}`;
+
+            if (["Dexter's Laboratory", "The Powerpuff Girls", "Ed, Edd n Eddy", "Space Ghost Coast to Coast", "Aqua Teen Hunger Force"].includes(normalized)) {
+                const episodeData = this.getEpisodeForDate(now, candidate.time, normalized);
+                nextUpText += ` (S${episodeData.season.toString().padStart(2, '0')}E${episodeData.episode.toString().padStart(2, '0')})`;
             }
+
+            return nextUpText;
         }
-        
-        return `${nextTime} - OFF AIR`;
+
+        return 'TBD';
     }
     
     startSyncInterval() {

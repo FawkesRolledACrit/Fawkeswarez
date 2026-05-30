@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📺 Fawkesware TV 📺</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="matrix-bg"></div>
+    <div class="stars"></div>
+
+    <header class="y2k-header">
+        <div class="header-content">
+            <h1 class="glitch-text" data-text="Fawkesware TV">Fawkesware TV</h1>
+            <div class="under-construction">
+                <marquee behavior="scroll" direction="left">📺 24/7 RETRO STREAM 📺 DEXTER'S LAB EVERY 30 MIN 📺 SYNCHRONIZED BROADCAST 📺</marquee>
+            </div>
+        </div>
+    </header>
+
+    <nav class="y2k-nav">
+        <div class="nav-buttons">
+            <button class="nav-btn" onclick="window.location.href='../'">⬅ BACK</button>
+            <button class="nav-btn" id="tv-tune">📡 TUNE IN</button>
+            <button class="nav-btn" id="tv-mute">🔇 MUTE</button>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section class="content-section active">
+            <h2 class="section-title">📼 NOW PLAYING 📼</h2>
+
+            <div class="welcome-box">
+                <div style="display:flex; justify-content:center;">
+                    <div id="tv-container" style="width:100%; max-width:960px; background:#000; border:3px solid #0F0; box-shadow:0 0 20px rgba(0,255,0,0.35); height:540px; display:flex; align-items:center; justify-content:center; color:#0F0; font-family:'Chakra Petch', monospace; font-size:18px; text-align:center;">
+                        <div>
+                            <div style="font-size:48px; margin-bottom:20px;">📡</div>
+                            <div>READY TO TUNE IN</div>
+                            <div style="font-size:14px; margin-top:10px; opacity:0.7;">Click TUNE IN to start broadcast</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blink-box" style="margin-top: 15px;">
+                    <p><strong>Status:</strong> <span id="tv-status">Loading playlist…</span></p>
+                    <p><strong>Source:</strong> <span id="tv-source">—</span></p>
+                </div>
+
+                <div class="featured-content" style="margin-top: 15px;">
+                    <div class="blink-box">
+                        <p>📡 <strong>LIVE BROADCAST STREAM</strong> 📡</p>
+                        <p>This is a true live stream - no user controls available.</p>
+                        <p>All viewers are perfectly synchronized to the same broadcast.</p>
+                        <p>Dexter's Laboratory airs every 30 minutes with commercial breaks.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const cacheBust = Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+        const script = document.createElement('script');
+        script.src = 'tv.js?t=' + cacheBust;
+        document.head.appendChild(script);
+    </script>
+</body>
+</html>

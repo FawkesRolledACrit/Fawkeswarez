@@ -28,7 +28,7 @@
             <button class="nav-btn" onclick="showSection('home')">🏠 HOME</button>
             <button class="nav-btn" onclick="showSection('games')">🎮 GAMES</button>
             <button class="nav-btn" onclick="showSection('progress')">📊 PROGRESS</button>
-            <button class="nav-btn" onclick="showSection('storage')">💾 STORAGE</button>
+            <button class="nav-btn" onclick="showSection('art-assets')">🎨 ART/ASSETS</button>
             <button class="nav-btn" onclick="showSection('about')">👨‍💻 ABOUT</button>
             <button class="nav-btn" onclick="window.location.href='tv/'">📺 TV</button>
         </div>
@@ -170,39 +170,54 @@
             </div>
         </section>
 
-        <!-- Storage Section -->
-        <section id="storage" class="content-section">
-            <h2 class="section-title">💾 CLOUD STORAGE 💾</h2>
-            <div class="storage-container">
-                <div class="drive-connector">
-                    <h3>MY GOOGLE DRIVES</h3>
-                    <div class="drive-links">
-                        <a href="https://drive.google.com/drive/folders/YOUR_PERSONAL_DRIVE_ID" target="_blank" class="y2k-button">📁 Personal Drive</a>
-                        <a href="https://drive.google.com/drive/folders/YOUR_WORK_DRIVE_ID" target="_blank" class="y2k-button">💼 Work Drive</a>
-                        <a href="https://drive.google.com/drive/folders/YOUR_PROJECTS_DRIVE_ID" target="_blank" class="y2k-button">🎮 Projects Drive</a>
-                    </div>
-                    <div id="drive-status" class="status-message">
-                        <span>Quick access to my Google Drives</span>
-                    </div>
+        <!-- Art/Assets Section -->
+        <section id="art-assets" class="content-section">
+            <h2 class="section-title">🎨 ART & ASSETS 🎨</h2>
+            
+            <!-- Main Art/Assets Navigation -->
+            <div class="art-nav-container">
+                <div class="art-nav-buttons">
+                    <button class="art-nav-btn" onclick="showArtSection('art-3d-renders')">🎨 ART & 3D RENDERS</button>
+                    <button class="art-nav-btn" onclick="showArtSection('3d-assets')">🧊 3D ASSETS</button>
                 </div>
+            </div>
+
+            <!-- Art & 3D Renders Sub-section -->
+            <div id="art-3d-renders" class="art-subsection">
+                <h3 class="subsection-title">ART & 3D RENDERS</h3>
                 
-                <div class="storage-info">
-                    <h3>📈 STORAGE OVERVIEW</h3>
-                    <div class="stats-grid">
-                        <div class="stat-item">
-                            <span class="stat-label">DRIVES LINKED</span>
-                            <span class="stat-value">3</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-label">ACCESS TYPE</span>
-                            <span class="stat-value">Direct Links</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-label">SECURITY</span>
-                            <span class="stat-value">Private Only</span>
+                <!-- Images/Videos Sub-menu -->
+                <div class="art-submenu">
+                    <button class="art-submenu-btn active" onclick="showArtContent('images')">📷 IMAGES</button>
+                    <button class="art-submenu-btn" onclick="showArtContent('videos')">🎬 VIDEOS</button>
+                </div>
+
+                <!-- Images Content -->
+                <div id="images-content" class="art-content active">
+                    <div class="images-grid" id="featured-images">
+                        <!-- Featured images will be loaded here -->
+                    </div>
+                    
+                    <button class="y2k-button archive-btn" onclick="toggleArchive()">📁 PROJECT ARCHIVE</button>
+                    
+                    <div id="project-archive" class="project-archive hidden">
+                        <h4>PROJECT ARCHIVE</h4>
+                        <div class="archive-gallery" id="archive-gallery">
+                            <!-- Archive images will be loaded here -->
                         </div>
                     </div>
                 </div>
+
+                <!-- Videos Content -->
+                <div id="videos-content" class="art-content">
+                    <p class="coming-soon">🎬 Videos section coming soon!</p>
+                </div>
+            </div>
+
+            <!-- 3D Assets Sub-section -->
+            <div id="3d-assets" class="art-subsection hidden">
+                <h3 class="subsection-title">3D ASSETS</h3>
+                <p class="coming-soon">🧊 3D Assets section coming soon!</p>
             </div>
         </section>
 
@@ -263,6 +278,17 @@
             <h2 id="modal-title">GAME DETAILS</h2>
             <div id="modal-body">
                 <!-- Game details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for image details -->
+    <div id="image-modal" class="modal">
+        <div class="modal-content image-modal-content">
+            <span class="close" onclick="closeImageModal()">&times;</span>
+            <h2 id="image-modal-title">IMAGE DETAILS</h2>
+            <div id="image-modal-body">
+                <!-- Image details will be loaded here -->
             </div>
         </div>
     </div>
