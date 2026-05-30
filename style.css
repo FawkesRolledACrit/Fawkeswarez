@@ -705,6 +705,41 @@ marquee {
     transform: scale(1.05);
 }
 
+/* VIDEOS GRID */
+.videos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.video-card {
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid #0F0;
+    padding: 15px;
+    transition: all 0.3s;
+}
+
+.video-card:hover {
+    border-color: #00FFFF;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+}
+
+.video-preview {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: #050505;
+}
+
+.video-preview video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
 .coming-soon {
     text-align: center;
     color: #0F0;

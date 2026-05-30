@@ -22,6 +22,36 @@ let dragStartY = 0;
 let imagePositionX = 0;
 let imagePositionY = 0;
 
+// Video data structure
+let videoData = {
+    featured: [
+        {
+            id: 'video-1',
+            url: 'https://i.imgur.com/cgaM2wB.mp4',
+            title: 'Video 1',
+            description: 'Description from markdown file'
+        },
+        {
+            id: 'video-2',
+            url: 'https://i.imgur.com/pKXdBoa.mp4',
+            title: 'Video 2',
+            description: 'Description from markdown file'
+        },
+        {
+            id: 'video-3',
+            url: 'https://i.imgur.com/8mOdjqn.mp4',
+            title: 'Video 3',
+            description: 'Description from markdown file'
+        },
+        {
+            id: 'video-4',
+            url: 'https://i.imgur.com/TK0sH5l.mp4',
+            title: 'Video 4',
+            description: 'Description from markdown file'
+        }
+    ]
+};
+
 // Drag functions (defined early to ensure they're available)
 function startDrag(e) {
     console.log('startDrag called, currentZoom:', currentZoom);
@@ -412,6 +442,7 @@ function initializeSection(sectionId) {
             // Show Art & 3D Renders by default
             showArtSection('art-3d-renders');
             loadImages();
+            loadVideos();
             break;
         case 'about':
             animateProfileCard();
@@ -722,6 +753,50 @@ function loadImages() {
     animateImageCards();
 }
 
+// Load videos into the grid
+function loadVideos() {
+    console.log('Loading videos...');
+    const videosContainer = document.getElementById('videos-container');
+
+    if (!videosContainer) {
+        console.error('Videos container not found');
+        return;
+    }
+
+    console.log('Video data:', videoData);
+    console.log('Featured videos count:', videoData.featured.length);
+
+    // Load featured videos
+    if (videoData.featured.length > 0) {
+        videosContainer.innerHTML = videoData.featured.map((video, index) => `
+            <div class="video-card">
+                <div class="video-preview">
+                    <video controls preload="metadata" style="width: 100%; border: 2px solid #0F0;">
+                        <source src="${video.url}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <button class="y2k-button" onclick="viewVideoDetails('${video.id}')">VIEW DETAILS</button>
+            </div>
+        `).join('');
+
+        // Add click handlers to videos for fullscreen
+        const videoElements = videosContainer.querySelectorAll('video');
+        videoElements.forEach((video, index) => {
+            video.addEventListener('click', () => {
+                const videoUrl = videoData.featured[index].url;
+                console.log('Video clicked, opening fullscreen for:', videoUrl);
+                openVideoFullscreen(videoUrl);
+            });
+        });
+    } else {
+        videosContainer.innerHTML = '<p style="text-align: center; color: #0F0;">No videos added yet.</p>';
+    }
+
+    // Animate video cards
+    animateVideoCards();
+}
+
 // View image details in modal
 function viewImageDetails(imageId) {
     console.log('viewImageDetails called with ID:', imageId);
@@ -780,6 +855,69 @@ function closeImageModal() {
     const modal = document.getElementById('image-modal');
     modal.style.display = 'none';
     playSound('close');
+}
+
+// View video details in modal
+function viewVideoDetails(videoId) {
+    const video = videoData.featured.find(vid => vid.id === videoId);
+    if (!video) return;
+
+    const modal = document.getElementById('image-modal');
+    const modalTitle = document.getElementById('image-modal-title');
+    const modalBody = document.getElementById('image-modal-body');
+
+    modalTitle.textContent = video.title;
+
+    modalBody.innerHTML = `
+        <div class="image-details">
+            <div class="image-detail-preview">
+                <video controls autoplay style="max-width: 100%; border: 2px solid #0F0;">
+                    <source src="${video.url}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="image-detail-info">
+                <h4>Description</h4>
+                <p>${video.description}</p>
+            </div>
+        </div>
+    `;
+
+    modal.style.display = 'block';
+    playSound('open');
+}
+
+// Open video fullscreen
+function openVideoFullscreen(videoUrl) {
+    const viewer = document.getElementById('fullscreen-viewer');
+    const fullscreenImage = document.getElementById('fullscreen-image');
+
+    if (!viewer || !fullscreenImage) {
+        console.error('Fullscreen viewer elements not found');
+        return;
+    }
+
+    // Replace image with video element
+    fullscreenImage.style.display = 'none';
+
+    // Create video element if it doesn't exist
+    let fullscreenVideo = document.getElementById('fullscreen-video');
+    if (!fullscreenVideo) {
+        fullscreenVideo = document.createElement('video');
+        fullscreenVideo.id = 'fullscreen-video';
+        fullscreenVideo.style.cssText = 'max-width: 90%; max-height: 90%; object-fit: contain;';
+        fullscreenImage.parentNode.insertBefore(fullscreenVideo, fullscreenImage);
+    }
+
+    fullscreenVideo.src = videoUrl;
+    fullscreenVideo.style.display = 'block';
+    fullscreenVideo.autoplay = true;
+    fullscreenVideo.controls = true;
+
+    viewer.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+
+    playSound('open');
 }
 
 // Toggle project archive
@@ -880,6 +1018,21 @@ function animateImageCards() {
     });
 }
 
+// Animate video cards
+function animateVideoCards() {
+    const cards = document.querySelectorAll('.video-card');
+    cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(50px)';
+
+        setTimeout(() => {
+            card.style.transition = 'all 0.5s';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        }, 200 + (index * 150));
+    });
+}
+
 // Fullscreen image viewer functions
 function openFullscreen(imageUrl) {
     console.log('Opening fullscreen for:', imageUrl);
@@ -926,6 +1079,7 @@ function openFullscreen(imageUrl) {
 function closeFullscreen() {
     const viewer = document.getElementById('fullscreen-viewer');
     const fullscreenImage = document.getElementById('fullscreen-image');
+    const fullscreenVideo = document.getElementById('fullscreen-video');
 
     viewer.classList.add('hidden');
     document.body.style.overflow = '';
@@ -935,8 +1089,16 @@ function closeFullscreen() {
     imagePositionY = 0;
     isDragging = false;
 
-    // Remove drag event listeners
+    // Stop video if playing
+    if (fullscreenVideo) {
+        fullscreenVideo.pause();
+        fullscreenVideo.style.display = 'none';
+    }
+
+    // Show image again
     if (fullscreenImage) {
+        fullscreenImage.style.display = 'block';
+        // Remove drag event listeners
         fullscreenImage.removeEventListener('mousedown', startDrag);
         fullscreenImage.removeEventListener('mousemove', drag);
         fullscreenImage.removeEventListener('mouseup', endDrag);

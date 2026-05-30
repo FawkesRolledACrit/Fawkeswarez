@@ -94,6 +94,54 @@ Each image entry should follow this format:
 
 ---
 
+### video-1
+
+**Title:** Video 1
+
+**Description:** Description from markdown file
+
+**Date:** [Date]
+
+**Tools:** [Tools]
+
+---
+
+### video-2
+
+**Title:** Video 2
+
+**Description:** Description from markdown file
+
+**Date:** [Date]
+
+**Tools:** [Tools]
+
+---
+
+### video-3
+
+**Title:** Video 3
+
+**Description:** Description from markdown file
+
+**Date:** [Date]
+
+**Tools:** [Tools]
+
+---
+
+### video-4
+
+**Title:** Video 4
+
+**Description:** Description from markdown file
+
+**Date:** [Date]
+
+**Tools:** [Tools]
+
+---
+
 ## Instructions
 
 1. Add your image entries above following the format
