@@ -20,61 +20,61 @@ let imageData = {
     featured: [
         {
             id: 'image-1',
-            url: 'https://drive.google.com/uc?export=view&id=10waoqTifpzrNyo2LJtEPFI8ZjXS7VwEU',
+            url: 'https://i.imgur.com/hTtyNXU.jpg',
             title: 'Image 1',
             description: 'Description from markdown file'
         },
         {
             id: 'image-2',
-            url: 'https://drive.google.com/uc?export=view&id=16mH5ObthiL4lzBbizueJ17imk980Wr6O',
+            url: 'https://i.imgur.com/J21eU5I.jpg',
             title: 'Image 2',
             description: 'Description from markdown file'
         },
         {
             id: 'image-3',
-            url: 'https://drive.google.com/uc?export=view&id=1AzpLBTwR0KP3OtN-1CUcb1O3iHDXrQsd',
+            url: 'https://i.imgur.com/EcrpLsW.jpg',
             title: 'Image 3',
             description: 'Description from markdown file'
         },
         {
             id: 'image-4',
-            url: 'https://drive.google.com/uc?export=view&id=1BMr0G7uVoQPF82IKDAq4nP5lOgrex7Xp',
+            url: 'https://i.imgur.com/0GMZ8sq.jpg',
             title: 'Image 4',
             description: 'Description from markdown file'
         },
         {
             id: 'image-5',
-            url: 'https://drive.google.com/uc?export=view&id=1Du2ptqrnrOax0M-QvmV6lhhWRstfa-az',
+            url: 'https://i.imgur.com/2yBeGBZ.jpg',
             title: 'Image 5',
             description: 'Description from markdown file'
         },
         {
             id: 'image-6',
-            url: 'https://drive.google.com/uc?export=view&id=1WHoRWHYxtkuw1a2kxo4sh1tE1dn6n-c1',
+            url: 'https://i.imgur.com/GW319Yg.jpg',
             title: 'Image 6',
             description: 'Description from markdown file'
         },
         {
             id: 'image-7',
-            url: 'https://drive.google.com/uc?export=view&id=1X1tJCcJNmHcefTPNAmmK8z88_PF1uktn',
+            url: 'https://i.imgur.com/FZ6ZLVj.jpg',
             title: 'Image 7',
             description: 'Description from markdown file'
         },
         {
             id: 'image-8',
-            url: 'https://drive.google.com/uc?export=view&id=1YJvXDq8HeK40sVHt6p5XE8A2p3nkFcRg',
+            url: 'https://i.imgur.com/L4VHgxG.jpg',
             title: 'Image 8',
             description: 'Description from markdown file'
         },
         {
             id: 'image-9',
-            url: 'https://drive.google.com/uc?export=view&id=1o9ZLimMW5jG3KCFxsBUZINoVKadJRbGd',
+            url: 'https://i.imgur.com/2XhvqdR.jpg',
             title: 'Image 9',
             description: 'Description from markdown file'
         },
         {
             id: 'image-10',
-            url: 'https://drive.google.com/uc?export=view&id=1sS3BgJiKkwP9h56catIK3Rz7wj00lJJU',
+            url: 'https://i.imgur.com/kr0Vyeo.jpg',
             title: 'Image 10',
             description: 'Description from markdown file'
         }
@@ -83,7 +83,7 @@ let imageData = {
         // Add your archive images here
         // Example:
         // {
-        //     url: 'https://i.ibb.co/your-image-url.jpg'
+        //     url: 'https://i.imgur.com/your-image.jpg'
         // }
     ]
 };
