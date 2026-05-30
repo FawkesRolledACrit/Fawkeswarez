@@ -823,9 +823,6 @@ function openFullscreen(imageUrl) {
     const viewer = document.getElementById('fullscreen-viewer');
     const fullscreenImage = document.getElementById('fullscreen-image');
 
-    console.log('Viewer element:', viewer);
-    console.log('Fullscreen image element:', fullscreenImage);
-
     if (!viewer || !fullscreenImage) {
         console.error('Fullscreen viewer elements not found');
         return;
@@ -842,17 +839,11 @@ function openFullscreen(imageUrl) {
     viewer.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
 
-    console.log('About to call setupDragListeners');
-    // Add drag event listeners
-    setupDragListeners(fullscreenImage);
-
     playSound('open');
 }
 
 function closeFullscreen() {
     const viewer = document.getElementById('fullscreen-viewer');
-    const fullscreenImage = document.getElementById('fullscreen-image');
-
     viewer.classList.add('hidden');
     document.body.style.overflow = '';
 
@@ -860,9 +851,6 @@ function closeFullscreen() {
     imagePositionX = 0;
     imagePositionY = 0;
     isDragging = false;
-
-    // Remove drag event listeners
-    removeDragListeners(fullscreenImage);
 
     playSound('close');
 }
@@ -904,41 +892,6 @@ function updateImageTransform() {
 }
 
 // Drag functionality for fullscreen image
-function setupDragListeners(image) {
-    if (!image) {
-        console.error('setupDragListeners: image element not found');
-        return;
-    }
-
-    console.log('Setting up drag listeners on fullscreen image');
-
-    // Mouse events
-    image.addEventListener('mousedown', startDrag);
-    image.addEventListener('mousemove', drag);
-    image.addEventListener('mouseup', endDrag);
-    image.addEventListener('mouseleave', endDrag);
-
-    // Touch events
-    image.addEventListener('touchstart', startDragTouch);
-    image.addEventListener('touchmove', dragTouch);
-    image.addEventListener('touchend', endDrag);
-
-    console.log('Drag listeners attached successfully');
-}
-
-function removeDragListeners(image) {
-    if (!image) return;
-
-    image.removeEventListener('mousedown', startDrag);
-    image.removeEventListener('mousemove', drag);
-    image.removeEventListener('mouseup', endDrag);
-    image.removeEventListener('mouseleave', endDrag);
-
-    image.removeEventListener('touchstart', startDragTouch);
-    image.removeEventListener('touchmove', dragTouch);
-    image.removeEventListener('touchend', endDrag);
-}
-
 function startDrag(e) {
     console.log('startDrag called, currentZoom:', currentZoom);
     if (currentZoom <= 1) {
@@ -964,24 +917,6 @@ function drag(e) {
 function endDrag() {
     console.log('Drag ended');
     isDragging = false;
-}
-
-function startDragTouch(e) {
-    if (currentZoom <= 1) return;
-    isDragging = true;
-    const touch = e.touches[0];
-    dragStartX = touch.clientX - imagePositionX;
-    dragStartY = touch.clientY - imagePositionY;
-    e.preventDefault();
-}
-
-function dragTouch(e) {
-    if (!isDragging) return;
-    e.preventDefault();
-    const touch = e.touches[0];
-    imagePositionX = touch.clientX - dragStartX;
-    imagePositionY = touch.clientY - dragStartY;
-    updateImageTransform();
 }
 
 // Keyboard controls for fullscreen viewer
