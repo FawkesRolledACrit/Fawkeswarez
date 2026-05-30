@@ -49,12 +49,76 @@ class LiveStreamPlayer {
         this.desiredMuted = true;
         this.loadSeq = 0;
 
+        this.recentAdUrls = [];
+        this.RECENT_AD_MEMORY = 30;
+
         this.weeklyLineup = null;
         this.weeklySlotsByDay = null;
 
-        this.recentAdUrls = [];
-        this.RECENT_AD_MEMORY = 30;
-        
+        this.SPECIAL_PROGRAMS = new Set([
+            'Paid Programming',
+            'Boondocks Marathon',
+            'Nostalgia Night',
+            'Nostalgia Night Preshow'
+        ]);
+
+        this.BLOCK_POOLS = {
+            'MORNING MAYHEM': new Set([
+                "Dexter's Laboratory",
+                'The Powerpuff Girls',
+                'Ed, Edd n Eddy',
+                'Johnny Bravo',
+                'Courage the Cowardly Dog',
+                'Tom and Jerry'
+            ]),
+            'CARTOON CARTOONS': new Set([
+                'Sheep in the Big City',
+                'Billy & Mandy',
+                "Foster's Home",
+                "Dexter's Laboratory",
+                'The Powerpuff Girls',
+                'Ed, Edd n Eddy',
+                'Johnny Bravo',
+                'Courage the Cowardly Dog',
+                'Cow & Chicken',
+                'I Am Weasel'
+            ]),
+            'MIDDAY MADNESS': new Set([
+                "Dexter's Laboratory",
+                'The Powerpuff Girls',
+                'Ed, Edd n Eddy',
+                'Johnny Bravo',
+                'Courage the Cowardly Dog',
+                'Teen Titans',
+                'Dragon Ball Z',
+                'Samurai Jack'
+            ]),
+            'AFTERNOON ACTION': new Set([
+                'Teen Titans',
+                'Dragon Ball Z',
+                'Samurai Jack',
+                'Ben 10',
+                'Codename: Kids Next Door'
+            ]),
+            'PRIME TIME POWER': new Set([
+                'Teen Titans',
+                'Dragon Ball Z',
+                'Samurai Jack',
+                'Justice League',
+                'Avatar: The Last Airbender'
+            ]),
+            'ADULT SWIM': new Set([
+                'Aqua Teen Hunger Force',
+                'Space Ghost Coast to Coast',
+                'Sealab 2021',
+                'Home Movies',
+                'The Venture Bros',
+                'Harvey Birdman, Attorney at Law',
+                'Tom Goes to the Mayor',
+                'Brak Show'
+            ])
+        };
+
         // Schedule constants
         this.BLOCK_DURATION = 30 * 60 * 1000; // 30 minutes
         
@@ -114,9 +178,7 @@ class LiveStreamPlayer {
         const [adsResponse, scheduleResponse, weeklyResponse] = await Promise.all([
             fetch('./ads.json', { cache: 'no-store' }),
             fetch('./schedule.json', { cache: 'no-store' }),
-            fetch('./weekly-lineup-v2.json', { cache: 'no-store' })
-                .catch(() => fetch('./weekly-lineup.json', { cache: 'no-store' }))
-                .catch(() => null)
+            fetch('./weekly-lineup.json', { cache: 'no-store' }).catch(() => null)
         ]);
         
         if (!adsResponse.ok || !scheduleResponse.ok) {
@@ -143,6 +205,50 @@ class LiveStreamPlayer {
         if (hh === 12) hh = 0;
         if (ampm === 'PM') hh += 12;
         return hh * 60 + mm;
+    }
+
+    getBlockNameForMinutes(totalMinutes) {
+        const m = Number.isFinite(totalMinutes) ? totalMinutes : 0;
+        const hour = Math.floor(m / 60);
+        return this.getBlockName(hour);
+    }
+
+    getCanonicalBlockKeyForSlot(weeklySlot) {
+        if (!weeklySlot) return null;
+        if (weeklySlot.program === 'Cartoon Cartoons') return 'CARTOON CARTOONS';
+        return this.getBlockNameForMinutes(weeklySlot.startMin);
+    }
+
+    seededPickFromSet(set, seed) {
+        const arr = Array.from(set || []);
+        if (!arr.length) return null;
+        const rng = this.seededRandom(seed);
+        const idx = Math.floor(rng() * arr.length);
+        return arr[Math.max(0, Math.min(arr.length - 1, idx))];
+    }
+
+    normalizeProgramForSlot(weeklySlot) {
+        const program = weeklySlot?.program;
+        if (!program) return null;
+        if (this.SPECIAL_PROGRAMS.has(program)) return program;
+
+        const blockKey = this.getCanonicalBlockKeyForSlot(weeklySlot);
+        if (!blockKey) return program;
+
+        const pool = this.BLOCK_POOLS[blockKey];
+        if (!pool || !pool.size) return program;
+
+        if (blockKey === 'CARTOON CARTOONS') {
+            if (program === 'Cartoon Cartoons' || pool.has(program)) return program;
+        } else {
+            if (pool.has(program)) return program;
+        }
+
+        const daySeed = (weeklySlot?.day ? this.getDayIndexFromName(weeklySlot.day) : 0);
+        const seed = (daySeed + 1) * 100000 + (weeklySlot.startMin || 0);
+        const picked = this.seededPickFromSet(pool, seed);
+        console.warn('Program out of pool for block; substituting from pool:', { blockKey, authored: program, picked, weeklySlot });
+        return picked || program;
     }
 
     getDayName(dateObj) {
@@ -207,43 +313,16 @@ class LiveStreamPlayer {
         if (!this.weeklySlotsByDay || !dayName) return [];
         const slots = this.weeklySlotsByDay[dayName] || [];
         return slots
-            .filter(s => s.program === program)
+            .filter(s => s?.program === program)
             .map(s => s.startMin)
             .sort((a, b) => a - b);
-    }
-
-    getRerunMappedIndexForDay(starts, startMin) {
-        if (!Array.isArray(starts) || starts.length <= 1) return null;
-        const i = starts.indexOf(startMin);
-        if (i < 0) return null;
-
-        // If the program airs in two clusters far apart in the same day (original + rerun),
-        // map the later cluster back onto the earlier cluster so reruns don't advance.
-        const span = starts[starts.length - 1] - starts[0];
-        if (span < 180) return i;
-
-        if (starts.length % 2 !== 0) return i;
-        const half = starts.length / 2;
-        return i >= half ? (i - half) : i;
-    }
-
-    getEffectiveProgramOccurrencesForDay(program, dayName) {
-        const starts = this.getProgramOccurrencesForDay(program, dayName);
-        if (!starts.length) return 0;
-
-        const span = starts[starts.length - 1] - starts[0];
-        if (span >= 180 && starts.length % 2 === 0) {
-            return starts.length / 2;
-        }
-
-        return starts.length;
     }
 
     getProgramWeeklyCount(program) {
         if (!this.weeklySlotsByDay || !program) return 0;
         let total = 0;
         for (const dayName of Object.keys(this.weeklySlotsByDay)) {
-            total += this.getEffectiveProgramOccurrencesForDay(program, dayName);
+            total += this.getProgramOccurrencesForDay(program, dayName).length;
         }
         return total;
     }
@@ -278,20 +357,14 @@ class LiveStreamPlayer {
         for (let i = 0; i < remDays; i++) {
             const d = new Date(scheduleDayStart.getTime() + ((wholeWeeks * 7 + i) * MS_PER_DAY));
             const dayName = this.getDayName(d);
-            total += this.getEffectiveProgramOccurrencesForDay(program, dayName);
+            total += this.getProgramOccurrencesForDay(program, dayName).length;
         }
 
         // Current day: count occurrences strictly before this slot start.
         const currentDayName = this.getDayName(slotStart);
         const starts = this.getProgramOccurrencesForDay(program, currentDayName);
-
-        const mappedIdx = this.getRerunMappedIndexForDay(starts, weeklySlot.startMin);
-        if (typeof mappedIdx === 'number') {
-            total += Math.max(0, mappedIdx);
-        } else {
-            for (const sMin of starts) {
-                if (sMin < weeklySlot.startMin) total += 1;
-            }
+        for (const sMin of starts) {
+            if (sMin < weeklySlot.startMin) total += 1;
         }
 
         return total;
@@ -314,11 +387,11 @@ class LiveStreamPlayer {
         // Find the slot where mins is within [start,end)
         for (const s of slots) {
             if (mins >= s.startMin && mins < s.endMin) {
-                return { ...s, dayName, mins, time: this.minutesToTime(s.startMin) };
+                return { ...s, day: dayName };
             }
         }
         const slotStartMin = Math.floor(mins / 30) * 30;
-        return { program: null, startMin: slotStartMin, endMin: slotStartMin + 30, dayName, mins, time: this.minutesToTime(slotStartMin) };
+        return { program: null, startMin: slotStartMin, endMin: slotStartMin + 30, day: dayName, mins, time: this.minutesToTime(slotStartMin) };
     }
 
     goOffAir(title) {
@@ -366,8 +439,7 @@ class LiveStreamPlayer {
         if (this.lineupBtn) {
             this.lineupBtn.addEventListener('click', () => {
                 console.log('Lineup button clicked!');
-                const cacheBust = Date.now() + '_' + Math.random().toString(36).substr(2, 9);
-                window.location.href = './guide-v4.html?t=' + cacheBust;
+                window.location.href = './guide.html';
             });
             console.log('Lineup button listener added');
         }
@@ -749,21 +821,30 @@ class LiveStreamPlayer {
             return { currentUrl: null, currentTime: 0, currentTitle: 'No Schedule' };
         }
 
-        // Weekly lineup determines what show is on NOW.
+        // Weekly lineup mode: determine what show is supposed to be on NOW.
         const weeklySlot = this.getWeeklySlotForNow();
-        const program = weeklySlot?.program;
+        const program = this.normalizeProgramForSlot(weeklySlot);
 
         if (!program) {
             return { currentUrl: null, currentTime: 0, currentTitle: 'OFF AIR', queue: [] };
         }
 
+        // Check if this program has videos available in schedule.json
+        const programSearchTerms = this.getProgramSearchTerms(program);
+        const hasProgramVideos = this.schedule.blocks.some(block => 
+            programSearchTerms.some(term => block.title.toLowerCase().includes(term.toLowerCase()))
+        );
+        
+        if (!hasProgramVideos) {
+            return { currentUrl: null, currentTime: 0, currentTitle: `${program} (No Video Yet)`, queue: [] };
+        }
+
         const slotStartMs = this.getSlotStartMsForNow(weeklySlot);
-        const blockElapsedMs = this.nowMs() - slotStartMs;
+        const blockElapsed = this.nowMs() - slotStartMs;
 
-        const queue = this.buildQueue(weeklySlot, slotStartMs);
-        const position = this.getQueuePosition(blockElapsedMs, queue);
+        const queue = this.buildQueue(weeklySlot);
+        const position = this.getQueuePosition(blockElapsed, queue);
         const currentItem = queue[position.index] || null;
-
         return {
             currentUrl: currentItem?.url || null,
             currentTime: position.time,
@@ -772,33 +853,142 @@ class LiveStreamPlayer {
             queue
         };
     }
-
-    buildQueue(weeklySlot, slotStartMs) {
+    
+    buildQueue(weeklySlotOverride) {
         const queue = [];
-
         const blocks = this.schedule?.blocks || [];
         if (!blocks.length) return queue;
 
-        const program = weeklySlot?.program;
+        // Get current program from weekly lineup
+        const weeklySlot = weeklySlotOverride || this.getWeeklySlotForNow();
+        const program = this.normalizeProgramForSlot(weeklySlot);
         if (!program) return queue;
 
+        // Handle special block types first
+        if (program === 'Paid Programming') {
+            const paidBlocks = blocks.filter(block => block.blockType === 'paid');
+            if (paidBlocks.length > 0) {
+                const block = paidBlocks[0];
+                for (const event of block.events) {
+                    if (event.type === 'segment') {
+                        queue.push({
+                            type: 'segment',
+                            url: event.url,
+                            title: 'Paid Programming',
+                            duration: event.durationSeconds || 10800
+                        });
+                    }
+                }
+                return queue;
+            }
+        }
+
+        if (program === 'Boondocks Marathon') {
+            const marathonBlocks = blocks.filter(block => block.blockType === 'marathon');
+            if (marathonBlocks.length > 0) {
+                const block = marathonBlocks[0];
+                for (const event of block.events) {
+                    if (event.type === 'segment') {
+                        queue.push({
+                            type: 'segment',
+                            url: event.url,
+                            title: event.title,
+                            duration: event.durationSeconds || 1320
+                        });
+                    } else if (event.type === 'adbreak' && event.targetSeconds === 'auto') {
+                        // Only allow auto ads at the very end of marathon
+                        continue;
+                    }
+                }
+                return queue;
+            }
+        }
+
+        if (program === 'Nostalgia Night') {
+            const movieBlocks = blocks.filter(block => block.blockType === 'movie');
+            if (movieBlocks.length > 0) {
+                // Rotate through movies for different occurrences
+                const slotStartMs = this.getSlotStartMsForNow(weeklySlot);
+                const startMs = Date.parse(this.schedule.startDate + 'T00:00:00');
+                const occ = this.getProgramOccurrenceIndex(program, weeklySlot, slotStartMs, startMs);
+                const movieIndex = occ % movieBlocks.length;
+                const block = movieBlocks[movieIndex];
+                
+                for (const event of block.events) {
+                    if (event.type === 'segment') {
+                        queue.push({
+                            type: 'segment',
+                            url: event.url,
+                            title: event.title,
+                            duration: event.durationSeconds || 7200
+                        });
+                    } else if (event.type === 'adbreak') {
+                        const ads = this.fillAdBreak(
+                            event.targetSeconds === 'auto' ? 180 : event.targetSeconds,
+                            event.toleranceSeconds || 3,
+                            Math.floor(slotStartMs / 1000) + queue.length
+                        );
+                        queue.push(...ads);
+                    }
+                }
+                return queue;
+            }
+        }
+
+        // Filter blocks to only include episodes for regular shows
         const programSearchTerms = this.getProgramSearchTerms(program);
         const programBlocks = blocks.filter(block => {
-            const blockTitle = String(block.title || '').toLowerCase();
-            return !block.blockType && programSearchTerms.some(term => blockTitle.includes(String(term).toLowerCase()));
+            const blockTitle = block.title.toLowerCase();
+            return !block.blockType && programSearchTerms.some(term => blockTitle.includes(term.toLowerCase()));
         });
 
         if (!programBlocks.length) return queue;
 
-        // Episode progression based on how many times the program appears in weekly lineup since schedule start.
-        const startDate = this.schedule?.startDate;
-        const scheduleStartMs = startDate ? Date.parse(String(startDate) + 'T00:00:00') : NaN;
-        const occ = this.getProgramOccurrenceIndex(program, weeklySlot, slotStartMs, scheduleStartMs);
-        const episodeIndex = ((occ % programBlocks.length) + programBlocks.length) % programBlocks.length;
-        const block = programBlocks[episodeIndex];
+        // Chronological progression: schedule.startDate at 00:00 maps to blocks[0].
+        // Then each time the program appears in the weekly lineup, advance by 1 episode.
+        if (this.schedule?.startDate) {
+            const startMs = Date.parse(this.schedule.startDate + 'T00:00:00');
+            if (!Number.isNaN(startMs)) {
+                const slotStartMs = this.getSlotStartMsForNow(weeklySlot);
+                const occ = this.getProgramOccurrenceIndex(program, weeklySlot, slotStartMs, startMs);
+                const episodeIndex = ((occ % programBlocks.length) + programBlocks.length) % programBlocks.length;
+                const block = programBlocks[episodeIndex];
 
+                let usedTime = 0;
+                for (const event of block.events) {
+                    if (event.type === 'segment') {
+                        queue.push({
+                            type: 'segment',
+                            url: event.url,
+                            title: event.title,
+                            duration: event.durationSeconds || 600
+                        });
+                        usedTime += event.durationSeconds || 600;
+                    } else if (event.type === 'adbreak') {
+                        const remaining = block.slotSeconds - usedTime;
+                        if (event.targetSeconds === 'auto' && remaining <= 0) {
+                            continue;
+                        }
+                        const ads = this.fillAdBreak(
+                            event.targetSeconds === 'auto'
+                                ? remaining
+                                : event.targetSeconds,
+                            event.toleranceSeconds || 3,
+                            Math.floor(slotStartMs / 1000) + queue.length
+                        );
+                        queue.push(...ads);
+                        usedTime += ads.reduce((sum, ad) => sum + ad.duration, 0);
+                    }
+                }
+
+                return queue;
+            }
+        }
+
+        // Fallback if startDate is missing/unparseable.
+        const block = programBlocks[0];
         let usedTime = 0;
-        for (const event of block.events || []) {
+        for (const event of block.events) {
             if (event.type === 'segment') {
                 queue.push({
                     type: 'segment',
@@ -808,25 +998,21 @@ class LiveStreamPlayer {
                 });
                 usedTime += event.durationSeconds || 600;
             } else if (event.type === 'adbreak') {
-                const remaining = (block.slotSeconds || 0) - usedTime;
+                const remaining = block.slotSeconds - usedTime;
                 if (event.targetSeconds === 'auto' && remaining <= 0) {
                     continue;
                 }
-                const targetSeconds = event.targetSeconds === 'auto'
-                    ? remaining
-                    : event.targetSeconds;
-
-                const seedBase = Math.floor((slotStartMs || this.nowMs()) / 1000);
                 const ads = this.fillAdBreak(
-                    targetSeconds,
+                    event.targetSeconds === 'auto'
+                        ? remaining
+                        : event.targetSeconds,
                     event.toleranceSeconds || 3,
-                    seedBase + queue.length
+                    Math.floor(this.nowMs() / 1000) + queue.length
                 );
                 queue.push(...ads);
                 usedTime += ads.reduce((sum, ad) => sum + ad.duration, 0);
             }
         }
-
         return queue;
     }
     
@@ -842,8 +1028,8 @@ class LiveStreamPlayer {
         const rng = this.seededRandom(seed);
 
         const recentSet = new Set(this.recentAdUrls);
-        const fresh = validAds.filter(ad => ad?.url && !recentSet.has(ad.url));
-        const stale = validAds.filter(ad => ad?.url && recentSet.has(ad.url));
+        const fresh = validAds.filter(ad => !recentSet.has(ad.url));
+        const stale = validAds.filter(ad => recentSet.has(ad.url));
 
         const shuffleWithSeed = (arr) => {
             const withScore = arr.map(ad => ({ ad, score: rng() }));
@@ -870,6 +1056,7 @@ class LiveStreamPlayer {
             }
         }
 
+        // Remember the ads we just used to encourage variety across breaks.
         if (selected.length) {
             this.recentAdUrls.push(...selected.map(x => x.url));
             if (this.recentAdUrls.length > this.RECENT_AD_MEMORY) {
@@ -889,9 +1076,6 @@ class LiveStreamPlayer {
     }
     
     getQueuePosition(elapsedMs, queue) {
-        if (!queue?.length) {
-            return { index: 0, time: 0 };
-        }
         let accumulated = 0;
         
         for (let i = 0; i < queue.length; i++) {
@@ -926,17 +1110,33 @@ class LiveStreamPlayer {
     getCurrentBlockInfo() {
         const weeklySlot = this.getWeeklySlotForNow();
         if (!weeklySlot) return null;
-
-        const nowMs = this.nowMs();
-        const blockName = this.getBlockName(new Date(nowMs).getHours());
-        const slotStartMs = this.getSlotStartMsForNow(weeklySlot);
-        const slotElapsedSeconds = Math.max(0, (nowMs - slotStartMs) / 1000);
-
+        
+        const canonicalBlock = this.getCanonicalBlockKeyForSlot(weeklySlot);
+        const blockName = canonicalBlock === 'CARTOON CARTOONS' ? 'CARTOON CARTOONS' : this.getBlockNameForMinutes(weeklySlot.startMin);
+        
+        // Get episode information for shows that have it
+        const program = this.normalizeProgramForSlot(weeklySlot);
+        if (["Dexter's Laboratory", "The Powerpuff Girls", "Ed, Edd n Eddy", "Space Ghost Coast to Coast", "Aqua Teen Hunger Force"].includes(program)) {
+            const now = new Date();
+            const timeStr = weeklySlot.time;
+            const episodeData = this.getEpisodeForDate(now, timeStr, program);
+            
+            const season = (episodeData?.season ?? 1);
+            const episode = (episodeData?.episode ?? 1);
+            const episodeText = `S${season.toString().padStart(2, '0')}E${episode.toString().padStart(2, '0')}`;
+            
+            return {
+                time: timeStr,
+                episode: episodeText,
+                program: program,
+                blockName: blockName
+            };
+        }
+        
         return {
             time: weeklySlot.time,
-            program: weeklySlot.program,
-            blockName,
-            slotElapsedSeconds
+            program: program,
+            blockName: blockName
         };
     }
     
@@ -1031,7 +1231,6 @@ class LiveStreamPlayer {
             "Ed, Edd n Eddy": ["ed", "ed, edd n eddy", "ed edd n eddy"],
             "Johnny Bravo": ["johnny", "johnny bravo"],
             "Courage the Cowardly Dog": ["courage", "courage the cowardly dog"],
-            "Foster's Home": ["foster", "foster's home", "fosters home"],
             "Cow and Chicken": ["cow", "cow and chicken"],
             "I Am Weasel": ["weasel", "i am weasel"],
             "Tom and Jerry": ["tom", "tom and jerry"],
@@ -1041,47 +1240,46 @@ class LiveStreamPlayer {
             "Brak Show": ["brak", "brak show"],
             "Home Movies": ["home", "home movies"],
             "Aqua Teen Hunger Force": ["aqua", "aqua teen", "athf"],
-            "Sealab 2021": ["sealab", "sealab 2021"],
-            "Space Ghost Coast to Coast": ["space ghost", "space ghost coast to coast", "sgc2c"],
-            "Boondocks Marathon": ["boondocks", "the boondocks", "boondocks marathon"],
-            "King of the Hill": ["king", "king of the hill", "koth"],
-            "Family Guy": ["family", "family guy", "fg"],
-            "12 Oz. Mouse": ["12 oz", "12 oz mouse", "oz mouse"],
-            "Codename: Kids Next Door": ["codename", "kids next door", "knd", "codename kids next door"],
-            "Cowboy Bebop": ["cowboy", "cowboy bebop", "bebop"],
-            "Movie Night": ["movie night"],
-            "Movie Preshow": ["movie preshow"],
-            "TBD": ["tbd"],
-            "Weekend Boon": ["weekend boon"]
+            "Sealab 2021": ["sealab", "sealab 2021"]
         };
         
         return searchTerms[program] || [program.toLowerCase()];
     }
     
     getNextUp() {
-        const weeklySlot = this.getWeeklySlotForNow();
-        if (!weeklySlot || !this.weeklySlotsByDay) return 'TBD';
-
+        // Get the next show in the schedule using the actual weekly slot boundaries.
         const now = new Date(this.nowMs());
-        const dayName = this.getDayName(now);
-        const slots = this.weeklySlotsByDay[dayName] || [];
-        if (!slots.length) return 'TBD';
+        const currentDayName = this.getDayName(now);
+        const nowMin = now.getHours() * 60 + now.getMinutes();
 
-        const idx = slots.findIndex(s => s.startMin === weeklySlot.startMin && s.endMin === weeklySlot.endMin && s.program === weeklySlot.program);
-        let next = null;
+        const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+        const startDayIdx = days.indexOf(currentDayName);
+        if (!this.weeklySlotsByDay || startDayIdx < 0) return 'TBD';
 
-        if (idx >= 0 && idx + 1 < slots.length) {
-            next = slots[idx + 1];
-        } else {
-            const tomorrow = new Date(now);
-            tomorrow.setDate(now.getDate() + 1);
-            const nextDayName = this.getDayName(tomorrow);
-            const nextDaySlots = this.weeklySlotsByDay[nextDayName] || [];
-            next = nextDaySlots[0] || null;
+        for (let dayOffset = 0; dayOffset < 7; dayOffset++) {
+            const dayIdx = (startDayIdx + dayOffset) % 7;
+            const dayName = days[dayIdx];
+            const slots = (this.weeklySlotsByDay[dayName] || []).slice().sort((a, b) => a.startMin - b.startMin);
+            if (!slots.length) continue;
+
+            const candidate = dayOffset === 0
+                ? slots.find(s => s.startMin > nowMin)
+                : slots[0];
+
+            if (!candidate) continue;
+
+            const normalized = this.normalizeProgramForSlot({ ...candidate, day: dayName });
+            let nextUpText = `${candidate.time} - ${normalized || candidate.program}`;
+
+            if (["Dexter's Laboratory", "The Powerpuff Girls", "Ed, Edd n Eddy", "Space Ghost Coast to Coast", "Aqua Teen Hunger Force"].includes(normalized)) {
+                const episodeData = this.getEpisodeForDate(now, candidate.time, normalized);
+                nextUpText += ` (S${episodeData.season.toString().padStart(2, '0')}E${episodeData.episode.toString().padStart(2, '0')})`;
+            }
+
+            return nextUpText;
         }
 
-        if (!next) return 'TBD';
-        return `${next.time} - ${next.program}`;
+        return 'TBD';
     }
     
     startSyncInterval() {
@@ -1098,10 +1296,8 @@ class LiveStreamPlayer {
         const expectedTime = currentTime;
         const actualTime = this.video.currentTime;
 
-        // Display schedule time as "time into current weekly slot"
-        const weeklySlot = this.getWeeklySlotForNow();
-        const slotStartMs = weeklySlot ? this.getSlotStartMsForNow(weeklySlot) : this.nowMs();
-        const blockElapsedSeconds = Math.max(0, (this.nowMs() - slotStartMs) / 1000);
+        // Display schedule time as "time into current 30-min block" (stable / monotonic)
+        const blockElapsedSeconds = (this.nowMs() % this.BLOCK_DURATION) / 1000;
 
         // OFF AIR / no content assigned
         if (!currentUrl) {
@@ -1164,6 +1360,9 @@ class LiveStreamPlayer {
         // Update status with more context
         if (drift <= 2) {
             let statusText = `🔴 LIVE: ${currentTitle}`;
+            if (currentBlock?.episode) {
+                statusText += ` • ${currentBlock.episode}`;
+            }
             this.updateStatus(statusText);
         }
     }
@@ -1175,7 +1374,7 @@ class LiveStreamPlayer {
             this.updateStatusDisplay();
         }, 2000);
     }
-
+    
     toggleMute() {
         // Allow toggling label before tune-in (preference), but apply only when video exists.
         this.desiredMuted = !this.desiredMuted;
@@ -1183,11 +1382,9 @@ class LiveStreamPlayer {
             this.video.muted = !!this.desiredMuted;
             this.video.volume = 1;
         }
-        if (this.muteBtn) {
-            this.muteBtn.textContent = this.desiredMuted ? '🔊 UNMUTE' : '🔇 MUTE';
-        }
+        this.muteBtn.textContent = this.desiredMuted ? '🔊 UNMUTE' : '🔇 MUTE';
     }
-
+    
     updateStatus(text) {
         if (this.statusText) {
             this.statusText.textContent = text;
@@ -1195,7 +1392,7 @@ class LiveStreamPlayer {
             console.log('Status text element not found:', text);
         }
     }
-
+    
     formatTime(seconds) {
         if (!Number.isFinite(seconds)) return '--:--';
         const s = Math.max(0, Math.floor(seconds));
@@ -1203,31 +1400,35 @@ class LiveStreamPlayer {
         const r = s % 60;
         return `${m}:${String(r).padStart(2, '0')}`;
     }
-
+    
     getStreamUptime() {
         if (!this.hasTunedIn) return '0:00';
-
+        
         const uptimeMs = this.nowMs() - this.tuneInTime;
         const uptimeSeconds = Math.floor(uptimeMs / 1000);
         const hours = Math.floor(uptimeSeconds / 3600);
         const minutes = Math.floor((uptimeSeconds % 3600) / 60);
-
+        
         if (hours > 0) {
             return `${hours}:${String(minutes).padStart(2, '0')}`;
+        } else {
+            return `0:${String(minutes).padStart(2, '0')}`;
         }
-        return `0:${String(minutes).padStart(2, '0')}`;
     }
     
+        
     updateStatusDisplay() {
-        const nowMs = this.nowMs();
         const weeklySlot = this.getWeeklySlotForNow();
         const currentBlock = this.getCurrentBlockInfo();
-        const blockName = this.getBlockName(new Date(nowMs).getHours());
         
         // Update current block - CONSISTENT FORMAT
         if (this.currentBlockEl) {
             if (weeklySlot && currentBlock?.blockName) {
-                this.currentBlockEl.textContent = `${currentBlock.blockName} • ${weeklySlot.time} - ${weeklySlot.program}`;
+                let blockText = `${currentBlock.blockName} • ${weeklySlot.time} - ${weeklySlot.program}`;
+                if (currentBlock?.episode) {
+                    blockText += ` • ${currentBlock.episode}`;
+                }
+                this.currentBlockEl.textContent = blockText;
             } else {
                 this.currentBlockEl.textContent = 'OFF AIR';
             }
@@ -1241,8 +1442,8 @@ class LiveStreamPlayer {
         
         // Update schedule time
         if (this.scheduleTimeEl) {
-            const s = currentBlock?.slotElapsedSeconds;
-            this.scheduleTimeEl.textContent = this.formatTime(s);
+            const blockElapsedSeconds = (this.nowMs() % this.BLOCK_DURATION) / 1000;
+            this.scheduleTimeEl.textContent = this.formatTime(blockElapsedSeconds);
         }
         
         // Update next up

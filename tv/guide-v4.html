@@ -6,7 +6,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>TV Guide - Fawkeswarez</title>
+    <title>TV Guide - Fawkeswarez v4</title>
     <link rel="stylesheet" href="../style.css">
     <style>
         /* Fallback styles in case CSS fails to load */
@@ -280,9 +280,17 @@
             </div>
 
             <div class="guide-container">
+                <div class="nav-buttons">
+                    <button class="nav-btn" onclick="changeDay(-1)">◀ YESTERDAY</button>
+                    <button class="nav-btn" onclick="changeDay(1)">TOMORROW ▶</button>
+                </div>
                 <h3 class="lineup-date" id="lineup-date">Select a date to view lineup</h3>
                 <div class="lineup-slots" id="lineup-slots">
                     <!-- Lineup will be displayed here -->
+                </div>
+                <div class="nav-buttons">
+                    <button class="nav-btn" onclick="changeDay(-1)">◀ YESTERDAY</button>
+                    <button class="nav-btn" onclick="changeDay(1)">TOMORROW ▶</button>
                 </div>
             </div>
         </section>
@@ -298,10 +306,134 @@
         const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
         const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
+        function escapeRegExp(str) {
+            return String(str).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        }
+
+        function minutesToTimeString(totalMins) {
+            let mins = Math.floor(totalMins || 0);
+            mins = ((mins % 1440) + 1440) % 1440;
+            const hours24 = Math.floor(mins / 60);
+            const minutes = mins % 60;
+            const isPM = hours24 >= 12;
+            let hours12 = hours24 % 12;
+            if (hours12 === 0) hours12 = 12;
+            const minuteStr = String(minutes).padStart(2, '0');
+            return `${hours12}:${minuteStr} ${isPM ? 'PM' : 'AM'}`;
+        }
+
+        function getTimeBlockNameForMinutes(mins, day) {
+            const hour = Math.floor((mins || 0) / 60);
+            const minute = (mins || 0) % 60;
+            const totalMins = hour * 60 + minute;
+
+            if (day === 'Saturday') {
+                if (totalMins >= 0 && totalMins < 360) return 'ADULT SWIM';
+                if (totalMins >= 360 && totalMins < 1320) return 'WEEKEND BOON';
+                return 'ADULT SWIM';
+            }
+
+            if (day === 'Sunday') {
+                if (totalMins >= 0 && totalMins < 360) return 'ADULT SWIM';
+                if (totalMins >= 360 && totalMins < 660) return 'MORNING MILK';
+                if (totalMins >= 660 && totalMins < 720) return 'CARTOON CARTOONS';
+                if (totalMins >= 720 && totalMins < 900) return 'MOVIE PRESHOW';
+                if (totalMins >= 900 && totalMins < 1380) return 'NOSTALGIA NIGHT';
+                return 'ADULT SWIM';
+            }
+
+            if (day === 'Monday') {
+                if (totalMins >= 0 && totalMins < 180) return 'ADULT SWIM';
+                if (totalMins >= 180 && totalMins < 360) return 'PAID PROGRAMMING';
+                if (totalMins >= 360 && totalMins < 660) return 'MORNING MILK';
+                if (totalMins >= 660 && totalMins < 720) return 'CARTOON CARTOONS';
+                if (totalMins >= 720 && totalMins < 900) return 'MIDDAY MADNESS';
+                if (totalMins >= 900 && totalMins < 1110) return 'AFTERNOON ACTION';
+                if (totalMins >= 1110 && totalMins < 1260) return 'ALL-TIME ANIMES';
+                return 'ADULT SWIM';
+            }
+
+            if (totalMins >= 0 && totalMins < 360) return 'ADULT SWIM';
+            if (totalMins >= 360 && totalMins < 660) return 'MORNING MILK';
+            if (totalMins >= 660 && totalMins < 720) return 'CARTOON CARTOONS';
+            if (totalMins >= 720 && totalMins < 900) return 'MIDDAY MADNESS';
+            if (totalMins >= 900 && totalMins < 1110) return 'AFTERNOON ACTION';
+            if (totalMins >= 1110 && totalMins < 1260) return 'ALL-TIME ANIMES';
+            return 'ADULT SWIM';
+        }
+
+        function getEpisodePoolForProgram(program) {
+            if (!scheduleData || !Array.isArray(scheduleData.blocks)) return [];
+
+            const programLower = String(program || '').toLowerCase();
+            const pool = [];
+
+            for (const block of scheduleData.blocks) {
+                if (!block || block.blockType) continue;
+                const blockTitle = String(block.title || '');
+                const blockLower = blockTitle.toLowerCase();
+
+                // Match common naming patterns: "Show - S01E01" etc.
+                // We consider it a match if either string contains the other (mirrors previous hasEpisodes heuristic)
+                if (!(blockLower.includes(programLower) || programLower.includes(blockLower))) continue;
+
+                // Extract SxxExx from block title or from the first segment title (supports ranges like S02E43-45)
+                let codeMatch = blockTitle.match(/\bS(\d+)E(\d+)(?:-(\d+))?\b/i);
+                if (!codeMatch && Array.isArray(block.events)) {
+                    for (const evt of block.events) {
+                        if (evt && evt.type === 'segment' && evt.title) {
+                            codeMatch = String(evt.title).match(/\bS(\d+)E(\d+)(?:-(\d+))?\b/i);
+                            if (codeMatch) break;
+                        }
+                    }
+                }
+                if (!codeMatch) continue;
+
+                // Include blocks that contain at least one catbox URL (including placeholders)
+                let hasRealUrl = false;
+                if (Array.isArray(block.events)) {
+                    for (const evt of block.events) {
+                        if (evt && evt.type === 'segment' && typeof evt.url === 'string') {
+                            const url = evt.url;
+                            if (url.startsWith('https://files.catbox.moe/')) {
+                                hasRealUrl = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+                if (!hasRealUrl) continue;
+
+                const season = parseInt(codeMatch[1], 10);
+                const episode = parseInt(codeMatch[2], 10);
+                const lastEpisode = codeMatch[3] ? parseInt(codeMatch[3], 10) : null;
+                if (!Number.isFinite(season) || !Number.isFinite(episode)) continue;
+
+                // Build episode display - show range if present (e.g., S02E43-45)
+                let episodeDisplay;
+                if (lastEpisode) {
+                    episodeDisplay = `S${String(season).padStart(2, '0')}E${String(episode).padStart(2, '0')}-${String(lastEpisode).padStart(2, '0')}`;
+                } else {
+                    episodeDisplay = `S${String(season).padStart(2, '0')}E${String(episode).padStart(2, '0')}`;
+                }
+
+                pool.push({
+                    season,
+                    episode,
+                    episodeDisplay,
+                    title: blockTitle
+                });
+            }
+
+            // Sort chronologically for stable rotation
+            pool.sort((a, b) => (a.season - b.season) || (a.episode - b.episode));
+            return pool;
+        }
+
         async function loadData() {
             try {
                 // Aggressive cache bust: commit hash + timestamp + random
-                const commitHash = '4bb9d96';
+                const commitHash = 'bcaf9fe';
                 const timestamp = new Date().getTime();
                 const cacheBuster = `${commitHash}_${timestamp}_${Math.random().toString(36).substr(2, 9)}`;
                 console.log('Loading weekly lineup with cache buster:', cacheBuster);
@@ -385,6 +517,14 @@
             renderLineup();
         }
 
+        function changeDay(deltaDays) {
+            selectedDate = new Date(selectedDate);
+            selectedDate.setDate(selectedDate.getDate() + deltaDays);
+            currentDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), 1);
+            renderCalendar();
+            renderLineup();
+        }
+
         function changeMonth(direction) {
             currentDate.setMonth(currentDate.getMonth() + direction);
             renderCalendar();
@@ -408,6 +548,10 @@
             let html = '';
 
             const CARTOON_CARTOONS_HEADER = 'Cartoon Cartoons';
+            const MOVIE_PRESHOW_HEADER = 'Movie Preshow';
+            const MOVIE_NIGHT_HEADER = 'Movie Night';
+            const WEEKEND_BOON_HEADER = 'Weekend Boon';
+            const PAID_PROGRAMMING_HEADER = 'Paid Programming';
             const CARTOON_CARTOONS_SHOWS = new Set([
                 'Cow & Chicken',
                 'I Am Weasel',
@@ -416,21 +560,40 @@
 
             const SPECIAL_PROGRAMS = new Set([
                 'Paid Programming',
-                'Boondocks Marathon',
+                'The Boondocks',
                 'Nostalgia Night',
-                'Nostalgia Night Preshow'
+                'Movie Preshow',
+                'Men in Black',
+                'Back to the Future',
+                'TBD'
             ]);
 
             const BLOCK_POOLS = {
                 'ADULT SWIM': new Set([
+                    'King of the Hill',
+                    'Family Guy',
                     'Aqua Teen Hunger Force',
-                    'Space Ghost Coast to Coast',
                     'Sealab 2021',
                     'Home Movies',
-                    'The Venture Bros',
-                    'Harvey Birdman, Attorney at Law',
                     'Tom Goes to the Mayor',
-                    'Brak Show'
+                    'The Brak Show',
+                    'The Venture Bros',
+                    'Space Ghost Coast to Coast',
+                    'The Boondocks'
+                ]),
+                'WEEKEND BOON': new Set([
+                    'The Boondocks'
+                ]),
+                'MOVIE PRESHOW': new Set([
+                    'Movie Preshow',
+                    'TBD'
+                ]),
+                'NOSTALGIA NIGHT': new Set([
+                    'Men in Black',
+                    'Back to the Future'
+                ]),
+                'PAID PROGRAMMING': new Set([
+                    'Paid Programming'
                 ]),
                 'MORNING MILK': new Set([
                     "Dexter's Laboratory",
@@ -463,19 +626,15 @@
                 let statusText = 'OFF AIR';
 
                 if (slot.program === 'Paid Programming') {
-                    hasEpisodes = scheduleData && scheduleData.blocks && scheduleData.blocks.some(block => block.blockType === 'paid');
-                    if (hasEpisodes) {
-                        episodeInfo = '<div class="slot-episode">Paid Content</div>';
-                        statusClass = 'special';
-                        statusText = '📺';
-                    }
-                } else if (slot.program === 'Boondocks Marathon') {
-                    hasEpisodes = scheduleData && scheduleData.blocks && scheduleData.blocks.some(block => block.blockType === 'marathon');
-                    if (hasEpisodes) {
-                        episodeInfo = '<div class="slot-episode">All-Day Marathon</div>';
-                        statusClass = 'special';
-                        statusText = '🎬';
-                    }
+                    // Paid Programming is a special program - no episode description
+                    episodeInfo = '';
+                    statusClass = 'special';
+                    statusText = '📺';
+                } else if (slot.program === 'The Boondocks') {
+                    // Boondocks is a special program - no episode description
+                    episodeInfo = '';
+                    statusClass = 'special';
+                    statusText = '🎬';
                 } else if (slot.program === 'Nostalgia Night') {
                     const hasMovies = scheduleData && scheduleData.blocks && scheduleData.blocks.some(block => block.blockType === 'movie');
                     if (hasMovies) {
@@ -488,18 +647,26 @@
                         statusClass = 'special';
                         statusText = '🎥';
                     }
+                } else if (slot.program === 'Men in Black' || slot.program === 'Back to the Future') {
+                    // Movies are special programs - no episode description, just the name
+                    episodeInfo = '';
+                    statusClass = 'special';
+                    statusText = '🎥';
+                } else if (slot.program === 'TBD') {
+                    // TBD placeholder
+                    episodeInfo = '<div class="slot-episode">To be announced</div>';
+                    statusClass = 'off-air';
+                    statusText = '🔜';
                 } else {
                     // Regular shows - check if they have episodes
-                    hasEpisodes = scheduleData && scheduleData.blocks && scheduleData.blocks.some(block => {
-                        const title = block.title.toLowerCase();
-                        const programLower = slot.program.toLowerCase();
-                        return !block.blockType && (title === programLower || title.includes(programLower) || programLower.includes(title));
-                    });
+                    const pool = getEpisodePoolForProgram(slot.program);
+                    hasEpisodes = pool.length > 0;
 
                     if (hasEpisodes) {
-                        const episodeData = getEpisodeForDate(selectedDate, slot.time, slot.program);
-                        const episodeDisplay = `S${episodeData.season.toString().padStart(2, '0')}E${episodeData.episode.toString().padStart(2, '0')}`;
-                        episodeInfo = `<div class="slot-episode">${episodeDisplay}</div>`;
+                        const episodeData = getEpisodeForDate(selectedDate, slot.time, slot.program, pool);
+                        if (episodeData && episodeData.episodeDisplay) {
+                            episodeInfo = `<div class="slot-episode">${episodeData.episodeDisplay}</div>`;
+                        }
                         statusClass = 'on-air';
                         statusText = '▶';
                     }
@@ -538,38 +705,118 @@
                 return (prev && slotLooksLikeCartoonCartoonsContext(prev)) || (next && slotLooksLikeCartoonCartoonsContext(next));
             }
 
-            function getTimeBlockNameForMinutes(mins) {
+            function getTimeBlockNameForMinutes(mins, day) {
                 const hour = Math.floor((mins || 0) / 60);
                 const minute = (mins || 0) % 60;
                 const totalMins = hour * 60 + minute;
 
-                // 12am-6am: Adult Swim (0-360 mins)
-                if (totalMins >= 0 && totalMins < 360) {
-                    return 'ADULT SWIM';
+                // === SATURDAY ===
+                if (day === 'Saturday') {
+                    // 12am-6am: Adult Swim
+                    if (totalMins >= 0 && totalMins < 360) {
+                        return 'ADULT SWIM';
+                    }
+                    // 6am-10pm: Weekend Boon (360-1320 mins)
+                    else if (totalMins >= 360 && totalMins < 1320) {
+                        return 'WEEKEND BOON';
+                    }
+                    // 10pm-12am: Adult Swim
+                    else {
+                        return 'ADULT SWIM';
+                    }
                 }
-                // 6am-11am: Morning Milk (360-660 mins)
-                else if (totalMins >= 360 && totalMins < 660) {
-                    return 'MORNING MILK';
+                // === SUNDAY ===
+                else if (day === 'Sunday') {
+                    // 12am-6am: Adult Swim
+                    if (totalMins >= 0 && totalMins < 360) {
+                        return 'ADULT SWIM';
+                    }
+                    // 6am-11am: Morning Milk
+                    else if (totalMins >= 360 && totalMins < 660) {
+                        return 'MORNING MILK';
+                    }
+                    // 11am-12pm: Cartoon Cartoons
+                    else if (totalMins >= 660 && totalMins < 720) {
+                        return 'CARTOON CARTOONS';
+                    }
+                    // 12pm-3pm: Movie Preshow
+                    else if (totalMins >= 720 && totalMins < 900) {
+                        return 'MOVIE PRESHOW';
+                    }
+                    // 3pm-11pm: Nostalgia Night
+                    else if (totalMins >= 900 && totalMins < 1380) {
+                        return 'NOSTALGIA NIGHT';
+                    }
+                    // 11pm-12am: Adult Swim
+                    else {
+                        return 'ADULT SWIM';
+                    }
                 }
-                // 11am-12pm: Cartoon Cartoons (660-720 mins)
-                else if (totalMins >= 660 && totalMins < 720) {
-                    return 'CARTOON CARTOONS';
+                // === MONDAY ===
+                else if (day === 'Monday') {
+                    // 12am-3am: Adult Swim Short Run
+                    if (totalMins >= 0 && totalMins < 180) {
+                        return 'ADULT SWIM';
+                    }
+                    // 3am-6am: Paid Programming
+                    else if (totalMins >= 180 && totalMins < 360) {
+                        return 'PAID PROGRAMMING';
+                    }
+                    // 6am-11am: Morning Milk
+                    else if (totalMins >= 360 && totalMins < 660) {
+                        return 'MORNING MILK';
+                    }
+                    // 11am-12pm: Cartoon Cartoons
+                    else if (totalMins >= 660 && totalMins < 720) {
+                        return 'CARTOON CARTOONS';
+                    }
+                    // 12pm-3pm: Midday Madness
+                    else if (totalMins >= 720 && totalMins < 900) {
+                        return 'MIDDAY MADNESS';
+                    }
+                    // 3pm-6:30pm: Afternoon Action
+                    else if (totalMins >= 900 && totalMins < 1110) {
+                        return 'AFTERNOON ACTION';
+                    }
+                    // 6:30pm-9pm: All-Time Animes
+                    else if (totalMins >= 1110 && totalMins < 1260) {
+                        return 'ALL-TIME ANIMES';
+                    }
+                    // 9pm-12am: Adult Swim
+                    else {
+                        return 'ADULT SWIM';
+                    }
                 }
-                // 12pm-3pm: Midday Madness (720-900 mins)
-                else if (totalMins >= 720 && totalMins < 900) {
-                    return 'MIDDAY MADNESS';
-                }
-                // 3pm-7:30pm: Afternoon Action (900-1110 mins) - 3pm = 900, 7:30pm = 1110
-                else if (totalMins >= 900 && totalMins < 1110) {
-                    return 'AFTERNOON ACTION';
-                }
-                // 7:30pm-9pm: All-Time Animes (1110-1260 mins) - 7:30pm = 1110, 9pm = 1260
-                else if (totalMins >= 1110 && totalMins < 1260) {
-                    return 'ALL-TIME ANIMES';
-                }
-                // 9pm-12am: Adult Swim (1260-1440 mins)
+                // === TUE-FRI (weekday) ===
                 else {
-                    return 'ADULT SWIM';
+                    // 12am-6am: Adult Swim
+                    if (totalMins >= 0 && totalMins < 360) {
+                        return 'ADULT SWIM';
+                    }
+                    // 6am-11am: Morning Milk
+                    else if (totalMins >= 360 && totalMins < 660) {
+                        return 'MORNING MILK';
+                    }
+                    // 11am-12pm: Cartoon Cartoons
+                    else if (totalMins >= 660 && totalMins < 720) {
+                        return 'CARTOON CARTOONS';
+                    }
+                    // 12pm-3pm: Midday Madness
+                    else if (totalMins >= 720 && totalMins < 900) {
+                        return 'MIDDAY MADNESS';
+                    }
+                    // 3pm-6:30pm: Afternoon Action
+                    else if (totalMins >= 900 && totalMins < 1110) {
+                        return 'AFTERNOON ACTION';
+                    }
+                    // 6:30pm-9pm: All-Time Animes
+                    else if (totalMins >= 1110 && totalMins < 1260) {
+                        return 'ALL-TIME ANIMES';
+                    }
+                    // 9pm-12am: Adult Swim
+                    else {
+                        return 'ADULT SWIM';
+                    }
                 }
             }
 
@@ -577,12 +824,21 @@
                 const slot = daySlots[idx];
                 if (!slot) return null;
                 if (slot.program === CARTOON_CARTOONS_HEADER) return 'CARTOON CARTOONS';
+                if (slot.program === MOVIE_PRESHOW_HEADER) return 'MOVIE PRESHOW';
+                if (slot.program === MOVIE_NIGHT_HEADER) return 'NOSTALGIA NIGHT';
+                if (slot.program === WEEKEND_BOON_HEADER) return 'WEEKEND BOON';
+                if (slot.program === PAID_PROGRAMMING_HEADER) return 'PAID PROGRAMMING';
                 // Disable implicit Cartoon Cartoons inference - only use explicit headers
                 // if (CARTOON_CARTOONS_SHOWS.has(slot.program) && shouldStartImplicitCartoonCartoonsBlock(daySlots, idx)) {
                 //     return 'CARTOON CARTOONS';
                 // }
                 const mins = timeToMinutes(slot.time);
-                return getTimeBlockNameForMinutes(mins);
+                // Map offset header times to their actual block times
+                if (mins === 719) return 'MOVIE PRESHOW'; // 11:59 AM -> 12:00 PM block
+                if (mins === 899) return 'NOSTALGIA NIGHT'; // 2:59 PM -> 3:00 PM block
+                if (mins === 359) return 'WEEKEND BOON'; // 5:59 AM -> 6:00 AM block
+                if (mins === 179) return 'PAID PROGRAMMING'; // 2:59 AM -> 3:00 AM block
+                return getTimeBlockNameForMinutes(mins, slot.day);
             }
 
             function renderTimeBlockHeader(blockName, timeStr) {
@@ -606,6 +862,18 @@
                     case 'ALL-TIME ANIMES':
                         subtitle = 'Classic anime block';
                         break;
+                    case 'WEEKEND BOON':
+                        subtitle = 'All-day Boondocks marathon';
+                        break;
+                    case 'MOVIE PRESHOW':
+                        subtitle = 'Pre-show buildup';
+                        break;
+                    case 'NOSTALGIA NIGHT':
+                        subtitle = 'Double feature movie night';
+                        break;
+                    case 'PAID PROGRAMMING':
+                        subtitle = 'Paid content';
+                        break;
                     default:
                         subtitle = 'Programming block';
                 }
@@ -628,24 +896,7 @@
                 const slot = daySlots[i];
                 console.log(`Processing slot: ${slot.program}`);
 
-                const slotTimeBlock = canonicalBlockForSlot(daySlots, i);
-
-                // Only render time block header when:
-                // 1. Not in Cartoon Cartoons
-                // 2. Not a special program
-                // 3. Not already a block header
-                // 4. The time block actually changes
-                if (!inCartoonCartoons &&
-                    slotTimeBlock &&
-                    slotTimeBlock !== currentTimeBlock &&
-                    slot.program !== CARTOON_CARTOONS_HEADER &&
-                    !SPECIAL_PROGRAMS.has(slot.program) &&
-                    slotTimeBlock !== 'CARTOON CARTOONS') {
-                    currentTimeBlock = slotTimeBlock;
-                    renderTimeBlockHeader(currentTimeBlock, slot.time);
-                }
-
-                // Explicit block header - only render if it's within the correct time window
+                // Explicit block headers - render FIRST before time block headers
                 if (slot.program === CARTOON_CARTOONS_HEADER) {
                     const slotMins = timeToMinutes(slot.time);
                     // Only render Cartoon Cartoons header if it's between 11am-12pm (660-720 mins)
@@ -667,6 +918,112 @@
                     continue;
                 }
 
+                // Explicit Movie Preshow header - render if it's within the correct time window
+                if (slot.program === MOVIE_PRESHOW_HEADER) {
+                    const slotMins = timeToMinutes(slot.time);
+                    // Only render Movie Preshow header if it's at 11:59 AM (719 mins)
+                    if (slotMins >= 719 && slotMins < 720) {
+                        currentTimeBlock = 'MOVIE PRESHOW';
+                        const programHtml = `${MOVIE_PRESHOW_HEADER}<span class="block-subtitle">Pre-show buildup</span>`;
+                        // Render header without time
+                        html += `
+                            <div class="slot block-header">
+                                <div class="slot-time"></div>
+                                <div class="slot-program">${programHtml}</div>
+                                <div class="slot-status"></div>
+                            </div>
+                        `;
+                    }
+                    // Skip rendering the header slot itself
+                    continue;
+                }
+
+                // Explicit Movie Night header - render if it's within the correct time window
+                if (slot.program === MOVIE_NIGHT_HEADER) {
+                    const slotMins = timeToMinutes(slot.time);
+                    // Only render Movie Night header if it's at 2:59 PM (899 mins)
+                    if (slotMins >= 899 && slotMins < 900) {
+                        currentTimeBlock = 'NOSTALGIA NIGHT';
+                        const programHtml = `${MOVIE_NIGHT_HEADER}<span class="block-subtitle">Double feature movie night</span>`;
+                        // Render header without time
+                        html += `
+                            <div class="slot block-header">
+                                <div class="slot-time"></div>
+                                <div class="slot-program">${programHtml}</div>
+                                <div class="slot-status"></div>
+                            </div>
+                        `;
+                    }
+                    // Skip rendering the header slot itself
+                    continue;
+                }
+
+                // Explicit Weekend Boon header - render if it's within the correct time window
+                if (slot.program === WEEKEND_BOON_HEADER) {
+                    const slotMins = timeToMinutes(slot.time);
+                    // Only render Weekend Boon header if it's at 5:59 AM (359 mins)
+                    if (slotMins >= 359 && slotMins < 360) {
+                        currentTimeBlock = 'WEEKEND BOON';
+                        const programHtml = `${WEEKEND_BOON_HEADER}<span class="block-subtitle">All-day Boondocks marathon</span>`;
+                        // Render header without time
+                        html += `
+                            <div class="slot block-header">
+                                <div class="slot-time"></div>
+                                <div class="slot-program">${programHtml}</div>
+                                <div class="slot-status"></div>
+                            </div>
+                        `;
+                    }
+                    // Skip rendering the header slot itself
+                    continue;
+                }
+
+                // Explicit Paid Programming header - render if it's within the correct time window
+                if (slot.program === PAID_PROGRAMMING_HEADER) {
+                    const slotMins = timeToMinutes(slot.time);
+                    // Only render Paid Programming header if it's at 2:59 AM (179 mins)
+                    if (slotMins >= 179 && slotMins < 180) {
+                        currentTimeBlock = 'PAID PROGRAMMING';
+                        const programHtml = `${PAID_PROGRAMMING_HEADER}<span class="block-subtitle">Paid content</span>`;
+                        // Render header without time
+                        html += `
+                            <div class="slot block-header">
+                                <div class="slot-time"></div>
+                                <div class="slot-program">${programHtml}</div>
+                                <div class="slot-status"></div>
+                            </div>
+                        `;
+                        // Skip rendering the header slot itself
+                        continue;
+                    }
+                }
+
+                const slotTimeBlock = canonicalBlockForSlot(daySlots, i);
+
+                // Drive Cartoon Cartoons context from the time window, since we no longer rely on
+                // explicit 'Cartoon Cartoons' rows in weekly-lineup.
+                inCartoonCartoons = slotTimeBlock === 'CARTOON CARTOONS';
+
+                // Render a block header whenever the canonical time window changes.
+                // (We derive block headers from time windows; weekly-lineup should not contain header rows.)
+                const slotMins = timeToMinutes(slot.time);
+                // Skip rendering time block headers at offset times - those are for explicit headers only
+                if (slotTimeBlock &&
+                    slotTimeBlock !== currentTimeBlock &&
+                    slot.program !== CARTOON_CARTOONS_HEADER &&
+                    slot.program !== MOVIE_PRESHOW_HEADER &&
+                    slot.program !== MOVIE_NIGHT_HEADER &&
+                    slot.program !== WEEKEND_BOON_HEADER &&
+                    slot.program !== PAID_PROGRAMMING_HEADER &&
+                    slotMins !== 719 &&
+                    slotMins !== 899 &&
+                    slotMins !== 359 &&
+                    slotMins !== 179 &&
+                    !SPECIAL_PROGRAMS.has(slot.program)) {
+                    currentTimeBlock = slotTimeBlock;
+                    renderTimeBlockHeader(currentTimeBlock, slot.time);
+                }
+
                 // Disable implicit Cartoon Cartoons block rendering
                 // if (!inCartoonCartoons && shouldStartImplicitCartoonCartoonsBlock(daySlots, i)) {
                 //     inCartoonCartoons = true;
@@ -686,7 +1043,6 @@
                     renderSlot(slot, 'block-item');
                 } else {
                     // Leaving Cartoon Cartoons context if we hit a non-member show
-                    inCartoonCartoons = false;
                     seenExplicitHeaderInCurrentBlock = false;
 
                     const blockKey = canonicalBlockForSlot(daySlots, i);
@@ -799,42 +1155,38 @@
             return total;
         }
 
-        function getEpisodeForDate(date, timeStr, program) {
-            // Use occurrence counting if we have the data
+        function getEpisodeForDate(date, timeStr, program, episodePoolOverride) {
+            // Use occurrence counting to pick a deterministic episode from the *real* episode pool.
+            const pool = Array.isArray(episodePoolOverride) ? episodePoolOverride : [];
+            if (!pool.length) return null;
+
             if (typeof weeklyLineup !== 'undefined' && typeof scheduleStartDate !== 'undefined') {
-                const occ = getProgramOccurrenceIndex(program, timeStr, date);
-                
-                // Episode counts reflecting what's actually in schedule.json
-                const knownCounts = {
-                    "Dexter's Laboratory": { episodes: 20, seasons: 2 },
-                    "The Powerpuff Girls": { episodes: 20, seasons: 2 },
-                    "Ed, Edd n Eddy": { episodes: 20, seasons: 1 },
-                    "Space Ghost Coast to Coast": { episodes: 18, seasons: 1 },
-                    "Aqua Teen Hunger Force": { episodes: 18, seasons: 1 }
-                };
-                
-                let episodeCount = 15; // Default fallback
-                let seasonCount = 1;
-                
-                if (knownCounts[program]) {
-                    episodeCount = knownCounts[program].episodes;
-                    seasonCount = knownCounts[program].seasons;
+                let occDate = date;
+                let occTimeStr = timeStr;
+
+                // Adult Swim reruns: the block from ~9:00 PM to 1:30 AM repeats from 1:30 AM to 6:00 AM.
+                // We map the rerun slot back by 4.5 hours (270 mins) to reuse the same episode selection.
+                const slotMins = timeToMinutes(timeStr);
+                const dayName = getDayName(date);
+                const isAdultSwimWindow = (slotMins >= 90 && slotMins < 360) && (getTimeBlockNameForMinutes(slotMins, dayName) === 'ADULT SWIM');
+                if (isAdultSwimWindow) {
+                    let mappedMins = slotMins - 270;
+                    let mappedDate = new Date(date);
+                    if (mappedMins < 0) {
+                        mappedMins += 1440;
+                        mappedDate.setDate(mappedDate.getDate() - 1);
+                    }
+                    occDate = mappedDate;
+                    occTimeStr = minutesToTimeString(mappedMins);
                 }
-                
-                const episodeIndex = ((occ % episodeCount) + episodeCount) % episodeCount;
-                const episodeNum = episodeIndex + 1;
-                
-                // Determine season for multi-season shows
-                let season = 1;
-                if (program === "Dexter's Laboratory" || program === "The Powerpuff Girls") {
-                    season = (episodeNum <= 13) ? 1 : 2;
-                }
-                
-                return { episode: episodeNum, season };
+
+                const occ = getProgramOccurrenceIndex(program, occTimeStr, occDate);
+                const idx = ((occ % pool.length) + pool.length) % pool.length;
+                return pool[idx];
             }
-            
+
             // Fallback if data not available
-            return { episode: 1, season: 1 };
+            return pool[0];
         }
 
         function getDexterEpisodeForDate(date, timeStr) {

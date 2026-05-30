@@ -301,7 +301,7 @@
         async function loadData() {
             try {
                 // Aggressive cache bust: commit hash + timestamp + random
-                const commitHash = '4bb9d96';
+                const commitHash = '49d397a';
                 const timestamp = new Date().getTime();
                 const cacheBuster = `${commitHash}_${timestamp}_${Math.random().toString(36).substr(2, 9)}`;
                 console.log('Loading weekly lineup with cache buster:', cacheBuster);
@@ -316,7 +316,7 @@
                 scheduleData = await scheduleResponse.json();
                 scheduleStartDate = scheduleData.startDate || '2026-04-01';
                 console.log('Loaded schedule, start date:', scheduleStartDate);
-
+                
                 // Show cache-bust indicator briefly
                 const indicator = document.createElement('div');
                 indicator.textContent = `Cache-bust: ${cacheBuster}`;
@@ -409,19 +409,58 @@
 
             const CARTOON_CARTOONS_HEADER = 'Cartoon Cartoons';
             const CARTOON_CARTOONS_SHOWS = new Set([
+                'Sheep in the Big City',
+                'Billy & Mandy',
+                "Foster's Home",
+                "Dexter's Laboratory",
+                'The Powerpuff Girls',
+                'Ed, Edd n Eddy',
+                'Johnny Bravo',
+                'Courage the Cowardly Dog',
                 'Cow & Chicken',
-                'I Am Weasel',
-                'Sheep in the Big City'
+                'I Am Weasel'
             ]);
 
             const SPECIAL_PROGRAMS = new Set([
                 'Paid Programming',
                 'Boondocks Marathon',
-                'Nostalgia Night',
-                'Nostalgia Night Preshow'
+                'Nostalgia Night'
             ]);
 
             const BLOCK_POOLS = {
+                'MORNING MAYHEM': new Set([
+                    "Dexter's Laboratory",
+                    'The Powerpuff Girls',
+                    'Ed, Edd n Eddy',
+                    'Johnny Bravo',
+                    'Courage the Cowardly Dog',
+                    'Tom and Jerry'
+                ]),
+                'CARTOON CARTOONS': CARTOON_CARTOONS_SHOWS,
+                'MIDDAY MADNESS': new Set([
+                    "Dexter's Laboratory",
+                    'The Powerpuff Girls',
+                    'Ed, Edd n Eddy',
+                    'Johnny Bravo',
+                    'Courage the Cowardly Dog',
+                    'Teen Titans',
+                    'Dragon Ball Z',
+                    'Samurai Jack'
+                ]),
+                'AFTERNOON ACTION': new Set([
+                    'Teen Titans',
+                    'Dragon Ball Z',
+                    'Samurai Jack',
+                    'Ben 10',
+                    'Codename: Kids Next Door'
+                ]),
+                'PRIME TIME POWER': new Set([
+                    'Teen Titans',
+                    'Dragon Ball Z',
+                    'Samurai Jack',
+                    'Justice League',
+                    'Avatar: The Last Airbender'
+                ]),
                 'ADULT SWIM': new Set([
                     'Aqua Teen Hunger Force',
                     'Space Ghost Coast to Coast',
@@ -431,27 +470,6 @@
                     'Harvey Birdman, Attorney at Law',
                     'Tom Goes to the Mayor',
                     'Brak Show'
-                ]),
-                'MORNING MILK': new Set([
-                    "Dexter's Laboratory",
-                    'The Powerpuff Girls',
-                    'Ed, Edd n Eddy',
-                    "Foster's Home",
-                    'Billy & Mandy'
-                ]),
-                'CARTOON CARTOONS': CARTOON_CARTOONS_SHOWS,
-                'MIDDAY MADNESS': new Set([
-                    'Johnny Bravo',
-                    'Courage the Cowardly Dog'
-                ]),
-                'AFTERNOON ACTION': new Set([
-                    'Samurai Jack',
-                    'Teen Titans',
-                    'Kids Next Door'
-                ]),
-                'ALL-TIME ANIMES': new Set([
-                    'Dragon Ball',
-                    'Cowboy Bebop'
                 ])
             };
 
@@ -540,35 +558,15 @@
 
             function getTimeBlockNameForMinutes(mins) {
                 const hour = Math.floor((mins || 0) / 60);
-                const minute = (mins || 0) % 60;
-                const totalMins = hour * 60 + minute;
-
-                // 12am-6am: Adult Swim (0-360 mins)
-                if (totalMins >= 0 && totalMins < 360) {
-                    return 'ADULT SWIM';
-                }
-                // 6am-11am: Morning Milk (360-660 mins)
-                else if (totalMins >= 360 && totalMins < 660) {
-                    return 'MORNING MILK';
-                }
-                // 11am-12pm: Cartoon Cartoons (660-720 mins)
-                else if (totalMins >= 660 && totalMins < 720) {
-                    return 'CARTOON CARTOONS';
-                }
-                // 12pm-3pm: Midday Madness (720-900 mins)
-                else if (totalMins >= 720 && totalMins < 900) {
+                if (hour >= 6 && hour < 10) {
+                    return 'MORNING MAYHEM';
+                } else if (hour >= 10 && hour < 14) {
                     return 'MIDDAY MADNESS';
-                }
-                // 3pm-7:30pm: Afternoon Action (900-1110 mins) - 3pm = 900, 7:30pm = 1110
-                else if (totalMins >= 900 && totalMins < 1110) {
+                } else if (hour >= 14 && hour < 18) {
                     return 'AFTERNOON ACTION';
-                }
-                // 7:30pm-9pm: All-Time Animes (1110-1260 mins) - 7:30pm = 1110, 9pm = 1260
-                else if (totalMins >= 1110 && totalMins < 1260) {
-                    return 'ALL-TIME ANIMES';
-                }
-                // 9pm-12am: Adult Swim (1260-1440 mins)
-                else {
+                } else if (hour >= 18 && hour < 22) {
+                    return 'PRIME TIME POWER';
+                } else {
                     return 'ADULT SWIM';
                 }
             }
@@ -577,47 +575,20 @@
                 const slot = daySlots[idx];
                 if (!slot) return null;
                 if (slot.program === CARTOON_CARTOONS_HEADER) return 'CARTOON CARTOONS';
-                // Disable implicit Cartoon Cartoons inference - only use explicit headers
-                // if (CARTOON_CARTOONS_SHOWS.has(slot.program) && shouldStartImplicitCartoonCartoonsBlock(daySlots, idx)) {
-                //     return 'CARTOON CARTOONS';
-                // }
+                if (CARTOON_CARTOONS_SHOWS.has(slot.program) && shouldStartImplicitCartoonCartoonsBlock(daySlots, idx)) {
+                    return 'CARTOON CARTOONS';
+                }
                 const mins = timeToMinutes(slot.time);
                 return getTimeBlockNameForMinutes(mins);
             }
 
             function renderTimeBlockHeader(blockName, timeStr) {
-                let subtitle;
-                switch (blockName) {
-                    case 'ADULT SWIM':
-                        subtitle = 'Late night weirdness';
-                        break;
-                    case 'MORNING MILK':
-                        subtitle = 'Classic morning cartoons';
-                        break;
-                    case 'CARTOON CARTOONS':
-                        subtitle = 'Classic shorts & CN originals';
-                        break;
-                    case 'MIDDAY MADNESS':
-                        subtitle = 'Midday action & comedy';
-                        break;
-                    case 'AFTERNOON ACTION':
-                        subtitle = 'Afternoon action block';
-                        break;
-                    case 'ALL-TIME ANIMES':
-                        subtitle = 'Classic anime block';
-                        break;
-                    default:
-                        subtitle = 'Programming block';
-                }
+                const headerSlot = { time: timeStr, program: blockName };
+                const subtitle = blockName === 'ADULT SWIM'
+                    ? 'Late night weirdness'
+                    : 'Programming block';
                 const programHtml = `${blockName}<span class="block-subtitle">${subtitle}</span>`;
-                // Render header without a time - it's a separator, not a time slot
-                html += `
-                    <div class="slot block-header">
-                        <div class="slot-time"></div>
-                        <div class="slot-program">${programHtml}</div>
-                        <div class="slot-status"></div>
-                    </div>
-                `;
+                renderSlot(headerSlot, 'block-header', programHtml);
             }
 
             let inCartoonCartoons = false;
@@ -629,58 +600,31 @@
                 console.log(`Processing slot: ${slot.program}`);
 
                 const slotTimeBlock = canonicalBlockForSlot(daySlots, i);
-
-                // Only render time block header when:
-                // 1. Not in Cartoon Cartoons
-                // 2. Not a special program
-                // 3. Not already a block header
-                // 4. The time block actually changes
-                if (!inCartoonCartoons &&
-                    slotTimeBlock &&
-                    slotTimeBlock !== currentTimeBlock &&
-                    slot.program !== CARTOON_CARTOONS_HEADER &&
-                    !SPECIAL_PROGRAMS.has(slot.program) &&
-                    slotTimeBlock !== 'CARTOON CARTOONS') {
+                if (!inCartoonCartoons && slotTimeBlock && slotTimeBlock !== currentTimeBlock && slot.program !== CARTOON_CARTOONS_HEADER) {
                     currentTimeBlock = slotTimeBlock;
                     renderTimeBlockHeader(currentTimeBlock, slot.time);
                 }
 
-                // Explicit block header - only render if it's within the correct time window
+                // Explicit block header
                 if (slot.program === CARTOON_CARTOONS_HEADER) {
-                    const slotMins = timeToMinutes(slot.time);
-                    // Only render Cartoon Cartoons header if it's between 11am-12pm (660-720 mins)
-                    if (slotMins >= 660 && slotMins < 720) {
-                        inCartoonCartoons = true;
-                        seenExplicitHeaderInCurrentBlock = true;
-                        currentTimeBlock = 'CARTOON CARTOONS';
-                        const programHtml = `${CARTOON_CARTOONS_HEADER}<span class="block-subtitle">Classic shorts & CN originals</span>`;
-                        // Render header without time
-                        html += `
-                            <div class="slot block-header">
-                                <div class="slot-time"></div>
-                                <div class="slot-program">${programHtml}</div>
-                                <div class="slot-status"></div>
-                            </div>
-                        `;
-                    }
-                    // Skip rendering the header slot itself
+                    inCartoonCartoons = true;
+                    seenExplicitHeaderInCurrentBlock = true;
+                    currentTimeBlock = 'CARTOON CARTOONS';
+                    const programHtml = `${CARTOON_CARTOONS_HEADER}<span class="block-subtitle">Classic shorts & CN originals</span>`;
+                    renderSlot(slot, 'block-header', programHtml);
                     continue;
                 }
 
-                // Disable implicit Cartoon Cartoons block rendering
-                // if (!inCartoonCartoons && shouldStartImplicitCartoonCartoonsBlock(daySlots, i)) {
-                //     inCartoonCartoons = true;
-                //     seenExplicitHeaderInCurrentBlock = false;
-                //     currentTimeBlock = 'CARTOON CARTOONS';
-                //     const programHtml = `${CARTOON_CARTOONS_HEADER}<span class="block-subtitle">(inferred block)</span>`;
-                //     html += `
-                //         <div class="slot block-header">
-                //             <div class="slot-time"></div>
-                //             <div class="slot-program">${programHtml}</div>
-                //             <div class="slot-status"></div>
-                //         </div>
-                //     `;
-                // }
+                // Implicit block start (fix for days where the header slot is missing/shifted)
+                if (!inCartoonCartoons && shouldStartImplicitCartoonCartoonsBlock(daySlots, i)) {
+                    inCartoonCartoons = true;
+                    seenExplicitHeaderInCurrentBlock = false;
+                    currentTimeBlock = 'CARTOON CARTOONS';
+
+                    const implicitHeaderSlot = { ...slot, program: CARTOON_CARTOONS_HEADER };
+                    const programHtml = `${CARTOON_CARTOONS_HEADER}<span class="block-subtitle">(inferred block)</span>`;
+                    renderSlot(implicitHeaderSlot, 'block-header', programHtml);
+                }
 
                 if (inCartoonCartoons && CARTOON_CARTOONS_SHOWS.has(slot.program)) {
                     renderSlot(slot, 'block-item');
