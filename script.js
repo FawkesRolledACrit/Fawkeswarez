@@ -891,13 +891,22 @@ function updateZoom() {
 function updateImageTransform() {
     const fullscreenImage = document.getElementById('fullscreen-image');
     if (fullscreenImage) {
-        fullscreenImage.style.transform = `translate(${imagePositionX}px, ${imagePositionY}px) scale(${currentZoom})`;
+        const transform = `translate(${imagePositionX}px, ${imagePositionY}px) scale(${currentZoom})`;
+        fullscreenImage.style.transform = transform;
+        console.log('Transform applied:', transform);
+    } else {
+        console.error('Fullscreen image element not found in updateImageTransform');
     }
 }
 
 // Drag functionality for fullscreen image
 function setupDragListeners(image) {
-    if (!image) return;
+    if (!image) {
+        console.error('setupDragListeners: image element not found');
+        return;
+    }
+
+    console.log('Setting up drag listeners on fullscreen image');
 
     // Mouse events
     image.addEventListener('mousedown', startDrag);
@@ -909,6 +918,8 @@ function setupDragListeners(image) {
     image.addEventListener('touchstart', startDragTouch);
     image.addEventListener('touchmove', dragTouch);
     image.addEventListener('touchend', endDrag);
+
+    console.log('Drag listeners attached successfully');
 }
 
 function removeDragListeners(image) {
@@ -925,10 +936,15 @@ function removeDragListeners(image) {
 }
 
 function startDrag(e) {
-    if (currentZoom <= 1) return; // Only allow drag when zoomed in
+    console.log('startDrag called, currentZoom:', currentZoom);
+    if (currentZoom <= 1) {
+        console.log('Drag not allowed - zoom is at or below 1');
+        return; // Only allow drag when zoomed in
+    }
     isDragging = true;
     dragStartX = e.clientX - imagePositionX;
     dragStartY = e.clientY - imagePositionY;
+    console.log('Drag started at:', dragStartX, dragStartY);
     e.preventDefault();
 }
 
@@ -937,10 +953,12 @@ function drag(e) {
     e.preventDefault();
     imagePositionX = e.clientX - dragStartX;
     imagePositionY = e.clientY - dragStartY;
+    console.log('Dragging to position:', imagePositionX, imagePositionY);
     updateImageTransform();
 }
 
 function endDrag() {
+    console.log('Drag ended');
     isDragging = false;
 }
 
