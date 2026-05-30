@@ -293,6 +293,17 @@
         </div>
     </div>
 
+    <!-- Fullscreen image viewer -->
+    <div id="fullscreen-viewer" class="fullscreen-viewer hidden">
+        <button class="fullscreen-back" onclick="closeFullscreen()">← BACK</button>
+        <button class="fullscreen-zoom-in" onclick="zoomIn()">+</button>
+        <button class="fullscreen-zoom-out" onclick="zoomOut()">-</button>
+        <button class="fullscreen-reset" onclick="resetZoom()">⟲</button>
+        <div class="fullscreen-image-container">
+            <img id="fullscreen-image" src="" alt="Fullscreen view">
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>

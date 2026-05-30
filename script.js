@@ -14,6 +14,8 @@ let connectedDrives = [];
 let currentArtSection = 'art-3d-renders';
 let currentArtContent = 'images';
 let archiveVisible = false;
+let currentZoom = 1;
+let currentFullscreenImage = '';
 
 // Image data structure
 let imageData = {
@@ -379,6 +381,7 @@ function handleKeyPress(event) {
     if (key === 'escape') {
         closeModal();
         closeImageModal();
+        closeFullscreen();
     }
 }
 
@@ -642,7 +645,7 @@ function viewImageDetails(imageId) {
     modalBody.innerHTML = `
         <div class="image-details">
             <div class="image-detail-preview">
-                <img src="${image.url}" alt="${image.title}" style="max-width: 100%; border: 2px solid #0F0;">
+                <img src="${image.url}" alt="${image.title}" style="max-width: 100%; border: 2px solid #0F0; cursor: pointer;" onclick="openFullscreen('${image.url}')">
             </div>
             <div class="image-detail-info">
                 <h4>Description</h4>
@@ -761,6 +764,85 @@ function animateImageCards() {
         }, 200 + (index * 150));
     });
 }
+
+// Fullscreen image viewer functions
+function openFullscreen(imageUrl) {
+    const viewer = document.getElementById('fullscreen-viewer');
+    const fullscreenImage = document.getElementById('fullscreen-image');
+
+    currentFullscreenImage = imageUrl;
+    currentZoom = 1;
+
+    fullscreenImage.src = imageUrl;
+    fullscreenImage.style.transform = `scale(${currentZoom})`;
+
+    viewer.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+
+    playSound('open');
+}
+
+function closeFullscreen() {
+    const viewer = document.getElementById('fullscreen-viewer');
+    viewer.classList.add('hidden');
+    document.body.style.overflow = '';
+
+    currentZoom = 1;
+    playSound('close');
+}
+
+function zoomIn() {
+    if (currentZoom < 5) {
+        currentZoom += 0.5;
+        updateZoom();
+    }
+}
+
+function zoomOut() {
+    if (currentZoom > 0.5) {
+        currentZoom -= 0.5;
+        updateZoom();
+    }
+}
+
+function resetZoom() {
+    currentZoom = 1;
+    updateZoom();
+}
+
+function updateZoom() {
+    const fullscreenImage = document.getElementById('fullscreen-image');
+    fullscreenImage.style.transform = `scale(${currentZoom})`;
+}
+
+// Keyboard controls for fullscreen viewer
+document.addEventListener('keydown', (e) => {
+    const viewer = document.getElementById('fullscreen-viewer');
+    if (viewer && !viewer.classList.contains('hidden')) {
+        if (e.key === '+' || e.key === '=') {
+            zoomIn();
+        } else if (e.key === '-' || e.key === '_') {
+            zoomOut();
+        } else if (e.key === '0') {
+            resetZoom();
+        } else if (e.key === 'Escape') {
+            closeFullscreen();
+        }
+    }
+});
+
+// Mouse wheel zoom for fullscreen viewer
+document.addEventListener('wheel', (e) => {
+    const viewer = document.getElementById('fullscreen-viewer');
+    if (viewer && !viewer.classList.contains('hidden')) {
+        e.preventDefault();
+        if (e.deltaY < 0) {
+            zoomIn();
+        } else {
+            zoomOut();
+        }
+    }
+}, { passive: false });
 
 // Hit counter fetch + animation
 function updateHitCounter() {

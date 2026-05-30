@@ -743,6 +743,112 @@ marquee {
     margin: 10px 0;
 }
 
+/* FULLSCREEN IMAGE VIEWER */
+.fullscreen-viewer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s;
+}
+
+.fullscreen-viewer.hidden {
+    display: none;
+}
+
+.fullscreen-back {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: linear-gradient(45deg, #FF00FF, #00FFFF);
+    color: #000;
+    border: 3px solid #0F0;
+    padding: 15px 25px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 2001;
+    transition: all 0.3s;
+    font-family: 'Chakra Petch', 'Segoe UI', sans-serif;
+}
+
+.fullscreen-back:hover {
+    background: linear-gradient(45deg, #00FFFF, #FFFF00);
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.8);
+}
+
+.fullscreen-zoom-in,
+.fullscreen-zoom-out,
+.fullscreen-reset {
+    position: fixed;
+    background: linear-gradient(45deg, #FF00FF, #00FFFF);
+    color: #000;
+    border: 3px solid #0F0;
+    padding: 15px 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 2001;
+    transition: all 0.3s;
+    font-family: 'Chakra Petch', 'Segoe UI', sans-serif;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fullscreen-zoom-in:hover,
+.fullscreen-zoom-out:hover,
+.fullscreen-reset:hover {
+    background: linear-gradient(45deg, #00FFFF, #FFFF00);
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.8);
+}
+
+.fullscreen-zoom-in {
+    top: 20px;
+    right: 20px;
+}
+
+.fullscreen-zoom-out {
+    top: 80px;
+    right: 20px;
+}
+
+.fullscreen-reset {
+    top: 140px;
+    right: 20px;
+}
+
+.fullscreen-image-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#fullscreen-image {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    cursor: grab;
+}
+
+#fullscreen-image:active {
+    cursor: grabbing;
+}
+
 /* ABOUT SECTION */
 .about-content {
     display: grid;
