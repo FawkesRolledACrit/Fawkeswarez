@@ -2103,7 +2103,7 @@ function initModelViewer(modelUrl) {
     modelViewerCamera.position.set(0, 0, 5);
 
     // Create renderer
-    modelViewerRenderer = new THREE.WebGLRenderer({ antialias: true });
+    modelViewerRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
     modelViewerRenderer.setSize(container.clientWidth, container.clientHeight);
     modelViewerRenderer.setPixelRatio(window.devicePixelRatio);
     container.appendChild(modelViewerRenderer.domElement);
@@ -2136,12 +2136,28 @@ function initModelViewer(modelUrl) {
             currentModel.traverse((child) => {
                 if (child.isMesh) {
                     if (child.material) {
+                        // Force opacity to 1 and disable transparency
+                        child.material.transparent = false;
+                        child.material.opacity = 1.0;
+                        child.material.alphaTest = 0;
                         // Enable double-sided rendering
                         child.material.side = THREE.DoubleSide;
-                        // Disable transparency if not intended
-                        if (child.material.transparent === undefined || child.material.transparent === false) {
-                            child.material.transparent = false;
-                            child.material.opacity = 1.0;
+                        // Disable alpha maps if present
+                        if (child.material.alphaMap) {
+                            child.material.alphaMap = null;
+                        }
+                        // Handle array of materials
+                        if (Array.isArray(child.material)) {
+                            child.material.forEach(mat => {
+                                mat.transparent = false;
+                                mat.opacity = 1.0;
+                                mat.alphaTest = 0;
+                                mat.side = THREE.DoubleSide;
+                                if (mat.alphaMap) {
+                                    mat.alphaMap = null;
+                                }
+                                mat.needsUpdate = true;
+                            });
                         }
                         // Ensure material updates
                         child.material.needsUpdate = true;
