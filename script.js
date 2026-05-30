@@ -645,7 +645,7 @@ function viewImageDetails(imageId) {
     modalBody.innerHTML = `
         <div class="image-details">
             <div class="image-detail-preview">
-                <img src="${image.url}" alt="${image.title}" style="max-width: 100%; border: 2px solid #0F0; cursor: pointer;" onclick="openFullscreen('${image.url}')">
+                <img id="modal-image" src="${image.url}" alt="${image.title}" style="max-width: 100%; border: 2px solid #0F0; cursor: pointer;">
             </div>
             <div class="image-detail-info">
                 <h4>Description</h4>
@@ -655,6 +655,15 @@ function viewImageDetails(imageId) {
             </div>
         </div>
     `;
+
+    // Add click event listener to the modal image
+    setTimeout(() => {
+        const modalImage = document.getElementById('modal-image');
+        if (modalImage) {
+            modalImage.addEventListener('click', () => openFullscreen(image.url));
+            console.log('Click event added to modal image');
+        }
+    }, 100);
 
     modal.style.display = 'block';
     playSound('open');
@@ -767,8 +776,14 @@ function animateImageCards() {
 
 // Fullscreen image viewer functions
 function openFullscreen(imageUrl) {
+    console.log('Opening fullscreen for:', imageUrl);
     const viewer = document.getElementById('fullscreen-viewer');
     const fullscreenImage = document.getElementById('fullscreen-image');
+
+    if (!viewer || !fullscreenImage) {
+        console.error('Fullscreen viewer elements not found');
+        return;
+    }
 
     currentFullscreenImage = imageUrl;
     currentZoom = 1;
