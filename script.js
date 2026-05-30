@@ -615,9 +615,11 @@ function loadImages() {
 
         // Add click handlers to gallery images for fullscreen
         const galleryImages = document.querySelectorAll('.gallery-image');
-        galleryImages.forEach(img => {
+        console.log('Found gallery images:', galleryImages.length);
+        galleryImages.forEach((img, index) => {
+            const imageUrl = img.getAttribute('data-url');
+            console.log(`Adding click handler to gallery image ${index}:`, imageUrl);
             img.addEventListener('click', () => {
-                const imageUrl = img.getAttribute('data-url');
                 console.log('Gallery image clicked, opening fullscreen for:', imageUrl);
                 openFullscreen(imageUrl);
             });
