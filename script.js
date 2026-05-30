@@ -22,6 +22,45 @@ let dragStartY = 0;
 let imagePositionX = 0;
 let imagePositionY = 0;
 
+// Drag functions (defined early to ensure they're available)
+function startDrag(e) {
+    console.log('startDrag called, currentZoom:', currentZoom);
+    if (currentZoom <= 1) {
+        console.log('Drag not allowed - zoom is at or below 1');
+        return;
+    }
+    isDragging = true;
+    dragStartX = e.clientX - imagePositionX;
+    dragStartY = e.clientY - imagePositionY;
+    console.log('Drag started at:', dragStartX, dragStartY);
+    e.preventDefault();
+}
+
+function drag(e) {
+    if (!isDragging) return;
+    e.preventDefault();
+    imagePositionX = e.clientX - dragStartX;
+    imagePositionY = e.clientY - dragStartY;
+    console.log('Dragging to position:', imagePositionX, imagePositionY);
+    updateImageTransform();
+}
+
+function endDrag() {
+    console.log('Drag ended');
+    isDragging = false;
+}
+
+function updateImageTransform() {
+    const fullscreenImage = document.getElementById('fullscreen-image');
+    if (fullscreenImage) {
+        const transform = `translate(${imagePositionX}px, ${imagePositionY}px) scale(${currentZoom})`;
+        fullscreenImage.style.transform = transform;
+        console.log('Transform applied:', transform);
+    } else {
+        console.error('Fullscreen image element not found in updateImageTransform');
+    }
+}
+
 // Image data structure
 let imageData = {
     featured: [
@@ -839,11 +878,31 @@ function openFullscreen(imageUrl) {
     viewer.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
 
+    // Attach drag listeners after image loads
+    fullscreenImage.onload = function() {
+        console.log('Image loaded, attaching drag listeners');
+        fullscreenImage.addEventListener('mousedown', startDrag);
+        fullscreenImage.addEventListener('mousemove', drag);
+        fullscreenImage.addEventListener('mouseup', endDrag);
+        fullscreenImage.addEventListener('mouseleave', endDrag);
+    };
+
+    // If image is already loaded (cached), attach listeners immediately
+    if (fullscreenImage.complete) {
+        console.log('Image already loaded, attaching drag listeners immediately');
+        fullscreenImage.addEventListener('mousedown', startDrag);
+        fullscreenImage.addEventListener('mousemove', drag);
+        fullscreenImage.addEventListener('mouseup', endDrag);
+        fullscreenImage.addEventListener('mouseleave', endDrag);
+    }
+
     playSound('open');
 }
 
 function closeFullscreen() {
     const viewer = document.getElementById('fullscreen-viewer');
+    const fullscreenImage = document.getElementById('fullscreen-image');
+
     viewer.classList.add('hidden');
     document.body.style.overflow = '';
 
@@ -851,6 +910,15 @@ function closeFullscreen() {
     imagePositionX = 0;
     imagePositionY = 0;
     isDragging = false;
+
+    // Remove drag event listeners
+    if (fullscreenImage) {
+        fullscreenImage.removeEventListener('mousedown', startDrag);
+        fullscreenImage.removeEventListener('mousemove', drag);
+        fullscreenImage.removeEventListener('mouseup', endDrag);
+        fullscreenImage.removeEventListener('mouseleave', endDrag);
+        fullscreenImage.onload = null;
+    }
 
     playSound('close');
 }
@@ -878,45 +946,6 @@ function resetZoom() {
 
 function updateZoom() {
     updateImageTransform();
-}
-
-function updateImageTransform() {
-    const fullscreenImage = document.getElementById('fullscreen-image');
-    if (fullscreenImage) {
-        const transform = `translate(${imagePositionX}px, ${imagePositionY}px) scale(${currentZoom})`;
-        fullscreenImage.style.transform = transform;
-        console.log('Transform applied:', transform);
-    } else {
-        console.error('Fullscreen image element not found in updateImageTransform');
-    }
-}
-
-// Drag functionality for fullscreen image
-function startDrag(e) {
-    console.log('startDrag called, currentZoom:', currentZoom);
-    if (currentZoom <= 1) {
-        console.log('Drag not allowed - zoom is at or below 1');
-        return; // Only allow drag when zoomed in
-    }
-    isDragging = true;
-    dragStartX = e.clientX - imagePositionX;
-    dragStartY = e.clientY - imagePositionY;
-    console.log('Drag started at:', dragStartX, dragStartY);
-    e.preventDefault();
-}
-
-function drag(e) {
-    if (!isDragging) return;
-    e.preventDefault();
-    imagePositionX = e.clientX - dragStartX;
-    imagePositionY = e.clientY - dragStartY;
-    console.log('Dragging to position:', imagePositionX, imagePositionY);
-    updateImageTransform();
-}
-
-function endDrag() {
-    console.log('Drag ended');
-    isDragging = false;
 }
 
 // Keyboard controls for fullscreen viewer
