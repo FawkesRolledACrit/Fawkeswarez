@@ -633,12 +633,22 @@ function loadImages() {
 
 // View image details in modal
 function viewImageDetails(imageId) {
+    console.log('viewImageDetails called with ID:', imageId);
     const image = imageData.featured.find(img => img.id === imageId);
-    if (!image) return;
+    if (!image) {
+        console.error('Image not found with ID:', imageId);
+        return;
+    }
 
+    console.log('Found image:', image);
     const modal = document.getElementById('image-modal');
     const modalTitle = document.getElementById('image-modal-title');
     const modalBody = document.getElementById('image-modal-body');
+
+    if (!modal || !modalTitle || !modalBody) {
+        console.error('Modal elements not found');
+        return;
+    }
 
     modalTitle.textContent = image.title;
 
@@ -657,6 +667,7 @@ function viewImageDetails(imageId) {
     `;
 
     modal.style.display = 'block';
+    console.log('Modal displayed');
 
     // Add click event listener to the modal image immediately
     const modalImage = document.getElementById('modal-image');
@@ -667,7 +678,7 @@ function viewImageDetails(imageId) {
         };
         console.log('Click handler attached to modal image');
     } else {
-        console.error('Modal image not found');
+        console.error('Modal image not found after setting innerHTML');
     }
 
     playSound('open');
