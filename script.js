@@ -328,6 +328,7 @@ function updateNavButtons(activeSection) {
 
 // Initialize section-specific features
 function initializeSection(sectionId) {
+    console.log('initializeSection called with:', sectionId);
     switch(sectionId) {
         case 'home':
             animateWelcomeBox();
@@ -339,6 +340,7 @@ function initializeSection(sectionId) {
             animateProgressBars();
             break;
         case 'art-assets':
+            console.log('Initializing art-assets section');
             // Show Art & 3D Renders by default
             showArtSection('art-3d-renders');
             loadImages();
@@ -586,9 +588,12 @@ function showArtContent(contentId) {
 
 // Load images into the grid
 function loadImages() {
-    console.log('Loading images...');
+    console.log('loadImages() function called');
     const featuredContainer = document.getElementById('featured-images');
     const archiveContainer = document.getElementById('archive-gallery');
+
+    console.log('featured-container element:', featuredContainer);
+    console.log('archive-container element:', archiveContainer);
 
     if (!featuredContainer) {
         console.error('Featured images container not found');
