@@ -2131,6 +2131,24 @@ function initModelViewer(modelUrl) {
         modelUrl,
         function (gltf) {
             currentModel = gltf.scene;
+
+            // Fix materials to prevent transparency issues
+            currentModel.traverse((child) => {
+                if (child.isMesh) {
+                    if (child.material) {
+                        // Enable double-sided rendering
+                        child.material.side = THREE.DoubleSide;
+                        // Disable transparency if not intended
+                        if (child.material.transparent === undefined || child.material.transparent === false) {
+                            child.material.transparent = false;
+                            child.material.opacity = 1.0;
+                        }
+                        // Ensure material updates
+                        child.material.needsUpdate = true;
+                    }
+                }
+            });
+
             modelViewerScene.add(currentModel);
 
             // Auto-center and scale model
