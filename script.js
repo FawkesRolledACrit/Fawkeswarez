@@ -68,14 +68,14 @@ let videoData = {
             url: 'https://i.imgur.com/8mOdjqn.mp4',
             title: 'Video 3',
             description: 'Description from markdown file',
-            thumbnail: ''
+            thumbnail: 'https://i.imgur.com/Dr2TnQn.jpg'
         },
         {
             id: 'video-4',
             url: 'https://i.imgur.com/TK0sH5l.mp4',
             title: 'Video 4',
             description: 'Description from markdown file',
-            thumbnail: ''
+            thumbnail: 'https://i.imgur.com/bE5crRz.jpg'
         }
     ]
 };
