@@ -645,7 +645,7 @@ function viewImageDetails(imageId) {
     modalBody.innerHTML = `
         <div class="image-details">
             <div class="image-detail-preview">
-                <img id="modal-image" src="${image.url}" alt="${image.title}" style="max-width: 100%; border: 2px solid #0F0; cursor: pointer;">
+                <img id="modal-image" src="${image.url}" alt="${image.title}" style="max-width: 100%; border: 2px solid #0F0; cursor: pointer; pointer-events: auto;">
             </div>
             <div class="image-detail-info">
                 <h4>Description</h4>
@@ -656,16 +656,20 @@ function viewImageDetails(imageId) {
         </div>
     `;
 
-    // Add click event listener to the modal image
-    setTimeout(() => {
-        const modalImage = document.getElementById('modal-image');
-        if (modalImage) {
-            modalImage.addEventListener('click', () => openFullscreen(image.url));
-            console.log('Click event added to modal image');
-        }
-    }, 100);
-
     modal.style.display = 'block';
+
+    // Add click event listener to the modal image immediately
+    const modalImage = document.getElementById('modal-image');
+    if (modalImage) {
+        modalImage.onclick = function() {
+            console.log('Image clicked! Opening fullscreen for:', image.url);
+            openFullscreen(image.url);
+        };
+        console.log('Click handler attached to modal image');
+    } else {
+        console.error('Modal image not found');
+    }
+
     playSound('open');
 }
 

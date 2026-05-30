@@ -724,12 +724,19 @@ marquee {
 
 .image-detail-preview {
     text-align: center;
+    pointer-events: auto;
+}
+
+.image-detail-preview img {
+    pointer-events: auto;
+    cursor: pointer;
 }
 
 .image-detail-info {
     background: rgba(0, 0, 0, 0.5);
     padding: 15px;
     border: 1px solid #0F0;
+    pointer-events: auto;
 }
 
 .image-detail-info h4 {
@@ -1026,6 +1033,7 @@ marquee {
     position: relative;
     max-height: 90vh;
     overflow-y: auto;
+    pointer-events: auto;
 }
 
 .close {
