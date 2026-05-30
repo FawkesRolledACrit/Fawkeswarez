@@ -98,6 +98,62 @@ let modelData = {
             title: 'Jerry Can',
             description: 'Description from markdown file',
             thumbnail: ''
+        },
+        {
+            id: 'model-3',
+            url: 'models/raz_vape.glb',
+            title: 'Raz Vape',
+            description: 'Description from markdown file',
+            thumbnail: ''
+        },
+        {
+            id: 'model-4',
+            url: 'models/fawkes_cas.glb',
+            title: 'Fawkes CAS',
+            description: 'Description from markdown file',
+            thumbnail: ''
+        },
+        {
+            id: 'model-5',
+            url: 'models/City_Large_Building_1.glb',
+            title: 'City Large Building 1',
+            description: 'Description from markdown file',
+            thumbnail: ''
+        },
+        {
+            id: 'model-6',
+            url: 'models/City_Large_Building_2.glb',
+            title: 'City Large Building 2',
+            description: 'Description from markdown file',
+            thumbnail: ''
+        },
+        {
+            id: 'model-7',
+            url: 'models/City_Midsize_Building_1.glb',
+            title: 'City Midsize Building 1',
+            description: 'Description from markdown file',
+            thumbnail: ''
+        },
+        {
+            id: 'model-8',
+            url: 'models/City_Midsize_Building_2.glb',
+            title: 'City Midsize Building 2',
+            description: 'Description from markdown file',
+            thumbnail: ''
+        },
+        {
+            id: 'model-9',
+            url: 'models/City_Midsize_Building_3.glb',
+            title: 'City Midsize Building 3',
+            description: 'Description from markdown file',
+            thumbnail: ''
+        },
+        {
+            id: 'model-10',
+            url: 'models/City_Midsize_Building_5.glb',
+            title: 'City Midsize Building 5',
+            description: 'Description from markdown file',
+            thumbnail: ''
         }
     ]
 };
