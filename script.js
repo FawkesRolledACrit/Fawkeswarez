@@ -2100,17 +2100,22 @@ function initModelViewer(modelUrl) {
         function (gltf) {
             currentModel = gltf.scene;
 
-            // Only enable double-sided rendering and fix depth sorting, leave other material properties alone
+            // Only enable double-sided rendering, leave other material properties alone
             currentModel.traverse((child) => {
                 if (child.isMesh) {
                     if (child.material) {
                         child.material.side = THREE.DoubleSide;
-                        child.material.depthWrite = true;
+                        // Only enable depthWrite for opaque materials to prevent flickering
+                        if (!child.material.transparent) {
+                            child.material.depthWrite = true;
+                        }
                         child.material.depthTest = true;
                         if (Array.isArray(child.material)) {
                             child.material.forEach(mat => {
                                 mat.side = THREE.DoubleSide;
-                                mat.depthWrite = true;
+                                if (!mat.transparent) {
+                                    mat.depthWrite = true;
+                                }
                                 mat.depthTest = true;
                                 mat.needsUpdate = true;
                             });
