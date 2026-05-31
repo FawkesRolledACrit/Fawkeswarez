@@ -821,6 +821,15 @@ function showSection(sectionId) {
 
         initializeSection(sectionId);
 
+        // Update URL for linkability
+        if (sectionId === 'art-assets') {
+            // Don't update URL here, let showArtSection handle it
+        } else {
+            const url = new URL(window.location);
+            url.hash = sectionId;
+            window.history.pushState({}, '', url);
+        }
+
     }
 
     
@@ -2213,7 +2222,11 @@ function updateURL() {
 
     const url = new URL(window.location);
 
-    url.hash = `art-assets/${currentArtSection}/${currentArtContent}`;
+    if (currentSection === 'art-assets') {
+        url.hash = `art-assets/${currentArtSection}`;
+    } else {
+        url.hash = currentSection;
+    }
 
     window.history.pushState({}, '', url);
 
@@ -2250,6 +2263,18 @@ function parseURL() {
                 }
 
             }, 100);
+
+        }
+
+    } else if (hash && hash !== '') {
+
+        const sectionId = hash.replace('#', '');
+
+        const validSections = ['home', 'games', 'progress', 'art-assets', 'about'];
+
+        if (validSections.includes(sectionId)) {
+
+            showSection(sectionId);
 
         }
 
