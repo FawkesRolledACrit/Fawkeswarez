@@ -2070,7 +2070,10 @@ function initModelViewer(modelUrl) {
     // Create renderer
     modelViewerRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
     modelViewerRenderer.setSize(container.clientWidth, container.clientHeight);
-    modelViewerRenderer.setPixelRatio(window.devicePixelRatio);
+    modelViewerRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Limit pixel ratio for performance
+    modelViewerRenderer.outputEncoding = THREE.sRGBEncoding;
+    modelViewerRenderer.toneMapping = THREE.ACESFilmicToneMapping;
+    modelViewerRenderer.toneMappingExposure = 1;
     container.appendChild(modelViewerRenderer.domElement);
 
     // Add lights
@@ -2097,14 +2100,18 @@ function initModelViewer(modelUrl) {
         function (gltf) {
             currentModel = gltf.scene;
 
-            // Only enable double-sided rendering, leave other material properties alone
+            // Only enable double-sided rendering and fix depth sorting, leave other material properties alone
             currentModel.traverse((child) => {
                 if (child.isMesh) {
                     if (child.material) {
                         child.material.side = THREE.DoubleSide;
+                        child.material.depthWrite = true;
+                        child.material.depthTest = true;
                         if (Array.isArray(child.material)) {
                             child.material.forEach(mat => {
                                 mat.side = THREE.DoubleSide;
+                                mat.depthWrite = true;
+                                mat.depthTest = true;
                                 mat.needsUpdate = true;
                             });
                         }
