@@ -2322,6 +2322,21 @@ function showArtSectionById(sectionId) {
 
         });
 
+        // Load models if this is the 3d-assets section
+        if (sectionId === '3d-assets') {
+            loadModels();
+        }
+
+        // Load images if this is the images section
+        if (sectionId === 'images') {
+            loadImages();
+        }
+
+        // Load videos if this is the videos section
+        if (sectionId === 'videos') {
+            loadVideos();
+        }
+
     }
 
 }
