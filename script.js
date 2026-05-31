@@ -90,35 +90,35 @@ let modelData = {
             url: 'models/ciggie.glb',
             title: 'Ciggie',
             description: 'Description from markdown file',
-            thumbnail: ''
+            thumbnail: 'https://i.imgur.com/QxOLXyQ.jpg'
         },
         {
             id: 'model-2',
             url: 'models/jerry_can.glb',
             title: 'Jerry Can',
             description: 'Description from markdown file',
-            thumbnail: ''
+            thumbnail: 'https://i.imgur.com/BXQ9c1z.jpg'
         },
         {
             id: 'model-3',
             url: 'models/raz_vape.glb',
-            title: 'Raz Vape',
+            title: 'Blue Raz Vape',
             description: 'Description from markdown file',
-            thumbnail: ''
+            thumbnail: 'https://i.imgur.com/BUIXzeh.jpg'
         },
         {
             id: 'model-4',
             url: 'models/fawkes_cas.glb',
-            title: 'Fawkes CAS',
+            title: 'Fawkes Cassette Tape',
             description: 'Description from markdown file',
-            thumbnail: ''
+            thumbnail: 'https://i.imgur.com/rw7aYFR.jpg'
         },
         {
             id: 'model-5',
             url: 'models/Anime_Breakfast.glb?v=3',
             title: 'Anime Breakfast',
             description: 'Description from markdown file',
-            thumbnail: ''
+            thumbnail: 'https://i.imgur.com/c3zDtiC.jpg'
         }
     ]
 };
@@ -2108,6 +2108,11 @@ function initModelViewer(modelUrl) {
                         // Only enable depthWrite for opaque materials to prevent flickering
                         if (!child.material.transparent) {
                             child.material.depthWrite = true;
+                        } else {
+                            // Add polygon offset for transparent materials to reduce z-fighting
+                            child.material.polygonOffset = true;
+                            child.material.polygonOffsetFactor = -1;
+                            child.material.polygonOffsetUnits = -1;
                         }
                         child.material.depthTest = true;
                         if (Array.isArray(child.material)) {
@@ -2115,6 +2120,10 @@ function initModelViewer(modelUrl) {
                                 mat.side = THREE.DoubleSide;
                                 if (!mat.transparent) {
                                     mat.depthWrite = true;
+                                } else {
+                                    mat.polygonOffset = true;
+                                    mat.polygonOffsetFactor = -1;
+                                    mat.polygonOffsetUnits = -1;
                                 }
                                 mat.depthTest = true;
                                 mat.needsUpdate = true;
