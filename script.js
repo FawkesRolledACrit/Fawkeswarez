@@ -115,7 +115,7 @@ let modelData = {
         },
         {
             id: 'model-5',
-            url: 'models/Anime_Breakfast.glb',
+            url: 'models/Anime_Breakfast.glb?v=2',
             title: 'Anime Breakfast',
             description: 'Description from markdown file',
             thumbnail: ''
