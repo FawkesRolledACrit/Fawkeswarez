@@ -115,7 +115,7 @@ let modelData = {
         },
         {
             id: 'model-5',
-            url: 'models/Anime_Breakfast.glb?v=2',
+            url: 'models/Anime_Breakfast.glb?v=3',
             title: 'Anime Breakfast',
             description: 'Description from markdown file',
             thumbnail: ''
@@ -2097,29 +2097,17 @@ function initModelViewer(modelUrl) {
         function (gltf) {
             currentModel = gltf.scene;
 
-            // Fix materials to prevent transparency issues
+            // Only enable double-sided rendering, leave other material properties alone
             currentModel.traverse((child) => {
                 if (child.isMesh) {
                     if (child.material) {
-                        // Enable double-sided rendering
                         child.material.side = THREE.DoubleSide;
-                        // Only force opacity if there's no alpha map
-                        if (!child.material.alphaMap) {
-                            child.material.transparent = false;
-                            child.material.opacity = 1.0;
-                        }
-                        // Handle array of materials
                         if (Array.isArray(child.material)) {
                             child.material.forEach(mat => {
                                 mat.side = THREE.DoubleSide;
-                                if (!mat.alphaMap) {
-                                    mat.transparent = false;
-                                    mat.opacity = 1.0;
-                                }
                                 mat.needsUpdate = true;
                             });
                         }
-                        // Ensure material updates
                         child.material.needsUpdate = true;
                     }
                 }
