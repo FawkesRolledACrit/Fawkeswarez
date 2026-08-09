@@ -348,7 +348,7 @@ let isDraggingUlt = false;
 const DRAG_THRESHOLD = 25;
 const CHARGE_THRESHOLD = 220;
 const MAX_CHARGE = 900;
-const OVERKILL_MULT = 3; // final-hit overflow must be >= enemy.maxHp * this, to count as overkill
+const OVERKILL_MULT = 0.5; // final-hit overflow must be >= enemy.maxHp * this, to count as overkill
 
 function getCanvasPos(e){
   const rect = canvas.getBoundingClientRect();
