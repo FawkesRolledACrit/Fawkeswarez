@@ -224,7 +224,7 @@ const W = 640, H = 400;
 
 // Detect if running in Electron vs web browser
 const isElectron = typeof window !== 'undefined' && window.process && window.process.type === 'renderer';
-const assetPath = 'assets/'; // Website version: assets in same directory
+const assetPath = 'assets/'; // Both environments now use assets/ folder
 
 console.log('Environment:', isElectron ? 'Electron' : 'Web Browser');
 console.log('Asset path:', assetPath);
@@ -282,6 +282,7 @@ const SFX = {
   pickup: ()=>beep(880,0.05,'sine',0.05),
   overkill: ()=>beep(200,0.25,'sawtooth',0.1),
   chargeLaunch: ()=>beep(160,0.14,'sawtooth',0.08),
+  enemyShoot: ()=>beep(150,0.2,'sawtooth',0.1),
 };
 
 // ---------- Utility ----------
@@ -569,8 +570,10 @@ let wordWindowAttack = {
   targetX: 0,
   targetY: 0,
   timer: 0,
-  phase: 'idle', // idle, typing, warning, firing
-  projectilesFiredThisWave: 0
+  phase: 'idle', // idle, typing, warning, firing, laughing
+  projectilesFiredThisWave: 0,
+  laughFrame: 1, // Which laugh frame to show (1 or 2)
+  laughTimer: 0 // Timer for alternating frames
 };
 
 // TEST MODE: Set to true to enable word window attacks from wave 1
@@ -962,7 +965,7 @@ function startWave(n){
   hasStartedSpawning = false;
   
   // Give you invulnerability at wave start to avoid window damage
-  player.invuln = 1.5;
+  player.invuln = 2.0;
   
   // Respawn window each wave, ensuring it doesn't spawn near you
   spawnWindows();
@@ -1091,6 +1094,8 @@ function spawnCache(){
 let windows = [];
 let windowImage = null;
 let graphWindowImage = null; // For projectiles
+let laugh1Image = null;
+let laugh2Image = null;
 
 function loadWindowImage(){
   windowImage = new Image();
@@ -1102,6 +1107,16 @@ function loadWindowImage(){
   graphWindowImage.src = assetPath + 'Visi_Graph_Window.png';
   graphWindowImage.onload = () => { console.log('Graph window image loaded'); };
   graphWindowImage.onerror = () => { console.error('Failed to load graph window image'); };
+  
+  laugh1Image = new Image();
+  laugh1Image.src = assetPath + 'Laugh_1.png';
+  laugh1Image.onload = () => { console.log('Laugh 1 image loaded'); };
+  laugh1Image.onerror = () => { console.error('Failed to load laugh 1 image'); };
+  
+  laugh2Image = new Image();
+  laugh2Image.src = assetPath + 'Laugh_2.png';
+  laugh2Image.onload = () => { console.log('Laugh 2 image loaded'); };
+  laugh2Image.onerror = () => { console.error('Failed to load laugh 2 image'); };
 }
 
 function spawnWindows(){
@@ -1136,6 +1151,249 @@ function spawnWindows(){
   
   // Store reference to word window for attack system
   wordWindowAttack.window = windows[windows.length - 1];
+}
+
+// ---------- Word Window Attack System ----------
+
+function shouldStartWordWindowAttack() {
+  // Check if wave is still active
+  if (waveState !== 'fighting') return false;
+  
+  // Check wave requirements
+  const minWave = TEST_WORD_WINDOW_ATTACKS ? 1 : 10;
+  if (wave < minWave) return false;
+  
+  // Check if already active
+  if (wordWindowAttack.active) return false;
+  
+  // Check if we have a word window
+  if (!wordWindowAttack.window) return false;
+  
+  // Check if at least 2 seconds have passed since wave start
+  const timeSinceWaveStart = MIN_WAVE_DURATION - waveTimer;
+  if (timeSinceWaveStart < 2.0) return false;
+  
+  // Calculate max attacks per wave based on wave number
+  let maxAttacks = 1;
+  if (wave >= 15) maxAttacks = 2;
+  if (wave >= 18) maxAttacks = 3;
+  
+  // Check if we've already fired max attacks this wave
+  if (wordWindowAttack.projectilesFiredThisWave >= maxAttacks) return false;
+  
+  // Random chance to start attack (more frequent in later waves)
+  const baseChance = 0.002; // Base chance per frame
+  const waveBonus = (wave - minWave) * 0.0003; // Increases with wave
+  const chance = baseChance + waveBonus;
+  
+  return Math.random() < chance;
+}
+
+function startWordWindowAttack() {
+  if (!wordWindowAttack.window) return;
+  
+  wordWindowAttack.active = true;
+  wordWindowAttack.phase = 'typing';
+  wordWindowAttack.text = "Dodge This!";
+  wordWindowAttack.typedText = "";
+  wordWindowAttack.timer = 0;
+  
+  // Calculate direction from window to player
+  const win = wordWindowAttack.window;
+  const centerX = win.x + win.width / 2;
+  const centerY = win.y + win.height / 2;
+  
+  const dx = player.x - centerX;
+  const dy = player.y - centerY;
+  const angle = Math.atan2(dy, dx);
+  
+  // Add some randomness to the angle to make it less predictable
+  const randomAngle = angle + (Math.random() - 0.5) * 0.5; // ±0.25 radians variation
+  
+  // Find where this direction intersects with the screen edge
+  const margin = 50; // Target slightly off-screen
+  let targetX, targetY;
+  
+  // Calculate intersection with screen bounds
+  const cos = Math.cos(randomAngle);
+  const sin = Math.sin(randomAngle);
+  
+  // Find which edge this direction will hit first
+  const tRight = (W + margin - centerX) / cos;
+  const tLeft = (-margin - centerX) / cos;
+  const tBottom = (H + margin - centerY) / sin;
+  const tTop = (-margin - centerY) / sin;
+  
+  // Find the smallest positive t (first intersection)
+  const tValues = [];
+  if (cos > 0) tValues.push(tRight);
+  if (cos < 0) tValues.push(tLeft);
+  if (sin > 0) tValues.push(tBottom);
+  if (sin < 0) tValues.push(tTop);
+  
+  const t = Math.min(...tValues);
+  targetX = centerX + cos * t;
+  targetY = centerY + sin * t;
+  
+  wordWindowAttack.targetX = targetX;
+  wordWindowAttack.targetY = targetY;
+}
+
+function updateWordWindowAttack(dt) {
+  if (!wordWindowAttack.active) return;
+  
+  const win = wordWindowAttack.window;
+  if (!win) {
+    wordWindowAttack.active = false;
+    return;
+  }
+  
+  wordWindowAttack.timer += dt;
+  
+  switch(wordWindowAttack.phase) {
+    case 'typing':
+      // Type out text character by character (slower)
+      const typeSpeed = 0.12; // Slower typing speed
+      const charsToType = Math.floor(wordWindowAttack.timer / typeSpeed);
+      if (charsToType <= wordWindowAttack.text.length) {
+        wordWindowAttack.typedText = wordWindowAttack.text.substring(0, charsToType);
+      } else {
+        wordWindowAttack.typedText = wordWindowAttack.text;
+        wordWindowAttack.phase = 'warning';
+        wordWindowAttack.timer = 0;
+      }
+      break;
+      
+    case 'warning':
+      // Update target to slowly track player (smooth homing)
+      const win = wordWindowAttack.window;
+      const centerX = win.x + win.width / 2;
+      const centerY = win.y + win.height / 2;
+      
+      // Calculate current target direction
+      const currentDx = wordWindowAttack.targetX - centerX;
+      const currentDy = wordWindowAttack.targetY - centerY;
+      const currentAngle = Math.atan2(currentDy, currentDx);
+      
+      // Calculate desired angle toward player
+      const playerDx = player.x - centerX;
+      const playerDy = player.y - centerY;
+      const targetAngle = Math.atan2(playerDy, playerDx);
+      
+      // Smoothly interpolate toward player angle
+      const lerpFactor = 0.05; // How fast it tracks (lower = slower)
+      const lerpedAngle = currentAngle + (targetAngle - currentAngle) * lerpFactor;
+      
+      // Recalculate target based on lerped angle
+      const cos = Math.cos(lerpedAngle);
+      const sin = Math.sin(lerpedAngle);
+      
+      const margin = 50;
+      const tRight = (W + margin - centerX) / cos;
+      const tLeft = (-margin - centerX) / cos;
+      const tBottom = (H + margin - centerY) / sin;
+      const tTop = (-margin - centerY) / sin;
+      
+      const tValues = [];
+      if (cos > 0) tValues.push(tRight);
+      if (cos < 0) tValues.push(tLeft);
+      if (sin > 0) tValues.push(tBottom);
+      if (sin < 0) tValues.push(tTop);
+      
+      const t = Math.min(...tValues);
+      wordWindowAttack.targetX = centerX + cos * t;
+      wordWindowAttack.targetY = centerY + sin * t;
+      
+      // Show red line for longer before firing (2.5 seconds)
+      if (wordWindowAttack.timer >= 2.5) {
+        wordWindowAttack.phase = 'firing';
+        wordWindowAttack.timer = 0;
+        fireWordWindowProjectile();
+      }
+      break;
+      
+    case 'firing':
+      // Projectile already fired, transition to laughing phase
+      if (wordWindowAttack.timer >= 0.5) {
+        wordWindowAttack.phase = 'laughing';
+        wordWindowAttack.timer = 0;
+        wordWindowAttack.laughFrame = 1;
+        wordWindowAttack.laughTimer = 0;
+      }
+      break;
+      
+    case 'laughing':
+      // Alternate laugh frames at 2.5fps (0.4s per frame)
+      wordWindowAttack.laughTimer += dt;
+      if (wordWindowAttack.laughTimer >= 0.4) {
+        wordWindowAttack.laughTimer = 0;
+        wordWindowAttack.laughFrame = wordWindowAttack.laughFrame === 1 ? 2 : 1;
+      }
+      
+      // Laugh for 3 seconds then return to idle
+      if (wordWindowAttack.timer >= 3.0) {
+        wordWindowAttack.active = false;
+        wordWindowAttack.phase = 'idle';
+        wordWindowAttack.projectilesFiredThisWave++;
+      }
+      break;
+  }
+}
+
+function fireWordWindowProjectile() {
+  if (!wordWindowAttack.window) return;
+  
+  const win = wordWindowAttack.window;
+  const centerX = win.x + win.width / 2;
+  const centerY = win.y + win.height / 2;
+  
+  // Calculate direction to target
+  const dx = wordWindowAttack.targetX - centerX;
+  const dy = wordWindowAttack.targetY - centerY;
+  const dist = Math.hypot(dx, dy);
+  const dirX = dx / dist;
+  const dirY = dy / dist;
+  
+  // Create projectile
+  windowProjectiles.push({
+    x: centerX,
+    y: centerY,
+    vx: dirX * 8, // Speed of projectile
+    vy: dirY * 8,
+    width: 384,
+    height: 244,
+    damage: 25, // Big damage
+    rotation: Math.atan2(dirY, dirX)
+  });
+  
+  SFX.enemyShoot();
+}
+
+function updateWindowProjectiles(dt) {
+  for (const proj of windowProjectiles) {
+    proj.x += proj.vx;
+    proj.y += proj.vy;
+    
+    // Check collision with player
+    if (player.invuln <= 0) {
+      const projCenterX = proj.x + proj.width / 2;
+      const projCenterY = proj.y + proj.height / 2;
+      const dist = Math.hypot(projCenterX - player.x, projCenterY - player.y);
+      
+      if (dist < Math.max(proj.width, proj.height) / 2 + player.radius) {
+        takeDamage(proj.damage);
+        player.invuln = 1.0;
+        shake = 10;
+        proj.dead = true;
+        floatText(player.x, player.y - 20, "WINDOW SLAM!", '#ff0000');
+      }
+    }
+  }
+  
+  // Remove dead or off-screen projectiles
+  windowProjectiles = windowProjectiles.filter(p => 
+    !p.dead && p.x > -500 && p.x < W + 500 && p.y > -500 && p.y < H + 500
+  );
 }
 
 function checkWindowCollision(obj, isPlayer){
@@ -1485,8 +1743,11 @@ function update(dt){
   player.x = mouse.x;
   player.y = mouse.y;
   
-  // Check window collision for you
-  checkWindowCollision(player, true);
+  // Check window collision for you (skip if invulnerable)
+  // TEMPORARILY DISABLED FOR TESTING
+  // if(player.invuln <= 0){
+  //   checkWindowCollision(player, true);
+  // }
 
   player.trail.push({x:player.x, y:player.y});
   if(player.trail.length > 10) player.trail.shift();
@@ -2151,14 +2412,14 @@ function drawWordWindowAttack() {
     ctx.save();
     ctx.font = 'bold 28px monospace';
     ctx.fillStyle = '#ffffff';
-    ctx.textBaseline = 'top';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
     
-    // Text position with specified offsets
-    const textX = win.x + 20; // Left offset: In 20px
-    const textY = win.y + 44; // Top offset: Down 44px
-    const maxWidth = win.width - 50; // Right offset: In 30px (20 + 30 = 50 from left)
+    // Text position with specified offsets, centered in the text area
+    const textX = win.x + 20 + (win.width - 50) / 2; // Left offset + half of available width
+    const textY = win.y + 44 + (win.height - 74) / 2; // Top offset + half of available height (44 + 30 = 74)
     
-    ctx.fillText(wordWindowAttack.typedText, textX, textY, maxWidth);
+    ctx.fillText(wordWindowAttack.typedText, textX, textY);
     ctx.restore();
   }
   
@@ -2175,6 +2436,29 @@ function drawWordWindowAttack() {
     ctx.moveTo(centerX, centerY);
     ctx.lineTo(wordWindowAttack.targetX, wordWindowAttack.targetY);
     ctx.stroke();
+    ctx.restore();
+  }
+  
+  // Draw laugh animation
+  if (wordWindowAttack.phase === 'laughing') {
+    const laughImage = wordWindowAttack.laughFrame === 1 ? laugh1Image : laugh2Image;
+    
+    ctx.save();
+    if (laughImage && laughImage.complete && laughImage.naturalWidth > 0) {
+      ctx.drawImage(laughImage, win.x, win.y, win.width, win.height);
+    } else {
+      // Fallback if images fail to load
+      ctx.fillStyle = '#808080';
+      ctx.fillRect(win.x, win.y, win.width, win.height);
+      ctx.strokeStyle = '#000';
+      ctx.lineWidth = 2;
+      ctx.strokeRect(win.x, win.y, win.width, win.height);
+      ctx.fillStyle = '#ffffff';
+      ctx.font = 'bold 20px monospace';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('HAHA!', win.x + win.width/2, win.y + win.height/2);
+    }
     ctx.restore();
   }
 }
