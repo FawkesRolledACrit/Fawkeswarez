@@ -218,9 +218,16 @@ const canvas = document.getElementById('game');
 const ctx = canvas.getContext('2d');
 const W = 640, H = 400;
 
+// Detect if running in Electron vs web browser
+const isElectron = typeof window !== 'undefined' && window.process && window.process.type === 'renderer';
+const assetPath = isElectron ? 'assets/' : '';
+
+console.log('Environment:', isElectron ? 'Electron' : 'Web Browser');
+console.log('Asset path:', assetPath);
+
 // Load Visi On background
 const visiOnBg = new Image();
-visiOnBg.src = 'VisiOn_Back.png';
+visiOnBg.src = assetPath + 'VisiOn_Back.png';
 let bgLoaded = false;
 visiOnBg.onload = () => { bgLoaded = true; };
 visiOnBg.onerror = () => { console.error('Failed to load background image'); };
@@ -979,7 +986,7 @@ let windowImage = null;
 
 function loadWindowImage(){
   windowImage = new Image();
-  windowImage.src = 'Visi_Word_Window.png';
+  windowImage.src = assetPath + 'Visi_Word_Window.png';
   windowImage.onload = () => { console.log('Window image loaded'); };
   windowImage.onerror = () => { console.error('Failed to load window image'); };
 }
