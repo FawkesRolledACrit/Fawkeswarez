@@ -1744,10 +1744,9 @@ function update(dt){
   player.y = mouse.y;
   
   // Check window collision for you (skip if invulnerable)
-  // TEMPORARILY DISABLED FOR TESTING
-  // if(player.invuln <= 0){
-  //   checkWindowCollision(player, true);
-  // }
+  if(player.invuln <= 0){
+    checkWindowCollision(player, true);
+  }
 
   player.trail.push({x:player.x, y:player.y});
   if(player.trail.length > 10) player.trail.shift();
@@ -2443,18 +2442,25 @@ function drawWordWindowAttack() {
   if (wordWindowAttack.phase === 'laughing') {
     const laughImage = wordWindowAttack.laughFrame === 1 ? laugh1Image : laugh2Image;
     
+    // Shrink by 40% (60% of original size)
+    const scale = 0.6;
+    const scaledWidth = win.width * scale;
+    const scaledHeight = win.height * scale;
+    const offsetX = (win.width - scaledWidth) / 2;
+    const offsetY = (win.height - scaledHeight) / 2;
+    
     ctx.save();
     if (laughImage && laughImage.complete && laughImage.naturalWidth > 0) {
-      ctx.drawImage(laughImage, win.x, win.y, win.width, win.height);
+      ctx.drawImage(laughImage, win.x + offsetX, win.y + offsetY, scaledWidth, scaledHeight);
     } else {
       // Fallback if images fail to load
       ctx.fillStyle = '#808080';
-      ctx.fillRect(win.x, win.y, win.width, win.height);
+      ctx.fillRect(win.x + offsetX, win.y + offsetY, scaledWidth, scaledHeight);
       ctx.strokeStyle = '#000';
       ctx.lineWidth = 2;
-      ctx.strokeRect(win.x, win.y, win.width, win.height);
+      ctx.strokeRect(win.x + offsetX, win.y + offsetY, scaledWidth, scaledHeight);
       ctx.fillStyle = '#ffffff';
-      ctx.font = 'bold 20px monospace';
+      ctx.font = 'bold 12px monospace';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillText('HAHA!', win.x + win.width/2, win.y + win.height/2);
