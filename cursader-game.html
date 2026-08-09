@@ -2442,10 +2442,11 @@ function drawWordWindowAttack() {
   if (wordWindowAttack.phase === 'laughing') {
     const laughImage = wordWindowAttack.laughFrame === 1 ? laugh1Image : laugh2Image;
     
-    // Shrink by 40% (60% of original size)
-    const scale = 0.6;
-    const scaledWidth = win.width * scale;
-    const scaledHeight = win.height * scale;
+    // Shrink by 40% horizontally, stretch vertically by 15%
+    const scaleX = 0.6; // 60% of original width
+    const scaleY = 0.6 * 1.15; // 60% width stretched 15% vertically = 69% of original height
+    const scaledWidth = win.width * scaleX;
+    const scaledHeight = win.height * scaleY;
     const offsetX = (win.width - scaledWidth) / 2;
     const offsetY = (win.height - scaledHeight) / 2;
     
