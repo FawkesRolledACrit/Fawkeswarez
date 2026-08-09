@@ -224,7 +224,7 @@ const W = 640, H = 400;
 
 // Detect if running in Electron vs web browser
 const isElectron = typeof window !== 'undefined' && window.process && window.process.type === 'renderer';
-const assetPath = 'assets/'; // Both environments now use assets/ folder
+const assetPath = './'; // Website version: files in same directory
 
 console.log('Environment:', isElectron ? 'Electron' : 'Web Browser');
 console.log('Asset path:', assetPath);
@@ -550,6 +550,7 @@ const obstacle = { x: 660, y: 90, w: 230, h: 170 };
 let enemies = [];
 let playerBullets = [];
 let enemyBullets = [];
+let windowProjectiles = []; // Word window projectiles
 let particles = [];
 let pickups = [];
 let caches = []; // "encrypted file" world objects — bump to open, one at a time
@@ -558,6 +559,22 @@ let kills = 0;
 let wave = 1;
 let gameOver = false;
 let shake = 0;
+
+// Word window attack system
+let wordWindowAttack = {
+  active: false,
+  window: null,
+  text: "",
+  typedText: "",
+  targetX: 0,
+  targetY: 0,
+  timer: 0,
+  phase: 'idle', // idle, typing, warning, firing
+  projectilesFiredThisWave: 0
+};
+
+// TEST MODE: Set to true to enable word window attacks from wave 1
+const TEST_WORD_WINDOW_ATTACKS = true;
 
 // waveState: 'fighting' -> 'banner' -> 'upgrade' -> back to 'fighting'
 let waveState = 'fighting';
@@ -965,6 +982,11 @@ function startWave(n){
   
   // Initial spawn with delay
   waveSpawnTimer = 1.0; // Start with 1 second delay
+  
+  // Reset word window attack for this wave
+  wordWindowAttack.projectilesFiredThisWave = 0;
+  wordWindowAttack.active = false;
+  wordWindowAttack.phase = 'idle';
 }
 
 function spawnButtonSwarm(){
@@ -1068,12 +1090,18 @@ function spawnCache(){
 // ---------- Window obstacles ----------
 let windows = [];
 let windowImage = null;
+let graphWindowImage = null; // For projectiles
 
 function loadWindowImage(){
   windowImage = new Image();
   windowImage.src = assetPath + 'Visi_Word_Window.png';
   windowImage.onload = () => { console.log('Window image loaded'); };
   windowImage.onerror = () => { console.error('Failed to load window image'); };
+  
+  graphWindowImage = new Image();
+  graphWindowImage.src = assetPath + 'Visi_Graph_Window.png';
+  graphWindowImage.onload = () => { console.log('Graph window image loaded'); };
+  graphWindowImage.onerror = () => { console.error('Failed to load graph window image'); };
 }
 
 function spawnWindows(){
@@ -1102,8 +1130,12 @@ function spawnWindows(){
   windows.push({
     x, y,
     width: 384,  // 20% larger than 320
-    height: 244  // 20% larger than 203
+    height: 244,  // 20% larger than 203
+    isWordWindow: true // Mark this as the word window for attacks
   });
+  
+  // Store reference to word window for attack system
+  wordWindowAttack.window = windows[windows.length - 1];
 }
 
 function checkWindowCollision(obj, isPlayer){
@@ -1392,6 +1424,13 @@ function update(dt){
 
   // wave spawning for button swarms
   updateWaveSpawning(dt);
+  
+  // word window attack system
+  if (shouldStartWordWindowAttack()) {
+    startWordWindowAttack();
+  }
+  updateWordWindowAttack(dt);
+  updateWindowProjectiles(dt);
   
   // wave timer (minimum duration)
   if(waveState === 'fighting'){
@@ -2102,6 +2141,65 @@ function drawWindows(){
   }
 }
 
+function drawWordWindowAttack() {
+  if (!wordWindowAttack.active || !wordWindowAttack.window) return;
+  
+  const win = wordWindowAttack.window;
+  
+  // Draw typing text on the word window
+  if (wordWindowAttack.phase === 'typing' || wordWindowAttack.phase === 'warning') {
+    ctx.save();
+    ctx.font = 'bold 28px monospace';
+    ctx.fillStyle = '#ffffff';
+    ctx.textBaseline = 'top';
+    
+    // Text position with specified offsets
+    const textX = win.x + 20; // Left offset: In 20px
+    const textY = win.y + 44; // Top offset: Down 44px
+    const maxWidth = win.width - 50; // Right offset: In 30px (20 + 30 = 50 from left)
+    
+    ctx.fillText(wordWindowAttack.typedText, textX, textY, maxWidth);
+    ctx.restore();
+  }
+  
+  // Draw red warning line
+  if (wordWindowAttack.phase === 'warning' || wordWindowAttack.phase === 'firing') {
+    const centerX = win.x + win.width / 2;
+    const centerY = win.y + win.height / 2;
+    
+    ctx.save();
+    ctx.strokeStyle = '#ff0000';
+    ctx.lineWidth = 3;
+    ctx.setLineDash([10, 5]);
+    ctx.beginPath();
+    ctx.moveTo(centerX, centerY);
+    ctx.lineTo(wordWindowAttack.targetX, wordWindowAttack.targetY);
+    ctx.stroke();
+    ctx.restore();
+  }
+}
+
+function drawWindowProjectiles() {
+  for (const proj of windowProjectiles) {
+    ctx.save();
+    ctx.translate(proj.x + proj.width / 2, proj.y + proj.height / 2);
+    ctx.rotate(proj.rotation);
+    
+    if (graphWindowImage && graphWindowImage.complete && graphWindowImage.naturalWidth > 0) {
+      ctx.drawImage(graphWindowImage, -proj.width / 2, -proj.height / 2, proj.width, proj.height);
+    } else {
+      // Fallback
+      ctx.fillStyle = '#808080';
+      ctx.fillRect(-proj.width / 2, -proj.height / 2, proj.width, proj.height);
+      ctx.strokeStyle = '#000';
+      ctx.lineWidth = 2;
+      ctx.strokeRect(-proj.width / 2, -proj.height / 2, proj.width, proj.height);
+    }
+    
+    ctx.restore();
+  }
+}
+
 function drawParticles(){
   for(const p of particles){
     const a = clamp(p.life/p.maxLife,0,1);
@@ -2200,10 +2298,12 @@ function draw(){
   }
   drawWallpaper();
   drawWindows();
+  drawWordWindowAttack();
   drawPickups();
   drawCaches();
   drawEnemies();
   drawBullets();
+  drawWindowProjectiles();
   drawParticles();
   drawMarquee();
   drawPlayer();
