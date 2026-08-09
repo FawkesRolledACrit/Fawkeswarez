@@ -697,6 +697,166 @@ let gameData = {
 
         note: 'Currently on hiatus for E.O.D. development but fully playable and ready for playtesting.'
 
+    },
+
+    cursader: {
+
+        title: 'Cursader',
+
+        subtitle: 'Your cursor is the weapon. The desktop is the dungeon.',
+
+        overview: 'It\'s 1983. The GUI has just been invented, and it already hates you. Cursader is a top-down bullet-hell where you play as the mouse cursor itself — the actual pointer, nothing more — fighting off a computer that\'s turning its own interface against you.',
+
+        hook: 'Move by moving your literal cursor, tap to fire, hold for charged shots, cast spells, and unleash screen-clearing purges in a monochrome world of VisiOn.',
+
+        pillars: [
+
+            {
+
+                title: 'Literal cursor control',
+
+                description: 'You ARE the mouse cursor. Movement is your mouse movement, locked to the play window so it never slips out mid-fight.'
+
+            },
+
+            {
+
+                title: 'GUI history progression',
+
+                description: 'Each era is a reskinned stage drawn from real GUI history — VisiOn (1983), Macintosh (1984), Windows 1.0-3.0, and beyond.'
+
+            },
+
+            {
+
+                title: 'Ludo-narrative coherence',
+
+                description: 'Enemies, spells, and upgrades are all drawn from actual computing history — you\'re fighting the desktop itself.'
+
+            }
+
+        ],
+
+        highlights: [
+
+            'Move by moving your literal cursor — it\'s locked to the play window so it never slips out mid-fight',
+
+            'Tap to fire an auto-aimed shot at the nearest threat',
+
+            'Hold and release for a bigger, piercing charged shot',
+
+            'Cast one of two spells (CTRL+ALT+PURGE, an area pulse, or FIREWALL, a temporary shield) once your IP meter is full',
+
+            'Drag out a marquee selection box to unleash PURGE, a screen-clearing ultimate, once that meter is completely charged'
+
+        ],
+
+        loops: [
+
+            {
+
+                title: 'Wave survival loop',
+
+                bullets: [
+
+                    'Survive escalating waves of GUI enemies that detach from the command bar and rush you',
+
+                    'Pick between system upgrades between waves to enhance your capabilities',
+
+                    'Collect IP drops and encrypted file pickups for resources and healing'
+
+                ]
+
+            },
+
+            {
+
+                title: 'Enemy variety loop',
+
+                bullets: [
+
+                    'Standard command bar buttons: Help, Close, Open, Full, Frame, Options, Transfer, Stop',
+
+                    'Corrupted buttons (rare, red): faster, and when killed, they count down and detonate',
+
+                    'Application windows that spawn as solid obstacles each wave'
+
+                ]
+
+            },
+
+            {
+
+                title: 'Resource management loop',
+
+                bullets: [
+
+                    'IP (Invoke Points) for casting spells and abilities',
+
+                    'PURGE meter that fills from kills and unleashes screen-clearing attacks',
+
+                    'Encrypted file pickups that expire quickly — race to collect them for benefits'
+
+                ]
+
+            }
+
+        ],
+
+        mechanics: [
+
+            'Pointer lock cursor control (locked to play area)',
+
+            'Auto-aimed basic shots on tap',
+
+            'Hold-to-charge piercing shots',
+
+            'Two spells: CTRL+ALT+PURGE (area pulse) and FIREWALL (shield)',
+
+            'Marquee selection ultimate for screen-clearing PURGE',
+
+            'Wave-based progression with upgrade choices',
+
+            'Dynamic enemy spawning from GUI elements'
+
+        ],
+
+        inspirations: {
+
+            gameplay: ['Bullet hell games', 'Arcade survival', 'Desktop metaphor games'],
+
+            thematic: ['Real GUI history', 'Computing nostalgia', 'Interface-as-enemy concept']
+
+        },
+
+        development: {
+
+            progress: '15%',
+
+            status: 'Prototype · Visi On Era playable',
+
+            release: 'TBA',
+
+            platforms: ['Web (current)', 'PC (planned)']
+
+        },
+
+        roadmap: [
+
+            '1984 — Macintosh: The first mainstream GUI, bitmapped and mouse-driven',
+
+            '1985–1990 — Windows 1.0–3.0: Color returns, windows multiply',
+
+            '1990s — Windows 95/98: The Start button era, beginning of the modern desktop',
+
+            '2000s — The Web: Browser toolbars, popup chains, chaos',
+
+            'Modern era — Flat design, cloud sync, endless updates, and final confrontation'
+
+        ],
+
+        note: 'PROTOTYPE — Visi On Era (1983) is playable now in-browser for free. Later eras are planned but not yet implemented.'
+
     }
 
 };

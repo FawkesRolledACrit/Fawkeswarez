@@ -1,0 +1,2019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Desktop Dungeon — Visi On Era</title>
+<style>
+  :root{
+    --bezel: #808080;
+    --bezel-dark: #404040;
+    --screen-bg: #000000;
+    --hp-color: #ffffff;
+    --ip-color: #ffffff;
+    --ult-color: #ffffff;
+    --accent: #ffffff;
+  }
+  html,body{
+    margin:0; padding:0; min-height:100%;
+    background: #202020;
+    font-family: "Courier New", monospace;
+    color:#ffffff;
+    overflow:hidden;
+  }
+  #appRoot{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform-origin: center center;
+  }
+  #monitor{
+    background: linear-gradient(180deg,var(--bezel),var(--bezel-dark));
+    border-radius: 8px;
+    padding: 16px 16px 20px 16px;
+    box-shadow: 0 20px 40px rgba(0,0,0,.8), inset 0 2px 0 rgba(255,255,255,.2);
+  }
+  #screenWrap{
+    position:relative;
+    border: 4px solid #000;
+    border-radius: 2px;
+    box-shadow: inset 0 0 20px rgba(0,0,0,.8);
+    overflow:hidden;
+  }
+  canvas{
+    display:block;
+    background: var(--screen-bg);
+    cursor:none;
+    image-rendering: pixelated;
+  }
+  #hud{
+    box-sizing: border-box;
+    width: 680px;
+    max-width: 100%;
+    margin: 0 auto 10px auto;
+    padding:6px 10px;
+    display:flex; gap:5px; align-items:center; flex-wrap:wrap;
+    font-size:20px;
+    background: rgba(0,0,0,.85);
+    border: 2px solid #000;
+    box-shadow: 0 4px 10px rgba(0,0,0,.5);
+    letter-spacing:0px;
+    font-family: "Courier New", monospace;
+  }
+  .bar-label{ width:50px; text-transform:uppercase; font-weight:700; opacity:.9; }
+  .ip-group .bar-label{ width:auto; }
+  .mem-group .bar-label{ width:auto; }
+  .purge-group .bar-label{ width:auto; }
+  .bar{
+    width:100px; height:12px; background:rgba(255,255,255,.2);
+    border:1px solid rgba(255,255,255,.5); overflow:hidden;
+  }
+  .bar > div{ height:100%; width:0%; transition: width .08s linear; }
+  #hpFill{ background: #ffffff; }
+  #ultFill{ background: #ffffff; }
+  #ultBarWrap.ready .bar{ box-shadow: 0 0 8px rgba(255,255,255,.8); animation: pulseUlt 1s infinite; }
+  @keyframes pulseUlt{ 0%,100%{ opacity:1;} 50%{ opacity:.5; } }
+  .stat-group{ display:flex; align-items:center; gap:1px; }
+  .ip-group{ gap:0; }
+  .mem-group{ gap:10px; margin-right:25px; }
+  .purge-group{ gap:10px; margin-right:25px; }
+  #ipText{
+    font-family: "Courier New", monospace;
+    font-size:18px; font-weight:700; letter-spacing:0px;
+  }
+  #spellName{
+    font-weight:700; color: #ffffff; text-shadow:none;
+  }
+  #statusRight{
+    margin-left:auto; display:flex; gap:12px; font-weight:700; opacity:.9;
+  }
+  #floatLayer{ position:absolute; inset:0; pointer-events:none; }
+  .modal{
+    position:absolute; inset:0;
+    background: rgba(0,0,0,.9);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:16px; text-align:center; font-size:24px;
+    font-family: "Courier New", monospace;
+  }
+  .modal.hidden{ display:none; }
+  #lockOverlay{ cursor:pointer; z-index:5; }
+  .modal h1{ margin:0; font-size:40px; letter-spacing:0px; color:#fff; font-family: "Courier New", monospace; }
+  .modal button{
+    background: #ffffff;
+    border:2px solid #000; color:#000;
+    padding:12px 24px; font-size:24px; font-weight:700; cursor:pointer;
+    font-family: "Courier New", monospace;
+  }
+  .modal button:active{ transform: translateY(1px); }
+  #upgradeCards{ display:flex; gap:12px; }
+  .upgradeCard{
+    background: #000;
+    border:2px solid #fff;
+    padding:12px 16px; width:160px; cursor:pointer;
+    text-align:left; transition: transform .12s ease, box-shadow .12s ease;
+    font-family: "Courier New", monospace;
+  }
+  .upgradeCard:hover{ transform: translateY(-2px); box-shadow: 0 4px 8px rgba(255,255,255,.3); }
+  .upgradeCard .u-title{ font-weight:700; color:#fff; font-size:18px; margin-bottom:6px; }
+  .upgradeCard .u-desc{ font-size:14px; opacity:.8; line-height:1.3; }
+  #controlsBar{ margin-top:8px; text-align:center; font-size:14px; opacity:.7; max-width:640px; font-family: "Courier New", monospace; }
+  #title{ text-align:center; margin-bottom:8px; font-size:18px; letter-spacing:1px; opacity:.8; font-family: "Courier New", monospace; }
+</style>
+</head>
+<body>
+
+<div id="appRoot">
+  <div id="title">DESKTOP DUNGEON — Visi On Era (1983)</div>
+  <div id="hud">
+    <div class="stat-group mem-group">
+      <div class="bar-label">MEM</div>
+      <div class="bar"><div id="hpFill"></div></div>
+    </div>
+    <div class="stat-group purge-group" id="ultBarWrap">
+      <div class="bar-label">PURGE</div>
+      <div class="bar"><div id="ultFill"></div></div>
+    </div>
+    <div class="stat-group ip-group">
+      <div class="bar-label">IP:</div>
+      <div id="ipText">000:000:000</div>
+    </div>
+    <div id="spellName">SPELL: —</div>
+    <div id="statusRight">
+      <span id="waveText">Wave 1</span>
+      <span id="killText">Kills 0</span>
+    </div>
+  </div>
+  <div id="monitor">
+    <div id="screenWrap">
+      <canvas id="game" width="640" height="400"></canvas>
+      <div id="floatLayer"></div>
+
+      <div id="overlay" class="modal hidden">
+        <h1 id="overlayTitle">Game Over</h1>
+        <div id="overlaySub">You crashed.</div>
+        <button id="restartBtn">Restart</button>
+      </div>
+
+      <div id="upgradeOverlay" class="modal hidden">
+        <h1>SYSTEM UPDATE AVAILABLE</h1>
+        <div style="opacity:.7; font-size:12px; margin-top:-8px;">Choose one patch to install</div>
+        <div id="upgradeCards"></div>
+      </div>
+
+      <div id="lockOverlay" class="modal">
+        <h1>CLICK TO PLAY</h1>
+        <div style="opacity:.7; font-size:12px;">Locks the cursor to the play area — press Esc to release it</div>
+      </div>
+    </div>
+  </div>
+  <div id="controlsBar">
+    MOUSE: Move · LCLICK: Fire · LHOLD+RELEASE: Charged Shot · RCLICK+DRAG: Purge · RCLICK: Spell (100 IP) · SCROLL: Cycle Spell ·
+    TARGET: Bottom menu buttons spawn and rush · KILL: Before they overwhelm · ERA: Visi On 1983
+  </div>
+</div>
+
+<script>
+// Auto-fit: scales the whole #appRoot (title + monitor + controls) down to
+// whatever window size actually exists, so nothing is ever clipped or needs
+// scrolling, at any screen resolution or aspect ratio. Runs independently of
+// the game logic below — purely a presentation-layer fit.
+(function(){
+  "use strict";
+  var root = document.getElementById('appRoot');
+  var naturalW = 0, naturalH = 0;
+
+  function measureNatural(){
+    var prevTransform = root.style.transform;
+    root.style.transform = 'translate(-50%, -50%)';
+    var r = root.getBoundingClientRect();
+    naturalW = r.width;
+    naturalH = r.height;
+    root.style.transform = prevTransform;
+  }
+
+  function applyScale(){
+    var margin = 16; // small breathing room from the window edge
+    var availW = window.innerWidth - margin;
+    var availH = window.innerHeight - margin;
+    var scale = Math.min(availW / naturalW, availH / naturalH, 1);
+    if(!isFinite(scale) || scale <= 0) scale = 1;
+    root.style.transform = 'translate(-50%, -50%) scale(' + scale + ')';
+  }
+
+  function recalc(){
+    measureNatural();
+    applyScale();
+  }
+
+  window.addEventListener('resize', applyScale);
+  recalc();
+  window.addEventListener('load', recalc);
+})();
+</script>
+
+<script>
+(function(){
+"use strict";
+
+const canvas = document.getElementById('game');
+const ctx = canvas.getContext('2d');
+const W = 640, H = 400;
+
+// Load Visi On background
+const visiOnBg = new Image();
+visiOnBg.src = 'VisiOn_Back.png';
+let bgLoaded = false;
+visiOnBg.onload = () => { bgLoaded = true; };
+visiOnBg.onerror = () => { console.error('Failed to load background image'); };
+
+const hpFill = document.getElementById('hpFill');
+const ultFill = document.getElementById('ultFill');
+const ultBarWrap = document.getElementById('ultBarWrap');
+const ipTextEl = document.getElementById('ipText');
+const spellNameEl = document.getElementById('spellName');
+const waveTextEl = document.getElementById('waveText');
+const killTextEl = document.getElementById('killText');
+const overlay = document.getElementById('overlay');
+const overlayTitle = document.getElementById('overlayTitle');
+const overlaySub = document.getElementById('overlaySub');
+const restartBtn = document.getElementById('restartBtn');
+const upgradeOverlay = document.getElementById('upgradeOverlay');
+const upgradeCardsEl = document.getElementById('upgradeCards');
+const lockOverlay = document.getElementById('lockOverlay');
+const floatLayer = document.getElementById('floatLayer');
+
+// ---------- Audio (procedural, no assets) ----------
+let actx = null;
+function ensureAudio(){ if(!actx){ try{ actx = new (window.AudioContext||window.webkitAudioContext)(); }catch(e){} } }
+function beep(freq, dur, type, vol){
+  if(!actx) return;
+  const o = actx.createOscillator();
+  const g = actx.createGain();
+  o.type = type || 'square';
+  o.frequency.value = freq;
+  g.gain.value = (vol!==undefined?vol:0.06);
+  o.connect(g); g.connect(actx.destination);
+  const now = actx.currentTime;
+  g.gain.setValueAtTime(g.gain.value, now);
+  g.gain.exponentialRampToValueAtTime(0.0001, now + dur);
+  o.start(now);
+  o.stop(now + dur);
+}
+const SFX = {
+  basic: ()=>beep(660,0.06,'square',0.05),
+  charged: (p)=>beep(220 + p*220, 0.18,'sawtooth',0.08),
+  spell: ()=>beep(440,0.12,'triangle',0.07),
+  ult: ()=>beep(120,0.3,'sawtooth',0.12),
+  hit: ()=>beep(180,0.08,'square',0.05),
+  hurt: ()=>beep(90,0.15,'sawtooth',0.09),
+  death: ()=>beep(300,0.2,'square',0.07),
+  wave: ()=>beep(520,0.25,'triangle',0.08),
+  denied: ()=>beep(140,0.08,'square',0.04),
+  pickup: ()=>beep(880,0.05,'sine',0.05),
+  overkill: ()=>beep(200,0.25,'sawtooth',0.1),
+  chargeLaunch: ()=>beep(160,0.14,'sawtooth',0.08),
+};
+
+// ---------- Utility ----------
+function dist(ax,ay,bx,by){ return Math.hypot(ax-bx, ay-by); }
+function clamp(v,a,b){ return Math.max(a, Math.min(b, v)); }
+function circleRectCollide(cx,cy,cr, rx,ry,rw,rh){
+  const nx = clamp(cx, rx, rx+rw);
+  const ny = clamp(cy, ry, ry+rh);
+  return dist(cx,cy,nx,ny) < cr;
+}
+function shortestAngleDiff(a,b){
+  let d = b - a;
+  while(d > Math.PI) d -= Math.PI*2;
+  while(d < -Math.PI) d += Math.PI*2;
+  return d;
+}
+
+function floatText(x,y,text,color){
+  const el = document.createElement('div');
+  el.textContent = text;
+  el.style.position='absolute';
+  el.style.left = x+'px'; el.style.top = y+'px';
+  el.style.color = '#000'; // Black text for better contrast
+  el.style.fontSize = '18px';
+  el.style.fontWeight = '700';
+  el.style.fontFamily = '"Courier New", monospace';
+  el.style.textShadow = '0 0 2px rgba(255,255,255,.8)';
+  el.style.pointerEvents='none';
+  el.style.transition = 'transform 1.2s ease-out, opacity 1.2s ease-out';
+  floatLayer.appendChild(el);
+  requestAnimationFrame(()=>{
+    el.style.transform = 'translateY(-30px)';
+    el.style.opacity = '0';
+  });
+  setTimeout(()=> el.remove(), 1250);
+}
+
+// ---------- IP meter display ----------
+// Pure function of total IP (0-300). The in-progress remainder always sits in the
+// rightmost slot; completed 100-blocks stack immediately to its left.
+function ipSegments(T){
+  T = clamp(Math.round(T), 0, 300);
+  const numFull = Math.floor(T/100);
+  const remainder = T % 100;
+  const seg = [0,0,0];
+  if(remainder > 0){
+    seg[2] = remainder;
+    for(let k=1; k<=numFull; k++) seg[2-k] = 100;
+  } else {
+    for(let k=0; k<numFull; k++) seg[2-k] = 100;
+  }
+  return seg;
+}
+function updateIpHud(){
+  const seg = ipSegments(player.ip);
+  const spans = seg.map(v=>{
+    const color = v===100 ? '#ffffff' : (v>0 ? '#ffffff' : '#555');
+    return `<span style="color:${color}">${String(v).padStart(3,'0')}</span>`;
+  });
+  ipTextEl.innerHTML = spans.join(':');
+}
+
+// ---------- Input state ----------
+let mouse = { x: W/2, y: H/2 };
+let lmbDown = false, lmbDownTime = 0, lmbDownX = 0, lmbDownY = 0;
+let rmbDown = false, rmbDownTime = 0, rmbDownX = 0, rmbDownY = 0;
+let isDraggingUlt = false;
+const DRAG_THRESHOLD = 25;
+const CHARGE_THRESHOLD = 220;
+const MAX_CHARGE = 900;
+const OVERKILL_MULT = 3; // final-hit overflow must be >= enemy.maxHp * this, to count as overkill
+
+function getCanvasPos(e){
+  const rect = canvas.getBoundingClientRect();
+  const scaleX = canvas.width / rect.width;
+  const scaleY = canvas.height / rect.height;
+  return { x: (e.clientX - rect.left) * scaleX, y: (e.clientY - rect.top) * scaleY };
+}
+
+// ---------- Pointer lock ----------
+// Requesting pointer lock hides the OS cursor entirely and captures raw
+// mouse movement (movementX/movementY) instead of on-screen position — the
+// system cursor physically never moves, so it can't be dragged out past the
+// window edge and "escape" into the OS. We keep our own virtual mouse.x/y,
+// advanced by those deltas and clamped to the play area, exactly like before.
+let pointerLocked = false;
+
+function requestLock(){
+  if(canvas.requestPointerLock) canvas.requestPointerLock();
+}
+
+document.addEventListener('pointerlockchange', ()=>{
+  pointerLocked = (document.pointerLockElement === canvas);
+  if(pointerLocked){
+    lockOverlay.classList.add('hidden');
+    // Initialize game on first lock if not already started
+    if(wave === 1 && waveState === 'fighting' && enemies.length === 0 && windows.length === 0){
+      spawnWindows();
+      startWave(1);
+    }
+  } else if(!gameOver && waveState !== 'upgrade'){
+    // Covers both a deliberate Esc release and losing lock by e.g. alt-tabbing —
+    // either way, pause and ask for a click rather than let stale input keep firing.
+    lockOverlay.classList.remove('hidden');
+  }
+});
+
+document.addEventListener('pointerlockerror', ()=>{
+  lockOverlay.classList.remove('hidden');
+});
+
+lockOverlay.addEventListener('click', ()=>{
+  ensureAudio();
+  requestLock();
+});
+
+canvas.addEventListener('mousemove', (e)=>{
+  if(!pointerLocked){
+    // Not locked yet (e.g. before the first click) — track normally so the
+    // very first click-to-lock still has a sane starting position.
+    const p = getCanvasPos(e);
+    mouse.x = clamp(p.x, 4, W-4);
+    mouse.y = clamp(p.y, 4, H-4);
+    return;
+  }
+  mouse.x = clamp(mouse.x + e.movementX, 4, W-4);
+  mouse.y = clamp(mouse.y + e.movementY, 4, H-4);
+  if(rmbDown && !isDraggingUlt){
+    const d = dist(mouse.x,mouse.y,rmbDownX,rmbDownY);
+    if(d > DRAG_THRESHOLD){
+      // Check if purge meter is fully charged before allowing selection
+      if(player.ultCharge >= 500){
+        isDraggingUlt = true;
+      } else {
+        floatText(mouse.x, mouse.y - 30, "Can't Purge yet", '#fff');
+      }
+    }
+  }
+});
+
+canvas.addEventListener('mousedown', (e)=>{
+  if(!pointerLocked){
+    requestLock();
+    return;
+  }
+  ensureAudio();
+  e.preventDefault();
+  if(gameOver || waveState==='upgrade') return;
+  if(e.button === 0){
+    lmbDown = true;
+    lmbDownTime = performance.now();
+    lmbDownX = mouse.x; lmbDownY = mouse.y;
+  } else if(e.button === 2){
+    rmbDown = true;
+    rmbDownTime = performance.now();
+    rmbDownX = mouse.x; rmbDownY = mouse.y;
+    isDraggingUlt = false;
+  }
+});
+
+window.addEventListener('mouseup', (e)=>{
+  if(e.button === 0 && lmbDown){
+    resolveLmbRelease();
+    lmbDown = false;
+  }
+  if(e.button === 2 && rmbDown){
+    resolveRmbRelease();
+    rmbDown = false;
+    isDraggingUlt = false;
+  }
+});
+
+canvas.addEventListener('contextmenu', (e)=> e.preventDefault());
+
+canvas.addEventListener('wheel', (e)=>{
+  e.preventDefault();
+  spellIndex = (spellIndex + (e.deltaY > 0 ? 1 : -1) + spells.length) % spells.length;
+  updateSpellHud();
+}, { passive:false });
+
+// ---------- Player ----------
+const player = {
+  x: W/2, y: H/2, radius: 9,
+  vx: 0, vy: 0,
+  hp: 100, maxHp: 100,
+  ip: 0, // total 0-300
+  ultCharge: 0, // 0-500, filled by kills
+  invuln: 0,
+  shieldActive: false, shieldTimer: 0,
+  trail: [],
+  lastDx: 0, lastDy: -1,
+  aimAngle: -Math.PI/2,
+  currentTarget: null,
+  pickupRadius: 30,
+  basicDmgMult: 1, chargeDmgMult: 1, ultGainMult: 1, ipGainMult: 1
+};
+
+// ---------- Spells (flat 100 IP cost = one full charge) ----------
+const spells = [
+  {
+    name: "CTRL+ALT+PURGE",
+    cast(){
+      SFX.spell();
+      spawnRing(player.x, player.y, '#ffffff');
+      for(const en of enemies){
+        if(dist(en.x,en.y,player.x,player.y) < 150){
+          damageEnemy(en, 28, 'spell');
+          const a = Math.atan2(en.y-player.y, en.x-player.x);
+          en.vx += Math.cos(a)*140; en.vy += Math.sin(a)*140;
+        }
+      }
+    }
+  },
+  {
+    name: "FIREWALL",
+    cast(){
+      SFX.spell();
+      player.shieldActive = true;
+      player.shieldTimer = 4.5;
+    }
+  }
+];
+let spellIndex = 0;
+function updateSpellHud(){
+  spellNameEl.textContent = "SPELL: " + spells[spellIndex].name + " (100 IP)";
+}
+updateSpellHud();
+
+function castSelectedSpell(){
+  if(gameOver || waveState==='upgrade') return;
+  if(player.ip >= 100){
+    player.ip -= 100;
+    spells[spellIndex].cast();
+    updateIpHud();
+  } else {
+    SFX.denied();
+    floatText(player.x, player.y - 24, "NEED FULL IP CHARGE", '#ffffff');
+  }
+}
+
+// ---------- Visi On Menu Bar ----------
+const MENU_BAR_Y = H - 20;
+const MENU_BAR_HEIGHT = 20;
+const MENU_BUTTONS = ['Help', 'Close', 'Open', 'Full', 'Frame', 'Options', 'Transfer', 'Stop'];
+const BUTTON_WIDTH = 640 / MENU_BUTTONS.length;
+
+// ---------- Obstacle (static hazard: an open window) ----------
+const obstacle = { x: 660, y: 90, w: 230, h: 170 };
+
+// ---------- State ----------
+let enemies = [];
+let playerBullets = [];
+let enemyBullets = [];
+let particles = [];
+let pickups = [];
+let caches = []; // "encrypted file" world objects — bump to open, one at a time
+let cacheSpawnTimer = 6 + Math.random()*4;
+let kills = 0;
+let wave = 1;
+let gameOver = false;
+let shake = 0;
+
+// waveState: 'fighting' -> 'banner' -> 'upgrade' -> back to 'fighting'
+let waveState = 'fighting';
+let bannerTimer = 0;
+
+// ---------- Upgrades ----------
+const UPGRADE_POOL = [
+  { id:'hp', title:'+20 Max Memory', desc:'Increases maximum memory capacity and restores difference.', apply(){ player.maxHp += 20; player.hp += 20; } },
+  { id:'basicdmg', title:'+5% Cursor Dmg', desc:'Your basic shot hits slightly harder.', apply(){ player.basicDmgMult *= 1.05; } },
+  { id:'chargedmg', title:'+5% Charge Dmg', desc:'Your held-and-released shot hits slightly harder.', apply(){ player.chargeDmgMult *= 1.05; } },
+  { id:'magnet', title:'+10% IP Magnet', desc:'Pull in IP drops from slightly farther away.', apply(){ player.pickupRadius *= 1.1; } },
+  { id:'ultgain', title:'+10% Purge Gain', desc:'Your Purge meter fills slightly faster from kills.', apply(){ player.ultGainMult *= 1.1; } },
+  { id:'ipgain', title:'+10% IP Drops', desc:'Enemies drop slightly larger IP pickups.', apply(){ player.ipGainMult *= 1.1; } },
+  { id:'heal', title:'Restore Memory', desc:'Immediately restore all missing memory.', apply(){ player.hp = player.maxHp; } },
+];
+
+function showUpgradeChoices(){
+  waveState = 'upgrade';
+  if(document.exitPointerLock) document.exitPointerLock();
+  const pool = UPGRADE_POOL.slice();
+  const picks = [];
+  for(let i=0;i<3 && pool.length>0;i++){
+    const idx = Math.floor(Math.random()*pool.length);
+    picks.push(pool.splice(idx,1)[0]);
+  }
+  upgradeCardsEl.innerHTML = '';
+  for(const up of picks){
+    const card = document.createElement('div');
+    card.className = 'upgradeCard';
+    card.innerHTML = `<div class="u-title">${up.title}</div><div class="u-desc">${up.desc}</div>`;
+    card.addEventListener('click', ()=>{
+      up.apply();
+      upgradeOverlay.classList.add('hidden');
+      wave++;
+      waveState = 'fighting';
+      startWave(wave);
+      requestLock();
+    });
+    upgradeCardsEl.appendChild(card);
+  }
+  upgradeOverlay.classList.remove('hidden');
+}
+
+
+// ---------- Enemies ----------
+// Each enemy has a `type`, dispatched through ENEMY_TYPES (defined below,
+// after all the individual update/draw functions) for both its per-frame
+// behavior and its rendering. Shared stuff — taking bullet damage, dying,
+// the target ring, the HP bar — stays generic in update()/drawEnemies() and
+// works the same regardless of type.
+
+function spawnPopup(){
+  let x,y, tries=0;
+  do {
+    x = 40 + Math.random()*(W-80);
+    y = 40 + Math.random()*(H-80);
+    tries++;
+  } while(dist(x,y,player.x,player.y) < 180 && tries < 20);
+  enemies.push({
+    x, y,
+    vx: (Math.random()-0.5)*40,
+    vy: (Math.random()-0.5)*40,
+    radius: 20,
+    hp: 26, maxHp: 26,
+    level: 1,
+    type: 'popup',
+    shootTimer: 1 + Math.random()*1.5,
+    telegraph: 0,
+    wobble: Math.random()*Math.PI*2,
+    blink: 0
+  });
+}
+
+// Recycle Bin — melee rusher. Idles until the player enters range, shakes
+// through a telegraph, then charges in a straight line toward wherever the
+// player WAS the instant the telegraph ended (not homing mid-charge). Teaches
+// that commitment-based enemies can be baited and juked, not just kited.
+function spawnRecycleBin(){
+  let x,y, tries=0;
+  do {
+    x = 40 + Math.random()*(W-80);
+    y = 40 + Math.random()*(H-80);
+    tries++;
+  } while(dist(x,y,player.x,player.y) < 260 && tries < 20); // spawns further out — it closes distance fast once triggered
+  enemies.push({
+    x, y,
+    vx: 0, vy: 0,
+    radius: 17,
+    hp: 30, maxHp: 30,
+    level: 1,
+    type: 'recyclebin',
+    state: 'idle', // idle -> telegraph -> charging -> recover -> idle
+    stateTimer: 0,
+    chargeDir: { x: 0, y: 0 },
+    hasHitThisCharge: false,
+    shakeOffsetX: 0, shakeOffsetY: 0,
+    wobble: Math.random()*Math.PI*2,
+    blink: 0
+  });
+}
+
+// System Tray Turret — stationary area-denial. Anchors to a fixed point
+// (docked to an edge of the "My Computer" obstacle window, like a real
+// docked tray icon), never moves, and periodically fires a 3-bullet fan
+// spread. Low HP, easy to kill, but punishes standing still in its arc.
+function spawnTrayTurret(){
+  const edge = Math.floor(Math.random()*4);
+  const pad = 14;
+  let x, y;
+  if(edge === 0){ x = obstacle.x + Math.random()*obstacle.w; y = obstacle.y - pad; }
+  else if(edge === 1){ x = obstacle.x + Math.random()*obstacle.w; y = obstacle.y + obstacle.h + pad; }
+  else if(edge === 2){ x = obstacle.x - pad; y = obstacle.y + Math.random()*obstacle.h; }
+  else { x = obstacle.x + obstacle.w + pad; y = obstacle.y + Math.random()*obstacle.h; }
+  x = clamp(x, 20, W-20);
+  y = clamp(y, 20, H-20);
+  enemies.push({
+    x, y, vx: 0, vy: 0,
+    radius: 15,
+    hp: 14, maxHp: 14,
+    level: 1,
+    type: 'trayturret',
+    shootTimer: 1.2 + Math.random()*1.2,
+    telegraph: 0,
+    blink: 0
+  });
+}
+
+// ---- per-type update behavior ----
+
+function updatePopup(en, dt){
+  en.wobble += dt*2;
+  en.x += (en.vx + Math.sin(en.wobble)*20) * dt;
+  en.y += (en.vy + Math.cos(en.wobble*0.8)*20) * dt;
+  en.x = clamp(en.x, 24, W-24);
+  en.y = clamp(en.y, 24, H-24);
+  en.vx *= 0.98; en.vy *= 0.98;
+
+  en.shootTimer -= dt;
+  if(en.shootTimer <= 0 && en.telegraph <= 0){
+    en.telegraph = 0.45;
+  }
+  if(en.telegraph > 0){
+    en.telegraph -= dt;
+    en.blink = (en.blink + dt*20) % (Math.PI*2);
+    if(en.telegraph <= 0){
+      const dx = player.x - en.x, dy = player.y - en.y;
+      const len = Math.hypot(dx,dy) || 1;
+      enemyBullets.push({
+        x: en.x, y: en.y,
+        vx: dx/len*220, vy: dy/len*220,
+        radius: 5
+      });
+      en.shootTimer = 1.6 + Math.random()*1.4;
+    }
+  }
+}
+
+const RECYCLEBIN_TRIGGER_RADIUS = 220;
+const RECYCLEBIN_TELEGRAPH_TIME = 0.5;
+const RECYCLEBIN_CHARGE_SPEED = 460;
+const RECYCLEBIN_CHARGE_MAX_TIME = 1.0;
+const RECYCLEBIN_RECOVER_TIME = 0.7;
+const RECYCLEBIN_CONTACT_DAMAGE = 14;
+
+function updateRecycleBin(en, dt){
+  switch(en.state){
+    case 'idle': {
+      // small idle jitter so it doesn't look frozen — not real movement
+      en.wobble += dt*1.5;
+      en.x = clamp(en.x + Math.sin(en.wobble)*4*dt, 24, W-24);
+      en.y = clamp(en.y + Math.cos(en.wobble*0.7)*4*dt, 24, H-24);
+      if(dist(en.x,en.y,player.x,player.y) < RECYCLEBIN_TRIGGER_RADIUS){
+        en.state = 'telegraph';
+        en.stateTimer = RECYCLEBIN_TELEGRAPH_TIME;
+        en.blink = 0;
+      }
+      break;
+    }
+    case 'telegraph': {
+      en.stateTimer -= dt;
+      en.blink = (en.blink + dt*26) % (Math.PI*2);
+      const progress = 1 - clamp(en.stateTimer / RECYCLEBIN_TELEGRAPH_TIME, 0, 1);
+      en.shakeOffsetX = (Math.random()-0.5) * 6 * progress;
+      en.shakeOffsetY = (Math.random()-0.5) * 6 * progress;
+      if(en.stateTimer <= 0){
+        // Commit to the player's position at THIS instant — never homes afterward.
+        const dx = player.x - en.x, dy = player.y - en.y;
+        const len = Math.hypot(dx,dy) || 1;
+        en.chargeDir = { x: dx/len, y: dy/len };
+        en.state = 'charging';
+        en.stateTimer = RECYCLEBIN_CHARGE_MAX_TIME;
+        en.hasHitThisCharge = false;
+        en.shakeOffsetX = 0; en.shakeOffsetY = 0;
+        SFX.chargeLaunch();
+      }
+      break;
+    }
+    case 'charging': {
+      en.stateTimer -= dt;
+      en.x += en.chargeDir.x * RECYCLEBIN_CHARGE_SPEED * dt;
+      en.y += en.chargeDir.y * RECYCLEBIN_CHARGE_SPEED * dt;
+
+      if(!en.hasHitThisCharge && player.invuln <= 0 && dist(en.x,en.y,player.x,player.y) < en.radius + player.radius){
+        takeDamage(RECYCLEBIN_CONTACT_DAMAGE);
+        player.invuln = 0.6;
+        en.hasHitThisCharge = true;
+        shake = 10;
+      }
+
+      const offscreen = en.x < 10 || en.x > W-10 || en.y < 10 || en.y > H-10;
+      if(en.stateTimer <= 0 || offscreen){
+        en.x = clamp(en.x, 24, W-24);
+        en.y = clamp(en.y, 24, H-24);
+        en.state = 'recover';
+        en.stateTimer = RECYCLEBIN_RECOVER_TIME;
+      }
+      break;
+    }
+    case 'recover': {
+      en.stateTimer -= dt;
+      if(en.stateTimer <= 0) en.state = 'idle';
+      break;
+    }
+  }
+}
+
+function updateTrayTurret(en, dt){
+  // Fixed in place — no wobble, no wandering, no movement at all.
+  en.shootTimer -= dt;
+  if(en.shootTimer <= 0 && en.telegraph <= 0){
+    en.telegraph = 0.4;
+  }
+  if(en.telegraph > 0){
+    en.telegraph -= dt;
+    en.blink = (en.blink + dt*20) % (Math.PI*2);
+    if(en.telegraph <= 0){
+      const baseAngle = Math.atan2(player.y-en.y, player.x-en.x);
+      const spreadOffsets = [-0.32, 0, 0.32]; // roughly +/-18 degrees either side of center
+      for(const off of spreadOffsets){
+        const a = baseAngle + off;
+        enemyBullets.push({
+          x: en.x, y: en.y,
+          vx: Math.cos(a)*200, vy: Math.sin(a)*200,
+          radius: 5
+        });
+      }
+      en.shootTimer = 2.2 + Math.random()*1.0;
+    }
+  }
+}
+
+// ---- per-type drawing ----
+
+function drawPopupEnemy(en){
+  ctx.save();
+  const flashing = en.telegraph > 0 && Math.sin(en.blink) > 0;
+  ctx.shadowColor = flashing ? '#ffffff' : 'rgba(0,0,0,0.4)';
+  ctx.shadowBlur = flashing ? 18 : 5;
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(en.x-en.radius, en.y-en.radius, en.radius*2, en.radius*1.6);
+  ctx.fillStyle = flashing ? '#000000' : '#000000';
+  ctx.fillRect(en.x-en.radius, en.y-en.radius, en.radius*2, 10);
+  ctx.fillStyle = '#000';
+  ctx.font = 'bold 9px "Courier New", monospace';
+  ctx.fillText('AD', en.x-en.radius+4, en.y-en.radius+8);
+  ctx.fillStyle = '#000000';
+  ctx.fillRect(en.x+en.radius-12, en.y-en.radius+1, 9, 8);
+  ctx.restore();
+}
+
+function drawRecycleBinEnemy(en){
+  ctx.save();
+  const shakeX = en.shakeOffsetX || 0, shakeY = en.shakeOffsetY || 0;
+  const flashing = en.state === 'telegraph' && Math.sin(en.blink) > 0;
+  ctx.translate(en.x + shakeX, en.y + shakeY);
+
+  if(en.state === 'charging'){
+    ctx.save();
+    ctx.globalAlpha = 0.35;
+    ctx.strokeStyle = '#ffffff';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(-en.chargeDir.x*26, -en.chargeDir.y*26);
+    ctx.lineTo(0,0);
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  ctx.shadowColor = flashing ? '#ffffff' : 'rgba(0,0,0,0.4)';
+  ctx.shadowBlur = flashing ? 16 : 5;
+
+  ctx.fillStyle = flashing ? '#888888' : '#555555';
+  ctx.beginPath();
+  ctx.moveTo(-en.radius*0.8, -en.radius*0.7);
+  ctx.lineTo(en.radius*0.8, -en.radius*0.7);
+  ctx.lineTo(en.radius*0.65, en.radius);
+  ctx.lineTo(-en.radius*0.65, en.radius);
+  ctx.closePath();
+  ctx.fill();
+
+  ctx.fillStyle = '#333333';
+  ctx.fillRect(-en.radius*0.95, -en.radius*0.95, en.radius*1.9, en.radius*0.3);
+
+  ctx.strokeStyle = flashing ? '#fff' : '#cccccc';
+  ctx.lineWidth = 1.5;
+  for(let i=0;i<3;i++){
+    const a = (Math.PI*2/3)*i - Math.PI/2;
+    ctx.beginPath();
+    ctx.moveTo(Math.cos(a)*3, Math.sin(a)*3);
+    ctx.lineTo(Math.cos(a)*en.radius*0.5, Math.sin(a)*en.radius*0.5);
+    ctx.stroke();
+  }
+  ctx.restore();
+}
+
+function drawTrayTurretEnemy(en){
+  ctx.save();
+  const flashing = en.telegraph > 0 && Math.sin(en.blink) > 0;
+  ctx.translate(en.x, en.y);
+  ctx.shadowColor = flashing ? '#ffffff' : 'rgba(0,0,0,0.4)';
+  ctx.shadowBlur = flashing ? 16 : 5;
+
+  ctx.fillStyle = flashing ? '#666666' : '#444444';
+  ctx.fillRect(-en.radius*0.75, -en.radius*0.75, en.radius*1.5, en.radius*1.5);
+  ctx.strokeStyle = '#cccccc';
+  ctx.lineWidth = 1.5;
+  ctx.strokeRect(-en.radius*0.75, -en.radius*0.75, en.radius*1.5, en.radius*1.5);
+
+  ctx.strokeStyle = '#fff';
+  ctx.beginPath();
+  ctx.arc(0,0, en.radius*0.4, 0, Math.PI*2);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(0,0);
+  ctx.lineTo(0,-en.radius*0.3);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(0,0);
+  ctx.lineTo(en.radius*0.2,0);
+  ctx.stroke();
+
+  ctx.restore();
+}
+
+const ENEMY_TYPES = {
+  menubutton: { update: updateMenuButton, draw: drawMenuButtonEnemy },
+};
+
+// Visi On Era Wave Structure
+// Button swarms that spawn from the menu bar
+let waveSpawnTimer = 0;
+let enemiesToSpawn = 0; // Total enemies to spawn this wave
+let enemiesSpawned = 0; // Count of enemies actually spawned
+let waveTimer = 0; // Minimum wave duration
+const MIN_WAVE_DURATION = 3; // Minimum seconds before wave can clear
+let hasStartedSpawning = false; // Track if spawning has begun
+
+function startWave(n){
+  // Reset wave state
+  enemiesSpawned = 0;
+  hasStartedSpawning = false;
+  
+  // Give player invulnerability at wave start to avoid window damage
+  player.invuln = 1.5;
+  
+  // Respawn window each wave, ensuring it doesn't spawn near player
+  spawnWindows();
+  
+  // Each wave has a fixed number of enemies to spawn
+  // Wave 1: 16 enemies (2 swarms of 8), Wave 20: 80 enemies (10 swarms of 8)
+  const baseEnemies = 16;
+  const maxEnemies = 80;
+  const progress = Math.min((n - 1) / 19, 1); // 0 to 1 over waves 1-20
+  enemiesToSpawn = Math.floor(baseEnemies + (maxEnemies - baseEnemies) * progress);
+  
+  waveSpawnTimer = 0;
+  waveTimer = MIN_WAVE_DURATION;
+  
+  waveTextEl.textContent = "Wave " + wave;
+  SFX.wave();
+  
+  // Initial spawn with delay
+  waveSpawnTimer = 1.0; // Start with 1 second delay
+}
+
+function spawnButtonSwarm(){
+  if(enemiesSpawned >= enemiesToSpawn) return;
+  
+  // Spawn a wave of buttons (up to 8, or remaining count)
+  const waveMultiplier = 1 + (wave * 0.1); // Increase HP per wave
+  
+  // Spawn up to 8 buttons, or however many remain
+  const buttonsToSpawn = Math.min(MENU_BUTTONS.length, enemiesToSpawn - enemiesSpawned);
+  
+  // Spawn immediately without setTimeout for reliability
+  for(let i = 0; i < buttonsToSpawn; i++){
+    spawnMenuButton(i, waveMultiplier);
+    enemiesSpawned++;
+  }
+}
+
+// Wave state machine for continuous spawning
+function updateWaveSpawning(dt){
+  if(waveState !== 'fighting') return;
+  
+  waveSpawnTimer -= dt;
+  if(waveSpawnTimer <= 0 && enemiesSpawned < enemiesToSpawn){
+    spawnButtonSwarm();
+    waveSpawnTimer = 5.0; // 5 seconds between sub-waves
+    hasStartedSpawning = true;
+  }
+}
+
+// ---------- Encrypted files: temporary bump-to-open pickups. One at a time.
+// Not automatic regen — HP only comes back via these or a future level-start reset.
+function spawnCache(){
+  let x,y, tries=0;
+  do {
+    x = 50 + Math.random()*(W-100);
+    y = 50 + Math.random()*(H-100);
+    tries++;
+    // Check if position overlaps with any window
+    let inWindow = false;
+    for(const win of windows){
+      if(x + 15 > win.x && x - 15 < win.x + win.width &&
+         y + 15 > win.y && y - 15 < win.y + win.height){
+        inWindow = true;
+        break;
+      }
+    }
+    if(!inWindow) break;
+  } while(tries < 50);
+  const kind = Math.random() < 0.5 ? 'ip' : 'heal';
+  caches.push({
+    x, y, radius: 15,
+    life: 6, maxLife: 6,
+    kind,
+    amount: kind === 'ip' ? Math.round(12 + Math.random()*8) : Math.round(8 + Math.random()*6)
+  });
+}
+
+// ---------- Window obstacles ----------
+let windows = [];
+let windowImage = null;
+
+function loadWindowImage(){
+  windowImage = new Image();
+  windowImage.src = 'Visi_Word_Window.png';
+  windowImage.onload = () => { console.log('Window image loaded'); };
+  windowImage.onerror = () => { console.error('Failed to load window image'); };
+}
+
+function spawnWindows(){
+  windows = [];
+  // Spawn 1 window in a random spot each wave, avoiding center where player starts and taskbar area
+  let x,y, tries=0;
+  do {
+    x = 60 + Math.random()*(W-444); // Adjusted for larger window
+    // Taskbar is at H-20 (bottom 20px), window height is 244, so max y is H-264
+    y = 40 + Math.random()*(H-304); // Range: 40 to H-264
+    tries++;
+    // Avoid center area where player starts
+    const centerX = W/2;
+    const centerY = H/2;
+    const distFromCenter = Math.hypot(x - centerX, y - centerY);
+    if(distFromCenter < 150) continue; // Back to 150px buffer
+    // Ensure window doesn't overlap taskbar
+    if(y + 244 > H - 20) continue; // Window bottom must be above taskbar
+    // Check if player is inside this window position
+    if(player.x + player.radius > x && player.x - player.radius < x + 384 &&
+       player.y + player.radius > y && player.y - player.radius < y + 244){
+      continue; // Skip if player would be inside window
+    }
+    break;
+  } while(tries < 50);
+  windows.push({
+    x, y,
+    width: 384,  // 20% larger than 320
+    height: 244  // 20% larger than 203
+  });
+}
+
+function checkWindowCollision(obj, isPlayer){
+  for(const win of windows){
+    // Simple AABB collision
+    if(obj.x + obj.radius > win.x && 
+       obj.x - obj.radius < win.x + win.width &&
+       obj.y + obj.radius > win.y && 
+       obj.y - obj.radius < win.y + win.height){
+      
+      // Calculate which edge is closest
+      const distLeft = obj.x - win.x;
+      const distRight = (win.x + win.width) - obj.x;
+      const distTop = obj.y - win.y;
+      const distBottom = (win.y + win.height) - obj.y;
+      
+      const minDist = Math.min(distLeft, distRight, distTop, distBottom);
+      const bounceStrength = 8;
+      
+      // Push toward the closest edge
+      if(minDist === distLeft){
+        obj.x = win.x - obj.radius - bounceStrength;
+        if(obj.vx) obj.vx *= -0.5;
+      } else if(minDist === distRight){
+        obj.x = win.x + win.width + obj.radius + bounceStrength;
+        if(obj.vx) obj.vx *= -0.5;
+      } else if(minDist === distTop){
+        obj.y = win.y - obj.radius - bounceStrength;
+        if(obj.vy) obj.vy *= -0.5;
+      } else {
+        obj.y = win.y + win.height + obj.radius + bounceStrength;
+        if(obj.vy) obj.vy *= -0.5;
+      }
+      
+      // Player takes damage
+      if(isPlayer && player.invuln <= 0){
+        takeDamage(5);
+        player.invuln = 0.3;
+        shake = 4;
+      }
+      
+      return true;
+    }
+  }
+  return false;
+}
+
+function damageEnemy(en, amount, source){
+  if(en.dead) return;
+  en.hp -= amount;
+  spawnParticles(en.x, en.y, 6, '#ffffff');
+  SFX.hit();
+  // Show damage number
+  floatText(en.x, en.y - 15, Math.round(amount).toString(), '#ffffff');
+  if(en.hp <= 0){
+    // Corrupted enemies have special death handling
+    if(en.isCorrupted && !en.deathTell){
+      en.deathTell = true;
+      en.deathTellTimer = 0.8;
+      return; // Don't kill yet, let update handle the explosion
+    }
+    killEnemy(en, -en.hp, source); // overflow = how far past 0 this hit pushed it
+  }
+}
+
+function killEnemy(en, overflow, source){
+  // Corrupted enemies have special death handling - skip if already handling death tell
+  if(en.isCorrupted && en.deathTell){
+    return; // Already handled in update
+  }
+  
+  en.dead = true;
+  kills++;
+  killTextEl.textContent = "Kills " + kills;
+  spawnParticles(en.x, en.y, 16, '#ffffff');
+  SFX.death();
+
+  // Corrupted enemy explosion
+  if(en.isCorrupted){
+    // Deal damage to player if in radius
+    if(player.invuln <= 0 && dist(en.x, en.y, player.x, player.y) < en.explosionRadius){
+      takeDamage(15);
+      player.invuln = 0.6;
+      shake = 12;
+      floatText(player.x, player.y - 20, "EXPLOSION!", '#000');
+    }
+    // Show explosion effect
+    spawnRing(en.x, en.y, '#ffffff');
+    shake = 8;
+  }
+
+  // ---- ultimate charge from kills ----
+  // Overkill bonus never applies to ultimate kills — the ultimate already
+  // one-shots everything it touches, so it would otherwise refund its own cost.
+  let gain = (4 + en.level*2);
+  const isOverkill = source !== 'ultimate' && overflow >= en.maxHp * OVERKILL_MULT;
+  if(isOverkill){
+    gain *= 1.5;
+    SFX.overkill();
+    floatText(en.x, en.y - 10, "TERMINATED!", '#ff0000');
+  }
+  gain *= player.ultGainMult;
+  player.ultCharge = clamp(player.ultCharge + gain, 0, 500);
+
+  // ---- IP drop ----
+  // Ramping drop chance based on wave level (20% at wave 1, 80% at wave 20)
+  const dropChance = 0.2 + (Math.min(wave, 20) - 1) * 0.03;
+  if(Math.random() < dropChance){
+    const amt = Math.round((8 + Math.random()*6) * player.ipGainMult);
+    
+    // Find spawn position outside windows
+    let dropX = en.x, dropY = en.y;
+    let inWindow = true;
+    let tries = 0;
+    while(inWindow && tries < 30){
+      inWindow = false;
+      for(const win of windows){
+        if(dropX + 10 > win.x && dropX - 10 < win.x + win.width &&
+           dropY + 10 > win.y && dropY - 10 < win.y + win.height){
+          inWindow = true;
+          // Try random position around enemy with larger radius for bigger windows
+          dropX = en.x + (Math.random() - 0.5) * 100;
+          dropY = en.y + (Math.random() - 0.5) * 100;
+          break;
+        }
+      }
+      tries++;
+    }
+    
+    pickups.push({ x: dropX, y: dropY, amount: amt, life: 14, bob: Math.random()*Math.PI*2, vx:0, vy:0 });
+  }
+}
+
+function spawnParticles(x,y,n,color){
+  for(let i=0;i<n;i++){
+    const a = Math.random()*Math.PI*2;
+    const sp = 40 + Math.random()*160;
+    particles.push({
+      x, y, vx: Math.cos(a)*sp, vy: Math.sin(a)*sp,
+      life: 0.4 + Math.random()*0.4, maxLife: 0.8,
+      color: '#ffffff', size: 1.5 + Math.random()*2.5
+    });
+  }
+}
+function spawnRing(x,y,color){
+  particles.push({ x, y, ring:true, r:0, maxR: 150, life:0.35, maxLife:0.35, color: '#ffffff' });
+}
+
+// ---------- Targeting ----------
+// Nearest enemy; ties (within a small pixel epsilon) broken by lowest HP;
+// remaining ties fall back to whichever was encountered first (stable failsafe).
+function findTarget(){
+  let best = null, bestD = Infinity;
+  for(const en of enemies){
+    if(en.dead) continue;
+    const d = dist(player.x, player.y, en.x, en.y);
+    if(d < bestD - 1e-6){
+      bestD = d; best = en;
+    } else if(Math.abs(d - bestD) < 2){
+      if(best && en.hp < best.hp){ best = en; bestD = Math.min(bestD, d); }
+    }
+  }
+  return best;
+}
+
+// ---------- LMB resolution ----------
+function fireBasicShot(){
+  const target = player.currentTarget;
+  let dx, dy;
+  if(target){ dx = target.x - player.x; dy = target.y - player.y; }
+  else { dx = Math.cos(player.aimAngle); dy = Math.sin(player.aimAngle); }
+  const len = Math.hypot(dx,dy) || 1;
+  const speed = 480;
+  playerBullets.push({
+    x: player.x, y: player.y,
+    vx: dx/len*speed, vy: dy/len*speed,
+    radius: 4, dmg: 6 * player.basicDmgMult, pierce: 0
+  });
+  SFX.basic();
+}
+
+function fireChargedShot(heldTime){
+  const t = clamp(heldTime, CHARGE_THRESHOLD, MAX_CHARGE);
+  const power = (t - CHARGE_THRESHOLD) / (MAX_CHARGE - CHARGE_THRESHOLD);
+  const target = player.currentTarget;
+  let dx, dy;
+  if(target){ dx = target.x - player.x; dy = target.y - player.y; }
+  else { dx = Math.cos(player.aimAngle); dy = Math.sin(player.aimAngle); }
+  const len = Math.hypot(dx,dy) || 1;
+  const speed = 380;
+  playerBullets.push({
+    x: player.x, y: player.y,
+    vx: dx/len*speed, vy: dy/len*speed,
+    radius: 7 + power*6,
+    dmg: (8.8 + power*18.7) * player.chargeDmgMult,
+    pierce: 1 + Math.round(power*2)
+  });
+  spawnRing(player.x, player.y, '#7fe3ff');
+  SFX.charged(power);
+}
+
+function resolveMarqueeUltimate(x1,y1,x2,y2){
+  if(player.ultCharge < 500){
+    SFX.denied();
+    floatText(x2, y2-10, "PURGE NOT CHARGED", '#ffffff');
+    return;
+  }
+  const rx = Math.min(x1,x2), ry = Math.min(y1,y2);
+  const rw = Math.abs(x2-x1), rh = Math.abs(y2-y1);
+  let hitAny = false;
+  for(const en of enemies){
+    if(en.dead) continue;
+    if(en.x > rx && en.x < rx+rw && en.y > ry && en.y < ry+rh){
+      damageEnemy(en, 9999, 'ultimate');
+      hitAny = true;
+    }
+  }
+  player.ultCharge = 0;
+  SFX.ult();
+  spawnParticles((rx+rx+rw)/2, (ry+ry+rh)/2, 24, '#ffffff');
+  if(!hitAny) floatText((x1+x2)/2, (y1+y2)/2, "NO TARGETS", '#888');
+}
+
+function resolveLmbRelease(){
+  if(gameOver || waveState==='upgrade') return;
+  const heldTime = performance.now() - lmbDownTime;
+  const d = dist(mouse.x, mouse.y, lmbDownX, lmbDownY);
+  if(heldTime > CHARGE_THRESHOLD){
+    fireChargedShot(heldTime);
+  } else {
+    fireBasicShot();
+  }
+}
+
+function resolveRmbRelease(){
+  if(gameOver || waveState==='upgrade') return;
+  const d = dist(mouse.x, mouse.y, rmbDownX, rmbDownY);
+  if(d > DRAG_THRESHOLD){
+    // Check if purge meter is fully charged before allowing
+    if(player.ultCharge >= 500){
+      resolveMarqueeUltimate(rmbDownX, rmbDownY, mouse.x, mouse.y);
+    } else {
+      floatText(mouse.x, mouse.y - 30, "Can't Purge yet", '#fff');
+    }
+  } else {
+    castSelectedSpell();
+  }
+}
+
+// ---------- Game loop ----------
+let lastTime = performance.now();
+
+function update(dt){
+  if(gameOver || waveState === 'upgrade' || !pointerLocked) return;
+
+  // wave spawning for button swarms
+  updateWaveSpawning(dt);
+  
+  // wave timer (minimum duration)
+  if(waveState === 'fighting'){
+    waveTimer = Math.max(0, waveTimer - dt);
+  }
+
+  // movement direction fallback (used only when no target exists)
+  const mdx = mouse.x - player.x, mdy = mouse.y - player.y;
+  if(Math.hypot(mdx,mdy) > 0.5){
+    const l = Math.hypot(mdx,mdy);
+    player.lastDx = mdx/l; player.lastDy = mdy/l;
+  }
+  player.x = mouse.x;
+  player.y = mouse.y;
+  
+  // Check window collision for player
+  checkWindowCollision(player, true);
+
+  player.trail.push({x:player.x, y:player.y});
+  if(player.trail.length > 10) player.trail.shift();
+
+  // ---- targeting / aim rotation ----
+  const target = findTarget();
+  player.currentTarget = target;
+  let desiredAngle;
+  if(target){ desiredAngle = Math.atan2(target.y-player.y, target.x-player.x); }
+  else { desiredAngle = Math.atan2(player.lastDy, player.lastDx); }
+  player.aimAngle = desiredAngle; // Instant rotation to always point at target
+
+  if(player.invuln > 0) player.invuln -= dt;
+  
+  // Iframes during ult selection
+  if(isDraggingUlt){
+    player.invuln = 0.5; // 0.5 seconds of invulnerability while selecting
+  }
+  if(player.shieldActive){
+    player.shieldTimer -= dt;
+    if(player.shieldTimer <= 0) player.shieldActive = false;
+  }
+
+  // obstacle collision (disabled for Visi On era)
+  // if(player.invuln <= 0 && circleRectCollide(player.x,player.y,player.radius, obstacle.x,obstacle.y,obstacle.w,obstacle.h)){
+  //   takeDamage(10);
+  //   player.invuln = 1.0;
+  //   shake = 8;
+  // }
+
+  // enemies - use enemy type system
+  for(const en of enemies){
+    const type = ENEMY_TYPES[en.type];
+    if(type && type.update){
+      type.update(en, dt);
+    }
+    // Handle corrupted enemy death tell here
+    if(en.isCorrupted && en.deathTell){
+      en.deathTellTimer -= dt;
+      // Violent vibration
+      en.x += (Math.random() - 0.5) * 8;
+      en.y += (Math.random() - 0.5) * 8;
+      if(en.deathTellTimer <= 0){
+        // Actually kill the enemy
+        en.dead = true;
+        kills++;
+        killTextEl.textContent = "Kills " + kills;
+        spawnParticles(en.x, en.y, 16, '#ffffff');
+        SFX.death();
+
+        // Corrupted enemy explosion
+        if(player.invuln <= 0 && dist(en.x, en.y, player.x, player.y) < en.explosionRadius){
+          takeDamage(15);
+          player.invuln = 0.6;
+          shake = 12;
+          floatText(player.x, player.y - 20, "CRASH!", '#000');
+        }
+        // Show explosion effect
+        spawnRing(en.x, en.y, '#ffffff');
+        shake = 8;
+
+        // Ultimate charge
+        let gain = (4 + en.level*2);
+        gain *= player.ultGainMult;
+        player.ultCharge = clamp(player.ultCharge + gain, 0, 500);
+
+        // IP drop
+        // Ramping drop chance based on wave level (20% at wave 1, 80% at wave 20)
+        const dropChance = 0.2 + (Math.min(wave, 20) - 1) * 0.03;
+        if(Math.random() < dropChance){
+          const amt = Math.round((8 + Math.random()*6) * player.ipGainMult);
+          
+          // Find spawn position outside windows
+          let dropX = en.x, dropY = en.y;
+          let inWindow = true;
+          let tries = 0;
+          while(inWindow && tries < 30){
+            inWindow = false;
+            for(const win of windows){
+              if(dropX + 10 > win.x && dropX - 10 < win.x + win.width &&
+                 dropY + 10 > win.y && dropY - 10 < win.y + win.height){
+                inWindow = true;
+                // Try random position around enemy with larger radius for bigger windows
+                dropX = en.x + (Math.random() - 0.5) * 100;
+                dropY = en.y + (Math.random() - 0.5) * 100;
+                break;
+              }
+            }
+            tries++;
+          }
+          
+          pickups.push({ x: dropX, y: dropY, amount: amt, life: 14, bob: Math.random()*Math.PI*2, vx:0, vy:0 });
+        }
+      }
+    }
+  }
+  enemies = enemies.filter(en => !en.dead);
+
+  // player bullets
+  for(const b of playerBullets){
+    b.x += b.vx*dt; b.y += b.vy*dt;
+    for(const en of enemies){
+      if(!en.dead && dist(b.x,b.y,en.x,en.y) < en.radius + b.radius){
+        damageEnemy(en, b.dmg, 'bullet');
+        if(b.pierce > 0){ b.pierce--; } else { b.dead = true; }
+        break;
+      }
+    }
+  }
+  playerBullets = playerBullets.filter(b => !b.dead && b.x>-20 && b.x<W+20 && b.y>-20 && b.y<H+20);
+
+  // enemy bullets
+  for(const b of enemyBullets){
+    b.x += b.vx*dt; b.y += b.vy*dt;
+    if(player.invuln <= 0 && dist(b.x,b.y,player.x,player.y) < player.radius + b.radius){
+      if(player.shieldActive){
+        player.shieldActive = false;
+        spawnRing(player.x, player.y, '#ffffff');
+      } else {
+        takeDamage(8);
+        player.invuln = 0.5;
+      }
+      b.dead = true;
+      shake = 5;
+    }
+  }
+  enemyBullets = enemyBullets.filter(b => !b.dead && b.x>-20 && b.x<W+20 && b.y>-20 && b.y<H+20);
+
+  // pickups (IP orbs)
+  for(const p of pickups){
+    p.life -= dt;
+    const d = dist(p.x,p.y,player.x,player.y);
+    if(d < player.pickupRadius * 2.2){
+      const ang = Math.atan2(player.y-p.y, player.x-p.x);
+      p.vx += Math.cos(ang) * 500 * dt;
+      p.vy += Math.sin(ang) * 500 * dt;
+    }
+    p.vx *= 0.9; p.vy *= 0.9;
+    p.x += p.vx*dt; p.y += p.vy*dt;
+    if(d < player.pickupRadius){
+      player.ip = clamp(player.ip + p.amount, 0, 300);
+      updateIpHud();
+      floatText(p.x, p.y-10, "+" + p.amount + " IP", '#ffffff');
+      SFX.pickup();
+      p.dead = true;
+    }
+  }
+  pickups = pickups.filter(p => !p.dead && p.life > 0);
+
+  // encrypted files: spawn on a timer (one at a time), expire if not bumped
+  if(waveState === 'fighting'){
+    if(caches.length === 0){
+      cacheSpawnTimer -= dt;
+      if(cacheSpawnTimer <= 0){
+        spawnCache();
+        cacheSpawnTimer = 9 + Math.random()*6;
+      }
+    }
+  }
+  for(const c of caches){
+    c.life -= dt;
+    if(dist(c.x,c.y,player.x,player.y) < c.radius + player.radius){
+      c.opened = true;
+      if(c.kind === 'ip'){
+        player.ip = clamp(player.ip + c.amount, 0, 300);
+        updateIpHud();
+        floatText(c.x, c.y-14, "DECRYPTED +" + c.amount + " IP", '#ffffff');
+      } else {
+        player.hp = clamp(player.hp + c.amount, 0, player.maxHp);
+        floatText(c.x, c.y-14, "RESTORED +" + c.amount + " MEM", '#ffffff');
+        hpFill.style.width = clamp(player.hp/player.maxHp,0,1)*100 + '%';
+      }
+      SFX.pickup();
+      spawnParticles(c.x, c.y, 14, '#ffffff');
+    }
+  }
+  caches = caches.filter(c => !c.opened && c.life > 0);
+
+  // particles
+  for(const p of particles){
+    if(p.ring){ p.r += (p.maxR/p.maxLife)*dt; }
+    else { p.x += p.vx*dt; p.y += p.vy*dt; p.vx *= 0.92; p.vy *= 0.92; }
+    p.life -= dt;
+  }
+  particles = particles.filter(p => p.life > 0);
+
+  if(shake > 0) shake = Math.max(0, shake - dt*40);
+
+  // wave state machine
+  if(waveState === 'fighting' && enemies.length === 0 && enemiesSpawned >= enemiesToSpawn && hasStartedSpawning && waveTimer <= 0 && !gameOver){
+    waveState = 'banner';
+    bannerTimer = 2.7;
+    // Clean up all drops at wave end
+    pickups = [];
+    caches = [];
+  } else if(waveState === 'banner'){
+    bannerTimer = Math.max(0, bannerTimer - dt);
+    if(bannerTimer <= 0){
+      showUpgradeChoices();
+    }
+  }
+
+  // HUD
+  hpFill.style.width = clamp(player.hp/player.maxHp,0,1)*100 + '%';
+  ultFill.style.width = clamp(player.ultCharge/5,0,100) + '%';
+  ultBarWrap.classList.toggle('ready', player.ultCharge >= 500);
+}
+
+function takeDamage(amount){
+  player.hp -= amount;
+  SFX.hurt();
+  // Show damage number
+  floatText(player.x, player.y - 15, Math.round(amount).toString(), '#ff0000');
+  if(player.hp <= 0 && !gameOver){
+    player.hp = 0;
+    gameOver = true;
+    if(document.exitPointerLock) document.exitPointerLock();
+    overlayTitle.textContent = "SYSTEM CRASH";
+    overlaySub.textContent = "Survived " + (wave) + " waves · " + kills + " kills";
+    overlay.classList.remove('hidden');
+  }
+}
+
+// ---------- Draw ----------
+function drawWallpaper(){
+  // Draw Visi On background
+  if(bgLoaded){
+    ctx.drawImage(visiOnBg, 0, 0, W, H);
+  } else {
+    // Fallback while loading or if failed
+    ctx.fillStyle = '#000';
+    ctx.fillRect(0,0,W,H);
+    // Draw a simple grid pattern as fallback
+    ctx.strokeStyle = '#333';
+    ctx.lineWidth = 1;
+    for(let i = 0; i < W; i += 40){
+      ctx.beginPath();
+      ctx.moveTo(i, 0);
+      ctx.lineTo(i, H);
+      ctx.stroke();
+    }
+    for(let i = 0; i < H; i += 40){
+      ctx.beginPath();
+      ctx.moveTo(0, i);
+      ctx.lineTo(W, i);
+      ctx.stroke();
+    }
+  }
+}
+
+function drawObstacle(){
+  // No obstacles in Visi On era
+}
+
+// ---------- Visi On Button Swarm Enemy ----------
+function spawnMenuButton(buttonIndex, waveMultiplier){
+  const buttonName = MENU_BUTTONS[buttonIndex];
+  const xPos = buttonIndex * BUTTON_WIDTH + BUTTON_WIDTH / 2;
+  
+  // Check for corrupted variant (wave 5+, 1 in 10 chance)
+  const isCorrupted = wave >= 5 && Math.random() < 0.1;
+  
+  enemies.push({
+    x: xPos,
+    y: MENU_BAR_Y + MENU_BAR_HEIGHT / 2,
+    vx: 0,
+    vy: 0,
+    radius: 12,
+    hp: 8 * waveMultiplier,
+    maxHp: 8 * waveMultiplier,
+    level: 1,
+    type: 'menubutton',
+    buttonName: buttonName,
+    buttonIndex: buttonIndex,
+    state: 'spawning', // spawning -> jumping -> rushing
+    stateTimer: 0.5 + Math.random() * 0.3, // Time before jumping
+    jumpTimer: 0,
+    blink: 0,
+    isCorrupted: isCorrupted,
+    deathTell: false,
+    deathTellTimer: 0,
+    explosionRadius: 80
+  });
+}
+
+function updateMenuButton(en, dt){
+  switch(en.state){
+    case 'spawning': {
+      en.stateTimer -= dt;
+      en.blink = (en.blink + dt * 15) % (Math.PI * 2);
+      if(en.stateTimer <= 0){
+        en.state = 'jumping';
+        en.stateTimer = 0.2; // Jump duration
+        // Calculate jump direction toward player
+        const dx = player.x - en.x;
+        const dy = player.y - en.y;
+        const len = Math.hypot(dx, dy) || 1;
+        const speed = en.isCorrupted ? 270 : 180;
+        en.vx = (dx / len) * speed;
+        en.vy = (dy / len) * speed;
+      }
+      
+      // Check collision with player during spawning
+      if(player.invuln <= 0 && dist(en.x, en.y, player.x, player.y) < en.radius + player.radius){
+        const damage = en.isCorrupted ? 8 : 10;
+        takeDamage(damage);
+        player.invuln = 0.4;
+        en.dead = true;
+        shake = 6;
+      }
+      break;
+    }
+    case 'jumping': {
+      en.stateTimer -= dt;
+      en.x += en.vx * dt;
+      en.y += en.vy * dt;
+      
+      // Check collision with player
+      if(player.invuln <= 0 && dist(en.x, en.y, player.x, player.y) < en.radius + player.radius){
+        const damage = en.isCorrupted ? 8 : 10;
+        takeDamage(damage);
+        player.invuln = 0.4;
+        en.dead = true;
+        shake = 6;
+      }
+      
+      if(en.stateTimer <= 0){
+        en.state = 'rushing';
+      }
+      break;
+    }
+    case 'rushing': {
+      // Continue rushing toward player
+      const dx = player.x - en.x;
+      const dy = player.y - en.y;
+      const len = Math.hypot(dx, dy) || 1;
+      const speed = en.isCorrupted ? 225 : 150;
+      en.vx = (dx / len) * speed;
+      en.vy = (dy / len) * speed;
+      
+      en.x += en.vx * dt;
+      en.y += en.vy * dt;
+      
+      // Check collision with player
+      if(player.invuln <= 0 && dist(en.x, en.y, player.x, player.y) < en.radius + player.radius){
+        const damage = en.isCorrupted ? 8 : 10;
+        takeDamage(damage);
+        player.invuln = 0.4;
+        en.dead = true;
+        shake = 6;
+      }
+      
+      // Remove if off screen
+      if(en.x < -20 || en.x > W + 20 || en.y < -20 || en.y > H + 20){
+        en.dead = true;
+      }
+      break;
+    }
+  }
+}
+
+// Check if a path is blocked by any window
+function isPathBlocked(x1, y1, x2, y2){
+  for(const win of windows){
+    if(lineIntersectsRect(x1, y1, x2, y2, win.x, win.y, win.width, win.height)){
+      return true;
+    }
+  }
+  return false;
+}
+
+// Check if a line segment intersects with a rectangle
+function lineIntersectsRect(x1, y1, x2, y2, rx, ry, rw, rh){
+  // Check intersection with each edge of the rectangle
+  return lineIntersectsLine(x1, y1, x2, y2, rx, ry, rx + rw, ry) || // top
+         lineIntersectsLine(x1, y1, x2, y2, rx + rw, ry, rx + rw, ry + rh) || // right
+         lineIntersectsLine(x1, y1, x2, y2, rx, ry + rh, rx + rw, ry + rh) || // bottom
+         lineIntersectsLine(x1, y1, x2, y2, rx, ry, rx, ry + rh); // left
+}
+
+// Check if two line segments intersect
+function lineIntersectsLine(x1, y1, x2, y2, x3, y3, x4, y4){
+  const denom = (y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1);
+  if(denom === 0) return false;
+  
+  const ua = ((x4 - x3) * (y1 - y3) - (y4 - y3) * (x1 - x3)) / denom;
+  const ub = ((x2 - x1) * (y1 - y3) - (y2 - y1) * (x1 - x3)) / denom;
+  
+  return ua >= 0 && ua <= 1 && ub >= 0 && ub <= 1;
+}
+
+function drawMenuButtonEnemy(en){
+  ctx.save();
+  const flashing = en.state === 'spawning' && Math.sin(en.blink) > 0;
+  
+  // Draw button container - always white with black text (red for corrupted)
+  ctx.fillStyle = '#ffffff';
+  ctx.strokeStyle = '#ffffff';
+  ctx.lineWidth = 1;
+  
+  const buttonW = BUTTON_WIDTH - 4;
+  const buttonH = MENU_BAR_HEIGHT - 4;
+  const buttonX = en.buttonIndex * BUTTON_WIDTH + 2;
+  const buttonY = MENU_BAR_Y + 2;
+  
+  if(en.state === 'spawning'){
+    // Draw in original button position
+    ctx.fillRect(buttonX, buttonY, buttonW, buttonH);
+    ctx.strokeRect(buttonX, buttonY, buttonW, buttonH);
+    
+    // Draw text - red for corrupted, black for normal
+    ctx.fillStyle = en.isCorrupted ? '#ff0000' : '#000000';
+    ctx.font = '12px "Courier New", monospace';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(en.buttonName, buttonX + buttonW/2, buttonY + buttonH/2);
+  } else {
+    // Draw as flying enemy - white background, red text for corrupted
+    ctx.translate(en.x, en.y);
+    ctx.fillRect(-buttonW/2, -buttonH/2, buttonW, buttonH);
+    ctx.strokeRect(-buttonW/2, -buttonH/2, buttonW, buttonH);
+    
+    // Draw text - red for corrupted, black for normal
+    ctx.fillStyle = en.isCorrupted ? '#ff0000' : '#000000';
+    ctx.font = '12px "Courier New", monospace';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(en.buttonName, 0, 0);
+    
+    // Draw explosion radius ring during death tell
+    if(en.deathTell){
+      ctx.strokeStyle = '#ff0000';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(0, 0, en.explosionRadius, 0, Math.PI * 2);
+      ctx.stroke();
+    }
+  }
+  
+  ctx.restore();
+}
+
+function drawEnemies(){
+  for(const en of enemies){
+    const isTarget = player.currentTarget === en;
+    if(isTarget){
+      ctx.save();
+      ctx.strokeStyle = 'rgba(255,255,255,0.6)';
+      ctx.lineWidth = 1;
+      ctx.setLineDash([2,2]);
+      ctx.beginPath();
+      ctx.arc(en.x, en.y, en.radius+6, 0, Math.PI*2);
+      ctx.stroke();
+      ctx.restore();
+    }
+    
+    // Draw using enemy type
+    const type = ENEMY_TYPES[en.type];
+    if(type && type.draw){
+      type.draw(en);
+    }
+    
+    // HP bar for rushing enemies
+    if(en.state === 'rushing' || en.state === 'jumping'){
+      const hpPct = clamp(en.hp/en.maxHp,0,1);
+      ctx.fillStyle = 'rgba(0,0,0,0.5)';
+      ctx.fillRect(en.x-en.radius, en.y-en.radius-6, en.radius*2, 3);
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(en.x-en.radius, en.y-en.radius-6, en.radius*2*hpPct, 3);
+    }
+  }
+}
+
+function drawPickups(){
+  for(const p of pickups){
+    const bob = Math.sin(performance.now()/300 + p.bob) * 3;
+    const alpha = clamp(p.life/3, 0, 1);
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    ctx.translate(p.x, p.y + bob);
+    ctx.rotate(Math.PI/4);
+    ctx.fillStyle = '#fff';
+    ctx.shadowColor = '#fff';
+    ctx.shadowBlur = 8;
+    ctx.fillRect(-5,-5,10,10);
+    ctx.restore();
+  }
+}
+
+function drawCaches(){
+  for(const c of caches){
+    const urgent = c.life < 2;
+    const blink = urgent ? (Math.sin(performance.now()/80) > 0) : true;
+    if(!blink) continue;
+    ctx.save();
+    ctx.translate(c.x, c.y);
+    // Visi On style file - simple rectangle
+    ctx.fillStyle = '#000';
+    ctx.strokeStyle = '#fff';
+    ctx.lineWidth = 2;
+    ctx.shadowColor = '#fff';
+    ctx.shadowBlur = 8;
+    ctx.beginPath();
+    ctx.rect(-12,-14,24,28);
+    ctx.fill();
+    ctx.stroke();
+    // folded corner
+    ctx.fillStyle = '#fff';
+    ctx.beginPath();
+    ctx.moveTo(-12,-14);
+    ctx.lineTo(0,-14);
+    ctx.lineTo(-12,0);
+    ctx.closePath();
+    ctx.fill();
+    // simple icon
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(-3,-3,6,6);
+    // countdown ring
+    ctx.strokeStyle = 'rgba(255,255,255,0.6)';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.arc(0,0,20,-Math.PI/2,-Math.PI/2 + (c.life/c.maxLife)*Math.PI*2);
+    ctx.stroke();
+    ctx.restore();
+  }
+}
+
+function drawBullets(){
+  ctx.save();
+  ctx.fillStyle = '#fff';
+  for(const b of playerBullets){
+    ctx.beginPath();
+    ctx.arc(b.x,b.y,b.radius,0,Math.PI*2);
+    ctx.fill();
+  }
+  ctx.fillStyle = '#fff';
+  for(const b of enemyBullets){
+    ctx.beginPath();
+    ctx.arc(b.x,b.y,b.radius,0,Math.PI*2);
+    ctx.fill();
+  }
+  ctx.restore();
+}
+
+function drawWindows(){
+  for(const win of windows){
+    ctx.save();
+    if(windowImage && windowImage.complete && windowImage.naturalWidth > 0){
+      ctx.drawImage(windowImage, win.x, win.y, win.width, win.height);
+    } else {
+      // Fallback if image fails to load
+      ctx.fillStyle = '#808080';
+      ctx.fillRect(win.x, win.y, win.width, win.height);
+      ctx.strokeStyle = '#000';
+      ctx.lineWidth = 2;
+      ctx.strokeRect(win.x, win.y, win.width, win.height);
+      // Draw simple window decoration
+      ctx.fillStyle = '#606060';
+      ctx.fillRect(win.x, win.y, win.width, 24);
+      ctx.fillStyle = '#404040';
+      ctx.fillRect(win.x + 4, win.y + 4, 20, 16);
+    }
+    ctx.restore();
+  }
+}
+
+function drawParticles(){
+  for(const p of particles){
+    const a = clamp(p.life/p.maxLife,0,1);
+    ctx.save();
+    ctx.globalAlpha = a;
+    if(p.ring){
+      ctx.strokeStyle = p.color;
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.stroke();
+    } else {
+      ctx.fillStyle = p.color;
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+      ctx.fill();
+    }
+    ctx.restore();
+  }
+}
+
+function drawMarquee(){
+  if(isDraggingUlt && player.ultCharge >= 500){
+    const rx = Math.min(rmbDownX, mouse.x), ry = Math.min(rmbDownY, mouse.y);
+    const rw = Math.abs(mouse.x - rmbDownX), rh = Math.abs(mouse.y - rmbDownY);
+    const ready = player.ultCharge >= 500;
+    ctx.save();
+    ctx.strokeStyle = ready ? '#ffffff' : '#888888';
+    ctx.fillStyle = ready ? 'rgba(255,255,255,0.15)' : 'rgba(136,136,136,0.15)';
+    ctx.setLineDash([4,3]);
+    ctx.lineWidth = 1;
+    ctx.fillRect(rx,ry,rw,rh);
+    ctx.strokeRect(rx,ry,rw,rh);
+    ctx.restore();
+  }
+}
+
+function drawPlayer(){
+  // Visi On style simple cursor
+  if(player.invuln > 0 && Math.floor(player.invuln*20)%2===0) return;
+
+  // Draw charge indicator
+  if(lmbDown && !isDraggingUlt){
+    const held = performance.now() - lmbDownTime;
+    if(held > CHARGE_THRESHOLD){
+      const p = clamp((held-CHARGE_THRESHOLD)/(MAX_CHARGE-CHARGE_THRESHOLD),0,1);
+      ctx.save();
+      ctx.strokeStyle = '#ffffff';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(player.x, player.y, 12 + p*10, 0, p*Math.PI*2);
+      ctx.stroke();
+      ctx.restore();
+    }
+  }
+
+  // Draw line to target if exists
+  if(player.currentTarget){
+    ctx.save();
+    ctx.strokeStyle = 'rgba(255,255,255,0.4)';
+    ctx.lineWidth = 1;
+    ctx.setLineDash([2,2]);
+    ctx.beginPath();
+    ctx.moveTo(player.x, player.y);
+    ctx.lineTo(player.currentTarget.x, player.currentTarget.y);
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  // Draw simple white cursor - point directly at target
+  ctx.save();
+  ctx.translate(player.x, player.y);
+  ctx.rotate(player.aimAngle);
+  
+  ctx.fillStyle = '#fff';
+  ctx.strokeStyle = '#000';
+  ctx.lineWidth = 1;
+  
+  // Draw arrow pointing right (0 degrees in standard math)
+  ctx.beginPath();
+  ctx.moveTo(8, 0);
+  ctx.lineTo(-5, -5);
+  ctx.lineTo(-2, 0);
+  ctx.lineTo(-5, 5);
+  ctx.closePath();
+  ctx.fill();
+  ctx.stroke();
+  
+  ctx.restore();
+}
+
+function draw(){
+  ctx.save();
+  if(shake > 0){
+    ctx.translate((Math.random()-0.5)*shake, (Math.random()-0.5)*shake);
+  }
+  drawWallpaper();
+  drawWindows();
+  drawPickups();
+  drawCaches();
+  drawEnemies();
+  drawBullets();
+  drawParticles();
+  drawMarquee();
+  drawPlayer();
+
+  if(waveState === 'banner'){
+    ctx.save();
+    ctx.globalAlpha = clamp(bannerTimer,0,1);
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 36px "Courier New", monospace';
+    ctx.textAlign = 'center';
+    
+    // Draw black background behind text
+    ctx.fillStyle = '#000';
+    ctx.fillRect(W/2 - 280, H/2 - 80, 560, 160);
+    
+    ctx.fillStyle = '#fff';
+    ctx.fillText('WAVE ' + wave + ' COMPLETE', W/2, H/2 - 20);
+    ctx.font = '24px "Courier New", monospace';
+    ctx.fillText('system update...', W/2, H/2 + 28);
+    ctx.textAlign = 'left';
+    ctx.restore();
+  }
+  ctx.restore();
+}
+
+function loop(now){
+  const dt = Math.min(0.05, (now-lastTime)/1000);
+  lastTime = now;
+  update(dt);
+  draw();
+  updateIpHud();
+  requestAnimationFrame(loop);
+}
+
+// ---------- Restart ----------
+restartBtn.addEventListener('click', ()=>{
+  player.hp = player.maxHp = 100;
+  player.ip = 0;
+  player.ultCharge = 0;
+  player.shieldActive = false;
+  player.invuln = 2;
+  player.pickupRadius = 30;
+  player.basicDmgMult = player.chargeDmgMult = player.ultGainMult = player.ipGainMult = 1;
+  enemies = []; playerBullets = []; enemyBullets = []; particles = []; pickups = []; caches = []; windows = [];
+  cacheSpawnTimer = 6 + Math.random()*4;
+  kills = 0; wave = 1; waveState = 'fighting';
+  killTextEl.textContent = 'Kills 0';
+  gameOver = false;
+  overlay.classList.add('hidden');
+  upgradeOverlay.classList.add('hidden');
+  player.invuln = 1.5; // Invulnerability at game start
+  spawnWindows();
+  startWave(1);
+  requestLock();
+});
+
+updateIpHud();
+loadWindowImage();
+requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>

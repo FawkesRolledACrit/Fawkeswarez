@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursader - Play Now</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #1a1a2e;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Chakra Petch', sans-serif;
+        }
+        
+        .game-container {
+            width: 100%;
+            max-width: 800px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .game-header {
+            margin-bottom: 20px;
+        }
+        
+        .game-header h1 {
+            color: #00ff00;
+            font-size: 2.5rem;
+            margin: 0 0 10px 0;
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+        }
+        
+        .game-header p {
+            color: #00ffff;
+            font-size: 1.2rem;
+            margin: 0;
+        }
+        
+        .back-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #ff00ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .back-btn:hover {
+            background: #ff00ff;
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+        }
+        
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1>CURSADER</h1>
+            <p>Your cursor is the weapon. The desktop is the dungeon.</p>
+        </div>
+        
+        <iframe src="cursader-game.html" title="Cursader Game"></iframe>
+        
+        <a href="index.html" class="back-btn">← BACK TO GAMES</a>
+    </div>
+</body>
+</html>
