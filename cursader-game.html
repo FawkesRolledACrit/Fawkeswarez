@@ -224,7 +224,7 @@ const W = 640, H = 400;
 
 // Detect if running in Electron vs web browser
 const isElectron = typeof window !== 'undefined' && window.process && window.process.type === 'renderer';
-const assetPath = './'; // Website version: files in same directory
+const assetPath = 'assets/'; // Website version: assets in same directory
 
 console.log('Environment:', isElectron ? 'Electron' : 'Web Browser');
 console.log('Asset path:', assetPath);
