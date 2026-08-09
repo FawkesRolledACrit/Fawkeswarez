@@ -462,7 +462,7 @@ canvas.addEventListener('wheel', (e)=>{
   updateSpellHud();
 }, { passive:false });
 
-// ---------- Player ----------
+// ---------- You ----------
 const player = {
   x: W/2, y: H/2, radius: 9,
   vx: 0, vy: 0,
@@ -579,7 +579,7 @@ const UPGRADE_POOLS = {
   ],
   utility: [
     { id:'antivirusScan', title:'Antivirus Scan', desc:'Small aura dealing 0.2 damage/tick to enemies', apply(){ player.antivirusDamage = 0.2; player.antivirusRadius = 60; } },
-    { id:'systemBeacon', title:'System Beacon', desc:'Aura pulls IP drops and files toward player', apply(){ player.systemBeaconRadius = 60; } },
+    { id:'systemBeacon', title:'System Beacon', desc:'Aura pulls IP drops and files toward you', apply(){ player.systemBeaconRadius = 60; } },
     { id:'fasterDecrypt', title:'Faster Decrypt', desc:'5% faster encrypted file decryption', apply(){ player.fasterDecrypt = 0.05; } },
     { id:'wideNet', title:'Wide Net', desc:'+5% IP pickup radius', apply(){ player.pickupRadius *= 1.05; } }
   ]
@@ -655,9 +655,9 @@ function spawnPopup(){
   });
 }
 
-// Recycle Bin — melee rusher. Idles until the player enters range, shakes
-// through a telegraph, then charges in a straight line toward wherever the
-// player WAS the instant the telegraph ended (not homing mid-charge). Teaches
+// Recycle Bin — melee rusher. Idles until you enter range, shakes
+// through a telegraph, then charges in a straight line toward wherever
+// you were the instant the telegraph ended (not homing mid-charge). Teaches
 // that commitment-based enemies can be baited and juked, not just kited.
 function spawnRecycleBin(){
   let x,y, tries=0;
@@ -767,7 +767,7 @@ function updateRecycleBin(en, dt){
       en.shakeOffsetX = (Math.random()-0.5) * 6 * progress;
       en.shakeOffsetY = (Math.random()-0.5) * 6 * progress;
       if(en.stateTimer <= 0){
-        // Commit to the player's position at THIS instant — never homes afterward.
+        // Commit to your position at THIS instant — never homes afterward.
         const dx = player.x - en.x, dy = player.y - en.y;
         const len = Math.hypot(dx,dy) || 1;
         en.chargeDir = { x: dx/len, y: dy/len };
@@ -944,10 +944,10 @@ function startWave(n){
   enemiesSpawned = 0;
   hasStartedSpawning = false;
   
-  // Give player invulnerability at wave start to avoid window damage
+  // Give you invulnerability at wave start to avoid window damage
   player.invuln = 1.5;
   
-  // Respawn window each wave, ensuring it doesn't spawn near player
+  // Respawn window each wave, ensuring it doesn't spawn near you
   spawnWindows();
   
   // Each wave has a fixed number of enemies to spawn
@@ -1078,24 +1078,24 @@ function loadWindowImage(){
 
 function spawnWindows(){
   windows = [];
-  // Spawn 1 window in a random spot each wave, avoiding center where player starts and taskbar area
+  // Spawn 1 window in a random spot each wave, avoiding center where you start and taskbar area
   let x,y, tries=0;
   do {
     x = 60 + Math.random()*(W-444); // Adjusted for larger window
     // Taskbar is at H-20 (bottom 20px), window height is 244, so max y is H-264
     y = 40 + Math.random()*(H-304); // Range: 40 to H-264
     tries++;
-    // Avoid center area where player starts
+    // Avoid center area where you start
     const centerX = W/2;
     const centerY = H/2;
     const distFromCenter = Math.hypot(x - centerX, y - centerY);
     if(distFromCenter < 150) continue; // Back to 150px buffer
     // Ensure window doesn't overlap taskbar
     if(y + 244 > H - 20) continue; // Window bottom must be above taskbar
-    // Check if player is inside this window position
+    // Check if you are inside this window position
     if(player.x + player.radius > x && player.x - player.radius < x + 384 &&
        player.y + player.radius > y && player.y - player.radius < y + 244){
-      continue; // Skip if player would be inside window
+      continue; // Skip if you would be inside window
     }
     break;
   } while(tries < 50);
@@ -1138,7 +1138,7 @@ function checkWindowCollision(obj, isPlayer){
         if(obj.vy) obj.vy *= -0.5;
       }
       
-      // Player takes damage
+      // You take damage
       if(isPlayer && player.invuln <= 0){
         takeDamage(5);
         player.invuln = 0.3;
@@ -1183,7 +1183,7 @@ function killEnemy(en, overflow, source){
 
   // Corrupted enemy explosion
   if(en.isCorrupted){
-    // Deal damage to player if in radius
+    // Deal damage to you if in radius
     if(player.invuln <= 0 && dist(en.x, en.y, player.x, player.y) < en.explosionRadius){
       takeDamage(15);
       player.invuln = 0.6;
@@ -1446,7 +1446,7 @@ function update(dt){
   player.x = mouse.x;
   player.y = mouse.y;
   
-  // Check window collision for player
+  // Check window collision for you
   checkWindowCollision(player, true);
 
   player.trail.push({x:player.x, y:player.y});
@@ -1552,7 +1552,7 @@ function update(dt){
   }
   enemies = enemies.filter(en => !en.dead);
 
-  // player bullets
+  // your bullets
   for(const b of playerBullets){
     b.x += b.vx*dt; b.y += b.vy*dt;
     for(const en of enemies){
@@ -1631,7 +1631,7 @@ function update(dt){
   }
   for(const c of caches){
     c.life -= dt;
-    // Check if player is touching the file
+    // Check if you are touching the file
     if(dist(c.x,c.y,player.x,player.y) < c.radius + player.radius){
       c.decrypting = true;
       // Apply faster decrypt reduction
@@ -1657,7 +1657,7 @@ function update(dt){
       }
     } else {
       c.decrypting = false;
-      // Progress resets if player moves away
+      // Progress resets if you move away
       c.decryptProgress = Math.max(0, c.decryptProgress - dt * 2); // Faster decay
     }
   }
@@ -1719,7 +1719,7 @@ function takeDamage(amount){
   // Show damage number
   floatText(player.x, player.y - 15, Math.round(reducedAmount).toString(), '#ff0000');
   
-  // Apply debounce if player has it
+  // Apply debounce if you have it
   if(player.debounceWindow > 0){
     player.debounceTimer = player.debounceWindow;
   }
@@ -1804,7 +1804,7 @@ function updateMenuButton(en, dt){
       if(en.stateTimer <= 0){
         en.state = 'jumping';
         en.stateTimer = 0.2; // Jump duration
-        // Calculate jump direction toward player
+        // Calculate jump direction toward you
         const dx = player.x - en.x;
         const dy = player.y - en.y;
         const len = Math.hypot(dx, dy) || 1;
@@ -1813,7 +1813,7 @@ function updateMenuButton(en, dt){
         en.vy = (dy / len) * speed;
       }
       
-      // Check collision with player during spawning
+      // Check collision with you during spawning
       if(player.invuln <= 0 && dist(en.x, en.y, player.x, player.y) < en.radius + player.radius){
         const damage = en.isCorrupted ? 8 : 10;
         takeDamage(damage);
@@ -1828,7 +1828,7 @@ function updateMenuButton(en, dt){
       en.x += en.vx * dt;
       en.y += en.vy * dt;
       
-      // Check collision with player
+      // Check collision with you
       if(player.invuln <= 0 && dist(en.x, en.y, player.x, player.y) < en.radius + player.radius){
         const damage = en.isCorrupted ? 8 : 10;
         takeDamage(damage);
@@ -1843,7 +1843,7 @@ function updateMenuButton(en, dt){
       break;
     }
     case 'rushing': {
-      // Continue rushing toward player
+      // Continue rushing toward you
       const dx = player.x - en.x;
       const dy = player.y - en.y;
       const len = Math.hypot(dx, dy) || 1;
@@ -1854,7 +1854,7 @@ function updateMenuButton(en, dt){
       en.x += en.vx * dt;
       en.y += en.vy * dt;
       
-      // Check collision with player
+      // Check collision with you
       if(player.invuln <= 0 && dist(en.x, en.y, player.x, player.y) < en.radius + player.radius){
         const damage = en.isCorrupted ? 8 : 10;
         takeDamage(damage);
@@ -2039,7 +2039,7 @@ function drawCaches(){
     ctx.stroke();
     ctx.restore();
     
-    // Draw decryption progress around player if being decrypted
+    // Draw decryption progress around you if being decrypted
     if(c.decrypting && c.decryptProgress < c.decryptTime){
       ctx.save();
       ctx.translate(player.x, player.y);
