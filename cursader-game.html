@@ -113,6 +113,10 @@
     font-family: "Courier New", monospace;
   }
   .upgradeCard:hover{ transform: translateY(-2px); box-shadow: 0 4px 8px rgba(255,255,255,.3); }
+  .upgradeCard .u-path{ font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1px; margin-bottom:4px; }
+  .upgradeCard .u-path.offensive{ color: #ff4444; }
+  .upgradeCard .u-path.defensive{ color: #44ff44; }
+  .upgradeCard .u-path.utility{ color: #4444ff; }
   .upgradeCard .u-title{ font-weight:700; color:#fff; font-size:18px; margin-bottom:6px; }
   .upgradeCard .u-desc{ font-size:14px; opacity:.8; line-height:1.3; }
   #controlsBar{ margin-top:8px; text-align:center; font-size:14px; opacity:.7; max-width:640px; font-family: "Courier New", monospace; }
@@ -472,7 +476,22 @@ const player = {
   aimAngle: -Math.PI/2,
   currentTarget: null,
   pickupRadius: 30,
-  basicDmgMult: 1, chargeDmgMult: 1, ultGainMult: 1, ipGainMult: 1
+  basicDmgMult: 1, chargeDmgMult: 1, ultGainMult: 1, ipGainMult: 1,
+  armorPlating: 0, // Flat damage reduction
+  dodgeBuffer: 0, // % chance to negate hit
+  backupPower: 0, // Lifesteal on kill
+  debounceWindow: 0, // Invulnerability after hit
+  debounceTimer: 0, // Current debounce timer
+  activeFirewall: false, // Thorns on shield
+  chargedPierceBonus: 0, // Additional pierce for charged shots
+  basicPierceChance: 0, // Chance for basic shots to pierce
+  cascadeChance: 0, // Chance for kill explosion chain
+  antivirusDamage: 0, // Aura damage
+  antivirusRadius: 0, // Aura radius
+  systemBeaconRadius: 0, // Pickup pull aura radius
+  fasterDecrypt: 0, // Decrypt time reduction
+  hasSplitShot: false, // Passive: Split Shot
+  hasRicochet: false // Passive: Ricochet
 };
 
 // ---------- Spells (flat 100 IP cost = one full charge) ----------
@@ -544,31 +563,55 @@ let shake = 0;
 let waveState = 'fighting';
 let bannerTimer = 0;
 
-// ---------- Upgrades ----------
-const UPGRADE_POOL = [
-  { id:'hp', title:'+20 Max Memory', desc:'Increases maximum memory capacity and restores difference.', apply(){ player.maxHp += 20; player.hp += 20; } },
-  { id:'basicdmg', title:'+5% Cursor Dmg', desc:'Your basic shot hits slightly harder.', apply(){ player.basicDmgMult *= 1.05; } },
-  { id:'chargedmg', title:'+5% Charge Dmg', desc:'Your held-and-released shot hits slightly harder.', apply(){ player.chargeDmgMult *= 1.05; } },
-  { id:'magnet', title:'+10% IP Magnet', desc:'Pull in IP drops from slightly farther away.', apply(){ player.pickupRadius *= 1.1; } },
-  { id:'ultgain', title:'+10% Purge Gain', desc:'Your Purge meter fills slightly faster from kills.', apply(){ player.ultGainMult *= 1.1; } },
-  { id:'ipgain', title:'+10% IP Drops', desc:'Enemies drop slightly larger IP pickups.', apply(){ player.ipGainMult *= 1.1; } },
-  { id:'heal', title:'Restore Memory', desc:'Immediately restore all missing memory.', apply(){ player.hp = player.maxHp; } },
-];
+// ---------- Upgrades - Three Path System ----------
+const UPGRADE_POOLS = {
+  offensive: [
+    { id:'bufferOverflow', title:'Buffer Overflow', desc:'+0.25 charged shot pierce (stacks)', apply(){ player.chargedPierceBonus += 0.25; } },
+    { id:'nullPointer', title:'Null Pointer', desc:'5% chance for basic shots to pierce target', apply(){ player.basicPierceChance = 0.05; } },
+    { id:'cascadeFailure', title:'Cascade Failure', desc:'3% chance for kill to chain explosion to nearest enemy', apply(){ player.cascadeChance = 0.03; } }
+  ],
+  defensive: [
+    { id:'armorPlating', title:'Armor Plating', desc:'Reduce all damage taken by 0.5', apply(){ player.armorPlating += 0.5; } },
+    { id:'dodgeBuffer', title:'Dodge Buffer', desc:'5% chance to completely negate a hit', apply(){ player.dodgeBuffer = 0.05; } },
+    { id:'backupPower', title:'Backup Power', desc:'Basic/charged shots heal 0.5 MEM on kill', apply(){ player.backupPower = 0.5; } },
+    { id:'activeFirewall', title:'Active Firewall', desc:'FIREWALL shield reflects 1 damage to attackers', apply(){ player.activeFirewall = true; } },
+    { id:'debounce', title:'Debounce', desc:'0.05s immunity after taking damage', apply(){ player.debounceWindow = 0.05; } }
+  ],
+  utility: [
+    { id:'antivirusScan', title:'Antivirus Scan', desc:'Small aura dealing 0.2 damage/tick to enemies', apply(){ player.antivirusDamage = 0.2; player.antivirusRadius = 60; } },
+    { id:'systemBeacon', title:'System Beacon', desc:'Aura pulls IP drops and files toward player', apply(){ player.systemBeaconRadius = 60; } },
+    { id:'fasterDecrypt', title:'Faster Decrypt', desc:'5% faster encrypted file decryption', apply(){ player.fasterDecrypt = 0.05; } },
+    { id:'wideNet', title:'Wide Net', desc:'+5% IP pickup radius', apply(){ player.pickupRadius *= 1.05; } }
+  ]
+};
 
 function showUpgradeChoices(){
   waveState = 'upgrade';
   if(document.exitPointerLock) document.exitPointerLock();
-  const pool = UPGRADE_POOL.slice();
+  
+  // Pick one upgrade from each path
   const picks = [];
-  for(let i=0;i<3 && pool.length>0;i++){
-    const idx = Math.floor(Math.random()*pool.length);
-    picks.push(pool.splice(idx,1)[0]);
-  }
+  
+  // Offensive pick
+  const offensivePool = UPGRADE_POOLS.offensive.slice();
+  const offensiveIdx = Math.floor(Math.random() * offensivePool.length);
+  picks.push({...offensivePool[offensiveIdx], path: 'offensive'});
+  
+  // Defensive pick
+  const defensivePool = UPGRADE_POOLS.defensive.slice();
+  const defensiveIdx = Math.floor(Math.random() * defensivePool.length);
+  picks.push({...defensivePool[defensiveIdx], path: 'defensive'});
+  
+  // Utility pick
+  const utilityPool = UPGRADE_POOLS.utility.slice();
+  const utilityIdx = Math.floor(Math.random() * utilityPool.length);
+  picks.push({...utilityPool[utilityIdx], path: 'utility'});
+  
   upgradeCardsEl.innerHTML = '';
   for(const up of picks){
     const card = document.createElement('div');
     card.className = 'upgradeCard';
-    card.innerHTML = `<div class="u-title">${up.title}</div><div class="u-desc">${up.desc}</div>`;
+    card.innerHTML = `<div class="u-path ${up.path}">${up.path.toUpperCase()}</div><div class="u-title">${up.title}</div><div class="u-desc">${up.desc}</div>`;
     card.addEventListener('click', ()=>{
       up.apply();
       upgradeOverlay.classList.add('hidden');
@@ -1164,6 +1207,33 @@ function killEnemy(en, overflow, source){
   }
   gain *= player.ultGainMult;
   player.ultCharge = clamp(player.ultCharge + gain, 0, 500);
+  
+  // ---- backup power healing on kill ----
+  if(player.backupPower > 0 && (source === 'basic' || source === 'charged')){
+    player.hp = clamp(player.hp + player.backupPower, 0, player.maxHp);
+    hpFill.style.width = clamp(player.hp/player.maxHp,0,1)*100 + '%';
+  }
+  
+  // ---- cascade failure: chain explosion to nearest enemy ----
+  if(player.cascadeChance > 0 && Math.random() < player.cascadeChance){
+    // Find nearest enemy
+    let nearestEnemy = null;
+    let nearestDist = Infinity;
+    for(const other of enemies){
+      if(other === en || other.dead) continue;
+      const d = dist(en.x, en.y, other.x, other.y);
+      if(d < nearestDist){
+        nearestDist = d;
+        nearestEnemy = other;
+      }
+    }
+    if(nearestEnemy && nearestDist < 150){
+      // Chain explosion
+      damageEnemy(nearestEnemy, 2, 'cascade');
+      spawnRing(nearestEnemy.x, nearestEnemy.y, '#ffffff');
+      floatText(nearestEnemy.x, nearestEnemy.y - 10, "CASCADE!", '#ffff00');
+    }
+  }
 
   // ---- IP drop ----
   // Ramping drop chance based on wave level (20% at wave 1, 80% at wave 20)
@@ -1234,10 +1304,14 @@ function fireBasicShot(){
   else { dx = Math.cos(player.aimAngle); dy = Math.sin(player.aimAngle); }
   const len = Math.hypot(dx,dy) || 1;
   const speed = 480;
+  
+  // Null Pointer: chance for basic shots to pierce
+  const pierce = (player.basicPierceChance > 0 && Math.random() < player.basicPierceChance) ? 1 : 0;
+  
   playerBullets.push({
     x: player.x, y: player.y,
     vx: dx/len*speed, vy: dy/len*speed,
-    radius: 4, dmg: 6 * player.basicDmgMult, pierce: 0
+    radius: 4, dmg: 6 * player.basicDmgMult, pierce: pierce
   });
   SFX.basic();
 }
@@ -1256,7 +1330,7 @@ function fireChargedShot(heldTime){
     vx: dx/len*speed, vy: dy/len*speed,
     radius: 7 + power*6,
     dmg: (8.8 + power*18.7) * player.chargeDmgMult,
-    pierce: 1 + Math.round(power*2)
+    pierce: 1 + player.chargedPierceBonus // Apply pierce bonus from upgrades
   });
   spawnRing(player.x, player.y, '#7fe3ff');
   SFX.charged(power);
@@ -1322,6 +1396,45 @@ function update(dt){
   // wave timer (minimum duration)
   if(waveState === 'fighting'){
     waveTimer = Math.max(0, waveTimer - dt);
+  }
+  
+  // ---- antivirus aura damage ----
+  if(player.antivirusDamage > 0 && player.antivirusRadius > 0){
+    const auraTick = 0.5; // Damage every 0.5 seconds
+    if(!player.lastAuraTick) player.lastAuraTick = 0;
+    player.lastAuraTick += dt;
+    if(player.lastAuraTick >= auraTick){
+      player.lastAuraTick = 0;
+      for(const en of enemies){
+        if(dist(player.x, player.y, en.x, en.y) < player.antivirusRadius){
+          damageEnemy(en, player.antivirusDamage, 'aura');
+        }
+      }
+    }
+  }
+  
+  // ---- system beacon pickup attraction ----
+  if(player.systemBeaconRadius > 0){
+    // Pull IP drops
+    for(const p of pickups){
+      const d = dist(player.x, player.y, p.x, p.y);
+      if(d < player.systemBeaconRadius && d > player.pickupRadius){
+        const pullStrength = 200 * dt;
+        const a = Math.atan2(player.y - p.y, player.x - p.x);
+        p.x += Math.cos(a) * pullStrength;
+        p.y += Math.sin(a) * pullStrength;
+      }
+    }
+    // Pull encrypted files
+    for(const c of caches){
+      const d = dist(player.x, player.y, c.x, c.y);
+      if(d < player.systemBeaconRadius && d > c.radius + player.radius){
+        const pullStrength = 150 * dt;
+        const a = Math.atan2(player.y - c.y, player.x - c.x);
+        c.x += Math.cos(a) * pullStrength;
+        c.y += Math.sin(a) * pullStrength;
+      }
+    }
   }
 
   // movement direction fallback (used only when no target exists)
@@ -1400,6 +1513,12 @@ function update(dt){
         let gain = (4 + en.level*2);
         gain *= player.ultGainMult;
         player.ultCharge = clamp(player.ultCharge + gain, 0, 500);
+        
+        // ---- backup power healing on kill ----
+        if(player.backupPower > 0){
+          player.hp = clamp(player.hp + player.backupPower, 0, player.maxHp);
+          hpFill.style.width = clamp(player.hp/player.maxHp,0,1)*100 + '%';
+        }
 
         // IP drop
         // Ramping drop chance based on wave level (20% at wave 1, 80% at wave 20)
@@ -1451,6 +1570,22 @@ function update(dt){
     b.x += b.vx*dt; b.y += b.vy*dt;
     if(player.invuln <= 0 && dist(b.x,b.y,player.x,player.y) < player.radius + b.radius){
       if(player.shieldActive){
+        // Active Firewall: damage attacker if shield blocks
+        if(player.activeFirewall){
+          // Find nearest enemy to damage back
+          let nearestEnemy = null;
+          let nearestDist = Infinity;
+          for(const en of enemies){
+            const d = dist(player.x, player.y, en.x, en.y);
+            if(d < nearestDist){
+              nearestDist = d;
+              nearestEnemy = en;
+            }
+          }
+          if(nearestEnemy && nearestDist < 100){
+            damageEnemy(nearestEnemy, 1, 'shield');
+          }
+        }
         player.shieldActive = false;
         spawnRing(player.x, player.y, '#ffffff');
       } else {
@@ -1499,7 +1634,9 @@ function update(dt){
     // Check if player is touching the file
     if(dist(c.x,c.y,player.x,player.y) < c.radius + player.radius){
       c.decrypting = true;
-      c.decryptProgress += dt;
+      // Apply faster decrypt reduction
+      const decryptSpeed = 1 + player.fasterDecrypt;
+      c.decryptProgress += dt * decryptSpeed;
       
       // Check if decryption is complete
       if(c.decryptProgress >= c.decryptTime){
@@ -1535,6 +1672,11 @@ function update(dt){
   particles = particles.filter(p => p.life > 0);
 
   if(shake > 0) shake = Math.max(0, shake - dt*40);
+  
+  // Update debounce timer
+  if(player.debounceTimer > 0){
+    player.debounceTimer = Math.max(0, player.debounceTimer - dt);
+  }
 
   // wave state machine
   if(waveState === 'fighting' && enemies.length === 0 && enemiesSpawned >= enemiesToSpawn && hasStartedSpawning && waveTimer <= 0 && !gameOver){
@@ -1557,10 +1699,31 @@ function update(dt){
 }
 
 function takeDamage(amount){
-  player.hp -= amount;
+  // Check dodge buffer first
+  if(player.dodgeBuffer > 0 && Math.random() < player.dodgeBuffer){
+    floatText(player.x, player.y - 20, "DODGED!", '#00ff00');
+    return; // No damage taken
+  }
+  
+  // Check debounce immunity
+  if(player.debounceTimer > 0){
+    return; // No damage during debounce window
+  }
+  
+  // Apply armor plating reduction
+  const reducedAmount = Math.max(0, amount - player.armorPlating);
+  
+  player.hp -= reducedAmount;
   SFX.hurt();
+  
   // Show damage number
-  floatText(player.x, player.y - 15, Math.round(amount).toString(), '#ff0000');
+  floatText(player.x, player.y - 15, Math.round(reducedAmount).toString(), '#ff0000');
+  
+  // Apply debounce if player has it
+  if(player.debounceWindow > 0){
+    player.debounceTimer = player.debounceWindow;
+  }
+  
   if(player.hp <= 0 && !gameOver){
     player.hp = 0;
     gameOver = true;
@@ -2084,6 +2247,21 @@ restartBtn.addEventListener('click', ()=>{
   player.invuln = 2;
   player.pickupRadius = 30;
   player.basicDmgMult = player.chargeDmgMult = player.ultGainMult = player.ipGainMult = 1;
+  player.armorPlating = 0;
+  player.dodgeBuffer = 0;
+  player.backupPower = 0;
+  player.debounceWindow = 0;
+  player.debounceTimer = 0;
+  player.activeFirewall = false;
+  player.chargedPierceBonus = 0;
+  player.basicPierceChance = 0;
+  player.cascadeChance = 0;
+  player.antivirusDamage = 0;
+  player.antivirusRadius = 0;
+  player.systemBeaconRadius = 0;
+  player.fasterDecrypt = 0;
+  player.hasSplitShot = false;
+  player.hasRicochet = false;
   enemies = []; playerBullets = []; enemyBullets = []; particles = []; pickups = []; caches = []; windows = [];
   cacheSpawnTimer = 6 + Math.random()*4;
   kills = 0; wave = 1; waveState = 'fighting';
