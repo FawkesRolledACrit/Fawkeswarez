@@ -953,7 +953,7 @@ function updateWaveSpawning(dt){
 }
 
 // ---------- Encrypted files: temporary hold-to-decrypt pickups. One at a time.
-// Files have levels 1-5 based on wave progression, requiring hold time equal to level.
+// Files have levels 1-5 based on wave progression, requiring hold time: 0.3s-1.5s (level * 0.3s).
 function spawnCache(){
   let x,y, tries=0;
   do {
@@ -1008,6 +1008,7 @@ function spawnCache(){
   const levelMultiplier = 1 + (level - 1) * 0.5; // Level 1: 1x, Level 5: 3x
   const amount = Math.round((baseAmount + Math.random() * 8) * levelMultiplier);
   const lifeTime = 6 + level * 2; // Level 1: 8s, Level 5: 16s
+  const decryptTime = level * 0.3; // Level 1: 0.3s, Level 5: 1.5s
   
   caches.push({
     x, y, radius: 15,
@@ -1015,7 +1016,8 @@ function spawnCache(){
     kind,
     amount,
     level,
-    decryptProgress: 0, // Progress towards decryption (0 to level)
+    decryptTime,
+    decryptProgress: 0, // Progress 0 to decryptTime
     decrypting: false
   });
 }
@@ -1500,7 +1502,7 @@ function update(dt){
       c.decryptProgress += dt;
       
       // Check if decryption is complete
-      if(c.decryptProgress >= c.level){
+      if(c.decryptProgress >= c.decryptTime){
         c.opened = true;
         if(c.kind === 'ip'){
           player.ip = clamp(player.ip + c.amount, 0, 300);
@@ -1875,10 +1877,10 @@ function drawCaches(){
     ctx.restore();
     
     // Draw decryption progress around player if being decrypted
-    if(c.decrypting && c.decryptProgress < c.level){
+    if(c.decrypting && c.decryptProgress < c.decryptTime){
       ctx.save();
       ctx.translate(player.x, player.y);
-      const progress = c.decryptProgress / c.level;
+      const progress = c.decryptProgress / c.decryptTime;
       // Decryption ring
       ctx.strokeStyle = '#00ff00';
       ctx.lineWidth = 3;
