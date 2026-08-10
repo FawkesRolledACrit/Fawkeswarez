@@ -2320,12 +2320,12 @@ function drawPickups(){
     ctx.translate(p.x, p.y + bob);
     
     if(p.type === 'mem'){
-      // Draw MEM drop as "+" symbol
+      // Draw MEM drop as "+" symbol with thicker lines
       ctx.fillStyle = '#fff';
       ctx.shadowColor = '#fff';
       ctx.shadowBlur = 8;
-      ctx.fillRect(-1, -8, 2, 16); // Vertical bar
-      ctx.fillRect(-8, -1, 16, 2); // Horizontal bar
+      ctx.fillRect(-3, -8, 6, 16); // Thicker vertical bar
+      ctx.fillRect(-8, -3, 16, 6); // Thicker horizontal bar
     } else {
       // Draw IP drop as square (rotated diamond)
       ctx.rotate(Math.PI/4);
