@@ -1525,11 +1525,26 @@ function killEnemy(en, overflow, source){
     }
   }
 
-  // ---- IP drop ----
+  // ---- Drop system: IP or MEM (mutually exclusive) ----
   // Ramping drop chance based on wave level (20% at wave 1, 80% at wave 20)
   const dropChance = 0.2 + (Math.min(wave, 20) - 1) * 0.03;
+  
+  // Rare MEM drop chance (5% base, increases with wave)
+  const memDropChance = 0.05 + (Math.min(wave, 20) - 1) * 0.005;
+  
   if(Math.random() < dropChance){
-    const amt = Math.round((8 + Math.random()*6) * player.ipGainMult);
+    // Determine if this drop is MEM (rare) or IP (common)
+    const isMemDrop = Math.random() < memDropChance;
+    
+    let dropType, amount;
+    if(isMemDrop){
+      dropType = 'mem';
+      // MEM amount scales with wave (3 + wave/2, up to 13 at wave 20)
+      amount = Math.round(3 + wave/2 + Math.random() * 3);
+    } else {
+      dropType = 'ip';
+      amount = Math.round((8 + Math.random()*6) * player.ipGainMult);
+    }
     
     // Find spawn position outside windows
     let dropX = en.x, dropY = en.y;
@@ -1550,7 +1565,7 @@ function killEnemy(en, overflow, source){
       tries++;
     }
     
-    pickups.push({ x: dropX, y: dropY, amount: amt, life: 14, bob: Math.random()*Math.PI*2, vx:0, vy:0 });
+    pickups.push({ x: dropX, y: dropY, amount: amount, type: dropType, life: 14, bob: Math.random()*Math.PI*2, vx:0, vy:0 });
   }
 }
 
@@ -1897,7 +1912,7 @@ function update(dt){
   }
   enemyBullets = enemyBullets.filter(b => !b.dead && b.x>-20 && b.x<W+20 && b.y>-20 && b.y<H+20);
 
-  // pickups (IP orbs)
+  // pickups (IP orbs and MEM drops)
   for(const p of pickups){
     p.life -= dt;
     const d = dist(p.x,p.y,player.x,player.y);
@@ -1909,9 +1924,17 @@ function update(dt){
     p.vx *= 0.9; p.vy *= 0.9;
     p.x += p.vx*dt; p.y += p.vy*dt;
     if(d < player.pickupRadius){
-      player.ip = clamp(player.ip + p.amount, 0, 300);
-      updateIpHud();
-      floatText(p.x, p.y-10, "+" + p.amount + " IP", '#ffffff');
+      if(p.type === 'mem'){
+        // MEM drop: restore health
+        player.hp = clamp(player.hp + p.amount, 0, player.maxHp);
+        hpFill.style.width = clamp(player.hp/player.maxHp,0,1)*100 + '%';
+        floatText(p.x, p.y-10, "+" + p.amount + " MEM", '#ffffff');
+      } else {
+        // IP drop: add to IP
+        player.ip = clamp(player.ip + p.amount, 0, 300);
+        updateIpHud();
+        floatText(p.x, p.y-10, "+" + p.amount + " IP", '#ffffff');
+      }
       SFX.pickup();
       p.dead = true;
     }
@@ -2290,11 +2313,23 @@ function drawPickups(){
     ctx.save();
     ctx.globalAlpha = alpha;
     ctx.translate(p.x, p.y + bob);
-    ctx.rotate(Math.PI/4);
-    ctx.fillStyle = '#fff';
-    ctx.shadowColor = '#fff';
-    ctx.shadowBlur = 8;
-    ctx.fillRect(-5,-5,10,10);
+    
+    if(p.type === 'mem'){
+      // Draw MEM drop as "+" symbol
+      ctx.fillStyle = '#fff';
+      ctx.shadowColor = '#fff';
+      ctx.shadowBlur = 8;
+      ctx.fillRect(-1, -8, 2, 16); // Vertical bar
+      ctx.fillRect(-8, -1, 16, 2); // Horizontal bar
+    } else {
+      // Draw IP drop as square (rotated diamond)
+      ctx.rotate(Math.PI/4);
+      ctx.fillStyle = '#fff';
+      ctx.shadowColor = '#fff';
+      ctx.shadowBlur = 8;
+      ctx.fillRect(-5,-5,10,10);
+    }
+    
     ctx.restore();
   }
 }
