@@ -491,6 +491,8 @@ const player = {
   antivirusRadius: 0, // Aura radius
   systemBeaconRadius: 0, // Pickup pull aura radius
   fasterDecrypt: 0, // Decrypt time reduction
+  ipDropRateBonus: 0, // Bonus to IP drop chance
+  memDropRateBonus: 0, // Bonus to MEM drop chance
   hasSplitShot: false, // Passive: Split Shot
   hasRicochet: false // Passive: Ricochet
 };
@@ -601,7 +603,9 @@ const UPGRADE_POOLS = {
     { id:'antivirusScan', title:'Antivirus Scan', desc:'Small aura dealing 0.2 damage/tick to enemies', apply(){ player.antivirusDamage = 0.2; player.antivirusRadius = 60; } },
     { id:'systemBeacon', title:'System Beacon', desc:'Aura pulls IP drops and files toward you', apply(){ player.systemBeaconRadius = 60; } },
     { id:'fasterDecrypt', title:'Faster Decrypt', desc:'5% faster encrypted file decryption', apply(){ player.fasterDecrypt = 0.05; } },
-    { id:'wideNet', title:'Wide Net', desc:'+5% IP pickup radius', apply(){ player.pickupRadius *= 1.05; } }
+    { id:'wideNet', title:'Wide Net', desc:'+5% IP pickup radius', apply(){ player.pickupRadius *= 1.05; } },
+    { id:'ipDropRate', title:'Data Cache', desc:'+5% IP drop chance', apply(){ player.ipDropRateBonus = (player.ipDropRateBonus || 0) + 0.05; } },
+    { id:'memDropRate', title:'System Repair', desc:'+5% MEM drop chance', apply(){ player.memDropRateBonus = (player.memDropRateBonus || 0) + 0.05; } }
   ]
 };
 
@@ -1528,11 +1532,12 @@ function killEnemy(en, overflow, source){
   // ---- Drop system: IP or MEM (mutually exclusive) ----
   // Ramping drop chance based on wave level (20% at wave 1, 80% at wave 20)
   const dropChance = 0.2 + (Math.min(wave, 20) - 1) * 0.03;
+  const ipDropChance = dropChance + (player.ipDropRateBonus || 0);
   
-  // Rare MEM drop chance (5% base, increases with wave)
-  const memDropChance = 0.05 + (Math.min(wave, 20) - 1) * 0.005;
+  // Rare MEM drop chance (increased for testing - should be 2-3 per round)
+  const memDropChance = 0.15 + (Math.min(wave, 20) - 1) * 0.02 + (player.memDropRateBonus || 0);
   
-  if(Math.random() < dropChance){
+  if(Math.random() < ipDropChance){
     // Determine if this drop is MEM (rare) or IP (common)
     const isMemDrop = Math.random() < memDropChance;
     
@@ -2686,8 +2691,9 @@ restartBtn.addEventListener('click', ()=>{
   player.antivirusRadius = 0;
   player.systemBeaconRadius = 0;
   player.fasterDecrypt = 0;
+  player.ipDropRateBonus = 0;
+  player.memDropRateBonus = 0;
   player.hasSplitShot = false;
-  player.hasRicochet = false;
   player.hasRicochet = false;
   enemies = []; playerBullets = []; enemyBullets = []; particles = []; pickups = []; caches = []; windows = [];
   cacheSpawnTimer = 6 + Math.random()*4;
