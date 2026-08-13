@@ -13,10 +13,14 @@
     --ult-color: #ffffff;
     --accent: #ffffff;
   }
+  @font-face {
+    font-family: 'DOS VGA';
+    src: url('assets/Perfect DOS VGA 437.ttf') format('truetype');
+  }
   html,body{
     margin:0; padding:0; min-height:100%;
     background: #202020;
-    font-family: "Courier New", monospace;
+    font-family: "DOS VGA", "Courier New", monospace;
     color:#ffffff;
     overflow:hidden;
   }
@@ -57,7 +61,7 @@
     border: 2px solid #000;
     box-shadow: 0 4px 10px rgba(0,0,0,.5);
     letter-spacing:0px;
-    font-family: "Courier New", monospace;
+    font-family: "DOS VGA", "Courier New", monospace;
   }
   .bar-label{ width:50px; text-transform:uppercase; font-weight:700; opacity:.9; }
   .ip-group .bar-label{ width:auto; }
@@ -77,7 +81,7 @@
   .mem-group{ gap:10px; margin-right:25px; }
   .purge-group{ gap:10px; margin-right:25px; }
   #ipText{
-    font-family: "Courier New", monospace;
+    font-family: "DOS VGA", "Courier New", monospace;
     font-size:18px; font-weight:700; letter-spacing:0px;
   }
   #spellName{
@@ -92,35 +96,45 @@
     background: rgba(0,0,0,.9);
     display:flex; flex-direction:column; align-items:center; justify-content:center;
     gap:16px; text-align:center; font-size:24px;
-    font-family: "Courier New", monospace;
+    font-family: "DOS VGA", "Courier New", monospace;
   }
   .modal.hidden{ display:none; }
   #lockOverlay{ cursor:pointer; z-index:5; }
-  .modal h1{ margin:0; font-size:40px; letter-spacing:0px; color:#fff; font-family: "Courier New", monospace; }
+  .modal h1{ margin:0; font-size:40px; letter-spacing:0px; color:#fff; font-family: "DOS VGA", "Courier New", monospace; }
   .modal button{
     background: #ffffff;
     border:2px solid #000; color:#000;
     padding:12px 24px; font-size:24px; font-weight:700; cursor:pointer;
-    font-family: "Courier New", monospace;
+    font-family: "DOS VGA", "Courier New", monospace;
   }
   .modal button:active{ transform: translateY(1px); }
   #upgradeCards{ display:flex; gap:12px; }
+  #cursorSelection{ display:flex; gap:12px; }
   .upgradeCard{
     background: #000;
     border:2px solid #fff;
     padding:12px 16px; width:160px; cursor:pointer;
     text-align:left; transition: transform .12s ease, box-shadow .12s ease;
-    font-family: "Courier New", monospace;
+    font-family: "DOS VGA", "Courier New", monospace;
   }
   .upgradeCard:hover{ transform: translateY(-2px); box-shadow: 0 4px 8px rgba(255,255,255,.3); }
+  .cursorCard{
+    background: #000;
+    border:2px solid #fff;
+    padding:12px 16px; width:180px; cursor:pointer;
+    text-align:left; transition: transform .12s ease, box-shadow .12s ease;
+    font-family: "DOS VGA", "Courier New", monospace;
+  }
+  .cursorCard:hover{ transform: translateY(-2px); box-shadow: 0 4px 8px rgba(255,255,255,.3); }
+  .cursorCard.selected{ border-color: #00ff00; }
   .upgradeCard .u-path{ font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1px; margin-bottom:4px; }
   .upgradeCard .u-path.offensive{ color: #ff4444; }
   .upgradeCard .u-path.defensive{ color: #44ff44; }
   .upgradeCard .u-path.utility{ color: #4444ff; }
   .upgradeCard .u-title{ font-weight:700; color:#fff; font-size:18px; margin-bottom:6px; }
   .upgradeCard .u-desc{ font-size:14px; opacity:.8; line-height:1.3; }
-  #controlsBar{ margin-top:8px; text-align:center; font-size:14px; opacity:.7; max-width:640px; font-family: "Courier New", monospace; }
-  #title{ text-align:center; margin-bottom:8px; font-size:18px; letter-spacing:1px; opacity:.8; font-family: "Courier New", monospace; }
+  #controlsBar{ margin-top:8px; text-align:center; font-size:14px; opacity:.7; max-width:640px; font-family: "DOS VGA", "Courier New", monospace; }
+  #title{ text-align:center; margin-bottom:8px; font-size:18px; letter-spacing:1px; opacity:.8; font-family: "DOS VGA", "Courier New", monospace; }
 </style>
 </head>
 <body>
@@ -308,7 +322,7 @@ function floatText(x,y,text,color){
   el.style.color = '#000'; // Black text for better contrast
   el.style.fontSize = '20px';
   el.style.fontWeight = '700';
-  el.style.fontFamily = '"Courier New", monospace';
+  el.style.fontFamily = '"DOS VGA", "Courier New", monospace';
   el.style.textShadow = '0 0 2px rgba(255,255,255,.8)';
   el.style.pointerEvents='none';
   el.style.transition = 'transform 2.5s ease-out, opacity 2.5s ease-out';
@@ -369,6 +383,51 @@ function getCanvasPos(e){
 // window edge and "escape" into the OS. We keep our own virtual mouse.x/y,
 // advanced by those deltas and clamped to the play area, exactly like before.
 let pointerLocked = false;
+let cursorSelectionOverlay;
+
+function showCursorSelection(){
+  cursorSelectionOverlay = document.createElement('div');
+  cursorSelectionOverlay.className = 'modal';
+  cursorSelectionOverlay.innerHTML = `
+    <h1>SELECT CURSOR TYPE</h1>
+    <div id="cursorSelection"></div>
+  `;
+  document.body.appendChild(cursorSelectionOverlay);
+  
+  const cursorSelectionEl = document.getElementById('cursorSelection');
+  
+  for(const [key, cursor] of Object.entries(CURSOR_TYPES)){
+    const card = document.createElement('div');
+    card.className = 'cursorCard';
+    if(key === player.cursorType) card.classList.add('selected');
+    card.innerHTML = `
+      <div class="u-title">${cursor.name}</div>
+      <div class="u-desc">${cursor.description}</div>
+      <div class="u-desc" style="font-size:12px; margin-top:8px;">HP: ${cursor.maxHp}</div>
+    `;
+    card.addEventListener('click', ()=>{
+      // Update player cursor type
+      player.cursorType = key;
+      player.maxHp = cursor.maxHp;
+      player.hp = cursor.maxHp;
+      hpFill.style.width = '100%';
+      
+      // Update selected visual
+      document.querySelectorAll('.cursorCard').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+    });
+    cursorSelectionEl.appendChild(card);
+  }
+  
+  const startBtn = document.createElement('button');
+  startBtn.textContent = 'START GAME';
+  startBtn.addEventListener('click', ()=>{
+    document.body.removeChild(cursorSelectionOverlay);
+    ensureAudio();
+    requestLock();
+  });
+  cursorSelectionOverlay.appendChild(startBtn);
+}
 
 function requestLock(){
   if(canvas.requestPointerLock) canvas.requestPointerLock();
@@ -395,8 +454,7 @@ document.addEventListener('pointerlockerror', ()=>{
 });
 
 lockOverlay.addEventListener('click', ()=>{
-  ensureAudio();
-  requestLock();
+  showCursorSelection();
 });
 
 canvas.addEventListener('mousemove', (e)=>{
@@ -463,6 +521,54 @@ canvas.addEventListener('wheel', (e)=>{
   updateSpellHud();
 }, { passive:false });
 
+// ---------- Q/E Target Cycling ----------
+let targetCycleIndex = 0;
+
+document.addEventListener('keydown', (e)=>{
+  if(e.key === 'q' || e.key === 'Q'){
+    cycleTarget('next');
+  } else if(e.key === 'e' || e.key === 'E'){
+    cycleTarget('prev');
+  } else if(e.key === 'r' || e.key === 'R'){
+    if(waveState === 'victory'){
+      // Restart game on victory
+      wave = 1;
+      waveState = 'fighting';
+      enemies = []; playerBullets = []; enemyBullets = []; particles = []; pickups = []; caches = []; deadPixels = []; windows = [];
+      cacheSpawnTimer = 6 + Math.random()*4;
+      kills = 0;
+      killTextEl.textContent = "Kills 0";
+      gameOver = false;
+      showCursorSelection();
+    }
+  }
+});
+
+function cycleTarget(direction){
+  const aliveEnemies = enemies.filter(en => !en.dead);
+  if(aliveEnemies.length === 0) return;
+  
+  // Update cycle index based on current target to maintain consistency
+  if(player.currentTarget && aliveEnemies.includes(player.currentTarget)){
+    targetCycleIndex = aliveEnemies.indexOf(player.currentTarget);
+  } else {
+    targetCycleIndex = 0;
+  }
+  
+  if(direction === 'next'){
+    targetCycleIndex = (targetCycleIndex + 1) % aliveEnemies.length;
+  } else {
+    targetCycleIndex = (targetCycleIndex - 1 + aliveEnemies.length) % aliveEnemies.length;
+  }
+  
+  player.currentTarget = aliveEnemies[targetCycleIndex];
+  
+  // Visual feedback for target change
+  if(player.currentTarget){
+    floatText(player.currentTarget.x, player.currentTarget.y - 20, "TARGETED", '#00ff00');
+  }
+}
+
 // ---------- You ----------
 const player = {
   x: W/2, y: H/2, radius: 9,
@@ -477,6 +583,7 @@ const player = {
   aimAngle: -Math.PI/2,
   currentTarget: null,
   pickupRadius: 30,
+  cursorType: 'default', // 'default', 'shotgun', 'grenade', 'laser'
   basicDmgMult: 1, chargeDmgMult: 1, ultGainMult: 1, ipGainMult: 1,
   armorPlating: 0, // Flat damage reduction
   dodgeBuffer: 0, // % chance to negate hit
@@ -494,7 +601,79 @@ const player = {
   ipDropRateBonus: 0, // Bonus to IP drop chance
   memDropRateBonus: 0, // Bonus to MEM drop chance
   hasSplitShot: false, // Passive: Split Shot
-  hasRicochet: false // Passive: Ricochet
+  hasRicochet: false, // Passive: Ricochet
+  basicCooldownTimer: 0, // Current basic attack cooldown
+  chargeCooldownTimer: 0, // Current charge attack cooldown
+  basicCooldownReduction: 0, // Upgrade: reduce basic cooldown
+  chargeCooldownReduction: 0 // Upgrade: reduce charge cooldown
+};
+
+// ---------- Cursor Type System ----------
+const CURSOR_TYPES = {
+  default: {
+    name: 'Default Cursor',
+    description: 'Single-target shots with piercing charge attack',
+    baseDamage: 6,
+    chargeDamage: 8.8,
+    ultDamage: 28,
+    basePierce: 0,
+    chargePierce: 1,
+    maxHp: 100,
+    basicCooldown: 0, // No cooldown
+    chargeCooldown: 1.2,
+    projectileSpeed: 480,
+    projectileRange: Infinity
+  },
+  shotgun: {
+    name: 'Shotgun Cursor',
+    description: 'Spread shots hitting multiple nearby enemies',
+    baseDamage: 4,
+    chargeDamage: 5,
+    ultDamage: 0, // Special: instant kill non-corrupted
+    basePierce: 0,
+    chargePierce: 0,
+    maxHp: 90,
+    pelletCount: 3,
+    chargePelletCount: 5,
+    basicCooldown: 0, // No cooldown
+    chargeCooldown: 1.5,
+    projectileSpeed: 480,
+    projectileRange: 200 // MASSIVELY reduced range
+  },
+  grenade: {
+    name: 'Grenade Cursor',
+    description: 'Explosive projectiles with fan charge attack',
+    baseDamage: 8,
+    chargeDamage: 6,
+    ultDamage: 15,
+    basePierce: 0,
+    chargePierce: 0,
+    maxHp: 85,
+    grenadeSplashRadius: 60,
+    ultMineCount: 6,
+    basicCooldown: 0.2, // Small cooldown added back
+    chargeCooldown: 3.6,
+    projectileSpeed: 200, // Significantly slower
+    projectileRange: 400 // Double shotgun range
+  },
+  laser: {
+    name: 'Laser Cursor',
+    description: 'Ricocheting beams that bounce between enemies',
+    baseDamage: 3, // Significantly reduced damage
+    chargeDamage: 4, // Significantly reduced damage
+    ultDamage: 8, // Reduced damage
+    basePierce: 0,
+    chargePierce: 0,
+    maxHp: 95,
+    ricochetCount: 3,
+    chargeRicochetCount: 5,
+    beamDuration: 3,
+    chargeBeamDuration: 4,
+    basicCooldown: 0, // No cooldown
+    chargeCooldown: 2.4,
+    projectileSpeed: 500,
+    projectileRange: Infinity
+  }
 };
 
 // ---------- Spells (flat 100 IP cost = one full charge) ----------
@@ -557,6 +736,7 @@ let windowProjectiles = []; // Word window projectiles
 let particles = [];
 let pickups = [];
 let caches = []; // "encrypted file" world objects — bump to open, one at a time
+let deadPixels = []; // Dead pixel traps for waves 9-11
 let cacheSpawnTimer = 6 + Math.random()*4;
 let kills = 0;
 let wave = 1;
@@ -869,7 +1049,7 @@ function drawPopupEnemy(en){
   ctx.fillStyle = flashing ? '#000000' : '#000000';
   ctx.fillRect(en.x-en.radius, en.y-en.radius, en.radius*2, 10);
   ctx.fillStyle = '#000';
-  ctx.font = 'bold 9px "Courier New", monospace';
+  ctx.font = 'bold 9px "DOS VGA", "Courier New", monospace';
   ctx.fillText('AD', en.x-en.radius+4, en.y-en.radius+8);
   ctx.fillStyle = '#000000';
   ctx.fillRect(en.x+en.radius-12, en.y-en.radius+1, 9, 8);
@@ -959,6 +1139,8 @@ const ENEMY_TYPES = {
 let waveSpawnTimer = 0;
 let enemiesToSpawn = 0; // Total enemies to spawn this wave
 let enemiesSpawned = 0; // Count of enemies actually spawned
+let buttonSpawnStaggerTimer = 0; // Timer for staggering individual enemy spawns
+let buttonSpawnIndex = 0; // Index for staggering spawns
 let waveTimer = 0; // Minimum wave duration
 const MIN_WAVE_DURATION = 3; // Minimum seconds before wave can clear
 let hasStartedSpawning = false; // Track if spawning has begun
@@ -967,6 +1149,13 @@ function startWave(n){
   // Reset wave state
   enemiesSpawned = 0;
   hasStartedSpawning = false;
+  buttonSpawnStaggerTimer = 0;
+  buttonSpawnIndex = 0;
+  
+  // Apply cursor type stats at wave start
+  const cursorStats = CURSOR_TYPES[player.cursorType];
+  player.maxHp = cursorStats.maxHp;
+  if(wave === 1) player.hp = cursorStats.maxHp; // Only reset HP on first wave
   
   // Give you invulnerability at wave start to avoid window damage
   player.invuln = 2.0;
@@ -975,10 +1164,10 @@ function startWave(n){
   spawnWindows();
   
   // Each wave has a fixed number of enemies to spawn
-  // Wave 1: 16 enemies (2 swarms of 8), Wave 20: 80 enemies (10 swarms of 8)
-  const baseEnemies = 16;
-  const maxEnemies = 80;
-  const progress = Math.min((n - 1) / 19, 1); // 0 to 1 over waves 1-20
+  // Wave 1: 12 enemies, Wave 15: 60 enemies (15-wave structure)
+  const baseEnemies = 12;
+  const maxEnemies = 60;
+  const progress = Math.min((n - 1) / 14, 1); // 0 to 1 over waves 1-15
   enemiesToSpawn = Math.floor(baseEnemies + (maxEnemies - baseEnemies) * progress);
   
   waveSpawnTimer = 0;
@@ -999,16 +1188,148 @@ function startWave(n){
 function spawnButtonSwarm(){
   if(enemiesSpawned >= enemiesToSpawn) return;
   
+  // Waves 9-11: Spawn dead pixels instead of enemies occasionally
+  if(wave >= 9 && wave <= 11 && Math.random() < 0.3 && deadPixels.length < 3){
+    spawnDeadPixel();
+    enemiesSpawned++; // Count toward total enemies
+    return;
+  }
+  
   // Spawn a wave of buttons (up to 8, or remaining count)
   const waveMultiplier = 1 + (wave * 0.1); // Increase HP per wave
   
-  // Spawn up to 8 buttons, or however many remain
-  const buttonsToSpawn = Math.min(MENU_BUTTONS.length, enemiesToSpawn - enemiesSpawned);
+  // Calculate stagger time based on cursor type
+  // Non-default cursors get longer stagger times to compensate for their cooldowns
+  let staggerTime = 0.4; // Reduced base stagger time (was 0.6)
+  if(player.cursorType === 'shotgun') staggerTime = 0.5; // Reduced (was 0.8)
+  if(player.cursorType === 'grenade') staggerTime = 0.6; // Reduced (was 1.0)
+  if(player.cursorType === 'laser') staggerTime = 0.5; // Reduced (was 0.9)
   
-  // Spawn immediately without setTimeout for reliability
-  for(let i = 0; i < buttonsToSpawn; i++){
-    spawnMenuButton(i, waveMultiplier);
+  // Spawn one enemy at a time with stagger
+  if(buttonSpawnStaggerTimer <= 0){
+    // Determine enemy type based on wave
+    let enemyType = 'menubutton';
+    
+    // Waves 5-8: Add corrupted (explosive) enemies
+    if(wave >= 5 && wave <= 8 && Math.random() < 0.3){
+      // Force corrupted variant
+      const isCorrupted = true;
+      spawnMenuButton(buttonSpawnIndex % MENU_BUTTONS.length, waveMultiplier, isCorrupted);
+    } else {
+      spawnMenuButton(buttonSpawnIndex % MENU_BUTTONS.length, waveMultiplier);
+    }
+    
     enemiesSpawned++;
+    buttonSpawnIndex++;
+    buttonSpawnStaggerTimer = staggerTime;
+  }
+}
+
+// ---------- Dead Pixel Trap System (Waves 9-11) ----------
+function spawnDeadPixel(){
+  // Find a safe position away from word window
+  let x, y, tries = 0;
+  do {
+    x = 100 + Math.random() * (W - 200);
+    y = 100 + Math.random() * (H - 200);
+    tries++;
+  } while (tries < 10 && isNearWordWindow(x, y, 150)); // Keep away from word window
+  
+  deadPixels.push({
+    x: x,
+    y: y,
+    radius: 15,
+    state: 'flashing', // flashing -> spiderweb -> clear
+    stateTimer: 1.5, // Flash duration
+    flashCount: 0,
+    maxFlashes: 3,
+    spiderwebRadius: 0,
+    maxSpiderwebRadius: 80,
+    spiderwebDuration: 2.0, // How long spiderweb lasts
+    spiderwebTimer: 0,
+    damage: 10
+  });
+}
+
+function isNearWordWindow(x, y, threshold){
+  if(!wordWindowAttack.window) return false;
+  const win = wordWindowAttack.window;
+  const centerX = win.x + win.width / 2;
+  const centerY = win.y + win.height / 2;
+  return dist(x, y, centerX, centerY) < threshold;
+}
+
+function updateDeadPixels(dt){
+  for(const dp of deadPixels){
+    dp.stateTimer -= dt;
+    
+    if(dp.state === 'flashing'){
+      dp.flashCount += dt * 8; // Flash speed
+      if(dp.stateTimer <= 0){
+        dp.state = 'spiderweb';
+        dp.stateTimer = dp.spiderwebDuration;
+        dp.spiderwebTimer = 0;
+      }
+    } else if(dp.state === 'spiderweb'){
+      dp.spiderwebTimer += dt;
+      dp.spiderwebRadius = Math.min(dp.maxSpiderwebRadius, dp.spiderwebRadius + dt * 40);
+      
+      // Check player collision with spiderweb
+      if(player.invuln <= 0 && dist(dp.x, dp.y, player.x, player.y) < dp.spiderwebRadius + player.radius){
+        takeDamage(dp.damage);
+        player.invuln = 0.5;
+        shake = 8;
+        floatText(player.x, player.y - 20, "DEAD PIXEL HIT!", '#ff0000');
+      }
+      
+      if(dp.stateTimer <= 0){
+        dp.dead = true;
+      }
+    }
+  }
+  
+  deadPixels = deadPixels.filter(dp => !dp.dead);
+}
+
+function drawDeadPixels(){
+  for(const dp of deadPixels){
+    ctx.save();
+    
+    if(dp.state === 'flashing'){
+      // Flashing pixel effect
+      const flashIntensity = Math.sin(dp.flashCount * Math.PI) * 0.5 + 0.5;
+      ctx.fillStyle = `rgba(255, 0, 0, ${flashIntensity})`;
+      ctx.fillRect(dp.x - 5, dp.y - 5, 10, 10);
+      
+      // Warning ring
+      ctx.strokeStyle = `rgba(255, 0, 0, ${flashIntensity})`;
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(dp.x, dp.y, 20, 0, Math.PI * 2);
+      ctx.stroke();
+    } else if(dp.state === 'spiderweb'){
+      // Spiderweb effect
+      ctx.strokeStyle = 'rgba(255, 0, 0, 0.6)';
+      ctx.lineWidth = 1;
+      
+      // Draw spiderweb lines
+      for(let i = 0; i < 8; i++){
+        const angle = (i / 8) * Math.PI * 2;
+        ctx.beginPath();
+        ctx.moveTo(dp.x, dp.y);
+        ctx.lineTo(
+          dp.x + Math.cos(angle) * dp.spiderwebRadius,
+          dp.y + Math.sin(angle) * dp.spiderwebRadius
+        );
+        ctx.stroke();
+      }
+      
+      // Draw web center
+      ctx.fillStyle = 'rgba(255, 0, 0, 0.8)';
+      ctx.fillRect(dp.x - 3, dp.y - 3, 6, 6);
+    }
+    
+    ctx.restore();
   }
 }
 
@@ -1016,10 +1337,16 @@ function spawnButtonSwarm(){
 function updateWaveSpawning(dt){
   if(waveState !== 'fighting') return;
   
-  waveSpawnTimer -= dt;
-  if(waveSpawnTimer <= 0 && enemiesSpawned < enemiesToSpawn){
+  // Update stagger timer for individual enemy spawns
+  buttonSpawnStaggerTimer -= dt;
+  
+  // Continuously check if we need to spawn more enemies
+  if(enemiesSpawned < enemiesToSpawn && buttonSpawnStaggerTimer <= 0){
     spawnButtonSwarm();
-    waveSpawnTimer = 5.0; // 5 seconds between sub-waves
+  }
+  
+  // Reset wave spawn timer logic - sub-waves are now handled by stagger
+  if(!hasStartedSpawning && enemiesSpawned > 0){
     hasStartedSpawning = true;
   }
 }
@@ -1054,24 +1381,20 @@ function spawnCache(){
   } else if(wave <= 8){
     // Waves 5-8: Level 1 90%, Level 2 10%
     level = r < 90 ? 1 : 2;
-  } else if(wave <= 12){
-    // Waves 9-12: Level 1 80%, Level 2 10%, Level 3 10%
+  } else if(wave <= 11){
+    // Waves 9-11: Level 1 80%, Level 2 10%, Level 3 10%
     if(r < 80) level = 1;
     else if(r < 90) level = 2;
     else level = 3;
-  } else if(wave <= 16){
-    // Waves 13-16: Level 1 60%, Level 2 20%, Level 3 10%, Level 4 10%
+  } else if(wave <= 15){
+    // Waves 12-15: Level 1 60%, Level 2 20%, Level 3 10%, Level 4 10%
     if(r < 60) level = 1;
     else if(r < 80) level = 2;
     else if(r < 90) level = 3;
     else level = 4;
   } else {
-    // Waves 17-20: Level 1 30%, Level 2 30%, Level 3 20%, Level 4 10%, Level 5 10%
-    if(r < 30) level = 1;
-    else if(r < 60) level = 2;
-    else if(r < 80) level = 3;
-    else if(r < 90) level = 4;
-    else level = 5;
+    // Waves 16-20: (Not used in 15-wave structure, but kept for future)
+    level = 1;
   }
   
   const kind = Math.random() < 0.5 ? 'ip' : 'heal';
@@ -1163,9 +1486,13 @@ function shouldStartWordWindowAttack() {
   // Check if wave is still active
   if (waveState !== 'fighting') return false;
   
-  // Check wave requirements
-  const minWave = TEST_WORD_WINDOW_ATTACKS ? 1 : 10;
+  // Check wave requirements - only waves 12-15 in 15-wave structure
+  // Waves 9-11 are dead pixel phase, word window returns in waves 12-15
+  const minWave = TEST_WORD_WINDOW_ATTACKS ? 1 : 12;
   if (wave < minWave) return false;
+  
+  // Skip word window during dead pixel phase (waves 9-11)
+  if(wave >= 9 && wave <= 11) return false;
   
   // Check if already active
   if (wordWindowAttack.active) return false;
@@ -1608,64 +1935,288 @@ function findTarget(){
 
 // ---------- LMB resolution ----------
 function fireBasicShot(){
+  const cursorStats = CURSOR_TYPES[player.cursorType];
+  
+  // Check cooldown
+  const effectiveCooldown = Math.max(0, cursorStats.basicCooldown - player.basicCooldownReduction);
+  if(player.basicCooldownTimer > 0){
+    floatText(player.x, player.y - 15, "COOLDOWN", '#ff0000');
+    return;
+  }
+  
   const target = player.currentTarget;
   let dx, dy;
   if(target){ dx = target.x - player.x; dy = target.y - player.y; }
   else { dx = Math.cos(player.aimAngle); dy = Math.sin(player.aimAngle); }
   const len = Math.hypot(dx,dy) || 1;
-  const speed = 480;
+  const speed = cursorStats.projectileSpeed;
   
   // Null Pointer: chance for basic shots to pierce
   const pierce = (player.basicPierceChance > 0 && Math.random() < player.basicPierceChance) ? 1 : 0;
   
-  playerBullets.push({
-    x: player.x, y: player.y,
-    vx: dx/len*speed, vy: dy/len*speed,
-    radius: 4, dmg: 6 * player.basicDmgMult, pierce: pierce
-  });
+  if(player.cursorType === 'default'){
+    // Default cursor: single target shot
+    playerBullets.push({
+      x: player.x, y: player.y,
+      vx: dx/len*speed, vy: dy/len*speed,
+      radius: 4, dmg: cursorStats.baseDamage * player.basicDmgMult, pierce: pierce,
+      type: 'default',
+      maxRange: cursorStats.projectileRange,
+      distanceTraveled: 0
+    });
+  } else if(player.cursorType === 'shotgun'){
+    // Shotgun cursor: spread shot to target + nearby enemies
+    const nearbyEnemies = enemies.filter(en => !en.dead && dist(en.x, en.y, target?.x || player.x, target?.y || player.y) < 150);
+    const targets = nearbyEnemies.slice(0, cursorStats.pelletCount);
+    
+    if(targets.length === 0 && target){
+      targets.push(target);
+    }
+    
+    for(const t of targets){
+      const tdx = t.x - player.x, tdy = t.y - player.y;
+      const tlen = Math.hypot(tdx, tdy) || 1;
+      const spreadAngle = (Math.random() - 0.5) * 0.3; // Small spread for each pellet
+      const spreadX = tdx * Math.cos(spreadAngle) - tdy * Math.sin(spreadAngle);
+      const spreadY = tdx * Math.sin(spreadAngle) + tdy * Math.cos(spreadAngle);
+      
+      playerBullets.push({
+        x: player.x, y: player.y,
+        vx: spreadX/tlen*speed, vy: spreadY/tlen*speed,
+        radius: 3, dmg: cursorStats.baseDamage * player.basicDmgMult, pierce: 0,
+        type: 'shotgun',
+        maxRange: cursorStats.projectileRange,
+        distanceTraveled: 0
+      });
+    }
+  } else if(player.cursorType === 'grenade'){
+    // Grenade cursor: single explosive projectile
+    playerBullets.push({
+      x: player.x, y: player.y,
+      vx: dx/len*speed, vy: dy/len*speed, // Slower projectile
+      radius: 6, dmg: cursorStats.baseDamage * player.basicDmgMult, pierce: 0,
+      type: 'grenade',
+      splashRadius: cursorStats.grenadeSplashRadius,
+      maxRange: cursorStats.projectileRange,
+      distanceTraveled: 0
+    });
+  } else if(player.cursorType === 'laser'){
+    // Laser cursor: instant beam with ricochet
+    const beamDuration = cursorStats.beamDuration;
+    playerBullets.push({
+      x: player.x, y: player.y,
+      vx: dx/len*speed, vy: dy/len*speed,
+      radius: 2, dmg: cursorStats.baseDamage * player.basicDmgMult, pierce: 0,
+      type: 'laser',
+      ricochetCount: cursorStats.ricochetCount,
+      duration: beamDuration,
+      maxDuration: beamDuration,
+      ricochets: [],
+      maxRange: cursorStats.projectileRange,
+      distanceTraveled: 0
+    });
+  }
+  
+  // Set cooldown
+  player.basicCooldownTimer = effectiveCooldown;
+  
   SFX.basic();
 }
 
 function fireChargedShot(heldTime){
   const t = clamp(heldTime, CHARGE_THRESHOLD, MAX_CHARGE);
   const power = (t - CHARGE_THRESHOLD) / (MAX_CHARGE - CHARGE_THRESHOLD);
+  const cursorStats = CURSOR_TYPES[player.cursorType];
+  
+  // Check cooldown
+  const effectiveCooldown = Math.max(0, cursorStats.chargeCooldown - player.chargeCooldownReduction);
+  if(player.chargeCooldownTimer > 0){
+    floatText(player.x, player.y - 15, "CHARGE COOLDOWN", '#ff0000');
+    return;
+  }
+  
   const target = player.currentTarget;
   let dx, dy;
   if(target){ dx = target.x - player.x; dy = target.y - player.y; }
   else { dx = Math.cos(player.aimAngle); dy = Math.sin(player.aimAngle); }
   const len = Math.hypot(dx,dy) || 1;
-  const speed = 380;
-  playerBullets.push({
-    x: player.x, y: player.y,
-    vx: dx/len*speed, vy: dy/len*speed,
-    radius: 7 + power*6,
-    dmg: (8.8 + power*18.7) * player.chargeDmgMult,
-    pierce: 1 + player.chargedPierceBonus // Apply pierce bonus from upgrades
-  });
+  const speed = cursorStats.projectileSpeed;
+  
+  if(player.cursorType === 'default'){
+    // Default cursor: piercing line shot
+    playerBullets.push({
+      x: player.x, y: player.y,
+      vx: dx/len*speed, vy: dy/len*speed,
+      radius: 7 + power*6,
+      dmg: cursorStats.chargeDamage * player.chargeDmgMult,
+      pierce: cursorStats.chargePierce + player.chargedPierceBonus,
+      type: 'default',
+      maxRange: cursorStats.projectileRange,
+      distanceTraveled: 0
+    });
+  } else if(player.cursorType === 'shotgun'){
+    // Shotgun cursor: wider spread, more pellets
+    const nearbyEnemies = enemies.filter(en => !en.dead && dist(en.x, en.y, target?.x || player.x, target?.y || player.y) < 200);
+    const targets = nearbyEnemies.slice(0, cursorStats.chargePelletCount);
+    
+    if(targets.length === 0 && target){
+      targets.push(target);
+    }
+    
+    for(const t of targets){
+      const tdx = t.x - player.x, tdy = t.y - player.y;
+      const tlen = Math.hypot(tdx, tdy) || 1;
+      const spreadAngle = (Math.random() - 0.5) * 0.5; // Wider spread for charge
+      const spreadX = tdx * Math.cos(spreadAngle) - tdy * Math.sin(spreadAngle);
+      const spreadY = tdx * Math.sin(spreadAngle) + tdy * Math.cos(spreadAngle);
+      
+      playerBullets.push({
+        x: player.x, y: player.y,
+        vx: spreadX/tlen*speed, vy: spreadY/tlen*speed,
+        radius: 3, dmg: cursorStats.chargeDamage * player.chargeDmgMult, pierce: 0,
+        type: 'shotgun',
+        maxRange: cursorStats.projectileRange,
+        distanceTraveled: 0
+      });
+    }
+  } else if(player.cursorType === 'grenade'){
+    // Grenade cursor: charge fan attack (not auto-aimed, uses locked direction)
+    const aimAngle = target ? Math.atan2(target.y - player.y, target.x - player.x) : player.aimAngle;
+    const grenadeCount = Math.min(4, Math.floor(power * 3.5) + 2); // 2-4 grenades based on charge
+    const grenadeSpeed = cursorStats.projectileSpeed; // Use cursor speed
+    
+    const fanAngle = Math.PI / 4; // 45 degrees
+    const angleStep = fanAngle / (grenadeCount - 1 || 1);
+    
+    for(let i = 0; i < grenadeCount; i++){
+      const angle = aimAngle - fanAngle/2 + i * angleStep;
+      playerBullets.push({
+        x: player.x, y: player.y,
+        vx: Math.cos(angle) * grenadeSpeed * 0.6, vy: Math.sin(angle) * grenadeSpeed * 0.6,
+        radius: 6, dmg: cursorStats.chargeDamage * player.chargeDmgMult, pierce: 0,
+        type: 'grenade',
+        splashRadius: cursorStats.grenadeSplashRadius,
+        maxRange: cursorStats.projectileRange,
+        distanceTraveled: 0
+      });
+    }
+  } else if(player.cursorType === 'laser'){
+    // Laser cursor: thicker beam, more damage, longer ricochet
+    const beamDuration = cursorStats.chargeBeamDuration;
+    playerBullets.push({
+      x: player.x, y: player.y,
+      vx: dx/len*speed, vy: dy/len*speed,
+      radius: 3, dmg: cursorStats.chargeDamage * player.chargeDmgMult, pierce: 0,
+      type: 'laser',
+      ricochetCount: cursorStats.chargeRicochetCount,
+      duration: beamDuration,
+      maxDuration: beamDuration,
+      ricochets: [],
+      maxRange: cursorStats.projectileRange,
+      distanceTraveled: 0
+    });
+  }
+  
+  // Set cooldown
+  player.chargeCooldownTimer = effectiveCooldown;
+  
   spawnRing(player.x, player.y, '#7fe3ff');
   SFX.charged(power);
 }
 
 function resolveMarqueeUltimate(x1,y1,x2,y2){
+  const cursorStats = CURSOR_TYPES[player.cursorType];
+  
   if(player.ultCharge < 500){
     SFX.denied();
     floatText(x2, y2-10, "PURGE NOT CHARGED", '#ffffff');
     return;
   }
-  const rx = Math.min(x1,x2), ry = Math.min(y1,y2);
-  const rw = Math.abs(x2-x1), rh = Math.abs(y2-y1);
-  let hitAny = false;
-  for(const en of enemies){
-    if(en.dead) continue;
-    if(en.x > rx && en.x < rx+rw && en.y > ry && en.y < ry+rh){
-      damageEnemy(en, 9999, 'ultimate');
-      hitAny = true;
+  
+  if(player.cursorType === 'default'){
+    // Default cursor: selection box damage
+    const rx = Math.min(x1,x2), ry = Math.min(y1,y2);
+    const rw = Math.abs(x2-x1), rh = Math.abs(y2-y1);
+    let hitAny = false;
+    for(const en of enemies){
+      if(en.dead) continue;
+      if(en.x > rx && en.x < rx+rw && en.y > ry && en.y < ry+rh){
+        damageEnemy(en, cursorStats.ultDamage, 'ultimate');
+        hitAny = true;
+      }
     }
+    player.ultCharge = 0;
+    SFX.ult();
+    spawnParticles((rx+rx+rw)/2, (ry+ry+rh)/2, 24, '#ffffff');
+    if(!hitAny) floatText((x1+x2)/2, (y1+y2)/2, "NO TARGETS", '#888');
+  } else if(player.cursorType === 'shotgun'){
+    // Shotgun cursor: Radial Sweep - 360° spread
+    const centerX = player.x, centerY = player.y;
+    const radius = 400; // Large radius for radial sweep
+    let hitAny = false;
+    
+    for(const en of enemies){
+      if(en.dead) continue;
+      if(dist(centerX, centerY, en.x, en.y) < radius){
+        if(en.type === 'corrupted'){
+          damageEnemy(en, 80, 'ultimate'); // 80 damage to corrupted
+        } else {
+          damageEnemy(en, 9999, 'ultimate'); // Instant kill non-corrupted
+        }
+        hitAny = true;
+      }
+    }
+    player.ultCharge = 0;
+    SFX.ult();
+    spawnRing(centerX, centerY, '#ff4444');
+    if(!hitAny) floatText(centerX, centerY, "NO TARGETS", '#888');
+  } else if(player.cursorType === 'grenade'){
+    // Grenade cursor: Screen.FloodFill() - drop mines
+    const mineCount = cursorStats.ultMineCount;
+    for(let i = 0; i < mineCount; i++){
+      const mineX = 50 + Math.random() * (W - 100);
+      const mineY = 50 + Math.random() * (H - 100);
+      pickups.push({
+        x: mineX, y: mineY,
+        type: 'mine',
+        radius: 20,
+        life: 999, // Mines don't expire
+        bob: Math.random()*Math.PI*2
+      });
+    }
+    player.ultCharge = 0;
+    SFX.ult();
+    floatText(player.x, player.y - 20, "MINES DEPLOYED", '#ff0000');
+  } else if(player.cursorType === 'laser'){
+    // Laser cursor: System Overload - rapid fire charged beams
+    const targetCount = 6;
+    const nearestEnemies = enemies
+      .filter(en => !en.dead)
+      .sort((a, b) => dist(player.x, player.y, a.x, a.y) - dist(player.x, player.y, b.x, b.y))
+      .slice(0, targetCount);
+    
+    for(const en of nearestEnemies){
+      const dx = en.x - player.x, dy = en.y - player.y;
+      const len = Math.hypot(dx, dy) || 1;
+      const speed = cursorStats.projectileSpeed;
+      
+      playerBullets.push({
+        x: player.x, y: player.y,
+        vx: dx/len*speed, vy: dy/len*speed,
+        radius: 4, dmg: cursorStats.ultDamage, pierce: 0,
+        type: 'laser',
+        ricochetCount: 10, // Maximum ricochets for ULT
+        duration: 5, // Long duration for ULT
+        maxDuration: 5,
+        ricochets: [],
+        maxRange: cursorStats.projectileRange,
+        distanceTraveled: 0
+      });
+    }
+    player.ultCharge = 0;
+    SFX.ult();
+    spawnRing(player.x, player.y, '#00ffff');
   }
-  player.ultCharge = 0;
-  SFX.ult();
-  spawnParticles((rx+rx+rw)/2, (ry+ry+rh)/2, 24, '#ffffff');
-  if(!hitAny) floatText((x1+x2)/2, (y1+y2)/2, "NO TARGETS", '#888');
 }
 
 function resolveLmbRelease(){
@@ -1709,6 +2260,11 @@ function update(dt){
   }
   updateWordWindowAttack(dt);
   updateWindowProjectiles(dt);
+  
+  // dead pixel trap system (waves 9-11)
+  if(wave >= 9 && wave <= 11){
+    updateDeadPixels(dt);
+  }
   
   // wave timer (minimum duration)
   if(waveState === 'fighting'){
@@ -1781,6 +2337,10 @@ function update(dt){
 
   if(player.invuln > 0) player.invuln -= dt;
   
+  // Cooldown timers
+  if(player.basicCooldownTimer > 0) player.basicCooldownTimer -= dt;
+  if(player.chargeCooldownTimer > 0) player.chargeCooldownTimer -= dt;
+  
   // Iframes during ult selection
   if(isDraggingUlt){
     player.invuln = 0.5; // 0.5 seconds of invulnerability while selecting
@@ -1803,6 +2363,10 @@ function update(dt){
     if(type && type.update){
       type.update(en, dt);
     }
+    
+    // Enemy-to-enemy collision for all enemy types
+    resolveEnemyCollisions(en);
+    
     // Handle corrupted enemy death tell here
     if(en.isCorrupted && en.deathTell){
       en.deathTellTimer -= dt;
@@ -1871,14 +2435,92 @@ function update(dt){
   }
   enemies = enemies.filter(en => !en.dead);
 
-  // your bullets
+  // player bullets (with cursor-specific logic)
   for(const b of playerBullets){
+    const moveDist = Math.hypot(b.vx, b.vy) * dt;
     b.x += b.vx*dt; b.y += b.vy*dt;
-    for(const en of enemies){
-      if(!en.dead && dist(b.x,b.y,en.x,en.y) < en.radius + b.radius){
-        damageEnemy(en, b.dmg, 'bullet');
-        if(b.pierce > 0){ b.pierce--; } else { b.dead = true; }
-        break;
+    
+    // Track distance traveled for range limits
+    if(b.maxRange !== undefined && b.maxRange !== Infinity){
+      b.distanceTraveled = (b.distanceTraveled || 0) + moveDist;
+      if(b.distanceTraveled >= b.maxRange){
+        b.dead = true;
+        continue;
+      }
+    }
+    
+    if(b.type === 'default' || b.type === 'shotgun'){
+      // Default and shotgun: basic hit detection
+      for(const en of enemies){
+        if(!en.dead && dist(b.x,b.y,en.x,en.y) < en.radius + b.radius){
+          damageEnemy(en, b.dmg, 'bullet');
+          if(b.pierce > 0){ b.pierce--; } else { b.dead = true; }
+          break;
+        }
+      }
+    } else if(b.type === 'grenade'){
+      // Grenade: explosive on contact
+      for(const en of enemies){
+        if(!en.dead && dist(b.x,b.y,en.x,en.y) < en.radius + b.radius){
+          // Explosion damage to hit enemy
+          damageEnemy(en, b.dmg, 'grenade');
+          // Splash damage to nearby enemies
+          for(const nearby of enemies){
+            if(nearby !== en && !nearby.dead && dist(b.x,b.y,nearby.x,nearby.y) < b.splashRadius){
+              damageEnemy(nearby, b.dmg * 0.5, 'grenade');
+            }
+          }
+          spawnRing(b.x, b.y, '#ff0000');
+          b.dead = true;
+          break;
+        }
+      }
+      // Explode on screen edge too
+      if(b.x < 0 || b.x > W || b.y < 0 || b.y > H){
+        spawnRing(b.x, b.y, '#ff0000');
+        b.dead = true;
+      }
+    } else if(b.type === 'laser'){
+      // Laser: instant hit + ricochet logic
+      b.duration -= dt;
+      if(b.duration <= 0){
+        b.dead = true;
+        continue;
+      }
+      
+      // Find first enemy in laser path
+      let hitEnemy = null;
+      let hitDist = Infinity;
+      for(const en of enemies){
+        if(!en.dead){
+          const d = dist(b.x, b.y, en.x, en.y);
+          if(d < hitDist){
+            hitDist = d;
+            hitEnemy = en;
+          }
+        }
+      }
+      
+      if(hitEnemy && !b.ricochets.includes(hitEnemy)){
+        damageEnemy(hitEnemy, b.dmg, 'laser');
+        b.ricochets.push(hitEnemy);
+        if(b.ricochets.length >= b.ricochetCount){
+          b.dead = true;
+        } else {
+          // Calculate next ricochet direction
+          const nextEnemy = enemies.find(en => !en.dead && en !== hitEnemy && dist(hitEnemy.x, hitEnemy.y, en.x, en.y) < 200);
+          if(nextEnemy){
+            const ndx = nextEnemy.x - hitEnemy.x, ndy = nextEnemy.y - hitEnemy.y;
+            const nlen = Math.hypot(ndx, ndy) || 1;
+            const laserSpeed = b.maxRange === Infinity ? 500 : 300;
+            b.vx = ndx/nlen * laserSpeed;
+            b.vy = ndy/nlen * laserSpeed;
+            b.x = hitEnemy.x; b.y = hitEnemy.y;
+            b.dmg *= 0.7; // Damage decay per ricochet
+          } else {
+            b.dead = true;
+          }
+        }
       }
     }
   }
@@ -1917,9 +2559,38 @@ function update(dt){
   }
   enemyBullets = enemyBullets.filter(b => !b.dead && b.x>-20 && b.x<W+20 && b.y>-20 && b.y<H+20);
 
-  // pickups (IP orbs and MEM drops)
+  // pickups (IP orbs, MEM drops, and mines from grenade ULT)
   for(const p of pickups){
     p.life -= dt;
+    
+    // Handle mine pickups (from grenade ULT)
+    if(p.type === 'mine'){
+      for(const en of enemies){
+        if(!en.dead && dist(p.x, p.y, en.x, en.y) < p.radius + en.radius){
+          // Mine detonates
+          damageEnemy(en, 15, 'mine');
+          spawnRing(p.x, p.y, '#ff0000');
+          spawnParticles(p.x, p.y, 12, '#ff0000');
+          
+          // Cascade failure to nearby enemies
+          for(const nearby of enemies){
+            if(nearby !== en && !nearby.dead && dist(p.x, p.y, nearby.x, nearby.y) < 80){
+              if(player.cascadeChance > 0 && Math.random() < player.cascadeChance){
+                damageEnemy(nearby, 8, 'cascade');
+                spawnRing(nearby.x, nearby.y, '#ff8800');
+              }
+            }
+          }
+          
+          p.dead = true;
+          break;
+        }
+      }
+      pickups = pickups.filter(p => !p.dead && p.life > 0);
+      continue;
+    }
+    
+    // Handle normal pickups (IP/MEM)
     const d = dist(p.x,p.y,player.x,player.y);
     if(d < player.pickupRadius * 2.2){
       const ang = Math.atan2(player.y-p.y, player.x-p.x);
@@ -2006,16 +2677,23 @@ function update(dt){
   }
 
   // wave state machine
-  if(waveState === 'fighting' && enemies.length === 0 && enemiesSpawned >= enemiesToSpawn && hasStartedSpawning && waveTimer <= 0 && !gameOver){
+  if(waveState === 'fighting' && enemies.length === 0 && deadPixels.length === 0 && enemiesSpawned >= enemiesToSpawn && hasStartedSpawning && waveTimer <= 0 && !gameOver){
     waveState = 'banner';
     bannerTimer = 2.7;
     // Clean up all drops at wave end
     pickups = [];
     caches = [];
+    deadPixels = []; // Clean up dead pixels
   } else if(waveState === 'banner'){
     bannerTimer = Math.max(0, bannerTimer - dt);
     if(bannerTimer <= 0){
       showUpgradeChoices();
+    }
+  } else if(waveState === 'upgrade'){
+    // Game complete after wave 15
+    if(wave >= 15){
+      // Victory condition for Visi On era
+      waveState = 'victory';
     }
   }
 
@@ -2093,12 +2771,14 @@ function drawObstacle(){
 }
 
 // ---------- Visi On Button Swarm Enemy ----------
-function spawnMenuButton(buttonIndex, waveMultiplier){
+function spawnMenuButton(buttonIndex, waveMultiplier, forceCorrupted = false){
   const buttonName = MENU_BUTTONS[buttonIndex];
-  const xPos = buttonIndex * BUTTON_WIDTH + BUTTON_WIDTH / 2;
   
-  // Check for corrupted variant (wave 5+, 1 in 10 chance)
-  const isCorrupted = wave >= 5 && Math.random() < 0.1;
+  // Random spawn position along the menu bar
+  const xPos = BUTTON_WIDTH/2 + Math.random() * (W - BUTTON_WIDTH);
+  
+  // Check for corrupted variant (wave 5+, 1 in 10 chance, or forced)
+  const isCorrupted = forceCorrupted || (wave >= 5 && Math.random() < 0.1);
   
   enemies.push({
     x: xPos,
@@ -2199,6 +2879,29 @@ function updateMenuButton(en, dt){
   }
 }
 
+function resolveEnemyCollisions(en){
+  for(const other of enemies){
+    if(other === en || other.dead) continue;
+    
+    const d = dist(en.x, en.y, other.x, other.y);
+    const minDist = en.radius + other.radius;
+    
+    if(d < minDist && d > 0){
+      // Push enemies apart
+      const overlap = minDist - d;
+      const dx = (en.x - other.x) / d;
+      const dy = (en.y - other.y) / d;
+      
+      // Move both enemies apart equally
+      const push = overlap / 2;
+      en.x += dx * push;
+      en.y += dy * push;
+      other.x -= dx * push;
+      other.y -= dy * push;
+    }
+  }
+}
+
 // Check if a path is blocked by any window
 function isPathBlocked(x1, y1, x2, y2){
   for(const win of windows){
@@ -2250,7 +2953,7 @@ function drawMenuButtonEnemy(en){
     
     // Draw text - red for corrupted, black for normal
     ctx.fillStyle = en.isCorrupted ? '#ff0000' : '#000000';
-    ctx.font = '12px "Courier New", monospace';
+    ctx.font = '12px "DOS VGA", "Courier New", monospace';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText(en.buttonName, buttonX + buttonW/2, buttonY + buttonH/2);
@@ -2262,7 +2965,7 @@ function drawMenuButtonEnemy(en){
     
     // Draw text - red for corrupted, black for normal
     ctx.fillStyle = en.isCorrupted ? '#ff0000' : '#000000';
-    ctx.font = '12px "Courier New", monospace';
+    ctx.font = '12px "DOS VGA", "Courier New", monospace';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText(en.buttonName, 0, 0);
@@ -2319,7 +3022,25 @@ function drawPickups(){
     ctx.globalAlpha = alpha;
     ctx.translate(p.x, p.y + bob);
     
-    if(p.type === 'mem'){
+    if(p.type === 'mine'){
+      // Draw mine as red circle with warning indicator
+      ctx.fillStyle = '#ff0000';
+      ctx.shadowColor = '#ff0000';
+      ctx.shadowBlur = 10;
+      ctx.beginPath();
+      ctx.arc(0, 0, p.radius, 0, Math.PI*2);
+      ctx.fill();
+      
+      // Draw warning symbol (X)
+      ctx.strokeStyle = '#ffffff';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(-8, -8);
+      ctx.lineTo(8, 8);
+      ctx.moveTo(8, -8);
+      ctx.lineTo(-8, 8);
+      ctx.stroke();
+    } else if(p.type === 'mem'){
       // Draw MEM drop as "+" symbol with thicker lines
       ctx.fillStyle = '#fff';
       ctx.shadowColor = '#fff';
@@ -2366,7 +3087,7 @@ function drawCaches(){
     ctx.fill();
     // level indicator (number in center)
     ctx.fillStyle = '#fff';
-    ctx.font = 'bold 12px "Courier New", monospace';
+    ctx.font = 'bold 12px "DOS VGA", "Courier New", monospace';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText(c.level.toString(), 0, 0);
@@ -2393,7 +3114,7 @@ function drawCaches(){
       ctx.stroke();
       // Level indicator
       ctx.fillStyle = '#00ff00';
-      ctx.font = 'bold 10px "Courier New", monospace';
+      ctx.font = 'bold 10px "DOS VGA", "Courier New", monospace';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillText("LVL " + c.level, 0, -player.radius - 15);
@@ -2449,7 +3170,7 @@ function drawWordWindowAttack() {
   // Draw typing text on the word window
   if (wordWindowAttack.phase === 'typing' || wordWindowAttack.phase === 'warning') {
     ctx.save();
-    ctx.font = 'bold 28px monospace';
+    ctx.font = 'bold 28px "DOS VGA", "Courier New", monospace';
     ctx.fillStyle = '#ffffff';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
@@ -2630,6 +3351,7 @@ function draw(){
   drawWallpaper();
   drawWindows();
   drawWordWindowAttack();
+  drawDeadPixels(); // Draw dead pixel traps
   drawPickups();
   drawCaches();
   drawEnemies();
@@ -2643,7 +3365,7 @@ function draw(){
     ctx.save();
     ctx.globalAlpha = clamp(bannerTimer,0,1);
     ctx.fillStyle = '#fff';
-    ctx.font = 'bold 36px "Courier New", monospace';
+    ctx.font = 'bold 36px "DOS VGA", "Courier New", monospace';
     ctx.textAlign = 'center';
     
     // Draw black background behind text
@@ -2652,8 +3374,26 @@ function draw(){
     
     ctx.fillStyle = '#fff';
     ctx.fillText('WAVE ' + wave + ' COMPLETE', W/2, H/2 - 20);
-    ctx.font = '24px "Courier New", monospace';
+    ctx.font = '24px "DOS VGA", "Courier New", monospace';
     ctx.fillText('system update...', W/2, H/2 + 28);
+    ctx.textAlign = 'left';
+    ctx.restore();
+  } else if(waveState === 'victory'){
+    ctx.save();
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 48px "DOS VGA", "Courier New", monospace';
+    ctx.textAlign = 'center';
+    
+    // Draw black background
+    ctx.fillStyle = '#000';
+    ctx.fillRect(W/2 - 400, H/2 - 100, 800, 200);
+    
+    ctx.fillStyle = '#00ff00';
+    ctx.fillText('VISI ON ERA COMPLETE', W/2, H/2 - 30);
+    ctx.font = '24px "DOS VGA", "Courier New", monospace';
+    ctx.fillStyle = '#fff';
+    ctx.fillText('You have mastered the Classic GUI!', W/2, H/2 + 30);
+    ctx.fillText('Press R to restart', W/2, H/2 + 70);
     ctx.textAlign = 'left';
     ctx.restore();
   }
@@ -2671,7 +3411,8 @@ function loop(now){
 
 // ---------- Restart ----------
 restartBtn.addEventListener('click', ()=>{
-  player.hp = player.maxHp = 100;
+  const cursorStats = CURSOR_TYPES[player.cursorType];
+  player.hp = player.maxHp = cursorStats.maxHp;
   player.ip = 0;
   player.ultCharge = 0;
   player.shieldActive = false;
@@ -2695,7 +3436,11 @@ restartBtn.addEventListener('click', ()=>{
   player.memDropRateBonus = 0;
   player.hasSplitShot = false;
   player.hasRicochet = false;
-  enemies = []; playerBullets = []; enemyBullets = []; particles = []; pickups = []; caches = []; windows = [];
+  player.basicCooldownTimer = 0;
+  player.chargeCooldownTimer = 0;
+  player.basicCooldownReduction = 0;
+  player.chargeCooldownReduction = 0;
+  enemies = []; playerBullets = []; enemyBullets = []; particles = []; pickups = []; caches = []; deadPixels = []; windows = [];
   cacheSpawnTimer = 6 + Math.random()*4;
   kills = 0; wave = 1; waveState = 'fighting';
   killTextEl.textContent = 'Kills 0';
@@ -2704,8 +3449,7 @@ restartBtn.addEventListener('click', ()=>{
   upgradeOverlay.classList.add('hidden');
   player.invuln = 1.5; // Invulnerability at game start
   spawnWindows();
-  startWave(1);
-  requestLock();
+  showCursorSelection(); // Show cursor selection on restart
 });
 
 updateIpHud();
