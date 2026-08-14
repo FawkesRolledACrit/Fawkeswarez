@@ -130,6 +130,67 @@
     transition: opacity 0.3s ease-in; /* Smooth fade in */
   }
   
+  #newsFeed{
+    position: absolute;
+    top: 50%;
+    right: 100px; /* To the right of buttons */
+    transform: translateY(-50%);
+    width: 300px;
+    height: 500px;
+    background-image: url('assets/News_Feed_Background.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+  }
+  
+  #newsFeedSubWindow{
+    position: absolute;
+    top: -69px; /* Content clipping offset */
+    bottom: 36px; /* Content clipping offset */
+    left: 56px; /* Content clipping offset */
+    right: 80px; /* Content clipping offset */
+    overflow: hidden; /* Hide content outside bounds */
+  }
+  
+  #noticeList{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .noticeBox{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    image-rendering: pixelated;
+  }
+  
+  #scrollBar{
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 400px;
+    background-image: url('assets/News_Feed_Scroll_Bar.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+  }
+  
+  #scrollKnob{
+    position: absolute;
+    left: 0;
+    width: 20px;
+    height: 30px;
+    background-image: url('assets/News_Feed_Scroll_Knob.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+  }
+  
   .menuButton{
     position: absolute;
     cursor: pointer;
@@ -265,6 +326,18 @@
           <img id="achievementsButton" class="menuButton" src="assets/MainMenuAchievements.png" alt="Achievements">
           <img id="settingsButton" class="menuButton" src="assets/MainMenuSettings.png" alt="Settings">
           <img id="quitButton" class="menuButton" src="assets/MainMenuQuit.png" alt="Quit Game">
+          
+          <!-- News Feed -->
+          <div id="newsFeed">
+            <div id="newsFeedSubWindow">
+              <div id="noticeList">
+                <!-- Notice boxes will be added dynamically -->
+              </div>
+            </div>
+            <div id="scrollBar">
+              <div id="scrollKnob"></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -362,6 +435,11 @@ const titleElement = document.getElementById('title');
 const mainMenu = document.getElementById('mainMenu');
 const mainMenuContainer = document.getElementById('mainMenuContainer');
 const cursaderLogo = document.getElementById('cursaderLogo');
+const newsFeed = document.getElementById('newsFeed');
+const newsFeedSubWindow = document.getElementById('newsFeedSubWindow');
+const noticeList = document.getElementById('noticeList');
+const scrollBar = document.getElementById('scrollBar');
+const scrollKnob = document.getElementById('scrollKnob');
 const startButton = document.getElementById('startButton');
 const achievementsButton = document.getElementById('achievementsButton');
 const settingsButton = document.getElementById('settingsButton');
@@ -451,6 +529,70 @@ function stopLogoAnimation(){
     cursaderLogo.style.backgroundSize = "739px 195px";
     cursaderLogo.style.backgroundPosition = "0px 0px";
   }
+}
+
+// ---------- News Feed System ----------
+let newsFeedScrollOffset = 0;
+let newsFeedScrollSpeed = 20;
+const noticeHeight = 80; // Estimated height of each notice box
+const totalNotices = 9;
+const scrollBarLength = 400;
+const scrollKnobHeight = 30;
+
+function initNewsFeed(){
+  // Create notice boxes dynamically
+  noticeList.innerHTML = '';
+  
+  for(let i = 1; i <= totalNotices; i++){
+    const notice = document.createElement('img');
+    notice.className = 'noticeBox';
+    notice.src = `assets/Notice${i}.png`;
+    notice.style.top = `${(i - 1) * noticeHeight}px`;
+    noticeList.appendChild(notice);
+  }
+  
+  // Add scroll wheel event listener
+  newsFeed.addEventListener('wheel', handleNewsFeedScroll, { passive: true });
+  
+  // Update scroll knob position
+  updateScrollKnob();
+}
+
+function handleNewsFeedScroll(e){
+  e.preventDefault();
+  
+  const delta = e.deltaY;
+  const scrollAmount = delta > 0 ? newsFeedScrollSpeed : -newsFeedScrollSpeed;
+  
+  // Calculate max scroll offset
+  const totalNoticeHeight = totalNotices * noticeHeight;
+  const subWindowHeight = newsFeedSubWindow.offsetHeight;
+  const maxScrollOffset = Math.max(0, totalNoticeHeight - subWindowHeight);
+  
+  // Update scroll offset with bounds checking
+  newsFeedScrollOffset = Math.max(0, Math.min(maxScrollOffset, newsFeedScrollOffset + scrollAmount));
+  
+  // Apply scroll offset to notice list
+  noticeList.style.transform = `translateY(-${newsFeedScrollOffset}px)`;
+  
+  // Update scroll knob position
+  updateScrollKnob();
+}
+
+function updateScrollKnob(){
+  const totalNoticeHeight = totalNotices * noticeHeight;
+  const subWindowHeight = newsFeedSubWindow.offsetHeight;
+  const maxScrollOffset = Math.max(0, totalNoticeHeight - subWindowHeight);
+  
+  // Calculate scroll percentage
+  const scrollPercentage = maxScrollOffset > 0 ? newsFeedScrollOffset / maxScrollOffset : 0;
+  
+  // Calculate knob position
+  const maxKnobPosition = scrollBarLength - scrollKnobHeight;
+  const knobPosition = scrollPercentage * maxKnobPosition;
+  
+  // Apply knob position
+  scrollKnob.style.top = `${knobPosition}px`;
 }
 
 function positionButtons(){
@@ -584,6 +726,9 @@ function showMainMenu(){
   
   // Start logo animation with 1 second delay
   startLogoAnimation();
+  
+  // Initialize news feed
+  initNewsFeed();
   
   // Set canvas to fullscreen for main menu
   resizeCanvasForMainMenu();
