@@ -2746,8 +2746,8 @@ function update(dt){
   updateWordWindowAttack(dt);
   updateWindowProjectiles(dt);
   
-  // dead pixel trap system (waves 9-11)
-  if(wave >= 9 && wave <= 11){
+  // dead pixel trap system (waves 9-15)
+  if(wave >= 9 && wave <= 15){
     updateDeadPixels(dt);
   }
   
