@@ -116,6 +116,18 @@
     transform: translate(-50%, -50%) scale(1);
   }
   
+  #cursaderLogo{
+    position: absolute;
+    top: 50px; /* Position above buttons */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 739px;
+    height: 195px;
+    background-image: url('assets/Cursader_Logo.png');
+    background-size: 32516px 195px; /* 44 frames * 739px width, 195px height */
+    image-rendering: pixelated;
+  }
+  
   .menuButton{
     position: absolute;
     cursor: pointer;
@@ -246,6 +258,7 @@
       <!-- Main Menu Layer -->
       <div id="mainMenu" class="hidden">
         <div id="mainMenuContainer">
+          <div id="cursaderLogo"></div>
           <img id="startButton" class="menuButton" src="assets/MainMenuStart.png" alt="Start Game">
           <img id="achievementsButton" class="menuButton" src="assets/MainMenuAchievements.png" alt="Achievements">
           <img id="settingsButton" class="menuButton" src="assets/MainMenuSettings.png" alt="Settings">
@@ -346,6 +359,7 @@ const titleElement = document.getElementById('title');
 // Main Menu Elements
 const mainMenu = document.getElementById('mainMenu');
 const mainMenuContainer = document.getElementById('mainMenuContainer');
+const cursaderLogo = document.getElementById('cursaderLogo');
 const startButton = document.getElementById('startButton');
 const achievementsButton = document.getElementById('achievementsButton');
 const settingsButton = document.getElementById('settingsButton');
@@ -368,6 +382,44 @@ function initMainMenu(){
   
   // Start with main menu visible
   showMainMenu();
+  
+  // Start logo animation
+  startLogoAnimation();
+}
+
+// Logo Animation System
+let logoAnimationId = null;
+let logoFrame = 0;
+const LOGO_FRAMES = 44;
+const LOGO_FRAME_WIDTH = 739;
+const LOGO_HEIGHT = 195;
+const LOGO_FPS = 12; // Frames per second
+
+function startLogoAnimation(){
+  if(logoAnimationId) return; // Already running
+  
+  logoFrame = 0;
+  const frameDuration = 1000 / LOGO_FPS;
+  
+  function animateLogo(){
+    // Update background position to show current frame
+    const xPos = -(logoFrame * LOGO_FRAME_WIDTH);
+    cursaderLogo.style.backgroundPosition = `${xPos}px 0px`;
+    
+    // Advance frame
+    logoFrame = (logoFrame + 1) % LOGO_FRAMES;
+    
+    logoAnimationId = setTimeout(animateLogo, frameDuration);
+  }
+  
+  animateLogo();
+}
+
+function stopLogoAnimation(){
+  if(logoAnimationId){
+    clearTimeout(logoAnimationId);
+    logoAnimationId = null;
+  }
 }
 
 function positionButtons(){
@@ -487,6 +539,9 @@ function showMainMenu(){
   hud.classList.add('hidden'); // Hide HUD in main menu
   titleElement.classList.add('hidden'); // Hide title in main menu
   
+  // Start logo animation
+  startLogoAnimation();
+  
   // Set canvas to fullscreen for main menu
   resizeCanvasForMainMenu();
   
@@ -501,6 +556,9 @@ function hideMainMenu(){
   mainMenu.classList.add('hidden');
   hud.classList.remove('hidden'); // Show HUD in gameplay
   titleElement.classList.remove('hidden'); // Show title in gameplay
+  
+  // Stop logo animation
+  stopLogoAnimation();
   
   // Reset canvas to gameplay size
   resizeCanvasForGameplay();
