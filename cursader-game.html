@@ -132,7 +132,7 @@
   
   #newsFeed{
     position: absolute;
-    top: 60%; /* Moved down from 50% */
+    top: calc(60% + 75px); /* Moved down additional 75px */
     transform: translateY(-50%);
     width: 405px; /* 35% larger than 300px */
     height: 675px; /* 35% larger than 500px */
@@ -150,6 +150,8 @@
     left: 76px; /* Scaled proportionally: 56px * 1.35 */
     right: 108px; /* Scaled proportionally: 80px * 1.35 */
     overflow: hidden; /* Hide content outside bounds */
+    border: 2px solid red; /* Debug: Show clipping area */
+    background: rgba(255, 0, 0, 0.1); /* Debug: Show clipping area */
   }
   
   #noticeList{
@@ -166,6 +168,7 @@
     width: 100%;
     image-rendering: pixelated;
     height: auto; /* Use natural height from image */
+    border: 1px solid blue; /* Debug: Show notice boundaries */
   }
   
   #scrollBar{
@@ -550,13 +553,27 @@ function initNewsFeed(){
   testImg.onload = function(){
     noticeHeight = testImg.naturalHeight; // Use natural height without extra spacing
     
+    console.log('Debug - Notice natural height:', noticeHeight);
+    console.log('Debug - News feed dimensions:', newsFeed.offsetWidth, 'x', newsFeed.offsetHeight);
+    console.log('Debug - Sub window dimensions:', newsFeedSubWindow.offsetWidth, 'x', newsFeedSubWindow.offsetHeight);
+    console.log('Debug - Sub window position:', {
+      top: newsFeedSubWindow.style.top,
+      bottom: newsFeedSubWindow.style.bottom,
+      left: newsFeedSubWindow.style.left,
+      right: newsFeedSubWindow.style.right
+    });
+    
     for(let i = 1; i <= totalNotices; i++){
       const notice = document.createElement('img');
       notice.className = 'noticeBox';
       notice.src = 'assets/Notice1.png'; // Use Notice1.png for all
       notice.style.top = `${(i - 1) * noticeHeight}px`; // Stack edge to edge
       noticeList.appendChild(notice);
+      console.log(`Debug - Notice ${i} position:`, notice.style.top);
     }
+    
+    console.log('Debug - Total notice height:', totalNotices * noticeHeight);
+    console.log('Debug - Notice list height:', noticeList.offsetHeight);
     
     // Add scroll wheel event listener
     newsFeed.addEventListener('wheel', handleNewsFeedScroll, { passive: true });
@@ -577,6 +594,15 @@ function handleNewsFeedScroll(e){
   const subWindowHeight = newsFeedSubWindow.offsetHeight;
   const maxScrollOffset = Math.max(0, totalNoticeHeight - subWindowHeight);
   
+  console.log('Debug - handleNewsFeedScroll:', {
+    delta,
+    scrollAmount,
+    totalNoticeHeight,
+    subWindowHeight,
+    maxScrollOffset,
+    currentOffset: newsFeedScrollOffset
+  });
+  
   // Update scroll offset with bounds checking
   newsFeedScrollOffset = Math.max(0, Math.min(maxScrollOffset, newsFeedScrollOffset + scrollAmount));
   
@@ -591,6 +617,13 @@ function updateScrollKnob(){
   const totalNoticeHeight = totalNotices * noticeHeight;
   const subWindowHeight = newsFeedSubWindow.offsetHeight;
   const maxScrollOffset = Math.max(0, totalNoticeHeight - subWindowHeight);
+  
+  console.log('Debug - updateScrollKnob:', {
+    totalNoticeHeight,
+    subWindowHeight,
+    maxScrollOffset,
+    newsFeedScrollOffset
+  });
   
   // Calculate scroll percentage
   const scrollPercentage = maxScrollOffset > 0 ? newsFeedScrollOffset / maxScrollOffset : 0;
@@ -663,10 +696,10 @@ function positionButtons(){
   quitButton.style.top = currentY + 'px';
   console.log('Quit button position:', quitButton.style.left, quitButton.style.top);
   
-  // Position news feed 30px to the right of buttons
+  // Position news feed 30px to the right of buttons, plus 15px left offset
   const buttonsRightEdge = centerX + (startNatural.width / 2) + 30; // 30px gap
-  newsFeed.style.left = buttonsRightEdge + 'px';
-  newsFeed.style.top = '50%';
+  newsFeed.style.left = (buttonsRightEdge + 15) + 'px'; // Additional 15px left offset
+  newsFeed.style.top = '60%';
   
   // Debug container info
   console.log('Menu container:', mainMenuContainer.offsetWidth, mainMenuContainer.offsetHeight);
