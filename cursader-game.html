@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Desktop Dungeon — Visi On Era</title>
+<title>Desktop Dungeon</title>
 <style>
   :root{
     --bezel: #808080;
@@ -63,6 +63,8 @@
     letter-spacing:0px;
     font-family: "DOS VGA", "Courier New", monospace;
   }
+  
+  #hud.hidden{ display:none; }
   .bar-label{ width:50px; text-transform:uppercase; font-weight:700; opacity:.9; }
   .ip-group .bar-label{ width:auto; }
   .mem-group .bar-label{ width:auto; }
@@ -91,6 +93,65 @@
     margin-left:auto; display:flex; gap:12px; font-weight:700; opacity:.9;
   }
   #floatLayer{ position:absolute; inset:0; pointer-events:none; }
+  
+  /* Main Menu Styles */
+  #mainMenu{
+    position:absolute; inset:0;
+    background: #000080; /* Visi On Era navy blue */
+    font-family: "DOS VGA", "Courier New", monospace;
+    z-index: 1000; /* Ensure it's above everything */
+  }
+  
+  #mainMenu.hidden{ display:none; }
+  
+  #mainMenuContainer{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1920px;
+    height: 1080px;
+    background: url('assets/Main_Menu_Background.png') no-repeat center center;
+    background-size: contain;
+    transform-origin: center center;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  
+  .menuButton{
+    position: absolute;
+    cursor: pointer;
+    image-rendering: pixelated;
+    /* Let images use their natural dimensions for proper scaling */
+    max-width: none;
+    max-height: none;
+    /* Ensure buttons are positioned relative to the container */
+    left: 0;
+    top: 0;
+    transition: none; // We'll handle transitions manually with image swapping
+  }
+  
+  .menuButton:hover{
+    /* Hover state will be handled by image swapping */
+  }
+  
+  .menuButton:active{
+    /* Active state will be handled by image swapping */
+  }
+  
+  #startButton{
+    /* Position will be set based on original button location */
+  }
+  
+  #settingsButton{
+    /* Position will be set based on original button location */
+  }
+  
+  #achievementsButton{
+    /* Position will be set based on original button location */
+  }
+  
+  #quitButton{
+    /* Position will be set based on original button location */
+  }
   .modal{
     position:absolute; inset:0;
     background: rgba(0,0,0,.9);
@@ -135,12 +196,13 @@
   .upgradeCard .u-desc{ font-size:14px; opacity:.8; line-height:1.3; }
   #controlsBar{ margin-top:8px; text-align:center; font-size:14px; opacity:.7; max-width:640px; font-family: "DOS VGA", "Courier New", monospace; }
   #title{ text-align:center; margin-bottom:8px; font-size:18px; letter-spacing:1px; opacity:.8; font-family: "DOS VGA", "Courier New", monospace; }
+  #title.hidden{ display:none; }
 </style>
 </head>
 <body>
 
 <div id="appRoot">
-  <div id="title">DESKTOP DUNGEON — Visi On Era (1983)</div>
+  <div id="title">DESKTOP DUNGEON - Visi On Era (1983)</div>
   <div id="hud">
     <div class="stat-group mem-group">
       <div class="bar-label">MEM</div>
@@ -154,7 +216,7 @@
       <div class="bar-label">IP:</div>
       <div id="ipText">000:000:000</div>
     </div>
-    <div id="spellName">SPELL: —</div>
+    <div id="spellName">SPELL: -</div>
     <div id="statusRight">
       <span id="waveText">Wave 1</span>
       <span id="killText">Kills 0</span>
@@ -168,7 +230,7 @@
       <div id="overlay" class="modal hidden">
         <h1 id="overlayTitle">Game Over</h1>
         <div id="overlaySub">You crashed.</div>
-        <button id="restartBtn">Restart</button>
+        <button id="restartBtn">Main Menu</button>
       </div>
 
       <div id="upgradeOverlay" class="modal hidden">
@@ -177,15 +239,26 @@
         <div id="upgradeCards"></div>
       </div>
 
-      <div id="lockOverlay" class="modal">
+      <div id="lockOverlay" class="modal hidden">
         <h1>CLICK TO PLAY</h1>
-        <div style="opacity:.7; font-size:12px;">Locks the cursor to the play area — press Esc to release it</div>
+        <div style="opacity:.7; font-size:12px;">Locks the cursor to the play area - press Esc to release it</div>
+      </div>
+      
+      <!-- Main Menu Layer -->
+      <div id="mainMenu" class="hidden">
+        <div id="mainMenuContainer">
+          <img id="startButton" class="menuButton" src="assets/Main_Menu_Start.png" alt="Start Game">
+          <img id="achievementsButton" class="menuButton" src="assets/Main_Menu_Achievements.png" alt="Achievements">
+          <img id="settingsButton" class="menuButton" src="assets/Main_Menu_Settings.png" alt="Settings">
+          <img id="quitButton" class="menuButton" src="assets/Main_Menu_Quit.png" alt="Quit Game">
+        </div>
       </div>
     </div>
   </div>
+  
   <div id="controlsBar">
-    MOUSE: Move · LCLICK: Fire · LHOLD+RELEASE: Charged Shot · RCLICK+DRAG: Purge · RCLICK: Spell (100 IP) · SCROLL: Cycle Spell ·
-    TARGET: Bottom menu buttons spawn and rush · KILL: Before they overwhelm · ERA: Visi On 1983
+    MOUSE: Move - LCLICK: Fire - LHOLD+RELEASE: Charged Shot - RCLICK+DRAG: Purge - RCLICK: Spell (100 IP) - SCROLL: Cycle Spell - 
+    TARGET: Bottom menu buttons spawn and rush - KILL: Before they overwhelm - ERA: Visi On 1983
   </div>
 </div>
 
@@ -193,7 +266,7 @@
 // Auto-fit: scales the whole #appRoot (title + monitor + controls) down to
 // whatever window size actually exists, so nothing is ever clipped or needs
 // scrolling, at any screen resolution or aspect ratio. Runs independently of
-// the game logic below — purely a presentation-layer fit.
+// the game logic below - purely a presentation-layer fit.
 (function(){
   "use strict";
   var root = document.getElementById('appRoot');
@@ -234,7 +307,15 @@
 
 const canvas = document.getElementById('game');
 const ctx = canvas.getContext('2d');
-const W = 640, H = 400;
+let W = 640, H = 400;
+
+// Game State Management
+const gameState = {
+  currentState: 'mainMenu', // mainMenu, gameplay, paused, gameOver, victory
+  hasSaveData: false,
+  unlockedStages: [1],
+  currentStage: 1
+};
 
 // Detect if running in Electron vs web browser
 const isElectron = typeof window !== 'undefined' && window.process && window.process.type === 'renderer';
@@ -264,7 +345,210 @@ const restartBtn = document.getElementById('restartBtn');
 const upgradeOverlay = document.getElementById('upgradeOverlay');
 const upgradeCardsEl = document.getElementById('upgradeCards');
 const lockOverlay = document.getElementById('lockOverlay');
+const hud = document.getElementById('hud');
+const controlsBar = document.getElementById('controlsBar');
+const titleElement = document.getElementById('title');
+
+// Main Menu Elements
+const mainMenu = document.getElementById('mainMenu');
+const mainMenuContainer = document.getElementById('mainMenuContainer');
+const startButton = document.getElementById('startButton');
+const achievementsButton = document.getElementById('achievementsButton');
+const settingsButton = document.getElementById('settingsButton');
+const quitButton = document.getElementById('quitButton');
 const floatLayer = document.getElementById('floatLayer');
+
+// ---------- Main Menu System ----------
+function initMainMenu(){
+  // Add button state management with image swapping
+  setupButtonStates(startButton, 'Main_Menu_Start.png', 'Main_Menu_Start_Highlight.png', 'Main_Menu_Start_Pressed.png');
+  setupButtonStates(achievementsButton, 'Main_Menu_Achievements.png', 'Main_Menu_Achievements_Highlight.png', null);
+  setupButtonStates(settingsButton, 'Main_Menu_Settings.png', 'Main_Menu_Settings_Highlight.png', 'Main_Menu_Settings_Pressed.png');
+  setupButtonStates(quitButton, 'Main_Menu_Quit.png', 'Main_Menu_Quit_Highlight.png', null);
+  
+  // Add button event listeners
+  startButton.addEventListener('click', startGame);
+  achievementsButton.addEventListener('click', showAchievements);
+  settingsButton.addEventListener('click', showSettings);
+  quitButton.addEventListener('click', quitGame);
+  
+  // Start with main menu visible
+  showMainMenu();
+}
+
+function positionButtons(){
+  const centerX = 1920 / 2;
+  const centerY = 1080 / 2;
+  
+  console.log('=== BUTTON POSITIONING DEBUG ===');
+  console.log('Canvas size:', canvas.width, canvas.height);
+  console.log('Center point:', centerX, centerY);
+  
+  // Get natural dimensions of all buttons
+  const startNatural = { width: startButton.naturalWidth || 586, height: startButton.naturalHeight || 79 };
+  const achievementsNatural = { width: achievementsButton.naturalWidth || 586, height: achievementsButton.naturalHeight || 79 };
+  const settingsNatural = { width: settingsButton.naturalWidth || 586, height: settingsButton.naturalHeight || 79 };
+  const quitNatural = { width: quitButton.naturalWidth || 586, height: quitButton.naturalHeight || 79 };
+  
+  console.log('Natural button dimensions:', {startNatural, achievementsNatural, settingsNatural, quitNatural});
+  
+  // Set each button to its natural size
+  startButton.style.width = startNatural.width + 'px';
+  startButton.style.height = startNatural.height + 'px';
+  achievementsButton.style.width = achievementsNatural.width + 'px';
+  achievementsButton.style.height = achievementsNatural.height + 'px';
+  settingsButton.style.width = settingsNatural.width + 'px';
+  settingsButton.style.height = settingsNatural.height + 'px';
+  quitButton.style.width = quitNatural.width + 'px';
+  quitButton.style.height = quitNatural.height + 'px';
+  
+  // Calculate spacing and positioning
+  const spacing = 30;
+  const totalButtonHeight = startNatural.height + achievementsNatural.height + settingsNatural.height + quitNatural.height + spacing * 3;
+  const startY = centerY - (totalButtonHeight / 2) + 80; // Push down by 80px
+  
+  console.log('Total button height:', totalButtonHeight);
+  console.log('Start Y position (pushed down 80px):', startY);
+  
+  // Position buttons in correct order: Start, Achievements, Settings, Quit
+  let currentY = startY;
+  
+  // Start button
+  startButton.style.left = (centerX - startNatural.width / 2) + 'px';
+  startButton.style.top = currentY + 'px';
+  console.log('Start button position:', startButton.style.left, startButton.style.top);
+  currentY += startNatural.height + spacing;
+  
+  // Achievements button
+  achievementsButton.style.left = (centerX - achievementsNatural.width / 2) + 'px';
+  achievementsButton.style.top = currentY + 'px';
+  console.log('Achievements button position:', achievementsButton.style.left, achievementsButton.style.top);
+  currentY += achievementsNatural.height + spacing;
+  
+  // Settings button
+  settingsButton.style.left = (centerX - settingsNatural.width / 2) + 'px';
+  settingsButton.style.top = currentY + 'px';
+  console.log('Settings button position:', settingsButton.style.left, settingsButton.style.top);
+  currentY += settingsNatural.height + spacing;
+  
+  // Quit button
+  quitButton.style.left = (centerX - quitNatural.width / 2) + 'px';
+  quitButton.style.top = currentY + 'px';
+  console.log('Quit button position:', quitButton.style.left, quitButton.style.top);
+  
+  // Debug container info
+  console.log('Menu container:', mainMenuContainer.offsetWidth, mainMenuContainer.offsetHeight);
+  console.log('Menu container transform:', mainMenuContainer.style.transform);
+}
+
+function setupButtonStates(button, normalSrc, hoverSrc, pressedSrc){
+  const normalPath = 'assets/' + normalSrc;
+  const hoverPath = hoverSrc ? 'assets/' + hoverSrc : normalPath;
+  const pressedPath = pressedSrc ? 'assets/' + pressedSrc : normalPath;
+  
+  button.dataset.normal = normalPath;
+  button.dataset.hover = hoverPath;
+  button.dataset.pressed = pressedPath;
+  
+  button.addEventListener('mouseenter', () => {
+    button.src = button.dataset.hover;
+  });
+  
+  button.addEventListener('mouseleave', () => {
+    button.src = button.dataset.normal;
+  });
+  
+  button.addEventListener('mousedown', () => {
+    if(button.dataset.pressed !== button.dataset.normal){
+      button.src = button.dataset.pressed;
+    }
+  });
+  
+  button.addEventListener('mouseup', () => {
+    button.src = button.dataset.hover;
+  });
+}
+
+function scaleMainMenu(){
+  if(gameState.currentState !== 'mainMenu') return;
+  
+  console.log('=== SCALE MENU DEBUG ===');
+  console.log('Canvas dimensions:', canvas.width, canvas.height);
+  console.log('Game state:', gameState.currentState);
+  console.log('Menu container dimensions:', mainMenuContainer.offsetWidth, mainMenuContainer.offsetHeight);
+  
+  // Temporarily disable scaling to see if buttons appear
+  mainMenuContainer.style.transform = 'translate(-50%, -50%)';
+  console.log('Applied transform (no scale):', mainMenuContainer.style.transform);
+}
+
+function showMainMenu(){
+  gameState.currentState = 'mainMenu';
+  mainMenu.classList.remove('hidden');
+  lockOverlay.classList.add('hidden'); // Hide lock overlay in main menu
+  hud.classList.add('hidden'); // Hide HUD in main menu
+  controlsBar.classList.add('hidden'); // Hide controls bar in main menu
+  titleElement.classList.add('hidden'); // Hide title in main menu
+  
+  // Set canvas to fullscreen for main menu
+  resizeCanvasForMainMenu();
+  
+  // Position buttons after menu is visible
+  setTimeout(() => {
+    positionButtons();
+    scaleMainMenu();
+  }, 50);
+}
+
+function hideMainMenu(){
+  mainMenu.classList.add('hidden');
+  hud.classList.remove('hidden'); // Show HUD in gameplay
+  controlsBar.classList.remove('hidden'); // Show controls bar in gameplay
+  titleElement.classList.remove('hidden'); // Show title in gameplay
+  
+  // Reset canvas to gameplay size
+  resizeCanvasForGameplay();
+}
+
+function resizeCanvasForMainMenu(){
+  // Set canvas to fullscreen for main menu
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  W = canvas.width;
+  H = canvas.height;
+}
+
+function resizeCanvasForGameplay(){
+  // Reset canvas to gameplay size (640x400)
+  canvas.width = 640;
+  canvas.height = 400;
+  W = 640;
+  H = 400;
+}
+
+function startGame(){
+  hideMainMenu();
+  gameState.currentState = 'gameplay';
+  lockOverlay.classList.remove('hidden'); // Show the click-to-play overlay
+  initGame();
+}
+
+function showSettings(){
+  // TODO: Implement settings menu
+  console.log('Settings clicked');
+}
+
+function showAchievements(){
+  // TODO: Implement achievements menu
+  console.log('Achievements clicked');
+}
+
+function quitGame(){
+  // In browser, this could redirect or show a goodbye message
+  console.log('Quit clicked');
+  // For now, just show an alert since we can't really "quit" a web page
+  alert('Thank you for playing Desktop Dungeon!\n\nRefresh the page to play again.');
+}
 
 // ---------- Audio (procedural, no assets) ----------
 let actx = null;
@@ -378,7 +662,7 @@ function getCanvasPos(e){
 
 // ---------- Pointer lock ----------
 // Requesting pointer lock hides the OS cursor entirely and captures raw
-// mouse movement (movementX/movementY) instead of on-screen position — the
+// mouse movement (movementX/movementY) instead of on-screen position - the
 // system cursor physically never moves, so it can't be dragged out past the
 // window edge and "escape" into the OS. We keep our own virtual mouse.x/y,
 // advanced by those deltas and clamped to the play area, exactly like before.
@@ -386,6 +670,10 @@ let pointerLocked = false;
 let cursorSelectionOverlay;
 
 function showCursorSelection(){
+  // Don't show cursor selection if in main menu
+  if(gameState.currentState === 'mainMenu'){
+    return;
+  }
   cursorSelectionOverlay = document.createElement('div');
   cursorSelectionOverlay.className = 'modal';
   cursorSelectionOverlay.innerHTML = `
@@ -435,15 +723,23 @@ function requestLock(){
 
 document.addEventListener('pointerlockchange', ()=>{
   pointerLocked = (document.pointerLockElement === canvas);
+  console.log('=== POINTER LOCK CHANGE ===');
+  console.log('Pointer locked:', pointerLocked);
+  console.log('Wave:', wave);
+  console.log('Wave state:', waveState);
+  console.log('Enemies:', enemies.length);
+  console.log('Windows:', windows.length);
+  
   if(pointerLocked){
     lockOverlay.classList.add('hidden');
     // Initialize game on first lock if not already started
     if(wave === 1 && waveState === 'fighting' && enemies.length === 0 && windows.length === 0){
+      console.log('Starting wave 1 from pointer lock');
       spawnWindows();
       startWave(1);
     }
   } else if(!gameOver && waveState !== 'upgrade'){
-    // Covers both a deliberate Esc release and losing lock by e.g. alt-tabbing —
+    // Covers both a deliberate Esc release and losing lock by e.g. alt-tabbing -
     // either way, pause and ask for a click rather than let stale input keep firing.
     lockOverlay.classList.remove('hidden');
   }
@@ -454,12 +750,16 @@ document.addEventListener('pointerlockerror', ()=>{
 });
 
 lockOverlay.addEventListener('click', ()=>{
+  if(gameState.currentState === 'mainMenu'){
+    // Don't do anything if in main menu - let them use the menu buttons
+    return;
+  }
   showCursorSelection();
 });
 
 canvas.addEventListener('mousemove', (e)=>{
   if(!pointerLocked){
-    // Not locked yet (e.g. before the first click) — track normally so the
+    // Not locked yet (e.g. before the first click) - track normally so the
     // very first click-to-lock still has a sane starting position.
     const p = getCanvasPos(e);
     mouse.x = clamp(p.x, 4, W-4);
@@ -531,15 +831,8 @@ document.addEventListener('keydown', (e)=>{
     cycleTarget('prev');
   } else if(e.key === 'r' || e.key === 'R'){
     if(waveState === 'victory'){
-      // Restart game on victory
-      wave = 1;
-      waveState = 'fighting';
-      enemies = []; playerBullets = []; enemyBullets = []; particles = []; pickups = []; caches = []; deadPixels = []; windows = [];
-      cacheSpawnTimer = 6 + Math.random()*4;
-      kills = 0;
-      killTextEl.textContent = "Kills 0";
-      gameOver = false;
-      showCursorSelection();
+      // Return to main menu on victory
+      showMainMenu();
     }
   }
 });
@@ -735,7 +1028,7 @@ let enemyBullets = [];
 let windowProjectiles = []; // Word window projectiles
 let particles = [];
 let pickups = [];
-let caches = []; // "encrypted file" world objects — bump to open, one at a time
+let caches = []; // "encrypted file" world objects - bump to open, one at a time
 let deadPixels = []; // Dead pixel traps for waves 9-11
 let cacheSpawnTimer = 6 + Math.random()*4;
 let kills = 0;
@@ -833,8 +1126,8 @@ function showUpgradeChoices(){
 // ---------- Enemies ----------
 // Each enemy has a `type`, dispatched through ENEMY_TYPES (defined below,
 // after all the individual update/draw functions) for both its per-frame
-// behavior and its rendering. Shared stuff — taking bullet damage, dying,
-// the target ring, the HP bar — stays generic in update()/drawEnemies() and
+// behavior and its rendering. Shared stuff - taking bullet damage, dying,
+// the target ring, the HP bar - stays generic in update()/drawEnemies() and
 // works the same regardless of type.
 
 function spawnPopup(){
@@ -859,7 +1152,7 @@ function spawnPopup(){
   });
 }
 
-// Recycle Bin — melee rusher. Idles until you enter range, shakes
+// Recycle Bin - melee rusher. Idles until you enter range, shakes
 // through a telegraph, then charges in a straight line toward wherever
 // you were the instant the telegraph ended (not homing mid-charge). Teaches
 // that commitment-based enemies can be baited and juked, not just kited.
@@ -869,7 +1162,7 @@ function spawnRecycleBin(){
     x = 40 + Math.random()*(W-80);
     y = 40 + Math.random()*(H-80);
     tries++;
-  } while(dist(x,y,player.x,player.y) < 260 && tries < 20); // spawns further out — it closes distance fast once triggered
+  } while(dist(x,y,player.x,player.y) < 260 && tries < 20); // spawns further out - it closes distance fast once triggered
   enemies.push({
     x, y,
     vx: 0, vy: 0,
@@ -887,7 +1180,7 @@ function spawnRecycleBin(){
   });
 }
 
-// System Tray Turret — stationary area-denial. Anchors to a fixed point
+// System Tray Turret - stationary area-denial. Anchors to a fixed point
 // (docked to an edge of the "My Computer" obstacle window, like a real
 // docked tray icon), never moves, and periodically fires a 3-bullet fan
 // spread. Low HP, easy to kill, but punishes standing still in its arc.
@@ -953,7 +1246,7 @@ const RECYCLEBIN_CONTACT_DAMAGE = 14;
 function updateRecycleBin(en, dt){
   switch(en.state){
     case 'idle': {
-      // small idle jitter so it doesn't look frozen — not real movement
+      // small idle jitter so it doesn't look frozen - not real movement
       en.wobble += dt*1.5;
       en.x = clamp(en.x + Math.sin(en.wobble)*4*dt, 24, W-24);
       en.y = clamp(en.y + Math.cos(en.wobble*0.7)*4*dt, 24, H-24);
@@ -971,7 +1264,7 @@ function updateRecycleBin(en, dt){
       en.shakeOffsetX = (Math.random()-0.5) * 6 * progress;
       en.shakeOffsetY = (Math.random()-0.5) * 6 * progress;
       if(en.stateTimer <= 0){
-        // Commit to your position at THIS instant — never homes afterward.
+        // Commit to your position at THIS instant - never homes afterward.
         const dx = player.x - en.x, dy = player.y - en.y;
         const len = Math.hypot(dx,dy) || 1;
         en.chargeDir = { x: dx/len, y: dy/len };
@@ -1013,7 +1306,7 @@ function updateRecycleBin(en, dt){
 }
 
 function updateTrayTurret(en, dt){
-  // Fixed in place — no wobble, no wandering, no movement at all.
+  // Fixed in place - no wobble, no wandering, no movement at all.
   en.shootTimer -= dt;
   if(en.shootTimer <= 0 && en.telegraph <= 0){
     en.telegraph = 0.4;
@@ -1146,6 +1439,10 @@ const MIN_WAVE_DURATION = 3; // Minimum seconds before wave can clear
 let hasStartedSpawning = false; // Track if spawning has begun
 
 function startWave(n){
+  console.log('=== START WAVE FUNCTION ===');
+  console.log('Starting wave:', n);
+  console.log('Current wave state:', waveState);
+  
   // Reset wave state
   enemiesSpawned = 0;
   hasStartedSpawning = false;
@@ -1188,8 +1485,8 @@ function startWave(n){
 function spawnButtonSwarm(){
   if(enemiesSpawned >= enemiesToSpawn) return;
   
-  // Waves 9-11: Spawn dead pixels instead of enemies occasionally
-  if(wave >= 9 && wave <= 11 && Math.random() < 0.3 && deadPixels.length < 3){
+  // Waves 9-15: Spawn dead pixels instead of enemies occasionally
+  if(wave >= 9 && wave <= 15 && Math.random() < 0.3 && deadPixels.length < 3){
     spawnDeadPixel();
     enemiesSpawned++; // Count toward total enemies
     return;
@@ -1225,15 +1522,57 @@ function spawnButtonSwarm(){
   }
 }
 
-// ---------- Dead Pixel Trap System (Waves 9-11) ----------
+// ---------- Dead Pixel Trap System (Waves 9-15) ----------
 function spawnDeadPixel(){
-  // Find a safe position away from word window
-  let x, y, tries = 0;
-  do {
-    x = 100 + Math.random() * (W - 200);
-    y = 100 + Math.random() * (H - 200);
+  // Get word window bounds if active
+  let winX, winY, winW, winH, hasWindow = false;
+  if(wordWindowAttack.window){
+    winX = wordWindowAttack.window.x;
+    winY = wordWindowAttack.window.y;
+    winW = wordWindowAttack.window.width;
+    winH = wordWindowAttack.window.height;
+    hasWindow = true;
+  }
+  
+  // Spawn dead pixel - calculate safe position outside word window
+  let x, y, valid = false, tries = 0;
+  const margin = 50; // Additional margin around window
+  
+  while(!valid && tries < 100){
+    // Try different spawn strategies
+    const strategy = tries % 4;
+    
+    switch(strategy){
+      case 0: // Try spawning in left side
+        x = margin + Math.random() * (W / 3);
+        y = margin + Math.random() * (H - 2 * margin);
+        break;
+      case 1: // Try spawning in right side
+        x = (W * 2 / 3) + Math.random() * (W / 3 - margin);
+        y = margin + Math.random() * (H - 2 * margin);
+        break;
+      case 2: // Try spawning in top area
+        x = margin + Math.random() * (W - 2 * margin);
+        y = margin + Math.random() * (H / 3);
+        break;
+      case 3: // Try spawning in bottom area
+        x = margin + Math.random() * (W - 2 * margin);
+        y = (H * 2 / 3) + Math.random() * (H / 3 - margin);
+        break;
+    }
+    
+    // Check if position is valid (outside word window if exists)
+    valid = true;
+    if(hasWindow){
+      // Check if point is inside window bounds (with margin)
+      if(x > winX - margin && x < winX + winW + margin &&
+         y > winY - margin && y < winY + winH + margin){
+        valid = false;
+      }
+    }
+    
     tries++;
-  } while (tries < 10 && isNearWordWindow(x, y, 150)); // Keep away from word window
+  }
   
   deadPixels.push({
     x: x,
@@ -1244,7 +1583,7 @@ function spawnDeadPixel(){
     flashCount: 0,
     maxFlashes: 3,
     spiderwebRadius: 0,
-    maxSpiderwebRadius: 80,
+    maxSpiderwebRadius: 160, // Doubled from 80px to 160px
     spiderwebDuration: 2.0, // How long spiderweb lasts
     spiderwebTimer: 0,
     damage: 10
@@ -1256,6 +1595,13 @@ function isNearWordWindow(x, y, threshold){
   const win = wordWindowAttack.window;
   const centerX = win.x + win.width / 2;
   const centerY = win.y + win.height / 2;
+  
+  // Check if point is inside the window or too close to it
+  if(x > win.x - threshold && x < win.x + win.width + threshold &&
+     y > win.y - threshold && y < win.y + win.height + threshold){
+    return true;
+  }
+  
   return dist(x, y, centerX, centerY) < threshold;
 }
 
@@ -1817,7 +2163,7 @@ function killEnemy(en, overflow, source){
   }
 
   // ---- ultimate charge from kills ----
-  // Overkill bonus never applies to ultimate kills — the ultimate already
+  // Overkill bonus never applies to ultimate kills - the ultimate already
   // one-shots everything it touches, so it would otherwise refund its own cost.
   let gain = (4 + en.level*2);
   const isOverkill = source !== 'ultimate' && overflow >= en.maxHp * OVERKILL_MULT;
@@ -1857,12 +2203,16 @@ function killEnemy(en, overflow, source){
   }
 
   // ---- Drop system: IP or MEM (mutually exclusive) ----
-  // Ramping drop chance based on wave level (20% at wave 1, 80% at wave 20)
-  const dropChance = 0.2 + (Math.min(wave, 20) - 1) * 0.03;
+  // Base drop chance scales with wave, but reduces with high enemy counts to prevent overflow
+  // Target: roughly 4-6 IP drops per wave regardless of enemy count
+  const baseDropChance = 0.2 + (Math.min(wave, 20) - 1) * 0.03;
+  const enemyCountFactor = Math.max(1, enemiesToSpawn / 15); // Normalize to 15 enemies as baseline
+  const dropChance = baseDropChance / enemyCountFactor;
   const ipDropChance = dropChance + (player.ipDropRateBonus || 0);
   
-  // Rare MEM drop chance (increased for testing - should be 2-3 per round)
-  const memDropChance = 0.15 + (Math.min(wave, 20) - 1) * 0.02 + (player.memDropRateBonus || 0);
+  // Rare MEM drop chance (also scales with enemy count to maintain ~2-3 MEM drops per wave)
+  const baseMemDropChance = 0.15 + (Math.min(wave, 20) - 1) * 0.02;
+  const memDropChance = (baseMemDropChance / enemyCountFactor) + (player.memDropRateBonus || 0);
   
   if(Math.random() < ipDropChance){
     // Determine if this drop is MEM (rare) or IP (common)
@@ -1878,23 +2228,77 @@ function killEnemy(en, overflow, source){
       amount = Math.round((8 + Math.random()*6) * player.ipGainMult);
     }
     
-    // Find spawn position outside windows
+    // Find spawn position - first try enemy location, then use quadrant-based if inside window
     let dropX = en.x, dropY = en.y;
-    let inWindow = true;
+    let validPosition = false;
     let tries = 0;
-    while(inWindow && tries < 30){
-      inWindow = false;
-      for(const win of windows){
-        if(dropX + 10 > win.x && dropX - 10 < win.x + win.width &&
-           dropY + 10 > win.y && dropY - 10 < win.y + win.height){
-          inWindow = true;
-          // Try random position around enemy with larger radius for bigger windows
-          dropX = en.x + (Math.random() - 0.5) * 100;
-          dropY = en.y + (Math.random() - 0.5) * 100;
-          break;
-        }
+    const margin = 30; // Additional margin around windows
+    
+    // First check if enemy position is safe
+    let needsReposition = false;
+    for(const win of windows){
+      if(dropX + margin > win.x && dropX - margin < win.x + win.width &&
+         dropY + margin > win.y && dropY - margin < win.y + win.height){
+        needsReposition = true;
+        break;
       }
-      tries++;
+    }
+    
+    // Only reposition if enemy died inside window
+    if(needsReposition){
+      // Calculate quadrants sorted by distance to enemy death
+      const quadrants = [
+        { name: 'left', x: W/6, y: H/2 },
+        { name: 'right', x: (W*5)/6, y: H/2 },
+        { name: 'top', x: W/2, y: H/6 },
+        { name: 'bottom', x: W/2, y: (H*5)/6 }
+      ];
+      
+      // Sort quadrants by distance to enemy death
+      quadrants.sort((a, b) => {
+        const distA = dist(en.x, en.y, a.x, a.y);
+        const distB = dist(en.x, en.y, b.x, b.y);
+        return distA - distB;
+      });
+      
+      while(!validPosition && tries < 100){
+        validPosition = true;
+        
+        // Use quadrant based on sorted order
+        const quadrantIndex = tries % 4;
+        const quadrant = quadrants[quadrantIndex];
+        
+        switch(quadrant.name){
+          case 'left': // Try spawning in left side
+            dropX = margin + Math.random() * (W / 3);
+            dropY = margin + Math.random() * (H - 2 * margin);
+            break;
+          case 'right': // Try spawning in right side
+            dropX = (W * 2 / 3) + Math.random() * (W / 3 - margin);
+            dropY = margin + Math.random() * (H - 2 * margin);
+            break;
+          case 'top': // Try spawning in top area
+            dropX = margin + Math.random() * (W - 2 * margin);
+            dropY = margin + Math.random() * (H / 3);
+            break;
+          case 'bottom': // Try spawning in bottom area
+            dropX = margin + Math.random() * (W - 2 * margin);
+            dropY = (H * 2 / 3) + Math.random() * (H / 3 - margin);
+            break;
+        }
+        
+        // Check if position is inside any window
+        for(const win of windows){
+          if(dropX + margin > win.x && dropX - margin < win.x + win.width &&
+             dropY + margin > win.y && dropY - margin < win.y + win.height){
+            validPosition = false;
+            break;
+          }
+        }
+        tries++;
+      }
+    } else {
+      validPosition = true;
     }
     
     pickups.push({ x: dropX, y: dropY, amount: amount, type: dropType, life: 14, bob: Math.random()*Math.PI*2, vx:0, vy:0 });
@@ -2174,8 +2578,78 @@ function resolveMarqueeUltimate(x1,y1,x2,y2){
     // Grenade cursor: Screen.FloodFill() - drop mines
     const mineCount = cursorStats.ultMineCount;
     for(let i = 0; i < mineCount; i++){
-      const mineX = 50 + Math.random() * (W - 100);
-      const mineY = 50 + Math.random() * (H - 100);
+      // Find safe position for mine - first try random, then use quadrant-based if inside window
+      let mineX = 50 + Math.random() * (W - 100);
+      let mineY = 50 + Math.random() * (H - 100);
+      let validPosition = false;
+      let tries = 0;
+      const margin = 30;
+      
+      // First check if random position is safe
+      let needsReposition = false;
+      for(const win of windows){
+        if(mineX + margin > win.x && mineX - margin < win.x + win.width &&
+           mineY + margin > win.y && mineY - margin < win.y + win.height){
+          needsReposition = true;
+          break;
+        }
+      }
+      
+      // Only reposition if random position is inside window
+      if(needsReposition){
+        // Calculate quadrants sorted by distance to original spawn point
+        const quadrants = [
+          { name: 'left', x: W/6, y: H/2 },
+          { name: 'right', x: (W*5)/6, y: H/2 },
+          { name: 'top', x: W/2, y: H/6 },
+          { name: 'bottom', x: W/2, y: (H*5)/6 }
+        ];
+        
+        // Sort quadrants by distance to original spawn point
+        quadrants.sort((a, b) => {
+          const distA = dist(mineX, mineY, a.x, a.y);
+          const distB = dist(mineX, mineY, b.x, b.y);
+          return distA - distB;
+        });
+        
+        while(!validPosition && tries < 100){
+          validPosition = true;
+          
+          // Use quadrant based on sorted order
+          const quadrantIndex = tries % 4;
+          const quadrant = quadrants[quadrantIndex];
+          
+          switch(quadrant.name){
+            case 'left': // Try spawning in left side
+              mineX = margin + Math.random() * (W / 3);
+              mineY = margin + Math.random() * (H - 2 * margin);
+              break;
+            case 'right': // Try spawning in right side
+              mineX = (W * 2 / 3) + Math.random() * (W / 3 - margin);
+              mineY = margin + Math.random() * (H - 2 * margin);
+              break;
+            case 'top': // Try spawning in top area
+              mineX = margin + Math.random() * (W - 2 * margin);
+              mineY = margin + Math.random() * (H / 3);
+              break;
+            case 'bottom': // Try spawning in bottom area
+              mineX = margin + Math.random() * (W - 2 * margin);
+              mineY = (H * 2 / 3) + Math.random() * (H / 3 - margin);
+              break;
+          }
+          
+          // Check if position is inside any window
+          for(const win of windows){
+            if(mineX + margin > win.x && mineX - margin < win.x + win.width &&
+               mineY + margin > win.y && mineY - margin < win.y + win.height){
+              validPosition = false;
+              break;
+            }
+          }
+          tries++;
+        }
+      }
+      
       pickups.push({
         x: mineX, y: mineY,
         type: 'mine',
@@ -2404,28 +2878,85 @@ function update(dt){
         }
 
         // IP drop
-        // Ramping drop chance based on wave level (20% at wave 1, 80% at wave 20)
-        const dropChance = 0.2 + (Math.min(wave, 20) - 1) * 0.03;
+        // Base drop chance scales with wave, but reduces with high enemy counts to prevent overflow
+        // Target: roughly 4-6 IP drops per wave regardless of enemy count
+        const baseDropChance = 0.2 + (Math.min(wave, 20) - 1) * 0.03;
+        const enemyCountFactor = Math.max(1, enemiesToSpawn / 15); // Normalize to 15 enemies as baseline
+        const dropChance = baseDropChance / enemyCountFactor;
         if(Math.random() < dropChance){
           const amt = Math.round((8 + Math.random()*6) * player.ipGainMult);
           
-          // Find spawn position outside windows
+          // Find spawn position - first try enemy location, then use quadrant-based if inside window
           let dropX = en.x, dropY = en.y;
-          let inWindow = true;
+          let validPosition = false;
           let tries = 0;
-          while(inWindow && tries < 30){
-            inWindow = false;
-            for(const win of windows){
-              if(dropX + 10 > win.x && dropX - 10 < win.x + win.width &&
-                 dropY + 10 > win.y && dropY - 10 < win.y + win.height){
-                inWindow = true;
-                // Try random position around enemy with larger radius for bigger windows
-                dropX = en.x + (Math.random() - 0.5) * 100;
-                dropY = en.y + (Math.random() - 0.5) * 100;
-                break;
-              }
+          const margin = 30; // Additional margin around windows
+          
+          // First check if enemy position is safe
+          let needsReposition = false;
+          for(const win of windows){
+            if(dropX + margin > win.x && dropX - margin < win.x + win.width &&
+               dropY + margin > win.y && dropY - margin < win.y + win.height){
+              needsReposition = true;
+              break;
             }
-            tries++;
+          }
+          
+          // Only reposition if enemy died inside window
+          if(needsReposition){
+            // Calculate quadrants sorted by distance to enemy death
+            const quadrants = [
+              { name: 'left', x: W/6, y: H/2 },
+              { name: 'right', x: (W*5)/6, y: H/2 },
+              { name: 'top', x: W/2, y: H/6 },
+              { name: 'bottom', x: W/2, y: (H*5)/6 }
+            ];
+            
+            // Sort quadrants by distance to enemy death
+            quadrants.sort((a, b) => {
+              const distA = dist(en.x, en.y, a.x, a.y);
+              const distB = dist(en.x, en.y, b.x, b.y);
+              return distA - distB;
+            });
+            
+            while(!validPosition && tries < 100){
+              validPosition = true;
+              
+              // Use quadrant based on sorted order
+              const quadrantIndex = tries % 4;
+              const quadrant = quadrants[quadrantIndex];
+              
+              switch(quadrant.name){
+                case 'left': // Try spawning in left side
+                  dropX = margin + Math.random() * (W / 3);
+                  dropY = margin + Math.random() * (H - 2 * margin);
+                  break;
+                case 'right': // Try spawning in right side
+                  dropX = (W * 2 / 3) + Math.random() * (W / 3 - margin);
+                  dropY = margin + Math.random() * (H - 2 * margin);
+                  break;
+                case 'top': // Try spawning in top area
+                  dropX = margin + Math.random() * (W - 2 * margin);
+                  dropY = margin + Math.random() * (H / 3);
+                  break;
+                case 'bottom': // Try spawning in bottom area
+                  dropX = margin + Math.random() * (W - 2 * margin);
+                  dropY = (H * 2 / 3) + Math.random() * (H / 3 - margin);
+                  break;
+              }
+              
+              // Check if position is inside any window
+              for(const win of windows){
+                if(dropX + margin > win.x && dropX - margin < win.x + win.width &&
+                   dropY + margin > win.y && dropY - margin < win.y + win.height){
+                  validPosition = false;
+                  break;
+                }
+              }
+              tries++;
+            }
+          } else {
+            validPosition = true;
           }
           
           pickups.push({ x: dropX, y: dropY, amount: amt, life: 14, bob: Math.random()*Math.PI*2, vx:0, vy:0 });
@@ -2694,6 +3225,10 @@ function update(dt){
     if(wave >= 15){
       // Victory condition for Visi On era
       waveState = 'victory';
+      // Show victory screen
+      overlayTitle.textContent = "STAGE COMPLETE";
+      overlaySub.textContent = "Visi On Era Cleared  " + kills + " kills";
+      overlay.classList.remove('hidden');
     }
   }
 
@@ -2734,7 +3269,7 @@ function takeDamage(amount){
     gameOver = true;
     if(document.exitPointerLock) document.exitPointerLock();
     overlayTitle.textContent = "SYSTEM CRASH";
-    overlaySub.textContent = "Survived " + (wave) + " waves · " + kills + " kills";
+    overlaySub.textContent = "Survived " + (wave) + " waves  " + kills + " kills";
     overlay.classList.remove('hidden');
   }
 }
@@ -3393,7 +3928,7 @@ function draw(){
     ctx.font = '24px "DOS VGA", "Courier New", monospace';
     ctx.fillStyle = '#fff';
     ctx.fillText('You have mastered the Classic GUI!', W/2, H/2 + 30);
-    ctx.fillText('Press R to restart', W/2, H/2 + 70);
+    ctx.fillText('Press R for Main Menu', W/2, H/2 + 70);
     ctx.textAlign = 'left';
     ctx.restore();
   }
@@ -3409,8 +3944,8 @@ function loop(now){
   requestAnimationFrame(loop);
 }
 
-// ---------- Restart ----------
-restartBtn.addEventListener('click', ()=>{
+// ---------- Game Initialization ----------
+function initGame(){
   const cursorStats = CURSOR_TYPES[player.cursorType];
   player.hp = player.maxHp = cursorStats.maxHp;
   player.ip = 0;
@@ -3448,12 +3983,38 @@ restartBtn.addEventListener('click', ()=>{
   overlay.classList.add('hidden');
   upgradeOverlay.classList.add('hidden');
   player.invuln = 1.5; // Invulnerability at game start
-  spawnWindows();
-  showCursorSelection(); // Show cursor selection on restart
+  // Don't spawn windows here - let pointer lock handler do it
+  // spawnWindows();
+  
+  console.log('=== GAME INIT DEBUG ===');
+  console.log('Game state:', gameState.currentState);
+  console.log('Wave:', wave);
+  console.log('Wave state:', waveState);
+  console.log('Canvas size:', canvas.width, canvas.height);
+  console.log('W/H variables:', W, H);
+}
+
+// ---------- Restart / Main Menu ----------
+restartBtn.addEventListener('click', () => {
+  showMainMenu(); // Return to main menu instead of restarting
 });
 
 updateIpHud();
 loadWindowImage();
+
+// Hide lock overlay initially since we start with main menu
+lockOverlay.classList.add('hidden');
+
+initMainMenu(); // Initialize main menu system
+
+// Add resize listener for main menu
+window.addEventListener('resize', () => {
+  if(gameState.currentState === 'mainMenu'){
+    resizeCanvasForMainMenu();
+    scaleMainMenu();
+  }
+});
+
 requestAnimationFrame(loop);
 })();
 </script>
