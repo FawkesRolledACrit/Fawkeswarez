@@ -3323,6 +3323,8 @@ function update(dt){
   if(waveState === 'fighting' && enemies.length === 0 && deadPixels.length === 0 && enemiesSpawned >= enemiesToSpawn && hasStartedSpawning && waveTimer <= 0 && !gameOver){
     waveState = 'banner';
     bannerTimer = 2.7;
+    // Give invulnerability during wave complete sequence
+    player.invuln = 2.0;
     // Clean up all drops at wave end
     pickups = [];
     caches = [];
