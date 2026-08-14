@@ -194,7 +194,6 @@
   .upgradeCard .u-path.utility{ color: #4444ff; }
   .upgradeCard .u-title{ font-weight:700; color:#fff; font-size:18px; margin-bottom:6px; }
   .upgradeCard .u-desc{ font-size:14px; opacity:.8; line-height:1.3; }
-  #controlsBar{ margin-top:8px; text-align:center; font-size:14px; opacity:.7; max-width:640px; font-family: "DOS VGA", "Courier New", monospace; }
   #title{ text-align:center; margin-bottom:8px; font-size:18px; letter-spacing:1px; opacity:.8; font-family: "DOS VGA", "Courier New", monospace; }
   #title.hidden{ display:none; }
 </style>
@@ -255,11 +254,7 @@
       </div>
     </div>
   </div>
-  
-  <div id="controlsBar">
-    MOUSE: Move - LCLICK: Fire - LHOLD+RELEASE: Charged Shot - RCLICK+DRAG: Purge - RCLICK: Spell (100 IP) - SCROLL: Cycle Spell - 
-    TARGET: Bottom menu buttons spawn and rush - KILL: Before they overwhelm - ERA: Visi On 1983
-  </div>
+
 </div>
 
 <script>
@@ -346,7 +341,6 @@ const upgradeOverlay = document.getElementById('upgradeOverlay');
 const upgradeCardsEl = document.getElementById('upgradeCards');
 const lockOverlay = document.getElementById('lockOverlay');
 const hud = document.getElementById('hud');
-const controlsBar = document.getElementById('controlsBar');
 const titleElement = document.getElementById('title');
 
 // Main Menu Elements
@@ -491,7 +485,6 @@ function showMainMenu(){
   mainMenu.classList.remove('hidden');
   lockOverlay.classList.add('hidden'); // Hide lock overlay in main menu
   hud.classList.add('hidden'); // Hide HUD in main menu
-  controlsBar.classList.add('hidden'); // Hide controls bar in main menu
   titleElement.classList.add('hidden'); // Hide title in main menu
   
   // Set canvas to fullscreen for main menu
@@ -507,7 +500,6 @@ function showMainMenu(){
 function hideMainMenu(){
   mainMenu.classList.add('hidden');
   hud.classList.remove('hidden'); // Show HUD in gameplay
-  controlsBar.classList.remove('hidden'); // Show controls bar in gameplay
   titleElement.classList.remove('hidden'); // Show title in gameplay
   
   // Reset canvas to gameplay size
