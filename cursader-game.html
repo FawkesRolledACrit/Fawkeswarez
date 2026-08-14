@@ -1506,7 +1506,7 @@ function spawnButtonSwarm(){
     let enemyType = 'menubutton';
     
     // Waves 5-8: Add corrupted (explosive) enemies
-    if(wave >= 5 && wave <= 8 && Math.random() < 0.3){
+    if(wave >= 5 && wave <= 8 && Math.random() < 0.15){
       // Force corrupted variant
       const isCorrupted = true;
       spawnMenuButton(buttonSpawnIndex % MENU_BUTTONS.length, waveMultiplier, isCorrupted);
