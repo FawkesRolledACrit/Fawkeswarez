@@ -132,8 +132,8 @@
   
   #newsFeed{
     position: absolute;
-    top: 50%;
-    right: 100px; /* To the right of buttons */
+    top: 40%; /* Moved down from 50% */
+    right: 50px; /* Moved left from 100px */
     transform: translateY(-50%);
     width: 300px;
     height: 500px;
@@ -165,6 +165,7 @@
     left: 0;
     width: 100%;
     image-rendering: pixelated;
+    height: auto; /* Use natural height from image */
   }
   
   #scrollBar{
@@ -534,28 +535,35 @@ function stopLogoAnimation(){
 // ---------- News Feed System ----------
 let newsFeedScrollOffset = 0;
 let newsFeedScrollSpeed = 20;
-const noticeHeight = 80; // Estimated height of each notice box
+let noticeHeight = 0; // Will be set dynamically based on image natural height
 const totalNotices = 9;
 const scrollBarLength = 400;
 const scrollKnobHeight = 30;
 
 function initNewsFeed(){
-  // Create notice boxes dynamically
+  // Create notice boxes dynamically - all using Notice1.png
   noticeList.innerHTML = '';
   
-  for(let i = 1; i <= totalNotices; i++){
-    const notice = document.createElement('img');
-    notice.className = 'noticeBox';
-    notice.src = `assets/Notice${i}.png`;
-    notice.style.top = `${(i - 1) * noticeHeight}px`;
-    noticeList.appendChild(notice);
-  }
-  
-  // Add scroll wheel event listener
-  newsFeed.addEventListener('wheel', handleNewsFeedScroll, { passive: true });
-  
-  // Update scroll knob position
-  updateScrollKnob();
+  // Load Notice1.png to get natural dimensions
+  const testImg = new Image();
+  testImg.src = 'assets/Notice1.png';
+  testImg.onload = function(){
+    noticeHeight = testImg.naturalHeight + 10; // Add some spacing
+    
+    for(let i = 1; i <= totalNotices; i++){
+      const notice = document.createElement('img');
+      notice.className = 'noticeBox';
+      notice.src = 'assets/Notice1.png'; // Use Notice1.png for all
+      notice.style.top = `${(i - 1) * noticeHeight}px`;
+      noticeList.appendChild(notice);
+    }
+    
+    // Add scroll wheel event listener
+    newsFeed.addEventListener('wheel', handleNewsFeedScroll, { passive: true });
+    
+    // Update scroll knob position
+    updateScrollKnob();
+  };
 }
 
 function handleNewsFeedScroll(e){
