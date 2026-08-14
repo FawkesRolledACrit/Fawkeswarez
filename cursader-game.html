@@ -126,6 +126,8 @@
     background-image: url('assets/Cursader_Logo.png');
     background-size: 38428px 195px; /* 52 frames * 739px width, 195px height */
     image-rendering: pixelated;
+    opacity: 0; /* Start hidden */
+    transition: opacity 0.3s ease-in; /* Smooth fade in */
   }
   
   .menuButton{
@@ -402,32 +404,40 @@ function startLogoAnimation(){
   
   if(logoAnimationId) return; // Already running
   
-  logoFrame = 0;
-  const frameDuration = 1000 / LOGO_FPS;
-  
-  function animateLogo(){
-    // Update background position to show current frame
-    const xPos = -(logoFrame * LOGO_FRAME_WIDTH);
-    cursaderLogo.style.backgroundPosition = `${xPos}px 0px`;
+  // Add 1 second delay before starting animation
+  logoAnimationId = setTimeout(() => {
+    logoAnimationId = null; // Clear the delay timeout
     
-    // Advance frame
-    logoFrame++;
+    // Show logo when animation starts
+    cursaderLogo.style.opacity = "1";
     
-    // Check if animation is complete
-    if(logoFrame >= LOGO_FRAMES){
-      // Switch to stationary image on final frame
-      cursaderLogo.style.backgroundImage = "url('assets/Cursader_Logo_Stationary.png')";
-      cursaderLogo.style.backgroundSize = "739px 195px"; // Single frame size
-      cursaderLogo.style.backgroundPosition = "0px 0px";
-      logoAnimationPlayed = true; // Mark as played
-      logoAnimationId = null;
-      return; // Stop animation
+    logoFrame = 0;
+    const frameDuration = 1000 / LOGO_FPS;
+    
+    function animateLogo(){
+      // Update background position to show current frame
+      const xPos = -(logoFrame * LOGO_FRAME_WIDTH);
+      cursaderLogo.style.backgroundPosition = `${xPos}px 0px`;
+      
+      // Advance frame
+      logoFrame++;
+      
+      // Check if animation is complete
+      if(logoFrame >= LOGO_FRAMES){
+        // Switch to stationary image on final frame
+        cursaderLogo.style.backgroundImage = "url('assets/Cursader_Logo_Stationary.png')";
+        cursaderLogo.style.backgroundSize = "739px 195px"; // Single frame size
+        cursaderLogo.style.backgroundPosition = "0px 0px";
+        logoAnimationPlayed = true; // Mark as played
+        logoAnimationId = null;
+        return; // Stop animation
+      }
+      
+      logoAnimationId = setTimeout(animateLogo, frameDuration);
     }
     
-    logoAnimationId = setTimeout(animateLogo, frameDuration);
-  }
-  
-  animateLogo();
+    animateLogo();
+  }, 1000); // 1 second delay
 }
 
 function stopLogoAnimation(){
@@ -570,8 +580,9 @@ function showMainMenu(){
   cursaderLogo.style.backgroundImage = "url('assets/Cursader_Logo.png')";
   cursaderLogo.style.backgroundSize = `${LOGO_FRAMES * LOGO_FRAME_WIDTH}px ${LOGO_HEIGHT}px`;
   cursaderLogo.style.backgroundPosition = "0px 0px";
+  cursaderLogo.style.opacity = "0"; // Hide logo initially
   
-  // Start logo animation
+  // Start logo animation with 1 second delay
   startLogoAnimation();
   
   // Set canvas to fullscreen for main menu
