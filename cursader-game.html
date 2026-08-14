@@ -1484,8 +1484,7 @@ function spawnButtonSwarm(){
   if(enemiesSpawned >= enemiesToSpawn) return;
   
   // Waves 9-15: Spawn dead pixels instead of enemies occasionally
-  // Only spawn dead pixels in waves 9-11, waves 12-15 use normal enemy spawning
-  if(wave >= 9 && wave <= 11 && Math.random() < 0.3 && deadPixels.length < 3){
+  if(wave >= 9 && wave <= 15 && Math.random() < 0.3 && deadPixels.length < 3){
     spawnDeadPixel();
     enemiesSpawned++; // Count toward total enemies
     return;
@@ -1525,8 +1524,8 @@ function spawnButtonSwarm(){
 function spawnDeadPixel(){
   // Get word window bounds if active
   let winX, winY, winW, winH, hasWindow = false;
-  if(wordWindowAttack.window && windows.length > 0){
-    const win = wordWindowAttack.window;
+  if(windows.length > 0){
+    const win = windows[0]; // Use first window for reference
     winX = win.x;
     winY = win.y;
     winW = win.width;
@@ -1840,11 +1839,6 @@ function shouldStartWordWindowAttack() {
   
   // Skip word window during dead pixel phase (waves 9-11)
   if(wave >= 9 && wave <= 11) return false;
-  
-  // Ensure word window exists in waves 12-15
-  if(wave >= 12 && wave <= 15 && (!wordWindowAttack.window || windows.length === 0)){
-    return false; // No window to attack from
-  }
   
   // Check if already active
   if (wordWindowAttack.active) return false;
