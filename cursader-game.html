@@ -2130,6 +2130,11 @@ function damageEnemy(en, amount, source){
       en.deathTellTimer = 0.8;
       return; // Don't kill yet, let update handle the explosion
     }
+    // If corrupted enemy is already in death tell and gets hit again, explode immediately
+    if(en.isCorrupted && en.deathTell){
+      killEnemy(en, -en.hp, source); // Trigger immediate explosion
+      return;
+    }
     killEnemy(en, -en.hp, source); // overflow = how far past 0 this hit pushed it
   }
 }
