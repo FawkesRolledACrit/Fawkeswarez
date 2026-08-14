@@ -452,6 +452,7 @@ function setupButtonStates(button, normalSrc, hoverSrc, pressedSrc){
   
   button.addEventListener('mouseenter', () => {
     button.src = button.dataset.hover;
+    SFX.menuHighlight();
   });
   
   button.addEventListener('mouseleave', () => {
@@ -462,6 +463,7 @@ function setupButtonStates(button, normalSrc, hoverSrc, pressedSrc){
     if(button.dataset.pressed !== button.dataset.normal){
       button.src = button.dataset.pressed;
     }
+    SFX.menuClick();
   });
   
   button.addEventListener('mouseup', () => {
@@ -581,6 +583,8 @@ const SFX = {
   overkill: ()=>beep(200,0.25,'sawtooth',0.1),
   chargeLaunch: ()=>beep(160,0.14,'sawtooth',0.08),
   enemyShoot: ()=>beep(150,0.2,'sawtooth',0.1),
+  menuHighlight: ()=>beep(880,0.04,'square',0.03),
+  menuClick: ()=>beep(660,0.08,'square',0.05),
 };
 
 // ---------- Utility ----------
