@@ -145,10 +145,10 @@
   
   #newsFeedSubWindow{
     position: absolute;
-    top: 150px; /* Position in middle of 500px height */
-    left: 100px; /* Position in middle of 300px width */
-    width: 100px; /* Exact width as requested */
-    height: 200px; /* Exact height as requested */
+    top: 70px; /* Margin from top */
+    bottom: 40px; /* Margin from bottom */
+    left: 60px; /* Margin from left */
+    right: 60px; /* Margin from right */
     overflow: hidden; /* Hide content outside bounds */
   }
   
@@ -164,7 +164,7 @@
     position: absolute;
     left: 0;
     top: 0;
-    width: 100%;
+    width: auto; /* Use natural width, don't resize to clipping area */
     image-rendering: pixelated;
     height: auto; /* Use natural height from image */
     margin: 0 !important;
@@ -558,9 +558,6 @@ function initNewsFeed(){
   testImg.onload = function(){
     noticeHeight = testImg.naturalHeight; // Use natural height without extra spacing
     
-    console.log('=== NOTICE DEBUG ===');
-    console.log('Notice natural height:', noticeHeight);
-    
     for(let i = 1; i <= totalNotices; i++){
       const notice = document.createElement('img');
       notice.className = 'noticeBox';
@@ -568,7 +565,6 @@ function initNewsFeed(){
       const position = (i - 1) * noticeHeight;
       notice.style.top = `${position}px`; // Stack edge to edge - NO SPACING
       noticeList.appendChild(notice);
-      console.log(`Notice ${i} position: ${position}px, computed top: ${notice.offsetTop}px`);
     }
     
     // Add scroll wheel event listener
