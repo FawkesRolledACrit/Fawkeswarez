@@ -145,10 +145,10 @@
   
   #newsFeedSubWindow{
     position: absolute;
-    top: -93px; /* Scaled proportionally: -69px * 1.35 */
-    bottom: 49px; /* Scaled proportionally: 36px * 1.35 */
-    left: 76px; /* Scaled proportionally: 56px * 1.35 */
-    right: 108px; /* Scaled proportionally: 80px * 1.35 */
+    top: 93px; /* Positive value to position from top */
+    left: 76px; /* Position from left */
+    width: 221px; /* 405 - 76 - 108 */
+    height: 533px; /* 675 - 93 - 49 */
     overflow: hidden; /* Hide content outside bounds */
     border: 2px solid red; /* Debug: Show clipping area */
     background: rgba(255, 0, 0, 0.1); /* Debug: Show clipping area */
@@ -560,7 +560,9 @@ function initNewsFeed(){
       top: newsFeedSubWindow.style.top,
       bottom: newsFeedSubWindow.style.bottom,
       left: newsFeedSubWindow.style.left,
-      right: newsFeedSubWindow.style.right
+      right: newsFeedSubWindow.style.right,
+      offsetTop: newsFeedSubWindow.offsetTop,
+      offsetLeft: newsFeedSubWindow.offsetLeft
     });
     
     for(let i = 1; i <= totalNotices; i++){
@@ -576,7 +578,7 @@ function initNewsFeed(){
     console.log('Debug - Notice list height:', noticeList.offsetHeight);
     
     // Add scroll wheel event listener
-    newsFeed.addEventListener('wheel', handleNewsFeedScroll, { passive: true });
+    newsFeed.addEventListener('wheel', handleNewsFeedScroll);
     
     // Update scroll knob position
     updateScrollKnob();
@@ -584,8 +586,6 @@ function initNewsFeed(){
 }
 
 function handleNewsFeedScroll(e){
-  e.preventDefault();
-  
   const delta = e.deltaY;
   const scrollAmount = delta > 0 ? newsFeedScrollSpeed : -newsFeedScrollSpeed;
   
