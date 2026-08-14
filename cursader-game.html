@@ -145,8 +145,8 @@
   
   #newsFeedSubWindow{
     position: absolute;
-    top: 69px; /* Positive margin from top */
-    bottom: 49px; /* Margin from bottom */
+    top: 69px; /* Margin from top */
+    bottom: 80px; /* Margin from bottom - increased to prevent hanging off */
     left: 56px; /* Margin from left */
     right: 80px; /* Margin from right */
     overflow: hidden; /* Hide content outside bounds */
@@ -158,6 +158,8 @@
     left: 0;
     width: 100%;
     height: 100%;
+    margin: 0;
+    padding: 0;
   }
   
   .noticeBox{
@@ -166,11 +168,14 @@
     width: 100%;
     image-rendering: pixelated;
     height: auto; /* Use natural height from image */
+    margin: 0;
+    padding: 0;
+    display: block;
   }
   
   #scrollBar{
     position: absolute;
-    right: 20px;
+    right: 70px; /* Position at edge of clipping area (80px - 10px) */
     top: 50%;
     transform: translateY(-50%);
     width: 20px;
