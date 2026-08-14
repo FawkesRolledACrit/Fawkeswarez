@@ -3988,7 +3988,7 @@ function initGame(){
   player.chargeCooldownReduction = 0;
   enemies = []; playerBullets = []; enemyBullets = []; particles = []; pickups = []; caches = []; deadPixels = []; windows = [];
   cacheSpawnTimer = 6 + Math.random()*4;
-  kills = 0; wave = 1; waveState = 'fighting';
+  kills = 0; wave = 11; waveState = 'fighting'; // DEBUG: Start on wave 11
   killTextEl.textContent = 'Kills 0';
   gameOver = false;
   overlay.classList.add('hidden');
