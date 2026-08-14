@@ -166,6 +166,10 @@
     width: 100%;
     image-rendering: pixelated;
     height: auto; /* Use natural height from image */
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block;
+    vertical-align: top;
   }
   
   #scrollBar{
@@ -550,13 +554,28 @@ function initNewsFeed(){
   testImg.onload = function(){
     noticeHeight = testImg.naturalHeight; // Use natural height without extra spacing
     
+    console.log('=== NEWS FEED DEBUG ===');
+    console.log('Notice natural height:', noticeHeight);
+    console.log('News feed dimensions:', newsFeed.offsetWidth, 'x', newsFeed.offsetHeight);
+    console.log('Sub window dimensions:', newsFeedSubWindow.offsetWidth, 'x', newsFeedSubWindow.offsetHeight);
+    console.log('Sub window position:', {
+      top: newsFeedSubWindow.style.top,
+      bottom: newsFeedSubWindow.style.bottom,
+      left: newsFeedSubWindow.style.left,
+      right: newsFeedSubWindow.style.right
+    });
+    
     for(let i = 1; i <= totalNotices; i++){
       const notice = document.createElement('img');
       notice.className = 'noticeBox';
       notice.src = 'assets/Notice1.png'; // Use Notice1.png for all
       notice.style.top = `${(i - 1) * noticeHeight}px`; // Stack edge to edge - NO SPACING
       noticeList.appendChild(notice);
+      console.log(`Notice ${i} position:`, notice.style.top);
     }
+    
+    console.log('Total notice height:', totalNotices * noticeHeight);
+    console.log('Notice list height:', noticeList.offsetHeight);
     
     // Add scroll wheel event listener
     newsFeed.addEventListener('wheel', handleNewsFeedScroll);
@@ -575,6 +594,14 @@ function handleNewsFeedScroll(e){
   const subWindowHeight = newsFeedSubWindow.offsetHeight;
   const maxScrollOffset = Math.max(0, totalNoticeHeight - subWindowHeight);
   
+  console.log('=== SCROLL DEBUG ===');
+  console.log('Delta:', delta);
+  console.log('Scroll amount:', scrollAmount);
+  console.log('Total notice height:', totalNoticeHeight);
+  console.log('Sub window height:', subWindowHeight);
+  console.log('Max scroll offset:', maxScrollOffset);
+  console.log('Current offset:', newsFeedScrollOffset);
+  
   // Update scroll offset with bounds checking
   newsFeedScrollOffset = Math.max(0, Math.min(maxScrollOffset, newsFeedScrollOffset + scrollAmount));
   
@@ -590,12 +617,21 @@ function updateScrollKnob(){
   const subWindowHeight = newsFeedSubWindow.offsetHeight;
   const maxScrollOffset = Math.max(0, totalNoticeHeight - subWindowHeight);
   
+  console.log('=== KNOB DEBUG ===');
+  console.log('Total notice height:', totalNoticeHeight);
+  console.log('Sub window height:', subWindowHeight);
+  console.log('Max scroll offset:', maxScrollOffset);
+  console.log('Current scroll offset:', newsFeedScrollOffset);
+  
   // Calculate scroll percentage
   const scrollPercentage = maxScrollOffset > 0 ? newsFeedScrollOffset / maxScrollOffset : 0;
   
   // Calculate knob position based on scaled scroll bar length
   const maxKnobPosition = scrollBarLength - scrollKnobHeight;
   const knobPosition = scrollPercentage * maxKnobPosition;
+  
+  console.log('Scroll percentage:', scrollPercentage);
+  console.log('Knob position:', knobPosition);
   
   // Apply knob position
   scrollKnob.style.top = `${knobPosition}px`;
