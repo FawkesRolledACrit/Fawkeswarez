@@ -132,8 +132,8 @@
   
   #newsFeed{
     position: absolute;
-    top: 60%; /* Moved down to be lower */
-    right: 20px; /* Moved left to be closer to buttons */
+    top: 50%; /* Center vertically */
+    right: auto; /* Remove right positioning */
     transform: translateY(-50%);
     width: 300px;
     height: 500px;
@@ -141,6 +141,7 @@
     background-size: contain;
     background-repeat: no-repeat;
     image-rendering: pixelated;
+    left: 0; /* Will be positioned dynamically */
   }
   
   #newsFeedSubWindow{
@@ -662,6 +663,11 @@ function positionButtons(){
   quitButton.style.left = (centerX - quitNatural.width / 2) + 'px';
   quitButton.style.top = currentY + 'px';
   console.log('Quit button position:', quitButton.style.left, quitButton.style.top);
+  
+  // Position news feed 30px to the right of buttons
+  const buttonsRightEdge = centerX + (startNatural.width / 2) + 30; // 30px gap
+  newsFeed.style.left = buttonsRightEdge + 'px';
+  newsFeed.style.top = '50%';
   
   // Debug container info
   console.log('Menu container:', mainMenuContainer.offsetWidth, mainMenuContainer.offsetHeight);
