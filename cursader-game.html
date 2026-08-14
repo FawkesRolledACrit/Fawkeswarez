@@ -15,7 +15,7 @@
   }
   @font-face {
     font-family: 'DOS VGA';
-    src: url('assets/Perfect DOS VGA 437.ttf') format('truetype');
+    src: url('assets/PerfectDOSVGA437.ttf') format('truetype');
   }
   html,body{
     margin:0; padding:0; min-height:100%;
@@ -110,7 +110,7 @@
     left: 50%;
     width: 1920px;
     height: 1080px;
-    background: url('assets/Main_Menu_Background.png') no-repeat center center;
+    background: url('assets/MainMenuBackground.png') no-repeat center center;
     background-size: contain;
     transform-origin: center center;
     transform: translate(-50%, -50%) scale(1);
@@ -247,10 +247,10 @@
       <!-- Main Menu Layer -->
       <div id="mainMenu" class="hidden">
         <div id="mainMenuContainer">
-          <img id="startButton" class="menuButton" src="assets/Main_Menu_Start.png" alt="Start Game">
-          <img id="achievementsButton" class="menuButton" src="assets/Main_Menu_Achievements.png" alt="Achievements">
-          <img id="settingsButton" class="menuButton" src="assets/Main_Menu_Settings.png" alt="Settings">
-          <img id="quitButton" class="menuButton" src="assets/Main_Menu_Quit.png" alt="Quit Game">
+          <img id="startButton" class="menuButton" src="assets/MainMenuStart.png" alt="Start Game">
+          <img id="achievementsButton" class="menuButton" src="assets/MainMenuAchievements.png" alt="Achievements">
+          <img id="settingsButton" class="menuButton" src="assets/MainMenuSettings.png" alt="Settings">
+          <img id="quitButton" class="menuButton" src="assets/MainMenuQuit.png" alt="Quit Game">
         </div>
       </div>
     </div>
@@ -361,10 +361,10 @@ const floatLayer = document.getElementById('floatLayer');
 // ---------- Main Menu System ----------
 function initMainMenu(){
   // Add button state management with image swapping
-  setupButtonStates(startButton, 'Main_Menu_Start.png', 'Main_Menu_Start_Highlight.png', 'Main_Menu_Start_Pressed.png');
-  setupButtonStates(achievementsButton, 'Main_Menu_Achievements.png', 'Main_Menu_Achievements_Highlight.png', null);
-  setupButtonStates(settingsButton, 'Main_Menu_Settings.png', 'Main_Menu_Settings_Highlight.png', 'Main_Menu_Settings_Pressed.png');
-  setupButtonStates(quitButton, 'Main_Menu_Quit.png', 'Main_Menu_Quit_Highlight.png', null);
+  setupButtonStates(startButton, 'MainMenuStart.png', 'MainMenuStartHighlight.png', 'MainMenuStartPressed.png');
+  setupButtonStates(achievementsButton, 'MainMenuAchievements.png', 'MainMenuAchievementsHighlight.png', null);
+  setupButtonStates(settingsButton, 'MainMenuSettings.png', 'MainMenuSettingsHighlight.png', 'MainMenuSettingsPressed.png');
+  setupButtonStates(quitButton, 'MainMenuQuit.png', 'MainMenuQuitHighlight.png', null);
   
   // Add button event listeners
   startButton.addEventListener('click', startGame);
