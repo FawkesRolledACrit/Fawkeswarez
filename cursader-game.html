@@ -2150,14 +2150,14 @@ function killEnemy(en, overflow, source){
   if(en.isCorrupted){
     // Deal damage to you if in radius
     if(player.invuln <= 0 && dist(en.x, en.y, player.x, player.y) < en.explosionRadius){
-      takeDamage(15);
+      takeDamage(5);
       player.invuln = 0.6;
-      shake = 12;
+      shake = 4;
       floatText(player.x, player.y - 20, "EXPLOSION!", '#000');
     }
     // Show explosion effect
     spawnRing(en.x, en.y, '#ffffff');
-    shake = 8;
+    shake = 4;
   }
 
   // ---- ultimate charge from kills ----
@@ -2855,14 +2855,14 @@ function update(dt){
 
         // Corrupted enemy explosion
         if(player.invuln <= 0 && dist(en.x, en.y, player.x, player.y) < en.explosionRadius){
-          takeDamage(15);
+          takeDamage(5);
           player.invuln = 0.6;
-          shake = 12;
+          shake = 4;
           floatText(player.x, player.y - 20, "CRASH!", '#000');
         }
         // Show explosion effect
         spawnRing(en.x, en.y, '#ffffff');
-        shake = 8;
+        shake = 4;
 
         // Ultimate charge
         let gain = (4 + en.level*2);
@@ -3332,7 +3332,7 @@ function spawnMenuButton(buttonIndex, waveMultiplier, forceCorrupted = false){
     isCorrupted: isCorrupted,
     deathTell: false,
     deathTellTimer: 0,
-    explosionRadius: 80
+    explosionRadius: 55
   });
 }
 
