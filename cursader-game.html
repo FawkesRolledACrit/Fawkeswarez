@@ -132,10 +132,10 @@
   
   #newsFeed{
     position: absolute;
-    top: 60%; /* Centered vertically */
+    top: calc(60% + 75px); /* Moved down additional 75px */
     transform: translateY(-50%);
-    width: 405px; /* 35% larger than 300px */
-    height: 675px; /* 35% larger than 500px */
+    width: 300px; /* Original size */
+    height: 500px; /* Original size */
     background-image: url('assets/News_Feed_Background.png');
     background-size: contain;
     background-repeat: no-repeat;
@@ -145,10 +145,10 @@
   
   #newsFeedSubWindow{
     position: absolute;
-    top: -93px; /* Scaled proportionally: -69px * 1.35 */
-    bottom: 49px; /* Scaled proportionally: 36px * 1.35 */
-    left: 76px; /* Scaled proportionally: 56px * 1.35 */
-    right: 108px; /* Scaled proportionally: 80px * 1.35 */
+    top: 69px; /* Positive margin from top */
+    bottom: 49px; /* Margin from bottom */
+    left: 56px; /* Margin from left */
+    right: 80px; /* Margin from right */
     overflow: hidden; /* Hide content outside bounds */
   }
   
@@ -170,11 +170,11 @@
   
   #scrollBar{
     position: absolute;
-    right: 27px; /* Scaled proportionally: 20px * 1.35 */
+    right: 20px;
     top: 50%;
     transform: translateY(-50%);
-    width: 27px; /* Scaled proportionally: 20px * 1.35 */
-    height: 540px; /* Scaled proportionally: 400px * 1.35 */
+    width: 20px;
+    height: 400px;
     background-image: url('assets/News_Feed_Scroll_Bar.png');
     background-size: contain;
     background-repeat: no-repeat;
@@ -184,12 +184,12 @@
   #scrollKnob{
     position: absolute;
     left: 0;
-    width: 27px; /* Scaled proportionally: 20px * 1.35 */
-    height: 41px; /* Scaled proportionally: 30px * 1.35 */
+    width: 20px;
+    height: 30px;
     background-image: url('assets/News_Feed_Scroll_Knob.png');
     background-size: contain;
     background-repeat: no-repeat;
-    image-rendering: pixelatic;
+    image-rendering: pixelated;
   }
   
   .menuButton{
@@ -537,8 +537,8 @@ let newsFeedScrollOffset = 0;
 let newsFeedScrollSpeed = 20;
 let noticeHeight = 0; // Will be set dynamically based on image natural height
 const totalNotices = 9;
-const scrollBarLength = 540; // Scaled proportionally: 400px * 1.35
-const scrollKnobHeight = 41; // Scaled proportionally: 30px * 1.35
+const scrollBarLength = 400;
+const scrollKnobHeight = 30;
 
 function initNewsFeed(){
   // Create notice boxes dynamically - all using Notice1.png
@@ -554,7 +554,7 @@ function initNewsFeed(){
       const notice = document.createElement('img');
       notice.className = 'noticeBox';
       notice.src = 'assets/Notice1.png'; // Use Notice1.png for all
-      notice.style.top = `${(i - 1) * noticeHeight}px`; // Stack edge to edge
+      notice.style.top = `${(i - 1) * noticeHeight}px`; // Stack edge to edge - NO SPACING
       noticeList.appendChild(notice);
     }
     
