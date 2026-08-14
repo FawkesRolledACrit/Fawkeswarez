@@ -2206,15 +2206,21 @@ function killEnemy(en, overflow, source){
   const baseDropChance = 0.2 + (Math.min(wave, 20) - 1) * 0.03;
   const enemyCountFactor = Math.max(1, enemiesToSpawn / 15); // Normalize to 15 enemies as baseline
   const dropChance = baseDropChance / enemyCountFactor;
-  const ipDropChance = dropChance + (player.ipDropRateBonus || 0);
+  
+  // Corrupted enemies have 2x drop chance to compensate for their danger
+  const finalDropChance = en.isCorrupted ? dropChance * 2 : dropChance;
+  const ipDropChance = finalDropChance + (player.ipDropRateBonus || 0);
   
   // Rare MEM drop chance (also scales with enemy count to maintain ~2-3 MEM drops per wave)
   const baseMemDropChance = 0.15 + (Math.min(wave, 20) - 1) * 0.02;
   const memDropChance = (baseMemDropChance / enemyCountFactor) + (player.memDropRateBonus || 0);
   
+  // Corrupted enemies get 2x MEM drop chance as well
+  const finalMemDropChance = en.isCorrupted ? memDropChance * 2 : memDropChance;
+  
   if(Math.random() < ipDropChance){
     // Determine if this drop is MEM (rare) or IP (common)
-    const isMemDrop = Math.random() < memDropChance;
+    const isMemDrop = Math.random() < finalMemDropChance;
     
     let dropType, amount;
     if(isMemDrop){
