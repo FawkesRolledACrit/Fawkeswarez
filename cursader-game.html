@@ -145,10 +145,10 @@
   
   #newsFeedSubWindow{
     position: absolute;
-    top: 30px; /* Reduced margin from top */
-    bottom: 30px; /* Reduced margin from bottom */
-    left: 30px; /* Reduced margin from left */
-    right: 30px; /* Reduced margin from right */
+    top: 150px; /* Position in middle of 500px height */
+    left: 100px; /* Position in middle of 300px width */
+    width: 100px; /* Exact width as requested */
+    height: 200px; /* Exact height as requested */
     overflow: hidden; /* Hide content outside bounds */
   }
   
@@ -163,13 +163,17 @@
   .noticeBox{
     position: absolute;
     left: 0;
+    top: 0;
     width: 100%;
     image-rendering: pixelated;
     height: auto; /* Use natural height from image */
     margin: 0 !important;
     padding: 0 !important;
-    display: block;
-    vertical-align: top;
+    border: none !important;
+    display: block !important;
+    vertical-align: top !important;
+    line-height: 0 !important;
+    font-size: 0 !important;
   }
   
   #scrollBar{
@@ -554,12 +558,17 @@ function initNewsFeed(){
   testImg.onload = function(){
     noticeHeight = testImg.naturalHeight; // Use natural height without extra spacing
     
+    console.log('=== NOTICE DEBUG ===');
+    console.log('Notice natural height:', noticeHeight);
+    
     for(let i = 1; i <= totalNotices; i++){
       const notice = document.createElement('img');
       notice.className = 'noticeBox';
       notice.src = 'assets/Notice1.png'; // Use Notice1.png for all
-      notice.style.top = `${(i - 1) * noticeHeight}px`; // Stack edge to edge - NO SPACING
+      const position = (i - 1) * noticeHeight;
+      notice.style.top = `${position}px`; // Stack edge to edge - NO SPACING
       noticeList.appendChild(notice);
+      console.log(`Notice ${i} position: ${position}px, computed top: ${notice.offsetTop}px`);
     }
     
     // Add scroll wheel event listener
