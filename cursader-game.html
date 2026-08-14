@@ -145,10 +145,10 @@
   
   #newsFeedSubWindow{
     position: absolute;
-    top: 70px; /* Margin from top */
-    bottom: 40px; /* Margin from bottom */
-    left: 60px; /* Margin from left */
-    right: 60px; /* Margin from right */
+    top: 40px; /* Moved up 30px from 70px */
+    left: 35px; /* Moved left 25px from 60px */
+    width: 120px; /* Exact width as requested */
+    height: 150px; /* Exact height as requested */
     overflow: hidden; /* Hide content outside bounds */
   }
   
@@ -178,7 +178,7 @@
   
   #scrollBar{
     position: absolute;
-    right: 20px; /* Position within 30px right margin */
+    right: 5px; /* Position within 120px width clipping area */
     top: 50%;
     transform: translateY(-50%);
     width: 20px;
