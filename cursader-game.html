@@ -2249,15 +2249,10 @@ function emulatePointerLock(){
 
 function requestLock(){
   clearTimeout(lockFallbackTimer);
-  if(!isElectron){
-    // In any browser context (Freebuff preview webview, plain tab) we never
-    // call the native pointer-lock API: the preview webview's host crashes
-    // hard on requestPointerLock (a native crash - not catchable from JS),
-    // and emulated lock tracks the real cursor position anyway. Electron
-    // keeps real pointer lock (hidden OS cursor, movementX/Y deltas).
-    emulatePointerLock();
-    return;
-  }
+  // Real pointer lock hides the OS cursor and captures raw mouse deltas, so
+  // the cursor can't leave the play area. Try it everywhere; if the host
+  // can't do native lock (some webviews throw or silently no-op), the
+  // catch below or the fallback timer drops us into emulated lock.
   try {
     if(canvas.requestPointerLock) canvas.requestPointerLock();
   } catch(err) {
@@ -2266,8 +2261,9 @@ function requestLock(){
     return;
   }
   // Some webviews have requestPointerLock but silently no-op it. If nothing
-  // engaged shortly after asking, fall back to emulation. Real Electron locks
-  // fast, so the pointerlockchange handler clears this timer first.
+  // engaged shortly after asking, fall back to emulation. Real browsers and
+  // Electron lock fast, so the pointerlockchange handler clears this timer
+  // first.
   lockFallbackTimer = setTimeout(() => {
     if(!pointerLocked) emulatePointerLock();
   }, 400);
@@ -2659,7 +2655,7 @@ const UPGRADE_POOLS = {
 
 function showUpgradeChoices(){
   waveState = 'upgrade';
-  if(isElectron && document.exitPointerLock) document.exitPointerLock();
+  if(document.exitPointerLock) document.exitPointerLock();
   
   // Pick one upgrade from each path
   const picks = [];
@@ -5332,7 +5328,7 @@ function takeDamage(amount){
   if(player.hp <= 0 && !gameOver){
     player.hp = 0;
     gameOver = true;
-    if(isElectron && document.exitPointerLock) document.exitPointerLock();
+    if(document.exitPointerLock) document.exitPointerLock();
     overlayTitle.textContent = "SYSTEM CRASH";
     overlaySub.textContent = "Survived " + (wave) + " waves  " + kills + " kills";
     overlay.classList.remove('hidden');
