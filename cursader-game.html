@@ -132,11 +132,12 @@
   
   #newsFeed{
     position: absolute;
-    top: 60%; /* Centered vertically */
-    transform: translateY(-50%);
-    width: 300px; /* Original size */
-    height: 500px; /* Original size */
-    background-image: url('assets/News_Feed_Background.png');
+    top: 210px; /* Moved up 20px more (was 230px) */
+    transform: scale(2.28, 2.4); /* 2.4x tall, 5% thinner (2.28x wide) */
+    transform-origin: top left;
+    width: 300px; /* Layout size stays 300x500; the 2x is visual only so scroll math is unchanged */
+    height: 500px;
+    background-image: url('assets/News_Feed_Background.png?v=2');
     background-size: contain;
     background-repeat: no-repeat;
     image-rendering: pixelated;
@@ -145,10 +146,27 @@
   
   #newsFeedSubWindow{
     position: absolute;
-    top: 40px; /* Moved up 30px from 70px */
-    left: 35px; /* Moved left 25px from 60px */
-    width: 120px; /* Exact width as requested */
-    height: 150px; /* Exact height as requested */
+    /*
+      This is the little clipping window the notices scroll inside of.
+      It must line up with the light-blue dotted square drawn in
+      News_Feed_Background.png, otherwise notices bleed out past the
+      dotted border or get cut off by it.
+
+      The background is a 436x793 image shown with `background-size: contain`
+      inside this 300x500 box, so it is scaled by 500/793 (~0.6305) and
+      anchored at the top-left (background-position defaults to 0% 0%).
+
+      In the source image the dotted square's inside edge runs from
+      x=43..368 and y=66..525. Multiplying those by 500/793 gives:
+        left   = 43 * 500/793 = 27.1px
+        top    = 66 * 500/793 = 41.6px
+        width  = 326 * 500/793 = 205.5px
+        height = 460 * 500/793 = 290.0px
+    */
+    left: 27.1px;
+    top: 41.6px;
+    width: 195.5px; /* right edge pulled in 10px to shrink the clip box */
+    height: 290px;
     overflow: hidden; /* Hide content outside bounds */
   }
   
@@ -164,41 +182,188 @@
     position: absolute;
     left: 0;
     top: 0;
-    width: auto; /* Use natural width, don't resize to clipping area */
+    cursor: pointer;
+    user-select: none;
+  }
+  .noticeImg{
+    display: block;
+    width: auto;
+    height: auto;
     image-rendering: pixelated;
-    height: auto; /* Use natural height from image */
     margin: 0 !important;
     padding: 0 !important;
     border: none !important;
-    display: block !important;
     vertical-align: top !important;
     line-height: 0 !important;
     font-size: 0 !important;
   }
+  .noticeLabel{
+    position: absolute;
+    left: 71px; /* pushed toward the left edge so it stays inside the clip box */
+    top: calc(50% + 5px); /* nudged down ~5px from vertical center */
+    transform: translateY(-50%);
+    color: #000;
+    font-family: "DOS VGA", "Courier New", monospace;
+    font-size: 14px;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+  .noticeBox:hover .noticeLabel{
+    color: #2827ed;
+  }
+  .noticeNewBadge{
+    position: absolute;
+    left: 25px;
+    top: calc(50% - 8px);
+    transform: translateY(-50%);
+    z-index: 2;
+    color: #ff0000;
+    font-family: "DOS VGA", "Courier New", monospace;
+    font-size: 16px;
+    font-weight: 700;
+    text-shadow:
+      -1px -1px 0 #000,
+       1px -1px 0 #000,
+      -1px  1px 0 #000,
+       1px  1px 0 #000;
+    white-space: nowrap;
+    pointer-events: none;
+  }
   
   #scrollBar{
     position: absolute;
-    right: 5px; /* Position within 120px width clipping area */
-    top: 50%;
-    transform: translateY(-50%);
-    width: 20px;
-    height: 400px;
+    inset: 0; /* full-frame sprite aligned with the feed background */
     background-image: url('assets/News_Feed_Scroll_Bar.png');
     background-size: contain;
+    background-position: top left;
     background-repeat: no-repeat;
     image-rendering: pixelated;
+    pointer-events: none;
   }
   
   #scrollKnob{
     position: absolute;
-    left: 0;
-    width: 20px;
-    height: 30px;
+    inset: 0; /* full-frame sprite; thumb is drawn near the top of the track */
     background-image: url('assets/News_Feed_Scroll_Knob.png');
+    background-size: contain;
+    background-position: top left;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    pointer-events: none;
+  }
+  
+  #statusReport{
+    position: absolute;
+    transform: scale(1.68);
+    transform-origin: top left;
+  }
+  #statusReportBar{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 754px;
+    height: 68px;
+    background-image: url('assets/Status_Report_Bar.png?v=2');
     background-size: contain;
     background-repeat: no-repeat;
     image-rendering: pixelated;
   }
+  .statValue{
+    position: absolute;
+    top: 38px;
+    transform: translateX(-50%);
+    color: #63e763;
+    font-family: "DOS VGA", "Courier New", monospace;
+    font-size: 15px;
+    text-align: center;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+  .statusArrowWrap{
+    position: absolute;
+    width: 44px;
+    height: 52px;
+    overflow: hidden;
+    cursor: pointer;
+    image-rendering: pixelated;
+    transform: scale(0.95); /* 5% smaller */
+    transform-origin: top left;
+  }
+  .statusArrowWrap img{
+    position: absolute;
+    top: 0;
+    width: 92px;
+    height: 52px;
+    max-width: none;
+    image-rendering: pixelated;
+  }
+  #statusUpButton{ left: -2px; }
+  #statusDownButton{ left: -48px; }
+  
+  #leaderboards{
+    position: absolute;
+    width: 490px;
+    height: 722px;
+    background-image: url('assets/Leaderboards.png?v=3');
+    background-size: contain;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    transform: scale(1.311, 1.0944); /* 15% wider, 20% taller, 5% shorter, 5% narrower */
+    transform-origin: top left;
+  }
+  #leaderboardScrollBar{
+    position: absolute;
+    left: 24px;
+    top: 92px;
+    width: 22px;
+    height: 609px;
+    background-image: url('assets/News_Feed_Scroll_Bar.png');
+    background-size: 384px 1028px;
+    background-position: -336px -82px;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    pointer-events: none;
+  }
+  #leaderboardScrollKnob{
+    position: absolute;
+    inset: 0;
+    background-image: url('assets/News_Feed_Scroll_Knob.png');
+    background-size: 384px 1028px;
+    background-position: -336px -82px;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    pointer-events: none;
+  }
+  #leaderboardClip{
+    position: absolute;
+    left: 60px;
+    top: 92px;
+    width: 364px;
+    height: 609px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  #leaderboardList{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .lbRow{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 12px 6px 42px; /* 30px extra left padding */
+    border-bottom: 1px dashed #42e2e8;
+    color: #fff;
+    font-family: "DOS VGA", "Courier New", monospace;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .lbRow:last-child{ border-bottom: none; }
+  .lbName{ font-size: 42px; line-height: 1; min-width: 100px; text-align: left; }
+  .lbCursor{ width: 40px; height: 40px; border: 2px dashed #888; box-sizing: border-box; flex-shrink: 0; }
+  .lbTime{ font-size: 28px; line-height: 1; min-width: 100px; text-align: right; }
   
   .menuButton{
     position: absolute;
@@ -245,6 +410,280 @@
   }
   .modal.hidden{ display:none; }
   #lockOverlay{ cursor:pointer; z-index:5; }
+  #noticeModal{
+    position: absolute;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent; /* main menu shows through as the backdrop */
+  }
+  #noticeModalBox{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0; /* keep the 1920px design layout from being squeezed by the flex container */
+    image-rendering: pixelated;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    color: #fff;
+    font-family: "DOS VGA", "Courier New", monospace;
+  }
+  /* Modal is laid out at its native 1920x1080 design size and scaled as a
+     whole (background + text together) to fit the screen area, so the text
+     always stays in proportion with the window image at any resolution. */
+  #noticeModalPage{
+    flex: 1;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 18px 64px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 32px;
+    white-space: normal;
+    overflow: hidden;
+  }
+  #noticeModalPage .pageTitle{
+    font-size: 46px;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 2px 2px #000;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+  }
+  #noticeModalPage .pageBody{
+    width: 100%;
+    max-width: 1780px;
+    text-align: left;
+    line-height: 1.55;
+  }
+  #noticeModalPage .muted{ opacity: .55; }
+  #noticeModalPage .kvRow{
+    display: flex;
+    gap: 21px;
+    margin: 18px 0;
+    text-align: left;
+  }
+  #noticeModalPage .kvKey{
+    flex: 0 0 205px;
+    font-weight: 700;
+    color: #63e763;
+    text-align: right;
+    white-space: nowrap;
+  }
+  #noticeModalPage .kvDesc{ flex: 1; }
+  #noticeModalPage .upRow{ margin: 18px 0; text-align: left; }
+  #noticeModalPage .upName{ font-weight: 700; color: #63e763; }
+  #noticeModalPage .upGroup{
+    color: #42e2e8;
+    font-weight: 700;
+    margin: 18px 0 6px;
+    text-align: left;
+  }
+  #noticeModalPage .pickupRow{
+    display: flex;
+    align-items: center;
+    gap: 27px;
+    margin: 26px 0;
+    text-align: left;
+  }
+  #noticeModalPage .pickupIcon{
+    width: 96px;
+    height: 96px;
+    object-fit: contain;
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 6px rgba(255,255,255,.45));
+  }
+  #noticeModalPage .pickupName{ font-weight: 700; color: #63e763; }
+  /* colon after every green label */
+  #noticeModalPage .kvKey::after,
+  #noticeModalPage .upName::after,
+  #noticeModalPage .pickupName::after{ content: ':'; }
+  #noticeModalPage .credUrl{ color: #42e2e8; }
+  #noticeModalPage a.credUrl{ text-decoration: underline; }
+  #noticeModalPage .upGroup.gapTop{ margin-top: 63px; }
+  #noticeModalNav{
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 42px;
+  }
+  #noticeModalNav button{
+    background: #c0c0c0;
+    border: 2px solid #000;
+    color: #000;
+    font-size: 44px;
+    line-height: 1;
+    font-weight: 700;
+    padding: 6px 30px;
+    cursor: pointer;
+    font-family: "DOS VGA", "Courier New", monospace;
+  }
+  #noticeModalNav button:active{ transform: translateY(1px); }
+  #noticeModalNav button:disabled{ opacity: .35; cursor: default; }
+  #pageIndicator{
+    font-size: 32px;
+    color: #fff;
+    text-shadow: 2px 2px #000;
+    min-width: 100px;
+    text-align: center;
+  }
+  /* Settings menu (reuses the modal frame + scaling pattern) */
+  #settingsModal{
+    position: absolute;
+    inset: 0;
+    z-index: 60;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+  }
+  #settingsBox{
+    position: relative;
+    flex-shrink: 0;
+    width: 1920px;
+    height: 1080px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: url('assets/MainMenuModal.png') no-repeat center center;
+    background-size: contain;
+    color: #fff;
+    font-family: "DOS VGA", "Courier New", monospace;
+    transform-origin: center center;
+  }
+  #settingsPage{
+    flex: 1;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 18px 64px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 32px;
+    overflow: hidden;
+  }
+  #settingsPage .pageTitle{
+    font-size: 46px;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 2px 2px #000;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+  }
+  #settingsPage .pageBody{
+    width: 100%;
+    max-width: 1780px;
+    text-align: left;
+    line-height: 1.55;
+  }
+  #settingsPage .upGroup{
+    color: #42e2e8;
+    font-weight: 700;
+    margin: 18px 0 6px;
+    text-align: left;
+  }
+  #settingsPage .kvRow{
+    display: flex;
+    gap: 21px;
+    margin: 18px 0;
+    text-align: left;
+  }
+  #settingsPage .kvKey{
+    flex: 0 0 260px;
+    font-weight: 700;
+    color: #63e763;
+    text-align: right;
+    white-space: nowrap;
+  }
+  #settingsPage .kvKey::after{ content: ':'; }
+  #settingsPage .kvDesc{ flex: 1; }
+  #settingsPage .settingRow{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin: 26px 0;
+    text-align: left;
+  }
+  #settingsPage .settingLabel{
+    flex: 0 0 260px;
+    font-weight: 700;
+    color: #63e763;
+    text-align: right;
+    white-space: nowrap;
+  }
+  #settingsPage .settingLabel::after{ content: ':'; }
+  #settingsPage input[type="range"]{
+    flex: 1;
+    height: 10px;
+    accent-color: #63e763;
+  }
+  #settingsPage .settingVal{
+    flex: 0 0 100px;
+    text-align: left;
+    color: #42e2e8;
+  }
+  #settingsPage select{
+    font-family: "DOS VGA", "Courier New", monospace;
+    font-size: 28px;
+    background: #000;
+    color: #fff;
+    border: 2px solid #42e2e8;
+    padding: 6px 12px;
+    max-width: 760px;
+  }
+  #settingsPage .settingNote{
+    color: #9fb3c8;
+    font-size: 26px;
+    margin: 20px 0;
+    text-align: left;
+  }
+  #settingsPage .toggleBtn{
+    background: #c0c0c0;
+    border: 2px solid #000;
+    color: #000;
+    font-size: 28px;
+    font-weight: 700;
+    padding: 6px 26px;
+    cursor: pointer;
+    font-family: "DOS VGA", "Courier New", monospace;
+  }
+  #settingsPage .toggleBtn:active{ transform: translateY(1px); }
+  #settingsPage .toggleBtn.active{ background: #63e763; color: #000; }
+  #settingsNav{
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 42px;
+  }
+  #settingsNav button{
+    background: #c0c0c0;
+    border: 2px solid #000;
+    color: #000;
+    font-size: 44px;
+    line-height: 1;
+    font-weight: 700;
+    padding: 6px 30px;
+    cursor: pointer;
+    font-family: "DOS VGA", "Courier New", monospace;
+  }
+  #settingsNav button:active{ transform: translateY(1px); }
+  #settingsNav button:disabled{ opacity: .35; cursor: default; }
+  #settingsPageInd{
+    font-size: 32px;
+    color: #fff;
+    text-shadow: 2px 2px #000;
+    min-width: 100px;
+    text-align: center;
+  }
   .modal h1{ margin:0; font-size:40px; letter-spacing:0px; color:#fff; font-family: "DOS VGA", "Courier New", monospace; }
   .modal button{
     background: #ffffff;
@@ -347,6 +786,35 @@
               <div id="scrollKnob"></div>
             </div>
           </div>
+
+          <!-- Online Leaderboards -->
+          <div id="leaderboards" style="left:16px; top:150px;">
+            <div id="leaderboardScrollBar">
+              <div id="leaderboardScrollKnob"></div>
+            </div>
+            <div id="leaderboardClip">
+              <div id="leaderboardList"></div>
+            </div>
+          </div>
+
+          <!-- Status Report -->
+          <div id="statusReport" style="left:20px; top:950px;">
+            <div id="statusReportBar">
+              <span id="statCursor"   class="statValue" style="left:157px">???</span>
+              <span id="statKills"    class="statValue" style="left:216px">0</span>
+              <span id="statDeaths"   class="statValue" style="left:274px">0</span>
+              <span id="statIpSpent"  class="statValue" style="left:344px">0</span>
+              <span id="statPurges"   class="statValue" style="left:413px">0</span>
+              <span id="statMaxStage" class="statValue" style="left:485px">0</span>
+              <span id="statBestTime" class="statValue" style="left:568px">0</span>
+            </div>
+            <div class="statusArrowWrap" style="left:619px; top:10px;">
+              <img id="statusUpButton" src="assets/Status_Up.png" alt="Up">
+            </div>
+            <div class="statusArrowWrap" style="left:665px; top:10px;">
+              <img id="statusDownButton" src="assets/Status_Down.png" alt="Down">
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -409,6 +877,18 @@ const gameState = {
   currentStage: 1
 };
 
+// Stage configuration - each stage has its own era name and wave count
+const STAGE_CONFIG = {
+  1: { name: 'Visi On', waves: 15 },
+  2: { name: 'Mac 1.0', waves: 20 }
+};
+function getStageWaves(){
+  return (STAGE_CONFIG[gameState.currentStage] || STAGE_CONFIG[1]).waves;
+}
+function getStageName(){
+  return (STAGE_CONFIG[gameState.currentStage] || STAGE_CONFIG[1]).name;
+}
+
 // Detect if running in Electron vs web browser
 const isElectron = typeof window !== 'undefined' && window.process && window.process.type === 'renderer';
 const assetPath = 'assets/'; // Both environments now use assets/ folder
@@ -422,6 +902,19 @@ visiOnBg.src = assetPath + 'VisiOn_Back.png';
 let bgLoaded = false;
 visiOnBg.onload = () => { bgLoaded = true; };
 visiOnBg.onerror = () => { console.error('Failed to load background image'); };
+
+// Stage 2 (Mac 1.0) background
+const macBg = new Image();
+macBg.src = assetPath + 'Mac_Background.png';
+let macBgLoaded = false;
+macBg.onload = () => { macBgLoaded = true; };
+macBg.onerror = () => { console.error('Failed to load Mac background image'); };
+
+// Stage 2 sprites
+const trashShotImg = new Image();
+trashShotImg.src = assetPath + 'Trash_Shot.png';
+const macFileImg = new Image();
+macFileImg.src = assetPath + 'Mac_File.png';
 
 const hpFill = document.getElementById('hpFill');
 const ultFill = document.getElementById('ultFill');
@@ -454,6 +947,91 @@ const achievementsButton = document.getElementById('achievementsButton');
 const settingsButton = document.getElementById('settingsButton');
 const quitButton = document.getElementById('quitButton');
 const floatLayer = document.getElementById('floatLayer');
+const statusReportBar = document.getElementById('statusReportBar');
+const statusUpButton = document.getElementById('statusUpButton');
+const statusDownButton = document.getElementById('statusDownButton');
+const statCursor = document.getElementById('statCursor');
+const statKills = document.getElementById('statKills');
+const statDeaths = document.getElementById('statDeaths');
+const statIpSpent = document.getElementById('statIpSpent');
+const statPurges = document.getElementById('statPurges');
+const statMaxStage = document.getElementById('statMaxStage');
+const statBestTime = document.getElementById('statBestTime');
+
+// ---------- Status Report ----------
+let selectedStatusCursor = 0;
+
+function cycleStatusCursor(direction){
+  const keys = Object.keys(CURSOR_TYPES);
+  selectedStatusCursor = (selectedStatusCursor + direction + keys.length) % keys.length;
+  renderStatusReport();
+}
+
+function renderStatusReport(){
+  // Placeholder values until stat tracking / save games are wired up.
+  statCursor.textContent = '???';
+  statKills.textContent = '0';
+  statDeaths.textContent = '0';
+  statIpSpent.textContent = '0';
+  statPurges.textContent = '0';
+  statMaxStage.textContent = '0';
+  statBestTime.textContent = '0';
+}
+
+// ---------- Online Leaderboards ----------
+const leaderboards = document.getElementById('leaderboards');
+const leaderboardList = document.getElementById('leaderboardList');
+const leaderboardClip = document.getElementById('leaderboardClip');
+const leaderboardScrollBar = document.getElementById('leaderboardScrollBar');
+const leaderboardScrollKnob = document.getElementById('leaderboardScrollKnob');
+
+let leaderboardScrollOffset = 0;
+const leaderboardScrollSpeed = 40; // rows are tall, so scroll a good chunk per wheel tick
+
+function leaderboardMaxScroll(){
+  return Math.max(0, leaderboardList.scrollHeight - leaderboardClip.clientHeight);
+}
+
+// The scrollbar sprite's visible track+arrows only span y=63..532 (470px); the
+// rest is transparent padding. Scale that 470px region to the 609px clip height.
+const LEADERBOARD_TRACK_SOURCE_H = 470;
+const LEADERBOARD_SCROLL_SCALE = 609 / LEADERBOARD_TRACK_SOURCE_H;
+const LEADERBOARD_THUMB_TRAVEL = 371 * LEADERBOARD_SCROLL_SCALE - 30; // stop 30px short of the track bottom
+
+function updateLeaderboardKnob(){
+  const maxOffset = leaderboardMaxScroll();
+  const percentage = maxOffset > 0 ? leaderboardScrollOffset / maxOffset : 0;
+  leaderboardScrollKnob.style.transform = `translateY(${percentage * LEADERBOARD_THUMB_TRAVEL}px)`;
+}
+
+function handleLeaderboardScroll(e){
+  if(e.cancelable) e.preventDefault();
+  const delta = e.deltaY;
+  const amount = delta > 0 ? leaderboardScrollSpeed : -leaderboardScrollSpeed;
+  const maxOffset = leaderboardMaxScroll();
+  leaderboardScrollOffset = Math.max(0, Math.min(maxOffset, leaderboardScrollOffset + amount));
+  leaderboardList.style.transform = `translateY(-${leaderboardScrollOffset}px)`;
+  updateLeaderboardKnob();
+}
+
+function initLeaderboard(){
+  // 20 placeholder rows until leaderboard logic is wired up.
+  leaderboardList.innerHTML = '';
+  for(let i = 1; i <= 20; i++){
+    const row = document.createElement('div');
+    row.className = 'lbRow';
+    row.innerHTML = `
+      <span class="lbName">???</span>
+      <div class="lbCursor"></div>
+      <span class="lbTime">???</span>
+    `;
+    leaderboardList.appendChild(row);
+  }
+  leaderboardScrollOffset = 0;
+  leaderboardList.style.transform = 'translateY(0px)';
+  leaderboards.addEventListener('wheel', handleLeaderboardScroll, { passive: false });
+  updateLeaderboardKnob();
+}
 
 // ---------- Main Menu System ----------
 function initMainMenu(){
@@ -468,6 +1046,16 @@ function initMainMenu(){
   achievementsButton.addEventListener('click', showAchievements);
   settingsButton.addEventListener('click', showSettings);
   quitButton.addEventListener('click', quitGame);
+  
+  // Status report: up/down cycle the selected cursor
+  setupButtonStates(statusUpButton, 'Status_Up.png', 'Status_Up_Highlight.png', 'Status_Up_Pressed.png');
+  setupButtonStates(statusDownButton, 'Status_Down.png', 'Status_Down_Highlight.png', 'Status_Down_Pressed.png');
+  statusUpButton.addEventListener('click', ()=> cycleStatusCursor(-1));
+  statusDownButton.addEventListener('click', ()=> cycleStatusCursor(1));
+  renderStatusReport();
+  
+  // Leaderboard placeholder rows
+  initLeaderboard();
   
   // Start with main menu visible
   showMainMenu();
@@ -544,9 +1132,247 @@ function stopLogoAnimation(){
 let newsFeedScrollOffset = 0;
 let newsFeedScrollSpeed = 20;
 let noticeHeight = 0; // Will be set dynamically based on image natural height
-const totalNotices = 9;
-const scrollBarLength = 400;
-const scrollKnobHeight = 30;
+const totalNotices = 5;
+// The feed background is a 436x793 image shown with background-size: contain
+// inside the 300x500 box, so it scales by 500/793. The thumb sits at source
+// y=93..158 and travels down to y=464 (track bottom 530 minus thumb height 66),
+// i.e. 371 source px of travel.
+const SCROLL_SCALE = 500 / 793;
+const THUMB_TRAVEL = 371 * SCROLL_SCALE - 15; // stop 15px short of the track bottom
+
+const NOTICE_IMG = 'assets/Notice1.png'; // Shared image for all notices
+const NOTICE_PRESSED_IMG = 'assets/Notice1_Pressed.png';
+
+// Notice content registry (0-based: notice number - 1).
+// Pages will be filled in later; each notice starts with one empty page.
+const NOTICE_DATA = [
+  {
+    title: 'How to Play',
+    pages: [
+      `<div class="pageTitle">CONTROLS</div>
+       <div class="pageBody">
+         <div class="kvRow"><span class="kvKey">MOVE</span><span class="kvDesc">Your mouse - the cursor is locked to the play area</span></div>
+         <div class="kvRow"><span class="kvKey">FIRE</span><span class="kvDesc">Left click (tap) - basic attack at your target</span></div>
+         <div class="kvRow"><span class="kvKey">CHARGE</span><span class="kvDesc">Hold left click - damage scales with hold time</span></div>
+         <div class="kvRow"><span class="kvKey">TARGET</span><span class="kvDesc">Q / E - cycle through enemies</span></div>
+         <div class="kvRow"><span class="kvKey">SPELL</span><span class="kvDesc">Right click - cast selected spell (100 IP)</span></div>
+         <div class="kvRow"><span class="kvKey">SCROLL</span><span class="kvDesc">Mouse wheel - switch selected spell</span></div>
+         <div class="kvRow"><span class="kvKey">PURGE</span><span class="kvDesc">Hold right click while still - see THE PURGE</span></div>
+         <div class="kvRow"><span class="kvKey">PAUSE</span><span class="kvDesc">Esc - release cursor; click to lock back in</span></div>
+       </div>`,
+
+      `<div class="pageTitle">THE PURGE</div>
+       <div class="pageBody">
+         Your cursor's ultimate. The PURGE bar fills with every kill - overkills grant bonus charge. When it's full:<br><br>
+         1. Stand still and hold right click 1.5s - moving 15px (or being bumped) cancels it.<br>
+         2. "PURGE READY!" appears above your cursor.<br>
+         3. Release - time freezes for 10 seconds.<br>
+         4. Invincible - move the cursor to place your Purge.<br>
+         5. Right click again - time resumes and it fires.<br><br>
+         <span class="muted">Each cursor type has its own unique Purge.</span>
+       </div>`,
+
+      `<div class="pageTitle">RESOURCES</div>
+       <div class="pageBody">
+         <div class="kvRow"><span class="kvKey">MEM</span><span class="kvDesc">Health - percentage bar. Restored by MEM drops and encrypted heal files. Max depends on your cursor.</span></div>
+         <div class="kvRow"><span class="kvKey">IP</span><span class="kvDesc">Invoke Points - IP:000:000:000, max 300. Spells cost one segment (100). Gained from drops and files.</span></div>
+         <div class="kvRow"><span class="kvKey">PURGE</span><span class="kvDesc">Fills with kills - 4-14 per kill, 1.5x on overkill. Full (500) = ready.</span></div>
+       </div>`,
+
+      `<div class="pageTitle">PICKUPS &amp; FILES</div>
+       <div class="pageBody">
+         <div class="pickupRow"><img class="pickupIcon" src="assets/Pickup_IP.png" alt="IP"><span><span class="pickupName">IP</span> kill drops; spells cost one segment (100)</span></div>
+         <div class="pickupRow"><img class="pickupIcon" src="assets/Pickup_MEM.png" alt="MEM"><span><span class="pickupName">MEM</span> rare kill drops; restore health</span></div>
+         <div class="pickupRow"><img class="pickupIcon" src="assets/Pickup_Mine.png" alt="Mine"><span><span class="pickupName">MINE</span> Grenade Purge; detonates on contact</span></div>
+         <div class="pickupRow"><img class="pickupIcon" src="assets/Pickup_File.png" alt="File"><span><span class="pickupName">FILE</span> level 1-5; hold to decrypt (0.3s-1.5s)</span></div>
+       </div>`,
+
+      `<div class="pageTitle">CURSOR - DEFAULT</div>
+       <div class="pageBody">
+         <div class="kvRow"><span class="kvKey">MEM</span><span class="kvDesc">100</span></div>
+         <div class="kvRow"><span class="kvKey">BASIC</span><span class="kvDesc">6 dmg · instant · no cooldown</span></div>
+         <div class="kvRow"><span class="kvKey">CHARGE</span><span class="kvDesc">8.8 dmg · pierces · scales with hold</span></div>
+         <div class="kvRow"><span class="kvKey">PURGE</span><span class="kvDesc">Selection box - 28 dmg inside</span></div>
+         <br><span class="muted">Single-target shots with a piercing charge attack.</span>
+       </div>`,
+
+      `<div class="pageTitle">CURSOR - SHOTGUN</div>
+       <div class="pageBody"><span class="muted">??? - Locked<br><br>Unlock this cursor to reveal its stats and abilities.</span></div>`,
+
+      `<div class="pageTitle">CURSOR - GRENADE</div>
+       <div class="pageBody"><span class="muted">??? - Locked<br><br>Unlock this cursor to reveal its stats and abilities.</span></div>`,
+
+      `<div class="pageTitle">CURSOR - LASER</div>
+       <div class="pageBody"><span class="muted">??? - Locked<br><br>Unlock this cursor to reveal its stats and abilities.</span></div>`,
+
+      `<div class="pageTitle">UPGRADES - OFFENSIVE</div>
+       <div class="pageBody">
+         <div class="upGroup">DEFAULT CURSOR</div>
+         <div class="upRow"><span class="upName">Buffer Overflow</span> +pierce on charged shots (stacks)</div>
+         <div class="upRow"><span class="upName">Null Pointer</span> basic shots can pierce</div>
+         <div class="upRow"><span class="upName">Cascade Failure</span> kill explosions chain to the nearest enemy</div>
+       </div>`,
+
+      `<div class="pageTitle">UPGRADES - DEFENSIVE</div>
+       <div class="pageBody">
+         <div class="upRow"><span class="upName">Armor Plating</span> -0.5 damage taken</div>
+         <div class="upRow"><span class="upName">Dodge Buffer</span> 5% chance to fully dodge a hit</div>
+         <div class="upRow"><span class="upName">Backup Power</span> +0.5 MEM on basic/charged kills</div>
+         <div class="upRow"><span class="upName">Active Firewall</span> FIREWALL reflects 1 dmg</div>
+         <div class="upRow"><span class="upName">Debounce</span> 0.05s invulnerability after a hit</div>
+       </div>`,
+
+      `<div class="pageTitle">UPGRADES - UTILITY</div>
+       <div class="pageBody">
+         <div class="upRow"><span class="upName">Antivirus Scan</span> aura, 0.2 dmg/s nearby</div>
+         <div class="upRow"><span class="upName">System Beacon</span> 60px pull on drops &amp; files</div>
+         <div class="upRow"><span class="upName">Faster Decrypt</span> +5% decrypt speed</div>
+         <div class="upRow"><span class="upName">Wide Net</span> +5% pickup range</div>
+         <div class="upRow"><span class="upName">Data Cache</span> +5% IP drop chance</div>
+         <div class="upRow"><span class="upName">System Repair</span> +5% MEM drop chance</div>
+       </div>`,
+
+      `<div class="pageTitle">ENEMIES</div>
+       <div class="pageBody"><span class="muted">New enemies are logged here as you encounter them - each with name, health, and intel.</span></div>`,
+    ]
+  },
+  { title: 'Credits',     pages: [
+      `<div class="pageTitle">CREDITS</div>
+       <div class="pageBody">
+         <div class="upRow"><span class="upName">Created by</span> Fawkes - design, code, art, sound, and writing</div>
+         <div class="upGroup gapTop">SUPPORT</div>
+         <div class="upRow"><span class="upName">Ko-fi</span> <a class="credUrl" href="https://ko-fi.com/fawkesware" target="_blank" rel="noopener noreferrer">https://ko-fi.com/fawkesware</a></div>
+         <div class="upRow"><span class="upName">Website</span> <a class="credUrl" href="http://esotericdelivery.com/" target="_blank" rel="noopener noreferrer">http://esotericdelivery.com/</a></div>
+         <div class="upRow"><span class="upName">Discord</span> <span class="credUrl">debonairfawkes</span></div>
+         <div class="upGroup gapTop">MADE WITH</div>
+         <div class="upRow"><span class="upName">Font</span> Perfect DOS VGA 437 - Zeh Fernando</div>
+         <div class="upRow"><span class="upName">Engine</span> Electron + HTML5 Canvas</div>
+       </div>`
+  ] },
+  { title: 'Changelog',   pages: [''] },
+  { title: 'Roadmap',     pages: [
+      `<div class="pageTitle">ROADMAP</div>
+       <div class="pageBody">
+         <div class="upGroup">IN THE BUILD NOW</div>
+         <div class="upRow"><span class="upName">Stage 1</span> Visi On Era - 15 waves to victory</div>
+         <div class="upRow"><span class="upName">Cursors</span> Default, Shotgun, Grenade, Laser (all selectable)</div>
+         <div class="upRow"><span class="upName">Enemies</span> Buttons, Corrupted, Popup Ads, Recycle Bin, Tray Turret</div>
+         <div class="upRow"><span class="upName">Systems</span> 2 spells, 3-path upgrades, encrypted files, IP/MEM drops</div>
+         <div class="upGroup gapTop">NEXT IN LINE</div>
+         <div class="upRow"><span class="upName">Combat</span> Fix Q/E targeting, charge scaling, Purge rework</div>
+         <div class="upRow"><span class="upName">Progression</span> Cursor unlocks, per-cursor upgrade paths</div>
+         <div class="upRow"><span class="upName">Meta</span> Save data, run stats, leaderboards</div>
+         <div class="upRow"><span class="upName">Content</span> New enemies, items, and later eras</div>
+       </div>`,
+
+      `<div class="pageTitle">COMBAT FIXES</div>
+       <div class="pageBody">
+         <div class="upGroup">KNOWN GAPS</div>
+         <div class="upRow"><span class="upName">Q/E targeting</span> Manual target is overwritten by auto-aim every frame - needs a lock-in</div>
+         <div class="upRow"><span class="upName">Charge damage</span> Should scale with hold time; currently a flat value per cursor</div>
+         <div class="upRow"><span class="upName">Purge</span> Rework: unique ult per cursor, charged by holding RMB while still, freezes time, then fires</div>
+         <div class="upGroup gapTop">CURSORS</div>
+         <div class="upRow"><span class="upName">Unlock system</span> Gate the 3 extra cursors behind achievements / meta progress</div>
+         <div class="upRow"><span class="upName">Unique ults</span> Build Radial Sweep, FloodFill mines, and System Overload per cursor</div>
+       </div>`,
+
+      `<div class="pageTitle">UPGRADES &amp; ITEMS</div>
+       <div class="pageBody">
+         <div class="upGroup">UPGRADES</div>
+         <div class="upRow"><span class="upName">Per-cursor offense</span> Add Shotgun / Grenade / Laser offensive pools (only Default's 3 exist now)</div>
+         <div class="upRow"><span class="upName">Mutation cards</span> Rare upgrades that change how a spell works, not just numbers</div>
+         <div class="upRow"><span class="upName">Reroll</span> Once per wave, skip the 3 cards for a fresh draw</div>
+         <div class="upGroup gapTop">PICKUPS &amp; ITEMS</div>
+         <div class="upRow"><span class="upName">New files</span> Legacy .exe buff, Corrupted Archive gamble, Locked Cache, Ransomware trap</div>
+         <div class="upRow"><span class="upName">System Tray</span> 1-slot usable items (Honeypot, Format Wipe, Task Kill, System Restore)</div>
+         <div class="upRow"><span class="upName">Banking</span> Unspent items carry into the next run</div>
+       </div>`,
+
+      `<div class="pageTitle">ENEMIES &amp; STAGES</div>
+       <div class="pageBody">
+         <div class="upGroup">NEW ENEMIES</div>
+         <div class="upRow"><span class="upName">Error Dialog</span> Snowball enemy - spawns duplicates if ignored</div>
+         <div class="upRow"><span class="upName">Ghost Cursor</span> Mirrors your movement, dashes at your position</div>
+         <div class="upRow"><span class="upName">Clippy</span> Mid-boss that telegraphs through "helpful" bubbles</div>
+         <div class="upGroup gapTop">ERAS</div>
+         <div class="upRow"><span class="upName">Stage 2</span> Windows 95 era - new enemies + Start Menu attacks</div>
+         <div class="upRow"><span class="upName">Stage 3</span> Windows XP era - Bliss wallpaper, Luna UI</div>
+         <div class="upRow"><span class="upName">Stage 4+</span> Windows 7, Modern, and AI eras (final boss: Copilot)</div>
+       </div>`,
+
+      `<div class="pageTitle">META &amp; POLISH</div>
+       <div class="pageBody">
+         <div class="upGroup">PROGRESSION</div>
+         <div class="upRow"><span class="upName">Save data</span> Persist unlocks, best waves, and cursor progress</div>
+         <div class="upRow"><span class="upName">Run stats</span> Track kills, deaths, IP spent, purges, max stage, best time</div>
+         <div class="upRow"><span class="upName">Leaderboards</span> Wire up the top-20 times board (currently placeholder)</div>
+         <div class="upRow"><span class="upName">Achievements</span> Hook up the achievements screen</div>
+         <div class="upGroup gapTop">GAME FEEL</div>
+         <div class="upRow"><span class="upName">Hit-stop</span> Brief freeze on hits to sell impact</div>
+         <div class="upRow"><span class="upName">Screen shake</span> Directional, decay-fast shake tied to the hit</div>
+         <div class="upRow"><span class="upName">Bar tweening</span> Smooth MEM / IP / PURGE bars instead of snapping</div>
+       </div>`
+  ] },
+  { title: 'Discord',     pages: [
+      `<div class="pageTitle">DISCORD</div>
+       <div class="pageBody">
+         <div class="upRow"><span class="upName">Handle</span> debonairfawkes</div>
+         <div class="upRow"><span class="upName">Server</span> Coming soon - invite link will appear here</div>
+       </div>`
+  ] },
+];
+
+// ---------- "New!" badge tracking ----------
+// A notice shows a "New!" badge over its file icon until the player has
+// viewed every page listed in its `newPages` at the current `newVersion`.
+// Developers flag fresh content by adding `newPages: [n], newVersion: v` to
+// a notice entry; future cursor-unlock / enemy-discovery code will do the
+// same at runtime. Seen state is persisted so badges stick across sessions
+// until the new page is actually opened.
+function loadSeenPages(){
+  try{ return JSON.parse(localStorage.getItem('desktopDungeonSeenPages')) || {}; }
+  catch(e){ return {}; }
+}
+let seenPages = loadSeenPages();
+
+function saveSeenPages(){
+  try{ localStorage.setItem('desktopDungeonSeenPages', JSON.stringify(seenPages)); }catch(e){}
+}
+
+function hasUnseenNew(noticeIndex){
+  const data = NOTICE_DATA[noticeIndex];
+  if(!data || !data.newPages || !data.newPages.length) return false;
+  const version = data.newVersion || 1;
+  return data.newPages.some(p => {
+    const seen = seenPages[noticeIndex] && seenPages[noticeIndex][p];
+    return !seen || seen < version;
+  });
+}
+
+function markPageSeen(noticeIndex, pageIndex){
+  const data = NOTICE_DATA[noticeIndex];
+  if(!data || !data.newPages || data.newPages.indexOf(pageIndex) < 0) return;
+  if(!seenPages[noticeIndex]) seenPages[noticeIndex] = {};
+  seenPages[noticeIndex][pageIndex] = data.newVersion || 1;
+  saveSeenPages();
+  updateNewBadges();
+}
+
+function updateNewBadges(){
+  document.querySelectorAll('.noticeBox').forEach(box => {
+    const idx = parseInt(box.dataset.noticeIndex, 10);
+    const shouldShow = hasUnseenNew(idx);
+    let badge = box.querySelector('.noticeNewBadge');
+    if(shouldShow && !badge){
+      badge = document.createElement('span');
+      badge.className = 'noticeNewBadge';
+      badge.textContent = 'New!';
+      box.appendChild(badge);
+    } else if(!shouldShow && badge){
+      badge.remove();
+    }
+  });
+}
 
 function initNewsFeed(){
   // Create notice boxes dynamically - all using Notice1.png
@@ -554,17 +1380,55 @@ function initNewsFeed(){
   
   // Load Notice1.png to get natural dimensions
   const testImg = new Image();
-  testImg.src = 'assets/Notice1.png';
+  testImg.src = NOTICE_IMG;
   testImg.onload = function(){
     noticeHeight = testImg.naturalHeight; // Use natural height without extra spacing
     
+    // Preload the pressed image so the swap is instant on mousedown
+    const pressedImg = new Image();
+    pressedImg.src = NOTICE_PRESSED_IMG;
+    
     for(let i = 1; i <= totalNotices; i++){
-      const notice = document.createElement('img');
-      notice.className = 'noticeBox';
-      notice.src = 'assets/Notice1.png'; // Use Notice1.png for all
       const position = (i - 1) * noticeHeight;
-      notice.style.top = `${position}px`; // Stack edge to edge - NO SPACING
-      noticeList.appendChild(notice);
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'noticeBox';
+      wrapper.style.top = `${position}px`; // Stack edge to edge - NO SPACING
+
+      const notice = document.createElement('img');
+      notice.className = 'noticeImg';
+      notice.src = NOTICE_IMG; // Use Notice1.png for all
+      notice.draggable = false;
+
+      const label = document.createElement('span');
+      label.className = 'noticeLabel';
+      label.textContent = (NOTICE_DATA[i - 1] && NOTICE_DATA[i - 1].title) || '';
+
+      wrapper.appendChild(notice);
+      wrapper.appendChild(label);
+      wrapper.dataset.noticeIndex = i - 1;
+
+      // "New!" badge over the green file icon until new pages are viewed
+      if(hasUnseenNew(i - 1)){
+        const badge = document.createElement('span');
+        badge.className = 'noticeNewBadge';
+        badge.textContent = 'New!';
+        wrapper.appendChild(badge);
+      }
+
+      // Button behavior: show pressed image while held, open modal on release
+      wrapper.addEventListener('mousedown', ()=>{
+        notice.src = NOTICE_PRESSED_IMG;
+      });
+      wrapper.addEventListener('mouseup', ()=>{
+        notice.src = NOTICE_IMG;
+        openNoticeModal(i - 1);
+      });
+      wrapper.addEventListener('mouseleave', ()=>{
+        notice.src = NOTICE_IMG;
+      });
+
+      noticeList.appendChild(wrapper);
     }
     
     // Add scroll wheel event listener
@@ -574,6 +1438,98 @@ function initNewsFeed(){
     updateScrollKnob();
   };
 }
+
+// ---------- Notice Modal ----------
+let noticeModal = null;
+let activeNoticeIndex = 0;
+let activePageIndex = 0;
+
+// Modal design size (1920x1080, matching MainMenuModal.png). The box is laid
+// out at this fixed size and then scaled as a whole against the screen area
+// (layout units, like scaleMainMenu), so the background and the text stay in
+// proportion at any window resolution or aspect ratio.
+const NOTICE_MODAL_W = 1920;
+const NOTICE_MODAL_H = 1080;
+
+function fitNoticeModal(){
+  if(!noticeModal) return;
+  const box = noticeModal.querySelector('#noticeModalBox');
+  // Fit against the main menu's screen area (falls back to #screenWrap),
+  // using offsetWidth/Height so the outer #appRoot auto-fit scale isn't
+  // applied twice and the modal always fits inside the screen.
+  const host = mainMenu || document.getElementById('screenWrap');
+  if(!host) return;
+  const s = Math.min(
+    (host.offsetWidth * 0.85) / NOTICE_MODAL_W,
+    (host.offsetHeight * 0.85) / NOTICE_MODAL_H
+  );
+  box.style.transform = `scale(${s})`;
+}
+
+window.addEventListener('resize', fitNoticeModal);
+window.addEventListener('resize', fitSettingsModal);
+
+function openNoticeModal(index){
+  closeNoticeModal(); // Remove any existing modal first
+
+  activeNoticeIndex = index;
+  activePageIndex = 0;
+
+  noticeModal = document.createElement('div');
+  noticeModal.id = 'noticeModal';
+  noticeModal.innerHTML = `
+    <div id="noticeModalBox">
+      <div id="noticeModalPage"></div>
+      <div id="noticeModalNav">
+        <button id="noticePrev" aria-label="Previous page">&lt;</button>
+        <span id="pageIndicator"></span>
+        <button id="noticeNext" aria-label="Next page">&gt;</button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(noticeModal);
+
+  const box = noticeModal.querySelector('#noticeModalBox');
+  box.style.width = NOTICE_MODAL_W + 'px';
+  box.style.height = NOTICE_MODAL_H + 'px';
+  box.style.backgroundImage = "url('assets/MainMenuModal.png')";
+  fitNoticeModal();
+
+  noticeModal.querySelector('#noticePrev').addEventListener('click', ()=> changeNoticePage(-1));
+  noticeModal.querySelector('#noticeNext').addEventListener('click', ()=> changeNoticePage(1));
+
+  renderNoticePage();
+}
+
+function changeNoticePage(delta){
+  const data = NOTICE_DATA[activeNoticeIndex];
+  if(!data) return;
+  const next = activePageIndex + delta;
+  if(next < 0 || next >= data.pages.length) return;
+  activePageIndex = next;
+  renderNoticePage();
+}
+
+function renderNoticePage(){
+  if(!noticeModal) return;
+  const data = NOTICE_DATA[activeNoticeIndex] || { pages: [''] };
+  noticeModal.querySelector('#noticeModalPage').innerHTML = data.pages[activePageIndex] || '';
+  noticeModal.querySelector('#noticePrev').disabled = (activePageIndex <= 0);
+  noticeModal.querySelector('#noticeNext').disabled = (activePageIndex >= data.pages.length - 1);
+  noticeModal.querySelector('#pageIndicator').textContent = `${activePageIndex + 1} / ${data.pages.length}`;
+  markPageSeen(activeNoticeIndex, activePageIndex);
+}
+
+function closeNoticeModal(){
+  if(noticeModal){
+    noticeModal.remove();
+    noticeModal = null;
+  }
+}
+
+document.addEventListener('keydown', (e)=>{
+  if(e.key === 'Escape'){ closeNoticeModal(); closeSettingsModal(); }
+});
 
 function handleNewsFeedScroll(e){
   const delta = e.deltaY;
@@ -598,16 +1554,10 @@ function updateScrollKnob(){
   const totalNoticeHeight = totalNotices * noticeHeight;
   const subWindowHeight = newsFeedSubWindow.offsetHeight;
   const maxScrollOffset = Math.max(0, totalNoticeHeight - subWindowHeight);
-  
-  // Calculate scroll percentage
   const scrollPercentage = maxScrollOffset > 0 ? newsFeedScrollOffset / maxScrollOffset : 0;
-  
-  // Calculate knob position based on scroll bar length
-  const maxKnobPosition = scrollBarLength - scrollKnobHeight;
-  const knobPosition = scrollPercentage * maxKnobPosition;
-  
-  // Apply knob position
-  scrollKnob.style.top = `${knobPosition}px`;
+  // The knob is a full-frame sprite with the thumb drawn at the top of the
+  // track; translate the whole overlay down to move the thumb.
+  scrollKnob.style.transform = `translateY(${scrollPercentage * THUMB_TRAVEL}px)`;
 }
 
 function positionButtons(){
@@ -671,9 +1621,9 @@ function positionButtons(){
   console.log('Quit button position:', quitButton.style.left, quitButton.style.top);
   
   // Position news feed 30px to the right of buttons
-  const buttonsRightEdge = centerX + (startNatural.width / 2) + 30; // 30px gap
+  const buttonsRightEdge = centerX + (startNatural.width / 2) + 10; // moved right 10px
   newsFeed.style.left = buttonsRightEdge + 'px';
-  newsFeed.style.top = '60%';
+  newsFeed.style.top = '210px'; // Moved up 20px more (was 230px)
   
   // Debug container info
   console.log('Menu container:', mainMenuContainer.offsetWidth, mainMenuContainer.offsetHeight);
@@ -715,14 +1665,12 @@ function setupButtonStates(button, normalSrc, hoverSrc, pressedSrc){
 function scaleMainMenu(){
   if(gameState.currentState !== 'mainMenu') return;
   
-  console.log('=== SCALE MENU DEBUG ===');
-  console.log('Canvas dimensions:', canvas.width, canvas.height);
-  console.log('Game state:', gameState.currentState);
-  console.log('Menu container dimensions:', mainMenuContainer.offsetWidth, mainMenuContainer.offsetHeight);
-  
-  // Temporarily disable scaling to see if buttons appear
-  mainMenuContainer.style.transform = 'translate(-50%, -50%)';
-  console.log('Applied transform (no scale):', mainMenuContainer.style.transform);
+  // Fit the 1920x1080 menu inside the monitor's screen area (#mainMenu fills
+  // #screenWrap). offsetWidth/Height are layout units, so the outer #appRoot
+  // auto-fit scale doesn't affect this ratio - the menu always ends up filling
+  // the screen box edge-to-edge regardless of how the window is scaled.
+  const scale = Math.min(mainMenu.offsetWidth / 1920, mainMenu.offsetHeight / 1080, 1);
+  mainMenuContainer.style.transform = 'translate(-50%, -50%) scale(' + scale + ')';
 }
 
 function showMainMenu(){
@@ -781,11 +1729,12 @@ function resizeCanvasForMainMenu(){
 }
 
 function resizeCanvasForGameplay(){
-  // Reset canvas to gameplay size (640x400)
-  canvas.width = 640;
-  canvas.height = 400;
-  W = 640;
-  H = 400;
+  // Stage 1: 640x400. Stage 2 gets a 25% larger play area (800x500).
+  const isStage2 = gameState.currentStage === 2;
+  canvas.width = isStage2 ? 800 : 640;
+  canvas.height = isStage2 ? 500 : 400;
+  W = canvas.width;
+  H = canvas.height;
 }
 
 function startGame(){
@@ -795,9 +1744,218 @@ function startGame(){
   initGame();
 }
 
+// Advance to the next stage within the same run (player keeps upgrades/IP)
+function beginStage(n){
+  gameState.currentStage = n;
+  resizeCanvasForGameplay(); // Ensure gameplay canvas dims before placing stage fixtures
+  player.x = W/2; player.y = H/2; // Recenter in the new arena
+  mouse.x = W/2; mouse.y = H/2;
+  wave = 1;
+  waveState = 'fighting';
+  enemies = []; playerBullets = []; enemyBullets = []; particles = []; pickups = []; caches = []; deadPixels = []; windows = [];
+  cacheSpawnTimer = 6 + Math.random()*4;
+  gameOver = false;
+  trashCan = (n === 2) ? makeTrashCan() : null;
+  overlay.classList.add('hidden');
+  upgradeOverlay.classList.add('hidden');
+  player.invuln = 2;
+  startWave(1);
+  requestLock();
+  console.log('=== STAGE ' + n + ' (' + getStageName() + ') STARTED ===');
+}
+
+// ---------- Settings Menu ----------
+const RESOLUTIONS = [
+  { w: 640,  h: 480  }, { w: 800,  h: 600  }, { w: 1024, h: 768  },
+  { w: 1152, h: 864  }, { w: 1280, h: 720  }, { w: 1280, h: 800  },
+  { w: 1280, h: 960  }, { w: 1280, h: 1024 }, { w: 1366, h: 768  },
+  { w: 1440, h: 900  }, { w: 1600, h: 900  }, { w: 1600, h: 1000 },
+  { w: 1600, h: 1200 }, { w: 1680, h: 1050 }, { w: 1920, h: 1080 },
+  { w: 1920, h: 1200 }, { w: 2048, h: 1536 }, { w: 2560, h: 1080 },
+  { w: 2560, h: 1440 }, { w: 2560, h: 1600 }, { w: 2880, h: 1800 },
+  { w: 3440, h: 1440 }, { w: 3840, h: 2160 }
+];
+
+let settingsModal = null;
+let settingsPageIndex = 0;
+
+function fitSettingsModal(){
+  if(!settingsModal) return;
+  const box = settingsModal.querySelector('#settingsBox');
+  const host = mainMenu || document.getElementById('screenWrap');
+  if(!host) return;
+  const s = Math.min((host.offsetWidth * 0.85) / 1920, (host.offsetHeight * 0.85) / 1080);
+  box.style.transform = `scale(${s})`;
+}
+
+function closeSettingsModal(){
+  if(settingsModal){ settingsModal.remove(); settingsModal = null; }
+}
+
+function changeSettingsPage(delta){
+  settingsPageIndex += delta;
+  if(settingsPageIndex < 0) settingsPageIndex = 0;
+  if(settingsPageIndex > 2) settingsPageIndex = 2;
+  renderSettingsPage();
+}
+
+function renderSettingsPage(){
+  if(!settingsModal) return;
+  const page = settingsModal.querySelector('#settingsPage');
+
+  if(settingsPageIndex === 0){
+    page.innerHTML = `
+      <div class="pageTitle">SOUND</div>
+      <div class="pageBody">
+        <div class="settingRow"><span class="settingLabel">MASTER</span><input type="range" id="setMaster" min="0" max="100"><span class="settingVal" id="setMasterVal"></span></div>
+        <div class="settingRow"><span class="settingLabel">SFX</span><input type="range" id="setSfx" min="0" max="100"><span class="settingVal" id="setSfxVal"></span></div>
+        <div class="settingRow"><span class="settingLabel">MUSIC</span><input type="range" id="setMusic" min="0" max="100"><span class="settingVal" id="setMusicVal"></span></div>
+        <div class="settingNote">Music comes online in a later build.</div>
+      </div>`;
+    const m = page.querySelector('#setMaster'), s = page.querySelector('#setSfx'), mu = page.querySelector('#setMusic');
+    const mv = page.querySelector('#setMasterVal'), sv = page.querySelector('#setSfxVal'), muv = page.querySelector('#setMusicVal');
+    m.value = Math.round((SETTINGS.master ?? 1) * 100);
+    s.value = Math.round((SETTINGS.sfx ?? 1) * 100);
+    mu.value = Math.round((SETTINGS.music ?? 1) * 100);
+    const sync = ()=>{ mv.textContent = m.value + '%'; sv.textContent = s.value + '%'; muv.textContent = mu.value + '%'; };
+    sync();
+    const preview = ()=>{ ensureAudio(); applyAudioSettings(); SFX.menuClick(); };
+    m.addEventListener('input', ()=>{ SETTINGS.master = m.value / 100; saveSettings(); sync(); preview(); });
+    s.addEventListener('input', ()=>{ SETTINGS.sfx = s.value / 100; saveSettings(); sync(); preview(); });
+    mu.addEventListener('input', ()=>{ SETTINGS.music = mu.value / 100; saveSettings(); sync(); });
+  }
+  else if(settingsPageIndex === 1){
+    page.innerHTML = `
+      <div class="pageTitle">DISPLAY</div>
+      <div class="pageBody">
+        <div class="settingRow"><span class="settingLabel">DISPLAY MODE</span>
+          <button class="toggleBtn modeBtn" data-mode="windowed">WINDOWED</button>
+          <button class="toggleBtn modeBtn" data-mode="fullscreen">FULLSCREEN</button>
+          <button class="toggleBtn modeBtn" data-mode="borderless">BORDERLESS</button>
+        </div>
+        <div class="settingRow"><span class="settingLabel">RESOLUTION</span><select id="setRes"></select><button class="toggleBtn" id="setApply">APPLY</button></div>
+        <div class="settingRow"><span class="settingLabel">SCREEN SHAKE</span><button class="toggleBtn" id="setShake">ON</button></div>
+        <div class="settingNote" id="setDisplayNote"></div>
+      </div>`;
+    // --- Display mode ---
+    const modeBtns = [...page.querySelectorAll('.modeBtn')];
+    const note = page.querySelector('#setDisplayNote');
+    const modeBridgeOk = (window.desktopDungeon && typeof window.desktopDungeon.setDisplayMode === 'function');
+    const refreshMode = ()=>{
+      const m = SETTINGS.displayMode || 'windowed';
+      modeBtns.forEach(b => b.classList.toggle('active', b.dataset.mode === m));
+    };
+    refreshMode();
+    modeBtns.forEach(b => b.addEventListener('click', ()=>{
+      SETTINGS.displayMode = b.dataset.mode;
+      saveSettings();
+      refreshMode();
+      if(modeBridgeOk){
+        // Recreates the window (page reloads back to the menu) - no reply.
+        window.desktopDungeon.setDisplayMode(b.dataset.mode);
+      } else {
+        note.textContent = 'Display mode changes require the desktop build.';
+      }
+    }));
+    // --- Resolution ---
+    const sel = page.querySelector('#setRes');
+    const applyBtn = page.querySelector('#setApply');
+    const cur = document.createElement('option');
+    cur.value = 'current';
+    cur.textContent = `Current (${window.innerWidth} x ${window.innerHeight})`;
+    sel.appendChild(cur);
+    RESOLUTIONS.forEach(r => {
+      const o = document.createElement('option');
+      o.value = `${r.w}x${r.h}`;
+      o.textContent = `${r.w} x ${r.h}${(r.w === 2560 && r.h === 1600) ? '  (Legion Go native)' : ''}`;
+      sel.appendChild(o);
+    });
+    if(SETTINGS.resolution && [...sel.options].some(o => o.value === SETTINGS.resolution)){
+      sel.value = SETTINGS.resolution;
+    }
+    const bridgeOk = (window.desktopDungeon && typeof window.desktopDungeon.setResolution === 'function');
+    const statusLine = (msg) => {
+      note.textContent = msg + (bridgeOk ? '' : '  [IPC bridge: MISSING - fully restart the app]');
+    };
+    statusLine('Select a size, then hit APPLY. Current window: ' + window.innerWidth + ' x ' + window.innerHeight + '.');
+    applyBtn.addEventListener('click', async ()=>{
+      applyBtn.disabled = true;
+      try{
+        const val = sel.value;
+        if(val === 'current'){
+          SETTINGS.resolution = null;
+          statusLine('Cleared saved resolution.');
+        } else {
+          SETTINGS.resolution = val;
+          const parts = val.split('x').map(Number);
+          if(bridgeOk){
+            const res = await window.desktopDungeon.setResolution(parts[0], parts[1]);
+            if(res && res.error){
+              statusLine('Resize failed (' + res.error + ').');
+            } else if(res){
+              const clamped = (res.w !== parts[0] || res.h !== parts[1]);
+              statusLine('Window set to ' + res.w + ' x ' + res.h + (clamped ? ' (clamped - screen too small).' : '.'));
+            }
+          } else {
+            try{ window.resizeTo(parts[0], parts[1]); }catch(e){}
+            statusLine('Web preview: resize unavailable.');
+          }
+        }
+        saveSettings();
+      } finally {
+        applyBtn.disabled = false;
+      }
+    });
+    // --- Screen shake ---
+    const btn = page.querySelector('#setShake');
+    const refreshShake = ()=>{
+      const on = (SETTINGS.screenShake !== false);
+      btn.textContent = on ? 'ON' : 'OFF';
+      btn.classList.toggle('active', on);
+    };
+    refreshShake();
+    btn.addEventListener('click', ()=>{ SETTINGS.screenShake = (SETTINGS.screenShake === false); saveSettings(); refreshShake(); });
+  }
+  else{
+    page.innerHTML = `
+      <div class="pageTitle">CONTROLS</div>
+      <div class="pageBody">
+        <div class="kvRow"><span class="kvKey">MOVE</span><span class="kvDesc">Mouse - the cursor is locked to the play area</span></div>
+        <div class="kvRow"><span class="kvKey">FIRE</span><span class="kvDesc">Left click</span></div>
+        <div class="kvRow"><span class="kvKey">CHARGE</span><span class="kvDesc">Hold left click</span></div>
+        <div class="kvRow"><span class="kvKey">TARGET</span><span class="kvDesc">Q / E - cycle through enemies</span></div>
+        <div class="kvRow"><span class="kvKey">SPELL</span><span class="kvDesc">Right click</span></div>
+        <div class="kvRow"><span class="kvKey">CYCLE SPELL</span><span class="kvDesc">Mouse wheel</span></div>
+        <div class="kvRow"><span class="kvKey">PURGE</span><span class="kvDesc">Hold right click while still</span></div>
+        <div class="kvRow"><span class="kvKey">PAUSE</span><span class="kvDesc">Esc</span></div>
+      </div>`;
+  }
+
+  settingsModal.querySelector('#settingsPrev').disabled = (settingsPageIndex <= 0);
+  settingsModal.querySelector('#settingsNext').disabled = (settingsPageIndex >= 2);
+  settingsModal.querySelector('#settingsPageInd').textContent = `${settingsPageIndex + 1} / 3`;
+}
+
 function showSettings(){
-  // TODO: Implement settings menu
-  console.log('Settings clicked');
+  closeSettingsModal();
+  settingsPageIndex = 0;
+  settingsModal = document.createElement('div');
+  settingsModal.id = 'settingsModal';
+  settingsModal.innerHTML = `
+    <div id="settingsBox">
+      <div id="settingsPage"></div>
+      <div id="settingsNav">
+        <button id="settingsPrev" aria-label="Previous page">&lt;</button>
+        <span id="settingsPageInd"></span>
+        <button id="settingsNext" aria-label="Next page">&gt;</button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(settingsModal);
+  fitSettingsModal();
+  settingsModal.querySelector('#settingsPrev').addEventListener('click', ()=> changeSettingsPage(-1));
+  settingsModal.querySelector('#settingsNext').addEventListener('click', ()=> changeSettingsPage(1));
+  renderSettingsPage();
 }
 
 function showAchievements(){
@@ -806,15 +1964,71 @@ function showAchievements(){
 }
 
 function quitGame(){
-  // In browser, this could redirect or show a goodbye message
+  // Desktop build: actually quit the app via the main process.
+  if(window.desktopDungeon && typeof window.desktopDungeon.quitGame === 'function'){
+    window.desktopDungeon.quitGame();
+    return;
+  }
+  // Web/preview fallback: we can't quit a browser tab, so just say goodbye.
   console.log('Quit clicked');
-  // For now, just show an alert since we can't really "quit" a web page
   alert('Thank you for playing Desktop Dungeon!\n\nRefresh the page to play again.');
 }
 
+// ---------- Settings state (persisted) ----------
+const SETTINGS_DEFAULTS = { master: 1, sfx: 1, music: 1, resolution: null, screenShake: true, displayMode: 'windowed' };
+function loadSettings(){
+  try{ return Object.assign({}, SETTINGS_DEFAULTS, JSON.parse(localStorage.getItem('desktopDungeonSettings')) || {}); }
+  catch(e){ return Object.assign({}, SETTINGS_DEFAULTS); }
+}
+let SETTINGS = loadSettings();
+function saveSettings(){
+  try{ localStorage.setItem('desktopDungeonSettings', JSON.stringify(SETTINGS)); }catch(e){}
+}
+
+// Re-apply saved display settings on launch (desktop build only). The
+// renderer can't resize or reframe its own Electron window, so it asks the
+// main process. The window was created with a mode passed via ?mode=...;
+// only act when the saved setting differs (prevents a recreate/reload loop).
+(function applySavedDisplaySettings(){
+  const bridge = window.desktopDungeon;
+  if(!bridge || typeof bridge.setDisplayMode !== 'function') return;
+  const initialMode = new URLSearchParams(location.search).get('mode') || 'windowed';
+  const savedMode = SETTINGS.displayMode || 'windowed';
+  // 1. Reconcile display mode with what the window was created as.
+  if(savedMode !== initialMode){
+    bridge.setDisplayMode(savedMode);
+    return; // window is recreated; resolution is handled on the next load
+  }
+  // 2. Modes match: apply saved resolution (windowed mode only).
+  if(savedMode === 'windowed' && SETTINGS.resolution && typeof bridge.setResolution === 'function'){
+    const parts = String(SETTINGS.resolution).split('x').map(Number);
+    if(parts.length === 2 && parts[0] > 0 && parts[1] > 0){
+      bridge.setResolution(parts[0], parts[1]);
+    }
+  }
+})();
+
 // ---------- Audio (procedural, no assets) ----------
 let actx = null;
-function ensureAudio(){ if(!actx){ try{ actx = new (window.AudioContext||window.webkitAudioContext)(); }catch(e){} } }
+let masterGain = null;
+let sfxGain = null;
+function applyAudioSettings(){
+  if(!masterGain || !sfxGain) return;
+  masterGain.gain.value = (typeof SETTINGS.master === 'number' ? SETTINGS.master : 1);
+  sfxGain.gain.value = (typeof SETTINGS.sfx === 'number' ? SETTINGS.sfx : 1);
+}
+function ensureAudio(){
+  if(!actx){
+    try{
+      actx = new (window.AudioContext||window.webkitAudioContext)();
+      masterGain = actx.createGain();
+      sfxGain = actx.createGain();
+      sfxGain.connect(masterGain);
+      masterGain.connect(actx.destination);
+      applyAudioSettings();
+    }catch(e){}
+  }
+}
 function beep(freq, dur, type, vol){
   if(!actx) return;
   const o = actx.createOscillator();
@@ -822,7 +2036,7 @@ function beep(freq, dur, type, vol){
   o.type = type || 'square';
   o.frequency.value = freq;
   g.gain.value = (vol!==undefined?vol:0.06);
-  o.connect(g); g.connect(actx.destination);
+  o.connect(g); g.connect(sfxGain || actx.destination);
   const now = actx.currentTime;
   g.gain.setValueAtTime(g.gain.value, now);
   g.gain.exponentialRampToValueAtTime(0.0001, now + dur);
@@ -931,7 +2145,15 @@ function getCanvasPos(e){
 // window edge and "escape" into the OS. We keep our own virtual mouse.x/y,
 // advanced by those deltas and clamped to the play area, exactly like before.
 let pointerLocked = false;
+// Some webviews (Freebuff preview, Itch.io iframes) can't request real pointer
+// lock - it throws WrongDocumentError or silently no-ops. In that case we
+// emulate it: keep pointerLocked=true (so the loop runs) but track the mouse
+// by absolute canvas position instead of movementX/Y deltas.
+let pointerLockEmulated = false;
+let lockFallbackTimer = null;
 let cursorSelectionOverlay;
+// TEMP DEV: stage picker for testing (defaults to stage 1, normal flow)
+let tempStageChoice = 1;
 
 function showCursorSelection(){
   // Don't show cursor selection if in main menu
@@ -943,8 +2165,29 @@ function showCursorSelection(){
   cursorSelectionOverlay.innerHTML = `
     <h1>SELECT CURSOR TYPE</h1>
     <div id="cursorSelection"></div>
+    <div id="stageSelect" style="margin-top:18px;">
+      <span style="color:#fff; font-size:22px; font-family:&quot;DOS VGA&quot;,&quot;Courier New&quot;,monospace;">TEMP STAGE:</span>
+      <button id="stageBtn1" style="margin-left:12px;">STAGE 1</button>
+      <button id="stageBtn2">STAGE 2</button>
+    </div>
   `;
   document.body.appendChild(cursorSelectionOverlay);
+
+  // TEMP DEV: stage picker wiring
+  const stageBtn1 = document.getElementById('stageBtn1');
+  const stageBtn2 = document.getElementById('stageBtn2');
+  const stageButtons = [stageBtn1, stageBtn2];
+  tempStageChoice = 1;
+  function paintStageButtons(){
+    stageButtons.forEach((b, i) => {
+      const active = (i + 1) === tempStageChoice;
+      b.style.outline = active ? '3px solid #00ff00' : 'none';
+      b.style.background = active ? '#00ff00' : '#ffffff';
+    });
+  }
+  stageBtn1.addEventListener('click', () => { tempStageChoice = 1; paintStageButtons(); });
+  stageBtn2.addEventListener('click', () => { tempStageChoice = 2; paintStageButtons(); });
+  paintStageButtons();
   
   const cursorSelectionEl = document.getElementById('cursorSelection');
   
@@ -976,17 +2219,63 @@ function showCursorSelection(){
   startBtn.addEventListener('click', ()=>{
     document.body.removeChild(cursorSelectionOverlay);
     ensureAudio();
-    requestLock();
+    // TEMP DEV: jump straight into the picked stage (beginStage resets & starts wave 1)
+    if(tempStageChoice !== 1){
+      beginStage(tempStageChoice);
+    } else {
+      requestLock();
+    }
   });
   cursorSelectionOverlay.appendChild(startBtn);
 }
 
+function onLockEngaged(){
+  lockOverlay.classList.add('hidden');
+  // Initialize game on first lock if not already started
+  if(wave === 1 && waveState === 'fighting' && enemies.length === 0 && windows.length === 0){
+    console.log('Starting wave 1 from pointer lock');
+    spawnWindows();
+    startWave(1);
+  }
+}
+
+function emulatePointerLock(){
+  if(pointerLocked) return;
+  console.warn('Pointer lock unavailable in this environment, emulating');
+  pointerLockEmulated = true;
+  pointerLocked = true;
+  onLockEngaged();
+}
+
 function requestLock(){
-  if(canvas.requestPointerLock) canvas.requestPointerLock();
+  clearTimeout(lockFallbackTimer);
+  if(!isElectron){
+    // In any browser context (Freebuff preview webview, plain tab) we never
+    // call the native pointer-lock API: the preview webview's host crashes
+    // hard on requestPointerLock (a native crash - not catchable from JS),
+    // and emulated lock tracks the real cursor position anyway. Electron
+    // keeps real pointer lock (hidden OS cursor, movementX/Y deltas).
+    emulatePointerLock();
+    return;
+  }
+  try {
+    if(canvas.requestPointerLock) canvas.requestPointerLock();
+  } catch(err) {
+    // e.g. WrongDocumentError in webviews - fall straight to emulation
+    emulatePointerLock();
+    return;
+  }
+  // Some webviews have requestPointerLock but silently no-op it. If nothing
+  // engaged shortly after asking, fall back to emulation. Real Electron locks
+  // fast, so the pointerlockchange handler clears this timer first.
+  lockFallbackTimer = setTimeout(() => {
+    if(!pointerLocked) emulatePointerLock();
+  }, 400);
 }
 
 document.addEventListener('pointerlockchange', ()=>{
   pointerLocked = (document.pointerLockElement === canvas);
+  clearTimeout(lockFallbackTimer);
   console.log('=== POINTER LOCK CHANGE ===');
   console.log('Pointer locked:', pointerLocked);
   console.log('Wave:', wave);
@@ -995,13 +2284,8 @@ document.addEventListener('pointerlockchange', ()=>{
   console.log('Windows:', windows.length);
   
   if(pointerLocked){
-    lockOverlay.classList.add('hidden');
-    // Initialize game on first lock if not already started
-    if(wave === 1 && waveState === 'fighting' && enemies.length === 0 && windows.length === 0){
-      console.log('Starting wave 1 from pointer lock');
-      spawnWindows();
-      startWave(1);
-    }
+    pointerLockEmulated = false;
+    onLockEngaged();
   } else if(!gameOver && waveState !== 'upgrade'){
     // Covers both a deliberate Esc release and losing lock by e.g. alt-tabbing -
     // either way, pause and ask for a click rather than let stale input keep firing.
@@ -1022,16 +2306,21 @@ lockOverlay.addEventListener('click', ()=>{
 });
 
 canvas.addEventListener('mousemove', (e)=>{
-  if(!pointerLocked){
+  if(pointerLockEmulated){
+    // Emulated lock: no OS cursor capture, so track the real on-screen position.
+    const p = getCanvasPos(e);
+    mouse.x = clamp(p.x, 4, W-4);
+    mouse.y = clamp(p.y, 4, H-4);
+  } else if(!pointerLocked){
     // Not locked yet (e.g. before the first click) - track normally so the
     // very first click-to-lock still has a sane starting position.
     const p = getCanvasPos(e);
     mouse.x = clamp(p.x, 4, W-4);
     mouse.y = clamp(p.y, 4, H-4);
-    return;
+  } else {
+    mouse.x = clamp(mouse.x + e.movementX, 4, W-4);
+    mouse.y = clamp(mouse.y + e.movementY, 4, H-4);
   }
-  mouse.x = clamp(mouse.x + e.movementX, 4, W-4);
-  mouse.y = clamp(mouse.y + e.movementY, 4, H-4);
   if(rmbDown && !isDraggingUlt){
     const d = dist(mouse.x,mouse.y,rmbDownX,rmbDownY);
     if(d > DRAG_THRESHOLD){
@@ -1095,14 +2384,31 @@ document.addEventListener('keydown', (e)=>{
     cycleTarget('prev');
   } else if(e.key === 'r' || e.key === 'R'){
     if(waveState === 'victory'){
-      // Return to main menu on victory
-      showMainMenu();
+      // Continue to the next stage, or back to the main menu after the final stage
+      if(gameState.currentStage < Object.keys(STAGE_CONFIG).length){
+        beginStage(gameState.currentStage + 1);
+      } else {
+        showMainMenu();
+      }
     }
+  } else if(e.key === '['){
+    // DEV: skip straight to the next stage for testing
+    if(gameState.currentState === 'gameplay' && !gameOver && waveState !== 'upgrade'){
+      if(gameState.currentStage < Object.keys(STAGE_CONFIG).length){
+        pointerLocked = true; // Let the loop run even without real pointer lock (browser testing)
+        beginStage(gameState.currentStage + 1);
+      }
+    }
+  } else if(e.key === 'Escape' && pointerLockEmulated && !gameOver && waveState !== 'upgrade'){
+    // No real pointer lock to release with Esc - emulate the pause instead.
+    pointerLocked = false;
+    lockOverlay.classList.remove('hidden');
   }
 });
 
 function cycleTarget(direction){
-  const aliveEnemies = enemies.filter(en => !en.dead);
+  // Shielded enemies can't be targeted - you need to find the mage first
+  const aliveEnemies = enemies.filter(en => !en.dead && !en.shielded);
   if(aliveEnemies.length === 0) return;
   
   // Update cycle index based on current target to maintain consistency
@@ -1276,11 +2582,13 @@ function castSelectedSpell(){
   }
 }
 
-// ---------- Visi On Menu Bar ----------
-const MENU_BAR_Y = H - 20;
+// ---------- Menu Bar (stage 1: Visi On bottom bar; stage 2: Mac 1.0 top bar) ----------
 const MENU_BAR_HEIGHT = 20;
 const MENU_BUTTONS = ['Help', 'Close', 'Open', 'Full', 'Frame', 'Options', 'Transfer', 'Stop'];
-const BUTTON_WIDTH = 640 / MENU_BUTTONS.length;
+const MAC_MENU_BUTTONS = ['File', 'Edit', 'View', 'Special', 'Training'];
+function getMenuButtons(){ return gameState.currentStage === 2 ? MAC_MENU_BUTTONS : MENU_BUTTONS; }
+function getMenuBarY(){ return gameState.currentStage === 2 ? 0 : H - MENU_BAR_HEIGHT; }
+function getButtonWidth(){ return W / getMenuButtons().length; }
 
 // ---------- Obstacle (static hazard: an open window) ----------
 const obstacle = { x: 660, y: 90, w: 230, h: 170 };
@@ -1289,6 +2597,7 @@ const obstacle = { x: 660, y: 90, w: 230, h: 170 };
 let enemies = [];
 let playerBullets = [];
 let enemyBullets = [];
+let trashCan = null; // Stage 2 stationary trash can turret
 let windowProjectiles = []; // Word window projectiles
 let particles = [];
 let pickups = [];
@@ -1296,6 +2605,8 @@ let caches = []; // "encrypted file" world objects - bump to open, one at a time
 let deadPixels = []; // Dead pixel traps for waves 9-11
 let cacheSpawnTimer = 6 + Math.random()*4;
 let kills = 0;
+let killsThisWave = 0; // Enemies killed so far this wave (gates file spawns past 80%)
+let filesSpawnedThisWave = 0; // Encrypted files spawned so far this wave (per-wave cap)
 let wave = 1;
 let gameOver = false;
 let shake = 0;
@@ -1348,7 +2659,7 @@ const UPGRADE_POOLS = {
 
 function showUpgradeChoices(){
   waveState = 'upgrade';
-  if(document.exitPointerLock) document.exitPointerLock();
+  if(isElectron && document.exitPointerLock) document.exitPointerLock();
   
   // Pick one upgrade from each path
   const picks = [];
@@ -1689,6 +3000,8 @@ function drawTrayTurretEnemy(en){
 
 const ENEMY_TYPES = {
   menubutton: { update: updateMenuButton, draw: drawMenuButtonEnemy },
+  macfile: { update: updateMacFile, draw: drawMacFile },
+  corruptedmacfile: { update: updateCorruptedMacFile, draw: drawMacFile },
 };
 
 // Visi On Era Wave Structure
@@ -1712,6 +3025,8 @@ function startWave(n){
   hasStartedSpawning = false;
   buttonSpawnStaggerTimer = 0;
   buttonSpawnIndex = 0;
+  killsThisWave = 0;
+  filesSpawnedThisWave = 0;
   
   // Apply cursor type stats at wave start
   const cursorStats = CURSOR_TYPES[player.cursorType];
@@ -1725,11 +3040,16 @@ function startWave(n){
   spawnWindows();
   
   // Each wave has a fixed number of enemies to spawn
-  // Wave 1: 12 enemies, Wave 15: 60 enemies (15-wave structure)
-  const baseEnemies = 12;
-  const maxEnemies = 60;
-  const progress = Math.min((n - 1) / 14, 1); // 0 to 1 over waves 1-15
-  enemiesToSpawn = Math.floor(baseEnemies + (maxEnemies - baseEnemies) * progress);
+  if(gameState.currentStage === 2){
+    // Stage 2: base of 20 on wave 1, exponential growth to exactly 120 on wave 20
+    enemiesToSpawn = Math.min(120, Math.floor(20 * Math.pow(6, (n - 1) / 19)));
+  } else {
+    // Stage 1: linear ramp, Wave 1: 12 enemies, Wave 15: 60 enemies (15-wave structure)
+    const baseEnemies = 12;
+    const maxEnemies = 60;
+    const progress = Math.min((n - 1) / 14, 1); // 0 to 1 over waves 1-15
+    enemiesToSpawn = Math.floor(baseEnemies + (maxEnemies - baseEnemies) * progress);
+  }
   
   waveSpawnTimer = 0;
   waveTimer = MIN_WAVE_DURATION;
@@ -1749,9 +3069,24 @@ function startWave(n){
 function spawnButtonSwarm(){
   if(enemiesSpawned >= enemiesToSpawn) return;
   
-  // Waves 9-15: Spawn dead pixels instead of enemies occasionally
-  if(wave >= 9 && wave <= 15 && Math.random() < 0.3 && deadPixels.length < 3){
+  const isStage2 = gameState.currentStage === 2;
+  const dpMin = isStage2 ? 12 : 9;
+  const dpMax = isStage2 ? 20 : 15;
+  
+  // Spawn dead pixels instead of enemies occasionally (stage 1: waves 9-15, stage 2: waves 12-20)
+  if(wave >= dpMin && wave <= dpMax && Math.random() < 0.3 && deadPixels.length < 3){
     spawnDeadPixel();
+    enemiesSpawned++; // Count toward total enemies
+    return;
+  }
+  
+  // Stage 2: file mages protect nearby enemies (max 1 active at a time). Waves 6+
+  if(isStage2 && wave >= 6 && !enemies.some(e => e.type === 'macfile' || e.type === 'corruptedmacfile') && Math.random() < 0.12){
+    if(wave >= 10 && Math.random() < 0.15){
+      spawnCorruptedMacFile(); // Rare corrupted variant - hoovers up drops
+    } else {
+      spawnMacFile();
+    }
     enemiesSpawned++; // Count toward total enemies
     return;
   }
@@ -1766,23 +3101,399 @@ function spawnButtonSwarm(){
   if(player.cursorType === 'grenade') staggerTime = 0.6; // Reduced (was 1.0)
   if(player.cursorType === 'laser') staggerTime = 0.5; // Reduced (was 0.9)
   
-  // Spawn one enemy at a time with stagger
+  // Spawn a batch of buttons per stagger tick (stage 2 releases 2 at a time)
+  const batch = isStage2 ? 2 : 1;
   if(buttonSpawnStaggerTimer <= 0){
-    // Determine enemy type based on wave
-    let enemyType = 'menubutton';
-    
-    // Waves 5-8: Add corrupted (explosive) enemies
-    if(wave >= 5 && wave <= 8 && Math.random() < 0.15){
-      // Force corrupted variant
-      const isCorrupted = true;
-      spawnMenuButton(buttonSpawnIndex % MENU_BUTTONS.length, waveMultiplier, isCorrupted);
-    } else {
-      spawnMenuButton(buttonSpawnIndex % MENU_BUTTONS.length, waveMultiplier);
+    for(let i = 0; i < batch; i++){
+      if(enemiesSpawned >= enemiesToSpawn) break;
+      // Waves 5-8: Add corrupted (explosive) enemies (stage 2: all waves)
+      if(wave >= (isStage2 ? 1 : 5) && wave <= (isStage2 ? 20 : 8) && Math.random() < 0.15){
+        // Force corrupted variant
+        spawnMenuButton(buttonSpawnIndex % getMenuButtons().length, waveMultiplier, true);
+      } else {
+        spawnMenuButton(buttonSpawnIndex % getMenuButtons().length, waveMultiplier);
+      }
+      enemiesSpawned++;
+      buttonSpawnIndex++;
     }
-    
-    enemiesSpawned++;
-    buttonSpawnIndex++;
     buttonSpawnStaggerTimer = staggerTime;
+  }
+}
+
+// ---------- Stage 2: File Mage (Mac_File) + Corrupted variant ----------
+function spawnMacFile(){
+  let x,y, tries=0;
+  do {
+    x = 50 + Math.random()*(W-100);
+    y = 50 + Math.random()*(H-120);
+    tries++;
+  } while(dist(x,y,player.x,player.y) < 200 && tries < 20);
+  enemies.push({
+    x, y, vx: 0, vy: 0,
+    radius: 16,
+    hp: 40, maxHp: 40,
+    level: 1,
+    type: 'macfile',
+    auraRadius: 200,
+    driftTimer: Math.random()*Math.PI*2,
+    blink: 0,
+    ...initEnemyChips({}, 43, 38) // 20% larger sprite body, chippable
+  });
+}
+
+function spawnCorruptedMacFile(){
+  let x,y, tries=0;
+  do {
+    x = 50 + Math.random()*(W-100);
+    y = 50 + Math.random()*(H-120);
+    tries++;
+  } while(dist(x,y,player.x,player.y) < 200 && tries < 20);
+  enemies.push({
+    x, y, vx: 0, vy: 0,
+    radius: 16,
+    hp: 80, maxHp: 80,
+    level: 2,
+    type: 'corruptedmacfile',
+    auraRadius: 200,
+    driftTimer: Math.random()*Math.PI*2,
+    isCorrupted: true, // Inherits the corrupted death-tell explosion
+    deathTell: false,
+    deathTellTimer: 0,
+    explosionRadius: 55,
+    // Hoover mechanic: soaks up drops, redrops everything if killed in time
+    hoovered: [],
+    hooverTimer: 12,
+    destructWarn: 0,
+    timeoutDeath: false,
+    blink: 0,
+    ...initEnemyChips({}, 43, 38) // 20% larger sprite body, chippable
+  });
+}
+
+function updateMacFile(en, dt){
+  // A dead mage lingers in the array until the end-of-loop filter; never let it
+  // re-apply shields after clearMageShields() has run on its death.
+  if(en.dead) return;
+  updateEnemyChips(en, dt); // chunk erosion like every other enemy
+  // Mark shielded enemies inside the aura (black ring). Mages never shield mages.
+  for(const other of enemies){
+    if(other === en) continue;
+    if(other.dead || other.type === 'macfile' || other.type === 'corruptedmacfile'){
+      other.shielded = false;
+      continue;
+    }
+    other.shielded = dist(en.x, en.y, other.x, other.y) < en.auraRadius;
+  }
+  driftMage(en, dt);
+}
+
+function updateCorruptedMacFile(en, dt){
+  updateMacFile(en, dt);
+
+  // Hoover: absorb nearby IP/MEM drops and encrypted files
+  for(let i = pickups.length - 1; i >= 0; i--){
+    const p = pickups[i];
+    if(p.type === 'mine') continue;
+    if(dist(en.x, en.y, p.x, p.y) < 45){
+      pickups.splice(i, 1);
+      en.hoovered.push({ kind: 'pickup', obj: p });
+    }
+  }
+  for(let i = caches.length - 1; i >= 0; i--){
+    const c = caches[i];
+    if(dist(en.x, en.y, c.x, c.y) < 45){
+      caches.splice(i, 1);
+      en.hoovered.push({ kind: 'cache', obj: c });
+    }
+  }
+
+  // Self-destruct countdown - if the player doesn't kill it in time the drops are lost
+  en.hooverTimer -= dt;
+  if(en.hooverTimer <= 3 && !en.timeoutDeath){
+    en.destructWarn -= dt;
+    if(en.destructWarn <= 0){
+      en.destructWarn = 0.5;
+      floatText(en.x, en.y - 26, "SELF DESTRUCT!", '#ff0000');
+    }
+    if(en.hooverTimer <= 0){
+      en.timeoutDeath = true;
+      en.hoovered = []; // Drops are lost
+      en.deathTell = true;
+      en.deathTellTimer = 0.6;
+    }
+  }
+}
+
+function driftMage(en, dt){
+  // Drift toward clusters of enemies to keep them inside the aura
+  let tx = en.x, ty = en.y, count = 0;
+  for(const other of enemies){
+    if(other.dead || other === en || other.type === 'macfile' || other.type === 'corruptedmacfile') continue;
+    const d = dist(en.x, en.y, other.x, other.y);
+    if(d < 320){ tx += other.x; ty += other.y; count++; }
+  }
+  let targetX, targetY;
+  if(count > 0){
+    targetX = tx / count;
+    targetY = ty / count;
+  } else {
+    // Wander toward the play area center with a slow bob
+    targetX = W/2 + Math.sin(performance.now()/2000 + en.driftTimer) * 60;
+    targetY = H/2 + Math.cos(performance.now()/2500 + en.driftTimer) * 50;
+  }
+  const dx = targetX - en.x, dy = targetY - en.y;
+  const len = Math.hypot(dx, dy) || 1;
+  const speed = 55;
+  en.x = clamp(en.x + (dx/len) * speed * dt, 25, W-25);
+  en.y = clamp(en.y + (dy/len) * speed * dt, 35, H-35);
+}
+
+function clearMageShields(){
+  for(const en of enemies){
+    en.shielded = false;
+  }
+}
+
+function redropHoovered(en){
+  for(const item of en.hoovered){
+    const px = clamp(en.x + (Math.random()-0.5) * 80, 15, W-15);
+    const py = clamp(en.y + (Math.random()-0.5) * 80, 25, H-15);
+    if(item.kind === 'pickup'){
+      const p = item.obj;
+      p.x = px; p.y = py;
+      p.life = Math.max(p.life, 10); // Fresh enough to grab
+      p.dead = false;
+      pickups.push(p);
+    } else {
+      const c = item.obj;
+      c.x = px; c.y = py;
+      c.dead = false;
+      caches.push(c);
+    }
+  }
+  en.hoovered = [];
+}
+
+function drawMacFile(en){
+  ctx.save();
+  ctx.translate(en.x, en.y);
+
+  // Faint aura range ring (white - Mac 1.0 era is black & white)
+  ctx.strokeStyle = 'rgba(255,255,255,0.18)';
+  ctx.lineWidth = 1;
+  ctx.setLineDash([4,4]);
+  ctx.beginPath();
+  ctx.arc(0, 0, en.auraRadius, 0, Math.PI*2);
+  ctx.stroke();
+  ctx.setLineDash([]);
+
+  const corrupted = en.type === 'corruptedmacfile';
+  // 20% larger sprite: 36x32 -> 43x38. Draw clipped to the remaining chunk
+  // blocks so damaged mages visibly lose pieces like every other enemy.
+  const sW = 43, sH = 38;
+  const removedSet = removedBlockSet(en);
+  const cols = en.chunkCols || Math.max(1, Math.floor(sW / 4));
+  const rows = en.chunkRows || Math.max(1, Math.floor(sH / 4));
+  ctx.save();
+  if(removedSet.size > 0){
+    // Clip to the surviving blocks so holes read as blown-off chunks
+    ctx.beginPath();
+    for(let i = 0; i < cols * rows; i++){
+      if(removedSet.has(i)) continue;
+      const ci = i % cols, ri = Math.floor(i / cols);
+      ctx.rect(-sW/2 + ci*4, -sH/2 + ri*4, 4, 4);
+    }
+    ctx.clip();
+  }
+  if(macFileImg.complete && macFileImg.naturalWidth > 0){
+    ctx.drawImage(macFileImg, -sW/2, -sH/2, sW, sH);
+  } else {
+    // Fallback: simple file icon
+    ctx.fillStyle = corrupted ? '#ff0000' : '#fff';
+    ctx.strokeStyle = '#000';
+    ctx.lineWidth = 2;
+    ctx.fillRect(-14, -17, 28, 34);
+    ctx.strokeRect(-14, -17, 28, 34);
+    ctx.fillStyle = '#fff';
+    ctx.beginPath();
+    ctx.moveTo(-14, -17);
+    ctx.lineTo(0, -17);
+    ctx.lineTo(-14, 0);
+    ctx.closePath();
+    ctx.fill();
+  }
+  // Impact flash: brief white overlay right after being hit
+  if(en.hitFlash > 0){
+    ctx.globalAlpha = en.hitFlash * 0.4;
+    ctx.fillStyle = '#ffffff';
+    if(removedSet.size === 0){
+      ctx.fillRect(-sW/2, -sH/2, sW, sH);
+    } else {
+      for(let i = 0; i < cols * rows; i++){
+        if(removedSet.has(i)) continue;
+        const ci = i % cols, ri = Math.floor(i / cols);
+        ctx.fillRect(-sW/2 + ci*4, -sH/2 + ri*4, 4, 4);
+      }
+    }
+    ctx.globalAlpha = 1;
+  }
+  ctx.restore();
+
+  // Corrupted mage: red self-destruct countdown ring + held item count
+  if(corrupted){
+    if(en.hooverTimer > 0 && en.hooverTimer <= 3){
+      const frac = en.hooverTimer / 3;
+      ctx.strokeStyle = '#ff0000';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(0, 0, en.radius + 8, -Math.PI/2, -Math.PI/2 + frac * Math.PI * 2);
+      ctx.stroke();
+    }
+    if(en.hoovered.length > 0){
+      ctx.fillStyle = '#fff';
+      ctx.font = '10px "DOS VGA", "Courier New", monospace';
+      ctx.textAlign = 'center';
+      ctx.fillText(en.hoovered.length, 0, -en.radius - 6);
+    }
+  }
+  ctx.restore();
+}
+
+// ---------- Stage 2: Trash can (stationary hazard turret) ----------
+const TRASH_FRAME_W = 32, TRASH_FRAME_H = 55, TRASH_FRAMES = 10;
+const TRASH_WAD_SPEED = 100, TRASH_WAD_RADIUS = 6, TRASH_WAD_DAMAGE = 10, TRASH_WAD_CAP = 12; // 2x larger wads
+
+function makeTrashCan(){
+  return {
+    x: W - 18, // bottom-right corner of the play area
+    y: H - 28,
+    frame: 1,
+    animTime: 0,
+    firing: false,
+    fireTimer: 6 + Math.random()*6,
+    volleyWads: 0
+  };
+}
+
+function updateTrashCan(dt){
+  if(!trashCan || gameState.currentStage !== 2) return;
+  const tc = trashCan;
+
+  // Harm the player if touched (the can is a hazard from wave 1)
+  if(player.invuln <= 0 && Math.abs(player.x - tc.x) < 18 && Math.abs(player.y - tc.y) < 30){
+    takeDamage(5);
+    player.invuln = 0.3;
+    shake = 4;
+    floatText(player.x, player.y - 20, "TRASH!", '#fff');
+  }
+
+  // Waves 1-7: purely a stationary obstacle. Fires from wave 8 on.
+  if(wave < 8){
+    tc.frame = 1;
+    tc.animTime = 0;
+    tc.firing = false;
+    return;
+  }
+
+  if(!tc.firing){
+    tc.frame = 1;
+    tc.fireTimer -= dt;
+    if(tc.fireTimer <= 0){
+      // Start a volley if under the live-wad cap
+      const live = enemyBullets.filter(b => b.type === 'trashwad').length;
+      if(live < TRASH_WAD_CAP){
+        tc.firing = true;
+        tc.animTime = 0;
+        tc.volleyWads = 0;
+      } else {
+        tc.fireTimer = 2; // At cap - re-check soon
+      }
+    }
+  } else {
+    tc.animTime += dt;
+    tc.frame = Math.floor(tc.animTime * 5) + 1; // 5fps animation, frames 1-10
+    if(tc.frame > TRASH_FRAMES){
+      tc.firing = false;
+      tc.frame = 1;
+      tc.fireTimer = 6 + Math.random()*6;
+    } else if((tc.frame === 3 || tc.frame === 5 || tc.frame === 7) && tc.volleyWads < 3){
+      // 3 wads spread across the 1.2s firing window (frames 3-8)
+      spawnTrashWad(tc, tc.volleyWads);
+      tc.volleyWads++;
+    }
+  }
+}
+
+function spawnTrashWad(tc, index){
+  // Fan upward out of the top of the can. Wide spread + per-wad speed variance
+  // so the three wads visibly separate instead of traveling as a clump.
+  const baseAngle = -Math.PI/2;
+  const spread = [-0.85, 0, 0.85][index % 3];
+  const speedMult = [0.95, 0.75, 1.1][index % 3]; // middle one lags, edges pull ahead
+  const a = baseAngle + spread;
+  enemyBullets.push({
+    x: tc.x, y: tc.y - 27,
+    vx: Math.cos(a) * TRASH_WAD_SPEED * speedMult,
+    vy: Math.sin(a) * TRASH_WAD_SPEED * speedMult,
+    radius: TRASH_WAD_RADIUS,
+    damage: TRASH_WAD_DAMAGE,
+    type: 'trashwad',
+    dead: false
+  });
+  SFX.enemyShoot();
+}
+
+function drawTrashCan(){
+  if(!trashCan || gameState.currentStage !== 2) return;
+  const tc = trashCan;
+  ctx.save();
+  const frame = clamp(tc.frame, 1, TRASH_FRAMES);
+  if(trashShotImg.complete && trashShotImg.naturalWidth > 0){
+    ctx.drawImage(trashShotImg, (frame-1)*TRASH_FRAME_W, 0, TRASH_FRAME_W, TRASH_FRAME_H,
+                  tc.x - TRASH_FRAME_W/2, tc.y - TRASH_FRAME_H/2, TRASH_FRAME_W, TRASH_FRAME_H);
+  } else {
+    // Fallback while the sprite loads: simple white can
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(tc.x-12, tc.y-20, 24, 40);
+    ctx.strokeStyle = '#000';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(tc.x-12, tc.y-20, 24, 40);
+  }
+  // (No extra outline - the sprite is drawn as-is; the can itself reads fine)
+  ctx.restore();
+}
+
+function updateWindowResize(dt){
+  // Stage 2: obstacle windows start small and randomly grow/shrink after a warning
+  if(gameState.currentStage !== 2) return;
+  for(const win of windows){
+    if(win.resizeState === 'idle'){
+      win.resizeTimer -= dt;
+      if(win.resizeTimer <= 0){
+        win.resizeState = 'warning';
+        win.resizeTimer = 1.4;
+      }
+    } else if(win.resizeState === 'warning'){
+      win.resizeTimer -= dt;
+      if(win.resizeTimer <= 0){
+        win.startW = win.width;
+        win.startH = win.height;
+        const scale = 0.45 + Math.random() * 0.75;
+        win.targetW = Math.round(Math.max(160, Math.min(win.baseW * scale, W - win.x - 20)));
+        win.targetH = Math.round(Math.max(100, Math.min(win.baseH * scale, H - win.y - 20)));
+        win.resizeState = 'changing';
+        win.resizeTimer = 0.6;
+      }
+    } else if(win.resizeState === 'changing'){
+      win.resizeTimer -= dt;
+      const t = clamp(1 - win.resizeTimer / 0.6, 0, 1);
+      win.width = Math.round(win.startW + (win.targetW - win.startW) * t);
+      win.height = Math.round(win.startH + (win.targetH - win.startH) * t);
+      if(win.resizeTimer <= 0){
+        win.resizeState = 'idle';
+        win.resizeTimer = 5 + Math.random()*4;
+      }
+    }
   }
 }
 
@@ -2060,6 +3771,13 @@ function loadWindowImage(){
 
 function spawnWindows(){
   windows = [];
+  // Stage 2: obstacle windows only appear on waves 15-20 (with the resize mechanic)
+  if(gameState.currentStage === 2 && wave < 15){
+    wordWindowAttack.active = false;
+    wordWindowAttack.phase = 'idle';
+    wordWindowAttack.window = null;
+    return;
+  }
   // Spawn 1 window in a random spot each wave, avoiding center where you start and taskbar area
   let x,y, tries=0;
   do {
@@ -2072,8 +3790,12 @@ function spawnWindows(){
     const centerY = H/2;
     const distFromCenter = Math.hypot(x - centerX, y - centerY);
     if(distFromCenter < 150) continue; // Back to 150px buffer
-    // Ensure window doesn't overlap taskbar
-    if(y + 244 > H - 20) continue; // Window bottom must be above taskbar
+    // Ensure window doesn't overlap the menu bar (bottom in stage 1, top in stage 2)
+    if(gameState.currentStage === 2){
+      if(y < MENU_BAR_HEIGHT) continue; // Window must sit below the top menu bar
+    } else {
+      if(y + 244 > H - MENU_BAR_HEIGHT) continue; // Window bottom must be above the taskbar
+    }
     // Check if you are inside this window position
     if(player.x + player.radius > x && player.x - player.radius < x + 384 &&
        player.y + player.radius > y && player.y - player.radius < y + 244){
@@ -2081,10 +3803,20 @@ function spawnWindows(){
     }
     break;
   } while(tries < 50);
+  const baseW = 384, baseH = 244; // 20% larger than the original 320x203
+  const startSmall = gameState.currentStage === 2;
   windows.push({
     x, y,
-    width: 384,  // 20% larger than 320
-    height: 244,  // 20% larger than 203
+    width: startSmall ? Math.round(baseW * 0.5) : baseW,
+    height: startSmall ? Math.round(baseH * 0.5) : baseH,
+    baseW: baseW,
+    baseH: baseH,
+    targetW: baseW,
+    targetH: baseH,
+    startW: baseW,
+    startH: baseH,
+    resizeState: 'idle', // idle -> warning -> changing -> idle
+    resizeTimer: startSmall ? 2.5 + Math.random()*2 : 0,
     isWordWindow: true // Mark this as the word window for attacks
   });
   
@@ -2386,11 +4118,20 @@ function checkWindowCollision(obj, isPlayer){
 
 function damageEnemy(en, amount, source){
   if(en.dead) return;
+  // Stage 2: Mac File aura shields enemies from everything except Purge
+  if(en.shielded && source !== 'ultimate'){
+    floatText(en.x, en.y - 18, "BLOCKED", '#42e2e8');
+    spawnParticles(en.x, en.y, 3, '#42e2e8');
+    SFX.denied();
+    return;
+  }
   en.hp -= amount;
   spawnParticles(en.x, en.y, 6, '#ffffff');
   SFX.hit();
   // Show damage number
   floatText(en.x, en.y - 15, Math.round(amount).toString(), '#ffffff');
+  // Taskbar buttons and mages flash on impact
+  if(en.type === 'menubutton' || en.type === 'macfile' || en.type === 'corruptedmacfile') en.hitFlash = 1;
   if(en.hp <= 0){
     // Corrupted enemies have special death handling
     if(en.isCorrupted && !en.deathTell){
@@ -2398,9 +4139,11 @@ function damageEnemy(en, amount, source){
       en.deathTellTimer = 0.8;
       return; // Don't kill yet, let update handle the explosion
     }
-    // If corrupted enemy is already in death tell and gets hit again, explode immediately
+    // If corrupted enemy is already in death tell and gets hit again, explode immediately.
+    // (killEnemy bails out for corrupted enemies in deathTell, so instead we zero the
+    // timer and let the update loop fire the explosion on the next tick.)
     if(en.isCorrupted && en.deathTell){
-      killEnemy(en, -en.hp, source); // Trigger immediate explosion
+      en.deathTellTimer = 0;
       return;
     }
     killEnemy(en, -en.hp, source); // overflow = how far past 0 this hit pushed it
@@ -2415,15 +4158,17 @@ function killEnemy(en, overflow, source){
   
   en.dead = true;
   kills++;
+  killsThisWave++;
   killTextEl.textContent = "Kills " + kills;
   spawnParticles(en.x, en.y, 16, '#ffffff');
   SFX.death();
+  if(en.type === 'macfile' || en.type === 'corruptedmacfile') clearMageShields();
 
   // Corrupted enemy explosion
   if(en.isCorrupted){
     // Deal damage to you if in radius
     if(player.invuln <= 0 && dist(en.x, en.y, player.x, player.y) < en.explosionRadius){
-      takeDamage(5);
+      takeDamage(5 * (gameState.currentStage === 2 ? 1.5 : 1));
       player.invuln = 0.6;
       shake = 4;
       floatText(player.x, player.y - 20, "EXPLOSION!", '#000');
@@ -2603,7 +4348,7 @@ function spawnRing(x,y,color){
 function findTarget(){
   let best = null, bestD = Infinity;
   for(const en of enemies){
-    if(en.dead) continue;
+    if(en.dead || en.shielded) continue; // Shielded enemies can't be targeted
     const d = dist(player.x, player.y, en.x, en.y);
     if(d < bestD - 1e-6){
       bestD = d; best = en;
@@ -2732,6 +4477,7 @@ function fireChargedShot(heldTime){
       dmg: cursorStats.chargeDamage * player.chargeDmgMult,
       pierce: cursorStats.chargePierce + player.chargedPierceBonus,
       type: 'default',
+      isCharged: true, // Charged shots pass through shielded enemies
       maxRange: cursorStats.projectileRange,
       distanceTraveled: 0
     });
@@ -3005,6 +4751,9 @@ function update(dt){
   // wave spawning for button swarms
   updateWaveSpawning(dt);
   
+  // Stage 2: trash can turret (stationary hazard in the bottom-right corner)
+  updateTrashCan(dt);
+  
   // word window attack system
   if (shouldStartWordWindowAttack()) {
     startWordWindowAttack();
@@ -3012,8 +4761,13 @@ function update(dt){
   updateWordWindowAttack(dt);
   updateWindowProjectiles(dt);
   
-  // dead pixel trap system (waves 9-15)
-  if(wave >= 9 && wave <= 15){
+  // Stage 2: obstacle windows grow/shrink after a warning
+  updateWindowResize(dt);
+  
+  // dead pixel trap system (stage 1: waves 9-15, stage 2: waves 12-20)
+  const dpMin = gameState.currentStage === 2 ? 12 : 9;
+  const dpMax = gameState.currentStage === 2 ? 20 : 15;
+  if(wave >= dpMin && wave <= dpMax){
     updateDeadPixels(dt);
   }
   
@@ -3128,13 +4882,21 @@ function update(dt){
         // Actually kill the enemy
         en.dead = true;
         kills++;
+        killsThisWave++;
         killTextEl.textContent = "Kills " + kills;
         spawnParticles(en.x, en.y, 16, '#ffffff');
         SFX.death();
+        // Stage 2: corrupted mage redrops hoovered items unless it self-destructed
+        if(en.hoovered && !en.timeoutDeath){
+          redropHoovered(en);
+        }
+        if(en.type === 'macfile' || en.type === 'corruptedmacfile'){
+          clearMageShields();
+        }
 
         // Corrupted enemy explosion
         if(player.invuln <= 0 && dist(en.x, en.y, player.x, player.y) < en.explosionRadius){
-          takeDamage(5);
+          takeDamage(5 * (gameState.currentStage === 2 ? 1.5 : 1));
           player.invuln = 0.6;
           shake = 4;
           floatText(player.x, player.y - 20, "CRASH!", '#000');
@@ -3261,6 +5023,9 @@ function update(dt){
       // Default and shotgun: basic hit detection
       for(const en of enemies){
         if(!en.dead && dist(b.x,b.y,en.x,en.y) < en.radius + b.radius){
+          // Charged shots pass straight through shielded enemies - no damage to
+          // them, no dissipation. A sure way to reach the mage through its minions.
+          if(en.shielded && b.isCharged) continue;
           damageEnemy(en, b.dmg, 'bullet');
           if(b.pierce > 0){ b.pierce--; } else { b.dead = true; }
           break;
@@ -3337,6 +5102,15 @@ function update(dt){
   // enemy bullets
   for(const b of enemyBullets){
     b.x += b.vx*dt; b.y += b.vy*dt;
+    
+    // Trash wads bounce off the play area edges - they never despawn on their own
+    if(b.type === 'trashwad'){
+      if(b.x - b.radius < 0){ b.x = b.radius; b.vx = Math.abs(b.vx); }
+      if(b.x + b.radius > W){ b.x = W - b.radius; b.vx = -Math.abs(b.vx); }
+      if(b.y - b.radius < 0){ b.y = b.radius; b.vy = Math.abs(b.vy); }
+      if(b.y + b.radius > H){ b.y = H - b.radius; b.vy = -Math.abs(b.vy); }
+    }
+    
     if(player.invuln <= 0 && dist(b.x,b.y,player.x,player.y) < player.radius + b.radius){
       if(player.shieldActive){
         // Active Firewall: damage attacker if shield blocks
@@ -3358,7 +5132,7 @@ function update(dt){
         player.shieldActive = false;
         spawnRing(player.x, player.y, '#ffffff');
       } else {
-        takeDamage(8);
+        takeDamage(b.type === 'trashwad' ? TRASH_WAD_DAMAGE : 8);
         player.invuln = 0.5;
       }
       b.dead = true;
@@ -3425,12 +5199,18 @@ function update(dt){
   }
   pickups = pickups.filter(p => !p.dead && p.life > 0);
 
-  // encrypted files: spawn on a timer (one at a time), expire if not decrypted
+  // encrypted files: spawn on a timer (one at a time), expire if not decrypted.
+  // Failsafes: a per-wave cap (2 on stage 1, 3 on stage 2), and once more than
+  // 80% of the wave's enemies are dead no more files spawn - so you can't leave
+  // a couple enemies alive and farm files / ransomware items.
   if(waveState === 'fighting'){
-    if(caches.length === 0){
+    const maxFiles = gameState.currentStage === 2 ? 3 : 2;
+    const tooManyKilled = enemiesToSpawn > 0 && killsThisWave > enemiesToSpawn * 0.8;
+    if(caches.length === 0 && filesSpawnedThisWave < maxFiles && !tooManyKilled){
       cacheSpawnTimer -= dt;
       if(cacheSpawnTimer <= 0){
         spawnCache();
+        filesSpawnedThisWave++;
         cacheSpawnTimer = 9 + Math.random()*6;
       }
     }
@@ -3472,7 +5252,12 @@ function update(dt){
   // particles
   for(const p of particles){
     if(p.ring){ p.r += (p.maxR/p.maxLife)*dt; }
-    else { p.x += p.vx*dt; p.y += p.vy*dt; p.vx *= 0.92; p.vy *= 0.92; }
+    else {
+      p.x += p.vx*dt; p.y += p.vy*dt;
+      p.vx *= 0.92; p.vy *= 0.92;
+      if(p.grav) p.vy += p.grav*dt;
+      if(p.vrot) p.rot = (p.rot||0) + p.vrot*dt;
+    }
     p.life -= dt;
   }
   particles = particles.filter(p => p.life > 0);
@@ -3494,19 +5279,20 @@ function update(dt){
     pickups = [];
     caches = [];
     deadPixels = []; // Clean up dead pixels
+    enemyBullets = enemyBullets.filter(b => b.type !== 'trashwad'); // Trash wads last until wave end
+    if(trashCan){ trashCan.firing = false; trashCan.frame = 1; trashCan.animTime = 0; trashCan.fireTimer = 6 + Math.random()*6; }
   } else if(waveState === 'banner'){
     bannerTimer = Math.max(0, bannerTimer - dt);
     if(bannerTimer <= 0){
       showUpgradeChoices();
     }
   } else if(waveState === 'upgrade'){
-    // Game complete after wave 15
-    if(wave >= 15){
-      // Victory condition for Visi On era
+    // Victory after the final wave of the current stage
+    if(wave >= getStageWaves()){
       waveState = 'victory';
       // Show victory screen
-      overlayTitle.textContent = "STAGE COMPLETE";
-      overlaySub.textContent = "Visi On Era Cleared  " + kills + " kills";
+      overlayTitle.textContent = gameState.currentStage >= Object.keys(STAGE_CONFIG).length ? "GAME COMPLETE" : "STAGE COMPLETE";
+      overlaySub.textContent = getStageName() + " Era Cleared  " + kills + " kills";
       overlay.classList.remove('hidden');
     }
   }
@@ -3546,7 +5332,7 @@ function takeDamage(amount){
   if(player.hp <= 0 && !gameOver){
     player.hp = 0;
     gameOver = true;
-    if(document.exitPointerLock) document.exitPointerLock();
+    if(isElectron && document.exitPointerLock) document.exitPointerLock();
     overlayTitle.textContent = "SYSTEM CRASH";
     overlaySub.textContent = "Survived " + (wave) + " waves  " + kills + " kills";
     overlay.classList.remove('hidden');
@@ -3555,8 +5341,11 @@ function takeDamage(amount){
 
 // ---------- Draw ----------
 function drawWallpaper(){
-  // Draw Visi On background
-  if(bgLoaded){
+  // Stage-aware background (Visi On for stage 1, Mac 1.0 for stage 2)
+  const useMac = gameState.currentStage === 2 && macBgLoaded;
+  if(useMac){
+    ctx.drawImage(macBg, 0, 0, W, H);
+  } else if(bgLoaded){
     ctx.drawImage(visiOnBg, 0, 0, W, H);
   } else {
     // Fallback while loading or if failed
@@ -3586,22 +5375,24 @@ function drawObstacle(){
 
 // ---------- Visi On Button Swarm Enemy ----------
 function spawnMenuButton(buttonIndex, waveMultiplier, forceCorrupted = false){
-  const buttonName = MENU_BUTTONS[buttonIndex];
+  const buttonName = getMenuButtons()[buttonIndex];
   
   // Random spawn position along the menu bar
-  const xPos = BUTTON_WIDTH/2 + Math.random() * (W - BUTTON_WIDTH);
+  const xPos = getButtonWidth()/2 + Math.random() * (W - getButtonWidth());
   
   // Check for corrupted variant (wave 5+, 1 in 10 chance, or forced)
-  const isCorrupted = forceCorrupted || (wave >= 5 && Math.random() < 0.1);
+  const isCorrupted = forceCorrupted || ((gameState.currentStage === 2 || wave >= 5) && Math.random() < 0.1);
   
   enemies.push({
     x: xPos,
-    y: MENU_BAR_Y + MENU_BAR_HEIGHT / 2,
+    y: getMenuBarY() + MENU_BAR_HEIGHT / 2,
     vx: 0,
     vy: 0,
     radius: 12,
-    hp: 8 * waveMultiplier,
-    maxHp: 8 * waveMultiplier,
+    // Stage 2 taskbar buttons are the bulkier "V2" model - 25% more HP, plus
+    // another 15% on top (1.25 * 1.15 = 1.4375)
+    hp: 8 * waveMultiplier * (gameState.currentStage === 2 ? 1.4375 : 1),
+    maxHp: 8 * waveMultiplier * (gameState.currentStage === 2 ? 1.4375 : 1),
     level: 1,
     type: 'menubutton',
     buttonName: buttonName,
@@ -3610,6 +5401,9 @@ function spawnMenuButton(buttonIndex, waveMultiplier, forceCorrupted = false){
     stateTimer: 0.5 + Math.random() * 0.3, // Time before jumping
     jumpTimer: 0,
     blink: 0,
+    // Chip damage: the button is built from contiguous chunk clusters. As HP
+    // drops, whole chunks pop off (each releasing debris) until it's ground down.
+    ...initEnemyChips({}, getButtonWidth() - 4, MENU_BAR_HEIGHT - 4),
     isCorrupted: isCorrupted,
     deathTell: false,
     deathTellTimer: 0,
@@ -3618,6 +5412,10 @@ function spawnMenuButton(buttonIndex, waveMultiplier, forceCorrupted = false){
 }
 
 function updateMenuButton(en, dt){
+  // Chip erosion: ease toward the damage fraction, popping chunks off one at a
+  // time as the bar drains. Each newly removed chunk throws out debris.
+  updateEnemyChips(en, dt);
+  
   switch(en.state){
     case 'spawning': {
       en.stateTimer -= dt;
@@ -3629,14 +5427,14 @@ function updateMenuButton(en, dt){
         const dx = player.x - en.x;
         const dy = player.y - en.y;
         const len = Math.hypot(dx, dy) || 1;
-        const speed = en.isCorrupted ? 270 : 180;
+        const speed = en.isCorrupted ? 270 : 180 * (gameState.currentStage === 2 ? 1.1 : 1);
         en.vx = (dx / len) * speed;
         en.vy = (dy / len) * speed;
       }
       
       // Check collision with you during spawning
       if(player.invuln <= 0 && dist(en.x, en.y, player.x, player.y) < en.radius + player.radius){
-        const damage = en.isCorrupted ? 8 : 10;
+        const damage = (en.isCorrupted ? 8 : 10) * (gameState.currentStage === 2 ? 1.5 : 1);
         takeDamage(damage);
         player.invuln = 0.4;
         en.dead = true;
@@ -3651,7 +5449,7 @@ function updateMenuButton(en, dt){
       
       // Check collision with you
       if(player.invuln <= 0 && dist(en.x, en.y, player.x, player.y) < en.radius + player.radius){
-        const damage = en.isCorrupted ? 8 : 10;
+        const damage = (en.isCorrupted ? 8 : 10) * (gameState.currentStage === 2 ? 1.5 : 1);
         takeDamage(damage);
         player.invuln = 0.4;
         en.dead = true;
@@ -3668,7 +5466,7 @@ function updateMenuButton(en, dt){
       const dx = player.x - en.x;
       const dy = player.y - en.y;
       const len = Math.hypot(dx, dy) || 1;
-      const speed = en.isCorrupted ? 225 : 150;
+      const speed = en.isCorrupted ? 225 : 150 * (gameState.currentStage === 2 ? 1.1 : 1);
       en.vx = (dx / len) * speed;
       en.vy = (dy / len) * speed;
       
@@ -3677,7 +5475,7 @@ function updateMenuButton(en, dt){
       
       // Check collision with you
       if(player.invuln <= 0 && dist(en.x, en.y, player.x, player.y) < en.radius + player.radius){
-        const damage = en.isCorrupted ? 8 : 10;
+        const damage = (en.isCorrupted ? 8 : 10) * (gameState.currentStage === 2 ? 1.5 : 1);
         takeDamage(damage);
         player.invuln = 0.4;
         en.dead = true;
@@ -3750,39 +5548,60 @@ function drawMenuButtonEnemy(en){
   ctx.save();
   const flashing = en.state === 'spawning' && Math.sin(en.blink) > 0;
   
-  // Draw button container - always white with black text (red for corrupted)
-  ctx.fillStyle = '#ffffff';
-  ctx.strokeStyle = '#ffffff';
-  ctx.lineWidth = 1;
-  
-  const buttonW = BUTTON_WIDTH - 4;
+  const buttonW = getButtonWidth() - 4;
   const buttonH = MENU_BAR_HEIGHT - 4;
-  const buttonX = en.buttonIndex * BUTTON_WIDTH + 2;
-  const buttonY = MENU_BAR_Y + 2;
+  const buttonX = en.buttonIndex * getButtonWidth() + 2;
+  const buttonY = getMenuBarY() + 2;
+  
+  const block = 4;
+  const cols = en.chunkCols || Math.max(1, Math.floor(buttonW / block));
+  const rows = en.chunkRows || Math.max(1, Math.floor(buttonH / block));
+  // Blocks belonging to chunks already popped off
+  const removedSet = removedBlockSet(en);
+  
+  function drawButtonBody(cx, cy){
+    ctx.fillStyle = '#ffffff';
+    for(let i = 0; i < cols * rows; i++){
+      if(removedSet.has(i)) continue; // chunk blown off
+      const ci = i % cols, ri = Math.floor(i / cols);
+      ctx.fillRect(cx - buttonW/2 + ci*block, cy - buttonH/2 + ri*block, block, block);
+    }
+    // Impact flash: brief white overlay right after being hit
+    if(en.hitFlash > 0){
+      ctx.globalAlpha = en.hitFlash * 0.55;
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(cx - buttonW/2, cy - buttonH/2, buttonW, buttonH);
+      ctx.globalAlpha = 1;
+    }
+  }
+  
+  const damageFrac = en.maxHp > 0 ? clamp(1 - en.hp / en.maxHp, 0, 1) : 0;
   
   if(en.state === 'spawning'){
     // Draw in original button position
-    ctx.fillRect(buttonX, buttonY, buttonW, buttonH);
-    ctx.strokeRect(buttonX, buttonY, buttonW, buttonH);
+    drawButtonBody(buttonX + buttonW/2, buttonY + buttonH/2);
     
-    // Draw text - red for corrupted, black for normal
+    // Draw text - red for corrupted, black for normal; fades as it chips away
+    ctx.globalAlpha = 1 - damageFrac * 0.6;
     ctx.fillStyle = en.isCorrupted ? '#ff0000' : '#000000';
     ctx.font = '12px "DOS VGA", "Courier New", monospace';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText(en.buttonName, buttonX + buttonW/2, buttonY + buttonH/2);
+    ctx.globalAlpha = 1;
   } else {
     // Draw as flying enemy - white background, red text for corrupted
     ctx.translate(en.x, en.y);
-    ctx.fillRect(-buttonW/2, -buttonH/2, buttonW, buttonH);
-    ctx.strokeRect(-buttonW/2, -buttonH/2, buttonW, buttonH);
+    drawButtonBody(0, 0);
     
-    // Draw text - red for corrupted, black for normal
+    // Draw text - red for corrupted, black for normal; fades as it chips away
+    ctx.globalAlpha = 1 - damageFrac * 0.6;
     ctx.fillStyle = en.isCorrupted ? '#ff0000' : '#000000';
     ctx.font = '12px "DOS VGA", "Courier New", monospace';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText(en.buttonName, 0, 0);
+    ctx.globalAlpha = 1;
     
     // Draw explosion radius ring during death tell
     if(en.deathTell){
@@ -3797,8 +5616,157 @@ function drawMenuButtonEnemy(en){
   ctx.restore();
 }
 
+// ---------- Button chunk / debris helpers ----------
+// Build the button's body as contiguous chunk clusters (2x2 / 3x2 groups), so
+// damage pops whole chunks off instead of a scattered pixel checkerboard.
+function buildButtonChunks(cols, rows){
+  const total = cols * rows;
+  const owner = new Array(total).fill(-1);
+  const chunks = [];
+  const adj = (i) => {
+    const c = i % cols, r = Math.floor(i / cols);
+    const out = [];
+    if(c > 0) out.push(i - 1);
+    if(c < cols - 1) out.push(i + 1);
+    if(r > 0) out.push(i - cols);
+    if(r < rows - 1) out.push(i + cols);
+    return out;
+  };
+  // Grow each chunk from a random seed by BFS, targeting 2-4 contiguous blocks
+  const seeds = [];
+  for(let i = 0; i < total; i++) seeds.push(i);
+  for(let i = seeds.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [seeds[i], seeds[j]] = [seeds[j], seeds[i]];
+  }
+  for(const seed of seeds){
+    if(owner[seed] !== -1) continue;
+    const target = 2 + Math.floor(Math.random() * 3); // 2-4 blocks per chunk
+    const chunk = [seed];
+    owner[seed] = chunks.length;
+    const frontier = adj(seed).filter(j => owner[j] === -1);
+    while(chunk.length < target && frontier.length){
+      const j = frontier.splice(Math.floor(Math.random() * frontier.length), 1)[0];
+      if(owner[j] !== -1) continue;
+      owner[j] = chunks.length;
+      chunk.push(j);
+      for(const k of adj(j)){
+        if(owner[k] === -1 && !frontier.includes(k)) frontier.push(k);
+      }
+    }
+    chunks.push(chunk);
+  }
+  // Merge any leftover 1-block chunks into an adjacent chunk so nothing reads as
+  // a scattered single pixel - damage should pop whole chunks, not a checkerboard.
+  for(let c = 0; c < chunks.length; c++){
+    if(chunks[c].length > 1) continue;
+    const single = chunks[c][0];
+    for(const j of adj(single)){
+      const other = owner[j];
+      if(other !== -1 && other !== c){
+        chunks[other].push(single);
+        owner[single] = other;
+        chunks[c] = [];
+        break;
+      }
+    }
+  }
+  const finalChunks = chunks.filter(c => c.length > 0);
+  // Shuffle removal order so erosion feels organic
+  for(let i = finalChunks.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [finalChunks[i], finalChunks[j]] = [finalChunks[j], finalChunks[i]];
+  }
+  return finalChunks;
+}
+
+// ---------- Generic chunk-damage machinery (shared by all enemies) ----------
+// Initialize an enemy's chip state for a body of w x h pixels. The body is
+// carved into contiguous chunk clusters; as HP drops, chunks pop off in order,
+// each throwing debris, until the enemy is ground down.
+function initEnemyChips(en, w, h){
+  const block = 4;
+  const cols = Math.max(1, Math.floor(w / block));
+  const rows = Math.max(1, Math.floor(h / block));
+  en.chunkCols = cols;
+  en.chunkRows = rows;
+  en.chunkW = w;
+  en.chunkH = h;
+  en.chunks = buildButtonChunks(cols, rows);
+  en.chipProgress = 0;
+  en.removedChunks = 0;
+  en.hitFlash = 0;
+  return en;
+}
+
+// Ease chipProgress toward the damage fraction, popping chunks off one at a
+// time (each releasing debris) as the bar drains.
+function updateEnemyChips(en, dt){
+  const chipTarget = en.maxHp > 0 ? clamp(1 - en.hp / en.maxHp, 0, 1) : 0;
+  en.chipProgress = (en.chipProgress || 0) + (chipTarget - (en.chipProgress || 0)) * Math.min(1, dt * 3);
+  const wantRemoved = Math.floor(en.chipProgress * (en.chunks || []).length);
+  while((en.removedChunks || 0) < wantRemoved){
+    spawnEnemyDebris(en, en.removedChunks || 0);
+    en.removedChunks = (en.removedChunks || 0) + 1;
+  }
+  if(en.hitFlash > 0) en.hitFlash = Math.max(0, en.hitFlash - dt * 5);
+}
+
+// Set of block indices currently blown off the enemy's body.
+function removedBlockSet(en){
+  const set = new Set();
+  const chunks = en.chunks || [];
+  for(let c = 0; c < (en.removedChunks || 0) && c < chunks.length; c++){
+    for(const bi of chunks[c]) set.add(bi);
+  }
+  return set;
+}
+
+// Spawn the debris burst for a chunk being blown off any enemy body.
+function spawnEnemyDebris(en, chunkIndex){
+  const chunks = en.chunks || [];
+  const chunk = chunks[chunkIndex];
+  if(!chunk || !chunk.length) return;
+  const block = 4;
+  const cols = en.chunkCols || Math.max(1, Math.floor((en.chunkW || getButtonWidth() - 4) / block));
+  const w = en.chunkW !== undefined ? en.chunkW : (getButtonWidth() - 4);
+  const h = en.chunkH !== undefined ? en.chunkH : (MENU_BAR_HEIGHT - 4);
+  // Center of the removed chunk, relative to the enemy body
+  let sx = 0, sy = 0;
+  for(const bi of chunk){
+    sx += (bi % cols) * block + block / 2;
+    sy += Math.floor(bi / cols) * block + block / 2;
+  }
+  sx /= chunk.length; sy /= chunk.length;
+  const wx = en.x + sx - w / 2;
+  const wy = en.y + sy - h / 2;
+  // A burst of little square chips that tumble outward with gravity
+  const n = 2 + Math.floor(Math.random() * 3);
+  for(let i = 0; i < n; i++){
+    const a = Math.random() * Math.PI * 2;
+    const sp = 30 + Math.random() * 90;
+    particles.push({
+      x: wx, y: wy,
+      vx: Math.cos(a) * sp, vy: Math.sin(a) * sp - 25,
+      life: 0.35 + Math.random() * 0.35, maxLife: 0.7,
+      color: en.isCorrupted ? '#ff8888' : '#ffffff',
+      size: 1.5 + Math.random() * 2,
+      grav: 180, rot: Math.random() * Math.PI * 2, vrot: (Math.random() - 0.5) * 12,
+      square: true
+    });
+  }
+  // Small impact spark at the chunk's old location
+  spawnParticles(wx, wy, 2, '#ffffff');
+}
+
 function drawEnemies(){
-  for(const en of enemies){
+  // Draw mages last so they always render on top of the swarm ("hovering above")
+  const drawOrder = enemies.slice().sort((a, b) => {
+    const aMage = a.type === 'macfile' || a.type === 'corruptedmacfile' ? 1 : 0;
+    const bMage = b.type === 'macfile' || b.type === 'corruptedmacfile' ? 1 : 0;
+    return aMage - bMage;
+  });
+  for(const en of drawOrder){
     const isTarget = player.currentTarget === en;
     if(isTarget){
       ctx.save();
@@ -3817,8 +5785,19 @@ function drawEnemies(){
       type.draw(en);
     }
     
-    // HP bar for rushing enemies
-    if(en.state === 'rushing' || en.state === 'jumping'){
+    // Shielded enemies (Mac File aura): black ring, Mac 1.0 style
+    if(en.shielded){
+      ctx.save();
+      ctx.strokeStyle = '#000';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(en.x, en.y, en.radius + 5, 0, Math.PI*2);
+      ctx.stroke();
+      ctx.restore();
+    }
+    
+    // HP bar for rushing enemies and stage 2 mages
+    if(en.state === 'rushing' || en.state === 'jumping' || en.type === 'macfile' || en.type === 'corruptedmacfile'){
       const hpPct = clamp(en.hp/en.maxHp,0,1);
       ctx.fillStyle = 'rgba(0,0,0,0.5)';
       ctx.fillRect(en.x-en.radius, en.y-en.radius-6, en.radius*2, 3);
@@ -3945,7 +5924,7 @@ function drawBullets(){
     ctx.arc(b.x,b.y,b.radius,0,Math.PI*2);
     ctx.fill();
   }
-  ctx.fillStyle = '#fff';
+  ctx.fillStyle = '#ff0000'; // Enemy bullets are red so they read as danger
   for(const b of enemyBullets){
     ctx.beginPath();
     ctx.arc(b.x,b.y,b.radius,0,Math.PI*2);
@@ -3971,6 +5950,17 @@ function drawWindows(){
       ctx.fillRect(win.x, win.y, win.width, 24);
       ctx.fillStyle = '#404040';
       ctx.fillRect(win.x + 4, win.y + 4, 20, 16);
+    }
+    
+    // Stage 2: resize warning text
+    if(gameState.currentStage === 2 && win.resizeState === 'warning'){
+      ctx.save();
+      ctx.font = 'bold 22px "DOS VGA", "Courier New", monospace';
+      ctx.fillStyle = '#ffffff';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('RESIZING...', win.x + win.width/2, win.y + win.height/2);
+      ctx.restore();
     }
     ctx.restore();
   }
@@ -4077,6 +6067,12 @@ function drawParticles(){
       ctx.beginPath();
       ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
       ctx.stroke();
+    } else if(p.square){
+      // Tumbling square chip
+      ctx.translate(p.x, p.y);
+      if(p.rot) ctx.rotate(p.rot);
+      ctx.fillStyle = p.color;
+      ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size);
     } else {
       ctx.fillStyle = p.color;
       ctx.beginPath();
@@ -4159,11 +6155,12 @@ function drawPlayer(){
 
 function draw(){
   ctx.save();
-  if(shake > 0){
+  if(shake > 0 && SETTINGS.screenShake !== false){
     ctx.translate((Math.random()-0.5)*shake, (Math.random()-0.5)*shake);
   }
   drawWallpaper();
   drawWindows();
+  drawTrashCan();
   drawWordWindowAttack();
   drawDeadPixels(); // Draw dead pixel traps
   drawPickups();
@@ -4203,11 +6200,15 @@ function draw(){
     ctx.fillRect(W/2 - 400, H/2 - 100, 800, 200);
     
     ctx.fillStyle = '#00ff00';
-    ctx.fillText('VISI ON ERA COMPLETE', W/2, H/2 - 30);
+    ctx.fillText(getStageName().toUpperCase() + ' ERA COMPLETE', W/2, H/2 - 30);
     ctx.font = '24px "DOS VGA", "Courier New", monospace';
     ctx.fillStyle = '#fff';
-    ctx.fillText('You have mastered the Classic GUI!', W/2, H/2 + 30);
-    ctx.fillText('Press R for Main Menu', W/2, H/2 + 70);
+    if(gameState.currentStage < Object.keys(STAGE_CONFIG).length){
+      ctx.fillText('Press R for the next stage', W/2, H/2 + 30);
+    } else {
+      ctx.fillText('You have mastered the GUI!', W/2, H/2 + 30);
+      ctx.fillText('Press R for Main Menu', W/2, H/2 + 70);
+    }
     ctx.textAlign = 'left';
     ctx.restore();
   }
@@ -4217,9 +6218,14 @@ function draw(){
 function loop(now){
   const dt = Math.min(0.05, (now-lastTime)/1000);
   lastTime = now;
-  update(dt);
-  draw();
-  updateIpHud();
+  try {
+    update(dt);
+    draw();
+    updateIpHud();
+  } catch(err){
+    // One bad frame shouldn't kill the whole loop
+    console.error('Frame error:', err);
+  }
   requestAnimationFrame(loop);
 }
 
@@ -4256,6 +6262,9 @@ function initGame(){
   player.chargeCooldownReduction = 0;
   enemies = []; playerBullets = []; enemyBullets = []; particles = []; pickups = []; caches = []; deadPixels = []; windows = [];
   cacheSpawnTimer = 6 + Math.random()*4;
+  gameState.currentStage = 1; // Fresh run always starts at stage 1
+  resizeCanvasForGameplay(); // Stage-1 canvas dims (640x400)
+  trashCan = null;
   kills = 0; wave = 1; waveState = 'fighting';
   killTextEl.textContent = 'Kills 0';
   gameOver = false;
@@ -4294,7 +6303,61 @@ window.addEventListener('resize', () => {
   }
 });
 
+
 requestAnimationFrame(loop);
+
+// DEV/testing hook - reachable only from the browser console, harmless in the packaged app
+window.__dd = {
+  state(){
+    return {
+      stage: gameState.currentStage,
+      wave: wave,
+      waveState: waveState,
+      pointerLocked: pointerLocked,
+      gameOver: gameOver,
+      waveTimer: waveTimer,
+      enemies: enemies.length,
+      wads: enemyBullets.filter(b => b.type === 'trashwad').length,
+      shielded: enemies.filter(e => e.shielded).length,
+      hoovered: enemies.reduce((s, e) => s + (e.hoovered ? e.hoovered.length : 0), 0)
+    };
+  },
+  setPointerLocked: (v) => { pointerLocked = v; },
+  setWave: (v) => { wave = v; },
+  beginStage: beginStage,
+  startWave: startWave,
+  get waveSpawnCount(){ return enemiesToSpawn; },
+  get filesSpawnedThisWave(){ return filesSpawnedThisWave; },
+  set filesSpawnedThisWave(v){ filesSpawnedThisWave = v; },
+  get killsThisWave(){ return killsThisWave; },
+  set killsThisWave(v){ killsThisWave = v; },
+  get cacheSpawnTimer(){ return cacheSpawnTimer; },
+  set cacheSpawnTimer(v){ cacheSpawnTimer = v; },
+  spawnMacFile: spawnMacFile,
+  spawnCorruptedMacFile: spawnCorruptedMacFile,
+  spawnMenuButton: spawnMenuButton,
+  makeTrashCan: makeTrashCan,
+  player: player,
+  damageEnemy: damageEnemy,
+  // Live getters - the game reassigns these arrays via .filter(), so a direct
+  // reference would go stale
+  get enemies(){ return enemies; },
+  get pickups(){ return pickups; },
+  get caches(){ return caches; },
+  get enemyBullets(){ return enemyBullets; },
+  get playerBullets(){ return playerBullets; },
+  get windows(){ return windows; },
+  get deadPixels(){ return deadPixels; },
+  get particles(){ return particles; },
+  get canvasW(){ return W; },
+  get canvasH(){ return H; },
+  get menuButtons(){ return getMenuButtons(); },
+  get menuBarY(){ return getMenuBarY(); },
+  getTrashCan: () => trashCan,
+  spawnWindows: spawnWindows,
+  findTarget: findTarget,
+  cycleTarget: cycleTarget
+};
 })();
 </script>
 </body>
