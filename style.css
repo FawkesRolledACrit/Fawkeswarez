@@ -1086,8 +1086,6 @@ marquee {
 
 }
 
-
-
 .art-nav-btn.active {
 
     background: linear-gradient(45deg, #00FFFF, #FFFF00);
@@ -1954,6 +1952,86 @@ marquee {
 
 
 
+/* WRITING SECTION */
+.writing-intro {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-top: 30px;
+    padding: 24px;
+    background: rgba(0, 0, 0, 0.85);
+    border: 3px solid #FF00FF;
+    box-shadow: 0 0 24px rgba(255, 0, 255, 0.35);
+}
+
+.writing-copy {
+    max-width: 680px;
+}
+
+.writing-kicker {
+    display: block;
+    margin-bottom: 8px;
+    color: #FFFF00;
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 0.12em;
+}
+
+.writing-copy h3 {
+    margin-bottom: 10px;
+    color: #00FFFF;
+    font-size: 1.8rem;
+    text-shadow: 2px 2px 0 #FF00FF;
+}
+
+.writing-copy p {
+    color: #C8FFD8;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+.writing-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.writing-actions .y2k-button {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+}
+
+.pdf-viewer {
+    height: min(78vh, 900px);
+    min-height: 560px;
+    margin-top: 20px;
+    padding: 8px;
+    background: #111;
+    border: 3px solid #0F0;
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.35);
+}
+
+.pdf-viewer iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #00FFFF;
+    background: #fff;
+}
+
+.pdf-viewer p {
+    padding: 20px;
+    color: #000;
+}
+
+.pdf-viewer a {
+    color: #FF00FF;
+    font-weight: bold;
+}
+
 /* ABOUT SECTION */
 
 .about-content {
@@ -2756,6 +2834,24 @@ marquee {
 
     }
 
+    .writing-intro {
+        align-items: stretch;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .writing-actions {
+        flex-direction: column;
+    }
+
+    .writing-actions .y2k-button {
+        width: 100%;
+    }
+
+    .pdf-viewer {
+        height: 70vh;
+        min-height: 420px;
+    }
     
 
     .stats-grid {
