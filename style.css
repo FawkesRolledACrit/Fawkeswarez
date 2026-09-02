@@ -356,6 +356,16 @@ marquee {
 
 
 
+.nav-link {
+
+    display: inline-block;
+
+    text-decoration: none;
+
+}
+
+
+
 .nav-btn:active {
 
     transform: scale(0.95);

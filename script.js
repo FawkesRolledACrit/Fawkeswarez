@@ -1099,9 +1099,9 @@ function handleKeyPress(event) {
     
 
     // Number keys for navigation
-    if (key >= '1' && key <= '7') {
+    if (key >= '1' && key <= '5') {
 
-        const sections = ['home', 'games', 'progress', 'writing', 'storage', 'art-assets', 'about'];
+        const sections = ['home', 'games', 'progress', 'art-assets', 'about'];
 
         const index = parseInt(key) - 1;
 
@@ -1118,7 +1118,7 @@ function handleKeyPress(event) {
     // Arrow key navigation
 
     if (key === 'arrowleft' || key === 'arrowright') {
-        const sections = ['home', 'games', 'progress', 'writing', 'storage', 'art-assets', 'about'];
+        const sections = ['home', 'games', 'progress', 'art-assets', 'about'];
 
         const currentIndex = sections.indexOf(currentSection);
 
@@ -2428,7 +2428,7 @@ function parseURL() {
 
         const sectionId = hash.replace('#', '');
 
-        const validSections = ['home', 'games', 'progress', 'writing', 'storage', 'art-assets', 'about'];
+        const validSections = ['home', 'games', 'progress', 'art-assets', 'about'];
 
         if (validSections.includes(sectionId)) {
 
